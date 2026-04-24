@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bastien TABORDET</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="nav-brand">Bastien TABORDET</div>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="divers.html">Divers</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="section">
+      <h2>Mes projets</h2>
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <img src="images/logocyber.jpg" alt="Projet cybersécurité" class="project-preview-image">
+          <div class="project-header-text">
+            <h3>Se sensibiliser à l'hygiène informatique et à la cybersécurité</h3>
+            <span class="project-type">Projet BUT1</span>
+            <p>Recherche et présentation sur les techniques d'attaques en cybersécurité</p>
+          </div>
+          <span class="skill-icon">▼</span>
+        </div>
+        <div class="project-content">
+          <p><strong>Contexte :</strong> Projet académique (SAÉ - Situation d'Apprentissage et d'Évaluation)</p>
+          <p><strong>Objectif :</strong></p>
+          <p>L'objectif était de s'informer pour notre groupe sur les différentes techniques d'attaques existantes dans le domaine de la cybersécurité.</p>
+          <p><strong>Travail réalisé :</strong></p>
+          <p>Avec un camarade, nous avons cherché des informations sur les différentes méthodes d'attaques à l'aide du site de l'<a href="https://cyber.gouv.fr/" target="_blank">ANSSI</a>, puis nous avons réalisé une présentation et un document récapitulatif.</p>
+          <p><strong>Résultat :</strong></p>
+          <p>Ce projet m'a permis de mieux comprendre les enjeux de la cybersécurité et de me sensibiliser aux bonnes pratiques en matière d'hygiène informatique grâce aux présentations des autres groupes qui réalisaient aussi ce projet.</p>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <img src="images/logocodingame.png" alt="CodinGame" class="project-preview-image">
+          <div class="project-header-text">
+            <h3>Résolution d'énigmes sur CodinGame</h3>
+            <span class="project-type">Projet personnel</span>
+            <p>Développement et énigmes mathématiques/logiques</p>
+          </div>
+          <span class="skill-icon">▼</span>
+        </div>
+        <div class="project-content">
+          <p><strong>Contexte :</strong> Projet personnel</p>
+          <p>J'ai pu réaliser différents exercices de développement et énigmes mathématiques/logiques sur le site <a href="https://www.codingame.com" target="_blank">CodinGame</a>.</p>
+          <p><strong>Objectif :</strong></p>
+          <p>L'objectif était de résoudre des problèmes algorithmiques comme le Ghostleg. Ce type d'exercice permet de développer la logique de programmation et la résolution de problèmes complexes.</p>
+          <p><strong>En savoir plus :</strong></p>
+          <p>À voir sur mon <a href="https://perso.isima.fr/~batabordet/dev.html" target="_blank">précédent site</a>, catégorie CodinGame.</p>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <img src="images/logoportfolio.webp" alt="CodinGame" class="project-preview-image">
+          <div class="project-header-text">
+            <h3>Création d'un portfolio</h3>
+            <span class="project-type">Projet BUT1</span>
+            <p>Réalisation d'un site web professionnel</p>
+          </div>
+          <span class="skill-icon">▼</span>
+        </div>
+        <div class="project-content">
+          <p><strong>Contexte :</strong> Projet académique (SAÉ - Situation d'Apprentissage et d'Évaluation)</p>
+          <p><strong>Objectif :</strong></p>
+          <p>L'objectif était de créer un portfolio professionnel pour présenter mes compétences, projets, ma formation ainsi que mes centres d'intérêts.</p>
+          <p><strong>Travail réalisé :</strong></p>
+            <p>J'ai réalisé ce portfolio en HTML et CSS, en utilisant comme aide notamment le site <a href="https://www.w3schools.com" target="_blank">W3Schools</a> surtout pour le côté graphique du site (CSS).
+            <br>Ce site contient toutes les catégories demandées dans le cahier des charges (formation, compétences, projets, divers, CV) et est fonctionnel. On peut notamment visionner mon parcours et télécharger mon CV. 
+            </p>
+          <p><strong>Résultat :</strong></p>
+          <p>Ce site que vous êtes en train de regarder constitue le résultat :) 
+            <br>Ce projet m'a permis d'obtenir davantage de notions en CSS grâce à W3Schools.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projets - Bastien TABORDET</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="nav-brand">Bastien TABORDET</div>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="divers.html">Divers</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="section">
+      <h2>Mes projets</h2>
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <img src="images/logocyber.jpg" alt="Projet cybersécurité" class="project-preview-image">
+          <div class="project-header-text">
+            <h3>Se sensibiliser à l'hygiène informatique et à la cybersécurité</h3>
+            <span class="project-type">Projet BUT1</span>
+            <p>Recherche et présentation sur les techniques d'attaques en cybersécurité</p>
+          </div>
+          <span class="skill-icon">▼</span>
+        </div>
+        <div class="project-content">
+          <p><strong>Contexte :</strong> Projet académique (SAÉ - Situation d'Apprentissage et d'Évaluation)</p>
+          <p><strong>Objectif :</strong></p>
+          <p>L'objectif était de s'informer pour notre groupe sur les différentes techniques d'attaques existantes dans le domaine de la cybersécurité.</p>
+          <p><strong>Travail réalisé :</strong></p>
+          <p>Avec un camarade, nous avons cherché des informations sur les différentes méthodes d'attaques à l'aide du site de l'<a href="https://cyber.gouv.fr/" target="_blank">ANSSI</a>, puis nous avons réalisé une présentation et un document récapitulatif.</p>
+          <p><strong>Résultat :</strong></p>
+          <p>Ce projet m'a permis de mieux comprendre les enjeux de la cybersécurité et de me sensibiliser aux bonnes pratiques en matière d'hygiène informatique grâce aux présentations des autres groupes qui réalisaient aussi ce projet.</p>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <img src="images/logocodingame.png" alt="CodinGame" class="project-preview-image">
+          <div class="project-header-text">
+            <h3>Résolution d'énigmes sur CodinGame</h3>
+            <span class="project-type">Projet personnel</span>
+            <p>Développement et énigmes mathématiques/logiques</p>
+          </div>
+          <span class="skill-icon">▼</span>
+        </div>
+        <div class="project-content">
+          <p><strong>Contexte :</strong> Projet personnel</p>
+          <p>J'ai pu réaliser différents exercices de développement et énigmes mathématiques/logiques sur le site <a href="https://www.codingame.com" target="_blank">CodinGame</a>.</p>
+          <p><strong>Objectif :</strong></p>
+          <p>L'objectif était de résoudre des problèmes algorithmiques comme le Ghostleg. Ce type d'exercice permet de développer la logique de programmation et la résolution de problèmes complexes.</p>
+          <p><strong>En savoir plus :</strong></p>
+          <p>À voir sur mon <a href="https://perso.isima.fr/~batabordet/dev.html" target="_blank">précédent site</a>, catégorie CodinGame.</p>
+        </div>
+      </div>
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <img src="images/logoportfolio.webp" alt="CodinGame" class="project-preview-image">
+          <div class="project-header-text">
+            <h3>Création d'un portfolio</h3>
+            <span class="project-type">Projet BUT1</span>
+            <p>Réalisation d'un site web professionnel</p>
+          </div>
+          <span class="skill-icon">▼</span>
+        </div>
+        <div class="project-content">
+          <p><strong>Contexte :</strong> Projet académique (SAÉ - Situation d'Apprentissage et d'Évaluation)</p>
+          <p><strong>Objectif :</strong></p>
+          <p>L'objectif était de créer un portfolio professionnel pour présenter mes compétences, projets, ma formation ainsi que mes centres d'intérêts.</p>
+          <p><strong>Travail réalisé :</strong></p>
+            <p>J'ai réalisé ce portfolio en HTML et CSS, en utilisant comme aide notamment le site <a href="https://www.w3schools.com" target="_blank">W3Schools</a> surtout pour le côté graphique du site (CSS).
+            <br>Ce site contient toutes les catégories demandées dans le cahier des charges (formation, compétences, projets, divers, CV) et est fonctionnel. On peut notamment visionner mon parcours et télécharger mon CV. 
+            </p>
+          <p><strong>Résultat :</strong></p>
+          <p>Ce site que vous êtes en train de regarder constitue le résultat :) 
+            <br>Ce projet m'a permis d'obtenir davantage de notions en CSS grâce à W3Schools.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
