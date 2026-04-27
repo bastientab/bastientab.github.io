@@ -1,10 +1,15 @@
-// Fonction COMPETENCES
+function toggleTheme() {
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+
 function toggleSkill(header) {
   const content = header.nextElementSibling;
   const icon = header.querySelector('.skill-icon');
   const isOpen = content.classList.contains('active');
  
-  // Fermer tous les autres
   document.querySelectorAll('.skill-content.active').forEach(el => {
     el.classList.remove('active');
     el.previousElementSibling.querySelector('.skill-icon').style.transform = 'rotate(0deg)';
@@ -16,7 +21,6 @@ function toggleSkill(header) {
   }
 }
  
-// Fonction PROJETS
 function toggleProject(header) {
   const content = header.nextElementSibling;
   const icon = header.querySelector('.skill-icon');
@@ -33,7 +37,6 @@ function toggleProject(header) {
   }
 }
  
-// Apparition progressive au scroll
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -49,4 +52,3 @@ document.querySelectorAll('.timeline-item, .passion-card, .project-item, .skill-
   el.style.transition = 'opacity .5s ease, transform .5s ease';
   observer.observe(el);
 });
- 

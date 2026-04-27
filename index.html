@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bastien TABORDET</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+  (function(){
+    var t = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 </head>
 <body>
   <nav>
@@ -20,6 +26,12 @@
         <li><a href="cv.html">CV</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer le thème">
+  <span class="theme-toggle-track">
+    <span class="theme-toggle-thumb"></span>
+  </span>
+  <span class="theme-toggle-label">☀</span>
+</button>
     </div>
   </nav>
   <div class="container">
@@ -41,5 +53,6 @@
   <footer>
     <p>&copy; 2025 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
