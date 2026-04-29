@@ -16,6 +16,7 @@
   <nav>
     <div class="nav-content">
       <div class="nav-brand">Bastien TABORDET</div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="a-propos.html">À propos</a></li>
@@ -100,113 +101,80 @@
           </p>
         </div>
       </div>
-    </div>
-  </div>
-  <footer>
-    <p>&copy; 2025 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
-  </footer>
-  <script src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projets - Bastien TABORDET</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav>
-    <div class="nav-content">
-      <div class="nav-brand">Bastien TABORDET</div>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="a-propos.html">À propos</a></li>
-        <li><a href="formation.html">Formation</a></li>
-        <li><a href="competences.html">Compétences</a></li>
-        <li><a href="projets.html">Projets</a></li>
-        <li><a href="divers.html">Divers</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer le thème">
-  <span class="theme-toggle-track">
-    <span class="theme-toggle-thumb"></span>
-  </span>
-  <span class="theme-toggle-label">☀</span>
-</button>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="section">
-      <h2>Mes projets</h2>
       <div class="project-item">
         <div class="project-header" onclick="toggleProject(this)">
-          <img src="images/logocyber.jpg" alt="Projet cybersécurité" class="project-preview-image">
+          <img src="images/terminal.png" alt="Terminal interactif" class="project-preview-image" loading="lazy">
           <div class="project-header-text">
-            <h3>Se sensibiliser à l'hygiène informatique et à la cybersécurité</h3>
-            <span class="project-type">Projet BUT1</span>
-            <p>Recherche et présentation sur les techniques d'attaques en cybersécurité</p>
-          </div>
-          <span class="skill-icon">▼</span>
-        </div>
-        <div class="project-content">
-          <p><strong>Contexte :</strong> Projet académique (SAÉ - Situation d'Apprentissage et d'Évaluation)</p>
-          <p><strong>Objectif :</strong></p>
-          <p>L'objectif était de s'informer pour notre groupe sur les différentes techniques d'attaques existantes dans le domaine de la cybersécurité.</p>
-          <p><strong>Travail réalisé :</strong></p>
-          <p>Avec un camarade, nous avons cherché des informations sur les différentes méthodes d'attaques à l'aide du site de l'<a href="https://cyber.gouv.fr/" target="_blank">ANSSI</a>, puis nous avons réalisé une présentation et un document récapitulatif.</p>
-          <p><strong>Résultat :</strong></p>
-          <p>Ce projet m'a permis de mieux comprendre les enjeux de la cybersécurité et de me sensibiliser aux bonnes pratiques en matière d'hygiène informatique grâce aux présentations des autres groupes qui réalisaient aussi ce projet.</p>
-        </div>
-      </div>
-      <div class="project-item">
-        <div class="project-header" onclick="toggleProject(this)">
-          <img src="images/logocodingame.png" alt="CodinGame" class="project-preview-image">
-          <div class="project-header-text">
-            <h3>Résolution d'énigmes sur CodinGame</h3>
+            <h3>Terminal interactif</h3>
             <span class="project-type">Projet personnel</span>
-            <p>Développement et énigmes mathématiques/logiques</p>
+            <p>Explore mon profil comme si tu étais dans un vrai terminal</p>
           </div>
           <span class="skill-icon">▼</span>
         </div>
         <div class="project-content">
-          <p><strong>Contexte :</strong> Projet personnel</p>
-          <p>J'ai pu réaliser différents exercices de développement et énigmes mathématiques/logiques sur le site <a href="https://www.codingame.com" target="_blank">CodinGame</a>.</p>
-          <p><strong>Objectif :</strong></p>
-          <p>L'objectif était de résoudre des problèmes algorithmiques comme le Ghostleg. Ce type d'exercice permet de développer la logique de programmation et la résolution de problèmes complexes.</p>
-          <p><strong>En savoir plus :</strong></p>
-          <p>À voir sur mon <a href="https://perso.isima.fr/~batabordet/dev.html" target="_blank">précédent site</a>, catégorie CodinGame.</p>
-        </div>
-      </div>
-      <div class="project-item">
-        <div class="project-header" onclick="toggleProject(this)">
-          <img src="images/logoportfolio.webp" alt="CodinGame" class="project-preview-image">
-          <div class="project-header-text">
-            <h3>Création d'un portfolio</h3>
-            <span class="project-type">Projet BUT1</span>
-            <p>Réalisation d'un site web professionnel</p>
+          <p><strong>Concept :</strong> Un faux terminal inspiré des commandes réseau (<code style="background:var(--bg-3);padding:1px 6px;border-radius:3px;font-size:.88em">ping</code>, <code style="background:var(--bg-3);padding:1px 6px;border-radius:3px;font-size:.88em">nmap</code>, <code style="background:var(--bg-3);padding:1px 6px;border-radius:3px;font-size:.88em">traceroute</code>…) pour présenter mon profil. Tapez <code style="background:var(--bg-3);padding:1px 6px;border-radius:3px;font-size:.88em">help</code> pour commencer.</p>
+          <div class="terminal-container" id="terminal-root">
+            <div class="terminal-bar">
+              <span class="terminal-dot t-red"></span>
+              <span class="terminal-dot t-yellow"></span>
+              <span class="terminal-dot t-green"></span>
+              <span class="terminal-title">bastien@portfolio:~</span>
+            </div>
+            <div class="terminal-output" id="term-output">
+              <div class="term-line"><span class="term-success">Bienvenue sur le terminal de Bastien TABORDET</span></div>
+              <div class="term-line">Tapez <span class="term-cmd">help</span> pour voir les commandes disponibles.</div>
+              <div class="term-line">&nbsp;</div>
+            </div>
+            <div class="terminal-input-line">
+              <span class="term-prompt">bastien@portfolio:~$&nbsp;</span>
+              <input type="text" id="term-input" autocomplete="off" spellcheck="false" placeholder="entrez une commande...">
+            </div>
           </div>
-          <span class="skill-icon">▼</span>
-        </div>
-        <div class="project-content">
-          <p><strong>Contexte :</strong> Projet académique (SAÉ - Situation d'Apprentissage et d'Évaluation)</p>
-          <p><strong>Objectif :</strong></p>
-          <p>L'objectif était de créer un portfolio professionnel pour présenter mes compétences, projets, ma formation ainsi que mes centres d'intérêts.</p>
-          <p><strong>Travail réalisé :</strong></p>
-            <p>J'ai réalisé ce portfolio en HTML et CSS, en utilisant comme aide notamment le site <a href="https://www.w3schools.com" target="_blank">W3Schools</a> surtout pour le côté graphique du site (CSS).
-            <br>Ce site contient toutes les catégories demandées dans le cahier des charges (formation, compétences, projets, divers, CV) et est fonctionnel. On peut notamment visionner mon parcours et télécharger mon CV. 
-            </p>
-          <p><strong>Résultat :</strong></p>
-          <p>Ce site que vous êtes en train de regarder constitue le résultat :) 
-            <br>Ce projet m'a permis d'obtenir davantage de notions en CSS grâce à W3Schools.
-          </p>
+          <script>
+          (function () {
+            var output = document.getElementById('term-output');
+            var input  = document.getElementById('term-input');
+            if (!output || !input) return;
+
+            var cmds = {
+              'help': function() { return '<span class="term-info">Commandes disponibles :</span>\n  <span class="term-cmd">whoami</span>       — Identité complète\n  <span class="term-cmd">ping bastien</span> — Test de connexion\n  <span class="term-cmd">traceroute</span>   — Parcours de formation\n  <span class="term-cmd">nmap skills</span>  — Scan des compétences\n  <span class="term-cmd">cv</span>           — Accéder au CV\n  <span class="term-cmd">contact</span>      — Coordonnées\n  <span class="term-cmd">clear</span>        — Vider le terminal'; },
+              'whoami': function() { return '<span class="term-success">bastien.tabordet</span>\n  Étudiant BUT Réseaux &amp; Télécommunications\n  IUT de Clermont-Ferrand | 20 ans | Loiret (45)\n  └─ Recherche alternance 2026 — Réseaux &amp; Cybersécurité'; },
+              'ping bastien': function() { return 'PING bastien.tabordet (portfolio.local) 56 bytes\n  icmp_seq=1 ttl=64 time=<span class="term-success">0.1 ms</span>\n  icmp_seq=2 ttl=64 time=<span class="term-success">0.1 ms</span>\n  icmp_seq=3 ttl=64 time=<span class="term-success">0.1 ms</span>\n  <span class="term-success">3 packets transmitted, 3 received, 0% packet loss</span>'; },
+              'traceroute': function() { return 'traceroute to formation.bastien (127.0.0.1)\n   1.  <span class="term-cmd">Lycée Bernard Palissy</span>   Bac général mention AB (2024)\n  | 2.  <span class="term-cmd">ISIMA Clermont-Ferrand</span>  Prépa intégrée ingénieur (2024-2025)\n |  3.  <span class="term-cmd">IUT Clermont-Ferrand</span>    BUT R&amp;T (2025-2028 en cours)\n |  4  <span class="term-success">.  Alternance 2026 → recherche en cours...</span>'; },
+              'nmap skills': function() { return 'Starting Nmap — bastientabordet.fr\n  PORT      STATE  SERVICE    VERSION\n  22/tcp    open   bash       Scripts Shell &amp; automatisation\n  80/tcp    open   html/css   Sites statiques &amp; responsive\n  443/tcp   open   réseaux    Cisco PT · VLAN · Wireshark\n  3306/tcp  open   sql        Bases de données relationnelles\n  5000/tcp  open   python     Automatisation &amp; scripts réseau\n  8443/tcp  open   cyber      ANSSI · hygiène informatique\n  <span class="term-success">Nmap done: 6 services scanned</span>'; },
+              'cv': function() { return '<span class="term-info">Redirection vers la page CV...</span>\n  <a href="cv.html" style="color:#58a6e8;text-decoration:none">→ bastientabordet.fr/cv.html</a>'; },
+              'contact': function() { return '<span class="term-info">─── Contact ─────────────────────────────</span>\n  Email    : <a href="mailto:bastien.tabordet@etu.uca.fr" style="color:#58a6e8;text-decoration:none">bastien.tabordet@etu.uca.fr</a>\n  LinkedIn : <a href="https://www.linkedin.com/in/bastientabordet/" target="_blank" style="color:#58a6e8;text-decoration:none">linkedin.com/in/bastientabordet</a>'; },
+              'clear': function() { output.innerHTML = ''; return null; }
+            };
+
+            function addLine(html) {
+              var d = document.createElement('div');
+              d.className = 'term-line';
+              d.innerHTML = html;
+              output.appendChild(d);
+              output.scrollTop = output.scrollHeight;
+            }
+
+            input.addEventListener('keydown', function(e) {
+              if (e.key !== 'Enter') return;
+              var raw = input.value.trim();
+              var cmd = raw.toLowerCase();
+              input.value = '';
+              addLine('<span class="term-prompt">bastien@portfolio:~$&nbsp;</span><span class="term-cmd">' + raw.replace(/</g,'&lt;') + '</span>');
+              if (!cmd) return;
+              var fn = cmds[cmd];
+              if (fn) { var r = fn(); if (r != null) addLine(r); }
+              else addLine('<span class="term-error">bash: ' + raw.replace(/</g,'&lt;') + ': command not found</span> — tapez <span class="term-cmd">help</span>');
+            });
+
+            document.getElementById('terminal-root').addEventListener('click', function() { input.focus(); });
+          })();
+          </script>
         </div>
       </div>
     </div>
   </div>
-  <footer>
+  <footer
     <p>&copy; 2025 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
   </footer>
   <script src="script.js"></script>

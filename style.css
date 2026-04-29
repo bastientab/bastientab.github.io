@@ -853,10 +853,7 @@ nav a:hover {
   box-shadow: 0 30px 80px rgba(0,0,0,.6);
   transition: box-shadow var(--tr-l), transform var(--tr-l);
 }
-.cv-image:hover {
-  box-shadow: 0 30px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(0,212,255,.18);
-  transform: scale(1.006);
-}
+.cv-image:hover {}
 .cv-download { text-align: center; margin-top: var(--space-4); }
 .cv-note {
   text-align: center;
