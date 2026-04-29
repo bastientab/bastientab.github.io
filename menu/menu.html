@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bastien TABORDET — Cours</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+  (function(){
+    var t = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+  </script>
+  <style>
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: .5rem;
+    }
+
+    .menu-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+      min-height: 160px;
+      padding: 1.6rem 1.5rem 1.4rem;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: .92rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--tr), transform var(--tr-l), background var(--tr);
+    }
+
+    .menu-btn::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--orange));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    .menu-btn:hover {
+      border-color: var(--border-hot);
+      background: var(--bg-3);
+      transform: translateY(-4px);
+      color: var(--cyan);
+    }
+
+    .menu-btn:hover::after {
+      transform: scaleX(1);
+    }
+
+    .menu-btn-num {
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      color: var(--ink-dim);
+      margin-bottom: auto;
+      transition: color var(--tr);
+    }
+
+    .menu-btn:hover .menu-btn-num {
+      color: var(--cyan);
+      opacity: .6;
+    }
+
+    .menu-btn-label {
+      line-height: 1.2;
+    }
+
+    @media (max-width: 900px) {
+      .menu-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .menu-btn { min-height: 130px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="nav-brand">Bastien TABORDET</div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="divers.html">Divers</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="menu.html">Cours</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer le thème">
+        <span class="theme-toggle-track">
+          <span class="theme-toggle-thumb"></span>
+        </span>
+        <span class="theme-toggle-label">☀</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="section">
+      <h2>Cours</h2>
+      <div class="menu-grid">
+
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">01</span>
+          <span class="menu-btn-label">Maths</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">02</span>
+          <span class="menu-btn-label">Télécoms</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">03</span>
+          <span class="menu-btn-label">Internet2</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">04</span>
+          <span class="menu-btn-label">BD2</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">05</span>
+          <span class="menu-btn-label">Serv-Réseaux</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">06</span>
+          <span class="menu-btn-label">Prog Python</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">07</span>
+          <span class="menu-btn-label">Web</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">08</span>
+          <span class="menu-btn-label">Téléphonie</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">09</span>
+          <span class="menu-btn-label">Numérisation</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">10</span>
+          <span class="menu-btn-label">Admin-Sys2</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">11</span>
+          <span class="menu-btn-label">RLAN</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">12</span>
+          <span class="menu-btn-label">Archi-Rés</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">13</span>
+          <span class="menu-btn-label">Init-Rés</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">14</span>
+          <span class="menu-btn-label">Archi-Sys</span>
+        </a>
+        <a href="#" class="menu-btn">
+          <span class="menu-btn-num">15</span>
+          <span class="menu-btn-label">SAé</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
