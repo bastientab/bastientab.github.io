@@ -850,12 +850,12 @@ nav a:hover {
   height: auto;
   border: 1px solid var(--border);
   border-radius: var(--r2);
-  box-shadow: 0 30px 80px rgba(0,0,0,.6);
-  transition: box-shadow var(--tr-l), transform var(--tr-l);
+  box-shadow: none;
+  transition: border-color var(--tr), transform var(--tr);
 }
 .cv-image:hover {
-  box-shadow: 0 30px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(0,212,255,.18);
-  transform: scale(1.002);
+  border-color: var(--border-mid);
+  transform: translateY(-2px);
 }
 .cv-download { text-align: center; margin-top: var(--space-4); }
 .cv-note {
