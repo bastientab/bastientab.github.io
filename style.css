@@ -855,7 +855,7 @@ nav a:hover {
 }
 .cv-image:hover {
   box-shadow: 0 30px 80px rgba(0,0,0,.7), 0 0 0 1px rgba(0,212,255,.18);
-  transform: scale(1.006);
+  transform: scale(1.002);
 }
 .cv-download { text-align: center; margin-top: var(--space-4); }
 .cv-note {
@@ -1002,7 +1002,7 @@ body, nav, .section, .timeline-item, .skill-category, .skill-header,
 }
 
 [data-theme="dark"] .cv-image {
-  box-shadow: 0 30px 80px rgba(0,0,0,.6);
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
 [data-theme="dark"] footer {
