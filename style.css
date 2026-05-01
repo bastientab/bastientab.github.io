@@ -844,7 +844,7 @@ nav a:hover {
   color: var(--ink-mid);
   margin-bottom: var(--space-4);
 }
-.cv-image-container { text-align: center; margin: var(--space-4) 0; }
+.cv-image-container { text-align: center; margin: var(--space-4) 0; overflow: hidden; }
 .cv-image {
   max-width: 100%;
   height: auto;
@@ -1077,4 +1077,44 @@ body, nav, .section, .timeline-item, .skill-category, .skill-header,
 @media (max-width: 768px) {
   .theme-toggle { padding: .28rem .5rem .28rem .4rem; }
   .theme-toggle-label { display: none; }
+}
+/* ===== BANNIERE ALTERNANCE ===== */
+.alternance-banner {
+  background: var(--cyan);
+  color: var(--bg);
+  overflow: hidden;
+  white-space: nowrap;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1001;
+}
+
+.alternance-ticker {
+  display: inline-flex;
+  animation: ticker-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.alternance-ticker span {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--bg);
+  padding-right: 0;
+}
+
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+[data-theme="dark"] .alternance-banner {
+  background: var(--cyan);
+}
+[data-theme="dark"] .alternance-ticker span {
+  color: #080810;
 }

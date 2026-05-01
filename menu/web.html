@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bastien TABORDET — Web</title>
+  <link rel="stylesheet" href="../style.css">
+  <script>
+  (function(){
+    var t = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="nav-brand">Bastien TABORDET</div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../a-propos.html">À propos</a></li>
+        <li><a href="../formation.html">Formation</a></li>
+        <li><a href="../competences.html">Compétences</a></li>
+        <li><a href="../projets.html">Projets</a></li>
+        <li><a href="../divers.html">Divers</a></li>
+        <li><a href="../cv.html">CV</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+        <li><a href="index.html">Cours</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer le thème">
+        <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+        <span class="theme-toggle-label">☀</span>
+      </button>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="section">
+      <h2>Web</h2>
+      <p style="color:var(--ink-dim);font-family:var(--font-mono);font-size:.85rem;">
+        Contenu en cours de rédaction...
+      </p>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
+  </footer>
+  <script src="../script.js"></script>
+</body>
+</html>
