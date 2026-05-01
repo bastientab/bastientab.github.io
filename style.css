@@ -276,9 +276,10 @@ nav a:hover {
 }
 
 .profile-image {
-  width: 138px;
-  height: 138px;
+  width: 200px;
+  height: 200px;
   border-radius: var(--r2);
+  border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--border-mid);
   margin: 0 auto var(--space-4);
@@ -1093,7 +1094,7 @@ body, nav, .section, .timeline-item, .skill-category, .skill-header,
 
 .alternance-ticker {
   display: inline-flex;
-  animation: ticker-scroll 28s linear infinite;
+  animation: ticker-scroll 60s linear infinite;
   will-change: transform;
 }
 
