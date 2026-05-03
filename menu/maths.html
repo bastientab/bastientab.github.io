@@ -5,6 +5,172 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bastien TABORDET — Maths</title>
   <link rel="stylesheet" href="../style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-intro {
+      color: var(--ink-mid);
+      font-size: .95rem;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan);
+      border-radius: var(--r2);
+      padding: 1.4rem 1.6rem;
+    }
+
+    .math-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: .8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .math-summary a {
+      display: block;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .8rem 1rem;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--ink-mid);
+      transition: background var(--tr), color var(--tr), border-color var(--tr), transform var(--tr);
+    }
+
+    .math-summary a:hover {
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      border-color: var(--border-hot);
+      transform: translateY(-2px);
+    }
+
+    .course-chapter {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .course-chapter h3 {
+      color: var(--cyan);
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .course-block {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .course-block h4 {
+      font-family: var(--font-mono);
+      color: var(--ink);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: .7rem;
+    }
+
+    .course-block p,
+    .course-block li {
+      color: var(--ink-mid);
+      font-size: .92rem;
+      line-height: 1.8;
+    }
+
+    .course-block ul {
+      margin-left: 1.2rem;
+      margin-top: .5rem;
+    }
+
+    .formula-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: .5rem .9rem;
+      margin-top: .8rem;
+    }
+
+    .formula-item {
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .7rem .8rem;
+      font-size: .88rem;
+      color: var(--ink-mid);
+    }
+
+    .math-module {
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+
+    .math-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .math-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .math-controls input,
+    .math-controls button {
+      padding: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: var(--bg-2);
+      color: var(--ink);
+      font-family: var(--font-mono);
+    }
+
+    .math-controls button {
+      background: var(--cyan);
+      color: var(--bg);
+      cursor: pointer;
+      transition: background var(--tr), transform var(--tr);
+    }
+
+    .math-controls button:hover {
+      background: var(--orange);
+      transform: translateY(-2px);
+    }
+
+    canvas {
+      width: 100%;
+      height: 350px;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+    }
+
+    .math-result {
+      padding: 1.5rem;
+      background: var(--bg-2);
+      border-radius: var(--r2);
+      border-left: 3px solid var(--cyan);
+      min-height: 80px;
+      color: var(--ink-mid);
+    }
+
+    @media (max-width: 768px) {
+      .math-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
   <script>
   (function(){
     var t = localStorage.getItem('theme') || 'light';
@@ -12,11 +178,14 @@
   })();
   </script>
 </head>
+
 <body>
   <nav>
     <div class="nav-content">
       <div class="nav-brand">Bastien TABORDET</div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
       <ul>
         <li><a href="../index.html">Accueil</a></li>
         <li><a href="../a-propos.html">À propos</a></li>
@@ -34,17 +203,1177 @@
       </button>
     </div>
   </nav>
+
   <div class="container">
     <div class="section">
-      <h2>Maths</h2>
-      <p style="color:var(--ink-dim);font-family:var(--font-mono);font-size:.85rem;">
-        Contenu en cours de rédaction...
-      </p>
+      <h2>Maths - Semestre 2</h2>
+
+      <div class="math-intro">
+        <p>
+          Cette page regroupe les notions principales du module de mathématiques du semestre 2
+          pour la filière Réseaux et Télécoms. Elle contient une synthèse structurée du cours :
+          étude des fonctions réelles, fonctions usuelles, nombres complexes, polynômes,
+          fractions rationnelles, primitives et intégrales. Des modules interactifs permettent
+          également d’expérimenter certains résultats : TVI, dichotomie, dérivation, asymptotes,
+          développements limités, calculs complexes et intégrales numériques.
+        </p>
+      </div>
+
+      <div class="math-summary">
+        <a href="#chapitre-fonctions">I. Étude d’une fonction réelle</a>
+        <a href="#chapitre-usuelles">II. Fonctions usuelles</a>
+        <a href="#chapitre-complexes-cours">III. Nombres complexes</a>
+        <a href="#chapitre-polynomes-cours">IV. Polynômes et fractions rationnelles</a>
+        <a href="#chapitre-integrales-cours">V. Primitives et intégrales</a>
+        <a href="#outils-interactifs">Outils interactifs</a>
+      </div>
+
+      <div id="chapitre-fonctions" class="course-chapter">
+        <h3>Chapitre I — Étude d’une fonction réelle</h3>
+
+        <div class="course-block">
+          <h4>Continuité d’une fonction</h4>
+          <p>
+            Une fonction $f$ est continue en un point $a$ de son intervalle $I$ si :
+            
+
+$$
+\lim_{x \to a} f(x) = f(a)
+$$
+
+
+          </p>
+          <p>
+            Montrer la continuité en $a$ revient souvent à vérifier que les limites à gauche
+            et à droite existent et sont égales :
+            
+
+$$
+\lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = f(a)
+$$
+
+
+          </p>
+          <p>
+            Une fonction est continue sur un intervalle $I$ si elle est continue en chaque point
+            de cet intervalle.
+          </p>
+          <p>
+            Exemples classiques : étude de la continuité de $f(x)=2|x-1|+1$ en $x=1$,
+            ou de $f(x)=\frac{x-1}{\sqrt{x+8}-3}$ avec prolongement en $x=1$.
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Théorème des valeurs intermédiaires</h4>
+          <p>
+            Soit $f$ une fonction continue sur un intervalle $[a,b]$. Soit $\lambda$
+            un réel compris entre $f(a)$ et $f(b)$. Alors il existe au moins un réel
+            $c \in [a,b]$ tel que :
+            
+
+$$
+f(c)=\lambda
+$$
+
+
+          </p>
+          <p>
+            Ce théorème permet notamment de prouver l’existence d’une solution à une équation
+            $f(x)=\lambda$. Il est aussi utilisé pour montrer que tout polynôme de degré impair
+            admet au moins une racine réelle.
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Théorème de la bijection</h4>
+          <p>
+            Si $f$ est continue et strictement monotone sur un intervalle $[a,b]$, alors
+            $f$ réalise une bijection de $[a,b]$ vers son image $J=f([a,b])$.
+          </p>
+          <p>
+            Ainsi, pour tout $y \in J$, l’équation $f(x)=y$ possède une unique solution.
+            La fonction réciproque est notée $f^{-1}$.
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Dérivabilité et variations</h4>
+          <p>
+            Les dérivées permettent d’étudier localement une fonction et de déterminer ses
+            variations. Si $f'(x)>0$, la fonction est croissante ; si $f'(x)<0$,
+            elle est décroissante.
+          </p>
+
+          <div class="formula-list">
+            <div class="formula-item">$a' = 0$</div>
+            <div class="formula-item">$(ax)' = a$</div>
+            <div class="formula-item">$(x^2)' = 2x$</div>
+            <div class="formula-item">$(x^n)' = nx^{n-1}$</div>
+            <div class="formula-item">$\left(\frac{1}{x}\right)' = -\frac{1}{x^2}$</div>
+            <div class="formula-item">$(\sqrt{x})' = \frac{1}{2\sqrt{x}}$</div>
+            <div class="formula-item">$(e^x)' = e^x$</div>
+            <div class="formula-item">$(\ln x)' = \frac{1}{x}$</div>
+            <div class="formula-item">$(\sin x)' = \cos x$</div>
+            <div class="formula-item">$(\cos x)' = -\sin x$</div>
+            <div class="formula-item">$(\tan x)' = 1+\tan^2x = \frac{1}{\cos^2x}$</div>
+          </div>
+
+          <p>
+            Formules utiles :
+            
+
+$$
+(u+v)'=u'+v', \quad (uv)'=u'v+uv', \quad
+              \left(\frac{u}{v}\right)'=\frac{u'v-uv'}{v^2}
+$$
+
+
+            
+
+$$
+(u \circ v)' = v' \cdot (u' \circ v)
+$$
+
+
+          </p>
+          <p>
+            Pour une fonction réciproque :
+            
+
+$$
+(f^{-1})'(y)=\frac{1}{f'(f^{-1}(y))}
+$$
+
+
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Étude locale et asymptotique</h4>
+          <p>
+            L’équation de la tangente à la courbe de $f$ au point d’abscisse $x_0$ est :
+            
+
+$$
+y=f'(x_0)(x-x_0)+f(x_0)
+$$
+
+
+          </p>
+          <ul>
+            <li>
+              Asymptote verticale : si $\lim_{x \to a} f(x)=\pm\infty$, alors $x=a$
+              est une asymptote verticale.
+            </li>
+            <li>
+              Asymptote horizontale : si $\lim_{x \to \pm\infty} f(x)=L$, alors $y=L$
+              est une asymptote horizontale.
+            </li>
+            <li>
+              Asymptote oblique : si
+              $\lim_{x \to \pm\infty} [f(x)-(ax+b)] = 0$, alors $y=ax+b$
+              est une asymptote oblique.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="chapitre-usuelles" class="course-chapter">
+        <h3>Chapitre II — Fonctions usuelles</h3>
+
+        <div class="course-block">
+          <h4>Exponentielle et logarithme</h4>
+          <p>
+            La fonction exponentielle $e^x$ est définie sur $\mathbb{R}$, toujours positive,
+            et vérifie :
+            
+
+$$
+\lim_{x \to -\infty} e^x = 0,
+              \qquad
+              \lim_{x \to +\infty} e^x = +\infty
+$$
+
+
+          </p>
+          <p>
+            La fonction logarithme népérien $\ln x$ est la réciproque de l’exponentielle.
+            Elle est définie sur $]0,+\infty[$, avec :
+            
+
+$$
+\ln(1)=0, \qquad \ln(e)=1
+$$
+
+
+          </p>
+          <p>
+            Propriétés :
+            
+
+$$
+\ln(ab)=\ln a+\ln b,
+              \qquad
+              \ln(a^n)=n\ln a
+$$
+
+
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Fonctions circulaires réciproques</h4>
+          <ul>
+            <li>
+              $\arcsin x$ est la réciproque de $\sin x$ sur
+              $[-\frac{\pi}{2},\frac{\pi}{2}]$, avec dérivée
+              $\frac{1}{\sqrt{1-x^2}}$.
+            </li>
+            <li>
+              $\arccos x$ est la réciproque de $\cos x$ sur $[0,\pi]$,
+              avec dérivée $\frac{-1}{\sqrt{1-x^2}}$.
+            </li>
+            <li>
+              $\arctan x$ est la réciproque de $\tan x$ sur
+              $]-\frac{\pi}{2},\frac{\pi}{2}[$, avec dérivée
+              $\frac{1}{1+x^2}$.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="chapitre-complexes-cours" class="course-chapter">
+        <h3>Chapitre III — Nombres complexes</h3>
+
+        <div class="course-block">
+          <h4>Définitions et formes</h4>
+          <p>
+            Un nombre complexe s’écrit sous forme cartésienne :
+            
+
+$$
+z=a+ib
+$$
+
+
+            avec $a=\mathrm{Re}(z)$ et $b=\mathrm{Im}(z)$.
+          </p>
+          <ul>
+            <li>Conjugué : $\bar{z}=a-ib$</li>
+            <li>Module : $|z|=\sqrt{a^2+b^2}$</li>
+            <li>Forme trigonométrique : $z=r(\cos\theta+i\sin\theta)$</li>
+            <li>Forme exponentielle : $z=re^{i\theta}$</li>
+          </ul>
+        </div>
+
+        <div class="course-block">
+          <h4>Opérations et propriétés</h4>
+          <p>
+            L’inverse d’un complexe non nul est donné par :
+            
+
+$$
+\frac{1}{z}=\frac{\bar{z}}{|z|^2}=\frac{a-ib}{a^2+b^2}
+$$
+
+
+          </p>
+          <p>
+            Exponentielle complexe :
+            
+
+$$
+e^{a+ib}=e^a e^{ib}
+$$
+
+
+          </p>
+          <p>
+            Formules d’Euler :
+            
+
+$$
+\cos\theta=\frac{e^{i\theta}+e^{-i\theta}}{2},
+              \qquad
+              \sin\theta=\frac{e^{i\theta}-e^{-i\theta}}{2i}
+$$
+
+
+          </p>
+          <p>
+            Factorisation par l’angle moitié :
+            
+
+$$
+e^{ix}+e^{iy}=2e^{i\frac{x+y}{2}}\cos\left(\frac{x-y}{2}\right)
+$$
+
+
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Applications</h4>
+          <p>
+            Les racines $n$-ièmes d’un complexe sont réparties régulièrement sur un cercle.
+            Les nombres complexes sont aussi utilisés pour représenter des signaux sinusoïdaux :
+            
+
+$$
+s(t)=A\cos(\omega t+\phi)
+$$
+
+
+            peut être représenté par le phasor :
+            
+
+$$
+\underline{S}=Ae^{i\phi}
+$$
+
+
+          </p>
+        </div>
+      </div>
+
+      <div id="chapitre-polynomes-cours" class="course-chapter">
+        <h3>Chapitre IV — Polynômes et fractions rationnelles</h3>
+
+        <div class="course-block">
+          <h4>Polynômes</h4>
+          <p>
+            Un polynôme est une expression de la forme :
+            
+
+$$
+P(x)=a_nx^n+\cdots+a_1x+a_0
+$$
+
+
+            Son degré est $n$ si $a_n \neq 0$.
+          </p>
+          <p>
+            D’après le théorème de D’Alembert-Gauss, tout polynôme de degré
+            $n \geq 1$ admet au moins une racine dans $\mathbb{C}$, et exactement
+            $n$ racines en comptant les multiplicités.
+          </p>
+          <ul>
+            <li>
+              Dans $\mathbb{C}$, un polynôme se factorise en produit de facteurs de degré 1 :
+              
+
+$$
+P(x)=\lambda \prod (x-z_i)
+$$
+
+
+            </li>
+            <li>
+              Dans $\mathbb{R}$, il se factorise en facteurs de degré 1 et en facteurs
+              de degré 2 à discriminant négatif.
+            </li>
+          </ul>
+        </div>
+
+        <div class="course-block">
+          <h4>Fractions rationnelles</h4>
+          <p>
+            Une fraction rationnelle est de la forme :
+            
+
+$$
+F(x)=\frac{P(x)}{Q(x)}
+$$
+
+
+            Les racines de $P$ sont les zéros de la fraction, tandis que les racines de
+            $Q$ sont ses pôles.
+          </p>
+          <p>
+            Une fraction est irréductible si $P$ et $Q$ n’ont pas de racines communes.
+          </p>
+          <p>
+            Si $\deg(P) \geq \deg(Q)$, on effectue une division euclidienne :
+            
+
+$$
+P=Q \cdot E + R
+$$
+
+
+            afin d’écrire :
+            
+
+$$
+F=E+\frac{R}{Q}
+$$
+
+
+          </p>
+          <p>
+            La décomposition en éléments simples consiste à écrire une fraction comme somme
+            de termes du type :
+            
+
+$$
+\frac{a}{(x-p)^k}
+              \quad \text{ou} \quad
+              \frac{ax+b}{(x^2+px+q)^k}
+$$
+
+
+          </p>
+        </div>
+      </div>
+
+      <div id="chapitre-integrales-cours" class="course-chapter">
+        <h3>Chapitre V — Primitives et intégrales</h3>
+
+        <div class="course-block">
+          <h4>Primitives</h4>
+          <p>
+            Une fonction $F$ est une primitive de $f$ sur un intervalle $I$ si :
+            
+
+$$
+F'(x)=f(x)
+$$
+
+
+          </p>
+          <p>
+            Si $f$ est continue, elle possède une infinité de primitives de la forme :
+            
+
+$$
+F(x)+C
+$$
+
+
+          </p>
+
+          <div class="formula-list">
+            <div class="formula-item">$k \mapsto kx$</div>
+            <div class="formula-item">$\frac{1}{x} \mapsto \ln|x|$</div>
+            <div class="formula-item">$x^a \mapsto \frac{x^{a+1}}{a+1}$, $a \neq -1$</div>
+            <div class="formula-item">$u'u^a \mapsto \frac{u^{a+1}}{a+1}$</div>
+            <div class="formula-item">$\frac{u'}{u} \mapsto \ln|u|$</div>
+            <div class="formula-item">$u'e^u \mapsto e^u$</div>
+          </div>
+
+          <p>
+            Pour intégrer des puissances trigonométriques, on peut utiliser les formules
+            d’Euler ou de linéarisation, par exemple :
+            
+
+$$
+\cos^2x=\frac{1+\cos(2x)}{2}
+$$
+
+
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Intégrale sur un intervalle</h4>
+          <p>
+            Théorème fondamental :
+            
+
+$$
+\int_a^b f(t)\,dt = F(b)-F(a) = [F(t)]_a^b
+$$
+
+
+            où $F$ est une primitive de $f$.
+          </p>
+          <ul>
+            <li>Relation de Chasles : $\int_a^b f + \int_b^c f = \int_a^c f$</li>
+            <li>Linéarité : $\int(\alpha f+\beta g)=\alpha\int f+\beta\int g$</li>
+            <li>Inversion des bornes : $\int_a^b f = -\int_b^a f$</li>
+          </ul>
+        </div>
+
+        <div class="course-block">
+          <h4>Techniques d’intégration avancées</h4>
+          <p>
+            Intégration par parties :
+            
+
+$$
+\int_a^b u'(t)v(t)\,dt =
+              [u(t)v(t)]_a^b - \int_a^b u(t)v'(t)\,dt
+$$
+
+
+          </p>
+          <p>
+            Le changement de variable consiste à écrire $x=u(t)$, puis à adapter les bornes
+            et le différentiel :
+            
+
+$$
+dx=u'(t)dt
+$$
+
+
+          </p>
+          <p>
+            Exemple classique : calcul de
+            
+
+$$
+J=\int_0^1 \sqrt{1-x^2}\,dx
+$$
+
+
+            avec le changement de variable $x=\cos t$.
+          </p>
+        </div>
+
+        <div class="course-block">
+          <h4>Intégrales généralisées</h4>
+          <p>
+            Si $f$ est continue sur $[a,+\infty[$, alors :
+            
+
+$$
+\int_a^{+\infty} f(t)\,dt =
+              \lim_{L \to +\infty} \int_a^L f(t)\,dt
+$$
+
+
+          </p>
+          <p>
+            De même :
+            
+
+$$
+\int_{-\infty}^a f(t)\,dt =
+              \lim_{L \to -\infty} \int_L^a f(t)\,dt
+$$
+
+
+          </p>
+        </div>
+      </div>
+
+      <div id="outils-interactifs" class="course-chapter">
+        <h3>Outils interactifs</h3>
+
+        <div id="module-analyse" class="math-module">
+          <h3>1. Analyse — Continuité, TVI et dichotomie</h3>
+          <div class="math-grid">
+            <div class="math-controls">
+              <input type="text" id="an-fx" value="x**3 - x - 2" placeholder="f(x)">
+              <input type="number" id="an-a" value="1" placeholder="Borne a">
+              <input type="number" id="an-b" value="2" placeholder="Borne b">
+              <input type="number" id="an-lambda" value="0" placeholder="Valeur cible λ">
+              <button onclick="Modules.analyse.run()">Calculer & Tracer</button>
+              <div id="an-res" class="math-result"></div>
+            </div>
+            <canvas id="an-canvas"></canvas>
+          </div>
+        </div>
+
+        <div id="module-derivation" class="math-module">
+          <h3>2. Dérivation</h3>
+          <div class="math-grid">
+            <div class="math-controls">
+              <input type="text" id="der-fx" value="Math.sin(x) * Math.exp(x)" placeholder="f(x)">
+              <input type="number" id="der-x0" value="0" placeholder="Point x0">
+              <button onclick="Modules.derivation.run()">Dériver & Tracer Tangente</button>
+              <div id="der-res" class="math-result"></div>
+            </div>
+            <canvas id="der-canvas"></canvas>
+          </div>
+        </div>
+
+        <div id="module-asymptotes" class="math-module">
+          <h3>3. Asymptotes</h3>
+          <div class="math-grid">
+            <div class="math-controls">
+              <input type="text" id="as-fx" value="(x**2 + 1) / (x - 1)" placeholder="f(x)">
+              <button onclick="Modules.asymptotes.run()">Analyser & Tracer</button>
+              <div id="as-res" class="math-result"></div>
+            </div>
+            <canvas id="as-canvas"></canvas>
+          </div>
+        </div>
+
+        <div id="module-taylor" class="math-module">
+          <h3>4. Développements limités — Mac Laurin</h3>
+          <div class="math-grid">
+            <div class="math-controls">
+              <input type="text" id="dl-fx" value="Math.cos(x)" placeholder="f(x)">
+              <input type="number" id="dl-n" value="4" placeholder="Ordre n">
+              <button onclick="Modules.taylor.run()">Calculer Polynôme</button>
+              <div id="dl-res" class="math-result"></div>
+            </div>
+            <canvas id="dl-canvas"></canvas>
+          </div>
+        </div>
+
+        <div id="module-complexes" class="math-module">
+          <h3>5. Nombres complexes</h3>
+          <div class="math-grid">
+            <div class="math-controls">
+              <input type="text" id="cx-z1" value="1, 2" placeholder="z1 (Re, Im)">
+              <input type="text" id="cx-z2" value="3, -1" placeholder="z2 (Re, Im)">
+              <button onclick="Modules.complexes.run()">Calculer & Visualiser</button>
+              <div id="cx-res" class="math-result"></div>
+            </div>
+            <canvas id="cx-canvas"></canvas>
+          </div>
+        </div>
+
+        <div id="module-polynomes" class="math-module">
+          <h3>6. Polynômes & fractions rationnelles</h3>
+          <div class="math-grid">
+            <div class="math-controls">
+              <input type="text" id="poly-num" value="1, -3, 2" placeholder="Coeffs Numérateur">
+              <input type="text" id="poly-den" value="1, 0, -1" placeholder="Coeffs Dénominateur">
+              <button onclick="Modules.polynomes.run()">Décomposer</button>
+              <div id="poly-res" class="math-result"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="module-integrale" class="math-module">
+          <h3>7. Calcul intégral</h3>
+          <div class="math-grid">
+            <div class="math-controls">
+              <input type="text" id="int-fx" value="1 / x" placeholder="f(x)">
+              <input type="number" id="int-a" value="1" placeholder="Borne a">
+              <input type="text" id="int-b" value="Math.E" placeholder="Borne b">
+              <button onclick="Modules.integrale.run()">Calculer l'Intégrale</button>
+              <div id="int-res" class="math-result"></div>
+            </div>
+            <canvas id="int-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
   <footer>
     <p>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
   </footer>
+
   <script src="../script.js"></script>
+
+  <script>
+    const MathCore = {
+      parseFunc: (str) => {
+        return new Function('x', `
+          const e = Math.E;
+          const pi = Math.PI;
+          const exp = Math.exp;
+          const ln = Math.log;
+          const log = Math.log;
+          const sin = Math.sin;
+          const cos = Math.cos;
+          const tan = Math.tan;
+          const arcsin = Math.asin;
+          const arccos = Math.acos;
+          const arctan = Math.atan;
+          const sqrt = Math.sqrt;
+          return ${str};
+        `);
+      },
+
+      derivative: (f, x, h = 1e-5) => (f(x + h) - f(x - h)) / (2 * h),
+
+      nthDerivative: (f, x, n, h = 1e-3) => {
+        if (n === 0) return f(x);
+        if (n === 1) return MathCore.derivative(f, x, h);
+        return (
+          MathCore.nthDerivative(f, x + h, n - 1, h) -
+          MathCore.nthDerivative(f, x - h, n - 1, h)
+        ) / (2 * h);
+      },
+
+      factorial: (n) => n <= 1 ? 1 : n * MathCore.factorial(n - 1),
+
+      integral: (f, a, b, n = 1000) => {
+        let sum = 0;
+        let h = (b - a) / n;
+        for (let i = 0; i < n; i++) {
+          sum += f(a + i * h + h / 2) * h;
+        }
+        return sum;
+      },
+
+      findRoots: (f, min, max, steps = 100) => {
+        let roots = [];
+        let step = (max - min) / steps;
+        for (let x = min; x < max; x += step) {
+          if (f(x) * f(x + step) <= 0) {
+            let a = x, b = x + step, c;
+            for (let i = 0; i < 50; i++) {
+              c = (a + b) / 2;
+              if (f(a) * f(c) <= 0) b = c;
+              else a = c;
+            }
+            if (Math.abs(f(c)) < 1e-3) roots.push(c);
+          }
+        }
+        return roots;
+      }
+    };
+
+    class Complex {
+      constructor(re, im) {
+        this.re = re;
+        this.im = im;
+      }
+
+      add(c) {
+        return new Complex(this.re + c.re, this.im + c.im);
+      }
+
+      mul(c) {
+        return new Complex(
+          this.re * c.re - this.im * c.im,
+          this.re * c.im + this.im * c.re
+        );
+      }
+
+      conj() {
+        return new Complex(this.re, -this.im);
+      }
+
+      mod() {
+        return Math.sqrt(this.re ** 2 + this.im ** 2);
+      }
+
+      inv() {
+        let d = this.re ** 2 + this.im ** 2;
+        return new Complex(this.re / d, -this.im / d);
+      }
+
+      toString() {
+        return `${this.re.toFixed(2)} ${this.im >= 0 ? '+' : ''} ${this.im.toFixed(2)}i`;
+      }
+    }
+
+    class CanvasPlotter {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return;
+        this.ctx = this.canvas.getContext('2d');
+        this.resize();
+      }
+
+      resize() {
+        this.width = this.canvas.clientWidth;
+        this.height = this.canvas.clientHeight;
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+      }
+
+      clear() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+      }
+
+      drawAxes(xMin, xMax, yMin, yMax) {
+        this.ctx.strokeStyle = '#9898a8';
+        this.ctx.lineWidth = 1;
+        this.ctx.beginPath();
+
+        let x0 = (0 - xMin) / (xMax - xMin) * this.width;
+        this.ctx.moveTo(x0, 0);
+        this.ctx.lineTo(x0, this.height);
+
+        let y0 = this.height - (0 - yMin) / (yMax - yMin) * this.height;
+        this.ctx.moveTo(0, y0);
+        this.ctx.lineTo(this.width, y0);
+
+        this.ctx.stroke();
+      }
+
+      plot(f, xMin, xMax, yMin, yMax, color = '#005fcc', lineWidth = 2) {
+        this.ctx.strokeStyle = color;
+        this.ctx.lineWidth = lineWidth;
+        this.ctx.beginPath();
+
+        let first = true;
+        for (let px = 0; px <= this.width; px++) {
+          let x = xMin + (px / this.width) * (xMax - xMin);
+          let y = f(x);
+
+          if (isNaN(y) || !isFinite(y) || Math.abs(y) > 1e4) {
+            first = true;
+            continue;
+          }
+
+          let py = this.height - (y - yMin) / (yMax - yMin) * this.height;
+
+          if (first) {
+            this.ctx.moveTo(px, py);
+            first = false;
+          } else {
+            this.ctx.lineTo(px, py);
+          }
+        }
+
+        this.ctx.stroke();
+      }
+
+      drawPoint(x, y, xMin, xMax, yMin, yMax, color = '#d44a1a') {
+        let px = (x - xMin) / (xMax - xMin) * this.width;
+        let py = this.height - (y - yMin) / (yMax - yMin) * this.height;
+
+        this.ctx.fillStyle = color;
+        this.ctx.beginPath();
+        this.ctx.arc(px, py, 4, 0, 2 * Math.PI);
+        this.ctx.fill();
+      }
+
+      drawLine(x1, y1, x2, y2, xMin, xMax, yMin, yMax, color = '#d44a1a') {
+        let px1 = (x1 - xMin) / (xMax - xMin) * this.width;
+        let py1 = this.height - (y1 - yMin) / (yMax - yMin) * this.height;
+        let px2 = (x2 - xMin) / (xMax - xMin) * this.width;
+        let py2 = this.height - (y2 - yMin) / (yMax - yMin) * this.height;
+
+        this.ctx.strokeStyle = color;
+        this.ctx.setLineDash([5, 5]);
+        this.ctx.beginPath();
+        this.ctx.moveTo(px1, py1);
+        this.ctx.lineTo(px2, py2);
+        this.ctx.stroke();
+        this.ctx.setLineDash([]);
+      }
+    }
+
+    const Modules = {
+      analyse: {
+        run: () => {
+          const fStr = document.getElementById('an-fx').value;
+          const a = parseFloat(document.getElementById('an-a').value);
+          const b = parseFloat(document.getElementById('an-b').value);
+          const L = parseFloat(document.getElementById('an-lambda').value);
+          const res = document.getElementById('an-res');
+          const plotter = new CanvasPlotter('an-canvas');
+
+          try {
+            const f = MathCore.parseFunc(fStr);
+            const g = (x) => f(x) - L;
+
+            if (g(a) * g(b) > 0) {
+              res.innerHTML = `Conditions du TVI non garanties : \$f(a)-\\lambda\$ et \$f(b)-\\lambda\$ sont de même signe.`;
+              MathJax.typesetPromise([res]);
+              return;
+            }
+
+            let left = a, right = b, c;
+
+            for (let i = 0; i < 100; i++) {
+              c = (left + right) / 2;
+              if (g(left) * g(c) <= 0) right = c;
+              else left = c;
+            }
+
+            res.innerHTML = `Solution par dichotomie : \$c \\approx ${c.toFixed(5)}\$, avec \$f(c) \\approx ${f(c).toFixed(5)}\$.`;
+            MathJax.typesetPromise([res]);
+
+            let yMin = Math.min(f(a), f(b), L) - 2;
+            let yMax = Math.max(f(a), f(b), L) + 2;
+
+            plotter.clear();
+            plotter.drawAxes(a - 1, b + 1, yMin, yMax);
+            plotter.plot(f, a - 1, b + 1, yMin, yMax);
+            plotter.drawLine(a - 1, L, b + 1, L, a - 1, b + 1, yMin, yMax);
+            plotter.drawPoint(c, f(c), a - 1, b + 1, yMin, yMax);
+          } catch(e) {
+            res.innerHTML = "Erreur de syntaxe dans la fonction.";
+          }
+        }
+      },
+
+      derivation: {
+        run: () => {
+          const fStr = document.getElementById('der-fx').value;
+          const x0 = parseFloat(document.getElementById('der-x0').value);
+          const res = document.getElementById('der-res');
+          const plotter = new CanvasPlotter('der-canvas');
+
+          try {
+            const f = MathCore.parseFunc(fStr);
+            const fx0 = f(x0);
+            const dfx0 = MathCore.derivative(f, x0);
+            const T = (x) => dfx0 * (x - x0) + fx0;
+
+            res.innerHTML = `
+              \$f(x_0) = ${fx0.toFixed(4)}\$, 
+              \$f'(x_0) \\approx ${dfx0.toFixed(4)}\$<br>
+              Tangente : \$y = ${dfx0.toFixed(4)}(x - ${x0}) + ${fx0.toFixed(4)}\$
+            `;
+            MathJax.typesetPromise([res]);
+
+            plotter.clear();
+            plotter.drawAxes(x0 - 5, x0 + 5, fx0 - 10, fx0 + 10);
+            plotter.plot(f, x0 - 5, x0 + 5, fx0 - 10, fx0 + 10);
+            plotter.plot(T, x0 - 5, x0 + 5, fx0 - 10, fx0 + 10, '#d44a1a');
+            plotter.drawPoint(x0, fx0, x0 - 5, x0 + 5, fx0 - 10, fx0 + 10, '#111118');
+          } catch(e) {
+            res.innerHTML = "Erreur d’analyse.";
+          }
+        }
+      },
+
+      asymptotes: {
+        run: () => {
+          const fStr = document.getElementById('as-fx').value;
+          const res = document.getElementById('as-res');
+          const plotter = new CanvasPlotter('as-canvas');
+
+          try {
+            const f = MathCore.parseFunc(fStr);
+            const infVal = 10000;
+            const limPlusInf = f(infVal);
+            const limMoinsInf = f(-infVal);
+            let asymTexts = [];
+
+            if (Math.abs(limPlusInf) < 1e5) {
+              asymTexts.push(`Horizontale \$y = ${limPlusInf.toFixed(2)}\$ en \$+\\infty\$`);
+            }
+
+            if (Math.abs(limMoinsInf) < 1e5) {
+              asymTexts.push(`Horizontale \$y = ${limMoinsInf.toFixed(2)}\$ en \$-\\infty\$`);
+            }
+
+            const a = (f(infVal) - f(infVal / 2)) / (infVal - infVal / 2);
+            const b = f(infVal) - a * infVal;
+
+            if (Math.abs(a) > 0.01 && Math.abs(f(infVal) - (a * infVal + b)) < 1) {
+              asymTexts.push(`Oblique \$y = ${a.toFixed(2)}x + ${b.toFixed(2)}\$`);
+            }
+
+            const denMatch = fStr.match(/\/\s*$([^)]+)$/);
+            if (denMatch) {
+              const dFunc = MathCore.parseFunc(denMatch[1]);
+              const roots = MathCore.findRoots(dFunc, -20, 20);
+              roots.forEach(r => asymTexts.push(`Verticale en \$x = ${r.toFixed(2)}\$`));
+            }
+
+            res.innerHTML = asymTexts.length > 0 ? asymTexts.join('<br>') : "Aucune asymptote évidente détectée.";
+            MathJax.typesetPromise([res]);
+
+            plotter.clear();
+            plotter.drawAxes(-10, 10, -10, 10);
+            plotter.plot(f, -10, 10, -10, 10);
+
+            if (Math.abs(a) > 0.01) {
+              plotter.plot((x) => a * x + b, -10, 10, -10, 10, '#d44a1a', 1);
+            }
+          } catch(e) {
+            res.innerHTML = "Erreur lors de l’analyse.";
+          }
+        }
+      },
+
+      taylor: {
+        run: () => {
+          const fStr = document.getElementById('dl-fx').value;
+          const n = parseInt(document.getElementById('dl-n').value);
+          const res = document.getElementById('dl-res');
+          const plotter = new CanvasPlotter('dl-canvas');
+
+          try {
+            const f = MathCore.parseFunc(fStr);
+            let terms = [];
+
+            for (let i = 0; i <= n; i++) {
+              let coeff = MathCore.nthDerivative(f, 0, i) / MathCore.factorial(i);
+
+              if (Math.abs(coeff) > 1e-4) {
+                let termStr = "";
+                if (i === 0) termStr = `${coeff.toFixed(4)}`;
+                else if (i === 1) termStr = `${coeff.toFixed(4)}x`;
+                else termStr = `${coeff.toFixed(4)}x^{${i}}`;
+
+                terms.push(termStr);
+              }
+            }
+
+            const pFunc = (x) => {
+              let sum = 0;
+              for (let i = 0; i <= n; i++) {
+                sum += (
+                  MathCore.nthDerivative(f, 0, i) /
+                  MathCore.factorial(i)
+                ) * Math.pow(x, i);
+              }
+              return sum;
+            };
+
+            res.innerHTML = `\$P_{${n}}(x) = ${terms.join(' + ').replace(/\\+ -/g, '- ')}\$`;
+            MathJax.typesetPromise([res]);
+
+            plotter.clear();
+            plotter.drawAxes(-Math.PI, Math.PI, -2, 2);
+            plotter.plot(f, -Math.PI, Math.PI, -2, 2);
+            plotter.plot(pFunc, -Math.PI, Math.PI, -2, 2, '#d44a1a');
+          } catch(e) {
+            res.innerHTML = "Erreur de calcul du développement limité.";
+          }
+        }
+      },
+
+      complexes: {
+        run: () => {
+          const z1Arr = document.getElementById('cx-z1').value.split(',').map(Number);
+          const z2Arr = document.getElementById('cx-z2').value.split(',').map(Number);
+          const res = document.getElementById('cx-res');
+          const plotter = new CanvasPlotter('cx-canvas');
+
+          const z1 = new Complex(z1Arr[0], z1Arr[1]);
+          const z2 = new Complex(z2Arr[0], z2Arr[1]);
+
+          const sum = z1.add(z2);
+          const prod = z1.mul(z2);
+          const inv1 = z1.inv();
+
+          res.innerHTML = `
+            \$z_1 = ${z1.toString()}\$, 
+            \$|z_1| = ${z1.mod().toFixed(2)}\$, 
+            \$\\overline{z_1} = ${z1.conj().toString()}\$<br>
+            \$z_1 + z_2 = ${sum.toString()}\$<br>
+            \$z_1 \\times z_2 = ${prod.toString()}\$<br>
+            \$z_1^{-1} = ${inv1.toString()}\$
+          `;
+          MathJax.typesetPromise([res]);
+
+          plotter.clear();
+          plotter.drawAxes(-10, 10, -10, 10);
+          plotter.drawPoint(z1.re, z1.im, -10, 10, -10, 10, '#005fcc');
+          plotter.drawLine(0, 0, z1.re, z1.im, -10, 10, -10, 10, '#005fcc');
+          plotter.drawPoint(z2.re, z2.im, -10, 10, -10, 10, '#d44a1a');
+          plotter.drawLine(0, 0, z2.re, z2.im, -10, 10, -10, 10, '#d44a1a');
+          plotter.drawPoint(sum.re, sum.im, -10, 10, -10, 10, '#111118');
+        }
+      },
+
+      polynomes: {
+        run: () => {
+          const numStr = document.getElementById('poly-num').value.split(',').map(Number);
+          const denStr = document.getElementById('poly-den').value.split(',').map(Number);
+          const res = document.getElementById('poly-res');
+
+          const formatPoly = (coeffs) => {
+            let terms = [];
+            let deg = coeffs.length - 1;
+
+            coeffs.forEach((c, i) => {
+              let d = deg - i;
+
+              if (c !== 0) {
+                if (d === 0) terms.push(`${c}`);
+                else if (d === 1) terms.push(`${c}x`);
+                else terms.push(`${c}x^${d}`);
+              }
+            });
+
+            return terms.join(' + ').replace(/\+ -/g, '- ');
+          };
+
+          res.innerHTML = `
+            Fraction rationnelle :
+            \
+
+$$
+\\frac{${formatPoly(numStr)}}{${formatPoly(denStr)}}
+            \
+$$
+
+
+          `;
+          MathJax.typesetPromise([res]);
+        }
+      },
+
+      integrale: {
+        run: () => {
+          const fStr = document.getElementById('int-fx').value;
+          const aStr = document.getElementById('int-a').value;
+          const bStr = document.getElementById('int-b').value;
+          const res = document.getElementById('int-res');
+          const plotter = new CanvasPlotter('int-canvas');
+
+          try {
+            const f = MathCore.parseFunc(fStr);
+            const a = parseFloat(eval(aStr));
+            let b = parseFloat(eval(bStr));
+            let isImproper = false;
+
+            if (bStr.includes('Infinity') || b > 1e5) {
+              isImproper = true;
+              b = 1000;
+            }
+
+            const I = MathCore.integral(f, a, b, 5000);
+
+            res.innerHTML = `
+              \
+
+$$
+\\int_{${a}}^{${isImproper ? '\\infty' : bStr}} f(x)\\,dx
+                \\approx ${I.toFixed(5)}
+              \
+$$
+
+
+            `;
+            MathJax.typesetPromise([res]);
+
+            plotter.clear();
+
+            let plotB = isImproper ? a + 20 : b;
+            let yMax = Math.max(f(a), f(plotB), 1) + 2;
+            let yMin = Math.min(0, f(a), f(plotB)) - 2;
+
+            plotter.drawAxes(a - 1, plotB + 1, yMin, yMax);
+            plotter.plot(f, a - 1, plotB + 1, yMin, yMax);
+
+            plotter.ctx.fillStyle = 'rgba(0, 95, 204, 0.2)';
+            plotter.ctx.beginPath();
+
+            let startPx = (a - (a - 1)) / ((plotB + 1) - (a - 1)) * plotter.width;
+            let endPx = (plotB - (a - 1)) / ((plotB + 1) - (a - 1)) * plotter.width;
+            let y0 = plotter.height - (0 - yMin) / (yMax - yMin) * plotter.height;
+
+            plotter.ctx.moveTo(startPx, y0);
+
+            for (let px = startPx; px <= endPx; px++) {
+              let x = (a - 1) + (px / plotter.width) * ((plotB + 1) - (a - 1));
+              let y = f(x);
+              let py = plotter.height - (y - yMin) / (yMax - yMin) * plotter.height;
+              plotter.ctx.lineTo(px, py);
+            }
+
+            plotter.ctx.lineTo(endPx, y0);
+            plotter.ctx.fill();
+          } catch(e) {
+            res.innerHTML = "Erreur de calcul intégral.";
+          }
+        }
+      }
+    };
+
+    window.addEventListener('load', () => {
+      Object.keys(Modules).forEach(k => {
+        if (Modules[k].run) Modules[k].run();
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      Object.keys(Modules).forEach(k => {
+        if (Modules[k].run) Modules[k].run();
+      });
+    });
+  </script>
 </body>
 </html>
