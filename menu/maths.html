@@ -169,6 +169,39 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .course-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  font-size: 1.2rem;
+  text-decoration: none;
+
+  color: var(--cyan);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  transition: all var(--tr);
+}
+
+.back-button:hover {
+  background: var(--cyan);
+  color: var(--bg);
+  transform: translateX(-4px) scale(1.05);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.25);
+}
   </style>
 
   <script>
@@ -206,7 +239,18 @@
 
   <div class="container">
     <div class="section">
-      <h2>Maths - Semestre 2</h2>
+      <div class="course-header">
+  <h2>Maths - Semestre 2</h2>
+<a href="../" class="back-button" aria-label="Retour">
+  <svg viewBox="0 0 24 24" width="20" height="20">
+    <path d="M14 6L8 12L14 18" 
+          stroke="currentColor" 
+          stroke-width="1.8" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </svg>
+</a>
+</div>
 
       <div class="math-intro">
         <p>
