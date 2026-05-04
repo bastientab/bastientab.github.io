@@ -11,6 +11,127 @@
     document.documentElement.setAttribute('data-theme', t);
   })();
   </script>
+  <style>
+    code {
+      font-family: var(--font-mono);
+      font-size: .82em;
+      background: var(--bg-3);
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: var(--orange);
+    }
+
+    .content-block-title {
+      font-family: var(--font-mono);
+      font-size: .63rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: .16em;
+      color: var(--cyan); margin: 2.2rem 0 1rem;
+      display: flex; align-items: center; gap: .7rem;
+    }
+    .content-block-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    .course-summary {
+      background: var(--bg-2);
+      border-left: 2px solid var(--cyan);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.4rem 1.65rem; margin-bottom: 1.5rem;
+    }
+    .course-summary p { color: var(--ink-mid); font-size: .91rem; line-height: 1.8; }
+    .course-label {
+      font-family: var(--font-mono); font-size: .63rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: .16em;
+      color: var(--cyan); margin-bottom: .6rem; display: block;
+    }
+
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: .75rem; margin-bottom: .5rem;
+    }
+    .info-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 1.1rem 1.3rem;
+      transition: border-color .2s ease, transform .35s ease;
+    }
+    .info-card:hover { border-color: var(--border-hot); transform: translateY(-3px); }
+    .info-card-title {
+      font-family: var(--font-mono); font-size: .7rem; font-weight: 500;
+      color: var(--cyan); text-transform: uppercase; letter-spacing: .08em;
+      margin-bottom: .5rem; display: flex; align-items: center; gap: .5rem;
+    }
+    .info-card-title::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; }
+    .info-card p  { color: var(--ink-mid); font-size: .84rem; line-height: 1.7; }
+    .info-card ul { padding-left: 1.1rem; margin-top: .3rem; }
+    .info-card ul li { color: var(--ink-mid); font-size: .82rem; line-height: 1.7; }
+
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-bottom: .5rem; }
+    .compare-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; transition: border-color .2s ease; }
+    .compare-card:hover { border-color: var(--border-mid); }
+    .compare-card-head {
+      padding: .7rem 1.2rem; font-family: var(--font-mono);
+      font-size: .68rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .compare-card-head.bad  { background: rgba(212,74,26,.08); color: var(--orange); border-bottom: 1px solid rgba(212,74,26,.15); }
+    .compare-card-head.good { background: var(--cyan-dim); color: var(--cyan); border-bottom: 1px solid rgba(0,95,204,.12); }
+    .compare-card ul { padding: .9rem 1.2rem .9rem 2rem; }
+    .compare-card ul li { color: var(--ink-mid); font-size: .82rem; line-height: 1.75; }
+
+    .code-block {
+      background: var(--bg-3); border: 1px solid var(--border);
+      border-left: 3px solid var(--cyan); border-radius: var(--r2);
+      padding: 1.1rem 1.4rem; margin: .7rem 0; overflow-x: auto;
+    }
+    .code-block pre {
+      font-family: var(--font-mono); font-size: .8rem; line-height: 1.8;
+      color: var(--ink-mid); margin: 0; white-space: pre;
+    }
+    .code-block pre .kw  { color: var(--cyan); font-weight: 500; }
+    .code-block pre .str { color: #4caf8a; }
+    .code-block pre .cmt { color: var(--ink-dim); font-style: italic; }
+    .code-block pre .var { color: var(--orange); }
+    .code-block pre .fn  { color: #c792ea; }
+    .code-label { font-family: var(--font-mono); font-size: .62rem; color: var(--ink-dim); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .4rem; display: block; }
+
+    .table-wrap { overflow-x: auto; border-radius: var(--r2); border: 1px solid var(--border); margin-bottom: .5rem; }
+    .data-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    .data-table thead tr { background: var(--bg-3); border-bottom: 1px solid var(--border-mid); }
+    .data-table thead th { padding: .7rem 1.1rem; text-align: left; font-family: var(--font-mono); font-size: .64rem; font-weight: 500; text-transform: uppercase; letter-spacing: .12em; color: var(--ink-dim); }
+    .data-table tbody tr { border-bottom: 1px solid var(--border); background: var(--bg-1); transition: background .15s; }
+    .data-table tbody tr:last-child { border-bottom: none; }
+    .data-table tbody tr:hover { background: var(--bg-2); }
+    .data-table tbody td { padding: .75rem 1.1rem; color: var(--ink-mid); line-height: 1.6; vertical-align: middle; }
+    .data-table tbody td:first-child { font-family: var(--font-mono); font-size: .75rem; color: var(--cyan); font-weight: 500; }
+
+    .vocab-list { display: flex; flex-direction: column; gap: .55rem; margin-bottom: .5rem; }
+    .vocab-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--r2); padding: .95rem 1.3rem; transition: border-color .2s ease, transform .35s ease; }
+    .vocab-item:hover { border-color: var(--border-hot); transform: translateX(5px); }
+    .vocab-term { font-family: var(--font-mono); font-size: .75rem; font-weight: 500; color: var(--cyan); background: var(--cyan-dim); border: 1px solid rgba(0,95,204,.15); padding: .3rem .75rem; border-radius: 3px; white-space: nowrap; flex-shrink: 0; letter-spacing: .04em; }
+    .vocab-def { color: var(--ink-mid); font-size: .84rem; line-height: 1.7; padding-top: .18rem; }
+
+    .acc-section { border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden; margin-bottom: .65rem; transition: border-color .2s ease; }
+    .acc-section:hover { border-color: var(--border-mid); }
+    .acc-header { background: var(--bg-2); padding: .95rem 1.4rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background .2s ease; user-select: none; }
+    .acc-header:hover { background: var(--bg-3); }
+    .acc-header h3 { margin: 0; font-size: .8rem; font-family: var(--font-mono); font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: var(--ink); }
+    .acc-icon { font-size: .72rem; color: var(--ink-dim); transition: transform .35s ease, color .2s ease; }
+    .acc-header:hover .acc-icon { color: var(--cyan); }
+    .acc-body { max-height: 0; overflow: hidden; transition: max-height .45s cubic-bezier(.4,0,.2,1); background: var(--bg-1); }
+    .acc-body.open { max-height: 5000px; border-top: 1px solid var(--border); }
+    .acc-body-inner { padding: 1.5rem 1.6rem; }
+
+    .highlight-box { background: var(--cyan-dim); border: 1px solid rgba(0,95,204,.18); border-radius: var(--r2); padding: 1rem 1.4rem; margin: .7rem 0; font-size: .84rem; color: var(--ink-mid); line-height: 1.75; }
+    .highlight-box strong { color: var(--cyan); }
+
+    @media (max-width: 600px) {
+      .compare-grid { grid-template-columns: 1fr; }
+      .cards-grid    { grid-template-columns: 1fr; }
+      .vocab-item    { flex-direction: column; gap: .5rem; }
+      .vocab-item:hover { transform: none; }
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -34,17 +155,504 @@
       </button>
     </div>
   </nav>
+
   <div class="container">
     <div class="section">
-      <h2>Web</h2>
-      <p style="color:var(--ink-dim);font-family:var(--font-mono);font-size:.85rem;">
-        Contenu en cours de rédaction...
-      </p>
-    </div>
-  </div>
+      <h2>R209 — Initiation au développement Web</h2>
+
+      <div class="course-summary">
+        <span class="course-label">// Résumé du cours</span>
+        <p>
+          Ce cours couvre les fondements du développement web dynamique avec <strong>PHP</strong> et <strong>MySQL</strong>. Il présente d'abord la distinction entre pages statiques et dynamiques, puis la syntaxe PHP (variables, types, opérateurs, tableaux, structures de contrôle, fonctions), et enfin l'accès aux bases de données via <strong>PDO</strong> avec les requêtes préparées.
+        </p>
+      </div>
+
+      <!-- ═══════════════════════════════════ PARTIE 1 ═══ -->
+      <div class="content-block-title">1 — Pages statiques vs dynamiques</div>
+
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="compare-card-head bad">✕ &nbsp;Pages statiques — limites</div>
+          <ul>
+            <li>Fichier HTML fixe, même réponse pour tous.</li>
+            <li>Aucun calcul ni traitement conditionnel possible.</li>
+            <li>Mises à jour manuelles fastidieuses.</li>
+            <li>Pas d'interfaçage avec une base de données.</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <div class="compare-card-head good">✓ &nbsp;Pages dynamiques — avantages</div>
+          <ul>
+            <li>Script côté serveur interprété à chaque requête.</li>
+            <li>Contenu généré selon le demandeur ou les données.</li>
+            <li>Compatibles avec tous les navigateurs et OS.</li>
+            <li>Code source masqué : le client ne voit que le HTML.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <strong>Langage côté serveur :</strong> programme stocké sur le serveur qui parcourt un fichier source, en modifie le contenu (ex : injection de données MySQL), puis renvoie le HTML résultant au navigateur. PHP, combiné à Apache et MySQL, forme la solution LAMP — gratuite, robuste et stable.
+      </div>
+
+      <!-- ═══════════════════════════════════ PARTIE 2 ═══ -->
+      <div class="content-block-title">2 — PHP : syntaxe et bases</div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="info-card-title">Historique</div>
+          <p>Créé en <strong>1994</strong> par Rasmus Lerdorf (Personal Home Pages). V3 en 1998, PHP4 en 1999. En 2001, 5 millions de domaines l'utilisent.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Caractéristiques</div>
+          <ul>
+            <li>Exécuté côté serveur — indépendant du client.</li>
+            <li>Syntaxe inspirée de C, Perl et Java.</li>
+            <li>Gratuit, open-source (licence GNU GPL).</li>
+            <li>S'intègre directement dans le HTML.</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Règles syntaxiques</div>
+          <ul>
+            <li>Balise ouvrante : <code>&lt;?php</code> … <code>?&gt;</code></li>
+            <li>Toute instruction se termine par <code>;</code></li>
+            <li>Sensible à la casse (sauf les fonctions).</li>
+            <li>Commentaires : <code>// ...</code> ou <code>/* ... */</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Variables & Types -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Variables &amp; Types</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p style="color:var(--ink-mid);font-size:.88rem;line-height:1.8;margin-bottom:.9rem;">
+              Les variables sont préfixées par <code>$</code> et non typées : elles peuvent changer de type en cours de script. Les variables de formulaire sont toujours de type <code>string</code>.
+            </p>
+            <span class="code-label">// Variables et portée</span>
+            <div class="code-block"><pre><span class="kw">&lt;?php</span>
+<span class="var">$annee</span> = <span class="str">1970</span>;           <span class="cmt">// integer</span>
+<span class="var">$nom</span>   = <span class="str">"Jean-Michel"</span>;  <span class="cmt">// string</span>
+<span class="fn">echo</span> <span class="str">"Bonjour <span class="var">$nom</span>, né en <span class="var">$annee</span>"</span>;
+
+<span class="cmt">// Variable globale dans une fonction</span>
+<span class="var">$var</span> = <span class="str">100</span>;
+<span class="kw">function</span> <span class="fn">test</span>() {
+    <span class="kw">global</span> <span class="var">$var</span>;
+    <span class="kw">return</span> <span class="var">$var</span>;
+}
+
+<span class="cmt">// Variable statique — conserve sa valeur entre les appels</span>
+<span class="kw">function</span> <span class="fn">cumul</span>(<span class="var">$prix</span>) {
+    <span class="kw">static</span> <span class="var">$total</span> = <span class="str">0</span>;
+    <span class="var">$total</span> += <span class="var">$prix</span>;
+    <span class="kw">return</span> <span class="var">$total</span>;
+}
+<span class="kw">?&gt;</span></pre></div>
+
+            <div class="content-block-title" style="margin-top:1.2rem;">Types disponibles</div>
+            <div class="cards-grid">
+              <div class="info-card"><div class="info-card-title">integer</div><p>Nombres entiers.</p></div>
+              <div class="info-card"><div class="info-card-title">double / float</div><p>Nombres à virgule flottante.</p></div>
+              <div class="info-card"><div class="info-card-title">string</div><p>Chaînes de caractères.</p></div>
+              <div class="info-card"><div class="info-card-title">array</div><p>Tableaux indexés ou associatifs.</p></div>
+              <div class="info-card"><div class="info-card-title">bool</div><p>Booléen vrai / faux.</p></div>
+              <div class="info-card"><div class="info-card-title">object</div><p>Instances de classes PHP.</p></div>
+            </div>
+
+            <div class="highlight-box" style="margin-top:1rem;">
+              <strong>Transtypage :</strong> <code>settype($var, "double")</code> convertit le type. Le cast explicite fonctionne aussi : <code>(int)$var</code>, <code>(string)$var</code>, etc.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opérateurs -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Opérateurs</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="content-block-title" style="margin-top:0">Calcul &amp; Incrémentation</div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Op.</th><th>Nom</th><th>Exemple</th><th>Résultat ($x = 7)</th></tr></thead>
+                <tbody>
+                  <tr><td>+</td><td>Addition</td><td><code>$x + 3</code></td><td>10</td></tr>
+                  <tr><td>-</td><td>Soustraction</td><td><code>$x - 3</code></td><td>4</td></tr>
+                  <tr><td>*</td><td>Multiplication</td><td><code>$x * 3</code></td><td>21</td></tr>
+                  <tr><td>/</td><td>Division</td><td><code>$x / 3</code></td><td>2.333…</td></tr>
+                  <tr><td>%</td><td>Modulo</td><td><code>$x % 3</code></td><td>1</td></tr>
+                  <tr><td>++</td><td>Incrémentation</td><td><code>$x++</code></td><td>8</td></tr>
+                  <tr><td>--</td><td>Décrémentation</td><td><code>$x--</code></td><td>6</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="content-block-title">Comparaison</div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Op.</th><th>Signification</th><th>Retourne (avec $x = 7)</th></tr></thead>
+                <tbody>
+                  <tr><td>==</td><td>Égalité</td><td>1 si $x == valeur, sinon 0</td></tr>
+                  <tr><td>!=</td><td>Différence</td><td>1 si $x != valeur, sinon 0</td></tr>
+                  <tr><td>&lt;</td><td>Inférieur strict</td><td>1 si $x &lt; valeur</td></tr>
+                  <tr><td>&lt;=</td><td>Inférieur ou égal</td><td>1 si $x &lt;= valeur</td></tr>
+                  <tr><td>&gt;</td><td>Supérieur strict</td><td>1 si $x &gt; valeur</td></tr>
+                  <tr><td>&gt;=</td><td>Supérieur ou égal</td><td>1 si $x &gt;= valeur</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="content-block-title">Logiques</div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Op.</th><th>Nom</th><th>Effet</th></tr></thead>
+                <tbody>
+                  <tr><td>|| ou OR</td><td>OU logique</td><td>Vrai si au moins une condition est vraie</td></tr>
+                  <tr><td>&amp;&amp; ou AND</td><td>ET logique</td><td>Vrai si toutes les conditions sont vraies</td></tr>
+                  <tr><td>XOR</td><td>OU exclusif</td><td>Vrai si exactement une condition est vraie</td></tr>
+                  <tr><td>!</td><td>NON logique</td><td>Inverse l'état booléen</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="content-block-title">Assignation combinée</div>
+            <div class="cards-grid">
+              <div class="info-card"><div class="info-card-title">+=  -=  *=  /=</div><p>Opération arithmétique + affectation en une seule expression.</p></div>
+              <div class="info-card"><div class="info-card-title">.=</div><p>Concaténation de chaînes + affectation.</p></div>
+              <div class="info-card"><div class="info-card-title">&amp;=  |=  ^=</div><p>Opérations bit-à-bit combinées à l'affectation.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tableaux -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Tableaux</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="cards-grid" style="margin-bottom:1rem;">
+              <div class="info-card"><div class="info-card-title">Tableau simple</div><p>Index numérique dès 0. Créé avec <code>array()</code> ou affectation directe.</p></div>
+              <div class="info-card"><div class="info-card-title">Tableau associatif</div><p>Clés textuelles (<code>clé =&gt; valeur</code>). Accès via <code>$tab["clé"]</code>.</p></div>
+              <div class="info-card"><div class="info-card-title">Tableau multidim.</div><p>Tableaux imbriqués. Accès via <code>$tab[i][j]</code>.</p></div>
+            </div>
+
+            <span class="code-label">// Tableau simple + parcours</span>
+            <div class="code-block"><pre><span class="var">$jour</span> = <span class="fn">array</span>(<span class="str">"Dim"</span>, <span class="str">"Lun"</span>, <span class="str">"Mar"</span>, <span class="str">"Mer"</span>);
+<span class="fn">echo</span> <span class="var">$jour</span>[<span class="str">2</span>]; <span class="cmt">// → "Mar"</span>
+
+<span class="cmt">// Boucle for</span>
+<span class="kw">for</span> (<span class="var">$i</span> = <span class="str">0</span>; <span class="var">$i</span> < <span class="fn">count</span>(<span class="var">$jour</span>); <span class="var">$i</span>++) {
+    <span class="fn">echo</span> <span class="var">$jour</span>[<span class="var">$i</span>];
+}
+
+<span class="cmt">// Boucle foreach (recommandée)</span>
+<span class="kw">foreach</span> (<span class="var">$jour</span> <span class="kw">as</span> <span class="var">$JJ</span>) {
+    <span class="fn">echo</span> <span class="var">$JJ</span> . <span class="str">"&lt;br&gt;"</span>;
+}</pre></div>
+
+            <span class="code-label">// Tableau associatif</span>
+            <div class="code-block"><pre><span class="var">$semaine</span> = <span class="fn">array</span>(<span class="str">"Dimanche"</span> => <span class="str">1</span>, <span class="str">"Lundi"</span> => <span class="str">2</span>);
+<span class="fn">echo</span> <span class="var">$semaine</span>[<span class="str">"Lundi"</span>]; <span class="cmt">// → 2</span>
+
+<span class="kw">foreach</span> (<span class="var">$semaine</span> <span class="kw">as</span> <span class="var">$sJJ</span> => <span class="var">$nJJ</span>) {
+    <span class="fn">echo</span> <span class="str">"Jour n°<span class="var">$nJJ</span> : <span class="var">$sJJ</span>&lt;br&gt;"</span>;
+}</pre></div>
+
+            <div class="content-block-title" style="margin-top:1.2rem;">Fonctions utiles</div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Fonction</th><th>Rôle</th></tr></thead>
+                <tbody>
+                  <tr><td>count($tab)</td><td>Nombre d'éléments du tableau</td></tr>
+                  <tr><td>array_push($tab, val)</td><td>Ajoute un élément en fin de tableau</td></tr>
+                  <tr><td>sort($tab)</td><td>Tri croissant (ordre ASCII), clés réinitialisées</td></tr>
+                  <tr><td>rsort($tab)</td><td>Tri décroissant</td></tr>
+                  <tr><td>asort($tab)</td><td>Tri croissant en préservant les clés associatives</td></tr>
+                  <tr><td>natcasesort($tab)</td><td>Tri alphabétique naturel ("10" après "9")</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Structures de contrôle -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Structures de contrôle</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="content-block-title" style="margin-top:0">Branchements conditionnels</div>
+            <span class="code-label">// if / else</span>
+            <div class="code-block"><pre><span class="kw">if</span> (<span class="var">$valeur</span> > <span class="str">1</span>) {
+    <span class="fn">echo</span> <span class="str">"supérieure à 1"</span>;
+} <span class="kw">elseif</span> (<span class="var">$valeur</span> == <span class="str">1</span>) {
+    <span class="fn">echo</span> <span class="str">"égale à 1"</span>;
+} <span class="kw">else</span> {
+    <span class="fn">echo</span> <span class="str">"inférieure à 1"</span>;
+}</pre></div>
+
+            <span class="code-label">// switch</span>
+            <div class="code-block"><pre><span class="kw">switch</span> (<span class="var">$variable</span>) {
+    <span class="kw">case</span> <span class="str">"valeur1"</span>: <span class="cmt">/* instructions */</span> <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="str">"valeur2"</span>: <span class="cmt">/* instructions */</span> <span class="kw">break</span>;
+    <span class="kw">default</span>:       <span class="cmt">/* instructions */</span> <span class="kw">break</span>;
+}</pre></div>
+
+            <div class="content-block-title">Boucles</div>
+            <span class="code-label">// while</span>
+            <div class="code-block"><pre><span class="var">$i</span> = <span class="str">1</span>; <span class="var">$somme</span> = <span class="str">0</span>;
+<span class="kw">while</span> (<span class="var">$i</span> <= <span class="str">10</span>) {
+    <span class="var">$somme</span> += <span class="var">$i</span>;
+    <span class="var">$i</span>++;
+}
+<span class="fn">echo</span> <span class="str">"Somme 1 à 10 = <span class="var">$somme</span>"</span>;</pre></div>
+
+            <span class="code-label">// for</span>
+            <div class="code-block"><pre><span class="kw">for</span> (<span class="var">$i</span> = <span class="str">1</span>; <span class="var">$i</span> <= <span class="str">10</span>; <span class="var">$i</span>++) {
+    <span class="var">$somme</span> += <span class="var">$i</span>;
+}</pre></div>
+
+            <span class="code-label">// foreach — recommandé pour les tableaux</span>
+            <div class="code-block"><pre><span class="cmt">// Simple</span>
+<span class="kw">foreach</span> (<span class="var">$tableau</span> <span class="kw">as</span> <span class="var">$valeur</span>) {
+    <span class="fn">echo</span> <span class="var">$valeur</span>;
+}
+
+<span class="cmt">// Avec clé (associatif)</span>
+<span class="kw">foreach</span> (<span class="var">$tableau</span> <span class="kw">as</span> <span class="var">$cle</span> => <span class="var">$valeur</span>) {
+    <span class="fn">echo</span> <span class="str">"<span class="var">$cle</span> : <span class="var">$valeur</span>"</span>;
+}</pre></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fonctions -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Fonctions</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="cards-grid" style="margin-bottom:1rem;">
+              <div class="info-card"><div class="info-card-title">Déclaration</div><p>Mot-clé <code>function</code>, paramètres entre parenthèses, retour via <code>return</code>.</p></div>
+              <div class="info-card"><div class="info-card-title">Passage par référence</div><p>Préfixer le paramètre de <code>&amp;</code> pour modifier la variable d'origine directement.</p></div>
+              <div class="info-card"><div class="info-card-title">Args. variables</div><p><code>func_num_args()</code> — nb d'args. <code>func_get_arg($i)</code> — valeur du i-ème arg.</p></div>
+              <div class="info-card"><div class="info-card-title">Inclusions</div><p><code>require()</code> insère le fichier une fois. <code>include()</code> l'évalue à chaque appel (utilisable en boucle).</p></div>
+            </div>
+
+            <span class="code-label">// Syntaxe + passage par référence</span>
+            <div class="code-block"><pre><span class="kw">function</span> <span class="fn">aire</span>(<span class="var">$l</span>, <span class="var">$h</span>) {
+    <span class="kw">return</span> <span class="var">$l</span> * <span class="var">$h</span>;
+}
+<span class="fn">echo</span> <span class="fn">aire</span>(<span class="str">5</span>, <span class="str">3</span>); <span class="cmt">// → 15</span>
+
+<span class="cmt">// Par référence : modifie la variable d'origine</span>
+<span class="kw">function</span> <span class="fn">doubler</span>(&<span class="var">$val</span>) { <span class="var">$val</span> *= <span class="str">2</span>; }
+<span class="var">$x</span> = <span class="str">5</span>;
+<span class="fn">doubler</span>(<span class="var">$x</span>);
+<span class="fn">echo</span> <span class="var">$x</span>; <span class="cmt">// → 10</span></pre></div>
+
+            <div class="content-block-title" style="margin-top:1.2rem;">Fonctions mathématiques</div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Fonction</th><th>Rôle</th></tr></thead>
+                <tbody>
+                  <tr><td>abs($x)</td><td>Valeur absolue</td></tr>
+                  <tr><td>ceil($x)</td><td>Arrondi supérieur</td></tr>
+                  <tr><td>floor($x)</td><td>Arrondi inférieur</td></tr>
+                  <tr><td>round($x, $i)</td><td>Arrondi à $i décimales</td></tr>
+                  <tr><td>pow($x, $y)</td><td>x exposant y</td></tr>
+                  <tr><td>sqrt($x)</td><td>Racine carrée</td></tr>
+                  <tr><td>max($a, $b, …)</td><td>Valeur maximale parmi les arguments</td></tr>
+                  <tr><td>number_format($n, $d, $a, $b)</td><td>Formatage d'un nombre (séparateur décimal, milliers)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════ PARTIE 3 ═══ -->
+      <div class="content-block-title">3 — PHP &amp; MySQL : accès aux bases de données</div>
+
+      <div class="course-summary">
+        <span class="course-label">// Principe</span>
+        <p>
+          PHP s'interface avec MySQL pour générer des pages dynamiques depuis des données stockées en base. L'extension <strong>PDO</strong> (PHP Data Objects) fournit une interface orientée objet standardisée pour établir des connexions sécurisées et exécuter des requêtes SQL.
+        </p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="info-card">
+          <div class="info-card-title">4 paramètres requis</div>
+          <ul>
+            <li><strong>Hôte</strong> — adresse IP ou <code>localhost</code></li>
+            <li><strong>Base</strong> — nom de la BDD</li>
+            <li><strong>Identifiant</strong> — login MySQL</li>
+            <li><strong>Mot de passe</strong> — à ne jamais exposer</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Sécurité</div>
+          <p>Toujours encapsuler la connexion dans un <code>try/catch</code>. Sans cela, PHP peut afficher le mot de passe en cas d'erreur.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-title">Requêtes préparées</div>
+          <p>Utilisées dès qu'un paramètre est dynamique (formulaire, etc.). Les marqueurs nommés (<code>:nom</code>) protègent contre les injections SQL.</p>
+        </div>
+      </div>
+
+      <!-- Connexion -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Connexion à la base de données</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <span class="code-label">// Connexion sécurisée avec try/catch</span>
+            <div class="code-block"><pre><span class="kw">&lt;?php</span>
+<span class="kw">try</span> {
+    <span class="var">$mysqlConnection</span> = <span class="kw">new</span> <span class="fn">PDO</span>(
+        <span class="str">'mysql:host=localhost; dbname=ma_base; charset=utf8'</span>,
+        <span class="str">'utilisateur'</span>,
+        <span class="str">'motDePasse'</span>
+    );
+} <span class="kw">catch</span> (Exception <span class="var">$e</span>) {
+    <span class="fn">die</span>(<span class="str">'Erreur : '</span> . <span class="var">$e</span>-><span class="fn">getMessage</span>());
+}
+<span class="kw">?&gt;</span></pre></div>
+            <div class="highlight-box">
+              <strong>⚠ Sans try/catch</strong>, PHP risque d'afficher la ligne entière provoquant l'erreur — ce qui <strong>expose le mot de passe</strong> dans le navigateur ou les logs serveur.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SELECT simple -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Récupérer des données — SELECT simple</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <span class="code-label">// 3 étapes : prepare → execute → fetchAll</span>
+            <div class="code-block"><pre><span class="kw">&lt;?php</span>
+<span class="cmt">// 1 — Déclaration de la requête</span>
+<span class="var">$requete</span> = <span class="var">$mysqlConnection</span>-><span class="fn">prepare</span>(<span class="str">'SELECT * FROM nom_table'</span>);
+
+<span class="cmt">// 2 — Exécution</span>
+<span class="var">$requete</span>-><span class="fn">execute</span>();
+
+<span class="cmt">// 3 — Récupération en tableau</span>
+<span class="var">$resultat</span> = <span class="var">$requete</span>-><span class="fn">fetchAll</span>();
+
+<span class="cmt">// Parcours des résultats</span>
+<span class="kw">foreach</span> (<span class="var">$resultat</span> <span class="kw">as</span> <span class="var">$ligne</span>) {
+    <span class="fn">echo</span> <span class="var">$ligne</span>[<span class="str">'nom_colonne'</span>];
+}
+<span class="kw">?&gt;</span></pre></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requêtes préparées -->
+      <div class="acc-section">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <h3>Requêtes préparées — paramètres dynamiques</h3>
+          <span class="acc-icon">▼</span>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <p style="color:var(--ink-mid);font-size:.88rem;line-height:1.8;margin-bottom:.9rem;">
+              Quand la clause <code>WHERE</code> dépend d'une variable (ex : saisie d'un formulaire), on utilise des paramètres nommés pour sécuriser l'exécution.
+            </p>
+            <span class="code-label">// Requête avec paramètres :nom et :prenom</span>
+            <div class="code-block"><pre><span class="kw">&lt;?php</span>
+<span class="cmt">// Définition de la requête paramétrée</span>
+<span class="var">$sql</span> = <span class="str">'SELECT * FROM Utilisateur 
+        WHERE nomUser = :nom AND prenomUser = :prenom'</span>;
+
+<span class="cmt">// Préparation</span>
+<span class="var">$requete</span> = <span class="var">$mysqlConnection</span>-><span class="fn">prepare</span>(<span class="var">$sql</span>);
+
+<span class="cmt">// Exécution avec les valeurs réelles</span>
+<span class="var">$requete</span>-><span class="fn">execute</span>([
+    <span class="str">'nom'</span>    => <span class="str">'Durand'</span>,
+    <span class="str">'prenom'</span> => <span class="str">'Martin'</span>,
+]);
+
+<span class="var">$resultat</span> = <span class="var">$requete</span>-><span class="fn">fetchAll</span>();
+<span class="kw">?&gt;</span></pre></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lifecycle table -->
+      <div class="content-block-title">Lifecycle des requêtes SQL avec PDO</div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead><tr><th>Étape</th><th>Méthode</th><th>Rôle</th></tr></thead>
+          <tbody>
+            <tr><td>1. Préparation</td><td><code>prepare()</code></td><td>Définit la structure SQL avec des espaces réservés (<code>:nom</code>).</td></tr>
+            <tr><td>2. Exécution</td><td><code>execute()</code></td><td>Envoie la requête au serveur avec les valeurs réelles des paramètres.</td></tr>
+            <tr><td>3. Récupération</td><td><code>fetchAll()</code></td><td>Transforme le jeu de résultats en tableau PHP exploitable.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Vocabulaire global -->
+      <div class="content-block-title">Vocabulaire technique</div>
+      <div class="vocab-list">
+        <div class="vocab-item"><span class="vocab-term">PDO</span><p class="vocab-def">PHP Data Objects — interface orientée objet standard pour accéder à diverses bases de données relationnelles depuis PHP.</p></div>
+        <div class="vocab-item"><span class="vocab-term">Requête préparée</span><p class="vocab-def">Instruction SQL template avec paramètres nommés (<code>:nom</code>). Sépare la structure SQL des données, protège contre les injections.</p></div>
+        <div class="vocab-item"><span class="vocab-term">fetchAll()</span><p class="vocab-def">Retourne l'intégralité du jeu de résultats d'une requête sous forme de tableau PHP associatif.</p></div>
+        <div class="vocab-item"><span class="vocab-term">Script côté serveur</span><p class="vocab-def">Programme exécuté par le serveur avant d'envoyer le HTML au navigateur. Code source masqué, compatible tous navigateurs.</p></div>
+        <div class="vocab-item"><span class="vocab-term">try / catch</span><p class="vocab-def">Structure de gestion des exceptions. Indispensable autour de la connexion PDO pour éviter l'exposition d'informations sensibles.</p></div>
+        <div class="vocab-item"><span class="vocab-term">foreach</span><p class="vocab-def">Boucle de parcours de tableau. Recommandée pour itérer sur les résultats SQL retournés par <code>fetchAll()</code>.</p></div>
+        <div class="vocab-item"><span class="vocab-term">static</span><p class="vocab-def">Mot-clé PHP permettant à une variable locale de conserver sa valeur entre deux appels successifs de la même fonction.</p></div>
+        <div class="vocab-item"><span class="vocab-term">include / require</span><p class="vocab-def"><code>include()</code> insère un fichier à chaque appel (utilisable en boucle). <code>require()</code> produit une erreur fatale si le fichier est absent.</p></div>
+      </div>
+
+    </div><!-- /.section -->
+  </div><!-- /.container -->
+
   <footer>
     <p>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
   </footer>
+
   <script src="../script.js"></script>
+  <script>
+    function toggleAcc(header) {
+      const body = header.nextElementSibling;
+      const icon = header.querySelector('.acc-icon');
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.acc-body.open').forEach(el => {
+        el.classList.remove('open');
+        el.previousElementSibling.querySelector('.acc-icon').style.transform = 'rotate(0deg)';
+      });
+      if (!isOpen) {
+        body.classList.add('open');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+  </script>
 </body>
 </html>
