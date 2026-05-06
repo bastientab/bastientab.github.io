@@ -171,6 +171,47 @@
           </p>
         </div>
       </div>
+      <div class="project-item">
+        <div class="project-header" onclick="toggleProject(this)">
+          <img src="images/logodactylo.webp" alt="Test de dactylographie" class="project-preview-image" loading="lazy">
+          <div class="project-header-text">
+            <h3>Test de dactylographie</h3>
+            <span class="project-type">Projet personnel</span>
+            <p>Mesure ta vitesse de frappe en MPM avec différents modes (français, réseau, code shell)</p>
+          </div>
+          <span class="skill-icon">▼</span>
+        </div>
+        <div class="project-content">
+          <p><strong>Concept :</strong> Un test de dactylographie intégré directement au portfolio. Trois modes disponibles : phrases en français, vocabulaire réseau, et commandes shell. Les statistiques (vitesse, précision, temps) sont calculées en temps réel.</p>
+          <div class="typing-test" id="typing-test">
+            <div class="tt-modes">
+              <button class="tt-mode-btn active" data-mode="fr">Français</button>
+              <button class="tt-mode-btn" data-mode="network">Réseau</button>
+              <button class="tt-mode-btn" data-mode="code">Shell</button>
+            </div>
+            <div class="tt-stats">
+              <div class="tt-stat">
+                <span class="tt-stat-label">Vitesse</span>
+                <span class="tt-stat-val tt-wpm">0</span>
+              </div>
+              <div class="tt-stat">
+                <span class="tt-stat-label">Précision</span>
+                <span class="tt-stat-val tt-acc">100%</span>
+              </div>
+              <div class="tt-stat">
+                <span class="tt-stat-label">Temps</span>
+                <span class="tt-stat-val tt-time">0.0s</span>
+              </div>
+            </div>
+            <div class="tt-text"></div>
+            <input type="text" class="tt-input" autocomplete="off" spellcheck="false" placeholder="Commence à taper le texte ci-dessus...">
+            <div class="tt-actions">
+              <button class="tt-reset">↻ Nouveau texte</button>
+            </div>
+            <div class="tt-result"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <footer>

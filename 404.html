@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Bastien TABORDET</title>
+  <meta name="description" content="Page introuvable.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="style.css">
+  <script>
+  (function(){
+    var t = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+  </script>
+  <style>
+    .err-wrap {
+      max-width: 720px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+    .err-terminal {
+      background: #0d1117;
+      border: 1px solid var(--border-mid);
+      border-radius: var(--r2);
+      overflow: hidden;
+      font-family: var(--font-mono);
+      box-shadow: 0 12px 40px rgba(0,0,0,.25);
+    }
+    .err-bar {
+      background: #161b22;
+      padding: .55rem .9rem;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .err-bar .terminal-title { flex: 1; }
+    .err-body {
+      padding: 1.5rem 1.4rem;
+      color: #c9d1d9;
+      font-size: .88rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+    }
+    .err-prompt   { color: #00d4ff; }
+    .err-cmd      { color: #f0a45f; }
+    .err-success  { color: #56d364; }
+    .err-error    { color: #ff7b72; }
+    .err-info     { color: #79c0ff; }
+    .err-countdown { color: #f0a45f; font-weight: 500; }
+    .err-back {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      border: 1px solid var(--border-hot);
+      padding: .55rem 1.1rem;
+      border-radius: var(--r);
+      transition: all var(--tr);
+    }
+    .err-back:hover {
+      background: var(--cyan-dim);
+      transform: translateY(-2px);
+    }
+    .err-actions { text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="alternance-banner" aria-label="Disponibilité alternance">
+    <div class="alternance-ticker">
+<span>● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-content">
+      <div class="nav-brand">Bastien TABORDET</div>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="a-propos.html">À propos</a></li>
+        <li><a href="formation.html">Formation</a></li>
+        <li><a href="competences.html">Compétences</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="divers.html">Divers</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer le thème">
+        <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
+        <span class="theme-toggle-label">☀</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="err-wrap">
+    <div class="err-terminal">
+      <div class="err-bar">
+        <span class="terminal-dot t-red"></span>
+        <span class="terminal-dot t-yellow"></span>
+        <span class="terminal-dot t-green"></span>
+        <span class="terminal-title">bastien@portfolio:~/error</span>
+      </div>
+      <div class="err-body" id="err-body"><span class="err-prompt">bastien@portfolio:~$</span> <span class="err-cmd">cd <span id="err-path">/page-introuvable</span></span>
+<span class="err-error">bash: cd: la ressource demandée n'existe pas sur le réseau.</span>
+
+<span class="err-info">[ HTTP 404 ] Not Found</span>
+  ├─ Vérification du DNS......... <span class="err-success">OK</span>
+  ├─ Vérification de la route.... <span class="err-success">OK</span>
+  └─ Recherche du fichier........ <span class="err-error">ÉCHEC</span>
+
+<span class="err-info">→ Tentative de redirection vers /index.html dans <span class="err-countdown" id="err-cd">5</span>s...</span>
+<span style="opacity:.6">  (annule la redirection en cliquant sur le bouton ci-dessous)</span>
+      </div>
+    </div>
+    <div class="err-actions">
+      <a href="index.html" class="err-back" id="err-back">← Retour à l'accueil</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
+  </footer>
+  <script src="script.js"></script>
+  <script>
+  (function() {
+    var pathEl = document.getElementById('err-path');
+    if (pathEl) pathEl.textContent = window.location.pathname || '/page-introuvable';
+
+    var cd = 5;
+    var cdEl = document.getElementById('err-cd');
+    var cancelled = false;
+    document.getElementById('err-back').addEventListener('click', function(){ cancelled = true; });
+    document.getElementById('err-body').addEventListener('click', function(){ cancelled = true; if (cdEl) cdEl.textContent = 'annulée'; });
+
+    var interval = setInterval(function() {
+      if (cancelled) { clearInterval(interval); return; }
+      cd--;
+      if (cdEl) cdEl.textContent = cd;
+      if (cd <= 0) {
+        clearInterval(interval);
+        if (!cancelled) window.location.href = 'index.html';
+      }
+    }, 1000);
+  })();
+  </script>
+</body>
+</html>
