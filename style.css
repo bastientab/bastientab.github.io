@@ -278,7 +278,6 @@ nav a:hover {
 .profile-image {
   width: 200px;
   height: 200px;
-  border-radius: var(--r2);
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--border-mid);
@@ -1118,4 +1117,351 @@ body, nav, .section, .timeline-item, .skill-category, .skill-header,
 }
 [data-theme="dark"] .alternance-ticker span {
   color: #080810;
+}
+/* ============================================================
+   ===== HAMBURGER MENU MOBILE =====
+   ============================================================ */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r);
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  transition: border-color var(--tr), background var(--tr);
+}
+.nav-hamburger:hover {
+  border-color: var(--border-hot);
+  background: var(--cyan-dim);
+}
+.nav-hamburger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: transform .3s ease, opacity .25s ease, background var(--tr);
+}
+.nav-hamburger:hover span {
+  background: var(--cyan);
+}
+.nav-hamburger.is-open span:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+.nav-hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.is-open span:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: flex;
+  }
+  .nav-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 1.25rem;
+    gap: .5rem;
+  }
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--bg-1);
+    border-bottom: 1px solid var(--border);
+    padding: .75rem 1.25rem 1rem;
+    gap: .15rem;
+  }
+  nav ul.nav-open {
+    display: flex;
+    animation: navSlide .25s ease both;
+  }
+  nav ul li {
+    width: 100%;
+  }
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: .65rem .8rem;
+    font-size: .72rem;
+    text-align: left;
+  }
+  .theme-toggle {
+    margin-left: 0;
+  }
+}
+
+@keyframes navSlide {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   ===== TERMINAL INTERACTIF =====
+   ============================================================ */
+.inline-code {
+  background: var(--bg-3);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: .88em;
+  font-family: var(--font-mono);
+  color: var(--cyan);
+  border: 1px solid var(--border);
+}
+
+.terminal-container {
+  margin-top: 1.25rem;
+  background: #0d1117;
+  border: 1px solid var(--border-mid);
+  border-radius: var(--r2);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transition: border-color var(--tr), box-shadow var(--tr);
+}
+.terminal-container:hover {
+  border-color: var(--border-hot);
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+}
+
+.terminal-bar {
+  background: #161b22;
+  padding: .55rem .9rem;
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.terminal-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.t-red    { background: #ff5f57; }
+.t-yellow { background: #febc2e; }
+.t-green  { background: #28c840; }
+
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  color: #8b949e;
+  letter-spacing: .05em;
+  user-select: none;
+}
+
+.terminal-output {
+  padding: 1rem 1.1rem .5rem;
+  min-height: 220px;
+  max-height: 380px;
+  overflow-y: auto;
+  font-size: .82rem;
+  line-height: 1.55;
+  color: #c9d1d9;
+}
+
+.terminal-output::-webkit-scrollbar {
+  width: 6px;
+}
+.terminal-output::-webkit-scrollbar-track {
+  background: transparent;
+}
+.terminal-output::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,.12);
+  border-radius: 3px;
+}
+.terminal-output::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,.22);
+}
+
+.term-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: .15rem;
+}
+
+.term-prompt   { color: #00d4ff; font-weight: 500; }
+.term-cmd      { color: #f0a45f; font-weight: 500; }
+.term-success  { color: #56d364; }
+.term-error    { color: #ff7b72; }
+.term-info     { color: #79c0ff; }
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  padding: .35rem 1.1rem 1rem;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+
+.terminal-input-line .term-prompt {
+  font-size: .82rem;
+  flex-shrink: 0;
+}
+
+#term-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #c9d1d9;
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  caret-color: #00d4ff;
+  padding: 0;
+}
+
+#term-input::placeholder {
+  color: #484f58;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .terminal-output {
+    font-size: .72rem;
+    min-height: 180px;
+    max-height: 320px;
+    padding: .8rem .7rem .4rem;
+  }
+  .terminal-input-line {
+    padding: .3rem .7rem .8rem;
+  }
+  .terminal-input-line .term-prompt,
+  #term-input {
+    font-size: .72rem;
+  }
+}
+
+/* ============================================================
+   ===== CTA HERO (page d'accueil) =====
+   ============================================================ */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .9rem;
+  margin-top: var(--space-4);
+  animation: fadeUp .6s .4s ease both;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--cyan);
+  border: 1px solid var(--border-hot);
+}
+.btn-secondary:hover {
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 8px 28px rgba(0,212,255,.18);
+}
+
+@media (max-width: 480px) {
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn { text-align: center; }
+}
+
+/* ============================================================
+   ===== SECTION VEILLE TECHNOLOGIQUE (page À propos) =====
+   ============================================================ */
+.veille-section {
+  margin-top: var(--space-4);
+  padding: 1.6rem 1.65rem;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--cyan);
+  border-radius: var(--r2);
+  transition: border-color var(--tr);
+}
+.veille-section:hover {
+  border-color: var(--border-mid);
+  border-left-color: var(--cyan);
+}
+
+.veille-title {
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: .66rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: 0 0 .6rem;
+}
+
+.veille-intro {
+  font-size: .94rem;
+  color: var(--ink-mid);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+
+.veille-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .7rem;
+}
+
+.veille-card {
+  display: block;
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  position: relative;
+  transition: border-color var(--tr), transform var(--tr-l), background var(--tr);
+}
+.veille-card:hover {
+  border-color: var(--border-hot);
+  transform: translateY(-3px);
+  background: var(--bg-2);
+}
+
+.veille-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .58rem;
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border: 1px solid var(--border-hot);
+  padding: .14rem .5rem;
+  border-radius: 2px;
+  margin-bottom: .55rem;
+}
+
+.veille-card h4 {
+  color: var(--ink);
+  font-size: .9rem;
+  font-weight: 600;
+  margin-bottom: .3rem;
+  letter-spacing: -.005em;
+  transition: color var(--tr);
+}
+.veille-card:hover h4 {
+  color: var(--cyan);
+}
+
+.veille-card p {
+  color: var(--ink-mid);
+  font-size: .78rem;
+  line-height: 1.6;
+  margin: 0;
 }
