@@ -101,10 +101,7 @@ document.querySelectorAll('.timeline-item, .passion-card, .project-item, .skill-
   ].join('\n');
 
   console.log('%c' + ascii, styleTitle);
-  console.log('%cTu as ouvert la console ? Bien joué, ça sent le profil tech 👀', styleText);
-  console.log('%cLe code source de ce portfolio est dispo sur :\nhttps://github.com/bastientabordet', styleText);
   console.log('%c\n💡 Astuce : essaie le Konami code sur la page (↑↑↓↓←→←→BA)', styleHint);
-  console.log('%c💡 Astuce : sur la page projets, tape "sudo hire-me" dans le terminal\n', styleHint);
 })();
 
 // ===== KONAMI CODE -> MATRIX RAIN =====
