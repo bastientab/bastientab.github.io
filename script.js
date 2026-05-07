@@ -101,7 +101,7 @@ document.querySelectorAll('.timeline-item, .passion-card, .project-item, .skill-
   ].join('\n');
 
   console.log('%c' + ascii, styleTitle);
-  console.log('%c\n💡 Astuce : essaie le Konami code sur la page (↑↑↓↓←→←→BA)', styleHint);
+  console.log('%c\n💡 Astuce : ↑↑↓↓←→←→BA', styleHint);
 })();
 
 // ===== KONAMI CODE -> MATRIX RAIN =====
