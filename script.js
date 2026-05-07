@@ -84,18 +84,23 @@ document.querySelectorAll('.timeline-item, .passion-card, .project-item, .skill-
 });
 
 // ===== CONSOLE F12 EASTER EGG =====
+// ===== CONSOLE F12 EASTER EGG =====
 (function () {
-  var styleTitle = 'color:#00d4ff;font-size:22px;font-weight:bold;font-family:monospace;';
+  var styleTitle = 'color:#00d4ff;font-size:18px;font-weight:bold;font-family:monospace;line-height:1.2;';
   var styleText  = 'color:#56d364;font-size:13px;font-family:monospace;line-height:1.5;';
   var styleHint  = 'color:#f0a45f;font-size:12px;font-family:monospace;';
 
-  console.log('%c\n' +
-    '  ____            _   _              _____  \n' +
-    ' | __ )  __ _ ___| |_(_) ___ _ __   |_   _| \n' +
-    " |  _ \\ / _` / __| __| |/ _ \\ '_ \\    | |   \n" +
-    ' | |_) | (_| \\__ \\ |_| |  __/ | | |   | |   \n' +
-    ' |____/ \\__,_|___/\\__|_|\\___|_| |_|   |_|   \n', styleTitle);
+  var ascii = [
+    '',
+    '  ____               _    _                  _____ ',
+    ' | __ )   __ _  ___ | |_ (_)  ___  _ __     |_   _|',
+    " |  _ \\  / _` |/ __|| __|| | / _ \\| '_ \\      | |  ",
+    ' | |_) || (_| |\\__ \\| |_ | ||  __/| | | |     | |  ',
+    ' |____/  \\__,_||___/ \\__||_| \\___||_| |_|     |_|  ',
+    ''
+  ].join('\n');
 
+  console.log('%c' + ascii, styleTitle);
   console.log('%cTu as ouvert la console ? Bien joué, ça sent le profil tech 👀', styleText);
   console.log('%cLe code source de ce portfolio est dispo sur :\nhttps://github.com/bastientabordet', styleText);
   console.log('%c\n💡 Astuce : essaie le Konami code sur la page (↑↑↓↓←→←→BA)', styleHint);
