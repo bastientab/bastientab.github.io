@@ -132,7 +132,7 @@ document.querySelectorAll('.timeline-item, .passion-card, .project-item, .skill-
 
     var msg = document.createElement('div');
     msg.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;color:#00ff7f;font-family:"DM Mono",monospace;font-size:1.1rem;text-align:center;background:rgba(0,0,0,.85);padding:1.5rem 2rem;border:1px solid #00ff7f;border-radius:6px;box-shadow:0 0 30px rgba(0,255,127,.4);';
-    msg.innerHTML = '<div style="font-size:.7rem;letter-spacing:.2em;opacity:.7;margin-bottom:.5rem;">[ KONAMI CODE DETECTED ]</div>Wake up, Bastien...<br>The Matrix has you.<br><br><span style="font-size:.75rem;opacity:.6;">Appuie sur Échap pour sortir</span>';
+    msg.innerHTML = '<div style="font-size:.7rem;letter-spacing:.2em;opacity:.7;margin-bottom:.5rem;">[ CODE DETECTED ]</div>Bienvenue...<br>dans le système.<br><br><span style="font-size:.75rem;opacity:.6;">Appuie sur Échap pour sortir</span>';
     document.body.appendChild(msg);
 
     var ctx = canvas.getContext('2d');
