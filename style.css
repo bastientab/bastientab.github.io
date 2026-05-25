@@ -275,18 +275,31 @@ nav a:hover {
   50% { opacity: 0; }
 }
 
-.profile-image {
+.profile-image-wrapper {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   border: 1px solid var(--border-mid);
   margin: 0 auto var(--space-4);
-  display: block;
-  animation: fadeUp .6s .2s ease both;
-  transition: transform var(--tr-l), border-color var(--tr), box-shadow var(--tr-l), filter var(--tr-l);
   box-shadow: 0 0 0 5px rgba(0,212,255,.05);
+  animation: fadeUp .6s .2s ease both;
+  transition: border-color var(--tr), box-shadow var(--tr-l);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 50%;
+  transform: scale(2);
   filter: grayscale(25%);
+  transition: transform var(--tr-l), filter var(--tr-l);
+}
+
+.profile-image-wrapper:hover .profile-image {
+  transform: scale(1.4);
+  filter: grayscale(0);
 }
 .profile-image:hover {
   transform: scale(1.05);
