@@ -23,7 +23,7 @@
 <body>
   <div class="alternance-banner" aria-label="Disponibilité alternance">
     <div class="alternance-ticker">
-      <span>Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT</span>
+      <!-- <span>Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT</span> -->
     </div>
   </div>
   <nav>
@@ -53,22 +53,33 @@
       <h2>Mes projets</h2>
       <div class="project-item">
         <div class="project-header" onclick="toggleProject(this)">
-          <img src="images/logocyber.jpg" alt="Projet cybersécurité" class="project-preview-image">
+          <img src="images/logocyber.jpg" alt="Projet SAE23 CyberSkills" class="project-preview-image">
           <div class="project-header-text">
-            <h3>Se sensibiliser à l'hygiène informatique et à la cybersécurité</h3>
+            <h3>Mettre en place une solution informatique pour l'entreprise</h3>
             <span class="project-type">Projet BUT1</span>
-            <p>Recherche et présentation sur les techniques d'attaques en cybersécurité</p>
+            <p>Plateforme web de gestion des compétences en cybersécurité (PHP / MySQL)</p>
           </div>
           <span class="skill-icon">▼</span>
         </div>
         <div class="project-content">
-          <p><strong>Contexte :</strong> Projet académique (Situation d'Apprentissage et d'Évaluation)</p>
+          <p><strong>Contexte :</strong> Projet académique </p>
           <p><strong>Objectif :</strong></p>
-          <p>L'objectif était de s'informer pour notre groupe sur les différentes techniques d'attaques existantes dans le domaine de la cybersécurité.</p>
+          <p>Développer une application web complète permettant de répertorier, suivre et valider les compétences en cybersécurité des utilisateurs, à destination d'administrateurs, de formateurs et d'étudiants.</p>
           <p><strong>Travail réalisé :</strong></p>
-          <p>Avec un camarade, nous avons cherché des informations sur les différentes méthodes d'attaques à l'aide du site de l'<a href="https://cyber.gouv.fr/" target="_blank">ANSSI</a>, puis nous avons réalisé une présentation et un document récapitulatif.</p>
+          <p>J'ai conçu et développé de A à Z une plateforme PHP/MySQL nommée <strong>CyberSkills</strong>, structurée autour d'une architecture claire (séparation config, includes, pages, uploads). Le projet couvre l'ensemble du cycle de développement :</p>
+          <ul>
+            <li>Analyse du besoin et rédaction du cahier des charges</li>
+            <li>Modélisation de la base de données (MCD, MLD) et création des tables SQL avec contraintes et clés étrangères</li>
+            <li>Authentification sécurisée avec hachage des mots de passe (<code class="inline-code">password_hash()</code>) et gestion des sessions</li>
+            <li>Gestion des rôles et contrôle d'accès par page</li>
+            <li>Tableaux de bord dynamiques avec statistiques et graphiques Chart.js</li>
+            <li>Système de questions/réponses entre étudiants et formateurs</li>
+            <li>Interface d'administration (validation de comptes, réinitialisation de mots de passe)</li>
+            <li>Requêtes préparées PDO tout au long du projet pour prévenir les injections SQL</li>
+          </ul>
+          <br>
           <p><strong>Résultat :</strong></p>
-          <p>Ce projet m'a permis de mieux comprendre les enjeux de la cybersécurité et de me sensibiliser aux bonnes pratiques en matière d'hygiène informatique grâce aux présentations des autres groupes qui réalisaient aussi ce projet.</p>
+          <p>Un projet fonctionnel couvrant 20 volets pédagogiques, de l'analyse à la sécurisation, défendu à l'oral. Ce projet m'a permis de consolider mes compétences en développement web full-stack et d'appréhender les bonnes pratiques de sécurité applicative.</p>
         </div>
       </div>
       <div class="project-item">
@@ -101,7 +112,7 @@
           <span class="skill-icon">▼</span>
         </div>
         <div class="project-content">
-          <p><strong>Contexte :</strong> Projet académique (Situation d'Apprentissage et d'Évaluation)</p>
+          <p><strong>Contexte :</strong> Projet académique </p>
           <p><strong>Objectif :</strong></p>
           <p>L'objectif était de créer un portfolio professionnel pour présenter mes compétences, projets, ma formation ainsi que mes centres d'intérêts.</p>
           <p><strong>Travail réalisé :</strong></p>
@@ -158,7 +169,7 @@
           <span class="skill-icon">▼</span>
         </div>
         <div class="project-content">
-          <p><strong>Contexte :</strong> Projet académique (Situation d'Apprentissage et d'Évaluation)</p>
+          <p><strong>Contexte :</strong> Projet académique </p>
           <p><strong>Objectif :</strong></p>
           <p>L'objectif était de découvrir l'environnement de programmation Matlab et de réaliser un projet de configuration de signaux ainsi que leur représentation pour appliquer les notions apprises.</p>
           <p><strong>Travail réalisé :</strong></p>
