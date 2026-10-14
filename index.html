@@ -1,73 +1,640 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio — Bastien TABORDET</title>
-  <meta name="description" content="Portfolio de Bastien TABORDET, étudiant en BUT Réseaux & Télécommunications à l'IUT de Clermont-Ferrand. Recherche une alternance dès 2026 en réseaux et cybersécurité.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bastien Tabordet — Réseaux, télécoms &amp; cybersécurité · Alternance dès octobre 2026</title>
+  <meta name="description" content="Portfolio de Bastien Tabordet, 20 ans, étudiant en 2e année de BUT Réseaux &amp; Télécommunications à l'IUT de Clermont-Ferrand. Recherche une alternance en informatique, réseaux et cybersécurité dès octobre 2026.">
+  <meta name="author" content="Bastien Tabordet">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/">
+
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Bastien TABORDET — Portfolio">
-  <meta property="og:description" content="Portfolio de Bastien TABORDET, étudiant en BUT Réseaux & Télécommunications. Recherche une alternance dès 2026.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Bastien Tabordet">
+  <meta property="og:title" content="Bastien Tabordet — Réseaux, télécoms &amp; cybersécurité">
+  <meta property="og:description" content="Étudiant en BUT Réseaux &amp; Télécommunications à Clermont-Ferrand, je recherche une alternance dès octobre 2026.">
   <meta property="og:url" content="https://bastientabordet.fr/">
-  <meta property="og:image" content="https://bastientabordet.fr/images/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="style.css">
+  <meta property="og:image" content="https://bastientabordet.fr/images/imagepdp.jpg">
+  <meta name="twitter:card" content="summary">
+
   <script>
-  (function(){
-    var t = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', t);
-  })();
-</script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/main.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Bastien Tabordet",
+    "url": "https://bastientabordet.fr/",
+    "image": "https://bastientabordet.fr/images/imagepdp.jpg",
+    "jobTitle": "Étudiant en BUT Réseaux & Télécommunications",
+    "email": "mailto:bastien.tabordet@etu.uca.fr",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "IUT de Clermont-Ferrand" },
+    "sameAs": ["https://www.linkedin.com/in/bastientabordet/", "https://github.com/bastientab"]
+  }
+  </script>
 </head>
-<body>
-  <div class="alternance-banner" aria-label="Disponibilité alternance">
-    <div class="alternance-ticker">
-      <!-- <span>Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;●&nbsp;&nbsp; Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT</span> -->
-    </div>
-  </div>
-  <nav>
-    <div class="nav-content">
-      <div class="nav-brand">Bastien TABORDET</div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
-      <ul>
-        <li><a href="index">Accueil</a></li>
-        <li><a href="a-propos">À propos</a></li>
-        <li><a href="formation">Formation</a></li>
-        <li><a href="competences">Compétences</a></li>
-        <li><a href="projets">Projets</a></li>
-        <li><a href="divers">Divers</a></li>
-        <li><a href="cv">CV</a></li>
-        <li><a href="contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer le thème">
-  <span class="theme-toggle-track">
-    <span class="theme-toggle-thumb"></span>
-  </span>
-  <span class="theme-toggle-label">☀</span>
-</button>
-    </div>
-  </nav>
-  <div class="container">
-    <div class="hero-section">
-      <h1 class="hero-title">Bastien TABORDET</h1>
-      <p class="hero-subtitle">Étudiant en BUT Réseaux & Télécommunications</p>
-      
-      <div class="profile-image-wrapper">
-        <img src="images/imagepdp.jpg" alt="Photo de Bastien TABORDET" class="profile-image">
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <!-- ===================== En-tête ===================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">Bastien Tabordet</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a href="#formation">Formation</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#divers">Divers</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-    <div class="section">
-        <h2 class="center">Bienvenue sur mon portfolio !</h2>
-      <p class="index-welcome">
-        Pour découvrir mon parcours, mes compétences et mes projets, n'hésitez pas à naviguer à travers les différentes sections du site.
-        <br><br>
-        Pour toutes informations supplémentaires, vous pouvez me contacter via la page <a href="contact">Contact</a>.
-      </p>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+
+    <!-- ===================== À propos ===================== -->
+    <section id="a-propos" aria-labelledby="hero-title">
+      <div class="hero">
+        <svg id="hero-net" class="hero-net" aria-hidden="true" focusable="false"></svg>
+        <div class="hero-inner container">
+          <p class="chip rise" style="--d:0"><span class="dot" aria-hidden="true"></span>Recherche une alternance dès octobre 2026</p>
+          <h1 class="hero-title rise" id="hero-title" style="--d:1">Bastien Tabordet</h1>
+          <p class="hero-tagline rise" style="--d:2">Comprendre les réseaux. <span class="gradient-text">Construire des solutions.</span></p>
+          <p class="hero-sub rise" style="--d:3">Étudiant en 2<sup>e</sup> année de BUT Réseaux &amp; Télécommunications · IUT de Clermont-Ferrand</p>
+          <div class="hero-cta rise" style="--d:4">
+            <a class="btn btn-primary" href="#cv">Voir mon CV</a>
+            <a class="btn btn-ghost" href="#manifeste">Me découvrir</a>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#manifeste" aria-label="Faire défiler jusqu'à la présentation"></a>
+      </div>
+
+      <div class="manifesto" id="manifeste">
+        <div class="container">
+          <p class="manifesto-text">
+            <span class="sr-only">J'ai 20 ans, je viens du Loiret et j'étudie à Clermont-Ferrand. Ce qui m'anime : comprendre comment les données circulent, configurer les équipements qui les transportent et apprendre à les protéger. Prochaine étape : une alternance en réseaux et cybersécurité.</span>
+            <span aria-hidden="true" data-split>J'ai 20 ans, je viens du Loiret et j'étudie à Clermont-Ferrand. Ce qui m'anime : <span class="hl">comprendre</span> comment les données circulent, <span class="hl">configurer</span> les équipements qui les transportent et apprendre à les <span class="hl">protéger.</span> Prochaine étape : une alternance en réseaux et cybersécurité.</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2 class="sr-only">À propos de moi</h2>
+        <div class="bento">
+          <article class="card b-profile" data-reveal>
+            <div class="avatar"><img src="images/imagepdp.jpg" alt="Photo de Bastien Tabordet" decoding="async"></div>
+            <h3>Bastien Tabordet</h3>
+            <p>Étudiant en réseaux &amp; télécoms</p>
+            <ul class="facts">
+              <li><span>Âge</span><strong>20 ans</strong></li>
+              <li><span>Origine</span><strong>Loiret (45)</strong></li>
+              <li><span>Études</span><strong>Clermont-Ferrand (63)</strong></li>
+            </ul>
+          </article>
+
+          <article class="card b-formation" data-reveal data-reveal-delay="1">
+            <span class="kicker">Aujourd'hui</span>
+            <h3>En 2<sup>e</sup> année de BUT Réseaux &amp; Télécommunications à l'IUT de Clermont-Ferrand.</h3>
+            <p>Une formation très concrète : je travaille sur du matériel professionnel (routeurs, switchs, pare-feux, téléphonie IP) et j'apprends à concevoir, configurer et sécuriser de vrais réseaux.</p>
+            <ul class="tags">
+              <li>Réseaux</li><li>Télécoms</li><li>Systèmes</li><li>Cybersécurité</li>
+            </ul>
+          </article>
+
+          <article class="card b-recherche" data-reveal>
+            <span class="kicker">Je recherche une alternance</span>
+            <span class="big-num">Oct. 2026</span>
+            <p>À partir d'octobre 2026, dans l'informatique, les réseaux ou la cybersécurité.</p>
+            <div class="rhythm">
+              <div><strong>1 mois</strong><span>en entreprise</span></div>
+              <div><strong>1 mois</strong><span>à l'IUT</span></div>
+            </div>
+            <ul class="tags">
+              <li>Informatique</li><li>Réseaux</li><li>Cybersécurité</li>
+            </ul>
+          </article>
+
+          <article class="card b-qualites" data-reveal data-reveal-delay="1">
+            <span class="kicker">Ma façon de travailler</span>
+            <h3>Rigoureux et curieux.</h3>
+            <p>Attentif aux détails, organisé, et toujours partant pour comprendre comment les choses fonctionnent.</p>
+            <ul class="tags">
+              <li>Rigueur</li><li>Curiosité</li><li>Esprit d'équipe</li>
+            </ul>
+          </article>
+
+          <article class="card b-ambition" data-reveal>
+            <span class="kicker">Et après ?</span>
+            <h3>Intégrer une école d'ingénieurs en cybersécurité.</h3>
+            <p>Le BUT me donne des bases solides sur les infrastructures ; l'alternance me permettra de les mettre en pratique en entreprise. Mon objectif ensuite : poursuivre en école d'ingénieurs, spécialité cybersécurité.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Formation ===================== -->
+    <section id="formation" class="section" aria-labelledby="formation-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Formation</p>
+          <h2 class="section-title" id="formation-title">Un parcours tourné vers la technique.</h2>
+          <p class="section-lead">Du bac scientifique à l'IUT, en passant par une prépa d'ingénieurs : chaque étape m'a rapproché des réseaux.</p>
+        </div>
+
+        <div class="timeline" id="timeline">
+          <div class="timeline-track" aria-hidden="true"><div class="timeline-fill"></div></div>
+
+          <div class="tl-item is-current">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="card tl-card" data-reveal>
+              <img class="tl-logo" src="images/logoiut.png" alt="Logo de l'IUT de Clermont-Ferrand" loading="lazy" decoding="async">
+              <div>
+                <div class="tl-meta"><span class="tl-date">2025 – 2028</span><span class="badge">En cours · 2<sup>e</sup> année</span></div>
+                <h3>BUT Réseaux &amp; Télécommunications</h3>
+                <p class="tl-place">IUT — Clermont-Ferrand (63)</p>
+                <p>Formation en trois ans basée sur les infrastructures réseau, la cybersécurité, les télécommunications et l'administration système. Acquisition de compétences techniques et professionnelles à travers des projets pratiques et des stages en entreprise ou une alternance.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="card tl-card" data-reveal>
+              <img class="tl-logo" src="images/logoisima.png" alt="Logo de l'ISIMA" loading="lazy" decoding="async">
+              <div>
+                <div class="tl-meta"><span class="tl-date">2024 – 2025</span></div>
+                <h3>Classe préparatoire intégrée à l'école d'ingénieurs ISIMA</h3>
+                <p class="tl-place">ISIMA — Clermont-Ferrand (63)</p>
+                <p>Préparation à l'école d'ingénieurs ISIMA, en suivant les cours de licence maths-informatique et des modules dédiés à l'ISIMA.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="card tl-card" data-reveal>
+              <img class="tl-logo" src="images/logobernardpalissy.webp" alt="Logo du lycée Bernard Palissy" loading="lazy" decoding="async">
+              <div>
+                <div class="tl-meta"><span class="tl-date">2022 – 2024</span><span class="badge">Mention assez bien</span></div>
+                <h3>Baccalauréat général, section européenne</h3>
+                <p class="tl-place">Lycée Bernard Palissy — Gien (45)</p>
+                <p>Obtention du baccalauréat avec mention assez bien.</p>
+                <ul>
+                  <li><strong>Spécialités :</strong> Mathématiques, Physique-Chimie et Sciences de l'Ingénieur.</li>
+                  <li><strong>Section européenne :</strong> cours d'anglais ainsi que de mathématiques, sciences économiques &amp; sociales et management, en anglais.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Compétences ===================== -->
+    <section id="competences" class="section" aria-labelledby="competences-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Compétences</p>
+          <h2 class="section-title" id="competences-title">Sept domaines, une même logique.</h2>
+          <p class="section-lead">Du signal jusqu'au code : ce que j'ai appris et pratiqué en cours, en projets et par curiosité.</p>
+        </div>
+
+        <div class="skills" id="skills">
+          <div class="skills-visual" aria-hidden="true">
+            <svg class="orbit" viewBox="0 0 400 400" focusable="false">
+              <circle class="orbit-ring" cx="200" cy="200" r="150"/>
+              <line class="orbit-spoke" x1="200" y1="200" x2="200" y2="50"/>
+              <line class="orbit-spoke" x1="200" y1="200" x2="317.3" y2="106.5"/>
+              <line class="orbit-spoke" x1="200" y1="200" x2="346.2" y2="233.4"/>
+              <line class="orbit-spoke" x1="200" y1="200" x2="265.1" y2="335.1"/>
+              <line class="orbit-spoke" x1="200" y1="200" x2="134.9" y2="335.1"/>
+              <line class="orbit-spoke" x1="200" y1="200" x2="53.8" y2="233.4"/>
+              <line class="orbit-spoke" x1="200" y1="200" x2="82.7" y2="106.5"/>
+              <circle class="orbit-core" cx="200" cy="200" r="78"/>
+              <g class="orbit-node"><circle cx="200" cy="50" r="26"/><text x="200" y="50" text-anchor="middle" dominant-baseline="central">01</text></g>
+              <g class="orbit-node"><circle cx="317.3" cy="106.5" r="26"/><text x="317.3" y="106.5" text-anchor="middle" dominant-baseline="central">02</text></g>
+              <g class="orbit-node"><circle cx="346.2" cy="233.4" r="26"/><text x="346.2" y="233.4" text-anchor="middle" dominant-baseline="central">03</text></g>
+              <g class="orbit-node"><circle cx="265.1" cy="335.1" r="26"/><text x="265.1" y="335.1" text-anchor="middle" dominant-baseline="central">04</text></g>
+              <g class="orbit-node"><circle cx="134.9" cy="335.1" r="26"/><text x="134.9" y="335.1" text-anchor="middle" dominant-baseline="central">05</text></g>
+              <g class="orbit-node"><circle cx="53.8" cy="233.4" r="26"/><text x="53.8" y="233.4" text-anchor="middle" dominant-baseline="central">06</text></g>
+              <g class="orbit-node"><circle cx="82.7" cy="106.5" r="26"/><text x="82.7" y="106.5" text-anchor="middle" dominant-baseline="central">07</text></g>
+            </svg>
+            <div class="orbit-center">
+              <span class="orbit-count" id="orbit-count">01 / 07</span>
+              <span class="orbit-label" id="orbit-label">Réseaux</span>
+            </div>
+          </div>
+
+          <div class="skills-list">
+            <div class="skill-group" data-label="Réseaux">
+              <h3><span class="num">01</span>Réseaux</h3>
+              <ul class="skill-list">
+                <li><img src="images/logocisco.svg" alt="" loading="lazy" decoding="async"><div><strong>Cisco Packet Tracer</strong><p>Simulation et conception de réseaux, test de configurations avant déploiement en environnement réel.</p></div></li>
+                <li><img src="images/logoswitch.jpg" alt="" loading="lazy" decoding="async"><div><strong>Switchs &amp; points d'accès Wi-Fi</strong><p>Configuration pratique d'équipements réseau professionnels.</p></div></li>
+                <li><img src="images/logowireshark.png" alt="" loading="lazy" decoding="async"><div><strong>Wireshark</strong><p>Analyse de trames réseau.</p></div></li>
+                <li><img src="images/logohttp.avif" alt="" loading="lazy" decoding="async"><div><strong>Protocoles (HTTP, DNS, DHCP)</strong><p>Compréhension des protocoles réseau essentiels et de leur fonctionnement.</p></div></li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-label="Télécommunications">
+              <h3><span class="num">02</span>Télécommunications</h3>
+              <ul class="skill-list">
+                <li><img src="images/logomatlab.png" alt="" loading="lazy" decoding="async"><div><strong>Théorie et analyse des signaux</strong><p>Analyse temporelle et fréquentielle (séries et transformée de Fourier) et traitement numérique (théorème de Shannon). Application sur Matlab pour l'étude de signaux (PWM, méthode de Monte-Carlo, projets SAE22).</p></div></li>
+                <li><img src="images/logooscilloscope.png" alt="" loading="lazy" decoding="async"><div><strong>Mesures et analyse spectrale</strong><p>Utilisation experte d'analyseurs de spectre et d'oscilloscopes (fonctions FFT). Paramétrage avancé (SPAN, RBW, VBW), exploitation des spectres (OBW, DSP) et mesure de la qualité de réception (SNR).</p></div></li>
+                <li><img src="images/logobilandeliaison.svg" alt="" loading="lazy" decoding="async"><div><strong>Ingénierie des systèmes de transmission</strong><p>Réalisation de bilans de liaison, modélisation mathématique et hypsogrammes. Manipulation des échelles logarithmiques (dB, dBm) et analyse des circuits et réseaux linéaires (lois de Kirchhoff, régimes transitoires).</p></div></li>
+                <li><img src="images/logodiagrammebode.jpg" alt="" loading="lazy" decoding="async"><div><strong>Filtrage et conditionnement de signal</strong><p>Caractérisation de filtres (passe-bas, passe-haut, passe-bande et réjecteur) et construction de diagrammes de Bode en module et en phase.</p></div></li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-label="Téléphonie">
+              <h3><span class="num">03</span>Téléphonie</h3>
+              <ul class="skill-list">
+                <li><img src="images/logotelip.avif" alt="" loading="lazy" decoding="async"><div><strong>Mise en place d'équipements</strong><p>Mise en place de téléphones de bureau, adaptateurs ATA, bornes DECT et softphones.</p></div></li>
+                <li><img src="images/logoxivo.jpg" alt="" loading="lazy" decoding="async"><div><strong>Configuration de services</strong><p>Configuration de lignes SDA, conférences, groupes d'appels, messagerie Zimbra.</p></div></li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-label="Systèmes &amp; administration">
+              <h3><span class="num">04</span>Systèmes &amp; administration</h3>
+              <ul class="skill-list">
+                <li><img src="images/logowindows.png" alt="" loading="lazy" decoding="async"><div><strong>Différents OS (Windows, Linux)</strong><p>Administration et configuration de systèmes Windows et Linux, gestion des utilisateurs et des permissions.</p></div></li>
+                <li><img src="images/logobash.png" alt="" loading="lazy" decoding="async"><div><strong>Bash &amp; écriture de scripts Shell</strong><p>Automatisation de tâches répétitives et création de scripts pour l'administration système.</p></div></li>
+                <li><img src="images/logovmware.png" alt="" loading="lazy" decoding="async"><div><strong>Virtualisation (VirtualBox &amp; VMware)</strong><p>Création et gestion d'environnements virtualisés pour les tests et le développement.</p></div></li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-label="Développement">
+              <h3><span class="num">05</span>Développement &amp; langages de programmation</h3>
+              <ul class="skill-list">
+                <li><img src="images/logopython.png" alt="" loading="lazy" decoding="async"><div><strong>Python</strong><p>Développement de scripts d'automatisation réseau et d'outils d'analyse de données.</p></div></li>
+                <li><img src="images/logohtmlcss.jpg" alt="" loading="lazy" decoding="async"><div><strong>HTML / CSS</strong><p>Création de sites web statiques et interfaces utilisateur responsive. <a href="#portfolio">→ Voir le projet : création du portfolio</a></p></div></li>
+                <li><img src="images/logosql.png" alt="" loading="lazy" decoding="async"><div><strong>SQL</strong><p>Manipulation et interrogation de bases de données relationnelles.</p></div></li>
+                <li><img src="images/logoc.png" alt="" loading="lazy" decoding="async"><div><strong>C</strong><p>Programmation système et compréhension des concepts bas niveau.</p></div></li>
+                <li><img src="images/logogit.png" alt="" loading="lazy" decoding="async"><div><strong>Git</strong><p>Gestion de versions et collaboration sur des projets de développement.</p></div></li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-label="Langues">
+              <h3><span class="num">06</span>Langues</h3>
+              <ul class="skill-list">
+                <li><img src="images/drapeauru.webp" alt="" loading="lazy" decoding="async"><div><strong>Anglais — niveau B2</strong><p>Capacité à lire la documentation technique en anglais et à échanger dans un contexte professionnel international.</p></div></li>
+                <li><img src="images/drapeaues.webp" alt="" loading="lazy" decoding="async"><div><strong>Espagnol — niveau B1</strong><p>Compréhension orale et écrite en espagnol.</p></div></li>
+                <li><img src="images/drapeauit.webp" alt="" loading="lazy" decoding="async"><div><strong>Italien — en cours d'apprentissage</strong><p>Apprentissage actuel de l'italien pour élargir mes compétences linguistiques.</p></div></li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-label="Qualités personnelles">
+              <h3><span class="num">07</span>Qualités personnelles</h3>
+              <ul class="skill-list">
+                <li><img src="images/logocuriosite.png" alt="" loading="lazy" decoding="async"><div><strong>Curiosité</strong><p>J'essaye d'être toujours à l'affût des nouvelles technologies et innovations dans le domaine de l'informatique. J'aime explorer, comprendre et apprendre de nouveaux concepts.</p></div></li>
+                <li><img src="images/logoespritdequipe.png" alt="" loading="lazy" decoding="async"><div><strong>Esprit d'équipe</strong><p>Je suis capable de collaborer efficacement sur des projets de groupe, partager mes connaissances et m'adapter à l'équipe pour atteindre des objectifs précis. J'ai pu développer cette qualité lors de projets académiques mais surtout au niveau de la gestion d'entreprise, d'équipes d'intervention dans un jeu vidéo.</p></div></li>
+                <li><img src="images/logorigueur.png" alt="" loading="lazy" decoding="async"><div><strong>Rigueur et organisation</strong><p>J'essaye de faire attention aux détails et je structure ma manière de travailler, ce qui peut être très utile dans la configuration réseau et la résolution de problèmes techniques.</p></div></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Projets ===================== -->
+    <section id="projets" class="section" aria-labelledby="projets-title">
+      <div class="container">
+        <div class="feature-head" data-reveal>
+          <p class="eyebrow">Projets · Projet phare (BUT1 · SAÉ 23)</p>
+          <h2 class="section-title" id="projets-title">CyberSkills.</h2>
+          <p class="section-lead">Mettre en place une solution informatique pour l'entreprise : une plateforme web de gestion des compétences en cybersécurité (PHP / MySQL).</p>
+        </div>
+
+        <div class="feature" id="feature">
+          <div class="feature-visual" aria-hidden="true">
+            <div class="fv-layer is-active"><img src="images/logocyber.jpg" alt="" loading="lazy" decoding="async"></div>
+            <div class="fv-layer">
+              <div class="stack-panel">
+                <div class="stack-bar"><i></i><i></i><i></i></div>
+                <ul class="stack-tree">
+                  <li>config/</li>
+                  <li>includes/</li>
+                  <li>pages/</li>
+                  <li>uploads/</li>
+                </ul>
+                <div class="stack-chips">
+                  <span>password_hash()</span><span>requêtes préparées PDO</span><span>Chart.js</span><span>MySQL</span>
+                </div>
+              </div>
+            </div>
+            <div class="fv-layer contain"><img src="images/logosae23.png" alt="" loading="lazy" decoding="async"></div>
+            <div class="fv-dots"><i class="is-active"></i><i></i><i></i></div>
+          </div>
+
+          <div class="feature-steps">
+            <div class="f-step">
+              <span class="num">01 — Le besoin</span>
+              <h3>Répertorier, suivre et valider des compétences.</h3>
+              <p>Objectif : développer une application web complète permettant de répertorier, suivre et valider les compétences en cybersécurité des utilisateurs, à destination d'administrateurs, de formateurs et d'étudiants.</p>
+              <ul>
+                <li>Analyse du besoin et rédaction du cahier des charges</li>
+                <li>Modélisation de la base de données (MCD, MLD) et création des tables SQL avec contraintes et clés étrangères</li>
+              </ul>
+            </div>
+            <div class="f-step">
+              <span class="num">02 — L'architecture</span>
+              <h3>Une plateforme PHP / MySQL conçue de A à Z.</h3>
+              <p>J'ai conçu et développé de A à Z une plateforme PHP/MySQL nommée CyberSkills, structurée autour d'une architecture claire (séparation config, includes, pages, uploads).</p>
+              <ul>
+                <li>Gestion des rôles et contrôle d'accès par page</li>
+                <li>Tableaux de bord dynamiques avec statistiques et graphiques Chart.js</li>
+                <li>Système de questions/réponses entre étudiants et formateurs</li>
+                <li>Interface d'administration (validation de comptes, réinitialisation de mots de passe)</li>
+              </ul>
+            </div>
+            <div class="f-step">
+              <span class="num">03 — La sécurité &amp; le résultat</span>
+              <h3>Sécurisée dès la conception.</h3>
+              <ul>
+                <li>Authentification sécurisée avec hachage des mots de passe (<code>password_hash()</code>) et gestion des sessions</li>
+                <li>Requêtes préparées PDO tout au long du projet pour prévenir les injections SQL</li>
+              </ul>
+              <p>Résultat : un site fonctionnel qui couvre 20 volets pédagogiques, de l'analyse à la sécurisation. Ce projet m'a permis de consolider mes compétences en développement web full-stack et d'appréhender les bonnes pratiques de sécurité applicative.</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="eyebrow" data-reveal>Autres projets</h2>
+        <div class="cards">
+          <article class="card p-card card-hover" data-reveal>
+            <img class="p-logo" src="images/logocodingame.png" alt="" loading="lazy" decoding="async">
+            <span class="kicker">Projet personnel</span>
+            <h3>CodinGame</h3>
+            <p>Développement et énigmes mathématiques/logiques.</p>
+            <details>
+              <summary>En savoir plus</summary>
+              <div>
+                <p>Exercices réalisés sur la plateforme CodinGame. Objectif : résoudre des problèmes algorithmiques, comme le Ghostleg, et développer ma logique de programmation.</p>
+                <p>Pour en savoir plus, rendez-vous sur mon précédent site, catégorie CodinGame.</p>
+              </div>
+            </details>
+            <div class="p-links">
+              <a class="btn btn-ghost btn-sm" href="https://www.codingame.com" target="_blank" rel="noopener">CodinGame</a>
+              <a class="btn btn-ghost btn-sm" href="https://perso.isima.fr/~batabordet/dev.html" target="_blank" rel="noopener">Précédent site</a>
+            </div>
+          </article>
+
+          <article class="card p-card card-hover" id="portfolio" data-reveal data-reveal-delay="1">
+            <img class="p-logo" src="images/logoportfolio.webp" alt="" loading="lazy" decoding="async">
+            <span class="kicker">Projet BUT1</span>
+            <h3>Portfolio</h3>
+            <p>Réalisation d'un site web professionnel.</p>
+            <details>
+              <summary>En savoir plus</summary>
+              <div>
+                <p>Objectif : présenter mes compétences, mes projets, ma formation et mes centres d'intérêt. Réalisé en HTML/CSS avec l'aide de W3Schools, surtout pour le CSS, en couvrant toutes les catégories du cahier des charges.</p>
+                <p>Refonte 2026 : passage à une page unique animée au défilement (GSAP / ScrollTrigger), thème clair/sombre et accessibilité renforcée.</p>
+              </div>
+            </details>
+            <div class="p-links">
+              <a class="btn btn-ghost btn-sm" href="https://github.com/bastientab" target="_blank" rel="noopener">GitHub</a>
+              <a class="btn btn-ghost btn-sm" href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a>
+            </div>
+          </article>
+
+          <article class="card p-card card-hover" data-reveal data-reveal-delay="2">
+            <img class="p-logo" src="images/logomatlab.png" alt="" loading="lazy" decoding="async">
+            <span class="kicker">Projet BUT1</span>
+            <h3>Initiation Matlab</h3>
+            <p>Découverte de l'environnement de programmation Matlab.</p>
+            <details>
+              <summary>En savoir plus</summary>
+              <div>
+                <p>Objectif : configurer des signaux sinusoïdal, carré et triangulaire, puis les représenter graphiquement, en utilisant des scripts, des fonctions intégrées et des graphiques.</p>
+                <p>Résultat : projet réussi, avec des notions de manipulation et de visualisation de données utiles pour l'analyse et la simulation.</p>
+              </div>
+            </details>
+          </article>
+        </div>
+
+        <div class="lab" id="lab">
+          <h2 class="eyebrow" data-reveal>Expériences interactives</h2>
+          <p class="section-lead" style="margin-bottom:28px" data-reveal>Deux petits outils codés pour ce portfolio : à tester directement ici.</p>
+
+          <div class="tabs" role="tablist" aria-label="Expériences interactives">
+            <button class="tab" id="tab-term" type="button" role="tab" aria-selected="true" aria-controls="panel-term">Terminal</button>
+            <button class="tab" id="tab-type" type="button" role="tab" aria-selected="false" aria-controls="panel-type" tabindex="-1">Dactylographie</button>
+          </div>
+
+          <div class="tab-panel" id="panel-term" role="tabpanel" aria-labelledby="tab-term">
+            <p class="note">Un faux terminal inspiré des commandes réseau (ping, nmap, traceroute…) pour présenter mon profil. Tapez <code>help</code> pour commencer.</p>
+            <div class="terminal" id="terminal-root">
+              <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>bastien@portfolio: ~</span></div>
+              <div class="term-output" id="term-output" role="log">
+                <div class="term-line"><span class="term-success">Bienvenue sur le terminal de Bastien TABORDET</span></div>
+                <div class="term-line">Tapez <span class="term-cmd">help</span> pour afficher la liste des commandes.</div>
+                <div class="term-line">&nbsp;</div>
+              </div>
+              <div class="term-input-row">
+                <span class="term-prompt" aria-hidden="true">bastien@portfolio:~$&nbsp;</span>
+                <label class="sr-only" for="term-input">Commande du terminal</label>
+                <input class="term-input" id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="entrez une commande...">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="panel-type" role="tabpanel" aria-labelledby="tab-type" hidden>
+            <p class="note">Trois modes disponibles : phrases en français, vocabulaire réseau et commandes shell. Les statistiques (vitesse, précision, temps) sont calculées en temps réel.</p>
+            <div class="typing" id="typing-test">
+              <div class="tt-top">
+                <div class="tt-modes" role="group" aria-label="Type de texte">
+                  <button class="tt-mode-btn active" type="button" data-mode="fr">Français</button>
+                  <button class="tt-mode-btn" type="button" data-mode="network">Réseau</button>
+                  <button class="tt-mode-btn" type="button" data-mode="code">Shell</button>
+                </div>
+                <div class="tt-stats">
+                  <div><span class="tt-label">MPM</span><span class="tt-wpm">0</span></div>
+                  <div><span class="tt-label">Précision</span><span class="tt-acc">100%</span></div>
+                  <div><span class="tt-label">Temps</span><span class="tt-time">0.0s</span></div>
+                </div>
+              </div>
+              <div class="tt-text"></div>
+              <label class="sr-only" for="tt-input">Recopiez le texte affiché</label>
+              <input class="tt-input" id="tt-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Commencez à taper pour lancer le chrono…">
+              <div class="tt-actions"><button class="tt-reset btn btn-ghost btn-sm" type="button">↻ Nouveau texte</button></div>
+              <div class="tt-result" role="status"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Divers ===================== -->
+    <section id="divers" class="section dark-band" aria-labelledby="divers-title">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow">Divers</p>
+          <h2 class="section-title" id="divers-title">En dehors des réseaux.</h2>
+          <p class="section-lead">Sport automobile, droit, musique, lecture et sport : ce qui m'occupe quand je ne configure pas un switch.</p>
+        </div>
+
+        <div class="d-grid">
+          <article class="d-card wide" data-reveal>
+            <div class="d-media"><img src="images/logoauto.jpg" alt="" loading="lazy" decoding="async" data-parallax></div>
+            <div class="d-body">
+              <h3>Sports automobiles</h3>
+              <p>Je regarde assez souvent le championnat de F1, ainsi que quelques courses du WEC. Je suis aussi régulièrement l'actualité du sport automobile et les évolutions technologiques des véhicules de compétition.</p>
+            </div>
+          </article>
+
+          <article class="d-card wide" data-reveal data-reveal-delay="1">
+            <div class="d-media"><img src="images/logodroit.avif" alt="" loading="lazy" decoding="async" data-parallax></div>
+            <div class="d-body">
+              <h3>Droit</h3>
+              <p>J'ai choisi en terminale l'option DGEMC (Droit et grands enjeux du monde contemporain), ce qui m'a apporté une meilleure compréhension des enjeux géopolitiques et du cadre juridique national.</p>
+            </div>
+          </article>
+
+          <article class="d-card" data-reveal>
+            <div class="d-media"><img src="images/logodj.jpg" alt="" loading="lazy" decoding="async" data-parallax></div>
+            <div class="d-body">
+              <h3>DJ</h3>
+              <p>Je suis intéressé par le mix depuis une dizaine d'années. J'ai récemment acheté la DDJ-FLX4 de Pioneer et je m'initie aux techniques de DJing.</p>
+            </div>
+          </article>
+
+          <article class="d-card" data-reveal data-reveal-delay="1">
+            <div class="d-body">
+              <h3>Lecture</h3>
+              <p>Je suis amateur de romans policiers, notamment des œuvres de Franck Thilliez. Quelques-uns de ceux que j'ai lus :</p>
+              <div class="books">
+                <img src="images/livre1.jpg" alt="Couverture du livre « Il était deux fois »" loading="lazy" decoding="async">
+                <img src="images/livre3.jpg" alt="Couverture du livre « Puzzle »" loading="lazy" decoding="async">
+              </div>
+              <ul>
+                <li><strong>Il était deux fois</strong> : un thriller qui mêle enquête policière et manipulation mentale, autour de crimes liés à des souvenirs modifiés.</li>
+                <li><strong>Puzzle</strong> : une intrigue complexe autour d'un tueur en série qui laisse des indices sous forme de puzzles.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="d-card" data-reveal data-reveal-delay="2">
+            <div class="d-body">
+              <h3>Sports pratiqués</h3>
+              <div class="sports">
+                <img src="images/logonatation.jpg" alt="Natation" loading="lazy" decoding="async">
+                <img src="images/logotennis.jpg" alt="Tennis" loading="lazy" decoding="async">
+                <img src="images/logocyclisme.jpg" alt="Cyclisme" loading="lazy" decoding="async">
+              </div>
+              <ul>
+                <li><strong>Natation</strong> : pratiquée pendant 6 ans ; je suis régulièrement les compétitions nationales et internationales.</li>
+                <li><strong>Tennis</strong> : pratiqué pendant 5 ans ; je suis les grands tournois du Grand Chelem.</li>
+                <li><strong>Cyclisme</strong> : pratique occasionnelle, pour l'entretien physique et les déplacements.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CV ===================== -->
+    <section id="cv" class="section" aria-labelledby="cv-title">
+      <div class="container cv-wrap">
+        <div class="cv-preview" id="cv-preview">
+          <img src="CV_Bastien_TABORDET.jpg" alt="Aperçu du CV de Bastien Tabordet" loading="lazy" decoding="async">
+        </div>
+        <div data-reveal>
+          <p class="eyebrow">CV</p>
+          <h2 class="section-title" id="cv-title">Mon parcours, en une page.</h2>
+          <p class="section-lead">Formation, compétences et centres d'intérêt : l'essentiel de mon profil, à consulter en ligne ou à télécharger.</p>
+          <div class="cv-actions">
+            <a class="btn btn-primary" href="CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">Consulter le CV</a>
+            <a class="btn btn-ghost" href="CV_Bastien_TABORDET.pdf" download>Télécharger (PDF)</a>
+          </div>
+          <p class="note">Format PDF · s'ouvre dans un nouvel onglet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact ===================== -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <div data-reveal>
+          <p class="eyebrow">Contact</p>
+          <h2 class="contact-title" id="contact-title">Travaillons <span class="gradient-text">ensemble.</span></h2>
+          <p class="section-lead">Vous cherchez un alternant motivé en réseaux et cybersécurité à partir d'octobre 2026 ? Écrivez-moi ou retrouvez-moi sur LinkedIn.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card contact-card" data-reveal>
+            <div class="c-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            </div>
+            <span class="kicker">E-mail</span>
+            <span class="c-value">bastien.tabordet@etu.uca.fr</span>
+            <div class="c-actions">
+              <a class="btn btn-primary" href="mailto:bastien.tabordet@etu.uca.fr">Écrire un e-mail</a>
+              <button class="btn btn-ghost" id="copy-email" type="button" data-email="bastien.tabordet@etu.uca.fr">Copier l'adresse</button>
+            </div>
+            <p class="copy-status" id="copy-status" aria-live="polite"></p>
+          </div>
+
+          <div class="card contact-card" data-reveal data-reveal-delay="1">
+            <div class="c-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </div>
+            <span class="kicker">LinkedIn</span>
+            <span class="c-value">linkedin.com/in/bastientabordet</span>
+            <div class="c-actions">
+              <a class="btn btn-primary" href="https://www.linkedin.com/in/bastientabordet/" target="_blank" rel="noopener">Voir mon profil</a>
+            </div>
+          </div>
+
+          <div class="card dispo" data-reveal>
+            <div><span>Disponibilité</span><strong>Dès octobre 2026</strong></div>
+            <div><span>Rythme</span><strong>1 mois entreprise / 1 mois IUT</strong></div>
+            <div><span>Domaines</span><strong>Réseaux informatiques &amp; cybersécurité</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Pied de page ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Bastien Tabordet</span>
+      <span><a href="menu/index.html">Mes cours</a> · <a href="#top">Haut de page</a></span>
+      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
-  </div>
-  <footer>
-    <p>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
   </footer>
-  <script src="script.js"></script>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="assets/js/main.js"></script>
 </body>
 </html>
