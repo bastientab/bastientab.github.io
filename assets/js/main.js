@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Portfolio de Bastien Tabordet - script principal (refonte one-page 2026)
+   Portfolio de Bastien TABORDET - script principal (refonte one-page 2026)
    Utilise par index.html et 404.html. Chaque bloc verifie la presence de ses
    elements : le script peut donc etre charge sur n'importe quelle page.
    L'ancien /script.js reste utilise par la section « Cours » (menu/).
@@ -131,70 +131,7 @@
     revealEls.forEach(function (el) { revIO.observe(el); });
   }
 
-  /* ---------- Reseau anime du hero (graine fixe = meme dessin a chaque visite) ---------- */
-  (function () {
-    var svg = document.getElementById('hero-net');
-    if (!svg) return;
-    var NS = 'http://www.w3.org/2000/svg';
-    var seed = 20260514;
-    function rand() {
-      seed = (seed * 1664525 + 1013904223) % 4294967296;
-      return seed / 4294967296;
-    }
-    var W = 1200, H = 800, cols = 9, rows = 6;
-    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-    var pts = [];
-    for (var r = 0; r < rows; r++) {
-      for (var c = 0; c < cols; c++) {
-        pts.push({
-          x: (c + 0.5) * W / cols + (rand() - 0.5) * 90,
-          y: (r + 0.5) * H / rows + (rand() - 0.5) * 80
-        });
-      }
-    }
-    function delayFor(x, y, base) {
-      var dx = x - W / 2, dy = y - H / 2;
-      return (base + Math.sqrt(dx * dx + dy * dy) / (W / 2) * 1.4).toFixed(2) + 's';
-    }
-    var edges = [];
-    pts.forEach(function (p, i) {
-      var near = pts.map(function (q, j) {
-        return { j: j, d: (p.x - q.x) * (p.x - q.x) + (p.y - q.y) * (p.y - q.y) };
-      }).filter(function (o) { return o.j !== i; })
-        .sort(function (a, b) { return a.d - b.d; });
-      for (var k = 0; k < 2; k++) {
-        var j = near[k].j;
-        var key = i < j ? i + '-' + j : j + '-' + i;
-        if (edges.indexOf(key) === -1) edges.push(key);
-      }
-    });
-    var gLines = document.createElementNS(NS, 'g');
-    var gNodes = document.createElementNS(NS, 'g');
-    edges.forEach(function (key) {
-      var ij = key.split('-');
-      var a = pts[+ij[0]], b = pts[+ij[1]];
-      var path = document.createElementNS(NS, 'path');
-      path.setAttribute('d', 'M' + a.x.toFixed(1) + ' ' + a.y.toFixed(1) + 'L' + b.x.toFixed(1) + ' ' + b.y.toFixed(1));
-      path.setAttribute('pathLength', '1');
-      path.style.setProperty('--d', delayFor((a.x + b.x) / 2, (a.y + b.y) / 2, 0.2));
-      gLines.appendChild(path);
-    });
-    pts.forEach(function (p) {
-      var dot = document.createElementNS(NS, 'circle');
-      var hub = rand() < 0.16;
-      dot.setAttribute('cx', p.x.toFixed(1));
-      dot.setAttribute('cy', p.y.toFixed(1));
-      dot.setAttribute('r', hub ? '4.5' : '2.5');
-      if (hub) dot.setAttribute('class', 'hub');
-      dot.style.setProperty('--d', delayFor(p.x, p.y, 0.4));
-      gNodes.appendChild(dot);
-    });
-    svg.appendChild(gLines);
-    svg.appendChild(gNodes);
-  })();
-
-  /* ---------- Suivi de defilement generique (competences, projet vedette) ---------- */
+  /* ---------- Suivi de defilement (competences) ---------- */
   function scrollSpy(items, cb) {
     if (!('IntersectionObserver' in window) || !items.length) return;
     var io = new IntersectionObserver(function (entries) {
@@ -237,26 +174,6 @@
     });
   })();
 
-  /* ---------- Projet vedette : visuel colle + etapes ---------- */
-  (function () {
-    var feature = document.getElementById('feature');
-    if (!feature) return;
-    var steps = feature.querySelectorAll('.f-step');
-    var layers = feature.querySelectorAll('.fv-layer');
-    var dots = feature.querySelectorAll('.fv-dots i');
-    function setStep(i) {
-      if (i < 0) return;
-      Array.prototype.forEach.call(steps, function (s, k) { s.classList.toggle('is-active', k === i); });
-      Array.prototype.forEach.call(layers, function (l, k) { l.classList.toggle('is-active', k === i); });
-      Array.prototype.forEach.call(dots, function (d, k) { d.classList.toggle('is-active', k === i); });
-    }
-    function applyReady() { feature.classList.toggle('steps-ready', !!(mqDesktop && mqDesktop.matches)); }
-    applyReady();
-    onMQ(mqDesktop, applyReady);
-    setStep(0);
-    scrollSpy(steps, setStep);
-  })();
-
   /* ---------- Onglets accessibles (terminal / dactylographie) ---------- */
   (function () {
     var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
@@ -289,6 +206,26 @@
   document.querySelectorAll('details').forEach(function (d) {
     d.addEventListener('toggle', refreshST);
   });
+
+  /* ---------- Divers (lecture, sports) : description affichee au clic ---------- */
+  (function () {
+    var groups = document.querySelectorAll('[data-picks]');
+    Array.prototype.forEach.call(groups, function (group) {
+      var btns = Array.prototype.slice.call(group.querySelectorAll('.pick'));
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var open = b.getAttribute('aria-expanded') !== 'true';
+          btns.forEach(function (o) {
+            var on = open && o === b;
+            o.setAttribute('aria-expanded', on ? 'true' : 'false');
+            var panel = document.getElementById(o.getAttribute('aria-controls'));
+            if (panel) panel.hidden = !on;
+          });
+          refreshST();
+        });
+      });
+    });
+  })();
 
   /* ---------- Copier l'adresse e-mail ---------- */
   (function () {
@@ -327,65 +264,12 @@
     });
   })();
 
-  /* ---------- Effets GSAP + ScrollTrigger (seulement si charges et mouvement autorise) ---------- */
+  /* ---------- GSAP + ScrollTrigger : uniquement l'apercu du CV qui se redresse ---------- */
+  /* (plus aucun effet sur l'accueil : le titre et les boutons restent toujours visibles) */
   if (hasGSAP && !reduceMotion) {
     var gsap = window.gsap;
     gsap.registerPlugin(window.ScrollTrigger);
 
-    // Hero : le contenu s'eloigne, le reseau derive
-    if (document.querySelector('.hero')) {
-      gsap.to('.hero-inner', {
-        yPercent: -18, opacity: 0, scale: 0.96, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-      });
-      gsap.to('#hero-net', {
-        yPercent: 12, scale: 1.08, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-      });
-    }
-
-    // Manifeste : revelation mot a mot
-    var split = document.querySelector('[data-split]');
-    if (split) {
-      var frag = document.createDocumentFragment();
-      Array.prototype.slice.call(split.childNodes).forEach(function (node) {
-        var hl = node.nodeType === 1;
-        node.textContent.split(/(\s+)/).forEach(function (part) {
-          if (!part) return;
-          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
-          var s = document.createElement('span');
-          s.className = hl ? 'w hl' : 'w';
-          s.textContent = part;
-          frag.appendChild(s);
-        });
-      });
-      split.innerHTML = '';
-      split.appendChild(frag);
-      root.classList.add('split-ready');
-      gsap.to(split.querySelectorAll('.w'), {
-        opacity: 1, stagger: 0.1, ease: 'none',
-        scrollTrigger: { trigger: split, start: 'top 80%', end: 'bottom 45%', scrub: true }
-      });
-    }
-
-    // Divers : la bande sombre s'ouvre en plein ecran
-    var band = document.querySelector('.dark-band');
-    if (band) {
-      gsap.fromTo(band,
-        { clipPath: 'inset(4% 3% round 40px)' },
-        { clipPath: 'inset(0% 0% round 0px)', ease: 'none',
-          scrollTrigger: { trigger: band, start: 'top bottom', end: 'top 25%', scrub: true } });
-    }
-
-    // Parallaxe douce des images
-    gsap.utils.toArray('[data-parallax]').forEach(function (img) {
-      gsap.fromTo(img, { yPercent: -6 }, {
-        yPercent: 6, ease: 'none',
-        scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
-      });
-    });
-
-    // CV : l'apercu se redresse
     var cvImg = document.querySelector('#cv-preview img');
     if (cvImg) {
       gsap.fromTo(cvImg,
@@ -426,7 +310,6 @@
 // ===== CONSOLE F12 EASTER EGG =====
 (function () {
   var styleTitle = 'color:#00d4ff;font-size:18px;font-weight:bold;font-family:monospace;line-height:1.2;';
-  var styleText  = 'color:#56d364;font-size:13px;font-family:monospace;line-height:1.5;';
   var styleHint  = 'color:#f0a45f;font-size:12px;font-family:monospace;';
 
   var ascii = [
@@ -520,18 +403,17 @@
   var input  = document.getElementById('term-input');
   if (!output || !input) return;
 
-  var history = [];
-  var historyPos = -1;
+  // Rappel des commandes deja tapees (fleches haut / bas)
+  var recall = [];
+  var recallPos = -1;
 
-  // Liste des commandes pour l'autocomplétion
-  var cmdList = ['help','whoami','ping bastien','traceroute','nmap skills','cv','contact','clear','sudo apt install bastien','sudo hire-me','git activity','history'];
+  // Liste des commandes pour l'autocompletion (Tab)
+  var cmdList = ['help','whoami','traceroute','git activity','contact','clear','sudo hire-me'];
 
   var cmds = {
-    'help': function() { return '<span class="term-info">Commandes disponibles :</span>\n  <span class="term-cmd">whoami</span>                   — Identité complète\n  <span class="term-cmd">ping bastien</span>             — Test de connexion\n  <span class="term-cmd">traceroute</span>               — Parcours de formation\n  <span class="term-cmd">nmap skills</span>              — Scan des compétences\n  <span class="term-cmd">git activity</span>             — Activité GitHub récente\n  <span class="term-cmd">sudo apt install bastien</span> — Installation (à essayer !)\n  <span class="term-cmd">history</span>                  — Historique des commandes\n  <span class="term-cmd">cv</span>                       — Accéder au CV\n  <span class="term-cmd">contact</span>                  — Coordonnées\n  <span class="term-cmd">clear</span>                    — Vider le terminal\n\n<span class="term-info">Astuces :</span> ↑/↓ pour rappeler les commandes · Tab pour l\'autocomplétion'; },
-    'whoami': function() { return '<span class="term-success">bastien.tabordet</span>\n  Étudiant en 2e année de BUT Réseaux &amp; Télécommunications\n  IUT de Clermont-Ferrand | 20 ans | Loiret (45) & Puy-de-Dôme (63)\n  └─ Recherche une alternance dès octobre 2026 — Réseaux &amp; Cybersécurité'; },
-    'ping bastien': function() { return 'PING bastien.tabordet (portfolio.local) 56 bytes\n  icmp_seq=1 ttl=64 time=<span class="term-success">0.1 ms</span>\n  icmp_seq=2 ttl=64 time=<span class="term-success">0.1 ms</span>\n  icmp_seq=3 ttl=64 time=<span class="term-success">0.1 ms</span>\n  <span class="term-success">3 packets transmitted, 3 received, 0% packet loss</span>'; },
+    'help': function() { return '<span class="term-info">Commandes disponibles :</span>\n  <span class="term-cmd">whoami</span>        — Identité complète\n  <span class="term-cmd">traceroute</span>    — Parcours de formation\n  <span class="term-cmd">git activity</span>  — Activité GitHub récente\n  <span class="term-cmd">contact</span>       — Coordonnées\n  <span class="term-cmd">clear</span>         — Vider le terminal\n\n<span class="term-info">Astuces :</span> ↑/↓ pour rappeler les commandes · Tab pour l\'autocomplétion'; },
+    'whoami': function() { return '<span class="term-success">bastien.tabordet</span>\n  Étudiant en 2e année de BUT Réseaux &amp; Télécommunications\n  IUT de Clermont-Ferrand | 20 ans | Loiret (45) &amp; Puy-de-Dôme (63)\n  └─ Recherche une alternance dès octobre 2026 — Réseaux &amp; Cybersécurité'; },
     'traceroute': function() { return 'traceroute to formation.bastien (127.0.0.1)\n  1.  <span class="term-cmd">Lycée Bernard Palissy</span>   Bac général mention AB (2024)\n  2.  <span class="term-cmd">ISIMA Clermont-Ferrand</span>  Prépa intégrée ingénieur (2024-2025)\n  3.  <span class="term-cmd">IUT Clermont-Ferrand</span>    BUT R&amp;T (2025-2028, en cours)\n  4.  <span class="term-success">Alternance oct. 2026 → recherche en cours...</span>'; },
-    'nmap skills': function() { return 'Starting Nmap — bastientabordet.fr\n  PORT      STATE  SERVICE    VERSION\n  22/tcp    open   bash       Scripts Shell &amp; automatisation\n  80/tcp    open   html/css   Sites statiques &amp; responsive\n  443/tcp   open   réseaux    Cisco PT · VLAN · Wireshark\n  3306/tcp  open   sql        Bases de données relationnelles\n  5000/tcp  open   python     Automatisation &amp; scripts réseau\n  8443/tcp  open   cyber      ANSSI · hygiène informatique\n  <span class="term-success">Nmap done: 6 services scanned</span>'; },
     'git activity': function() {
       var bars = '';
       var levels = [' ','▁','▂','▃','▄','▅','▆','▇','█'];
@@ -540,17 +422,14 @@
       for (var i = 0; i < data.length; i++) bars += '<span class="term-success">' + levels[data[i]] + '</span>';
       return '<span class="term-info">Activité GitHub — 30 derniers jours</span>\n  ' + bars + '\n  <span class="term-success">' + total + ' commits</span> · <a href="https://github.com/bastientab" target="_blank" rel="noopener" style="color:#58a6e8;text-decoration:none">github.com/bastientab</a>\n  <span style="opacity:.6">(données mises à jour manuellement)</span>';
     },
-    'cv': function() { return '<span class="term-info">Accès au CV...</span>\n  <a href="#cv" style="color:#58a6e8;text-decoration:none">→ Section CV de cette page</a>\n  <a href="CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener" style="color:#58a6e8;text-decoration:none">→ CV_Bastien_TABORDET.pdf</a>'; },
     'contact': function() { return '<span class="term-info">─── Contact ─────────────────────────────</span>\n  Email    : <a href="mailto:bastien.tabordet@etu.uca.fr" style="color:#58a6e8;text-decoration:none">bastien.tabordet@etu.uca.fr</a>\n  LinkedIn : <a href="https://www.linkedin.com/in/bastientabordet/" target="_blank" rel="noopener" style="color:#58a6e8;text-decoration:none">linkedin.com/in/bastientabordet</a>'; },
-    'history': function() {
-      if (history.length === 0) return '<span style="opacity:.6">Aucune commande dans l\'historique.</span>';
-      return history.map(function(h, i){ return '  ' + (i+1) + '  ' + h.replace(/</g,'&lt;'); }).join('\n');
-    },
     'clear': function() { output.innerHTML = ''; return null; },
     'sudo hire-me': function() {
       return '<span class="term-success">[sudo] mot de passe pour recruteur : ********</span>\n  <span class="term-info">Vérification des privilèges...</span> <span class="term-success">OK</span>\n  <span class="term-info">Demande envoyée au candidat.</span>\n\n  ┌─────────────────────────────────────────┐\n  │  ✓ Bastien est prêt à rejoindre votre   │\n  │    équipe en alternance dès oct. 2026   │\n  │                                         │\n  │  → Contact direct : section Contact     │\n  └─────────────────────────────────────────┘';
     }
   };
+
+  function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function addLine(html) {
     var d = document.createElement('div');
@@ -560,39 +439,12 @@
     output.scrollTop = output.scrollHeight;
   }
 
-  // sudo apt install bastien -> avec animation de barre de progression
-  function runAptInstall() {
-    addLine('<span class="term-info">Lecture des listes de paquets...</span> <span class="term-success">Fait</span>');
-    addLine('<span class="term-info">Construction de l\'arbre des dépendances...</span> <span class="term-success">Fait</span>');
-    addLine('Les NOUVEAUX paquets suivants seront installés :\n  <span class="term-cmd">bastien</span> bastien-skills bastien-motivation');
-    addLine('Téléchargement de bastien (1.0.0-alternance2026)...');
-    var line = document.createElement('div');
-    line.className = 'term-line';
-    output.appendChild(line);
-    var pct = 0;
-    var interval = setInterval(function() {
-      pct += Math.floor(Math.random() * 8) + 3;
-      if (pct >= 100) pct = 100;
-      var filled = Math.floor(pct / 2.5);
-      var bar = '█'.repeat(filled) + '░'.repeat(40 - filled);
-      line.innerHTML = '<span class="term-success">[' + bar + ']</span> ' + pct + '%';
-      output.scrollTop = output.scrollHeight;
-      if (pct === 100) {
-        clearInterval(interval);
-        setTimeout(function() {
-          addLine('<span class="term-success">✓ Installation terminée avec succès.</span>');
-          addLine('<span class="term-info">Pour activer : contactez bastien.tabordet@etu.uca.fr</span>');
-        }, 300);
-      }
-    }, 120);
-  }
-
   function autocomplete(value) {
     var matches = cmdList.filter(function(c){ return c.indexOf(value.toLowerCase()) === 0; });
     if (matches.length === 1) {
       input.value = matches[0];
     } else if (matches.length > 1) {
-      addLine('<span class="term-prompt">bastien@portfolio:~$&nbsp;</span>' + value.replace(/</g,'&lt;'));
+      addLine('<span class="term-prompt">bastien@portfolio:~$&nbsp;</span>' + esc(value));
       addLine(matches.join('   '));
     }
   }
@@ -602,26 +454,25 @@
       var raw = input.value.trim();
       var cmd = raw.toLowerCase();
       input.value = '';
-      addLine('<span class="term-prompt">bastien@portfolio:~$&nbsp;</span><span class="term-cmd">' + raw.replace(/</g,'&lt;') + '</span>');
+      addLine('<span class="term-prompt">bastien@portfolio:~$&nbsp;</span><span class="term-cmd">' + esc(raw) + '</span>');
       if (!cmd) return;
-      history.push(raw);
-      historyPos = history.length;
-      if (cmd === 'sudo apt install bastien') { runAptInstall(); return; }
+      recall.push(raw);
+      recallPos = recall.length;
       var fn = cmds[cmd];
       if (fn) { var r = fn(); if (r != null) addLine(r); }
-      else addLine('<span class="term-error">bash: ' + raw.replace(/</g,'&lt;') + ': command not found</span> — tapez <span class="term-cmd">help</span>');
+      else addLine('<span class="term-error">bash: ' + esc(raw) + ': command not found</span> — tapez <span class="term-cmd">help</span>');
     }
     else if (e.key === 'ArrowUp') {
       e.preventDefault();
-      if (history.length === 0) return;
-      historyPos = Math.max(0, historyPos - 1);
-      input.value = history[historyPos] || '';
+      if (recall.length === 0) return;
+      recallPos = Math.max(0, recallPos - 1);
+      input.value = recall[recallPos] || '';
     }
     else if (e.key === 'ArrowDown') {
       e.preventDefault();
-      if (history.length === 0) return;
-      historyPos = Math.min(history.length, historyPos + 1);
-      input.value = history[historyPos] || '';
+      if (recall.length === 0) return;
+      recallPos = Math.min(recall.length, recallPos + 1);
+      input.value = recall[recallPos] || '';
     }
     else if (e.key === 'Tab') {
       e.preventDefault();
@@ -638,52 +489,59 @@
 
 // ===== TEST DE DACTYLOGRAPHIE =====
 (function () {
-  var root = document.getElementById('typing-test');
-  if (!root) return;
+  var box = document.getElementById('typing-test');
+  if (!box) return;
 
-  var texts = {
-    fr: [
-      "La rigueur et la curiosité sont les deux qualités essentielles d'un bon administrateur réseau.",
-      "Un bon mot de passe doit contenir au moins douze caractères, des chiffres et des symboles.",
-      "L'apprentissage continu est la clé pour rester à jour dans le domaine de la cybersécurité."
-    ],
-    network: [
-      "Le protocole TCP garantit la livraison des paquets grâce à un mécanisme d'accusé de réception.",
-      "Un VLAN permet de segmenter un réseau local en plusieurs sous-réseaux logiques indépendants.",
-      "Le DNS traduit un nom de domaine en adresse IP via une hiérarchie de serveurs distribués."
-    ],
-    code: [
-      "sudo apt update && sudo apt upgrade -y",
-      "ssh -i ~/.ssh/id_rsa user@192.168.1.10 -p 2222",
-      "for ip in $(seq 1 254); do ping -c1 192.168.1.$ip; done"
-    ]
-  };
+  // Un seul mode : un texte est tire au hasard dans cette liste
+  var texts = [
+    "La rigueur et la curiosité sont les deux qualités essentielles d'un bon administrateur réseau.",
+    "Un bon mot de passe doit contenir au moins douze caractères, des chiffres et des symboles.",
+    "L'apprentissage continu est la clé pour rester à jour dans le domaine de la cybersécurité.",
+    "Le protocole TCP garantit la livraison des paquets grâce à un mécanisme d'accusé de réception.",
+    "Un VLAN permet de segmenter un réseau local en plusieurs sous-réseaux logiques indépendants.",
+    "Le DNS traduit un nom de domaine en adresse IP via une hiérarchie de serveurs distribués.",
+    "Le serveur DHCP attribue automatiquement une adresse IP, un masque et une passerelle à chaque machine du réseau.",
+    "Un pare-feu filtre le trafic entrant et sortant selon des règles définies par l'administrateur.",
+    "La fibre optique transporte les données sous forme de lumière, ce qui permet des débits très élevés sur de longues distances.",
+    "Le modèle OSI découpe la communication réseau en sept couches, de la couche physique jusqu'à la couche application.",
+    "Wireshark permet de capturer les trames qui circulent sur une interface et d'analyser chaque protocole en détail.",
+    "Une sauvegarde régulière et stockée hors ligne reste la meilleure protection contre les rançongiciels.",
+    "Le Wi-Fi utilise surtout les bandes de 2,4 GHz et de 5 GHz : la seconde offre plus de débit mais une portée plus courte.",
+    "Un switch apprend les adresses MAC des appareils connectés et les enregistre dans sa table de commutation.",
+    "Selon le théorème de Shannon, la fréquence d'échantillonnage doit être supérieure au double de la fréquence maximale du signal.",
+    "En téléphonie sur IP, le protocole SIP gère l'établissement des appels tandis que RTP transporte la voix."
+  ];
 
-  var elText     = root.querySelector('.tt-text');
-  var elInput    = root.querySelector('.tt-input');
-  var elWpm      = root.querySelector('.tt-wpm');
-  var elAcc      = root.querySelector('.tt-acc');
-  var elTime     = root.querySelector('.tt-time');
-  var elReset    = root.querySelector('.tt-reset');
-  var elModeBtns = root.querySelectorAll('.tt-mode-btn');
-  var elResult   = root.querySelector('.tt-result');
+  var elText   = box.querySelector('.tt-text');
+  var elInput  = box.querySelector('.tt-input');
+  var elWpm    = box.querySelector('.tt-wpm');
+  var elAcc    = box.querySelector('.tt-acc');
+  var elTime   = box.querySelector('.tt-time');
+  var elReset  = box.querySelector('.tt-reset');
+  var elResult = box.querySelector('.tt-result');
+  if (!elText || !elInput) return;
 
   var current = '';
-  var mode = 'fr';
+  var last = -1;
   var startTime = null;
   var timerInterval = null;
   var finished = false;
 
+  // Tirage au hasard, sans retomber sur le texte precedent
   function pickText() {
-    var pool = texts[mode];
-    return pool[Math.floor(Math.random() * pool.length)];
+    var i;
+    do { i = Math.floor(Math.random() * texts.length); } while (texts.length > 1 && i === last);
+    last = i;
+    return texts[i];
   }
+
+  function esc(c) { return c.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
   function render(typed) {
     var html = '';
     for (var i = 0; i < current.length; i++) {
       var c = current[i];
-      var displayChar = c === ' ' ? '&nbsp;' : c.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      var displayChar = c === ' ' ? '&nbsp;' : esc(c);
       if (i < typed.length) {
         if (typed[i] === c) html += '<span class="tt-ok">' + displayChar + '</span>';
         else html += '<span class="tt-ko">' + (c === ' ' ? '_' : displayChar) + '</span>';
@@ -738,9 +596,10 @@
     }
     render(typed);
     var stats = startTime ? updateStats(typed) : null;
-    if (typed === current) {
+    if (stats && typed === current) {
       finished = true;
       clearInterval(timerInterval);
+      timerInterval = null;
       elInput.disabled = true;
       var rating = stats.wpm >= 60 ? 'Excellent !' : stats.wpm >= 40 ? 'Bien !' : stats.wpm >= 25 ? 'Pas mal' : 'Continue à t\'entraîner !';
       elResult.innerHTML =
@@ -754,16 +613,7 @@
     }
   });
 
-  elReset.addEventListener('click', reset);
-
-  elModeBtns.forEach(function(b) {
-    b.addEventListener('click', function() {
-      elModeBtns.forEach(function(x){ x.classList.remove('active'); });
-      b.classList.add('active');
-      mode = b.dataset.mode;
-      reset();
-    });
-  });
+  if (elReset) elReset.addEventListener('click', reset);
 
   reset();
 })();
