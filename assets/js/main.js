@@ -174,38 +174,40 @@
     });
   })();
 
-  /* ---------- Onglets accessibles (terminal / dactylographie) ---------- */
+  /* ---------- Projets : un seul projet ouvert a la fois, la carte ouverte passe en pleine largeur ---------- */
   (function () {
-    var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
-    if (!tabs.length) return;
-    function select(tab, focus) {
-      tabs.forEach(function (t) {
-        var on = t === tab;
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-        t.setAttribute('tabindex', on ? '0' : '-1');
-        var panel = document.getElementById(t.getAttribute('aria-controls'));
-        if (panel) panel.hidden = !on;
+    var cards = Array.prototype.slice.call(document.querySelectorAll('#project-cards .p-card'));
+    cards.forEach(function (card) {
+      var d = card.querySelector('details');
+      if (!d) return;
+      d.addEventListener('toggle', function () {
+        card.classList.toggle('is-open', d.open);
+        card.classList.toggle('card-hover', !d.open);
+        if (d.open) {
+          cards.forEach(function (o) {
+            if (o === card) return;
+            var od = o.querySelector('details');
+            if (od && od.open) od.open = false;
+          });
+          setTimeout(function () {
+            card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+          }, 60);
+        }
+        refreshST();
       });
-      if (focus) tab.focus();
-      refreshST();
+    });
+    // Lien « Voir le projet : creation du portfolio » (section Competences) : ouvre la carte
+    if (window.location.hash === '#portfolio') {
+      var p = document.querySelector('#portfolio details');
+      if (p) p.open = true;
     }
-    tabs.forEach(function (t, i) {
-      t.addEventListener('click', function () { select(t, false); });
-      t.addEventListener('keydown', function (e) {
-        var n = null;
-        if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
-        else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
-        else if (e.key === 'Home') n = tabs[0];
-        else if (e.key === 'End') n = tabs[tabs.length - 1];
-        if (n) { e.preventDefault(); select(n, true); }
+    document.querySelectorAll('a[href="#portfolio"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var p = document.querySelector('#portfolio details');
+        if (p) p.open = true;
       });
     });
   })();
-
-  /* ---------- Details « En savoir plus » : recalcul des declencheurs ---------- */
-  document.querySelectorAll('details').forEach(function (d) {
-    d.addEventListener('toggle', refreshST);
-  });
 
   /* ---------- Divers (lecture, sports) : description affichee au clic ---------- */
   (function () {
@@ -265,7 +267,6 @@
   })();
 
   /* ---------- GSAP + ScrollTrigger : uniquement l'apercu du CV qui se redresse ---------- */
-  /* (plus aucun effet sur l'accueil : le titre et les boutons restent toujours visibles) */
   if (hasGSAP && !reduceMotion) {
     var gsap = window.gsap;
     gsap.registerPlugin(window.ScrollTrigger);
@@ -398,6 +399,8 @@
 })();
 
 // ===== TERMINAL INTERACTIF =====
+// Commandes d'origine conservees : help, whoami, traceroute, git activity, contact, clear.
+// Retirees a ta demande : history, ping bastien, cv, sudo apt install bastien, nmap skills, sudo hire-me.
 (function () {
   var output = document.getElementById('term-output');
   var input  = document.getElementById('term-input');
@@ -408,12 +411,12 @@
   var recallPos = -1;
 
   // Liste des commandes pour l'autocompletion (Tab)
-  var cmdList = ['help','whoami','traceroute','git activity','contact','clear','sudo hire-me'];
+  var cmdList = ['help','whoami','traceroute','git activity','contact','clear'];
 
   var cmds = {
     'help': function() { return '<span class="term-info">Commandes disponibles :</span>\n  <span class="term-cmd">whoami</span>        — Identité complète\n  <span class="term-cmd">traceroute</span>    — Parcours de formation\n  <span class="term-cmd">git activity</span>  — Activité GitHub récente\n  <span class="term-cmd">contact</span>       — Coordonnées\n  <span class="term-cmd">clear</span>         — Vider le terminal\n\n<span class="term-info">Astuces :</span> ↑/↓ pour rappeler les commandes · Tab pour l\'autocomplétion'; },
-    'whoami': function() { return '<span class="term-success">bastien.tabordet</span>\n  Étudiant en 2e année de BUT Réseaux &amp; Télécommunications\n  IUT de Clermont-Ferrand | 20 ans | Loiret (45) &amp; Puy-de-Dôme (63)\n  └─ Recherche une alternance dès octobre 2026 — Réseaux &amp; Cybersécurité'; },
-    'traceroute': function() { return 'traceroute to formation.bastien (127.0.0.1)\n  1.  <span class="term-cmd">Lycée Bernard Palissy</span>   Bac général mention AB (2024)\n  2.  <span class="term-cmd">ISIMA Clermont-Ferrand</span>  Prépa intégrée ingénieur (2024-2025)\n  3.  <span class="term-cmd">IUT Clermont-Ferrand</span>    BUT R&amp;T (2025-2028, en cours)\n  4.  <span class="term-success">Alternance oct. 2026 → recherche en cours...</span>'; },
+    'whoami': function() { return '<span class="term-success">bastien.tabordet</span>\n  Étudiant BUT Réseaux &amp; Télécommunications\n  IUT de Clermont-Ferrand | 20 ans | Loiret (45) &amp; Puy-de-Dôme (63)\n  └─ Recherche alternance octobre 2026 — Réseaux &amp; Cybersécurité'; },
+    'traceroute': function() { return 'traceroute to formation.bastien (127.0.0.1)\n  1.  <span class="term-cmd">Lycée Bernard Palissy</span>   Bac général mention AB (2024)\n  2.  <span class="term-cmd">ISIMA Clermont-Ferrand</span>  Prépa intégrée ingénieur (2024-2025)\n  3.  <span class="term-cmd">IUT Clermont-Ferrand</span>    BUT R&amp;T (2025-2028 en cours)\n  4.  <span class="term-success">Alternance 2026 → recherche en cours...</span>'; },
     'git activity': function() {
       var bars = '';
       var levels = [' ','▁','▂','▃','▄','▅','▆','▇','█'];
@@ -423,10 +426,7 @@
       return '<span class="term-info">Activité GitHub — 30 derniers jours</span>\n  ' + bars + '\n  <span class="term-success">' + total + ' commits</span> · <a href="https://github.com/bastientab" target="_blank" rel="noopener" style="color:#58a6e8;text-decoration:none">github.com/bastientab</a>\n  <span style="opacity:.6">(données mises à jour manuellement)</span>';
     },
     'contact': function() { return '<span class="term-info">─── Contact ─────────────────────────────</span>\n  Email    : <a href="mailto:bastien.tabordet@etu.uca.fr" style="color:#58a6e8;text-decoration:none">bastien.tabordet@etu.uca.fr</a>\n  LinkedIn : <a href="https://www.linkedin.com/in/bastientabordet/" target="_blank" rel="noopener" style="color:#58a6e8;text-decoration:none">linkedin.com/in/bastientabordet</a>'; },
-    'clear': function() { output.innerHTML = ''; return null; },
-    'sudo hire-me': function() {
-      return '<span class="term-success">[sudo] mot de passe pour recruteur : ********</span>\n  <span class="term-info">Vérification des privilèges...</span> <span class="term-success">OK</span>\n  <span class="term-info">Demande envoyée au candidat.</span>\n\n  ┌─────────────────────────────────────────┐\n  │  ✓ Bastien est prêt à rejoindre votre   │\n  │    équipe en alternance dès oct. 2026   │\n  │                                         │\n  │  → Contact direct : section Contact     │\n  └─────────────────────────────────────────┘';
-    }
+    'clear': function() { output.innerHTML = ''; return null; }
   };
 
   function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -487,12 +487,12 @@
   });
 })();
 
-// ===== TEST DE DACTYLOGRAPHIE =====
+// ===== TEST DE DACTYLOGRAPHIE (un seul mode) =====
 (function () {
   var box = document.getElementById('typing-test');
   if (!box) return;
 
-  // Un seul mode : un texte est tire au hasard dans cette liste
+  // Un texte est tire au hasard dans cette liste (jamais deux fois de suite le meme)
   var texts = [
     "La rigueur et la curiosité sont les deux qualités essentielles d'un bon administrateur réseau.",
     "Un bon mot de passe doit contenir au moins douze caractères, des chiffres et des symboles.",
@@ -527,7 +527,6 @@
   var timerInterval = null;
   var finished = false;
 
-  // Tirage au hasard, sans retomber sur le texte precedent
   function pickText() {
     var i;
     do { i = Math.floor(Math.random() * texts.length); } while (texts.length > 1 && i === last);

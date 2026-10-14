@@ -31,7 +31,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- ?v=... : a changer a chaque modification du CSS/JS pour forcer les navigateurs a recharger -->
+  <link rel="stylesheet" href="assets/css/main.css?v=3">
 
   <script type="application/ld+json">
   {
@@ -294,22 +295,25 @@
       </div>
     </section>
 
-    <!-- ===================== Projets ===================== -->
+    <!-- ===================== Projets (les 6 projets d'origine, dans l'ordre d'origine) ===================== -->
     <section id="projets" class="section" aria-labelledby="projets-title">
       <div class="container">
         <div class="section-head" data-reveal>
           <h2 class="section-title" id="projets-title">Projets</h2>
         </div>
 
-        <div class="cards">
+        <div class="cards" id="project-cards">
+          <!-- 1. CyberSkills -->
           <article class="card p-card card-hover" data-reveal>
-            <img class="p-logo" src="images/logocyber.jpg" alt="" loading="lazy" decoding="async">
-            <span class="kicker">Projet BUT1</span>
+            <div class="p-head">
+              <img class="p-logo" src="images/logocyber.jpg" alt="" loading="lazy" decoding="async">
+              <span class="kicker">Projet BUT1</span>
+            </div>
             <h3>Mettre en place une solution informatique pour l'entreprise</h3>
-            <p>Plateforme web de gestion des compétences en cybersécurité (PHP / MySQL).</p>
+            <p class="p-sum">Plateforme web de gestion des compétences en cybersécurité (PHP / MySQL).</p>
             <details>
               <summary>En savoir plus</summary>
-              <div>
+              <div class="p-more">
                 <p><strong>Contexte :</strong> Projet académique</p>
                 <p><strong>Objectif :</strong> Développer une application web complète permettant de répertorier, suivre et valider les compétences en cybersécurité des utilisateurs, à destination d'administrateurs, de formateurs et d'étudiants.</p>
                 <p><strong>Travail réalisé :</strong> J'ai conçu et développé de A à Z une plateforme PHP/MySQL nommée <strong>CyberSkills</strong>, structurée autour d'une architecture claire (séparation config, includes, pages, uploads). Le projet couvre l'ensemble du cycle de développement :</p>
@@ -329,14 +333,17 @@
             </details>
           </article>
 
+          <!-- 2. CodinGame -->
           <article class="card p-card card-hover" data-reveal data-reveal-delay="1">
-            <img class="p-logo" src="images/logocodingame.png" alt="" loading="lazy" decoding="async">
-            <span class="kicker">Projet personnel</span>
+            <div class="p-head">
+              <img class="p-logo" src="images/logocodingame.png" alt="" loading="lazy" decoding="async">
+              <span class="kicker">Projet personnel</span>
+            </div>
             <h3>Résolution d'énigmes sur CodinGame</h3>
-            <p>Développement et énigmes mathématiques/logiques.</p>
+            <p class="p-sum">Développement et énigmes mathématiques/logiques.</p>
             <details>
               <summary>En savoir plus</summary>
-              <div>
+              <div class="p-more">
                 <p><strong>Contexte :</strong> Projet personnel</p>
                 <p>J'ai pu réaliser différents exercices de développement et énigmes mathématiques/logiques sur le site <a href="https://www.codingame.com" target="_blank" rel="noopener">CodinGame</a>.</p>
                 <p><strong>Objectif :</strong> L'objectif était de résoudre des problèmes algorithmiques comme le Ghostleg. Ce type d'exercice permet de développer la logique de programmation et la résolution de problèmes complexes.</p>
@@ -345,82 +352,101 @@
             </details>
           </article>
 
-          <article class="card p-card card-hover" id="portfolio" data-reveal>
-            <img class="p-logo" src="images/logoportfolio.webp" alt="" loading="lazy" decoding="async">
-            <span class="kicker">Projet BUT1</span>
+          <!-- 3. Portfolio -->
+          <article class="card p-card card-hover" id="portfolio" data-reveal data-reveal-delay="2">
+            <div class="p-head">
+              <img class="p-logo" src="images/logoportfolio.webp" alt="" loading="lazy" decoding="async">
+              <span class="kicker">Projet BUT1</span>
+            </div>
             <h3>Création d'un portfolio</h3>
-            <p>Réalisation d'un site web professionnel.</p>
+            <p class="p-sum">Réalisation d'un site web professionnel.</p>
             <details>
               <summary>En savoir plus</summary>
-              <div>
+              <div class="p-more">
                 <p><strong>Contexte :</strong> Projet académique</p>
                 <p><strong>Objectif :</strong> L'objectif était de créer un portfolio professionnel pour présenter mes compétences, projets, ma formation ainsi que mes centres d'intérêts.</p>
-                <p><strong>Travail réalisé :</strong> J'ai réalisé ce portfolio en HTML et CSS, en utilisant comme aide notamment le site <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a> surtout pour le côté graphique du site (CSS). Ce site contient toutes les catégories demandées dans le cahier des charges (formation, compétences, projets, divers, CV) et est fonctionnel. On peut notamment visionner mon parcours et télécharger mon CV.</p>
+                <p><strong>Travail réalisé :</strong> J'ai réalisé ce portfolio en HTML et CSS, en utilisant comme aide notamment le site <a href="https://www.w3schools.com" target="_blank" rel="noopener">W3Schools</a> surtout pour le côté graphique du site (CSS).<br>Ce site contient toutes les catégories demandées dans le cahier des charges (formation, compétences, projets, divers, CV) et est fonctionnel. On peut notamment visionner mon parcours et télécharger mon CV.</p>
                 <p><strong>Lien GitHub :</strong> Le code source de ce portfolio est disponible sur mon <a href="https://github.com/bastientab" target="_blank" rel="noopener">GitHub</a>.</p>
-                <p><strong>Résultat :</strong> Ce site que vous êtes en train de regarder constitue le résultat :) Ce projet m'a permis d'obtenir davantage de notions en CSS grâce à W3Schools.</p>
+                <p><strong>Résultat :</strong> Ce site que vous êtes en train de regarder constitue le résultat :)<br>Ce projet m'a permis d'obtenir davantage de notions en CSS grâce à W3Schools.</p>
               </div>
             </details>
           </article>
 
-          <article class="card p-card card-hover" data-reveal data-reveal-delay="1">
-            <img class="p-logo" src="images/logomatlab.png" alt="" loading="lazy" decoding="async">
-            <span class="kicker">Projet BUT1</span>
-            <h3>Initiation Matlab</h3>
-            <p>Découverte de l'environnement de programmation Matlab.</p>
-            <details>
-              <summary>En savoir plus</summary>
-              <div>
-                <p><strong>Contexte :</strong> Projet académique</p>
-                <p><strong>Objectif :</strong> L'objectif était de découvrir l'environnement de programmation Matlab et de réaliser un projet de configuration de signaux ainsi que leur représentation pour appliquer les notions apprises.</p>
-                <p><strong>Travail réalisé :</strong> J'ai réalisé ce projet en utilisant Matlab pour configurer différents types de signaux (sinusoïdal, carré, triangulaire) et les représenter graphiquement. J'ai pu appliquer des notions de base, telles que la création de scripts, l'utilisation de fonctions intégrées pour la manipulation de données et la génération de graphiques.</p>
-                <p><strong>Résultat :</strong> Le projet a été réussi, avec une bonne compréhension de l'environnement et la capacité à configurer et représenter des signaux. Ce projet m'a permis d'obtenir davantage de notions notamment en ce qui concerne la manipulation de données et la visualisation de celles-ci, ce qui peut être utile pour des projets futurs impliquant l'analyse de données ou la simulation.</p>
-              </div>
-            </details>
-          </article>
-        </div>
-
-        <div class="lab" id="lab">
-          <h3 class="sub-title" data-reveal>Expériences interactives</h3>
-
-          <div class="tabs" role="tablist" aria-label="Expériences interactives">
-            <button class="tab" id="tab-term" type="button" role="tab" aria-selected="true" aria-controls="panel-term">Terminal</button>
-            <button class="tab" id="tab-type" type="button" role="tab" aria-selected="false" aria-controls="panel-type" tabindex="-1">Dactylographie</button>
-          </div>
-
-          <div class="tab-panel" id="panel-term" role="tabpanel" aria-labelledby="tab-term">
-            <p class="note">Un faux terminal inspiré des commandes réseau pour présenter mon profil. Tapez <code>help</code> pour commencer.</p>
-            <div class="terminal" id="terminal-root">
-              <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>bastien@portfolio: ~</span></div>
-              <div class="term-output" id="term-output" role="log">
-                <div class="term-line"><span class="term-success">Bienvenue sur le terminal de Bastien TABORDET</span></div>
-                <div class="term-line">Tapez <span class="term-cmd">help</span> pour voir les commandes disponibles.</div>
-                <div class="term-line">&nbsp;</div>
-              </div>
-              <div class="term-input-row">
-                <span class="term-prompt" aria-hidden="true">bastien@portfolio:~$&nbsp;</span>
-                <label class="sr-only" for="term-input">Commande du terminal</label>
-                <input class="term-input" id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="entrez une commande...">
-              </div>
+          <!-- 4. Terminal interactif -->
+          <article class="card p-card card-hover" data-reveal>
+            <div class="p-head">
+              <img class="p-logo" src="images/terminal.png" alt="" loading="lazy" decoding="async">
+              <span class="kicker">Projet personnel</span>
             </div>
-          </div>
-
-          <div class="tab-panel" id="panel-type" role="tabpanel" aria-labelledby="tab-type" hidden>
-            <p class="note">Un test de dactylographie intégré directement au portfolio. Les statistiques (vitesse, précision, temps) sont calculées en temps réel.</p>
-            <div class="typing" id="typing-test">
-              <div class="tt-top">
-                <div class="tt-stats">
-                  <div><span class="tt-label">MPM</span><span class="tt-wpm">0</span></div>
-                  <div><span class="tt-label">Précision</span><span class="tt-acc">100%</span></div>
-                  <div><span class="tt-label">Temps</span><span class="tt-time">0.0s</span></div>
+            <h3>Terminal interactif</h3>
+            <p class="p-sum">Explore mon profil comme si tu étais dans un vrai terminal.</p>
+            <details>
+              <summary>Ouvrir le terminal</summary>
+              <div class="p-more">
+                <p><strong>Concept :</strong> Un faux terminal inspiré des commandes réseau pour présenter mon profil. Tapez <code>help</code> pour commencer.</p>
+                <div class="terminal" id="terminal-root">
+                  <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>bastien@portfolio: ~</span></div>
+                  <div class="term-output" id="term-output" role="log">
+                    <div class="term-line"><span class="term-success">Bienvenue sur le terminal de Bastien TABORDET</span></div>
+                    <div class="term-line">Tapez <span class="term-cmd">help</span> pour voir les commandes disponibles.</div>
+                    <div class="term-line">&nbsp;</div>
+                  </div>
+                  <div class="term-input-row">
+                    <span class="term-prompt" aria-hidden="true">bastien@portfolio:~$&nbsp;</span>
+                    <label class="sr-only" for="term-input">Commande du terminal</label>
+                    <input class="term-input" id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="entrez une commande...">
+                  </div>
                 </div>
               </div>
-              <div class="tt-text"></div>
-              <label class="sr-only" for="tt-input">Recopiez le texte affiché</label>
-              <input class="tt-input" id="tt-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Commence à taper le texte ci-dessus...">
-              <div class="tt-actions"><button class="tt-reset btn btn-ghost btn-sm" type="button">↻ Nouveau texte</button></div>
-              <div class="tt-result" role="status"></div>
+            </details>
+          </article>
+
+          <!-- 5. Matlab -->
+          <article class="card p-card card-hover" data-reveal data-reveal-delay="1">
+            <div class="p-head">
+              <img class="p-logo" src="images/logomatlab.png" alt="" loading="lazy" decoding="async">
+              <span class="kicker">Projet BUT1</span>
             </div>
-          </div>
+            <h3>Initiation Matlab</h3>
+            <p class="p-sum">Découverte de l'environnement de programmation Matlab.</p>
+            <details>
+              <summary>En savoir plus</summary>
+              <div class="p-more">
+                <p><strong>Contexte :</strong> Projet académique</p>
+                <p><strong>Objectif :</strong> L'objectif était de découvrir l'environnement de programmation Matlab et de réaliser un projet de configuration de signaux ainsi que leur représentation pour appliquer les notions apprises.</p>
+                <p><strong>Travail réalisé :</strong> J'ai réalisé ce projet en utilisant Matlab pour configurer différents types de signaux (sinusoïdal, carré, triangulaire) et les représenter graphiquement.<br>J'ai pu appliquer des notions de base, telles que la création de scripts, l'utilisation de fonctions intégrées pour la manipulation de données et la génération de graphiques.</p>
+                <p><strong>Résultat :</strong> Le projet a été réussi, avec une bonne compréhension de l'environnement et la capacité à configurer et représenter des signaux.<br>Ce projet m'a permis d'obtenir davantage de notions notamment en ce qui concerne la manipulation de données et la visualisation de celles-ci, ce qui peut être utile pour des projets futurs impliquant l'analyse de données ou la simulation.</p>
+              </div>
+            </details>
+          </article>
+
+          <!-- 6. Test de dactylographie -->
+          <article class="card p-card card-hover" data-reveal data-reveal-delay="2">
+            <div class="p-head">
+              <img class="p-logo" src="images/logodactylo.webp" alt="" loading="lazy" decoding="async">
+              <span class="kicker">Projet personnel</span>
+            </div>
+            <h3>Test de dactylographie</h3>
+            <p class="p-sum">Mesure ta vitesse de frappe en MPM.</p>
+            <details>
+              <summary>Lancer le test</summary>
+              <div class="p-more">
+                <p><strong>Concept :</strong> Un test de dactylographie intégré directement au portfolio. Les statistiques (vitesse, précision, temps) sont calculées en temps réel.</p>
+                <div class="typing" id="typing-test">
+                  <div class="tt-stats">
+                    <div><span class="tt-label">Vitesse</span><span class="tt-wpm">0</span></div>
+                    <div><span class="tt-label">Précision</span><span class="tt-acc">100%</span></div>
+                    <div><span class="tt-label">Temps</span><span class="tt-time">0.0s</span></div>
+                  </div>
+                  <div class="tt-text"></div>
+                  <label class="sr-only" for="tt-input">Recopiez le texte affiché</label>
+                  <input class="tt-input" id="tt-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Commence à taper le texte ci-dessus...">
+                  <div class="tt-actions"><button class="tt-reset btn btn-ghost btn-sm" type="button">↻ Nouveau texte</button></div>
+                  <div class="tt-result" role="status"></div>
+                </div>
+              </div>
+            </details>
+          </article>
         </div>
       </div>
     </section>
@@ -489,14 +515,16 @@
 
     <!-- ===================== CV ===================== -->
     <section id="cv" class="section" aria-labelledby="cv-title">
-      <div class="container cv-wrap">
-        <div class="cv-preview" id="cv-preview">
-          <img src="CV_Bastien_TABORDET.jpg" alt="CV de Bastien TABORDET" loading="lazy" decoding="async">
-        </div>
-        <div data-reveal>
+      <div class="container">
+        <div class="section-head" data-reveal>
           <h2 class="section-title" id="cv-title">CV</h2>
           <p class="section-lead">Vous pouvez consulter et télécharger mon CV ci-dessous.</p>
-          <div class="cv-actions">
+        </div>
+        <div class="cv-wrap">
+          <div class="cv-preview" id="cv-preview">
+            <img src="CV_Bastien_TABORDET.jpg" alt="CV de Bastien TABORDET" loading="lazy" decoding="async">
+          </div>
+          <div class="cv-actions" data-reveal>
             <a class="btn btn-primary" href="CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">Consulter le CV</a>
             <a class="btn btn-ghost" href="CV_Bastien_TABORDET.pdf" download="CV_Bastien_TABORDET.pdf">Télécharger mon CV (PDF)</a>
           </div>
@@ -529,7 +557,7 @@
 
           <div class="card contact-card" data-reveal data-reveal-delay="1">
             <div class="c-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.640-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.730v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
             </div>
             <span class="kicker">LinkedIn</span>
             <span class="c-value">linkedin.com/in/bastientabordet</span>
@@ -559,6 +587,6 @@
 
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=3"></script>
 </body>
 </html>
