@@ -360,8 +360,9 @@ code { font-family: var(--mono); font-size: .88em; padding: 1px 6px; border-radi
 .d-card.wide { grid-column: span 3; }
 .d-media { position: relative; height: 240px; overflow: hidden; background: var(--bg-soft); }
 .d-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
-/* DJ : le haut de l'image reste visible, le bas (zone noire) est rogne. Augmenter 128% pour rogner davantage. */
-.d-media.top img { height: 128%; object-position: 50% 0; }
+/* DJ : le bas de l'image (zone noire) est rogne, et l'image est remontee pour que le logo Pioneer ne soit pas trop bas.
+   Pour remonter encore le logo : augmenter -12% (ex. -16%). Pour le redescendre : le diminuer (ex. -8%). */
+.d-media.top img { height: 128%; object-position: 50% 0; transform: translateY(-12%); }
 /* Droit : image entiere, sans zoom */
 .d-media.contain { background: #fff; }
 .d-media.contain img { object-fit: contain; padding: 16px; }
