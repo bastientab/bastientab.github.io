@@ -23,7 +23,7 @@
       try {
         var t = localStorage.getItem('theme');
         if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
- document.documentElement.setAttribute('data-theme', t);
+        document.documentElement.setAttribute('data-theme', t);
       } catch (e) {}
     })();
   </script>
@@ -43,13 +43,13 @@
     <div class="container header-inner">
       <a class="brand" href="../">Bastien TABORDET</a>
       <nav class="nav" id="site-nav" aria-label="Navigation principale">
- <ul class="nav-list" id="nav-list">
-   <li><a href="../#a-propos">À propos</a></li>
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
           <li><a href="../#formation">Formation</a></li>
-   <li><a href="../#competences">Compétences</a></li>
-   <li><a href="../#projets">Projets</a></li>
-   <li><a href="../#divers">Divers</a></li>
-   <li><a href="../#cv">CV</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
           <li><a href="../#contact">Contact</a></li>
           <li><a href="./" class="is-active" aria-current="page">Cours</a></li>
         </ul>
@@ -58,7 +58,7 @@
         <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
         <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-   <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
         <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
           <span></span><span></span><span></span>
@@ -73,131 +73,131 @@
     <section class="page-hero" aria-labelledby="page-title">
       <div class="container">
         <p class="chip"><span class="dot" aria-hidden="true"></span>Espace révisions · BUT R&amp;T</p>
- <h1 class="page-title" id="page-title">Cours</h1>
- <p class="page-lead">Mes fiches de cours et de révision, matière par matière. Le <strong>tronc commun</strong> regroupe les matières qu'on retrouve tout au long du BUT ; les <strong>SAÉ</strong> sont rangées par semestre.</p>
+        <h1 class="page-title" id="page-title">Cours</h1>
+        <p class="page-lead">Mes fiches de cours et de révision, matière par matière. Le <strong>tronc commun</strong> regroupe les matières qu'on retrouve tout au long du BUT ; les <strong>SAÉ</strong> sont rangées par semestre.</p>
 
- <div class="c-toolbar" role="search">
+        <div class="c-toolbar" role="search">
           <div class="c-search">
-     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-     <label class="sr-only" for="c-search">Rechercher un cours</label>
-     <input id="c-search" type="search" placeholder="Rechercher : PHP, DNS, intégrale…  (touche /)" autocomplete="off" spellcheck="false">
-   </div>
-   <div class="c-filters" role="group" aria-label="Filtrer par catégorie">
-     <button class="c-filter" type="button" data-filter="all" aria-pressed="true">Tout</button>
-     <button class="c-filter" type="button" data-filter="tronc" aria-pressed="false">Tronc commun</button>
-     <button class="c-filter" type="button" data-filter="sae" aria-pressed="false">SAÉ</button>
-   </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <label class="sr-only" for="c-search">Rechercher un cours</label>
+            <input id="c-search" type="search" placeholder="Rechercher : PHP, DNS, intégrale…  (touche /)" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="c-filters" role="group" aria-label="Filtrer par catégorie">
+            <button class="c-filter" type="button" data-filter="all" aria-pressed="true">Tout</button>
+            <button class="c-filter" type="button" data-filter="tronc" aria-pressed="false">Tronc commun</button>
+            <button class="c-filter" type="button" data-filter="sae" aria-pressed="false">SAÉ</button>
+          </div>
         </div>
 
- <p class="c-no-result" id="c-no-result" role="status" hidden>
-   Aucun cours ne correspond à ta recherche.
-   <button class="btn btn-ghost btn-sm" id="c-reset" type="button">Tout afficher</button>
+        <p class="c-no-result" id="c-no-result" role="status" hidden>
+          Aucun cours ne correspond à ta recherche.
+          <button class="btn btn-ghost btn-sm" id="c-reset" type="button">Tout afficher</button>
         </p>
       </div>
     </section>
 
     <!-- ===================== Tronc commun ===================== -->
-    <!-- Statut d'une carte : "c-status is-ready" (fiche remplie) ou "c-status is-todo" (à remplir) -->
+    <!-- Statut d'une carte : "c-status is-ready" + "Fiche dispo"  ou  "c-status is-todo" + "À remplir" -->
     <section class="c-group" id="tronc-commun" aria-labelledby="tc-title">
       <div class="container">
         <div class="c-group-head" data-reveal>
           <div>
-     <h2 class="c-group-title" id="tc-title">Tronc commun</h2>
-     <p class="c-group-desc">Les matières qui reviennent tout au long du BUT, de la 1<sup>re</sup> à la 3<sup>e</sup> année.</p>
+            <h2 class="c-group-title" id="tc-title">Tronc commun</h2>
+            <p class="c-group-desc">Les matières qui reviennent tout au long du BUT, de la 1<sup>re</sup> à la 3<sup>e</sup> année.</p>
           </div>
-   <span class="c-count" data-one="matière" data-many="matières">13 matières</span>
- </div>
+          <span class="c-count" data-one="matière" data-many="matières">13 matières</span>
+        </div>
 
         <div class="c-grid">
-   <a class="c-card" href="maths.html" data-cat="tronc" data-tags="mathematiques analyse limite continuite derivee complexe polynome fraction integrale primitive">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">∑</span><span class="c-status is-ready">Fiche dispo</span></div>
-     <h3 class="c-card-title">Maths</h3>
-     <p>Fonctions, complexes, polynômes, intégrales — avec outils interactifs.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-   </a>
+          <a class="c-card" href="maths.html" data-cat="tronc" data-tags="mathematiques analyse limite continuite derivee complexe polynome fraction integrale primitive">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">∑</span><span class="c-status is-ready">Fiche dispo</span></div>
+            <h3 class="c-card-title">Maths</h3>
+            <p>Fonctions, complexes, polynômes, intégrales — avec outils interactifs.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
 
           <a class="c-card" href="telecoms.html" data-cat="tronc" data-tags="telecommunications signal fourier spectre filtre bode decibel db modulation transmission">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">∿</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Télécoms</h3>
-     <p>Signaux, Fourier, spectre, filtres, bilans de liaison et décibels.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-   </a>
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">∿</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Télécoms</h3>
+            <p>Signaux, Fourier, spectre, filtres, bilans de liaison et décibels.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
 
           <a class="c-card" href="reseaux.html" data-cat="tronc" data-tags="initiation reseaux architecture osi tcp ip adressage masque vlan routage switch cisco">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">⇄</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Réseaux</h3>
-     <p>Initiation &amp; architecture réseaux : OSI / TCP-IP, adressage, VLAN, routage.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-   </a>
-
-   <a class="c-card" href="python.html" data-cat="tronc" data-tags="python prog programmation algorithmique script fonction liste dictionnaire">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">Py</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Programmation Python</h3>
-     <p>Bases du langage, structures de données, fonctions et scripts.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">⇄</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Réseaux</h3>
+            <p>Initiation &amp; architecture réseaux : OSI / TCP-IP, adressage, VLAN, routage.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
           </a>
 
-   <a class="c-card" href="systeme.html" data-cat="tronc" data-tags="systeme linux windows bash shell terminal commande droits fichiers processus">
+          <a class="c-card" href="python.html" data-cat="tronc" data-tags="python prog programmation algorithmique script fonction liste dictionnaire">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">Py</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Programmation Python</h3>
+            <p>Bases du langage, structures de données, fonctions et scripts.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="c-card" href="systeme.html" data-cat="tronc" data-tags="systeme linux windows bash shell terminal commande droits fichiers processus">
             <div class="c-card-top"><span class="c-ico" aria-hidden="true">&gt;_</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Système</h3>
+            <h3 class="c-card-title">Système</h3>
             <p>Linux &amp; Windows, ligne de commande, droits, scripts Bash.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-          </a>
-
-   <a class="c-card" href="web.html" data-cat="tronc" data-tags="web php mysql pdo html css sql requete preparee serveur dynamique">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">&lt;/&gt;</span><span class="c-status is-ready">Fiche dispo</span></div>
-     <h3 class="c-card-title">Web</h3>
-     <p>Pages statiques vs dynamiques, PHP, MySQL &amp; PDO.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-          </a>
-
-   <a class="c-card" href="rlan.html" data-cat="tronc" data-tags="rlan wifi wi-fi 802.11 sans fil wlan point d'acces ssid wpa">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">((·))</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">RLAN</h3>
-     <p>Réseaux locaux sans fil : Wi-Fi 802.11, sécurité, déploiement.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-   </a>
-
-   <a class="c-card" href="archi-sys.html" data-cat="tronc" data-tags="architecture systemes numeriques binaire hexadecimal numeration codage logique booleenne processeur memoire numerisation">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">01</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Architecture des systèmes numériques</h3>
-     <p>Numération, codage de l'information, logique, architecture d'un ordinateur.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-          </a>
-
-   <a class="c-card" href="adminsys.html" data-cat="tronc" data-tags="administration systeme admin sys adminsys linux windows serveur utilisateurs services virtualisation">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">⚙</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Admin-sys</h3>
-     <p>Administration systèmes : utilisateurs, services, virtualisation, automatisation.</p>
             <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
           </a>
 
-   <a class="c-card" href="donnees.html" data-cat="tronc" data-tags="analyse traitement donnees structurees csv json xml regex expressions regulieres">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">{ }</span><span class="c-status is-todo">À remplir</span></div>
+          <a class="c-card" href="web.html" data-cat="tronc" data-tags="web php mysql pdo html css sql requete preparee serveur dynamique">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">&lt;/&gt;</span><span class="c-status is-ready">Fiche dispo</span></div>
+            <h3 class="c-card-title">Web</h3>
+            <p>Pages statiques vs dynamiques, PHP, MySQL &amp; PDO.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="c-card" href="rlan.html" data-cat="tronc" data-tags="rlan wifi wi-fi 802.11 sans fil wlan point d'acces ssid wpa">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">((·))</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">RLAN</h3>
+            <p>Réseaux locaux sans fil : Wi-Fi 802.11, sécurité, déploiement.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="c-card" href="archi-sys.html" data-cat="tronc" data-tags="architecture systemes numeriques binaire hexadecimal numeration codage logique booleenne processeur memoire numerisation">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">01</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Architecture des systèmes numériques</h3>
+            <p>Numération, codage de l'information, logique, architecture d'un ordinateur.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="c-card" href="adminsys.html" data-cat="tronc" data-tags="administration systeme admin sys adminsys linux windows serveur utilisateurs services virtualisation">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">⚙</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Admin-sys</h3>
+            <p>Administration systèmes : utilisateurs, services, virtualisation, automatisation.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="c-card" href="donnees.html" data-cat="tronc" data-tags="analyse traitement donnees structurees csv json xml regex expressions regulieres">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">{ }</span><span class="c-status is-todo">À remplir</span></div>
             <h3 class="c-card-title">Données structurées</h3>
-     <p>Analyse et traitement de données : CSV, JSON, XML, expressions régulières.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-          </a>
-
-   <a class="c-card" href="bdd.html" data-cat="tronc" data-tags="bdd base de donnees sql mysql mcd mld modelisation jointure requete">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">SQL</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Bases de données</h3>
-     <p>Modélisation (MCD / MLD), langage SQL, requêtes et jointures.</p>
+            <p>Analyse et traitement de données : CSV, JSON, XML, expressions régulières.</p>
             <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
           </a>
 
-   <a class="c-card" href="telephonie.html" data-cat="tronc" data-tags="telephonie toip voip sip rtp xivo ipbx dect sda">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">☎</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Téléphonie</h3>
-     <p>ToIP : SIP, RTP, XiVO, configuration des postes et des services.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-   </a>
+          <a class="c-card" href="bdd.html" data-cat="tronc" data-tags="bdd base de donnees sql mysql mcd mld modelisation jointure requete">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">SQL</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Bases de données</h3>
+            <p>Modélisation (MCD / MLD), langage SQL, requêtes et jointures.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
 
-   <a class="c-card" href="serv-res.html" data-cat="tronc" data-tags="services reseaux serv-res dhcp dns http apache mail smtp serveur">
-     <div class="c-card-top"><span class="c-ico" aria-hidden="true">DNS</span><span class="c-status is-todo">À remplir</span></div>
-     <h3 class="c-card-title">Services réseaux</h3>
-     <p>DHCP, DNS, HTTP, mail : installation et configuration des services.</p>
-     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          <a class="c-card" href="telephonie.html" data-cat="tronc" data-tags="telephonie toip voip sip rtp xivo ipbx dect sda">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">☎</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Téléphonie</h3>
+            <p>ToIP : SIP, RTP, XiVO, configuration des postes et des services.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+          <a class="c-card" href="serv-res.html" data-cat="tronc" data-tags="services reseaux serv-res dhcp dns http apache mail smtp serveur">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">DNS</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Services réseaux</h3>
+            <p>DHCP, DNS, HTTP, mail : installation et configuration des services.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
           </a>
         </div>
       </div>
@@ -207,70 +207,70 @@
     <section class="c-group" id="sae" aria-labelledby="sae-title">
       <div class="container">
         <div class="c-group-head" data-reveal>
-   <div>
+          <div>
             <h2 class="c-group-title" id="sae-title">SAÉ</h2>
-     <p class="c-group-desc">Situations d'apprentissage et d'évaluation : les projets de chaque semestre.</p>
-   </div>
+            <p class="c-group-desc">Situations d'apprentissage et d'évaluation : les projets de chaque semestre.</p>
+          </div>
           <span class="c-count" data-one="SAÉ" data-many="SAÉ">8 SAÉ</span>
         </div>
 
- <div class="c-subgroup">
-   <h3 class="c-sub">Semestre 1</h3>
-   <div class="c-grid">
-     <a class="c-card" href="sae11.html" data-cat="sae" data-tags="sae11 sae 11 1.01 s1 cybersecurite hygiene informatique securite">
-<div class="c-card-top"><span class="c-ico" aria-hidden="true">1.01</span><span class="c-status is-todo">À remplir</span></div>
-       <h4 class="c-card-title">SAÉ 1.01</h4>
-       <p>Se sensibiliser à l'hygiène informatique et à la cybersécurité.</p>
-       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
-     <a class="c-card" href="sae12.html" data-cat="sae" data-tags="sae12 sae 12 1.02 s1 reseau reseaux informatiques">
-       <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.02</span><span class="c-status is-todo">À remplir</span></div>
-       <h4 class="c-card-title">SAÉ 1.02</h4>
-       <p>S'initier aux réseaux informatiques.</p>
-       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
-     <a class="c-card" href="sae13.html" data-cat="sae" data-tags="sae13 sae 13 1.03 s1 transmission signal">
-       <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.03</span><span class="c-status is-todo">À remplir</span></div>
-<h4 class="c-card-title">SAÉ 1.03</h4>
-<p>Découvrir un dispositif de transmission.</p>
-<div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
+        <div class="c-subgroup">
+          <h3 class="c-sub">Semestre 1</h3>
+          <div class="c-grid">
+            <a class="c-card" href="sae11.html" data-cat="sae" data-tags="sae11 sae 11 1.01 s1 cybersecurite hygiene informatique securite">
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.01</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 1.01</h4>
+              <p>Se sensibiliser à l'hygiène informatique et à la cybersécurité.</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
+            <a class="c-card" href="sae12.html" data-cat="sae" data-tags="sae12 sae 12 1.02 s1 reseau reseaux informatiques">
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.02</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 1.02</h4>
+              <p>S'initier aux réseaux informatiques.</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
+            <a class="c-card" href="sae13.html" data-cat="sae" data-tags="sae13 sae 13 1.03 s1 transmission signal">
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.03</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 1.03</h4>
+              <p>Découvrir un dispositif de transmission.</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
             <a class="c-card" href="sae15.html" data-cat="sae" data-tags="sae15 sae 15 1.05 s1 donnees traitement python">
-<div class="c-card-top"><span class="c-ico" aria-hidden="true">1.05</span><span class="c-status is-todo">À remplir</span></div>
-       <h4 class="c-card-title">SAÉ 1.05</h4>
-       <p>Traiter des données.</p>
-       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
-   </div>
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.05</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 1.05</h4>
+              <p>Traiter des données.</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
+          </div>
         </div>
 
- <div class="c-subgroup">
+        <div class="c-subgroup">
           <h3 class="c-sub">Semestre 2</h3>
-   <div class="c-grid">
-     <a class="c-card" href="sae21.html" data-cat="sae" data-tags="sae21 sae 21 2.01 s2 reseau petite structure">
-       <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.01</span><span class="c-status is-todo">À remplir</span></div>
-       <h4 class="c-card-title">SAÉ 2.01</h4>
-       <p>Construire un réseau informatique pour une petite structure.</p>
-       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
-     <a class="c-card" href="sae22.html" data-cat="sae" data-tags="sae22 sae 22 2.02 s2 signal mesure matlab">
-<div class="c-card-top"><span class="c-ico" aria-hidden="true">2.02</span><span class="c-status is-todo">À remplir</span></div>
-       <h4 class="c-card-title">SAÉ 2.02</h4>
-       <p>Mesurer et caractériser un signal ou un système.</p>
-       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
-     <a class="c-card" href="sae23.html" data-cat="sae" data-tags="sae23 sae 23 2.03 s2 cyberskills php mysql web entreprise">
-       <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.03</span><span class="c-status is-todo">À remplir</span></div>
-       <h4 class="c-card-title">SAÉ 2.03</h4>
-       <p>Mettre en place une solution informatique pour l'entreprise (CyberSkills).</p>
-       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
-     <a class="c-card" href="sae24.html" data-cat="sae" data-tags="sae24 sae 24 2.04 s2 projet integratif">
-       <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.04</span><span class="c-status is-todo">À remplir</span></div>
-       <h4 class="c-card-title">SAÉ 2.04</h4>
-       <p>Projet intégratif.</p>
-<div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
-     </a>
+          <div class="c-grid">
+            <a class="c-card" href="sae21.html" data-cat="sae" data-tags="sae21 sae 21 2.01 s2 reseau petite structure">
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.01</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 2.01</h4>
+              <p>Construire un réseau informatique pour une petite structure.</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
+            <a class="c-card" href="sae22.html" data-cat="sae" data-tags="sae22 sae 22 2.02 s2 signal mesure matlab">
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.02</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 2.02</h4>
+              <p>Mesurer et caractériser un signal ou un système.</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
+            <a class="c-card" href="sae23.html" data-cat="sae" data-tags="sae23 sae 23 2.03 s2 cyberskills php mysql web entreprise">
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.03</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 2.03</h4>
+              <p>Mettre en place une solution informatique pour l'entreprise (CyberSkills).</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
+            <a class="c-card" href="sae24.html" data-cat="sae" data-tags="sae24 sae 24 2.04 s2 projet integratif">
+              <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.04</span><span class="c-status is-todo">À remplir</span></div>
+              <h4 class="c-card-title">SAÉ 2.04</h4>
+              <p>Projet intégratif.</p>
+              <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+            </a>
           </div>
         </div>
       </div>

@@ -70,7 +70,7 @@
         var t = document.activeElement;
         var typing = t && (/^(input|textarea|select)$/i.test(t.tagName) || t.isContentEditable);
         if (e.key === '/' && !typing && !e.ctrlKey && !e.metaKey && !e.altKey) {
-   e.preventDefault();
+          e.preventDefault();
           search.focus();
         }
       });
@@ -106,7 +106,7 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
       for (var i = 0; i < targets.length; i++) {
- if (visible[targets[i].id]) { setActive(targets[i].id); break; }
+        if (visible[targets[i].id]) { setActive(targets[i].id); break; }
       }
     }, { rootMargin: '-90px 0px -55% 0px', threshold: 0 });
 
