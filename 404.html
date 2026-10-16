@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page introuvable (404) — Bastien TABORDET</title>
+  <meta name="description" content="Cette page n'existe pas ou a été déplacée.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#f5f5f7">
+
+  <!--
+    GitHub Pages affiche cette page pour toute adresse inexistante.
+    Chemins en absolu (/assets/...) : la page peut etre servie a n'importe quelle profondeur.
+    Anciennes adresses du site d'avant la onepage (/formation.html, /cv.html...) :
+    renvoi immediat vers la bonne section de l'accueil.
+  -->
+  <script>
+    (function () {
+      var map = {
+        'a-propos': '#a-propos', 'apropos': '#a-propos',
+        'formation': '#formation',
+        'competences': '#competences', 'compétences': '#competences',
+        'projets': '#projets',
+        'divers': '#divers',
+        'cv': '#cv',
+        'contact': '#contact',
+        'index': ''
+      };
+      var page = location.pathname.replace(/\/+$/, '').split('/').pop();
+      try { page = decodeURIComponent(page); } catch (e) {}
+      page = page.replace(/\.html?$/i, '').toLowerCase();
+      if (Object.prototype.hasOwnProperty.call(map, page)) location.replace('/' + map[page]);
+    })();
+  </script>
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <!-- ?v=... : a changer a chaque modification du CSS/JS pour forcer les navigateurs a recharger -->
+  <link rel="stylesheet" href="/assets/css/main.css?v=6">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <!-- ===================== En-tête (meme style que l'accueil) ===================== -->
+  <header class="site-header nf-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">Bastien TABORDET</a>
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="nf" id="contenu" tabindex="-1">
+    <div class="nf-wrap">
+      <p class="chip chip-error rise" style="--d:0"><span class="dot" aria-hidden="true"></span>Erreur 404 · page introuvable</p>
+      <p class="nf-code rise" style="--d:1" aria-hidden="true">404</p>
+      <h1 class="nf-title rise" style="--d:2">Cette page n'existe pas (ou plus).</h1>
+      <p class="nf-lead rise" style="--d:3">Le lien est peut-être cassé, ou la page a déménagé quand le site est passé sur une seule page.</p>
+
+      <div class="terminal rise" style="--d:4">
+        <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>bastien@portfolio: ~</span></div>
+        <div class="term-output">
+          <div class="term-line"><span class="term-prompt">bastien@portfolio:~$&nbsp;</span><span class="term-cmd">cd <span id="nf-path"></span></span></div>
+          <div class="term-line"><span class="term-error">bash: cd: No such file or directory</span></div>
+          <div class="term-line"><span class="term-prompt">bastien@portfolio:~$&nbsp;</span><span class="term-cmd">ls</span></div>
+          <nav class="term-line nf-ls" aria-label="Sections du portfolio">
+            <a href="/#a-propos">a-propos/</a>
+            <a href="/#formation">formation/</a>
+            <a href="/#competences">competences/</a>
+            <a href="/#projets">projets/</a>
+            <a href="/#divers">divers/</a>
+            <a href="/#cv">cv/</a>
+            <a href="/#contact">contact/</a>
+          </nav>
+          <div class="term-line">&nbsp;</div>
+          <p id="nf-redirect" class="term-line" aria-live="polite"><span class="term-info">→</span> Redirection vers l'accueil dans <span id="nf-count" class="nf-count">5</span> s…</p>
+          <span class="nf-timer" id="nf-timer" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="nf-actions rise" style="--d:5">
+        <a class="btn btn-primary" href="/">Retour à l'accueil</a>
+        <button id="nf-cancel" class="btn btn-ghost" type="button" title="Raccourci : Échap">Rester ici</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== Pied de page ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="/">Accueil</a>
+    </div>
+  </footer>
+
+  <!-- main.js gere : theme, en-tete, chemin demande, compte a rebours et bouton « Rester ici » -->
+  <script defer src="/assets/js/main.js?v=6"></script>
+  <script>
+    // Barre de temps : masquee quand on annule la redirection (bouton ou touche Echap)
+    (function () {
+      var bar = document.getElementById('nf-timer');
+      var cancel = document.getElementById('nf-cancel');
+      if (!cancel) return;
+      cancel.addEventListener('click', function () { if (bar) bar.hidden = true; });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !cancel.hidden) cancel.click();
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 /* ==========================================================================
    Portfolio de Bastien TABORDET - refonte one-page 2026
    Feuille de style principale (index.html + 404.html).
-   L'ancienne feuille /style.css reste utilisee par la section « Cours » (menu/).
+   Les pages de cours (menu/) ont leur feuille dediee : assets/css/cours.css.
    Apres chaque modification : changer ?v=... dans index.html et 404.html.
    ========================================================================== */
 
@@ -414,15 +414,54 @@ code { font-family: var(--mono); font-size: .88em; padding: 1px 6px; border-radi
 .footer-inner a { color: var(--ink-2); }
 .konami-hint { font-family: var(--mono); opacity: .55; }
 
-/* ---------- 15. Page 404 ---------- */
-.nf { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 40px 20px; background: radial-gradient(ellipse at top, var(--accent-soft), transparent 60%), var(--bg); }
-.nf-wrap { width: min(100%, 720px); text-align: center; }
-.nf-code { font-size: clamp(5rem, 20vw, 11rem); font-weight: 800; letter-spacing: -.06em; line-height: .9; margin: 0; }
-.nf-title { font-size: clamp(1.4rem, 3.4vw, 2.2rem); letter-spacing: -.03em; margin: 12px 0 28px; }
-.nf .terminal { text-align: left; margin: 0 0 28px; box-shadow: var(--shadow); }
-.nf .term-output { height: auto; min-height: 210px; }
+/* ---------- 15. Page 404 (meme style que l'accueil : grand titre, puce, terminal) ---------- */
+.nf-header .header-actions { margin-left: auto; }
+.nf {
+  position: relative; overflow: hidden;
+  min-height: 100vh; min-height: 100svh;
+  display: grid; place-items: center;
+  padding: calc(var(--header-h) + 40px) 0 70px;
+}
+/* Halo colore derriere le 404 */
+.nf::before {
+  content: ""; position: absolute; left: 50%; top: -10%; z-index: 0;
+  width: min(1100px, 140vw); height: 75%; transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 30%, var(--accent-soft), rgba(168, 85, 247, .08) 45%, transparent 70%);
+  pointer-events: none;
+}
+.nf-wrap {
+  position: relative; z-index: 1;
+  width: min(100% - 40px, 760px); margin-inline: auto;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.chip-error .dot { background: #ff453a; animation-name: ping-red; }
+@keyframes ping-red {
+  0% { box-shadow: 0 0 0 0 rgba(255, 69, 58, .55); }
+  80%, 100% { box-shadow: 0 0 0 10px rgba(255, 69, 58, 0); }
+}
+.nf-code {
+  margin: 26px 0 6px; padding: 0 .06em;
+  font-size: clamp(6.5rem, 26vw, 14rem); font-weight: 800; line-height: .85; letter-spacing: -.065em;
+  background: linear-gradient(90deg, var(--accent), #a855f7, #ec4899);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.nf-title { font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.1; letter-spacing: -.035em; font-weight: 800; margin: 0 0 12px; text-wrap: balance; }
+.nf-lead { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--ink-3); max-width: 48ch; margin: 0 0 34px; }
+.nf .terminal { width: 100%; text-align: left; margin: 0 0 28px; box-shadow: var(--shadow); }
+.nf .term-output { height: auto; overflow: visible; padding: 16px 18px 18px; }
+.nf-ls { display: flex; flex-wrap: wrap; gap: 2px 18px; }
+.nf-count { font-family: var(--mono); color: #56d364; }
+/* Barre de temps avant la redirection (5 s, comme le compte a rebours de main.js) */
+.nf-timer { display: block; height: 3px; margin-top: 10px; border-radius: 3px; overflow: hidden; background: rgba(255, 255, 255, .08); }
+.nf-timer::after {
+  content: ""; display: block; height: 100%;
+  background: linear-gradient(90deg, #56d364, #58a6e8);
+  transform-origin: 0 50%; animation: nf-timer 5s linear forwards;
+}
+.nf-timer[hidden] { display: none; }
+@keyframes nf-timer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
 .nf-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-.nf-count { font-family: var(--mono); color: var(--accent); }
 
 /* ---------- 16. Responsive ---------- */
 @media (max-width: 1080px) {
@@ -461,6 +500,8 @@ code { font-family: var(--mono); font-size: .88em; padding: 1px 6px; border-radi
   .tl-dot { left: -33px; }
   .tt-stats { gap: 18px; }
   .term-output { height: 300px; }
+  .nf .term-output { height: auto; font-size: .82rem; }
+  .nf-actions .btn { flex: 1 1 100%; }
 }
 
 /* ---------- 17. Mouvement reduit ---------- */
@@ -474,4 +515,5 @@ code { font-family: var(--mono); font-size: .88em; padding: 1px 6px; border-radi
     transition-delay: 0s !important;
   }
   .reveal-ready [data-reveal] { opacity: 1; transform: none; }
+  .nf-timer { display: none; }
 }
