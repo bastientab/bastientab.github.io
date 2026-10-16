@@ -1,378 +1,292 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bastien TABORDET — Cours</title>
-  <meta name="description" content="Portfolio de Bastien TABORDET, etudiant en BUT Reseaux et Telecommunications a l'IUT de Clermont-Ferrand. Recherche une alternance des 2026 en reseaux et cybersecurite.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cours &amp; révisions — Bastien TABORDET</title>
+  <meta name="description" content="Mes fiches de cours et de révision du BUT Réseaux &amp; Télécommunications : maths, télécoms, réseaux, Python, système, web, BDD, téléphonie, services réseaux et SAÉ.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/">
+
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Bastien TABORDET — Portfolio">
-  <meta property="og:description" content="Portfolio de Bastien TABORDET, etudiant en BUT Reseaux et Telecommunications a l'IUT de Clermont-Ferrand. Recherche une alternance des 2026 en reseaux et cybersecurite.">
-  <meta property="og:url" content="https://bastientabordet.fr/">
-  <meta property="og:image" content="https://bastientabordet.fr/images/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Bastien TABORDET">
+  <meta property="og:title" content="Cours &amp; révisions — BUT R&amp;T">
+  <meta property="og:description" content="Fiches de cours et de révision du BUT Réseaux &amp; Télécommunications.">
+  <meta property="og:url" content="https://bastientabordet.fr/menu/">
+  <meta property="og:image" content="https://bastientabordet.fr/images/imagepdp.jpg">
+  <meta name="twitter:card" content="summary">
 
-  <link rel="stylesheet" href="../style.css">
   <script>
-  (function(){
-    var t = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', t);
-  })();
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+ document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
   </script>
-  <style>
-    /* ── BARRE DE PROGRESSION ── */
-    .menu-progress {
-      margin-bottom: 1.5rem;
-    }
-    .menu-progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: .5rem;
-    }
-    .menu-progress-label {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--ink-dim);
-    }
-    .menu-progress-count {
-      font-family: var(--font-mono);
-      font-size: .68rem;
-      color: var(--cyan);
-    }
-    .menu-progress-track {
-      height: 4px;
-      background: var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .menu-progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--cyan), var(--orange));
-      border-radius: 4px;
-      transition: width 1s .3s cubic-bezier(.4,0,.2,1);
-    }
 
-    /* ── FILTRE ── */
-    .menu-search-wrap {
-      position: relative;
-      margin-bottom: 1.25rem;
-    }
-    .menu-search {
-      width: 100%;
-      padding: .65rem 1rem .65rem 2.4rem;
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--r2);
-      color: var(--ink);
-      font-family: var(--font-mono);
-      font-size: .8rem;
-      letter-spacing: .05em;
-      outline: none;
-      transition: border-color var(--tr), background var(--tr);
-    }
-    .menu-search::placeholder { color: var(--ink-dim); }
-    .menu-search:focus {
-      border-color: var(--border-hot);
-      background: var(--bg-1);
-    }
-    .menu-search-icon {
-      position: absolute;
-      left: .85rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--ink-dim);
-      font-size: .8rem;
-      pointer-events: none;
-    }
-
-    /* ── GRILLE ── */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
-      margin-top: .5rem;
-    }
-
-    /* ── CARTE ── */
-    .menu-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-end;
-      min-height: 160px;
-      padding: 1.6rem 1.5rem 1.4rem;
-      background: var(--bg-2);
-      border: 1px solid var(--border);
-      border-radius: var(--r2);
-      color: var(--ink);
-      font-family: var(--font-mono);
-      font-size: .92rem;
-      font-weight: 500;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: border-color var(--tr), transform var(--tr-l), background var(--tr), color var(--tr);
-    }
-
-    /* barre du bas au hover */
-    .menu-btn::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--c-accent, var(--cyan)), var(--orange));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .3s cubic-bezier(.4,0,.2,1);
-    }
-
-    /* fond coloré subtil au hover selon catégorie */
-    .menu-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--c-accent, var(--cyan));
-      opacity: 0;
-      transition: opacity var(--tr);
-      pointer-events: none;
-    }
-
-    .menu-btn:hover {
-      border-color: var(--border-hot);
-      transform: translateY(-4px);
-      color: var(--c-accent, var(--cyan));
-    }
-    .menu-btn:hover::after  { transform: scaleX(1); }
-    .menu-btn:hover::before { opacity: .04; }
-
-    /* icône en haut */
-    .menu-btn-icon {
-      font-size: 1.3rem;
-      margin-bottom: auto;
-      line-height: 1;
-    }
-
-    /* label matière */
-    .menu-btn-label { line-height: 1.2; }
-
-    /* ressources */
-    .menu-btn-meta {
-      font-size: .6rem;
-      color: var(--ink-dim);
-      margin-top: .3rem;
-      letter-spacing: .08em;
-      transition: color var(--tr);
-    }
-    .menu-btn:hover .menu-btn-meta { color: var(--c-accent, var(--cyan)); opacity: .7; }
-
-    /* ── BADGE TAG ── */
-    .menu-btn-tag {
-      position: absolute;
-      top: .75rem; right: .75rem;
-      font-family: var(--font-mono);
-      font-size: .55rem;
-      font-weight: 500;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .18rem .5rem;
-      border-radius: 2px;
-    }
-    .tag-encours {
-      background: rgba(0,212,255,.12);
-      color: var(--cyan);
-      border: 1px solid rgba(0,212,255,.25);
-    }
-    .tag-nouveau {
-      background: rgba(255,101,64,.12);
-      color: var(--orange);
-      border: 1px solid rgba(255,101,64,.25);
-    }
-
-    /* ── HIDDEN (filtre) ── */
-    .menu-btn.hidden {
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(.96);
-      transition: opacity .2s ease, transform .2s ease;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .menu-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 600px) {
-      .menu-grid { grid-template-columns: repeat(2, 1fr); }
-      .menu-btn { min-height: 130px; }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
 </head>
-<body>
-  <div class="alternance-banner" aria-label="Disponibilite alternance">
-    <div class="alternance-ticker">
-<span>● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp; ● Disponible en alternance dès septembre 2026 — Informatique, Réseaux et Télécommunications — Rythme 1 mois entreprise / 1 mois IUT &nbsp;&nbsp;&mdash;&nbsp;&nbsp;</span>    </div>
-    </div>
-  </div>
-  <nav>
-    <div class="nav-content">
-      <div class="nav-brand">Bastien TABORDET</div>
-      <button class="nav-hamburger" id="nav-hamburger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
-      <ul>
-        <li><a href="../index.html">Accueil</a></li>
-        <li><a href="../a-propos.html">À propos</a></li>
-        <li><a href="../formation.html">Formation</a></li>
-        <li><a href="../competences.html">Compétences</a></li>
-        <li><a href="../projets.html">Projets</a></li>
-        <li><a href="../divers.html">Divers</a></li>
-        <li><a href="../cv.html">CV</a></li>
-        <li><a href="../contact.html">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer le thème">
-        <span class="theme-toggle-track"><span class="theme-toggle-thumb"></span></span>
-        <span class="theme-toggle-label">☀</span>
-      </button>
-    </div>
-  </nav>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
 
-  <div class="container">
-    <div class="section">
-      <h2>Cours</h2>
+  <!-- ===================== En-tête (identique à l'accueil) ===================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+ <ul class="nav-list" id="nav-list">
+   <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+   <li><a href="../#competences">Compétences</a></li>
+   <li><a href="../#projets">Projets</a></li>
+   <li><a href="../#divers">Divers</a></li>
+   <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active" aria-current="page">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+   <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-      <!-- Barre de progression -->
-      <div class="menu-progress">
-        <div class="menu-progress-header">
-          <span class="menu-progress-label">Semestre en cours — contenu documenté</span>
-          <span class="menu-progress-count" id="progress-txt">2 / 15 matières</span>
+  <main id="contenu" tabindex="-1">
+
+    <!-- ===================== En-tête de page ===================== -->
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="chip"><span class="dot" aria-hidden="true"></span>Espace révisions · BUT R&amp;T</p>
+ <h1 class="page-title" id="page-title">Cours</h1>
+ <p class="page-lead">Mes fiches de cours et de révision, matière par matière. Le <strong>tronc commun</strong> regroupe les matières qu'on retrouve tout au long du BUT ; les <strong>SAÉ</strong> sont rangées par semestre.</p>
+
+ <div class="c-toolbar" role="search">
+          <div class="c-search">
+     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+     <label class="sr-only" for="c-search">Rechercher un cours</label>
+     <input id="c-search" type="search" placeholder="Rechercher : PHP, DNS, intégrale…  (touche /)" autocomplete="off" spellcheck="false">
+   </div>
+   <div class="c-filters" role="group" aria-label="Filtrer par catégorie">
+     <button class="c-filter" type="button" data-filter="all" aria-pressed="true">Tout</button>
+     <button class="c-filter" type="button" data-filter="tronc" aria-pressed="false">Tronc commun</button>
+     <button class="c-filter" type="button" data-filter="sae" aria-pressed="false">SAÉ</button>
+   </div>
         </div>
-        <div class="menu-progress-track">
-          <div class="menu-progress-fill" id="progress-fill"></div>
+
+ <p class="c-no-result" id="c-no-result" role="status" hidden>
+   Aucun cours ne correspond à ta recherche.
+   <button class="btn btn-ghost btn-sm" id="c-reset" type="button">Tout afficher</button>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== Tronc commun ===================== -->
+    <!-- Statut d'une carte : "c-status is-ready" (fiche remplie) ou "c-status is-todo" (à remplir) -->
+    <section class="c-group" id="tronc-commun" aria-labelledby="tc-title">
+      <div class="container">
+        <div class="c-group-head" data-reveal>
+          <div>
+     <h2 class="c-group-title" id="tc-title">Tronc commun</h2>
+     <p class="c-group-desc">Les matières qui reviennent tout au long du BUT, de la 1<sup>re</sup> à la 3<sup>e</sup> année.</p>
+          </div>
+   <span class="c-count" data-one="matière" data-many="matières">13 matières</span>
+ </div>
+
+        <div class="c-grid">
+   <a class="c-card" href="maths.html" data-cat="tronc" data-tags="mathematiques analyse limite continuite derivee complexe polynome fraction integrale primitive">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">∑</span><span class="c-status is-ready">Fiche dispo</span></div>
+     <h3 class="c-card-title">Maths</h3>
+     <p>Fonctions, complexes, polynômes, intégrales — avec outils interactifs.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+   </a>
+
+          <a class="c-card" href="telecoms.html" data-cat="tronc" data-tags="telecommunications signal fourier spectre filtre bode decibel db modulation transmission">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">∿</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Télécoms</h3>
+     <p>Signaux, Fourier, spectre, filtres, bilans de liaison et décibels.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+   </a>
+
+          <a class="c-card" href="reseaux.html" data-cat="tronc" data-tags="initiation reseaux architecture osi tcp ip adressage masque vlan routage switch cisco">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">⇄</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Réseaux</h3>
+     <p>Initiation &amp; architecture réseaux : OSI / TCP-IP, adressage, VLAN, routage.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+   </a>
+
+   <a class="c-card" href="python.html" data-cat="tronc" data-tags="python prog programmation algorithmique script fonction liste dictionnaire">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">Py</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Programmation Python</h3>
+     <p>Bases du langage, structures de données, fonctions et scripts.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+   <a class="c-card" href="systeme.html" data-cat="tronc" data-tags="systeme linux windows bash shell terminal commande droits fichiers processus">
+            <div class="c-card-top"><span class="c-ico" aria-hidden="true">&gt;_</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Système</h3>
+            <p>Linux &amp; Windows, ligne de commande, droits, scripts Bash.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+   <a class="c-card" href="web.html" data-cat="tronc" data-tags="web php mysql pdo html css sql requete preparee serveur dynamique">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">&lt;/&gt;</span><span class="c-status is-ready">Fiche dispo</span></div>
+     <h3 class="c-card-title">Web</h3>
+     <p>Pages statiques vs dynamiques, PHP, MySQL &amp; PDO.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+   <a class="c-card" href="rlan.html" data-cat="tronc" data-tags="rlan wifi wi-fi 802.11 sans fil wlan point d'acces ssid wpa">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">((·))</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">RLAN</h3>
+     <p>Réseaux locaux sans fil : Wi-Fi 802.11, sécurité, déploiement.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+   </a>
+
+   <a class="c-card" href="archi-sys.html" data-cat="tronc" data-tags="architecture systemes numeriques binaire hexadecimal numeration codage logique booleenne processeur memoire numerisation">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">01</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Architecture des systèmes numériques</h3>
+     <p>Numération, codage de l'information, logique, architecture d'un ordinateur.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+   <a class="c-card" href="adminsys.html" data-cat="tronc" data-tags="administration systeme admin sys adminsys linux windows serveur utilisateurs services virtualisation">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">⚙</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Admin-sys</h3>
+     <p>Administration systèmes : utilisateurs, services, virtualisation, automatisation.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+   <a class="c-card" href="donnees.html" data-cat="tronc" data-tags="analyse traitement donnees structurees csv json xml regex expressions regulieres">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">{ }</span><span class="c-status is-todo">À remplir</span></div>
+            <h3 class="c-card-title">Données structurées</h3>
+     <p>Analyse et traitement de données : CSV, JSON, XML, expressions régulières.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+   <a class="c-card" href="bdd.html" data-cat="tronc" data-tags="bdd base de donnees sql mysql mcd mld modelisation jointure requete">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">SQL</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Bases de données</h3>
+     <p>Modélisation (MCD / MLD), langage SQL, requêtes et jointures.</p>
+            <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
+
+   <a class="c-card" href="telephonie.html" data-cat="tronc" data-tags="telephonie toip voip sip rtp xivo ipbx dect sda">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">☎</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Téléphonie</h3>
+     <p>ToIP : SIP, RTP, XiVO, configuration des postes et des services.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+   </a>
+
+   <a class="c-card" href="serv-res.html" data-cat="tronc" data-tags="services reseaux serv-res dhcp dns http apache mail smtp serveur">
+     <div class="c-card-top"><span class="c-ico" aria-hidden="true">DNS</span><span class="c-status is-todo">À remplir</span></div>
+     <h3 class="c-card-title">Services réseaux</h3>
+     <p>DHCP, DNS, HTTP, mail : installation et configuration des services.</p>
+     <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+          </a>
         </div>
       </div>
+    </section>
 
-      <!-- Filtre -->
-      <div class="menu-search-wrap">
-        <span class="menu-search-icon">⌕</span>
-        <input type="text" class="menu-search" id="menu-search" placeholder="Rechercher une matière..." autocomplete="off">
+    <!-- ===================== SAÉ ===================== -->
+    <section class="c-group" id="sae" aria-labelledby="sae-title">
+      <div class="container">
+        <div class="c-group-head" data-reveal>
+   <div>
+            <h2 class="c-group-title" id="sae-title">SAÉ</h2>
+     <p class="c-group-desc">Situations d'apprentissage et d'évaluation : les projets de chaque semestre.</p>
+   </div>
+          <span class="c-count" data-one="SAÉ" data-many="SAÉ">8 SAÉ</span>
+        </div>
+
+ <div class="c-subgroup">
+   <h3 class="c-sub">Semestre 1</h3>
+   <div class="c-grid">
+     <a class="c-card" href="sae11.html" data-cat="sae" data-tags="sae11 sae 11 1.01 s1 cybersecurite hygiene informatique securite">
+<div class="c-card-top"><span class="c-ico" aria-hidden="true">1.01</span><span class="c-status is-todo">À remplir</span></div>
+       <h4 class="c-card-title">SAÉ 1.01</h4>
+       <p>Se sensibiliser à l'hygiène informatique et à la cybersécurité.</p>
+       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+     <a class="c-card" href="sae12.html" data-cat="sae" data-tags="sae12 sae 12 1.02 s1 reseau reseaux informatiques">
+       <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.02</span><span class="c-status is-todo">À remplir</span></div>
+       <h4 class="c-card-title">SAÉ 1.02</h4>
+       <p>S'initier aux réseaux informatiques.</p>
+       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+     <a class="c-card" href="sae13.html" data-cat="sae" data-tags="sae13 sae 13 1.03 s1 transmission signal">
+       <div class="c-card-top"><span class="c-ico" aria-hidden="true">1.03</span><span class="c-status is-todo">À remplir</span></div>
+<h4 class="c-card-title">SAÉ 1.03</h4>
+<p>Découvrir un dispositif de transmission.</p>
+<div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+            <a class="c-card" href="sae15.html" data-cat="sae" data-tags="sae15 sae 15 1.05 s1 donnees traitement python">
+<div class="c-card-top"><span class="c-ico" aria-hidden="true">1.05</span><span class="c-status is-todo">À remplir</span></div>
+       <h4 class="c-card-title">SAÉ 1.05</h4>
+       <p>Traiter des données.</p>
+       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+   </div>
+        </div>
+
+ <div class="c-subgroup">
+          <h3 class="c-sub">Semestre 2</h3>
+   <div class="c-grid">
+     <a class="c-card" href="sae21.html" data-cat="sae" data-tags="sae21 sae 21 2.01 s2 reseau petite structure">
+       <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.01</span><span class="c-status is-todo">À remplir</span></div>
+       <h4 class="c-card-title">SAÉ 2.01</h4>
+       <p>Construire un réseau informatique pour une petite structure.</p>
+       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+     <a class="c-card" href="sae22.html" data-cat="sae" data-tags="sae22 sae 22 2.02 s2 signal mesure matlab">
+<div class="c-card-top"><span class="c-ico" aria-hidden="true">2.02</span><span class="c-status is-todo">À remplir</span></div>
+       <h4 class="c-card-title">SAÉ 2.02</h4>
+       <p>Mesurer et caractériser un signal ou un système.</p>
+       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+     <a class="c-card" href="sae23.html" data-cat="sae" data-tags="sae23 sae 23 2.03 s2 cyberskills php mysql web entreprise">
+       <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.03</span><span class="c-status is-todo">À remplir</span></div>
+       <h4 class="c-card-title">SAÉ 2.03</h4>
+       <p>Mettre en place une solution informatique pour l'entreprise (CyberSkills).</p>
+       <div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+     <a class="c-card" href="sae24.html" data-cat="sae" data-tags="sae24 sae 24 2.04 s2 projet integratif">
+       <div class="c-card-top"><span class="c-ico" aria-hidden="true">2.04</span><span class="c-status is-todo">À remplir</span></div>
+       <h4 class="c-card-title">SAÉ 2.04</h4>
+       <p>Projet intégratif.</p>
+<div class="c-card-foot"><span>Ouvrir la fiche</span><span class="c-arrow" aria-hidden="true">→</span></div>
+     </a>
+          </div>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Grille -->
-      <div class="menu-grid" id="menu-grid">
-
-        <a href="maths.html" class="menu-btn" data-label="Maths" style="--c-accent:#8b5cf6">
-          <span class="menu-btn-label">Maths</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="telecoms.html" class="menu-btn" data-label="Télécoms" style="--c-accent:var(--cyan)">
-          <span class="menu-btn-label">Télécoms</span>
-          <span class="menu-btn-meta">— fiches · — TP</span>
-        </a>
-
-        <a href="internet2.html" class="menu-btn" data-label="Internet2" style="--c-accent:var(--cyan)">
-          <span class="menu-btn-label">Internet2</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="bd2.html" class="menu-btn" data-label="BD2" style="--c-accent:#f59e0b">
-          <span class="menu-btn-label">BD2</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="serv-réseaux.html" class="menu-btn" data-label="Serv-Réseaux" style="--c-accent:var(--cyan)">
-          <span class="menu-btn-label">Serv-Réseaux</span>
-          <span class="menu-btn-meta">— fiche · — TP</span>
-        </a>
-
-        <a href="progpython.html" class="menu-btn" data-label="Prog Python" style="--c-accent:var(--orange)">
-          <span class="menu-btn-label">Prog Python</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="web.html" class="menu-btn" data-label="Web" style="--c-accent:var(--orange)">
-          <span class="menu-btn-label">Web</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="telephonie.html" class="menu-btn" data-label="Téléphonie" style="--c-accent:var(--cyan)">
-          <span class="menu-btn-label">Téléphonie</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="numerisation.html" class="menu-btn" data-label="Numérisation" style="--c-accent:#8b5cf6">
-          <span class="menu-btn-label">Numérisation</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="adminsys.html" class="menu-btn" data-label="Admin-Sys2" style="--c-accent:#28c840">
-          <span class="menu-btn-label">Admin-Sys2</span>
-          <span class="menu-btn-meta">— fiche · — TP</span>
-        </a>
-
-        <a href="rlan.html" class="menu-btn" data-label="RLAN" style="--c-accent:var(--cyan)">
-          <span class="menu-btn-label">RLAN</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="archi-res.html" class="menu-btn" data-label="Archi-Rés" style="--c-accent:var(--cyan)">
-          <span class="menu-btn-label">Archi-Rés</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="init-res.html" class="menu-btn" data-label="Init-Rés" style="--c-accent:var(--cyan)">
-          <span class="menu-btn-label">Init-Rés</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="archi-sys.html" class="menu-btn" data-label="Archi-Sys" style="--c-accent:#28c840">
-          <span class="menu-btn-label">Archi-Sys</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-        <a href="sae.html" class="menu-btn" data-label="SAé" style="--c-accent:#febc2e">
-          <span class="menu-btn-label">SAé</span>
-          <span class="menu-btn-meta">— fiches · — TPs</span>
-        </a>
-
-      </div>
+  <!-- ===================== Pied de page ===================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
-  </div>
-
-  <footer>
-    <p>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</p>
   </footer>
-  <script src="../script.js"></script>
-  <script>
-  // ── Barre de progression ──
-  (function () {
-    const TOTAL = 15;
-    const DONE  = 2; // à mettre à jour quand du contenu est dispo
-    const fill  = document.getElementById('progress-fill');
-    const txt   = document.getElementById('progress-txt');
-    if (!fill || !txt) return;
-    setTimeout(() => {
-      fill.style.width = (DONE / TOTAL * 100) + '%';
-      txt.textContent  = DONE + ' / ' + TOTAL + ' matières';
-    }, 200);
-  })();
 
-  // ── Filtre ──
-  (function () {
-    const input = document.getElementById('menu-search');
-    if (!input) return;
-    input.addEventListener('input', function () {
-      const q = this.value.toLowerCase().trim();
-      document.querySelectorAll('#menu-grid .menu-btn').forEach(btn => {
-        const label = (btn.dataset.label || '').toLowerCase();
-        btn.classList.toggle('hidden', q !== '' && !label.includes(q));
-      });
-    });
-  })();
-  </script>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=1"></script>
 </body>
 </html>

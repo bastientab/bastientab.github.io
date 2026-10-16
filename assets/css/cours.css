@@ -1,0 +1,332 @@
+/* =========================================================
+   cours.css — Espace révisions (/menu/ + pages de cours)
+   S'appuie sur les variables de main.css (--bg, --ink, --accent…)
+   -> à charger APRÈS main.css
+
+   BLOCS DISPO DANS LES FICHES
+   - Sous-titre ...... <h3 class="c-h3">…</h3>
+   - Encadré ......... <div class="c-callout"><p>…</p></div>   (variante .warn)
+   - Bloc neutre ..... <div class="c-block">…</div>
+   - Code ............ <pre class="c-code"><code>…</code></pre>
+         coloration : <span class="kw|str|cmt|var|fn">…</span>
+   - Tableau ......... <div class="c-table-wrap"><table class="c-table">…</table></div>
+   - Cartes .......... <div class="info-grid"><div class="info-card"><h4>…</h4><p>…</p></div></div>
+   - Comparaison ..... <div class="compare"><div class="bad">…</div><div class="good">…</div></div>
+   - Accordéon ....... <details class="acc"><summary>…</summary><div class="acc-body">…</div></details>
+         boutons tout ouvrir/fermer : <div class="acc-tools">(voir web.html)</div>
+   - Vocabulaire ..... <dl class="vocab"><div><dt>…</dt><dd>…</dd></div></dl>
+   - Formules ........ <ul class="formula-list"><li class="formula-item">…</li></ul>
+   ========================================================= */
+
+:root { --c-alt: #e8590c; --c-ok: #1f9d55; }
+[data-theme="dark"] { --c-alt: #ff9f43; --c-ok: #34c759; }
+
+.c-card[hidden], .c-group[hidden], .c-subgroup[hidden], .c-no-result[hidden] { display: none !important; }
+
+/* ---------- En-tête de page ---------- */
+.page-hero { padding: calc(var(--header-h) + 72px) 0 32px; }
+.page-hero .chip { margin-bottom: 18px; }
+.page-title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin: 0 0 14px;
+  color: var(--ink);
+}
+.page-lead {
+  color: var(--ink-2);
+  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+  line-height: 1.55;
+  max-width: 64ch;
+  margin: 0;
+}
+
+/* ---------- Recherche + filtres ---------- */
+.c-toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 32px; }
+.c-search { position: relative; flex: 1 1 280px; max-width: 480px; }
+.c-search svg {
+  position: absolute; left: 16px; top: 50%; width: 18px; height: 18px;
+  transform: translateY(-50%); color: var(--ink-3); pointer-events: none;
+}
+.c-search input {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 46px; padding: 0 16px 0 44px;
+  border-radius: 999px; border: 1px solid var(--line);
+  background: var(--bg-elev); color: var(--ink);
+  font: inherit; font-size: .98rem;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+.c-search input::placeholder { color: var(--ink-3); }
+.c-search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.c-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.c-filter {
+  height: 40px; padding: 0 18px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--bg-elev); color: var(--ink-2);
+  font: inherit; font-size: .92rem; font-weight: 500; cursor: pointer;
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+.c-filter:hover { color: var(--ink); border-color: var(--ink-3); }
+.c-filter[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.c-filter:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.c-no-result {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+  margin: 24px 0 0; padding: 18px 20px; border-radius: 18px;
+  border: 1.5px dashed var(--line); color: var(--ink-2);
+}
+
+/* ---------- Groupes (Tronc commun / SAÉ) ---------- */
+.c-group { padding: 32px 0 48px; scroll-margin-top: calc(var(--header-h) + 16px); }
+.c-group-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.c-group-title { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 700; letter-spacing: -0.03em; margin: 0; color: var(--ink); }
+.c-group-desc { color: var(--ink-2); margin: 6px 0 0; max-width: 62ch; }
+.c-count { font-family: var(--mono); font-size: .85rem; color: var(--ink-3); white-space: nowrap; }
+.c-sub {
+  font-family: var(--mono); font-size: .8rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3);
+  margin: 8px 0 14px;
+}
+.c-subgroup + .c-subgroup { margin-top: 28px; }
+
+/* ---------- Cartes de cours ---------- */
+.c-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.c-card {
+  position: relative; display: flex; flex-direction: column; gap: 10px;
+  padding: 22px; border-radius: 22px;
+  background: var(--bg-elev); border: 1px solid var(--line);
+  color: var(--ink); text-decoration: none;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+.c-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: transparent; }
+.c-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.c-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.c-ico {
+  display: inline-grid; place-items: center; flex: none;
+  min-width: 46px; height: 46px; padding: 0 8px; border-radius: 14px;
+  background: var(--accent-soft); color: var(--accent);
+  font-family: var(--mono); font-weight: 500; font-size: .95rem; line-height: 1;
+}
+.c-card-title { margin: 6px 0 0; font-size: 1.12rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: var(--ink); }
+.c-card p { margin: 0; color: var(--ink-2); font-size: .93rem; line-height: 1.5; }
+.c-card-foot {
+  margin-top: auto; padding-top: 8px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: .85rem; font-weight: 500; color: var(--ink-3);
+}
+.c-arrow { color: var(--accent); transition: transform .25s var(--ease); }
+.c-card:hover .c-arrow { transform: translateX(4px); }
+.c-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+}
+.c-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.c-status.is-ready { color: var(--c-ok); background: rgba(31, 157, 85, .12); }
+.c-status.is-todo { color: var(--ink-3); background: var(--bg-soft); }
+
+/* ---------- Page de cours : en-tête ---------- */
+.c-hero { padding: calc(var(--header-h) + 52px) 0 28px; }
+.back-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px;
+  color: var(--ink-2); text-decoration: none; font-size: .92rem; font-weight: 500;
+}
+.back-link:hover { color: var(--accent); }
+.c-hero-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.c-hero .c-ico { min-width: 58px; height: 58px; font-size: 1.1rem; border-radius: 18px; }
+.c-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.c-tag {
+  font-family: var(--mono); font-size: .78rem; padding: 5px 11px; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--ink-2);
+}
+
+/* ---------- Page de cours : sommaire + contenu ---------- */
+.c-layout {
+  display: grid; grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px; align-items: start; padding-top: 16px; padding-bottom: 96px;
+}
+.c-toc {
+  position: sticky; top: calc(var(--header-h) + 24px);
+  max-height: calc(100vh - var(--header-h) - 48px); overflow: auto;
+}
+.c-toc-title {
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-3); margin: 0 0 12px;
+}
+.c-toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+.c-toc li { margin: 0; }
+.c-toc a {
+  display: block; padding: 6px 0 6px 14px; margin-left: -1px;
+  border-left: 2px solid transparent;
+  color: var(--ink-2); text-decoration: none; font-size: .9rem; line-height: 1.35;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.c-toc a:hover { color: var(--ink); }
+.c-toc a.is-active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+
+.c-content { min-width: 0; }
+.c-section { padding: 0 0 44px; scroll-margin-top: calc(var(--header-h) + 24px); }
+.c-section + .c-section { border-top: 1px solid var(--line); padding-top: 44px; }
+.c-h2 {
+  display: flex; align-items: baseline; gap: 14px;
+  font-size: clamp(1.5rem, 2.8vw, 2rem); font-weight: 700; letter-spacing: -0.025em;
+  line-height: 1.2; margin: 0 0 18px; color: var(--ink);
+}
+.c-num { font-family: var(--mono); font-size: .95rem; font-weight: 500; color: var(--accent); flex: none; }
+.c-h3 { font-size: 1.18rem; font-weight: 600; letter-spacing: -0.01em; margin: 30px 0 10px; color: var(--ink); scroll-margin-top: calc(var(--header-h) + 24px); }
+.c-content p, .c-content li { line-height: 1.7; color: var(--ink-2); }
+.c-content strong { color: var(--ink); }
+.c-content ul:not([class]), .c-content ol:not([class]) { padding-left: 1.3em; }
+.c-lead { font-size: 1.05rem; }
+
+.c-empty {
+  display: flex; align-items: center; gap: 12px;
+  margin: 0; padding: 20px 22px; border-radius: 18px;
+  border: 1.5px dashed var(--line); color: var(--ink-3) !important; font-size: .95rem;
+}
+.c-empty::before { content: "✎"; font-size: 1.15rem; color: var(--accent); }
+
+.c-block { padding: 22px; border-radius: 20px; background: var(--bg-elev); border: 1px solid var(--line); margin: 16px 0; }
+.c-block > :first-child { margin-top: 0; }
+.c-block > :last-child { margin-bottom: 0; }
+.c-callout {
+  margin: 16px 0; padding: 16px 20px; border-radius: 16px;
+  border-left: 4px solid var(--accent); background: var(--accent-soft);
+}
+.c-callout p, .c-callout li { color: var(--ink); margin: 0; }
+.c-callout p + p { margin-top: 8px; }
+.c-callout.warn { border-left-color: var(--c-alt); background: rgba(232, 89, 12, .1); }
+
+/* ---------- Formules ---------- */
+.formula-list {
+  list-style: none; margin: 16px 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px;
+}
+.formula-item {
+  padding: 12px 14px; border-radius: 14px; background: var(--bg-elev);
+  border: 1px solid var(--line); overflow-x: auto; color: var(--ink);
+}
+.formula-item .lbl { display: block; font-family: var(--mono); font-size: .76rem; color: var(--ink-3); margin-bottom: 4px; }
+.c-content mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+
+/* ---------- Code ---------- */
+.c-code {
+  margin: 16px 0; padding: 18px 20px; border-radius: 16px;
+  background: #1d1d1f; color: #f5f5f7;
+  font-family: var(--mono); font-size: .86rem; line-height: 1.65;
+  overflow-x: auto; tab-size: 4; white-space: pre;
+}
+[data-theme="dark"] .c-code { background: #0b0b0c; border: 1px solid var(--line); }
+.c-code code { background: none; border: 0; padding: 0; color: inherit; font: inherit; }
+.c-code .kw { color: #ff7ab2; }
+.c-code .str { color: #fc8f6a; }
+.c-code .cmt { color: #8a96a3; font-style: italic; }
+.c-code .var { color: #6bc5ff; }
+.c-code .fn { color: #d6b4ff; }
+
+/* ---------- Tableaux ---------- */
+.c-table-wrap { margin: 16px 0; overflow-x: auto; border: 1px solid var(--line); border-radius: 16px; background: var(--bg-elev); }
+.c-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.c-table th, .c-table td { padding: 11px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+.c-table th { background: var(--bg-soft); color: var(--ink); font-weight: 600; white-space: nowrap; }
+.c-table tr:last-child td { border-bottom: 0; }
+.c-table td code { white-space: nowrap; }
+
+/* ---------- Cartes d'info / comparaison / vocabulaire ---------- */
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin: 16px 0; }
+.info-card { padding: 20px; border-radius: 18px; background: var(--bg-elev); border: 1px solid var(--line); }
+.info-card h4 { margin: 0 0 8px; font-size: 1rem; font-weight: 600; color: var(--ink); }
+.info-card p, .info-card li { font-size: .93rem; }
+.info-card p { margin: 0; }
+.info-card ul { margin: 0; padding-left: 1.2em; }
+
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.compare > div { padding: 20px; border-radius: 18px; background: var(--bg-elev); border: 1px solid var(--line); }
+.compare h4 { margin: 0 0 10px; font-size: 1rem; font-weight: 600; }
+.compare .bad { border-top: 3px solid var(--c-alt); }
+.compare .good { border-top: 3px solid var(--c-ok); }
+.compare .bad h4 { color: var(--c-alt); }
+.compare .good h4 { color: var(--c-ok); }
+.compare ul { margin: 0; padding-left: 1.2em; }
+
+.vocab { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin: 16px 0; }
+.vocab > div { padding: 16px 18px; border-radius: 16px; background: var(--bg-elev); border: 1px solid var(--line); }
+.vocab dt { font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.vocab dd { margin: 0; color: var(--ink-2); font-size: .92rem; line-height: 1.55; }
+
+/* ---------- Accordéons ---------- */
+.acc-tools { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; margin: 4px 0 10px; }
+details.acc { margin: 10px 0; border: 1px solid var(--line); border-radius: 18px; background: var(--bg-elev); overflow: hidden; }
+details.acc > summary {
+  list-style: none; cursor: pointer; padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  font-weight: 600; color: var(--ink);
+  transition: color .2s var(--ease);
+}
+details.acc > summary::-webkit-details-marker { display: none; }
+details.acc > summary::before { content: none; display: none; }
+details.acc > summary::after {
+  content: "+"; flex: none; font-family: var(--mono); font-size: 1.25rem; line-height: 1;
+  color: var(--ink-3); transition: transform .25s var(--ease);
+}
+details.acc[open] > summary::after { transform: rotate(45deg); }
+details.acc > summary:hover { color: var(--accent); }
+details.acc > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 18px; }
+.acc-body { padding: 0 20px 20px; }
+.acc-body > :first-child { margin-top: 0; }
+
+/* ---------- Outils interactifs (maths) ---------- */
+.tool { margin: 16px 0; padding: 22px; border-radius: 22px; background: var(--bg-elev); border: 1px solid var(--line); }
+.tool-title { margin: 0 0 4px; font-size: 1.1rem; font-weight: 600; color: var(--ink); }
+.tool-desc { margin: 0 0 14px; font-size: .92rem; }
+.tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; align-items: end; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field.wide { grid-column: span 2; }
+.field label { font-family: var(--mono); font-size: .78rem; color: var(--ink-3); }
+.field input {
+  -webkit-appearance: none; appearance: none;
+  height: 42px; padding: 0 12px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  font-family: var(--mono); font-size: .88rem; min-width: 0;
+}
+.field input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.tool-result {
+  margin-top: 14px; padding: 14px 16px; border-radius: 14px; background: var(--bg-soft);
+  color: var(--ink); font-size: .92rem; line-height: 1.6; overflow-x: auto; min-height: 1.6em;
+}
+.tool-result p { margin: 0; color: var(--ink); }
+.tool-result p + p { margin-top: 4px; }
+.tool-result .err { color: var(--c-alt); }
+.tool canvas { display: block; width: 100%; height: 280px; margin-top: 14px; border-radius: 14px; background: var(--bg-soft); }
+.tool-legend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; font-size: .8rem; color: var(--ink-3); }
+.tool-legend i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 6px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .c-layout { grid-template-columns: 1fr; gap: 24px; }
+  .c-toc {
+    position: static; max-height: none; overflow: visible;
+    padding: 18px 20px; border-radius: 18px; background: var(--bg-elev); border: 1px solid var(--line);
+  }
+}
+@media (max-width: 640px) {
+  .page-hero { padding-top: calc(var(--header-h) + 48px); }
+  .c-grid { grid-template-columns: 1fr; }
+  .compare { grid-template-columns: 1fr; }
+  .field.wide { grid-column: auto; }
+  .c-filters { width: 100%; }
+  .c-filter { flex: 1; }
+  .c-code { font-size: .8rem; padding: 16px; }
+}
+
+/* ---------- Impression (fiches papier) ---------- */
+@media print {
+  .site-header, .progress, .skip-link, .site-footer, .c-toc, .back-link,
+  .acc-tools, .tool, .c-toolbar, .c-empty { display: none !important; }
+  .c-layout { display: block; padding: 0; }
+  .c-hero, .page-hero { padding: 0 0 16px; }
+  .c-section, .c-section + .c-section { padding: 16px 0; break-inside: auto; }
+  details.acc, .info-card, .c-block, .formula-item, .c-table-wrap { break-inside: avoid; }
+  .c-code { background: #f5f5f7 !important; color: #1d1d1f !important; border: 1px solid #ccc; white-space: pre-wrap; }
+}
