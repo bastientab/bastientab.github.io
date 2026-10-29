@@ -415,7 +415,7 @@
 
   var cmds = {
     'help': function() { return '<span class="term-info">Commandes disponibles :</span>\n  <span class="term-cmd">whoami</span>        — Identité complète\n  <span class="term-cmd">traceroute</span>    — Parcours de formation\n  <span class="term-cmd">git activity</span>  — Activité GitHub récente\n  <span class="term-cmd">contact</span>       — Coordonnées\n  <span class="term-cmd">clear</span>         — Vider le terminal\n\n<span class="term-info">Astuces :</span> ↑/↓ pour rappeler les commandes · Tab pour l\'autocomplétion'; },
-    'whoami': function() { return '<span class="term-success">bastien.tabordet</span>\n  Étudiant BUT Réseaux &amp; Télécommunications\n  IUT de Clermont-Ferrand | 20 ans | Loiret (45) &amp; Puy-de-Dôme (63)\n  └─ Recherche alternance octobre 2026 — Réseaux &amp; Cybersécurité'; },
+    'whoami': function() { return '<span class="term-success">bastien.tabordet</span>\n  Étudiant BUT Réseaux &amp; Télécommunications\n  IUT de Clermont-Ferrand | 20 ans | Loiret (45) &amp; Puy-de-Dôme (63)\n  └─ Recherche alternance novembre 2026 — Réseaux &amp; Cybersécurité'; },
     'traceroute': function() { return 'traceroute to formation.bastien (127.0.0.1)\n  1.  <span class="term-cmd">Lycée Bernard Palissy</span>   Bac général mention AB (2024)\n  2.  <span class="term-cmd">ISIMA Clermont-Ferrand</span>  Prépa intégrée ingénieur (2024-2025)\n  3.  <span class="term-cmd">IUT Clermont-Ferrand</span>    BUT R&amp;T (2025-2028 en cours)\n  4.  <span class="term-success">Alternance 2026 → recherche en cours...</span>'; },
     'git activity': function() {
       var bars = '';
