@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin-sys — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Fiche de révision Admin-sys (BUT R&amp;T) : administration systèmes, utilisateurs, services, virtualisation et automatisation.">
+  <meta name="description" content="Cours Admin-sys (R202, BUT R&amp;T) : sauvegardes, rsync/cron, utilisateurs et droits Linux/Windows, Active Directory, virtualisation, ESXi, Docker, SSH. Cours détaillé, quiz, fiche et diaporama commenté.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,9 +24,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=2">
 </head>
-<body id="top">
+<body id="top" class="has-tabs">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
   <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
 
@@ -62,59 +62,971 @@
     <section class="c-hero" aria-labelledby="page-title">
       <div class="container">
         <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">⚙</span><span class="c-status is-todo">À remplir</span></div>
+        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">⚙</span><span class="c-status is-ready">Fiche dispo</span></div>
         <h1 class="page-title" id="page-title">Admin-sys</h1>
-        <p class="page-lead">Administration systèmes : utilisateurs, services, virtualisation, automatisation.</p>
-        <div class="c-meta"><span class="c-tag">Tronc commun</span></div>
+        <p class="page-lead">R202 · Administration systèmes 2 : sauvegardes, rsync &amp; cron, utilisateurs et droits (Linux / Windows), Active Directory, virtualisation, ESXi, Docker et SSH.</p>
+        <div class="c-meta"><span class="c-tag">Tronc commun</span><span class="c-tag">R202</span><span class="c-tag">BUT1 · S2</span></div>
       </div>
     </section>
 
     <!--
-      MODE D'EMPLOI : remplace chaque "Contenu a venir" par tes notes.
-      Blocs dispo (liste en tete de assets/css/cours.css) : c-h3, c-callout, formula-list, c-code,
-      c-table, info-grid, compare, vocab, details.acc. Exemples complets dans maths.html et web.html.
-      Fiche remplie : passe "c-status is-todo / A remplir" en "c-status is-ready / Fiche dispo"
-      ici ET sur la carte correspondante dans menu/index.html.
+      STRUCTURE À ONGLETS (réutilisable pour les autres cours) :
+      - barre .c-tabs (role=tablist) -> panneaux .c-panel (id p-pdf, p-cours, p-quiz, p-fiche, p-video)
+      - lien direct possible : adminsys.html#p-quiz
+      - PDF : déposer le fichier dans menu/pdf/ (voir data-src)
+      - Quiz : données JSON dans <script type="application/json" id="quiz-adminsys">
+      - Diaporama : chaque .sl-slide a un attribut data-say = texte lu par la voix
     -->
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#resume">Résumé</a></li>
-          <li><a href="#notions">Notions clés</a></li>
-          <li><a href="#formules">Formules &amp; commandes</a></li>
-          <li><a href="#exercices">Exercices &amp; annales</a></li>
-          <li><a href="#ressources">Fiches &amp; ressources</a></li>
-        </ol>
-      </nav>
-
-      <article class="c-content">
-        <section class="c-section" id="resume" aria-labelledby="resume-t">
-          <h2 class="c-h2" id="resume-t"><span class="c-num">01</span>Résumé</h2>
-          <p class="c-empty">Contenu à venir.</p>
-        </section>
-
-        <section class="c-section" id="notions" aria-labelledby="notions-t">
-          <h2 class="c-h2" id="notions-t"><span class="c-num">02</span>Notions clés</h2>
-          <p class="c-empty">Contenu à venir.</p>
-        </section>
-
-        <section class="c-section" id="formules" aria-labelledby="formules-t">
-          <h2 class="c-h2" id="formules-t"><span class="c-num">03</span>Formules &amp; commandes</h2>
-          <p class="c-empty">Contenu à venir.</p>
-        </section>
-
-        <section class="c-section" id="exercices" aria-labelledby="exercices-t">
-          <h2 class="c-h2" id="exercices-t"><span class="c-num">04</span>Exercices &amp; annales</h2>
-          <p class="c-empty">Contenu à venir.</p>
-        </section>
-
-        <section class="c-section" id="ressources" aria-labelledby="ressources-t">
-          <h2 class="c-h2" id="ressources-t"><span class="c-num">05</span>Fiches &amp; ressources</h2>
-          <p class="c-empty">Contenu à venir.</p>
-        </section>
-      </article>
+    <div class="c-tabs-wrap">
+      <div class="container c-tabs" role="tablist" aria-label="Contenus du cours">
+        <button class="c-tab" role="tab" id="t-pdf" aria-controls="p-pdf" aria-selected="false" type="button"><span class="t-ico" aria-hidden="true">📄</span>Cours PDF</button>
+        <button class="c-tab" role="tab" id="t-cours" aria-controls="p-cours" aria-selected="true" type="button"><span class="t-ico" aria-hidden="true">📘</span>Cours détaillé</button>
+        <button class="c-tab" role="tab" id="t-quiz" aria-controls="p-quiz" aria-selected="false" type="button"><span class="t-ico" aria-hidden="true">🧠</span>Quiz</button>
+        <button class="c-tab" role="tab" id="t-fiche" aria-controls="p-fiche" aria-selected="false" type="button"><span class="t-ico" aria-hidden="true">📝</span>Fiche résumée</button>
+        <button class="c-tab" role="tab" id="t-video" aria-controls="p-video" aria-selected="false" type="button"><span class="t-ico" aria-hidden="true">🎬</span>Vidéo</button>
+      </div>
     </div>
+
+    <!-- ===================== 1. PDF ===================== -->
+    <section class="c-panel" id="p-pdf" role="tabpanel" aria-labelledby="t-pdf" tabindex="0" hidden>
+      <div class="container c-narrow">
+        <p class="c-panel-intro">Le support de cours original, tel que distribué en R202.</p>
+        <div class="c-pdf" data-src="pdf/adminsys.pdf">
+          <div class="c-pdf-bar">
+            <span>adminsys.pdf</span>
+            <span><a class="c-btn" href="pdf/adminsys.pdf" target="_blank" rel="noopener">Ouvrir dans un onglet ↗</a></span>
+          </div>
+          <p class="c-empty" data-pdf-missing>PDF pas encore ajouté : dépose le fichier dans <code>menu/pdf/adminsys.pdf</code> et il s'affichera ici automatiquement.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 2. COURS DÉTAILLÉ ===================== -->
+    <section class="c-panel" id="p-cours" role="tabpanel" aria-labelledby="t-cours" tabindex="0">
+      <div class="container c-layout">
+        <nav class="c-toc" aria-label="Sommaire du cours">
+   <p class="c-toc-title">Sommaire</p>
+   <ol>
+     <li><a href="#sauvegardes">Sauvegardes</a></li>
+     <li><a href="#rsync">rsync &amp; cron</a></li>
+     <li><a href="#syncback">SyncBack (Windows)</a></li>
+     <li><a href="#linux-users">Utilisateurs &amp; droits Linux</a></li>
+            <li><a href="#windows-local">Windows local, NTFS &amp; RAID</a></li>
+            <li><a href="#ad">Active Directory</a></li>
+     <li><a href="#virtualbox">Virtualisation (VirtualBox)</a></li>
+     <li><a href="#esxi">VMware ESXi</a></li>
+     <li><a href="#docker">Docker</a></li>
+     <li><a href="#ssh">SSH</a></li>
+   </ol>
+        </nav>
+
+ <article class="c-content">
+   <!-- ========== 01 SAUVEGARDES ========== -->
+   <section class="c-section" id="sauvegardes" aria-labelledby="sauvegardes-t">
+            <h2 class="c-h2" id="sauvegardes-t"><span class="c-num">01</span>Les sauvegardes</h2>
+            <p class="c-lead">Une sauvegarde est une <strong>copie des données faite pour pouvoir les restaurer</strong> après une panne, une erreur humaine, un vol ou un rançongiciel. Une sauvegarde qu'on n'a jamais essayé de restaurer n'a aucune valeur : un administrateur teste ses restaurations.</p>
+
+     <h3 class="c-h3">La règle du 3-2-1</h3>
+            <div class="info-grid">
+       <div class="info-card"><h4>3 copies</h4><p>Les données d'origine plus au moins 2 sauvegardes.</p></div>
+<div class="info-card"><h4>2 supports différents</h4><p>Par exemple un disque interne et un NAS. Un même type de support peut lâcher de la même façon.</p></div>
+       <div class="info-card"><h4>1 copie hors site</h4><p>Cloud ou autre bâtiment. Un incendie ou un cambriolage ne doit pas tout détruire.</p></div>
+     </div>
+     <p>Les sauvegardes doivent aussi être <strong>régulières et planifiées</strong> (automatiques, avec cron ou le planificateur de tâches) : une sauvegarde manuelle finit toujours par être oubliée.</p>
+
+     <h3 class="c-h3">Complète, différentielle, incrémentielle</h3>
+     <div class="c-table-wrap"><table class="c-table">
+       <thead><tr><th>Type</th><th>Ce qu'on copie</th><th>Durée de sauvegarde</th><th>Restauration</th></tr></thead>
+       <tbody>
+  <tr><td><strong>Complète</strong></td><td>Tout, à chaque fois</td><td>Longue, beaucoup de place</td><td>Simple : 1 seul jeu</td></tr>
+         <tr><td><strong>Différentielle</strong></td><td>Ce qui a changé <em>depuis la dernière complète</em></td><td>Grossit chaque jour</td><td>Complète + <strong>dernière</strong> différentielle (2 jeux)</td></tr>
+         <tr><td><strong>Incrémentielle</strong></td><td>Ce qui a changé <em>depuis la dernière sauvegarde</em>, quel que soit son type</td><td>La plus rapide et la plus légère</td><td>Complète + <strong>toutes</strong> les incrémentielles dans l'ordre (plus lent et plus fragile)</td></tr>
+       </tbody>
+     </table></div>
+     <div class="c-callout"><p><strong>Exemple :</strong> complète le dimanche, crash le jeudi. En différentielle, on restaure dimanche puis la diff de mercredi. En incrémentielle, on restaure dimanche puis lundi, mardi et mercredi. Si l'incrémentielle de mardi est corrompue, tout ce qui suit est perdu.</p></div>
+     <p>En résumé : l'<strong>incrémentielle</strong> est la plus rapide à <em>sauvegarder</em>, la <strong>différentielle</strong> est plus rapide à <em>restaurer</em>.</p>
+
+     <h3 class="c-h3">Sauvegarde ≠ synchronisation</h3>
+     <div class="compare">
+<div class="good"><h4>Sauvegarde</h4><ul><li>Copie à sens unique, souvent avec historique (versions).</li><li>Un fichier supprimé à la source <strong>reste</strong> dans la sauvegarde.</li><li>Protège contre les erreurs et les rançongiciels.</li></ul></div>
+       <div class="bad"><h4>Synchronisation</h4><ul><li>Source et destination sont rendues <strong>identiques</strong> (miroir).</li><li>Une suppression ou un chiffrement malveillant est <strong>répercuté</strong> sur la copie.</li><li>Pratique, mais ce n'est pas une vraie sauvegarde.</li></ul></div>
+     </div>
+
+     <h3 class="c-h3">Supports et outils</h3>
+     <div class="c-table-wrap"><table class="c-table">
+       <thead><tr><th>Support</th><th>Avantages</th><th>Limites</th></tr></thead>
+       <tbody>
+  <tr><td>Clé USB</td><td>Pas chère, mobile</td><td>Faible capacité, fragile, facile à perdre</td></tr>
+  <tr><td>Disque dur externe</td><td>Grande capacité, peu coûteux</td><td>Souvent stocké au même endroit que le PC</td></tr>
+  <tr><td>NAS</td><td>Sur le réseau, RAID, automatisable</td><td>Sur le même site (sauf réplication)</td></tr>
+  <tr><td>Cloud</td><td>Hors site, accessible partout</td><td>Dépend d'Internet et d'un tiers, à chiffrer (confidentialité)</td></tr>
+</tbody>
+     </table></div>
+     <ul>
+<li><strong>Image / clonage de disque</strong> : Acronis, Clonezilla, Sauvegarde Windows (image système).</li>
+<li><strong>Copie et synchronisation de fichiers</strong> : rsync (Linux), SyncBack, Cobian (Windows), LuckyBackup (interface graphique pour rsync).</li>
+       <li><strong>Machines virtuelles</strong> : Veeam (sauvegarde, réplication et migration de VM, vu avec ESXi).</li>
+     </ul>
+
+     <h3 class="c-h3">Chiffrer ses sauvegardes</h3>
+     <div class="c-callout warn"><p><strong>Attention, piège classique (inversé dans les notes de cours) :</strong> le chiffrement <strong>symétrique</strong> utilise <strong>une seule clé</strong>, la même pour chiffrer et déchiffrer. Le chiffrement <strong>asymétrique</strong> utilise <strong>une paire de clés</strong> : publique et privée.</p></div>
+     <dl class="vocab">
+       <div><dt>Symétrique (AES, ChaCha20)</dt><dd>Une clé secrète partagée. Très rapide, idéal pour chiffrer de gros volumes (archives de sauvegarde). Difficulté : transmettre la clé sans qu'elle soit interceptée.</dd></div>
+       <div><dt>Asymétrique (RSA, Ed25519)</dt><dd>On chiffre avec la clé <strong>publique</strong> du destinataire et seul le détenteur de la clé <strong>privée</strong> peut déchiffrer. Plus lent. Sert à échanger des clés et à signer (SSH, HTTPS).</dd></div>
+       <div><dt>Hybride</dt><dd>En pratique (TLS, SSH), l'asymétrique sert à échanger une clé de session, puis le symétrique chiffre les données.</dd></div>
+     </dl>
+   </section>
+
+   <!-- ========== 02 RSYNC ========== -->
+          <section class="c-section" id="rsync" aria-labelledby="rsync-t">
+     <h2 class="c-h2" id="rsync-t"><span class="c-num">02</span>rsync &amp; cron (Linux)</h2>
+     <p class="c-lead"><strong>rsync</strong> copie des fichiers en local ou à travers le réseau en ne transférant que <strong>les différences</strong>. C'est donc naturellement incrémental et très rapide après la première copie.</p>
+
+     <h3 class="c-h3">Sauvegarde locale</h3>
+<pre class="c-code"><code><span class="cmt"># créer un utilisateur de test</span>
+sudo adduser toto
+<span class="cmt"># copier /home dans /local_save (r = récursif, v = verbeux)</span>
+sudo rsync -rv /home /local_save
+<span class="cmt"># version "archive" conseillée : conserve droits, propriétaires, dates, liens</span>
+sudo rsync -av /home/ /local_save/</code></pre>
+     <div class="c-table-wrap"><table class="c-table">
+<thead><tr><th>Option</th><th>Rôle</th></tr></thead>
+       <tbody>
+  <tr><td><code>-r</code></td><td>récursif (sous-dossiers)</td></tr>
+  <tr><td><code>-a</code></td><td>mode archive = <code>-rlptgoD</code> : récursif + liens, permissions, dates, groupe, propriétaire, fichiers spéciaux</td></tr>
+         <tr><td><code>-v</code></td><td>affiche les fichiers traités</td></tr>
+  <tr><td><code>-z</code></td><td>compresse pendant le transfert (utile sur le réseau)</td></tr>
+  <tr><td><code>--delete</code></td><td>supprime dans la destination ce qui n'existe plus à la source : on passe en <strong>synchronisation</strong> (miroir)</td></tr>
+  <tr><td><code>-n</code> / <code>--dry-run</code></td><td>simulation : montre ce qui serait fait, sans rien faire</td></tr>
+       </tbody>
+     </table></div>
+     <div class="c-callout"><p><strong>Le slash final compte :</strong> <code>rsync -a /home /save</code> crée <code>/save/home/…</code>, alors que <code>rsync -a /home/ /save</code> copie le <em>contenu</em> de /home directement dans /save.</p></div>
+
+     <h3 class="c-h3">Serveur rsync (démon)</h3>
+     <p>Sur la machine qui reçoit les sauvegardes, on active le service rsync et on déclare des <strong>modules</strong>, c'est-à-dire des dossiers partagés auxquels on donne un nom.</p>
+<pre class="c-code"><code><span class="cmt"># 1) /etc/default/rsync</span>
+RSYNC_ENABLE=true
+
+<span class="cmt"># 2) /etc/rsyncd.conf</span>
+uid = rsync
+gid = rsync
+[sauvegarde]           <span class="cmt"># nom du module</span>
+  path = /srv/sauvegarde
+  comment = Sauvegardes des postes
+  read only = false     <span class="cmt"># sinon impossible d'écrire</span>
+
+<span class="cmt"># 3) utilisateur système + droits sur le dossier</span>
+groupadd rsync
+useradd -g rsync rsync
+mkdir -p /srv/sauvegarde
+chown rsync:rsync /srv/sauvegarde
+chmod 775 /srv/sauvegarde
+
+<span class="cmt"># 4) démarrer et activer au boot</span>
+/etc/init.d/rsync start        <span class="cmt"># ou : systemctl start rsync</span>
+systemctl enable rsync</code></pre>
+     <p>Côté <strong>client</strong>, la syntaxe <code>IP::module</code> (deux fois deux-points) désigne un module du démon rsync, qui écoute sur le port TCP 873 :</p>
+<pre class="c-code"><code>rsync -avz /home 172.25.0.10::sauvegarde
+<span class="cmt"># à ne pas confondre avec rsync via SSH (un seul ":" + chemin) :</span>
+rsync -avz /home user@172.25.0.10:/srv/sauvegarde</code></pre>
+
+     <h3 class="c-h3">Planifier avec cron</h3>
+            <p><strong>cron</strong> exécute des commandes à heures fixes. On édite sa table avec <code>crontab -e</code> et on la liste avec <code>crontab -l</code>. Chaque ligne contient 5 champs de date suivis de <strong>la commande</strong>.</p>
+<pre class="c-code"><code><span class="cmt"># min  heure  jour-du-mois  mois  jour-semaine  COMMANDE</span>
+<span class="cmt">#  0     21        *   *       1-5      -> du lundi au vendredi à 21h00</span>
+0 21 * * 1-5  rsync -az /home 172.25.0.10::sauvegarde
+<span class="cmt"># le samedi à 10h00 (0 ou 7 = dimanche, 6 = samedi)</span>
+0 10 * * 6    rsync -az --delete /home 172.25.0.10::sauvegarde
+<span class="cmt"># toutes les 15 minutes</span>
+*/15 * * * *  /usr/local/bin/script.sh</code></pre>
+     <div class="c-callout warn"><p><strong>Erreur fréquente :</strong> écrire la destination (<code>/local_save</code>) à la place de la commande. Le 6<sup>e</sup> champ doit être une <strong>commande complète</strong> (rsync…). Les chemins absolus sont aussi conseillés, car l'environnement de cron est minimal.</p></div>
+   </section>
+
+   <!-- ========== 03 SYNCBACK ========== -->
+   <section class="c-section" id="syncback" aria-labelledby="syncback-t">
+     <h2 class="c-h2" id="syncback-t"><span class="c-num">03</span>SyncBack (Windows)</h2>
+     <p>SyncBack est l'équivalent graphique de rsync sous Windows. On crée des <strong>profils</strong> :</p>
+            <ul>
+       <li><strong>Profil Sauvegarde</strong> : copie source → destination, sans supprimer ce qui a disparu de la source.</li>
+<li><strong>Profil Synchronisation</strong> : rend les deux dossiers identiques, dans un sens ou dans les deux.</li>
+       <li><strong>Profil Miroir</strong> : la destination devient le reflet exact de la source (comme <code>rsync --delete</code>).</li>
+     </ul>
+     <p>La destination peut être un <strong>dossier partagé réseau</strong> (<code>\\IP\partage</code>). La planification passe par le <strong>Planificateur de tâches Windows</strong>, l'équivalent de cron.</p>
+          </section>
+
+   <!-- ========== 04 LINUX USERS ========== -->
+   <section class="c-section" id="linux-users" aria-labelledby="linux-users-t">
+            <h2 class="c-h2" id="linux-users-t"><span class="c-num">04</span>Utilisateurs, groupes &amp; droits sous Linux</h2>
+
+     <h3 class="c-h3">Les fichiers de comptes</h3>
+<pre class="c-code"><code><span class="cmt"># /etc/passwd (lisible par tous)</span>
+alice:x:1001:1001:Alice Martin:/home/alice:/bin/bash
+<span class="cmt"># login : x (mdp dans shadow) : UID : GID principal : commentaire : home : shell</span>
+
+<span class="cmt"># /etc/shadow (lisible par root uniquement)</span>
+alice:$y$j9T$...:20150:0:99999:7:::
+<span class="cmt"># login : hash du mdp : dernier changement : min : max : avertissement : inactivité : expiration</span>
+
+<span class="cmt"># /etc/group</span>
+compta:x:2000:alice,bob</code></pre>
+     <p>Le <code>x</code> de /etc/passwd signifie que le mot de passe est rangé dans <strong>/etc/shadow</strong>. Ce fichier n'est lisible que par root, donc personne ne peut récupérer les hash pour les casser. <code>pwconv</code> active ce mécanisme (« shadow ») et <code>pwunconv</code> remet les hash dans /etc/passwd (déconseillé). L'UID 0 correspond à root. Les comptes humains commencent en général à 1000.</p>
+
+     <h3 class="c-h3">Commandes de gestion</h3>
+            <div class="c-table-wrap"><table class="c-table">
+       <thead><tr><th>Action</th><th>Commande</th></tr></thead>
+<tbody>
+         <tr><td>Créer un groupe avec un GID choisi</td><td><code>addgroup --gid 2000 compta</code></td></tr>
+         <tr><td>Créer un utilisateur avec UID et groupe principal</td><td><code>adduser --uid 1500 --ingroup compta alice</code></td></tr>
+         <tr><td>Ajouter à un groupe secondaire</td><td><code>usermod -aG rh alice</code> ou <code>gpasswd -a alice rh</code></td></tr>
+  <tr><td>Retirer d'un groupe</td><td><code>gpasswd -d alice rh</code></td></tr>
+         <tr><td>Changer le shell / le home / verrouiller</td><td><code>usermod -s /bin/sh alice</code>, <code>usermod -d /home/a -m alice</code>, <code>usermod -L alice</code></td></tr>
+         <tr><td>Supprimer un utilisateur (et son home)</td><td><code>userdel -r alice</code></td></tr>
+         <tr><td>Supprimer un groupe</td><td><code>groupdel compta</code></td></tr>
+         <tr><td>Voir les groupes d'un compte</td><td><code>id alice</code>, <code>groups alice</code></td></tr>
+       </tbody>
+     </table></div>
+     <div class="c-callout warn"><p><code>usermod -G rh alice</code> <strong>sans le -a</strong> remplace TOUS les groupes secondaires d'alice par « rh ». Il faut toujours écrire <code>-aG</code> (append).</p></div>
+     <p><code>adduser</code> (script Debian, interactif, crée le home) est différent de <code>useradd</code> (commande bas niveau, rien de créé sans les options <code>-m</code>, <code>-s</code>…).</p>
+
+     <h3 class="c-h3">Les droits rwx</h3>
+<pre class="c-code"><code>-rwxr-x---  1 alice compta  4096 rapport.sh
+<span class="cmt"># type | propriétaire (u) | groupe (g) | autres (o)</span>
+<span class="cmt">#  -   |      rwx         |    r-x     |    ---</span></code></pre>
+     <div class="c-table-wrap"><table class="c-table">
+       <thead><tr><th>Droit</th><th>Valeur</th><th>Sur un fichier</th><th>Sur un dossier</th></tr></thead>
+       <tbody>
+  <tr><td><code>r</code></td><td>4</td><td>lire le contenu</td><td>lister les noms (<code>ls</code>)</td></tr>
+  <tr><td><code>w</code></td><td>2</td><td>modifier le contenu</td><td>créer, supprimer, renommer des fichiers <em>dedans</em> (il faut aussi x)</td></tr>
+         <tr><td><code>x</code></td><td>1</td><td>exécuter</td><td>traverser / entrer (<code>cd</code>), accéder aux fichiers</td></tr>
+       </tbody>
+     </table></div>
+<pre class="c-code"><code>chmod 750 rapport.sh        <span class="cmt"># u=rwx(7) g=r-x(5) o=---(0)</span>
+chmod u+x,o-r fichier       <span class="cmt"># notation symbolique</span>
+chmod -R 770 /srv/projet    <span class="cmt"># récursif</span>
+chown alice:compta fichier  <span class="cmt"># propriétaire et groupe</span>
+chgrp compta fichier        <span class="cmt"># groupe seul</span></code></pre>
+     <div class="c-callout"><p><strong>À retenir :</strong> supprimer un fichier dépend des droits sur le <strong>dossier parent</strong> (w + x), pas sur le fichier lui-même. Un dossier en <code>r--</code> sans <code>x</code> laisse voir les noms mais ne permet pas d'ouvrir les fichiers.</p></div>
+
+            <h3 class="c-h3">Les quotas disque</h3>
+     <p>Les quotas limitent l'espace qu'un utilisateur ou un groupe peut occuper sur une partition, de deux façons :</p>
+     <ul>
+<li>en <strong>blocs</strong>, c'est-à-dire en volume (Ko) ;</li>
+       <li>en <strong>inodes</strong>, c'est-à-dire en <strong>nombre de fichiers</strong> : chaque fichier ou dossier consomme 1 inode.</li>
+     </ul>
+     <div class="compare">
+<div class="good"><h4>Limite douce (soft)</h4><ul><li>On peut la dépasser temporairement.</li><li>Un <strong>délai de grâce</strong> démarre (7 jours par défaut).</li><li>À la fin du délai, la soft devient bloquante.</li></ul></div>
+       <div class="bad"><h4>Limite dure (hard)</h4><ul><li>Plafond absolu, jamais dépassable.</li><li>L'écriture échoue (« Disk quota exceeded »).</li><li>Toujours supérieure ou égale à la soft.</li></ul></div>
+     </div>
+<pre class="c-code"><code>apt install quota
+<span class="cmt"># /etc/fstab : ajouter les options sur la partition visée</span>
+UUID=...  /  ext4  defaults,usrquota,grpquota  0 1
+mount -o remount /
+quotacheck -cugm /      <span class="cmt"># crée aquota.user / aquota.group</span>
+quotaon / <span class="cmt"># active</span>
+edquota -u alice        <span class="cmt"># fixer soft/hard en blocs et inodes</span>
+edquota -t       <span class="cmt"># délai de grâce</span>
+repquota -a      <span class="cmt"># rapport pour tous</span>
+quota -u alice          <span class="cmt"># état d'un utilisateur</span></code></pre>
+   </section>
+
+          <!-- ========== 05 WINDOWS LOCAL ========== -->
+   <section class="c-section" id="windows-local" aria-labelledby="windows-local-t">
+     <h2 class="c-h2" id="windows-local-t"><span class="c-num">05</span>Windows : comptes locaux, NTFS, partages &amp; RAID</h2>
+
+     <h3 class="c-h3">Utilisateurs et groupes en PowerShell (en administrateur)</h3>
+<pre class="c-code"><code>New-LocalGroup -Name RH
+$mdp = Read-Host -AsSecureString "Mot de passe"
+New-LocalUser -Name RH1 -Password $mdp
+Add-LocalGroupMember -Group RH -Member RH1
+
+<span class="cmt"># règles de mot de passe</span>
+Set-LocalUser -Name Direction1 -PasswordNeverExpires $true     <span class="cmt"># n'expire jamais</span>
+Set-LocalUser -Name Salaries1  -UserMayChangePassword $false   <span class="cmt"># ne peut pas le changer</span>
+net user RH1 /logonpasswordchg:yes <span class="cmt"># changer à la 1re connexion</span>
+
+<span class="cmt"># consulter</span>
+Get-LocalGroup ; Get-LocalUser ; Get-LocalGroupMember -Group Direction
+
+<span class="cmt"># mutations</span>
+Remove-LocalGroupMember -Group Direction -Member Direction1
+Add-LocalGroupMember    -Group RH -Member Direction1
+Set-LocalUser -Name Salaries1 -Password (Read-Host -AsSecureString)
+Remove-LocalUser -Name Salaries1</code></pre>
+     <p>L'option « doit changer son mot de passe à la prochaine ouverture de session » n'existe pas dans <code>New-LocalUser</code>. On passe par <code>net user … /logonpasswordchg:yes</code> ou par l'interface graphique <strong>lusrmgr.msc</strong> (Win + R). C'est l'exemple typique d'un réglage disponible avec une seule des deux méthodes.</p>
+
+     <h3 class="c-h3">Permissions NTFS</h3>
+            <ul>
+       <li>Niveaux : Contrôle total, Modification, Lecture et exécution, Afficher le contenu du dossier, Lecture, Écriture.</li>
+       <li><strong>Héritage</strong> : un sous-dossier reçoit les droits de son parent. Pour isoler un dossier, on désactive l'héritage puis on retire les groupes comme « Utilisateurs ».</li>
+       <li>Les autorisations accordées par plusieurs groupes se <strong>cumulent</strong>, mais un <strong>Refuser explicite l'emporte</strong>.</li>
+       <li>Bonne pratique : donner les droits à des <strong>groupes</strong>, pas à des personnes.</li>
+     </ul>
+            <div class="c-callout"><p><strong>Cas du TD1 :</strong> un membre des RH doit accéder au dossier Confidentiel (réservé à la Direction).</p>
+       <p>✗ <strong>Mauvaise solution :</strong> l'ajouter au groupe Direction. Ça fonctionne, mais il obtient aussi l'accès au dossier Direction et à tout ce qui sera donné à ce groupe plus tard : on viole le principe du <strong>moindre privilège</strong>.</p>
+       <p>✓ <strong>Bonne solution :</strong> lui donner un droit ciblé sur le dossier Confidentiel uniquement, idéalement via un groupe dédié (ex. « Acces_Confidentiel ») dont il est membre. C'est plus facile à auditer et à retirer.</p></div>
+
+            <h3 class="c-h3">Partage réseau vs NTFS</h3>
+     <div class="compare">
+<div class="good"><h4>Autorisations de partage</h4><ul><li>S'appliquent <strong>uniquement via le réseau</strong> (<code>\\IP\Partage</code>).</li><li>3 niveaux : Lecture, Modification, Contrôle total.</li></ul></div>
+<div class="good"><h4>Autorisations NTFS (Sécurité)</h4><ul><li>S'appliquent <strong>en local ET via le réseau</strong>.</li><li>Granularité fine, héritage.</li></ul></div>
+            </div>
+     <div class="c-callout warn"><p>À travers le réseau, le droit effectif est <strong>le plus restrictif des deux</strong>. Partage « Contrôle total » + NTFS « Lecture » = <strong>Lecture</strong>. Pratique courante : partage large (Tout le monde : Modification ou Contrôle total) et filtrage fin en NTFS.</p></div>
+
+     <h3 class="c-h3">Quotas Windows</h3>
+     <p>Propriétés du disque → onglet <strong>Quota</strong> : activer, définir une limite et un niveau d'avertissement par défaut, puis des <strong>entrées de quota</strong> par utilisateur. La case « Refuser de l'espace disque aux utilisateurs qui dépassent leur limite » rend la limite <em>dure</em>. Sans elle, Windows ne fait qu'enregistrer le dépassement.</p>
+
+            <h3 class="c-h3">RAID</h3>
+            <div class="c-table-wrap"><table class="c-table">
+       <thead><tr><th>RAID</th><th>Principe</th><th>Disques min.</th><th>Capacité utile</th><th>Panne tolérée</th></tr></thead>
+       <tbody>
+         <tr><td><strong>0</strong> (agrégat par bandes)</td><td>Données réparties sur les disques : rapide</td><td>2</td><td>100 % (n × taille)</td><td><strong>Aucune</strong> : 1 disque mort = tout perdu</td></tr>
+         <tr><td><strong>1</strong> (miroir)</td><td>Même donnée écrite sur 2 disques</td><td>2</td><td>50 %</td><td>1 disque</td></tr>
+  <tr><td><strong>5</strong> (parité répartie)</td><td>Bandes + parité réparties sur tous les disques</td><td>3</td><td>(n − 1) × taille</td><td>1 disque (reconstruction par parité)</td></tr>
+       </tbody>
+     </table></div>
+     <p>Sous Windows, dans <strong>Gestion des disques</strong> (diskmgmt.msc) avec des disques convertis en <em>dynamiques</em> : « Volume agrégé par bandes » (RAID 0), « Volume en miroir » (RAID 1), « Volume RAID-5 ». Le RAID-5 logiciel n'est proposé que sur les éditions <strong>Server</strong>. Sur Windows 10, on utilise les « Espaces de stockage » avec parité.</p>
+            <div class="c-callout warn"><p>Le RAID <strong>n'est pas une sauvegarde</strong> : il protège contre la panne d'un disque, pas contre une suppression, un virus ou un incendie.</p></div>
+   </section>
+
+          <!-- ========== 06 AD ========== -->
+          <section class="c-section" id="ad" aria-labelledby="ad-t">
+     <h2 class="c-h2" id="ad-t"><span class="c-num">06</span>Windows Server &amp; Active Directory</h2>
+     <p class="c-lead"><strong>Active Directory (AD DS)</strong> est l'annuaire centralisé de Microsoft. Les comptes, groupes, ordinateurs et stratégies sont stockés sur un <strong>contrôleur de domaine (DC)</strong>, et un utilisateur peut se connecter avec le même compte sur n'importe quel poste du domaine.</p>
+     <dl class="vocab">
+       <div><dt>Domaine</dt><dd>Ensemble d'objets gérés ensemble, identifié par un nom DNS (ex. <code>iut.local</code>).</dd></div>
+       <div><dt>Forêt</dt><dd>Le niveau le plus haut : un ou plusieurs domaines qui partagent un schéma. Le premier DC crée une <strong>nouvelle forêt</strong>.</dd></div>
+       <div><dt>Contrôleur de domaine</dt><dd>Serveur qui héberge l'annuaire et authentifie les utilisateurs (Kerberos).</dd></div>
+       <div><dt>Unité d'organisation (OU)</dt><dd>« Dossier » de l'annuaire pour ranger les objets (par service) et y <strong>lier des GPO</strong> ou déléguer l'administration.</dd></div>
+<div><dt>GPO</dt><dd>Stratégie de groupe : ensemble de paramètres appliqués automatiquement aux utilisateurs ou aux ordinateurs d'une OU.</dd></div>
+       <div><dt>Mode DSRM</dt><dd>Mode de restauration des services d'annuaire : il a son <strong>propre mot de passe</strong> et sert à réparer ou restaurer AD hors ligne.</dd></div>
+     </dl>
+
+     <h3 class="c-h3">Mise en place pas à pas</h3>
+     <ol>
+       <li><strong>IP fixe</strong> sur le serveur (un DC ne doit jamais changer d'IP) :
+<pre class="c-code"><code>netsh interface ip set address "Ethernet" static 172.25.0.65 255.255.0.0 172.25.255.254
+netsh interface ip set dns "Ethernet" static 127.0.0.1</code></pre></li>
+       <li>Gestionnaire de serveur → Ajouter des rôles : <strong>AD DS</strong> et <strong>DNS</strong>.</li>
+       <li><strong>Promouvoir</strong> le serveur en contrôleur de domaine → Ajouter une nouvelle forêt → <code>nom.local</code> → mot de passe DSRM → redémarrage.</li>
+<li>Console <strong>Utilisateurs et ordinateurs Active Directory</strong> (dsa.msc) : créer les OU, puis les utilisateurs et les groupes.</li>
+       <li>Sur le client : <strong>DNS préféré = IP du DC</strong>, puis Système → Renommer ce PC (avancé) → Membre d'un <strong>domaine</strong> → identifiants d'un admin du domaine → redémarrage.</li>
+     </ol>
+     <div class="c-callout warn"><p>Pourquoi le DNS ? Le client trouve le contrôleur de domaine grâce à des enregistrements DNS (SRV). Si son DNS pointe vers la box ou le DNS de l'IUT, il ne trouve pas le domaine et la jonction échoue (« Impossible de contacter un contrôleur de domaine »).</p></div>
+
+            <h3 class="c-h3">Propriétés d'un compte (onglet Compte)</h3>
+     <ul>
+       <li><strong>L'utilisateur ne peut pas changer de mot de passe</strong>, <strong>Le mot de passe n'expire jamais</strong>, <strong>doit changer à la prochaine ouverture de session</strong>.</li>
+       <li><strong>Horaires d'accès</strong> : créneaux autorisés (ex. lundi-vendredi, 8h-18h).</li>
+<li><strong>Se connecter à…</strong> : limite les postes sur lesquels le compte peut ouvrir une session.</li>
+       <li><strong>Date d'expiration du compte</strong> : idéal pour un stagiaire ou un CDD.</li>
+     </ul>
+
+     <h3 class="c-h3">GPO</h3>
+     <p>Console <strong>Gestion de stratégie de groupe</strong> (gpmc.msc) : créer une GPO, la <strong>lier à une OU</strong>, puis la modifier. Exemple du TP : Configuration utilisateur → Stratégies → Modèles d'administration → Panneau de configuration → « Interdire l'accès au Panneau de configuration et à l'application Paramètres du PC ».</p>
+     <ul>
+       <li>Une GPO ne s'applique qu'aux objets <strong>contenus dans l'OU liée</strong> et ses sous-OU. Un utilisateur resté dans le conteneur par défaut « Users » n'est pas concerné, car ce n'est pas une OU.</li>
+       <li>Ordre d'application : <strong>Local → Site → Domaine → OU</strong> (LSDOU). La dernière appliquée l'emporte en cas de conflit.</li>
+       <li>Forcer la mise à jour sur le client : <code>gpupdate /force</code>. Vérifier : <code>gpresult /r</code>.</li>
+     </ul>
+
+     <h3 class="c-h3">Dossier de base (home) réseau</h3>
+     <p>Dans le profil de l'utilisateur : Dossier de base → <strong>Connecter Z: à</strong> <code>\\172.25.0.65\user\%username%</code>. À la connexion, l'utilisateur retrouve son lecteur Z: sur n'importe quel poste. Windows crée le sous-dossier et en donne le contrôle total à l'utilisateur. Un fichier déposé là par un administrateur appartient à l'administrateur : l'utilisateur peut le lire mais pas forcément le modifier, selon les droits NTFS hérités.</p>
+   </section>
+
+          <!-- ========== 07 VIRTUALBOX ========== -->
+          <section class="c-section" id="virtualbox" aria-labelledby="virtualbox-t">
+     <h2 class="c-h2" id="virtualbox-t"><span class="c-num">07</span>Virtualisation avec VirtualBox</h2>
+     <p class="c-lead">La virtualisation fait tourner plusieurs systèmes (VM) sur une même machine physique grâce à un <strong>hyperviseur</strong>, qui partage le CPU, la RAM, le disque et le réseau.</p>
+     <div class="compare">
+       <div class="good"><h4>Hyperviseur de type 2 (hébergé)</h4><ul><li>Installé <strong>sur un OS</strong> existant (Windows, Linux).</li><li>VirtualBox, VMware Workstation.</li><li>Poste de travail, tests, TP.</li></ul></div>
+       <div class="good"><h4>Hyperviseur de type 1 (bare-metal)</h4><ul><li>Installé <strong>directement sur le matériel</strong>, sans OS en dessous.</li><li>VMware ESXi, Proxmox, Hyper-V Server.</li><li>Serveurs en production : plus performant.</li></ul></div>
+     </div>
+
+     <h3 class="c-h3">Les modes réseau</h3>
+     <div class="c-table-wrap"><table class="c-table">
+       <thead><tr><th>Mode</th><th>VM → Internet</th><th>VM ↔ hôte</th><th>VM ↔ autres VM</th><th>LAN → VM</th><th>Usage</th></tr></thead>
+       <tbody>
+         <tr><td><strong>NAT</strong></td><td>✓</td><td>VM→hôte seulement</td><td>✗</td><td>✗ (sauf redirection de port)</td><td>Par défaut. VM en 10.0.2.15, passerelle 10.0.2.2</td></tr>
+         <tr><td><strong>Réseau NAT</strong></td><td>✓</td><td>VM→hôte seulement</td><td>✓ (même réseau NAT)</td><td>✗ (sauf redirection)</td><td>Plusieurs VM dans un même sous-réseau privé avec DHCP (ex. 192.168.200.0/24)</td></tr>
+  <tr><td><strong>Accès par pont (bridge)</strong></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>La VM est une machine du LAN avec sa propre IP (ex. 172.25.1.X/16)</td></tr>
+         <tr><td><strong>Réseau privé hôte (host-only)</strong></td><td>✗</td><td>✓</td><td>✓</td><td>✗</td><td>Labo isolé avec l'hôte</td></tr>
+  <tr><td><strong>Réseau interne</strong></td><td>✗</td><td>✗</td><td>✓</td><td>✗</td><td>VM entre elles uniquement (labo routage, DMZ…)</td></tr>
+       </tbody>
+     </table></div>
+     <p>Une VM peut avoir <strong>plusieurs cartes réseau</strong>, par exemple une en NAT pour Internet et une en réseau interne pour le labo. C'est typique d'une VM routeur.</p>
+
+     <h3 class="c-h3">IP fixe sous Debian (mode bridge)</h3>
+<pre class="c-code"><code><span class="cmt"># /etc/network/interfaces</span>
+auto enp0s3
+iface enp0s3 inet static
+    address 172.25.1.20/16
+    gateway 172.25.255.254
+
+<span class="cmt"># /etc/resolv.conf</span>
+nameserver 192.168.117.181
+nameserver 192.168.117.182
+
+systemctl restart networking   <span class="cmt"># puis : ip a ; ping 8.8.8.8 ; ping debian.org</span></code></pre>
+     <div class="c-callout"><p>Diagnostic : si <code>ping 8.8.8.8</code> passe mais pas <code>ping debian.org</code>, c'est le <strong>DNS</strong>. Si aucun des deux ne passe, regarde l'IP, le masque et la passerelle.</p></div>
+
+     <h3 class="c-h3">Fichiers, clones et export</h3>
+     <ul>
+       <li><code>.vdi</code> : disque virtuel. <code>.vbox</code> : configuration de la VM (XML). <code>Logs/</code> : journaux, utiles en cas de plantage.</li>
+       <li><strong>Clone intégral</strong> : copie complète et indépendante (place disque ×2). <strong>Clone lié</strong> : partage le disque du parent via un instantané. Très léger, mais inutilisable sans le parent.</li>
+       <li>Lors d'un clone, choisir de <strong>générer de nouvelles adresses MAC</strong>. Deux VM avec la même MAC sur un même réseau provoquent des conflits (DHCP, ARP).</li>
+<li><strong>Exporter</strong> en <code>.ova</code> (archive au format ouvert OVF + disques) pour transporter ou partager une VM, puis l'<strong>importer</strong> ailleurs, y compris dans VMware.</li>
+     </ul>
+          </section>
+
+   <!-- ========== 08 ESXI ========== -->
+   <section class="c-section" id="esxi" aria-labelledby="esxi-t">
+     <h2 class="c-h2" id="esxi-t"><span class="c-num">08</span>VMware ESXi (hyperviseur de type 1)</h2>
+     <p>ESXi s'installe directement sur le serveur. En TP, on l'a installé <em>dans</em> VMware Workstation (virtualisation imbriquée) : 4 Go de RAM, 60 Go de disque, carte en <strong>bridge</strong> et IP fixe 172.25.X.Y/16. Il s'administre depuis un navigateur : <code>https://IP_ESXi</code> (Host Client).</p>
+            <h3 class="c-h3">Console et accès</h3>
+     <ul>
+       <li><strong>DCUI</strong> (écran jaune/gris) : touche <kbd>F2</kbd> pour configurer le réseau (IP, DNS), redémarrer les services de gestion, et <strong>Troubleshooting Options</strong> pour activer <strong>ESXi Shell</strong> et <strong>SSH</strong>.</li>
+       <li><kbd>Alt</kbd>+<kbd>F1</kbd> : console shell locale (si ESXi Shell est activé). Les datastores sont montés dans <code>/vmfs/volumes/datastore1</code>.</li>
+       <li>Le mot de passe root doit être <strong>complexe</strong> (majuscules, minuscules, chiffres, caractères spéciaux), sinon l'installation le refuse.</li>
+     </ul>
+            <h3 class="c-h3">Utilisateurs, rôles et autorisations</h3>
+     <p>Sur ESXi, on crée un utilisateur, puis un <strong>rôle</strong>, c'est-à-dire un ensemble de privilèges. Exemple du TP : un rôle qui a tous les privilèges « Virtual Machine » sauf <em>AddExistingDisk</em> et <em>AddNewDisk</em>. On l'attribue ensuite via <strong>Hôte → Actions → Autorisations</strong>. Une permission correspond donc à un utilisateur, un rôle et un objet.</p>
+     <h3 class="c-h3">Ressources d'une VM</h3>
+            <dl class="vocab">
+<div><dt>Réservation</dt><dd>Quantité de CPU (MHz) ou de RAM <strong>garantie</strong> à la VM. Elle est retirée du pool, et la VM ne démarre pas si l'hôte ne peut pas la garantir.</dd></div>
+       <div><dt>Limite</dt><dd><strong>Plafond</strong> que la VM ne pourra jamais dépasser, même si l'hôte est libre.</dd></div>
+       <div><dt>Parts (shares)</dt><dd>Priorité relative entre VM <strong>en cas de contention</strong>.</dd></div>
+<div><dt>Contrôleur SCSI / SATA</dt><dd>Contrôleur de disque virtuel présenté à l'OS invité (le SCSI paravirtuel est le plus performant).</dd></div>
+     </dl>
+            <h3 class="c-h3">Réseau et stockage</h3>
+            <ul>
+       <li><strong>vmnic</strong> = carte physique. <strong>vSwitch</strong> = commutateur virtuel relié aux vmnic (uplinks). <strong>Groupe de ports</strong> = « prise » du vSwitch à laquelle on branche les VM, avec éventuellement un VLAN. « VM Network » est le groupe par défaut, et le <strong>VMkernel</strong> (vmk0) sert à la gestion de l'hôte.</li>
+       <li><strong>Datastore</strong> (système de fichiers VMFS) : on y crée des dossiers (ISO, VM) et on y <strong>téléverse</strong> les ISO d'installation.</li>
+       <li>Fichiers d'une VM : <code>.vmx</code> (configuration), <code>.vmdk</code> (disque), <code>.vmsd</code> (métadonnées des snapshots), <code>.nvram</code> (BIOS/UEFI), <code>.log</code>.</li>
+     </ul>
+     <h3 class="c-h3">Veeam</h3>
+     <p>Veeam Backup &amp; Replication se connecte à l'hyperviseur pour <strong>sauvegarder</strong> des VM entières (restauration d'une VM ou d'un fichier), les <strong>répliquer</strong> sur un autre hôte (copie prête à démarrer, reprise rapide) ou les <strong>migrer</strong>.</p>
+          </section>
+
+   <!-- ========== 09 DOCKER ========== -->
+          <section class="c-section" id="docker" aria-labelledby="docker-t">
+     <h2 class="c-h2" id="docker-t"><span class="c-num">09</span>Conteneurisation avec Docker</h2>
+     <p class="c-lead">Un <strong>conteneur</strong> isole une application avec ses dépendances, mais il <strong>partage le noyau de l'hôte</strong>. Il est donc bien plus léger et rapide à démarrer qu'une VM, qui embarque un OS complet.</p>
+     <div class="compare">
+       <div class="good"><h4>Image</h4><ul><li><strong>Modèle</strong> en lecture seule, composé de couches.</li><li>Téléchargée depuis un registre (Docker Hub).</li><li>Nom:tag, par exemple <code>debian:buster</code> (<code>:latest</code> par défaut).</li></ul></div>
+       <div class="good"><h4>Conteneur</h4><ul><li><strong>Instance en cours d'exécution</strong> d'une image, avec une couche inscriptible.</li><li>Possède un ID et un nom (aléatoire si non précisé, ex. <code>xenodochial_meninsky</code>).</li><li>Plusieurs conteneurs peuvent venir de la même image.</li></ul></div>
+     </div>
+            <h3 class="c-h3">Commandes essentielles</h3>
+     <div class="c-table-wrap"><table class="c-table">
+       <thead><tr><th>Action</th><th>Commande</th></tr></thead>
+       <tbody>
+  <tr><td>Chercher une image</td><td><code>docker search httpd</code></td></tr>
+         <tr><td>Télécharger</td><td><code>docker pull debian:buster</code></td></tr>
+  <tr><td>Lister les images</td><td><code>docker images</code></td></tr>
+         <tr><td>Créer (sans démarrer)</td><td><code>docker create --name web httpd</code></td></tr>
+  <tr><td>Créer + démarrer (pull si besoin)</td><td><code>docker run …</code></td></tr>
+  <tr><td>Conteneurs actifs / tous</td><td><code>docker ps</code> / <code>docker ps -a</code></td></tr>
+  <tr><td>Démarrer / redémarrer / arrêter</td><td><code>docker start|restart|stop web</code></td></tr>
+         <tr><td>Shell dans un conteneur actif</td><td><code>docker exec -it web bash</code></td></tr>
+         <tr><td>Supprimer conteneur / image</td><td><code>docker rm web</code> / <code>docker rmi httpd</code></td></tr>
+</tbody>
+     </table></div>
+<pre class="c-code"><code><span class="cmt"># serveur Apache en arrière-plan, port 10082 de l'hôte -> port 80 du conteneur</span>
+docker run -d -p 10082:80 --name cont_httpd httpd
+<span class="cmt"># test : http://localhost:10082</span>
+
+<span class="cmt"># Debian interactive avec un shell bash</span>
+docker run -it debian bash</code></pre>
+     <div class="c-callout warn"><p><strong>Pièges vus en TP :</strong></p>
+       <p>• <code>-p HÔTE:CONTENEUR</code> : sans <code>-p</code>, le site n'est pas joignable via <code>localhost</code>. Il faut alors passer par l'IP interne du conteneur (172.17.x.x).</p>
+       <p>• <code>docker run -it httpd bash</code> <strong>remplace</strong> la commande par défaut : on obtient un shell, mais Apache ne tourne pas. Pour un serveur, on utilise <code>-d</code> puis <code>docker exec -it … bash</code>.</p>
+       <p>• <code>docker exec</code> sans <code>-it</code> ne donne pas de terminal interactif, d'où le « ça ne marche pas ».</p>
+       <p>• Deux conteneurs ne peuvent pas publier le <strong>même port hôte</strong>.</p></div>
+     <h3 class="c-h3">Réseau Docker</h3>
+<pre class="c-code"><code>docker network ls          <span class="cmt"># bridge (défaut, 172.17.0.0/16), host, none</span>
+docker inspect bridge      <span class="cmt"># sous-réseau, passerelle, conteneurs connectés</span>
+docker network create --subnet=172.20.0.0/16 --internal docker1
+docker run -it --name deb1 --network docker1 debian bash
+<span class="cmt"># dans le conteneur : apt update ; apt install -y net-tools ; ifconfig  (ou hostname -I)</span></code></pre>
+     <p>Avec <code>--internal</code>, les conteneurs du réseau communiquent entre eux mais n'ont <strong>aucun accès à l'extérieur</strong>. Conséquence : un <code>apt update</code> lancé dedans échoue.</p>
+     <h3 class="c-h3">Modifier un site et sauvegarder un conteneur</h3>
+<pre class="c-code"><code>docker exec -it cont_httpd bash
+cd /usr/local/apache2/htdocs      <span class="cmt"># racine web de l'image httpd</span>
+apt update &amp;&amp; apt install -y nano &amp;&amp; nano index.html
+
+docker commit cont_httpd monapache:v1      <span class="cmt"># snapshot -> nouvelle image</span>
+docker save -o apache_v1.tar monapache:v1  <span class="cmt"># image -> archive .tar sur l'hôte</span>
+docker load -i apache_v1.tar <span class="cmt"># réimporter ailleurs</span></code></pre>
+     <p>Dans <code>docker images</code>, la colonne de taille indique l'espace occupé. Les images partagent leurs <strong>couches communes</strong> : deux images basées sur Debian ne stockent qu'une fois la couche Debian.</p>
+          </section>
+
+   <!-- ========== 10 SSH ========== -->
+   <section class="c-section" id="ssh" aria-labelledby="ssh-t">
+     <h2 class="c-h2" id="ssh-t"><span class="c-num">10</span>SSH : administration à distance sécurisée</h2>
+     <p class="c-lead"><strong>SSH</strong> (port TCP <strong>22</strong>) ouvre un terminal chiffré sur une machine distante. Il remplace Telnet, qui transmet tout en clair, mot de passe compris.</p>
+<pre class="c-code"><code><span class="cmt"># serveur</span>
+apt install openssh-server
+systemctl status ssh<span class="cmt"># active (running) ?</span>
+adduser user1
+<span class="cmt"># client</span>
+ssh user1@172.25.0.48
+exit</code></pre>
+     <h3 class="c-h3">Clé d'hôte et known_hosts</h3>
+     <p>À la première connexion, le client affiche l'<strong>empreinte</strong> (fingerprint) de la clé du serveur et demande confirmation. Elle est ensuite mémorisée dans <code>~/.ssh/known_hosts</code>. Si, plus tard, le serveur présente une autre clé, le client <strong>refuse</strong> la connexion :</p>
+<pre class="c-code"><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+...possible man-in-the-middle attack...
+Host key verification failed.</code></pre>
+     <p>Deux possibilités : une <strong>attaque de l'homme du milieu</strong> (quelqu'un se fait passer pour le serveur) ou un changement légitime (serveur réinstallé, clés régénérées). Si le changement est confirmé avec l'administrateur, on supprime l'ancienne entrée puis on accepte la nouvelle :</p>
+<pre class="c-code"><code>ssh-keygen -R 172.25.0.48  <span class="cmt"># retire l'IP de known_hosts (copie en .old)</span>
+ssh user1@172.25.0.48      <span class="cmt"># nouvelle empreinte -> "yes"</span></code></pre>
+     <h3 class="c-h3">Authentification par clé (sans mot de passe)</h3>
+<pre class="c-code"><code><span class="cmt"># sur le CLIENT</span>
+ssh-keygen -t ed25519      <span class="cmt"># crée ~/.ssh/id_ed25519 (PRIVÉE) + id_ed25519.pub (publique)</span>
+ssh-copy-id user1@172.25.0.48     <span class="cmt"># ajoute la publique dans ~/.ssh/authorized_keys du serveur</span>
+ssh user1@172.25.0.48      <span class="cmt"># plus de mot de passe demandé</span></code></pre>
+            <p>C'est l'application directe du <strong>chiffrement asymétrique</strong> : la clé publique est déposée sur le serveur, et la clé privée <strong>ne quitte jamais le client</strong>. Elle peut être protégée par une passphrase.</p>
+     <h3 class="c-h3">Durcir le serveur : /etc/ssh/sshd_config</h3>
+<pre class="c-code"><code>PermitRootLogin no     <span class="cmt"># pas de connexion directe en root</span>
+PasswordAuthentication no     <span class="cmt"># clés uniquement (après avoir testé sa clé !)</span>
+Port 2222       <span class="cmt"># optionnel : réduit le bruit des robots</span>
+<span class="cmt"># puis : systemctl restart ssh</span></code></pre>
+     <h3 class="c-h3">Tunnel SSH (redirection de port locale)</h3>
+<pre class="c-code"><code>ssh -L 9000:localhost:80 user1@172.25.0.48
+<span class="cmt"># puis dans le navigateur du client : http://127.0.0.1:9000</span></code></pre>
+     <p>Le port 9000 du client est transporté dans la connexion SSH chiffrée jusqu'au serveur, qui le relaie vers son propre port 80 (Apache). Ça permet d'accéder à un service non exposé ou bloqué par le pare-feu, à condition que le port 22 soit ouvert. Si rien ne passe, vérifier dans l'ordre : le service sur le serveur (<code>ss -tlnp</code>), le pare-feu, puis le routage entre les machines.</p>
+   </section>
+ </article>
+      </div>
+    </section>
+
+    <!-- ===================== 3. QUIZ ===================== -->
+    <section class="c-panel" id="p-quiz" role="tabpanel" aria-labelledby="t-quiz" tabindex="0" hidden>
+      <div class="container c-narrow">
+        <div class="qz c-content" data-quiz="quiz-adminsys">
+          <p class="c-panel-intro"><strong><span data-qz-count>—</span> questions</strong> de théorie et de cas pratiques tirés des cours, TD et TP. Clique sur une réponse pour voir immédiatement la correction et son explication. Les réponses sont mélangées à chaque chargement.</p>
+          <div class="qz-head">
+            <div class="qz-filters" aria-label="Filtrer par thème"></div>
+          </div>
+          <div class="qz-head">
+            <div class="qz-filters" aria-label="Filtrer par type">
+              <button class="c-filter" type="button" data-qz-kind="all" aria-pressed="true">Tout</button>
+              <button class="c-filter" type="button" data-qz-kind="theorie" aria-pressed="false">Théorie</button>
+              <button class="c-filter" type="button" data-qz-kind="cas" aria-pressed="false">Cas pratiques</button>
+            </div>
+            <div class="qz-actions">
+              <button class="c-btn" type="button" data-qz-action="shuffle">🔀 Mélanger</button>
+              <button class="c-btn" type="button" data-qz-action="wrong" aria-pressed="false">Mes erreurs</button>
+              <button class="c-btn" type="button" data-qz-action="reset">↺ Recommencer</button>
+            </div>
+          </div>
+          <div class="qz-score" aria-live="polite"></div>
+          <div class="qz-list"></div>
+          <div class="qz-end" hidden>
+            <p data-qz-result></p>
+            <div class="qz-actions">
+              <button class="c-btn primary" type="button" data-qz-action="retry-wrong">Refaire les questions ratées</button>
+              <a class="c-btn" href="#p-cours" data-goto-tab="p-cours">Revoir le cours</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="application/json" id="quiz-adminsys">[
+{"t":"Sauvegardes","k":"theorie","q":"Que signifie la règle de sauvegarde 3-2-1 ?","o":["3 copies des données, sur 2 types de supports différents, dont 1 hors site","3 sauvegardes par jour, 2 par semaine, 1 par mois","3 disques en RAID, 2 serveurs, 1 cloud","3 complètes, 2 différentielles, 1 incrémentielle"],"a":0,"e":"3 copies (original compris), sur 2 supports de nature différente (disque + bande/NAS/cloud…), dont 1 stockée ailleurs pour survivre à un incendie, un vol ou un ransomware."},
+{"t":"Sauvegardes","k":"cas","q":"Complète le dimanche, puis incrémentielles le lundi, mardi et mercredi. Le serveur crashe jeudi matin. Que faut-il restaurer ?","o":["La complète + l'incrémentielle de mercredi","La complète + les incrémentielles de lundi, mardi et mercredi, dans l'ordre","Uniquement l'incrémentielle de mercredi","Uniquement la complète"],"a":1,"e":"Une incrémentielle ne contient que ce qui a changé depuis la sauvegarde précédente, quelle qu'elle soit : il faut rejouer toute la chaîne. Si une seule manque, la restauration est incomplète."},
+{"t":"Sauvegardes","k":"cas","q":"Même scénario, mais avec des différentielles du lundi au mercredi. Que restaure-t-on ?","o":["La complète + les trois différentielles","La différentielle de mercredi seule","La complète + la différentielle de mercredi","La complète + la différentielle de lundi"],"a":2,"e":"Une différentielle contient tout ce qui a changé depuis la dernière COMPLÈTE. La dernière différentielle suffit donc, en plus de la complète."},
+{"t":"Sauvegardes","k":"theorie","q":"Quel type de sauvegarde est le plus rapide à réaliser chaque jour mais le plus long à restaurer ?","o":["Complète","Différentielle","Incrémentielle","Miroir"],"a":2,"e":"L'incrémentielle copie très peu de données chaque jour, mais la restauration exige la complète et toutes les incrémentielles suivantes."},
+{"t":"Sauvegardes","k":"theorie","q":"Pourquoi une simple synchronisation (miroir) ne remplace-t-elle pas une vraie sauvegarde ?","o":["Elle est plus lente","Une suppression ou un chiffrement par ransomware est répercuté sur la copie","Elle ne fonctionne qu'en local","Elle ne copie pas les droits"],"a":1,"e":"Le miroir reproduit l'état actuel, y compris les erreurs. Une sauvegarde conserve des versions antérieures et permet de revenir en arrière."},
+{"t":"Sauvegardes","k":"theorie","q":"Qu'est-ce que le chiffrement symétrique ?","o":["Une clé publique chiffre, une clé privée déchiffre","Une même clé secrète sert à chiffrer et à déchiffrer","Les données sont hachées et ne peuvent pas être déchiffrées","Deux clés identiques sont publiées"],"a":1,"e":"Symétrique = une seule clé partagée (AES par ex.), rapide mais il faut transmettre la clé en sécurité. Attention : les notes de cours inversaient symétrique et asymétrique."},
+{"t":"Sauvegardes","k":"cas","q":"Alice veut envoyer un fichier chiffré à Bob en chiffrement asymétrique. Quelle clé utilise-t-elle ?","o":["Sa propre clé privée","La clé privée de Bob","La clé publique de Bob","Sa propre clé publique"],"a":2,"e":"On chiffre avec la clé PUBLIQUE du destinataire ; seul Bob, avec sa clé PRIVÉE, peut déchiffrer. (Signer, c'est l'inverse : avec sa propre clé privée.)"},
+{"t":"Sauvegardes","k":"theorie","q":"Pourquoi SSH ou TLS utilisent-ils un chiffrement hybride ?","o":["L'asymétrique sert à échanger une clé de session, puis le symétrique chiffre les données car il est bien plus rapide","Le symétrique sert à échanger les clés, l'asymétrique chiffre les données","Pour pouvoir se passer de clés","Parce que l'asymétrique est interdit"],"a":0,"e":"L'asymétrique résout l'échange de clé mais il est lent ; le symétrique est rapide. On combine les deux."},
+{"t":"Sauvegardes","k":"theorie","q":"Quel outil libre, lancé depuis une clé bootable, permet de cloner ou d'imager un disque entier ?","o":["rsync","Clonezilla","SyncBack","cron"],"a":1,"e":"Clonezilla fait des images/clones de disques ou partitions (équivalent libre d'Acronis). rsync et SyncBack travaillent au niveau des fichiers."},
+{"t":"Sauvegardes","k":"theorie","q":"Dans SyncBack, quelle est la différence entre un profil « Sauvegarde » et un profil « Miroir » ?","o":["Aucune","Le miroir rend la destination identique à la source, y compris en supprimant les fichiers en trop","La sauvegarde est bidirectionnelle","Le miroir compresse les fichiers"],"a":1,"e":"Sauvegarde : copie source → destination sans rien supprimer. Miroir : destination = copie exacte de la source. Synchronisation : dans les deux sens."},
+{"t":"rsync & cron","k":"theorie","q":"Que fait l'option -a de rsync ?","o":["Elle ajoute les fichiers à la fin","C'est le mode archive : copie récursive en conservant droits, dates, propriétaires et liens","Elle demande une authentification","Elle compresse les données"],"a":1,"e":"-a = -rlptgoD. La compression, c'est -z ; -v rend la sortie bavarde."},
+{"t":"rsync & cron","k":"theorie","q":"Que fait l'option --delete de rsync ?","o":["Elle supprime la source après la copie","Elle supprime dans la destination les fichiers qui n'existent plus dans la source","Elle vide la corbeille","Elle efface les fichiers temporaires"],"a":1,"e":"--delete transforme la copie en miroir exact. Pratique, mais dangereux : une suppression accidentelle dans la source se propage."},
+{"t":"rsync & cron","k":"cas","q":"Quelle est la différence entre ces deux commandes ?","code":"rsync -a /home/doc /save\nrsync -a /home/doc/ /save","o":["Aucune","La 1re crée /save/doc, la 2e copie le contenu de doc directement dans /save","La 1re copie le contenu, la 2e crée /save/doc","Seule la 2e est récursive"],"a":1,"e":"Piège classique du slash final : avec « doc/ », on copie le CONTENU du dossier ; sans slash, on copie le dossier lui-même."},
+{"t":"rsync & cron","k":"cas","q":"Un démon rsync tourne sur 192.168.1.10 avec un module [sauvegarde]. Quelle commande y envoie /data ?","o":["rsync -az /data/ 192.168.1.10:/sauvegarde","rsync -az /data/ 192.168.1.10::sauvegarde","rsync -az /data/ sauvegarde@192.168.1.10","rsync -az 192.168.1.10::/data sauvegarde"],"a":1,"e":"Les deux-points doubles « IP::module » parlent au démon rsync (port 873). Un seul « : » (user@ip:/chemin) passe par SSH."},
+{"t":"rsync & cron","k":"theorie","q":"Sur quel port écoute le démon rsync ?","o":["22","873","445","8080"],"a":1,"e":"873/TCP. Le port 22 est celui de SSH, utilisé quand rsync passe par SSH."},
+{"t":"rsync & cron","k":"theorie","q":"Sur Debian, dans quel fichier déclare-t-on les modules du démon rsync (path, read only, comment…) ?","o":["/etc/default/rsync","/etc/rsyncd.conf","/etc/crontab","/etc/fstab"],"a":1,"e":"/etc/rsyncd.conf contient les modules. /etc/default/rsync sert à activer le démon (RSYNC_ENABLE=true)."},
+{"t":"rsync & cron","k":"cas","q":"Quelle ligne crontab lance une sauvegarde à 21h00 du lundi au vendredi ?","o":["21 0 * * 1-5 /root/save.sh","0 21 * * 1-5 /root/save.sh","0 21 1-5 * * /root/save.sh","* 21 * * 1-5 /root/save.sh"],"a":1,"e":"Ordre des champs : minute heure jour-du-mois mois jour-de-la-semaine. « * 21 » lancerait la commande chaque minute entre 21h00 et 21h59."},
+{"t":"rsync & cron","k":"cas","q":"Quelle est l'erreur dans cette ligne crontab ?","code":"0 10 * * 6 /local_save","o":["Le 6 désigne dimanche","/local_save est un dossier et non une commande : cron ne peut pas l'exécuter","Il manque l'utilisateur","10 n'est pas une heure valide"],"a":1,"e":"Il faut écrire la commande complète, par ex. «0 10 * * 6 rsync -az /home/ /local_save/ », ou appeler un script exécutable. (6 = samedi.)"},
+{"t":"Linux : utilisateurs & droits","k":"theorie","q":"Où sont stockés les hachés des mots de passe sur un Linux moderne ?","o":["/etc/passwd","/etc/shadow","/etc/group","/home/user/.password"],"a":1,"e":"/etc/shadow n'est lisible que par root. /etc/passwd est lisible par tous et ne contient qu'un « x » à la place du mot de passe."},
+{"t":"Linux : utilisateurs & droits","k":"theorie","q":"Que fait la commande pwunconv ?","o":["Elle active /etc/shadow","Elle remet les mots de passe dans /etc/passwd et supprime /etc/shadow","Elle change le mot de passe de root","Elle convertit les UID en noms"],"a":1,"e":"pwconv fait l'inverse : il crée/met à jour /etc/shadow et y déplace les hachés. pwunconv est à éviter (hachés lisibles par tous)."},
+{"t":"Linux : utilisateurs & droits","k":"cas","q":"Alice est déjà dans les groupes « dev » et « web ». Comment l'ajouter à « compta » sans lui faire perdre ses autres groupes ?","o":["usermod -G compta alice","usermod -aG compta alice","usermod -g compta alice","groupadd alice compta"],"a":1,"e":"-G seul REMPLACE la liste des groupes secondaires ; -a (append) l'ajoute. -g change le groupe principal. Alternative : gpasswd -a alice compta."},
+{"t":"Linux : utilisateurs & droits","k":"cas","q":"Le groupe « info » a le GID 1500. Comment créer bob avec ce groupe comme groupe principal ?","o":["adduser --gid 1500 bob","adduser --uid 1500 bob","addgroup --gid 1500 bob","usermod -g bob 1500"],"a":0,"e":"--gid fixe le groupe principal (équivalent : --ingroup info). --uid fixe l'identifiant de l'utilisateur lui-même."},
+{"t":"Linux : utilisateurs & droits","k":"theorie","q":"Que permet le droit x sur un DOSSIER ?","o":["Exécuter tous les scripts du dossier","Entrer dans le dossier (cd) et accéder à ses fichiers","Lister son contenu","Supprimer le dossier"],"a":1,"e":"Sur un dossier : r = lister les noms, w = créer/supprimer/renommer des entrées, x = traverser/entrer."},
+{"t":"Linux : utilisateurs & droits","k":"cas","q":"Un utilisateur a seulement r-- sur un dossier (sans x). Que peut-il faire ?","o":["Tout lire normalement","Voir la liste des noms de fichiers, mais ni entrer dans le dossier ni ouvrir les fichiers","Rien du tout","Créer des fichiers"],"a":1,"e":"Sans x, impossible d'accéder aux inodes : ls affiche les noms (avec des erreurs), mais cd et la lecture des fichiers échouent."},
+{"t":"Linux : utilisateurs & droits","k":"theorie","q":"Que permet le droit w sur un dossier ?","o":["Modifier le contenu des fichiers","Créer, renommer et supprimer des fichiers dans ce dossier, même sans droit w sur ces fichiers","Rien sans le droit r","Changer le propriétaire"],"a":1,"e":"Supprimer un fichier modifie le dossier, pas le fichier. C'est pourquoi /tmp utilise le sticky bit (t)."},
+{"t":"Linux : utilisateurs & droits","k":"cas","q":"Quels droits donne « chmod 750 rapport » ?","o":["rwxr-x---","rwxrw----","rw-r-x---","rwxr-xr-x"],"a":0,"e":"r=4, w=2, x=1. 7 = rwx (propriétaire), 5 = r-x (groupe), 0 = --- (autres)."},
+{"t":"Linux : utilisateurs & droits","k":"cas","q":"Comment donner le fichier budget.ods à alice et au groupe compta en une commande ?","o":["chmod alice:compta budget.ods","chown alice:compta budget.ods","chgrp alice compta budget.ods","usermod -g compta budget.ods"],"a":1,"e":"chown utilisateur:groupe fichier. chgrpne change que le groupe. Ajouter -R pour un dossier entier."},
+{"t":"Linux : utilisateurs & droits","k":"theorie","q":"Que fait « gpasswd -d alice compta » ?","o":["Supprime le groupe compta","Retire alice du groupe compta","Supprime le mot de passe d'alice","Désactive le compte alice"],"a":1,"e":"gpasswd -a ajoute, -d retire un membre. groupdel supprime un groupe, userdel -r un utilisateur et son home."},
+{"t":"Quotas","k":"theorie","q":"Quelle est la différence entre limite soft et limite hard ?","o":["Aucune","La soft peut être dépassée pendant un délai de grâce, la hard jamais","La hard peut être dépassée par root uniquement","La soft concerne les fichiers, la hard les dossiers"],"a":1,"e":"Soft = seuil d'alerte avec délai de grâce ; hard = plafond absolu."},
+{"t":"Quotas","k":"theorie","q":"Un quota exprimé en inodes limite…","o":["la taille totale en Mo","le nombre de fichiers et dossiers","la bande passante","le nombre de connexions"],"a":1,"e":"1 inode = 1 fichier/dossier. Les quotas en blocs limitent l'espace disque."},
+{"t":"Quotas","k":"cas","q":"Soft 100 Mo, hard 120 Mo, délai de grâce 7 jours. Bob occupe 110 Mo depuis 8 jours. Que se passe-t-il ?","o":["Il peut écrire jusqu'à 120 Mo","Il ne peut plus écrire tant qu'il n'est pas repassé sous 100 Mo","Ses fichiers sont supprimés","Rien, seule la hard compte"],"a":1,"e":"Une fois le délai de grâce expiré, la limite soft devient bloquante comme une hard."},
+{"t":"Quotas","k":"cas","q":"Les quotas sont activés sur /home (usrquota dans fstab, quotacheck, quotaon). Quelle commande règle les limites de bob ?","o":["quotaon bob","edquota -u bob","repquota bob","chmod quota bob"],"a":1,"e":"edquota ouvre un éditeur avec les limites soft/hard (blocs et inodes). repquota -a affiche le rapport global."},
+{"t":"Windows & NTFS","k":"theorie","q":"Quelle commande PowerShell crée un groupe local « RH » ?","o":["New-LocalGroup -Name RH","Add-LocalGroup RH","net group RH /new","Create-Group RH"],"a":0,"e":"Famille *-Local* : New-LocalUser, New-LocalGroup, Add-LocalGroupMember, Get-LocalUser, Set-LocalUser, Remove-LocalUser…"},
+{"t":"Windows & NTFS","k":"cas","q":"Comment ajouter l'utilisateur paul au groupe local RH en PowerShell ?","o":["Add-LocalGroupMember -Group RH -Member paul","New-LocalGroupMember RH paul","Set-LocalUser paul -Group RH","usermod -aG RH paul"],"a":0,"e":"Retrait : Remove-LocalGroupMember -Group RH -Member paul."},
+{"t":"Windows & NTFS","k":"cas","q":"Un employé RH doit accéder au dossier Confidentiel, réservé au groupe Direction. Quelle est la BONNE solution ?","o":["L'ajouter au groupe Direction","Lui donner le compte d'un directeur","Créer un groupe dédié (ex. Acces_Confidentiel) ayant des droits sur Confidentiel, et l'y ajouter","Mettre Confidentiel en Contrôle total pour Tout le monde"],"a":2,"e":"L'ajouter à Direction lui donnerait TOUS les droits de la Direction (principe du moindre privilège violé). Un groupe dédié donne uniquement l'accès nécessaire."},
+{"t":"Windows & NTFS","k":"theorie","q":"Un utilisateur a une autorisation « Modifier » via un groupe et un « Refuser » explicite via un autre groupe sur le même dossier. Résultat ?","o":["Il peut modifier","L'accès est refusé : le refus explicite est prioritaire","Le plus ancien droit gagne","Windows demande à l'administrateur"],"a":1,"e":"Les droits NTFS se cumulent, mais un Refuser explicite l'emporte. À utiliser avec parcimonie."},
+{"t":"Windows & NTFS","k":"cas","q":"Partage : Contrôle total pour Tout le monde. NTFS : Lecture pour paul. Paul accède via le réseau. Quels droits a-t-il ?","o":["Contrôle total","Lecture","Aucun","Modification"],"a":1,"e":"Via le réseau, on combine partage et NTFS : c'est le plus restrictif qui s'applique."},
+{"t":"Windows & NTFS","k":"cas","q":"Partage : Lecture. NTFS : Contrôle total pour paul. Paul ouvre le dossier en étant connecté localement sur le serveur. Quels droits a-t-il ?","o":["Lecture","Contrôle total","Aucun","Lecture et exécution"],"a":1,"e":"Les droits de partage ne s'appliquent qu'aux accès réseau. En local, seuls les droits NTFS comptent."},
+{"t":"Windows & NTFS","k":"theorie","q":"Qu'est-ce que l'héritage NTFS ?","o":["Un sous-dossier reçoit par défaut les permissions de son parent","Un utilisateur hérite des droits de l'administrateur","Les fichiers copiés gardent toujours leurs droits","Un groupe hérite d'un autre groupe"],"a":0,"e":"On peut désactiver l'héritage (Avancé) pour poser des droits spécifiques, en convertissant ou supprimant les droits hérités."},
+{"t":"Windows & NTFS","k":"cas","q":"Comment obliger paul à changer son mot de passe à sa prochaine connexion, en ligne de commande ?","o":["net user paul /logonpasswordchg:yes","Set-LocalUser paul -PasswordNeverExpires $true","passwd -e paul","New-LocalUser paul -Reset"],"a":0,"e":"PasswordNeverExpires fait l'inverse de ce qu'on veut ici. passwd -e est l'équivalent Linux."},
+{"t":"Windows & NTFS","k":"theorie","q":"Quelle console graphique gère les utilisateurs et groupes LOCAUX de Windows ?","o":["lusrmgr.msc","dsa.msc","gpmc.msc","diskmgmt.msc"],"a":0,"e":"dsa.msc = Utilisateurs et ordinateurs Active Directory, gpmc.msc = stratégies de groupe, diskmgmt.msc = gestion des disques."},
+{"t":"RAID","k":"theorie","q":"Caractéristiques du RAID 0 ?","o":["Miroir, tolère une panne","Agrégation (striping) : performances et capacité totale, mais aucune tolérance de panne","Parité répartie","Sauvegarde automatique"],"a":1,"e":"Si un seul disque meurt, toutes les données du volume sont perdues."},
+{"t":"RAID","k":"theorie","q":"Avec deux disques de 2 To en RAID 1, quelle est la capacité utile ?","o":["4 To","2 To","1 To","3 To"],"a":1,"e":"RAID 1 = miroir : les deux disques contiennent la même chose.50 % de capacité utile, tolère la perte d'un disque."},
+{"t":"RAID","k":"cas","q":"RAID 5 avec 4 disques de 1 To : capacité utile et tolérance ?","o":["4 To, aucune panne","3 To, 1 disque en panne","2 To, 2 disques en panne","3 To, 2 disques en panne"],"a":1,"e":"Capacité = (n-1) × taille, car l'équivalent d'un disque sert à la parité. Minimum 3 disques."},
+{"t":"RAID","k":"cas","q":"Un serveur est en RAID 1. Un utilisateur supprime par erreur un dossier important. Le RAID permet-il de le récupérer ?","o":["Oui, sur le second disque","Non : la suppression est répliquée sur les deux disques, le RAID n'est pas une sauvegarde","Oui, via la parité","Oui, s'il est matériel"],"a":1,"e":"Le RAID protège contre la panne matérielle d'un disque, pas contre l'erreur humaine, le virus ou le vol."},
+{"t":"Active Directory","k":"theorie","q":"Pourquoi le contrôleur de domaine doit-il avoir une IP fixe ?","o":["Pour aller plus vite","Il est aussi serveur DNS : les clients le trouvent par son adresse, qui ne doit pas changer","Parce que DHCP est interdit sur Windows Server","Pour la licence"],"a":1,"e":"Dans le TP, on la fixe avec netsh (ou l'interface graphique) avant d'installer AD DS + DNS."},
+{"t":"Active Directory","k":"cas","q":"Un poste Windows n'arrive pas à rejoindre le domaine nom.local : « contrôleur de domaine introuvable ». Son DNS est 8.8.8.8. Que faire ?","o":["Redémarrer le serveur","Mettre l'IP du contrôleur de domaine comme DNS du client","Désactiver le pare-feu","Renommer le domaine en .com"],"a":1,"e":"Le client trouve le DC grâce à des enregistrements DNS (SRV) que seul le DNS du domaine connaît."},
+{"t":"Active Directory","k":"theorie","q":"À quoi sert le mot de passe DSRM demandé lors de la promotion du DC ?","o":["À se connecter au domaine","À démarrer en mode restauration des services d'annuaire pour réparer ou restaurer AD","Au compte invité","À chiffrer le disque"],"a":1,"e":"DSRM = Directory Services Restore Mode, un compte administrateur local utilisable quand AD est hors ligne."},
+{"t":"Active Directory","k":"theorie","q":"Dans quel ordre les GPO s'appliquent-elles?","o":["OU, Domaine, Site, Local","Local, Site, Domaine, OU (la dernière l'emporte en cas de conflit)","Domaine, Local, OU, Site","Au hasard"],"a":1,"e":"LSDOU : la stratégie la plus proche de l'objet (l'OU) gagne, sauf « Appliqué » ou blocage d'héritage."},
+{"t":"Active Directory","k":"cas","q":"Une GPO interdisant le Panneau de configurationne s'applique pas aux comptes restés dans le conteneur « Users ». Pourquoi ?","o":["Il faut redémarrer le DC","« Users » est un conteneur, pas une OU : on ne peut pas y lier de GPO","Les GPO ne concernent que les ordinateurs","Le panneau de configuration ne peut pas être bloqué"],"a":1,"e":"Il faut déplacer les comptes dans une OU, y lier la GPO, puis gpupdate /force et vérifier avec gpresult /r."},
+{"t":"Active Directory","k":"theorie","q":"Quelle commande vérifie quelles GPO s'appliquent à l'utilisateur connecté ?","o":["gpupdate /force","gpresult /r","ipconfig /all","dsquery gpo"],"a":1,"e":"gpupdate /force applique immédiatement ; gpresult /r affiche le résultat."},
+{"t":"Active Directory","k":"cas","q":"Dans l'onglet Profil, comment donner à chaque utilisateur un lecteur Z: vers son propre dossier sur le serveur ?","o":["Connecter Z: à \\\\172.25.0.65\\user","Connecter Z: à \\\\172.25.0.65\\user\\%username%","Chemin local C:\\user","Connecter Z: à C:\\Users\\%username%"],"a":1,"e":"%username% est remplacé par le login : AD crée automatiquement le sous-dossier avec les droits pour l'utilisateur."},
+{"t":"Active Directory","k":"theorie","q":"Qu'est-ce qu'une unité d'organisation (OU) ?","o":["Un serveur secondaire","Un conteneur logique pour ranger les objets, y lier des GPO et déléguer l'administration","Un groupe de sécurité","Une forêt"],"a":1,"e":"Une OU n'est pas un groupe : on ne lui donne pas de droits NTFS, on s'en sert pour organiser et appliquer des stratégies."},
+{"t":"VirtualBox","k":"theorie","q":"VirtualBox et ESXi sont respectivement des hyperviseurs de type…","o":["1 et 2","2 et 1","1 et 1","2 et 2"],"a":1,"e":"Type 2 = s'installe sur un OS hôte (VirtualBox, Workstation). Type 1 = bare-metal, directement sur le matériel (ESXi, Hyper-V)."},
+{"t":"VirtualBox","k":"cas","q":"Une VM en mode NAT a l'IP 10.0.2.15. Un autre PC de la salle essaie de la pinguer. Résultat ?","o":["Ça marche","Échec : en NAT, la VM est cachée derrière l'hôte (il faudrait une redirection de port)","Ça marche seulement en IPv6","Échec car10.0.2.15 est une adresse publique"],"a":1,"e":"En NAT, la VM sort vers Internet via 10.0.2.2, mais n'est pas joignable depuis l'extérieur."},
+{"t":"VirtualBox","k":"theorie","q":"Quel mode réseau place la VM directement sur le réseau physique, avec une IP de ce réseau (ex. 172.25.1.X/16) ?","o":["NAT","Accès par pont (bridge)","Réseau interne","Privé hôte"],"a":1,"e":"En pont, la VM est vue comme une machine à part entière (sa propre MAC) sur le LAN."},
+{"t":"VirtualBox","k":"theorie","q":"Quel mode permet aux VM de communiquer entre elles UNIQUEMENT, sans l'hôte ni Internet ?","o":["Réseau interne","Privé hôte","NAT","Pont"],"a":0,"e":"Privé hôte (host-only) = VM + hôte. Réseau NAT = VM entre elles + Internet. Réseau interne = VM entre elles seulement."},
+{"t":"VirtualBox","k":"cas","q":"Deux VM doivent se voir entre elles ET accéder à Internet, avec un DHCP automatique en 192.168.200.0/24. Quel mode ?","o":["NAT simple","Réseau NAT (NAT Network)","Réseau interne","Privé hôte"],"a":1,"e":"Le « Réseau NAT » est un NAT partagé entre plusieurs VM, alors qu'en NAT simple chaque VM est isolée."},
+{"t":"VirtualBox","k":"theorie","q":"Pourquoi régénérer les adresses MAC lors d'un clonage ?","o":["Pour accélérer la VM","Pour éviter deux machines avec la même MAC sur le même réseau (conflits, même IP DHCP)","Obligatoire pour la licence","Pour chiffrer le disque"],"a":1,"e":"Clone intégral = copie indépendante. Clone lié = léger mais dépend du disque de la VM d'origine."},
+{"t":"VirtualBox","k":"theorie","q":"Que contient un fichier .ova ?","o":["Uniquement le journal de la VM","Une archive unique (descripteur OVF + disques) pour exporter/importer une VM","Un instantané","Le BIOS de la VM"],"a":1,"e":".vdi = disque virtuel VirtualBox, .vbox = configuration, Logs/ = journaux."},
+{"t":"ESXi","k":"theorie","q":"Quelle est la différence entre réservation et limite de ressources sur une VM ?","o":["Aucune","La réservation garantit un minimum, la limite fixe un plafond","La limite garantit un minimum","La réservation concerne le disque, la limite le CPU"],"a":1,"e":"Les parts (shares) arbitrent ensuite entre VM en cas de contention."},
+{"t":"ESXi","k":"theorie","q":"Sur ESXi, que désigne une vmnic ?","o":["Une carte réseau virtuelle de VM","Une carte réseau PHYSIQUE de l'hôte, utilisée comme uplink d'un vSwitch","Un datastore","Un groupe de ports"],"a":1,"e":"Chaîne : VM → groupe de ports → vSwitch → vmnic (uplink) → réseau physique. VMkernel = interface de l'hôte lui-même (gestion)."},
+{"t":"ESXi","k":"cas","q":"Vous êtes devant la console ESXi et voulez activer SSH. Quel chemin ?","o":["ALT+F1 puis ssh start","F2 > Troubleshooting Options > Enable SSH","F12 > Network","Ce n'est possible que via Veeam"],"a":1,"e":"Le DCUI (F2) permet aussi d'activer l'ESXi Shell, accessible ensuite avec ALT+F1."},
+{"t":"ESXi","k":"theorie","q":"Dans un datastore ESXi, que contient le fichier .vmdk ?","o":["La configuration de la VM","Le disque virtuel","Les métadonnées des snapshots","Les logs"],"a":1,"e":".vmx = configuration, .vmsd = métadonnées des snapshots. Les datastores sont dans /vmfs/volumes/."},
+{"t":"ESXi","k":"cas","q":"Un stagiaire doit gérer les VM sans pouvoir leur ajouter de disque. Bonne pratique ?","o":["Lui donner le rôle Administrateur","Créer un rôle personnalisé avec les privilèges VM, sauf AddExistingDisk et AddNewDisk","Lui donner le compte root","Rôle Lecture seule"],"a":1,"e":"Principe du moindre privilège : on donne exactement ce qu'il faut, rien de plus."},
+{"t":"Docker","k":"theorie","q":"Quelle est la différence entre une image et un conteneur Docker ?","o":["Aucune","L'image est un modèle en lecture seule ; le conteneur en est une instance qui s'exécute, avec une couche en écriture","Le conteneur est un fichier .tar","L'image tourne, le conteneur est stocké"],"a":1,"e":"Une image peut donner plusieurs conteneurs. Les images sont faites de couches empilées et partagées."},
+{"t":"Docker","k":"cas","q":"« docker exec cont_httpd bash » rend la main immédiatement sans shell. Pourquoi ?","o":["Le conteneur est arrêté","Il manque -it (terminal interactif)","bash n'existe pas sous Docker","Il faut sudo"],"a":1,"e":"Correct : docker exec -it cont_httpd bash. -i garde l'entrée ouverte, -t alloue un terminal."},
+{"t":"Docker","k":"cas","q":"Après « docker run -it httpd bash », Apache ne répond pas. Pourquoi ?","o":["Le port 80 est bloqué","La commande bash remplace la commande par défaut de l'image : Apache n'est jamais lancé","L'image httpd ne contient pas Apache","Il manque --network"],"a":1,"e":"Pour un service, on lance plutôt : docker run -d -p 10082:80 --name cont_httpd httpd."},
+{"t":"Docker","k":"cas","q":"Quelle commande lance Apache en arrière-plan, accessible sur le port 10082 de l'hôte ?","o":["docker run -d -p 80:10082 httpd","docker run -d -p 10082:80 --name cont_httpd httpd","docker start httpd 10082","docker run -it httpd -port 10082"],"a":1,"e":"-p PORT_HÔTE:PORT_CONTENEUR. Sans -p, http://localhost:80 sur l'hôte ne mène pas au conteneur."},
+{"t":"Docker","k":"cas","q":"Un conteneur est lancé avec --network docker1, réseau créé avec « docker network create --subnet=172.20.0.0/16 --internal docker1 ». Peut-il joindre Internet ?","o":["Oui","Non : --internal isole le réseau de l'extérieur","Seulement en IPv6","Oui, s'il aifconfig"],"a":1,"e":"Les conteneurs du même réseau se voient entre eux, mais aucune route ne sort vers l'extérieur."},
+{"t":"Docker","k":"theorie","q":"Que fait « docker commit cont_httpd nvapache:v1 » ?","o":["Envoie le conteneur sur Docker Hub","Crée une nouvelle image à partir de l'état actuel du conteneur","Redémarre le conteneur","Sauvegarde l'image en .tar"],"a":1,"e":"Ensuite : docker save -o apachev1.tar nvapache:v1 pour l'exporter, et docker load -i apachev1.tar ailleurs."},
+{"t":"Docker","k":"theorie","q":"Quelle commande liste TOUS les conteneurs, y compris ceux qui sont arrêtés ?","o":["docker ps","docker ps -a","docker images","docker list"],"a":1,"e":"docker ps n'affiche que ceux qui tournent ; docker images liste les images."},
+{"t":"Docker","k":"theorie","q":"Dans l'image officielle httpd, où se trouvent les pages web servies ?","o":["/var/www/html","/usr/local/apache2/htdocs","/etc/apache2","/srv/http"],"a":1,"e":"/var/www/html, c'est le cas d'Apache installé par apt sur Debian, pas de l'image Docker officielle."},
+{"t":"SSH","k":"theorie","q":"Sur quel port écoute un serveur SSH par défaut ?","o":["21","22","23","443"],"a":1,"e":"21 = FTP, 23 = Telnet (non chiffré), 443 = HTTPS."},
+{"t":"SSH","k":"cas","q":"« WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! » s'affiche en se connectant à 172.25.0.48. Que signifie-t-il ?","o":["Le mot de passe a expiré","La clé d'hôte du serveur ne correspond plus à celle de known_hosts : serveur réinstallé, ou attaque de l'homme du milieu","Le port 22 est fermé","La clé privée du client est corrompue"],"a":1,"e":"On vérifie d'abord la raison, puis on supprime l'ancienne empreinte avec ssh-keygen -R 172.25.0.48 et on accepte la nouvelle."},
+{"t":"SSH","k":"theorie","q":"Pour une connexion SSH par clé, où doit se trouver la clé PUBLIQUE du client ?","o":["Dans ~/.ssh/known_hosts du client","Dans ~/.ssh/authorized_keys de l'utilisateur sur le serveur","Dans /etc/shadow","Nulle part, seule la clé privée sert"],"a":1,"e":"La clé privée ne quitte jamais le client. known_hosts contient les empreintes des SERVEURS."},
+{"t":"SSH","k":"cas","q":"Vous avez généré une paire avec « ssh-keygen -t ed25519 ». Quelle commande installe la clé publique sur le serveur ?","o":["ssh-copy-id etu@172.25.0.48","scp ~/.ssh/id_ed25519 etu@172.25.0.48:","ssh-keygen -R 172.25.0.48","ssh-add etu@172.25.0.48"],"a":0,"e":"Copier id_ed25519 (sans .pub) reviendrait à envoyer la clé privée : grave erreur."},
+{"t":"SSH","k":"cas","q":"Le port 80 du serveur est bloqué par le pare-feu, mais SSH passe. Comment afficher le site sur http://127.0.0.1:9000 ?","o":["ssh -L 9000:localhost:80 etu@serveur","ssh -R 80:localhost:9000 etu@serveur","ssh -p 9000 etu@serveur","ssh -D 80 etu@serveur"],"a":0,"e":"-L port_local:destination:port_distant : le trafic vers le port 9000 local passe chiffré dans SSH puis ressort vers le port 80 côté serveur."},
+{"t":"SSH","k":"theorie","q":"Comment interdire la connexion directe de root en SSH ?","o":["PermitRootLogin no dans /etc/ssh/sshd_config, puis redémarrer ssh","Supprimer le compte root","chmod 000 /root","PermitRootLogin no dans ~/.ssh/config du client"],"a":0,"e":"sshd_config = serveur ; ssh_config / ~/.ssh/config = client. Après modification : systemctl restart ssh."}
+]</script>
+    </section>
+
+    <!-- ===================== 4. FICHE RÉSUMÉE ===================== -->
+    <section class="c-panel" id="p-fiche" role="tabpanel" aria-labelledby="t-fiche" tabindex="0" hidden>
+      <div class="container c-narrow c-content">
+  <p class="c-panel-intro">L'essentiel du module R202 sur une seule page, pour réviser juste avant l'éval.</p>
+
+  <h3 class="c-h3">1. Sauvegardes</h3>
+  <ul>
+    <li><strong>3-2-1</strong> : 3 copies, 2 supports différents, 1 hors site.</li>
+    <li><strong>Sauvegarde ≠ synchronisation ≠ RAID</strong> : seule la sauvegarde garde des versions antérieures.</li>
+    <li><strong>Symétrique</strong> = 1 clé partagée, rapide (AES). <strong>Asymétrique</strong> = clé publique pour chiffrer, clé privée pour déchiffrer (RSA, ED25519). <strong>Hybride</strong> = asymétrique pour échanger la clé, puis symétrique (SSH, TLS).</li>
+  </ul>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th>Type</th><th>Copie quoi ?</th><th>Restauration</th></tr></thead>
+    <tbody>
+      <tr><td>Complète</td><td>Tout</td><td>La complète seule</td></tr>
+      <tr><td>Différentielle</td><td>Changements depuis la dernière <strong>complète</strong></td><td>Complète + dernière différentielle</td></tr>
+      <tr><td>Incrémentielle</td><td>Changements depuis la dernière sauvegarde, <strong>quelle qu'elle soit</strong></td><td>Complète + <strong>toutes</strong> les incrémentielles</td></tr>
+    </tbody>
+  </table></div>
+  <p>Outils : Acronis / Clonezilla (images disque), rsync (Linux), SyncBack / Cobian (Windows), LuckyBackup (rsync en interface graphique).</p>
+
+  <h3 class="c-h3">2. rsync &amp; cron</h3>
+<pre class="c-code"><code>rsync -avz --delete /src/ /dst/      <span class="cmt"># /src/ = contenu ; /src = le dossier lui-même</span>
+rsync -az /data/ 192.168.1.10::module  <span class="cmt"># démon rsync, port 873</span>
+rsync -az /data/ user@ip:/chemin      <span class="cmt"># via SSH, port 22</span>
+<span class="cmt"># /etc/default/rsync : RSYNC_ENABLE=true   |   /etc/rsyncd.conf : [module] path= ...</span>
+<span class="cmt"># cron : min heure jour mois jour_semaine commande</span>
+0 21 * * 1-5 rsync -az /home/ /save/   <span class="cmt"># 21h du lundi au vendredi</span>
+0 10 * * 6   /root/save.sh             <span class="cmt"># samedi 10h</span></code></pre>
+
+  <h3 class="c-h3">3. Linux : utilisateurs, droits, quotas</h3>
+  <ul>
+    <li><code>/etc/passwd</code> (comptes, lisible par tous), <code>/etc/shadow</code> (hachés, root uniquement), <code>/etc/group</code>. <code>pwconv</code> active shadow, <code>pwunconv</code> le retire.</li>
+    <li><code>addgroup --gid 1500 info</code> · <code>adduser --gid 1500 bob</code> / <code>--ingroup info</code> · <code>usermod -aG grp user</code> (<strong>-G sans -a écrase les groupes !</strong>) · <code>gpasswd -a/-d</code> · <code>userdel -r</code> · <code>groupdel</code>.</li>
+    <li><strong>Fichier</strong> : r lire, w modifier, x exécuter. <strong>Dossier</strong> : r lister, w créer/supprimer, x entrer.</li>
+    <li>r=4, w=2, x=1 → <code>chmod 750</code> = rwxr-x---. <code>chown user:grp f</code>, <code>chgrp grp f</code>, <code>-R</code> pour récursif.</li>
+    <li>Quotas : <code>usrquota</code> dans fstab → <code>quotacheck -cugm</code> → <code>quotaon</code> → <code>edquota -u bob</code> → <code>repquota -a</code>. Blocs = espace, inodes = nombre de fichiers. Soft = alerte + délai de grâce, hard = plafond.</li>
+  </ul>
+
+  <h3 class="c-h3">4. Windows local, NTFS, RAID</h3>
+<pre class="c-code"><code>New-LocalGroup -Name RH
+New-LocalUser -Name paul -Password (Read-Host -AsSecureString)
+Add-LocalGroupMember -Group RH -Member paul
+Remove-LocalGroupMember -Group RH -Member paul
+Set-LocalUser paul -PasswordNeverExpires $false
+net user paul /logonpasswordchg:yes   <span class="cmt"># changer le mot de passe à la prochaine connexion</span></code></pre>
+  <ul>
+    <li>Consoles : <code>lusrmgr.msc</code> (local), <code>dsa.msc</code> (AD), <code>gpmc.msc</code> (GPO), <code>diskmgmt.msc</code> (disques).</li>
+    <li>NTFS : droits cumulés, <strong>Refuser explicite prioritaire</strong>, héritage parent → enfant.</li>
+    <li>Réseau : partage ET NTFS → <strong>le plus restrictif</strong>. En local, seul NTFS compte.</li>
+    <li>Besoin ponctuel (un RH doit accéder à Confidentiel) → <strong>groupe dédié</strong>, jamais l'ajout à Direction (moindre privilège).</li>
+  </ul>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th>RAID</th><th>Disques mini</th><th>Capacité utile</th><th>Pannes tolérées</th></tr></thead>
+    <tbody>
+      <tr><td>0 (agrégation)</td><td>2</td><td>100 %</td><td>0</td></tr>
+      <tr><td>1 (miroir)</td><td>2</td><td>50 %</td><td>1</td></tr>
+      <tr><td>5 (parité)</td><td>3</td><td>(n-1) × taille</td><td>1</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 class="c-h3">5. Active Directory</h3>
+  <ul>
+    <li>Ordre : IP fixe (<code>netsh interface ip set address ...</code>) → rôles AD DS + DNS → promotion (nouvelle forêt <code>nom.local</code>, mot de passe DSRM).</li>
+    <li>Client : <strong>DNS = IP du DC</strong>, sinon impossible de rejoindre le domaine.</li>
+    <li>OU = rangement + GPO + délégation (≠ groupe). Le conteneur <code>Users</code> n'est pas une OU.</li>
+    <li>GPO : ordre <strong>L-S-D-OU</strong>, <code>gpupdate /force</code>, <code>gpresult /r</code>.</li>
+    <li>Dossier personnel : Profil → Connecter <code>Z:</code> à <code>\\172.25.0.65\user\%username%</code>.</li>
+  </ul>
+
+  <h3 class="c-h3">6. Virtualisation</h3>
+  <ul>
+    <li>Type 1 (bare-metal) : ESXi, Hyper-V. Type 2 (sur un OS) : VirtualBox, Workstation.</li>
+  </ul>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th>Mode VirtualBox</th><th>VM ↔ VM</th><th>VM ↔ hôte</th><th>Internet</th><th>Joignable depuis le LAN</th></tr></thead>
+    <tbody>
+      <tr><td>NAT (10.0.2.15, gw 10.0.2.2)</td><td>Non</td><td>Non*</td><td>Oui</td><td>Non (sauf redirection de port)</td></tr>
+      <tr><td>Réseau NAT</td><td>Oui</td><td>Non*</td><td>Oui</td><td>Non</td></tr>
+      <tr><td>Pont (bridge)</td><td>Oui</td><td>Oui</td><td>Oui</td><td>Oui</td></tr>
+      <tr><td>Privé hôte</td><td>Oui</td><td>Oui</td><td>Non</td><td>Non</td></tr>
+      <tr><td>Réseau interne</td><td>Oui</td><td>Non</td><td>Non</td><td>Non</td></tr>
+    </tbody>
+  </table></div>
+  <p><small>* sauf redirection de port.</small> Fichiers : <code>.vdi</code> disque, <code>.vbox</code> config, <code>.ova</code> export. Clone lié = dépend de l'original ; toujours <strong>régénérer les MAC</strong>.</p>
+  <ul>
+    <li><strong>ESXi</strong> : DCUI <kbd>F2</kbd> → Troubleshooting (Shell, SSH), <kbd>ALT+F1</kbd> = shell. Administration web en https.</li>
+    <li>Réservation = minimum garanti, limite = plafond, parts = priorité en cas de contention.</li>
+    <li>VM → groupe de ports → vSwitch → <strong>vmnic</strong> (carte physique). VMkernel = interface de gestion de l'hôte.</li>
+    <li>Datastore VMFS : <code>/vmfs/volumes/datastore1</code> ; <code>.vmx</code> config, <code>.vmdk</code> disque, <code>.vmsd</code> snapshots. Sauvegarde : Veeam.</li>
+  </ul>
+
+  <h3 class="c-h3">7. Docker</h3>
+<pre class="c-code"><code>docker pull httpd                         <span class="cmt"># image = modèle en lecture seule</span>
+docker run -d -p 10082:80 --name cont_httpd httpd   <span class="cmt"># -p HÔTE:CONTENEUR</span>
+docker ps -a                              <span class="cmt"># tous les conteneurs, même arrêtés</span>
+docker exec -it cont_httpd bash           <span class="cmt"># sans -it : pas de shell</span>
+docker network create --subnet=172.20.0.0/16 --internal docker1
+docker run -d --network docker1 httpd
+docker commit cont_httpd nvapache:v1
+docker save -o apachev1.tar nvapache:v1   <span class="cmt"># docker load -i apachev1.tar</span></code></pre>
+  <p>Pages web de l'image httpd : <code>/usr/local/apache2/htdocs</code>. <code>docker run -it httpd bash</code> remplace la commande par défaut : Apache ne démarre pas.</p>
+
+  <h3 class="c-h3">8. SSH</h3>
+<pre class="c-code"><code>ssh etu@172.25.0.48                       <span class="cmt"># port 22</span>
+ssh-keygen -R 172.25.0.48                 <span class="cmt"># oublier l'ancienne empreinte (known_hosts)</span>
+ssh-keygen -t ed25519 &amp;&amp; ssh-copy-id etu@172.25.0.48   <span class="cmt"># connexion par clé</span>
+ssh -L 9000:localhost:80 etu@172.25.0.48  <span class="cmt"># tunnel → http://127.0.0.1:9000</span></code></pre>
+  <ul>
+    <li><code>known_hosts</code> (client) = empreintes des serveurs ; <code>authorized_keys</code> (serveur) = clés publiques autorisées.</li>
+    <li>« REMOTE HOST IDENTIFICATION HAS CHANGED » = serveur réinstallé <strong>ou</strong> attaque de l'homme du milieu : vérifier avant d'accepter.</li>
+    <li><code>/etc/ssh/sshd_config</code> : <code>PermitRootLogin no</code>, <code>PasswordAuthentication no</code>, puis <code>systemctl restart ssh</code>.</li>
+  </ul>
+
+  <div class="c-callout warn"><p><strong>Pièges d'éval :</strong> <code>usermod -G</code> sans <code>-a</code> · slash final de rsync · <code>--delete</code> · une commande (pas un dossier) dans cron · RAID ≠ sauvegarde · partage + NTFS = le plus restrictif · DNS du client = DC · <code>exec</code> sans <code>-it</code> · <code>-p</code> oublié · ne jamais copier la clé privée.</p></div>
+</div>
+    </section>
+
+    <!-- ===================== 5. VIDÉO ===================== -->
+    <section class="c-panel" id="p-video" role="tabpanel" aria-labelledby="t-video" tabindex="0" hidden>
+      <div class="container c-narrow c-content">
+        <p class="c-panel-intro">Diaporama commenté : appuie sur <strong>▶ Lecture</strong>, la voix de synthèse de ton navigateur explique chaque diapo puis passe à la suivante. Le texte lu s'affiche sous la diapo. Pour une voix plus naturelle, choisis une voix « Natural » ou « Online » dans Edge, ou « Google français » dans Chrome.</p>
+        <div class="sl" tabindex="0" aria-roledescription="diaporama" aria-label="Diaporama commenté Admin-sys">
+          <div class="sl-stage">
+            <div class="sl-slide is-on" data-say="Bonjour et bienvenue dans ce cours d'administration système, le module R202. On va reprendre ensemble tout ce que tu as vu cette année : les sauvegardes, la gestion des utilisateurs sous Linux et Windows, Active Directory, la virtualisation avec VirtualBox et ESXi, Docker, et enfin SSH. Prends de quoi noter, et n'hésite pas à mettre en pause.">
+  <p class="sl-kicker">R202 · Administration système</p>
+  <h3>Le programme</h3>
+  <ul><li>Sauvegardes, rsync, cron, SyncBack</li><li>Utilisateurs, droits et quotas sous Linux</li><li>Windows local, NTFS, RAID</li><li>Active Directory et GPO</li><li>VirtualBox, ESXi, Docker</li><li>SSH</li></ul>
+</div>
+<div class="sl-slide" data-say="Première notion, la plus importante : la règle du 3 2 1. On garde trois copies de ses données, l'original compris. On les met sur deux types de supports différents, par exemple un disque et un NAS ou le cloud. Et une de ces copies doit être hors site. Pourquoi ? Parce qu'un incendie, un vol ou un ransomware détruit tout ce qui se trouve au même endroit.">
+  <p class="sl-kicker">01 · Sauvegardes</p>
+  <h3>La règle 3-2-1</h3>
+  <ul><li><strong>3</strong> copies des données</li><li><strong>2</strong> supports de nature différente</li><li><strong>1</strong> copie hors site</li></ul>
+</div>
+<div class="sl-slide" data-say="Il existe trois types de sauvegarde. La complète copie tout : c'est long, mais la restauration est simple. La différentielle copie tout ce qui a changé depuis la dernière complète : elle grossit chaque jour, mais pour restaurer, il suffit de la complète et de la dernière différentielle. L'incrémentielle copie uniquement ce qui a changé depuis la sauvegarde précédente, quelle qu'elle soit. Elle est très rapide, mais pour restaurer, il faut la complète et toute la chaîne d'incrémentielles. Si une seule manque, la restauration est cassée.">
+  <p class="sl-kicker">01 · Sauvegardes</p>
+  <h3>Complète, différentielle, incrémentielle</h3>
+  <ul><li>Complète : tout → restauration simple</li><li>Différentielle : depuis la dernière <strong>complète</strong> → complète + dernière diff</li><li>Incrémentielle : depuis la <strong>dernière sauvegarde</strong> → complète + toutes les incr.</li></ul>
+</div>
+<div class="sl-slide" data-say="Faisons l'exemple classique. Complète le dimanche, puis une sauvegarde chaque soir. Le serveur crashe jeudi matin. En différentielle, je restaure la complète de dimanche puis la différentielle de mercredi, et c'est tout. En incrémentielle, je restaure la complète, puis lundi, puis mardi, puis mercredi, dans cet ordre. Retiens bien ce scénario, il tombe très souvent en évaluation.">
+  <p class="sl-kicker">01 · Cas pratique</p>
+  <h3>Crash le jeudi matin</h3>
+  <ul><li>Différentielle : complète (dim.) + diff. de mercredi</li><li>Incrémentielle : complète + lundi + mardi + mercredi</li></ul>
+</div>
+<div class="sl-slide" data-say="Attention à trois confusions. Une synchronisation, ou miroir, reproduit l'état actuel : si tu supprimes un fichier par erreur, il disparaît aussi de la copie. Le RAID protège contre la panne d'un disque, pas contre une erreur humaine ni un virus. Seule une vraie sauvegarde garde des versions antérieures. Côté chiffrement : en symétrique, une seule clé sert à chiffrer et à déchiffrer, c'est rapide. En asymétrique, on chiffre avec la clé publique du destinataire et lui seul déchiffre avec sa clé privée. SSH et TLS combinent les deux : c'est le chiffrement hybride.">
+  <p class="sl-kicker">01 · Sauvegardes</p>
+  <h3>Pièges et chiffrement</h3>
+  <ul><li>Sauvegarde ≠ synchronisation ≠ RAID</li><li>Symétrique : 1 clé partagée (AES)</li><li>Asymétrique : publique pour chiffrer, privée pour déchiffrer</li><li>Hybride : asymétrique pour la clé, puis symétrique</li></ul>
+</div>
+<div class="sl-slide" data-say="Passons à rsync, l'outil de sauvegarde de référence sous Linux. L'option a, pour archive, copie récursivement en gardant les droits, les dates et les propriétaires. z compresse pendant le transfert, v affiche le détail. Et delete supprime dans la destination ce qui n'existe plus dans la source : ça fait un miroir exact, donc prudence. Dernier piège : le slash final. Avec un slash après le dossier source, on copie son contenu. Sans slash, on copie le dossier lui-même.">
+  <p class="sl-kicker">02 · rsync</p>
+  <h3>Les options à connaître</h3>
+<pre><code>rsync -avz --delete /home/doc/ /save/
+# -a archive  -v verbeux  -z compression
+# doc/ = le contenu   doc = le dossier</code></pre>
+</div>
+<div class="sl-slide" data-say="rsync peut aussi tourner en démon sur un serveur de sauvegarde. On l'active dans le fichier etc default rsync, puis on déclare des modules dans etc rsyncd point conf, chaque module pointant vers un dossier. Côté client, on vise le module avec deux fois deux points : l'adresse IP, deux points deux points, le nom du module. Le démon écoute sur le port 873. Avec un seul deux points, rsync passe par SSH, sur le port 22.">
+  <p class="sl-kicker">02 · rsync</p>
+  <h3>Le démon rsync</h3>
+<pre><code># /etc/rsyncd.conf
+[sauvegarde]
+path = /srv/save
+  read only = no
+
+rsync -az /data/ 192.168.1.10::sauvegarde  # port 873
+rsync -az /data/ user@192.168.1.10:/srv    # via SSH</code></pre>
+</div>
+<div class="sl-slide" data-say="Pour automatiser, on utilise cron. Une ligne de crontab contient cinq champs de temps : minute, heure, jour du mois, mois, jour de la semaine, puis la commande. Zéro vingt et un étoile étoile un tiret cinq, c'est vingt et une heures du lundi au vendredi. Zéro dix étoile étoile six, c'est samedi à dix heures. Et l'erreur àne pas reproduire : écrire un nom de dossier à la place de la commande. Cron exécute une commande, pas un dossier.">
+  <p class="sl-kicker">02 · cron</p>
+  <h3>Planifier avec crontab -e</h3>
+<pre><code># min heure jour mois jsem  commande
+0 21 * * 1-5  rsync -az /home/ /local_save/
+0 10 * * 6    /root/save.sh
+# ✗ 0 10 * * 6 /local_save  → dossier, pas commande</code></pre>
+</div>
+<div class="sl-slide" data-say="Sous Windows, tu as utilisé SyncBack. On crée des profils. Un profil sauvegarde copie de la source vers la destination sans rien supprimer. Un profil miroir rend la destination strictement identique à la source. Un profil synchronisation travaille dans les deux sens. On peut ensuite planifier chaque profil, comme avec cron.">
+  <p class="sl-kicker">03 · SyncBack</p>
+  <h3>Les trois types de profils</h3>
+  <ul><li>Sauvegarde : source → destination, sans suppression</li><li>Miroir : destination = copie exacte</li><li>Synchronisation : dans les deux sens</li></ul>
+</div>
+<div class="sl-slide" data-say="On passe aux utilisateurs Linux. Trois fichiers à connaître. etc passwd liste les comptes et il est lisible par tout le monde. etc shadow contient les mots de passe hachés et seul root peut le lire. etc group liste les groupes et leurs membres. La commande pwconv active le fichier shadow, pwunconv remet les hachés dans passwd, ce qui est une mauvaise idée pour la sécurité.">
+  <p class="sl-kicker">04 · Linux</p>
+  <h3>Les fichiers des comptes</h3>
+  <ul><li><code>/etc/passwd</code> : comptes, lisible par tous</li><li><code>/etc/shadow</code> : hachés, root uniquement</li><li><code>/etc/group</code> : groupes</li><li><code>pwconv</code> / <code>pwunconv</code></li></ul>
+</div>
+<div class="sl-slide" data-say="Pour créer un groupe avec un identifiant précis, on fait addgroup tiret tiret gid. Pour créer un utilisateur dans ce groupe, adduser tiret tiret gid, ou tiret tiret ingroup avec le nom du groupe. Pour ajouter un utilisateur existant à un groupe secondaire, usermod tiret a G. Attention, c'est le piège numéro un : sans le a, l'option G remplace tous les groupes de l'utilisateur. On peut aussi utiliser gpasswd tiret a pour ajouter et tiret d pour retirer.">
+  <p class="sl-kicker">04 · Linux</p>
+  <h3>Gérer comptes et groupes</h3>
+<pre><code>addgroup --gid 1500 info
+adduser --gid 1500 bob       # ou --ingroup info
+usermod -aG compta alice     # -G sans -a écrase !
+gpasswd -d alice compta
+userdel -r bob ; groupdel info</code></pre>
+</div>
+<div class="sl-slide" data-say="Les droits Linux s'appliquent au propriétaire, au groupe et aux autres. Sur un fichier, r permet de lire, w de modifier, x d'exécuter. Sur un dossier, c'est différent : r permet de lister les noms, w de créer ou supprimer des fichiers dedans, et x d'entrer dans le dossier. En octal, r vaut quatre, w vaut deux, x vaut un. Donc chmod sept cinq zéro donne tout au propriétaire, lecture et accès au groupe, et rien aux autres. Pour changer le propriétaire, chown utilisateur deux points groupe.">
+  <p class="sl-kicker">04 · Linux</p>
+  <h3>Droits rwx</h3>
+  <ul><li>Fichier : r lire · w modifier · x exécuter</li><li>Dossier : r lister · w créer/supprimer · x entrer</li><li>r=4 w=2 x=1 → <code>chmod 750</code> = rwxr-x---</li><li><code>chown alice:compta fichier</code></li></ul>
+</div>
+<div class="sl-slide" data-say="Les quotas limitent l'espace utilisé par chaque utilisateur. On peut limiter en blocs, c'est-à-dire en taille, ou en inodes, c'est-à-dire en nombre de fichiers. La limite soft peut être dépassée pendant un délai de grâce. La limite hard ne peut jamais être dépassée. Une fois le délai écoulé, la soft devient bloquante. Mise en place : option usrquota dans fstab, quotacheck, quotaon, puis edquota pour fixer les limites et repquota pour le rapport.">
+  <p class="sl-kicker">04 · Quotas</p>
+  <h3>Soft, hard, blocs, inodes</h3>
+<ul><li>Blocs = espace · inodes = nombre de fichiers</li><li>Soft = alerte + délai de grâce · hard = plafond</li><li>fstab <code>usrquota</code> → <code>quotacheck -cugm</code> → <code>quotaon</code> → <code>edquota -u bob</code></li></ul>
+</div>
+<div class="sl-slide" data-say="Côté Windows, en local, on gère les comptes avec la console lusrmgr point msc ou en PowerShell. Les commandes suivent toutes le même modèle : New-LocalUser, New-LocalGroup, Add-LocalGroupMember, et leurs équivalents Get, Set et Remove. Pour forcer un changement de mot de passe à la prochaine connexion, la commande net user avec l'option logonpasswordchg est la plus simple.">
+  <p class="sl-kicker">05 · Windows</p>
+  <h3>Comptes locaux en PowerShell</h3>
+<pre><code>New-LocalGroup -Name RH
+New-LocalUser -Name paul -Password (Read-Host -AsSecureString)
+Add-LocalGroupMember -Group RH -Member paul
+net user paul /logonpasswordchg:yes</code></pre>
+</div>
+<div class="sl-slide" data-say="Les droits NTFS se cumulent entre les groupes, mais un refus explicite l'emporte toujours. Ils sont hérités du dossier parent, sauf si on désactive l'héritage. Quand on accède à un dossier par le réseau, on combine les droits de partage et les droits NTFS, et c'est le plus restrictif qui gagne. En local, seuls les droits NTFS comptent. Et rappelle-toi le cas du TD : si un employé RH doit accéder au dossier Confidentiel, on ne l'ajoute pas au groupe Direction. On crée un groupe dédié. C'est le principe du moindre privilège.">
+  <p class="sl-kicker">05 · NTFS</p>
+  <h3>Droits NTFS et partage</h3>
+  <ul><li>Cumul des droits, <strong>Refuser prioritaire</strong>, héritage</li><li>Réseau : partage + NTFS → le plus restrictif</li><li>Local : NTFS seulement</li><li>Moindre privilège : groupe dédié, pas Direction</li></ul>
+</div>
+<div class="sl-slide" data-say="Le RAID. RAID zéro, c'est l'agrégation : on additionne les disques, c'est rapide, mais un seul disque en panne et tout est perdu. RAID un, c'est le miroir : deux disques identiques, cinquante pour cent de capacité, on tolère une panne. RAID cinq, c'est la parité répartie : au moins trois disques, on perd l'équivalent d'un disque en capacité, et on tolère une panne. Et encore une fois : le RAID n'est pas une sauvegarde.">
+  <p class="sl-kicker">05 · RAID</p>
+  <h3>RAID 0, 1 et 5</h3>
+  <ul><li>RAID 0 : 2 disques mini, 100 %, 0 panne</li><li>RAID 1 : 2 disques, 50 %, 1 panne</li><li>RAID 5 : 3 disques mini, (n-1) × taille, 1 panne</li><li>RAID ≠ sauvegarde</li></ul>
+</div>
+<div class="sl-slide" data-say="Active Directory centralise les comptes et les ordinateurs d'une entreprise. L'ordre d'installation est important. D'abord, on donne une IP fixe au serveur, avec netsh ou l'interface graphique. Ensuite, on installe les rôles AD DS et DNS. Puis on promeut le serveur en contrôleur de domaine en créant une nouvelle forêt, par exemple nom point local, et on définit le mot de passe DSRM, qui sert à restaurer l'annuaire en cas de problème.">
+  <p class="sl-kicker">06 · Active Directory</p>
+  <h3>Installer un contrôleur de domaine</h3>
+  <ul><li>1. IP fixe (<code>netsh interface ip set address</code>)</li><li>2. Rôles AD DS + DNS</li><li>3. Nouvelle forêt <code>nom.local</code></li><li>4. Mot de passe DSRM</li></ul>
+</div>
+<div class="sl-slide" data-say="Pour qu'un poste rejoigne le domaine, son serveur DNS doit être l'adresse IP du contrôleur de domaine. Sinon, il ne le trouve pas : c'est l'erreur la plus fréquente. On range ensuite les objets dans des unités d'organisation, sur lesquelles on lie des stratégies de groupe, les GPO. Elles s'appliquent dans l'ordre local, site, domaine, puis OU, et la dernière l'emporte. Attention, le conteneur Users n'est pas une OU, on ne peut pas y lier de GPO. Pour tester : gpupdate tiret force, puis gpresult tiret r.">
+  <p class="sl-kicker">06 · Active Directory</p>
+  <h3>Clients, OU et GPO</h3>
+  <ul><li>DNS du client = IP du DC</li><li>OU = rangement + GPO (≠ conteneur Users)</li><li>Ordre L-S-D-OU</li><li><code>gpupdate /force</code> · <code>gpresult /r</code></li><li>Lecteur Z: → <code>\\172.25.0.65\user\%username%</code></li></ul>
+</div>
+<div class="sl-slide" data-say="Place à la virtualisation. Un hyperviseur de type un s'installe directement sur le matériel, comme ESXi ou Hyper-V. Un hyperviseur de type deux s'installe sur un système existant, comme VirtualBox ou VMware Workstation. Dans VirtualBox, les fichiers importants sont le point vdi pour le disque, le point vbox pour la configuration, et le point ova pour exporter une machine complète.">
+  <p class="sl-kicker">07 · VirtualBox</p>
+  <h3>Hyperviseurs et fichiers</h3>
+  <ul><li>Type 1 (bare-metal) : ESXi, Hyper-V</li><li>Type 2 (sur un OS) : VirtualBox, Workstation</li><li><code>.vdi</code> disque · <code>.vbox</code> config · <code>.ova</code> export</li></ul>
+</div>
+<div class="sl-slide" data-say="Les modes réseau de VirtualBox. En NAT, la VM reçoit 10 point 0 point 2 point 15, sort sur Internet par la passerelle 10 point 0 point 2 point 2, mais personne ne peut la joindre. Le réseau NAT fait pareil, mais les VM se voient entre elles, avec un DHCP, par exemple en 192 point 168 point 200. En pont, la VM est une vraie machine du réseau physique. En privé hôte, la VM ne parle qu'avec l'hôte et les autres VM. En réseau interne, seulement entre VM. Enfin, quand tu clones, pense à régénérer les adresses MAC.">
+  <p class="sl-kicker">07 · VirtualBox</p>
+  <h3>Les modes réseau</h3>
+  <ul><li>NAT : Internet oui, joignable non</li><li>Réseau NAT : VM ↔ VM + Internet</li><li>Pont : VM sur le LAN (172.25.1.X/16)</li><li>Privé hôte : VM + hôte · Interne : VM seulement</li><li>Clone : régénérer les MAC</li></ul>
+</div>
+<div class="sl-slide" data-say="ESXi, l'hyperviseur de type un de VMware. Sur la console, la touche F2 ouvre le menu, et dans Troubleshooting Options, on active le shell et SSH. ALT plus F1 donne accès au shell. Le reste se gère par l'interface web en https. Pour les ressources, la réservation garantit un minimum, la limite fixe un plafond, et les parts arbitrent quand il y a concurrence. Pour les droits, on crée des rôles personnalisés, par exemple tous les privilèges sur les VM sauf l'ajout de disques.">
+  <p class="sl-kicker">08 · ESXi</p>
+  <h3>Administrer ESXi</h3>
+  <ul><li><kbd>F2</kbd> → Troubleshooting → Shell + SSH · <kbd>ALT+F1</kbd></li><li>Réservation = minimum · limite = plafond · parts = priorité</li><li>Rôle personnalisé = moindre privilège</li></ul>
+</div>
+<div class="sl-slide" data-say="Le réseau d'ESXi suit une chaîne simple. La VM est branchée sur un groupe de ports, qui appartient à un commutateur virtuel, le vSwitch.Ce vSwitch sort sur le réseau physique par une vmnic, la vraie carte réseau de l'hôte. L'interface VMkernel, elle, sert à l'hôte lui-même, notamment pour la gestion. Les machines sont stockées dans un datastore VMFS, dans vmfs volumes : point vmx pour la configuration, point vmdk pour le disque, point vmsd pour les snapshots.">
+  <p class="sl-kicker">08 · ESXi</p>
+  <h3>Réseau et stockage</h3>
+  <ul><li>VM → groupe de ports → vSwitch → vmnic</li><li>VMkernel = gestion de l'hôte</li><li><code>/vmfs/volumes/datastore1</code></li><li><code>.vmx</code> config · <code>.vmdk</code> disque · <code>.vmsd</code> snapshots</li></ul>
+</div>
+<div class="sl-slide" data-say="Docker. Une image est un modèle en lecture seule, un conteneur est une instance de cette image qui s'exécute. Pour lancer Apache en arrière-plan, on fait docker run tiret d, tiret p 10082 deux points 80, avec un nom. Le premier port est celui de l'hôte, le second celui du conteneur. Docker ps tiret a liste tous les conteneurs, même arrêtés. Et pour entrer dans un conteneur, docker exec tiret i t, puis bash. Sans tiret i t, tu n'as pas de shell.">
+  <p class="sl-kicker">09 · Docker</p>
+  <h3>Images et conteneurs</h3>
+<pre><code>docker pull httpd
+docker run -d -p 10082:80 --name cont_httpd httpd
+docker ps -a
+docker exec -it cont_httpd bash</code></pre>
+</div>
+<div class="sl-slide" data-say="Les erreurs vues en TP. Docker run tiret i t httpd bash remplace la commande par défaut de l'image : Apache ne démarre jamais.Ouvrir localhost sur le port 80 sans avoir publié de port avec tiret p, ça ne mène pas au conteneur. Pour isoler des conteneurs, on crée un réseau avec docker network create, et l'option internal le coupe de l'extérieur. Enfin, docker commit crée une image à partir d'un conteneur, et docker save l'exporte en fichier tar.">
+  <p class="sl-kicker">09 · Docker</p>
+  <h3>Réseaux, commit, pièges</h3>
+<pre><code>docker network create --subnet=172.20.0.0/16 --internal docker1
+docker run -d --network docker1 httpd
+docker commit cont_httpd nvapache:v1
+docker save -o apachev1.tar nvapache:v1</code></pre>
+</div>
+<div class="sl-slide" data-say="Dernier chapitre, SSH, sur le port 22. À la première connexion, le client enregistre l'empreinte du serveur dans known hosts. Si cette empreinte change, SSH affiche un gros avertissement : soit le serveur a été réinstallé, soit c'est une attaque de l'homme du milieu. On vérifie, puis on supprime l'ancienne empreinte avec ssh-keygen tiret R. Pour se connecter sans mot de passe, on génère une paire de clés avec ssh-keygen, puis ssh-copy-id envoie la clé publique dans authorized keys sur le serveur. La clé privée, elle, ne quitte jamais ton poste.">
+  <p class="sl-kicker">10 · SSH</p>
+  <h3>Empreintes et clés</h3>
+<pre><code>ssh-keygen -R 172.25.0.48
+ssh-keygen -t ed25519
+ssh-copy-id etu@172.25.0.48
+# client : known_hosts  ·  serveur : authorized_keys</code></pre>
+</div>
+<div class="sl-slide" data-say="Enfin, le tunnel SSH. Si le pare-feu bloque le port 80 mais laisse passer SSH, on fait ssh tiret L9000 deux points localhost deux points 80. Le trafic envoyé sur le port 9000 de ton poste passe chiffré dans SSH et ressort sur le port 80 du serveur. Tu ouvres alors 127 point 0 point 0 point 1 deux points 9000 dans ton navigateur. Côté sécurité, dans sshd config, on interdit root avec PermitRootLogin no, puis on redémarre le service.">
+  <p class="sl-kicker">10 · SSH</p>
+  <h3>Tunnel et sécurisation</h3>
+<pre><code>ssh -L 9000:localhost:80 etu@172.25.0.48
+# → http://127.0.0.1:9000
+# /etc/ssh/sshd_config : PermitRootLogin no
+systemctl restart ssh</code></pre>
+</div>
+<div class="sl-slide" data-say="Pour conclure, voici les pièges qui reviennent le plus. usermod tiret G sans tiret a. Le slash final de rsync. Une commande, et pas un dossier, dans cron. Le RAID n'est pas une sauvegarde. Partage plus NTFS, c'est le plus restrictif. Le DNS du client doit être le contrôleur de domaine. Docker exec sans tiret i t, et le tiret p oublié. Et ne jamais copier sa clé privée. Maintenant, va faire le quiz pour vérifier que tout est acquis. Bon courage !">
+  <p class="sl-kicker">Récap</p>
+  <h3>Les pièges d'éval</h3>
+  <ul><li><code>usermod -G</code> sans <code>-a</code> · slash final rsync · commande dans cron</li><li>RAID ≠ sauvegarde · partage + NTFS = le plus restrictif</li><li>DNS client = DC · <code>exec -it</code> · <code>-p</code></li><li>Clé privée : jamais copiée</li></ul>
+</div>
+            <div class="sl-progress" aria-hidden="true"><span></span></div>
+          </div>
+          <p class="sl-caption" aria-live="polite"></p>
+          <div class="sl-controls">
+            <button class="c-btn primary" type="button" data-sl="play" aria-pressed="false">▶ Lecture</button>
+            <button class="c-btn" type="button" data-sl="prev" aria-label="Diapo précédente">←</button>
+            <button class="c-btn" type="button" data-sl="next" aria-label="Diapo suivante">→</button>
+            <button class="c-btn" type="button" data-sl="restart">⟲ Début</button>
+            <select data-sl="voice" aria-label="Voix"></select>
+            <select data-sl="rate" aria-label="Vitesse">
+              <option value="0.9">Lent</option>
+              <option value="1" selected>Normal</option>
+              <option value="1.15">Rapide</option>
+              <option value="1.3">Très rapide</option>
+            </select>
+            <button class="c-btn" type="button" data-sl="full">⛶ Plein écran</button>
+            <span class="sl-count"></span>
+          </div>
+        </div>
+        <div class="c-callout">
+          <p><strong>Vraie vidéo MP4 à venir.</strong> Quand elle sera enregistrée (YouTube non répertorié conseillé), elle remplacera ou complétera ce diaporama ici.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -126,6 +1038,6 @@
   </footer>
 
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=1"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
 </body>
 </html>
