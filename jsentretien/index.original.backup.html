@@ -1,0 +1,3127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="JS ENTRETIEN propose l'entretien de jardins et la création d'espaces verts autour de Sancerre, Belleville-sur-Loire et Cosne-Cours-sur-Loire."
+  >
+
+  <meta name="theme-color" content="#101b15">
+
+  <title>JS ENTRETIEN — Entretien et création d’espaces verts</title>
+
+  <!-- Polices temporaires -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
+    :root {
+      --forest-950: #0b1510;
+      --forest-900: #101d16;
+      --forest-800: #172a20;
+      --forest-700: #23412f;
+
+      --sage-500: #8ea58f;
+      --sage-300: #bdcbb9;
+
+      --lime-400: #c4dc78;
+      --lime-300: #d8eaa0;
+
+      --sand-100: #f1eee5;
+      --sand-50: #f8f5ed;
+      --white: #fffdf8;
+
+      --ink: #172019;
+      --muted: #687068;
+
+      --line: rgba(20, 35, 25, 0.15);
+      --line-light: rgba(255, 255, 255, 0.16);
+
+      --serif: "Newsreader", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --display: "Manrope", Arial, sans-serif;
+
+      --container: min(1320px, calc(100vw - 64px));
+
+      --radius-sm: 14px;
+      --radius-md: 24px;
+      --radius-lg: 38px;
+
+      --shadow:
+        0 35px 80px rgba(11, 21, 16, 0.18),
+        0 8px 22px rgba(11, 21, 16, 0.08);
+
+      --ease: cubic-bezier(.22, .72, .19, 1);
+    }
+
+    /* =========================================================
+       BASE
+    ========================================================= */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
+
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--sand-50);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      color: inherit;
+    }
+
+    ::selection {
+      color: var(--forest-950);
+      background: var(--lime-400);
+    }
+
+    .container {
+      width: var(--container);
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 22px;
+      color: inherit;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      opacity: 0.65;
+    }
+
+    .section-title {
+      max-width: 900px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2.45rem, 5.4vw, 5.8rem);
+      font-weight: 500;
+      letter-spacing: -0.065em;
+      line-height: 0.98;
+    }
+
+    .section-title em {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .section-lead {
+      max-width: 600px;
+      margin: 28px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.18rem);
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 0 23px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 600;
+      transition:
+        color 250ms ease,
+        background 250ms ease,
+        border-color 250ms ease,
+        transform 250ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: var(--forest-950);
+      background: var(--lime-400);
+    }
+
+    .btn-primary:hover {
+      background: var(--lime-300);
+    }
+
+    .btn-dark {
+      color: var(--white);
+      background: var(--forest-950);
+    }
+
+    .btn-dark:hover {
+      background: var(--forest-700);
+    }
+
+    .btn-outline {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn-arrow {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.16);
+      transition: transform 250ms ease;
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(3px);
+    }
+
+    /* =========================================================
+       BARRE DE PROGRESSION
+    ========================================================= */
+
+    .scroll-progress {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      pointer-events: none;
+      background: transparent;
+    }
+
+    .scroll-progress span {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: var(--lime-400);
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .site-header {
+      position: fixed;
+      z-index: 900;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-top: 18px;
+      color: var(--white);
+      transition:
+        color 300ms ease,
+        padding 300ms ease;
+    }
+
+    .site-header.scrolled {
+      padding-top: 10px;
+      color: var(--ink);
+    }
+
+    .nav-shell {
+      display: flex;
+      min-height: 72px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px 0 24px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      transition:
+        background 300ms ease,
+        border-color 300ms ease,
+        box-shadow 300ms ease,
+        backdrop-filter 300ms ease;
+    }
+
+    .site-header.scrolled .nav-shell {
+      border-color: rgba(20, 35, 25, 0.08);
+      background: rgba(248, 245, 237, 0.88);
+      box-shadow: 0 14px 45px rgba(15, 28, 19, 0.08);
+      backdrop-filter: blur(18px);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-family: var(--display);
+      font-size: 1.02rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      position: relative;
+      width: 25px;
+      height: 25px;
+      flex: 0 0 auto;
+      border: 1px solid currentColor;
+      border-radius: 50% 50% 50% 5px;
+      transform: rotate(-12deg);
+    }
+
+    .logo-mark::after {
+      position: absolute;
+      left: 11px;
+      bottom: 3px;
+      width: 1px;
+      height: 18px;
+      background: currentColor;
+      content: "";
+      transform: rotate(40deg);
+      transform-origin: bottom;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .desktop-nav a {
+      position: relative;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .desktop-nav a:not(.nav-cta)::after {
+      position: absolute;
+      right: 0;
+      bottom: -7px;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      content: "";
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 250ms ease;
+    }
+
+    .desktop-nav a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      padding: 0 20px;
+      border-radius: 999px;
+      color: var(--forest-950);
+      background: var(--lime-400);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      color: inherit;
+      background: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    .site-header.scrolled .menu-toggle {
+      background: rgba(15, 30, 20, 0.07);
+    }
+
+    .menu-toggle-lines {
+      display: grid;
+      gap: 5px;
+    }
+
+    .menu-toggle-lines span {
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: currentColor;
+      transition: transform 250ms ease;
+    }
+
+    .menu-toggle.active .menu-toggle-lines span:first-child {
+      transform: translateY(3px) rotate(45deg);
+    }
+
+    .menu-toggle.active .menu-toggle-lines span:last-child {
+      transform: translateY(-3px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      position: fixed;
+      z-index: 850;
+      inset: 0;
+      display: grid;
+      align-content: center;
+      padding: 100px 24px 40px;
+      color: var(--white);
+      background: var(--forest-950);
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition:
+        opacity 300ms ease,
+        visibility 300ms ease,
+        transform 300ms ease;
+    }
+
+    .mobile-panel.open {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .mobile-panel nav {
+      display: grid;
+    }
+
+    .mobile-panel nav a {
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line-light);
+      font-family: var(--display);
+      font-size: clamp(1.9rem, 9vw, 3.6rem);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+    }
+
+    .mobile-contact {
+      margin-top: 38px;
+      color: var(--sage-300);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       ACCUEIL
+    ========================================================= */
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 100svh;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--forest-950);
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: -7%;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(5, 15, 9, 0.76) 0%,
+          rgba(5, 15, 9, 0.3) 57%,
+          rgba(5, 15, 9, 0.45) 100%
+        ),
+        linear-gradient(
+          0deg,
+          rgba(5, 15, 9, 0.9) 0%,
+          transparent 50%
+        ),
+        url("https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=2200&q=88")
+        center / cover no-repeat;
+      transform: scale(1.04);
+      will-change: transform;
+    }
+
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.1;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      width: 100%;
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 390px);
+      gap: clamp(50px, 7vw, 110px);
+      align-items: end;
+      padding-top: 190px;
+      padding-bottom: 60px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 26px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--lime-400);
+      box-shadow: 0 0 0 7px rgba(196, 220, 120, 0.12);
+    }
+
+    .hero h1 {
+      max-width: 1000px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(4rem, 9.2vw, 9rem);
+      font-weight: 500;
+      letter-spacing: -0.075em;
+      line-height: 0.84;
+    }
+
+    .hero h1 em {
+      display: inline-block;
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .hero-side {
+      width: 100%;
+      max-width: 390px;
+      justify-self: end;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      background: rgba(8, 20, 12, 0.28);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-side p {
+      margin: 0 0 26px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      z-index: 2;
+      right: 24px;
+      bottom: 37px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transform: rotate(90deg) translateX(-100%);
+      transform-origin: bottom right;
+    }
+
+    .scroll-indicator::after {
+      width: 65px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.4);
+      content: "";
+    }
+
+    /* =========================================================
+       INTRODUCTION
+    ========================================================= */
+
+    .intro {
+      position: relative;
+      padding: 150px 0 170px;
+      overflow: hidden;
+      background: var(--sand-50);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.52fr 1.48fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .intro-index {
+      position: sticky;
+      top: 135px;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .intro-copy {
+      max-width: 980px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2.2rem, 5vw, 5.3rem);
+      font-weight: 500;
+      letter-spacing: -0.06em;
+      line-height: 1.02;
+    }
+
+    .intro-copy .serif {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .intro-copy .muted {
+      color: #a7aaa3;
+    }
+
+    .intro-bottom {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 70px;
+    }
+
+    .intro-text {
+      max-width: 620px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .organic-shape {
+      position: absolute;
+      right: -170px;
+      bottom: -240px;
+      width: 520px;
+      height: 520px;
+      border-radius: 46% 54% 65% 35% / 46% 35% 65% 54%;
+      background: var(--sage-300);
+      opacity: 0.18;
+      transform: rotate(20deg);
+    }
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+
+    .services {
+      position: relative;
+      padding: 130px 0;
+      color: var(--white);
+      background: var(--forest-950);
+    }
+
+    .services-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      align-items: flex-end;
+      margin-bottom: 95px;
+    }
+
+    .services-heading > p {
+      max-width: 430px;
+      margin: 0;
+      color: var(--sage-300);
+      line-height: 1.7;
+    }
+
+    .services-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(400px, 1.05fr);
+      gap: clamp(50px, 8vw, 120px);
+      align-items: start;
+    }
+
+    .services-list {
+      border-top: 1px solid var(--line-light);
+    }
+
+    .service-item {
+      position: relative;
+      min-height: 230px;
+      padding: 36px 60px 42px 0;
+      border-bottom: 1px solid var(--line-light);
+      cursor: default;
+      opacity: 0.38;
+      transition: opacity 400ms ease;
+    }
+
+    .service-item.active,
+    .service-item:hover {
+      opacity: 1;
+    }
+
+    .service-number {
+      display: block;
+      margin-bottom: 22px;
+      color: var(--lime-400);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+    }
+
+    .service-item h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 4.4rem);
+      font-weight: 500;
+      letter-spacing: -0.055em;
+      line-height: 1;
+    }
+
+    .service-item h3 em {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .service-item p {
+      max-width: 500px;
+      margin: 18px 0 0;
+      color: var(--sage-300);
+      line-height: 1.65;
+    }
+
+    .service-arrow {
+      position: absolute;
+      top: 36px;
+      right: 0;
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid var(--line-light);
+      border-radius: 50%;
+      transition:
+        color 250ms ease,
+        background 250ms ease,
+        transform 250ms ease;
+    }
+
+    .service-item.active .service-arrow,
+    .service-item:hover .service-arrow {
+      color: var(--forest-950);
+      background: var(--lime-400);
+      transform: rotate(-35deg);
+    }
+
+    .services-visual {
+      position: sticky;
+      top: 120px;
+      height: min(76vh, 760px);
+      min-height: 560px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: var(--forest-800);
+    }
+
+    .service-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: scale(1.06);
+      transition:
+        opacity 700ms var(--ease),
+        transform 1000ms var(--ease);
+    }
+
+    .service-image.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .services-visual::after {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(0deg, rgba(5, 15, 9, 0.68), transparent 50%),
+        linear-gradient(120deg, rgba(5, 15, 9, 0.12), transparent);
+      content: "";
+    }
+
+    .visual-caption {
+      position: absolute;
+      z-index: 2;
+      right: 28px;
+      bottom: 28px;
+      left: 28px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .visual-caption p {
+      max-width: 320px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .visual-caption span {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      backdrop-filter: blur(8px);
+    }
+
+    /* =========================================================
+       CARROUSEL AVANT / APRÈS
+    ========================================================= */
+
+    .comparison-section {
+      padding: 150px 0;
+      overflow: hidden;
+      background: var(--sand-100);
+    }
+
+    .comparison-heading {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 60px;
+    }
+
+    .comparison-heading .section-lead {
+      justify-self: end;
+    }
+
+    .comparison-carousel {
+      position: relative;
+    }
+
+    .comparison-viewport {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-track {
+      display: flex;
+      width: 100%;
+      transition: transform 750ms var(--ease);
+      will-change: transform;
+    }
+
+    .comparison-slide {
+      width: 100%;
+      min-width: 100%;
+      background: var(--forest-900);
+    }
+
+    .comparison {
+      position: relative;
+      min-height: min(70vw, 700px);
+      overflow: hidden;
+      background: #29372b;
+      isolation: isolate;
+    }
+
+    .comparison img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .comparison-before {
+      z-index: 2;
+      clip-path: inset(0 50% 0 0);
+    }
+
+    .comparison-shade {
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(
+          0deg,
+          rgba(8, 20, 11, 0.6),
+          transparent 38%
+        );
+    }
+
+    .comparison-label {
+      position: absolute;
+      z-index: 5;
+      top: 25px;
+      padding: 10px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(10, 20, 13, 0.28);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(10px);
+    }
+
+    .label-before {
+      left: 25px;
+    }
+
+    .label-after {
+      right: 25px;
+    }
+
+    .comparison-line {
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.95);
+      transform: translateX(-50%);
+    }
+
+    .comparison-handle {
+      position: absolute;
+      z-index: 6;
+      top: 50%;
+      left: 50%;
+      display: grid;
+      width: 66px;
+      height: 66px;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 50%;
+      color: var(--forest-950);
+      background: var(--lime-400);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.24);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+    }
+
+    .comparison input {
+      position: absolute;
+      z-index: 10;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      cursor: ew-resize;
+      opacity: 0;
+    }
+
+    .comparison-project {
+      position: absolute;
+      z-index: 7;
+      right: 30px;
+      bottom: 30px;
+      left: 30px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 25px;
+      color: var(--white);
+      pointer-events: none;
+    }
+
+    .comparison-project-type {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--lime-300);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .comparison-project h3 {
+      max-width: 620px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 3vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    .comparison-project h3 em {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .comparison-project-location {
+      flex: 0 0 auto;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.78rem;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      margin-top: 25px;
+    }
+
+    .carousel-dots {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .carousel-dot {
+      width: 9px;
+      height: 9px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(20, 35, 25, 0.2);
+      cursor: pointer;
+      transition:
+        width 250ms ease,
+        border-radius 250ms ease,
+        background 250ms ease;
+    }
+
+    .carousel-dot.active {
+      width: 34px;
+      border-radius: 999px;
+      background: var(--forest-800);
+    }
+
+    .carousel-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-button {
+      display: grid;
+      width: 52px;
+      height: 52px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: transparent;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition:
+        color 250ms ease,
+        background 250ms ease,
+        transform 250ms ease;
+    }
+
+    .carousel-button:hover {
+      color: var(--white);
+      background: var(--forest-800);
+      transform: translateY(-2px);
+    }
+
+    .carousel-counter {
+      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+    }
+
+    .carousel-counter strong {
+      color: var(--ink);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* =========================================================
+       RÉALISATIONS
+    ========================================================= */
+
+    .projects {
+      padding: 150px 0;
+      background: var(--sand-50);
+    }
+
+    .projects-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 35px;
+      align-items: flex-end;
+      margin-bottom: 70px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .project-column {
+      display: grid;
+      gap: 26px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: var(--forest-800);
+    }
+
+    .project-card.tall {
+      aspect-ratio: 0.84;
+    }
+
+    .project-card.wide {
+      aspect-ratio: 1.4;
+    }
+
+    .project-card.square {
+      aspect-ratio: 1;
+    }
+
+    .project-card img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 850ms var(--ease);
+    }
+
+    .project-card:hover img {
+      transform: scale(1.045);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      color: var(--white);
+      background:
+        linear-gradient(
+          0deg,
+          rgba(5, 16, 9, 0.8),
+          transparent 60%
+        );
+    }
+
+    .project-type {
+      margin-bottom: 9px;
+      color: var(--lime-300);
+      font-size: 0.67rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .project-overlay h3 {
+      max-width: 500px;
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.55rem, 2.8vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      line-height: 1.05;
+    }
+
+    .project-overlay h3 em {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    .project-meta {
+      margin-top: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.75rem;
+    }
+
+    /* =========================================================
+       MÉTHODE
+    ========================================================= */
+
+    .method {
+      padding: 150px 0;
+      color: var(--white);
+      background: var(--forest-800);
+    }
+
+    .method-intro {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 70px;
+      align-items: end;
+      margin-bottom: 80px;
+    }
+
+    .method-intro .section-lead {
+      color: var(--sage-300);
+    }
+
+    .steps {
+      border-top: 1px solid var(--line-light);
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 90px minmax(240px, 0.8fr) 1.2fr;
+      gap: 40px;
+      align-items: center;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .step-number {
+      color: var(--lime-400);
+      font-family: var(--serif);
+      font-size: 1.3rem;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.55rem, 3vw, 2.9rem);
+      font-weight: 500;
+      letter-spacing: -0.045em;
+    }
+
+    .step p {
+      max-width: 580px;
+      margin: 0;
+      color: var(--sage-300);
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       ZONE D’INTERVENTION ET GOOGLE MAPS
+    ========================================================= */
+
+    .area {
+      padding: 150px 0;
+      overflow: hidden;
+      background: var(--lime-300);
+    }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .area-copy .section-title em {
+      display: inline-block;
+    }
+
+    .area-copy > p:last-child {
+      max-width: 510px;
+      margin: 32px 0 0;
+      color: #43513e;
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
+
+    .map-card {
+      position: relative;
+      height: 650px;
+      overflow: hidden;
+      border: 8px solid rgba(255, 255, 255, 0.28);
+      border-radius: var(--radius-lg);
+      background: var(--sand-100);
+      box-shadow: var(--shadow);
+    }
+
+    .map-card iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter:
+        saturate(0.78)
+        contrast(1.04);
+    }
+
+    .map-cover {
+      position: absolute;
+      z-index: 2;
+      right: 22px;
+      bottom: 22px;
+      max-width: 280px;
+      padding: 17px 19px;
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 16px;
+      color: var(--ink);
+      background: rgba(255, 253, 248, 0.9);
+      box-shadow: 0 12px 30px rgba(10, 20, 13, 0.14);
+      font-size: 0.78rem;
+      line-height: 1.55;
+      pointer-events: none;
+      backdrop-filter: blur(12px);
+    }
+
+    .map-cover strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       FAQ
+    ========================================================= */
+
+    .faq {
+      padding: 150px 0;
+      background: var(--sand-50);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .faq-heading {
+      position: sticky;
+      top: 135px;
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-list summary {
+      position: relative;
+      display: flex;
+      min-height: 96px;
+      align-items: center;
+      padding: 25px 65px 25px 0;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--display);
+      font-size: clamp(1.15rem, 2vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+    }
+
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-list summary::before,
+    .faq-list summary::after {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      width: 18px;
+      height: 1px;
+      background: var(--ink);
+      content: "";
+      transition: transform 250ms ease;
+    }
+
+    .faq-list summary::after {
+      transform: rotate(90deg);
+    }
+
+    .faq-list details[open] summary::after {
+      transform: rotate(0);
+    }
+
+    .faq-answer {
+      max-width: 680px;
+      padding: 0 60px 30px 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* =========================================================
+       CONTACT SANS FORMULAIRE
+    ========================================================= */
+
+    .contact {
+      position: relative;
+      padding: 130px 0 40px;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--forest-950);
+    }
+
+    .contact::before {
+      position: absolute;
+      top: -250px;
+      right: -150px;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      background: rgba(128, 165, 120, 0.12);
+      content: "";
+    }
+
+    .contact-top {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 100px;
+      align-items: end;
+    }
+
+    .contact-copy .section-title {
+      max-width: 750px;
+    }
+
+    .contact-copy > p:last-of-type {
+      max-width: 580px;
+      margin: 30px 0 0;
+      color: var(--sage-300);
+      font-size: 1.04rem;
+      line-height: 1.75;
+    }
+
+    .contact-details {
+      display: grid;
+      border-top: 1px solid var(--line-light);
+    }
+
+    .contact-detail {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .contact-detail-label {
+      color: var(--sage-300);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .contact-detail a,
+    .contact-detail p {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+    }
+
+    .contact-detail a {
+      transition: color 250ms ease;
+    }
+
+    .contact-detail a:hover {
+      color: var(--lime-300);
+    }
+
+    .contact-call {
+      margin-top: 32px;
+    }
+
+    .contact-call .btn {
+      min-width: 210px;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 40px;
+      align-items: end;
+      margin-top: 120px;
+      padding-top: 35px;
+      border-top: 1px solid var(--line-light);
+      color: rgba(255, 255, 255, 0.52);
+      font-size: 0.75rem;
+    }
+
+    .footer-brand {
+      color: var(--white);
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 22px;
+    }
+
+    /* =========================================================
+       APPARITIONS
+    ========================================================= */
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 800ms var(--ease),
+        transform 800ms var(--ease);
+    }
+
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    [data-reveal-delay="1"] {
+      transition-delay: 100ms;
+    }
+
+    [data-reveal-delay="2"] {
+      transition-delay: 200ms;
+    }
+
+    /* =========================================================
+       RESPONSIVE — TABLETTE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+      :root {
+        --container: min(100% - 40px, 960px);
+      }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .hero-side {
+        max-width: 520px;
+        justify-self: end;
+      }
+
+      .intro-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-index,
+      .faq-heading {
+        position: static;
+      }
+
+      .services-layout {
+        grid-template-columns: 1fr 0.9fr;
+        gap: 40px;
+      }
+
+      .services-visual {
+        min-height: 500px;
+      }
+
+      .comparison-heading,
+      .method-intro,
+      .area-grid,
+      .contact-top {
+        grid-template-columns: 1fr;
+      }
+
+      .comparison-heading .section-lead {
+        justify-self: start;
+      }
+
+      .map-card {
+        height: 560px;
+      }
+
+      .contact-top {
+        gap: 65px;
+      }
+
+      .contact-details {
+        max-width: 700px;
+      }
+    }
+
+    /* =========================================================
+       RESPONSIVE — MOBILE
+    ========================================================= */
+
+    @media (max-width: 760px) {
+      :root {
+        --container: calc(100% - 28px);
+        --radius-lg: 25px;
+        --radius-md: 18px;
+      }
+
+      html {
+        scroll-padding-top: 90px;
+      }
+
+      .site-header {
+        padding-top: 9px;
+      }
+
+      .nav-shell {
+        min-height: 60px;
+        padding: 0 8px 0 16px;
+      }
+
+      .site-header:not(.scrolled) .nav-shell {
+        background: rgba(5, 15, 9, 0.12);
+        backdrop-filter: blur(10px);
+      }
+
+      .logo {
+        font-size: 0.88rem;
+        letter-spacing: 0.06em;
+      }
+
+      .logo-mark {
+        width: 22px;
+        height: 22px;
+      }
+
+      .logo-mark::after {
+        left: 10px;
+        height: 16px;
+      }
+
+      .hero-content {
+        padding-top: 150px;
+        padding-bottom: 32px;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.5rem, 17vw, 6.2rem);
+        line-height: 0.88;
+      }
+
+      .hero-side {
+        width: min(100%, 500px);
+        margin-left: auto;
+        padding: 22px;
+      }
+
+      .scroll-indicator {
+        display: none;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .intro,
+      .comparison-section,
+      .projects,
+      .method,
+      .area,
+      .faq {
+        padding: 100px 0;
+      }
+
+      .intro {
+        padding-bottom: 120px;
+      }
+
+      .intro-grid {
+        gap: 35px;
+      }
+
+      .intro-bottom {
+        justify-content: flex-start;
+        margin-top: 45px;
+      }
+
+      .services {
+        padding: 100px 0;
+      }
+
+      .services-heading {
+        display: grid;
+        gap: 28px;
+        margin-bottom: 55px;
+      }
+
+      .services-layout {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 35px;
+      }
+
+      .services-visual {
+        position: relative;
+        top: auto;
+        width: 100%;
+        min-height: 0;
+        height: 64vh;
+        max-height: 590px;
+      }
+
+      .service-item {
+        min-height: auto;
+        padding: 27px 50px 30px 0;
+        opacity: 1;
+      }
+
+      .service-item h3 {
+        font-size: 2.3rem;
+      }
+
+      .comparison-heading {
+        gap: 20px;
+      }
+
+      .comparison {
+        min-height: 620px;
+      }
+
+      .comparison-project {
+        right: 20px;
+        bottom: 22px;
+        left: 20px;
+        display: block;
+      }
+
+      .comparison-project-location {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .comparison-label {
+        top: 18px;
+      }
+
+      .label-before {
+        left: 18px;
+      }
+
+      .label-after {
+        right: 18px;
+      }
+
+      .carousel-controls {
+        flex-wrap: wrap;
+      }
+
+      .carousel-counter {
+        order: 2;
+        width: 100%;
+      }
+
+      .projects-top {
+        display: grid;
+        align-items: start;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card.tall {
+        aspect-ratio: 0.95;
+      }
+
+      .project-card.square,
+      .project-card.wide {
+        aspect-ratio: 1.18;
+      }
+
+      .step {
+        grid-template-columns: 50px 1fr;
+        gap: 18px;
+      }
+
+      .step p {
+        grid-column: 2;
+      }
+
+      .area-grid {
+        gap: 50px;
+      }
+
+      .map-card {
+        height: 520px;
+        border-width: 5px;
+      }
+
+      .map-cover {
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        max-width: none;
+      }
+
+      .faq-grid {
+        gap: 50px;
+      }
+
+      .contact {
+        padding-top: 100px;
+      }
+
+      .contact-detail {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .footer {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 75px;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .comparison {
+        min-height: 540px;
+      }
+
+      .comparison-handle {
+        width: 56px;
+        height: 56px;
+      }
+
+      .map-card {
+        height: 470px;
+      }
+    }
+
+    /* =========================================================
+       ACCESSIBILITÉ
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      [data-reveal] {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" aria-hidden="true">
+    <span id="scrollProgress"></span>
+  </div>
+
+  <!-- =======================================================
+       NAVIGATION
+  ======================================================== -->
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-shell">
+      <a href="#accueil" class="logo" aria-label="JS ENTRETIEN — Accueil">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span>JS ENTRETIEN</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Navigation principale">
+        <a href="#services">Services</a>
+        <a href="#avant-apres">Avant / après</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#methode">Notre méthode</a>
+        <a href="#secteur">Secteur</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta">Nous contacter</a>
+      </nav>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        aria-controls="mobilePanel"
+      >
+        <span class="menu-toggle-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="mobilePanel">
+    <nav aria-label="Navigation mobile">
+      <a href="#services">Services</a>
+      <a href="#avant-apres">Avant / après</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#methode">Notre méthode</a>
+      <a href="#secteur">Secteur</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="mobile-contact">
+      JS ENTRETIEN<br>
+      Sancerre · Belleville-sur-Loire · Cosne-Cours-sur-Loire<br>
+      06 00 00 00 00
+    </div>
+  </div>
+
+  <main>
+    <!-- =====================================================
+         ACCUEIL
+    ====================================================== -->
+
+    <section class="hero" id="accueil">
+      <div class="hero-media" id="heroMedia" aria-hidden="true"></div>
+      <div class="hero-noise" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <div>
+          <div class="hero-kicker" data-reveal>
+            <span class="hero-kicker-dot"></span>
+            Jardins & espaces verts
+          </div>
+
+          <h1 data-reveal data-reveal-delay="1">
+            Le paysage,<br>
+            <em>avec exigence.</em>
+          </h1>
+        </div>
+
+        <div class="hero-side" data-reveal data-reveal-delay="2">
+          <p>
+            Entretien, création et valorisation de vos extérieurs autour de
+            Sancerre, Belleville-sur-Loire et Cosne-Cours-sur-Loire.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">
+              Découvrir nos services
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+
+            <a href="tel:+33600000000" class="btn btn-outline">
+              06 00 00 00 00
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">
+        Défiler pour explorer
+      </div>
+    </section>
+
+    <!-- =====================================================
+         INTRODUCTION
+    ====================================================== -->
+
+    <section class="intro">
+      <div class="organic-shape" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="intro-grid">
+          <div class="intro-index" data-reveal>
+            01 — Notre approche
+          </div>
+
+          <div>
+            <p class="intro-copy" data-reveal>
+              Nous entretenons l’existant et
+              <span class="serif">imaginons la suite.</span>
+
+              <span class="muted">
+                Chaque extérieur mérite une intervention précise,
+                cohérente et durable.
+              </span>
+            </p>
+
+            <div class="intro-bottom">
+              <p class="intro-text" data-reveal>
+                Pour chaque intervention, nous privilégions un travail
+                rigoureux, des échanges simples et une solution adaptée à la
+                réalité du terrain.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SERVICES
+    ====================================================== -->
+
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services-heading">
+          <div data-reveal>
+            <p class="eyebrow">Nos savoir-faire</p>
+
+            <h2 class="section-title">
+              Prendre <em>soin.</em><br>
+              Transformer.
+            </h2>
+          </div>
+
+          <p data-reveal data-reveal-delay="1">
+            Des interventions ponctuelles ou régulières pour entretenir,
+            structurer et valoriser vos extérieurs.
+          </p>
+        </div>
+
+        <div class="services-layout">
+          <div class="services-list">
+            <article class="service-item active" data-service="0">
+              <span class="service-number">01</span>
+
+              <h3>Entretien de <em>jardins</em></h3>
+
+              <p>
+                Tonte, débroussaillage, nettoyage et entretien général pour
+                conserver un extérieur propre et maîtrisé.
+              </p>
+
+              <span class="service-arrow" aria-hidden="true">↗</span>
+            </article>
+
+            <article class="service-item" data-service="1">
+              <span class="service-number">02</span>
+
+              <h3>Taille & <em>végétaux</em></h3>
+
+              <p>
+                Taille de haies, d’arbustes et de végétaux dans le respect de
+                leur développement et de votre environnement.
+              </p>
+
+              <span class="service-arrow" aria-hidden="true">↗</span>
+            </article>
+
+            <article class="service-item" data-service="2">
+              <span class="service-number">03</span>
+
+              <h3>Création <em>paysagère</em></h3>
+
+              <p>
+                Création d’espaces extérieurs équilibrés, pratiques et adaptés
+                au caractère du lieu.
+              </p>
+
+              <span class="service-arrow" aria-hidden="true">↗</span>
+            </article>
+          </div>
+
+          <div class="services-visual" aria-label="Photographies des services">
+            <img
+              class="service-image active"
+              src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1400&q=86"
+              alt="Entretien soigné d’un jardin"
+            >
+
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1598902108854-10e335adac99?auto=format&fit=crop&w=1400&q=86"
+              alt="Taille et entretien des végétaux"
+            >
+
+            <img
+              class="service-image"
+              src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1400&q=86"
+              alt="Création d’un espace paysager"
+            >
+
+            <div class="visual-caption">
+              <p id="visualCaption">
+                Entretien ponctuel ou suivi régulier selon vos besoins.
+              </p>
+
+              <span id="visualNumber" aria-hidden="true">01</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CARROUSEL AVANT / APRÈS
+    ====================================================== -->
+
+    <section class="comparison-section" id="avant-apres">
+      <div class="container">
+        <div class="comparison-heading">
+          <div data-reveal>
+            <p class="eyebrow">Avant / après</p>
+
+            <h2 class="section-title">
+              Le résultat parle<br>
+              <em>de lui-même.</em>
+            </h2>
+          </div>
+
+          <p class="section-lead" data-reveal>
+            Déplacez le curseur au centre de l’image pour observer la
+            transformation.
+          </p>
+        </div>
+
+        <div
+          class="comparison-carousel"
+          id="comparisonCarousel"
+          data-reveal
+          aria-roledescription="carrousel"
+          aria-label="Comparaisons avant et après"
+        >
+          <div class="comparison-viewport">
+            <div class="comparison-track" id="comparisonTrack">
+              <!-- Projet avant / après 1 -->
+
+              <article
+                class="comparison-slide"
+                aria-label="Projet 1 sur 2"
+                aria-hidden="false"
+              >
+                <div class="comparison">
+                  <img
+                    class="comparison-after"
+                    src="https://images.unsplash.com/photo-1558521958-0a228e77e984?auto=format&fit=crop&w=1900&q=88"
+                    alt="Jardin après remise en état"
+                  >
+
+                  <img
+                    class="comparison-before"
+                    src="https://images.unsplash.com/photo-1599685315640-9ceab2f581ca?auto=format&fit=crop&w=1900&q=88"
+                    alt="Terrain avant remise en état"
+                  >
+
+                  <div class="comparison-shade" aria-hidden="true"></div>
+
+                  <span class="comparison-label label-before">
+                    Avant
+                  </span>
+
+                  <span class="comparison-label label-after">
+                    Après
+                  </span>
+
+                  <div
+                    class="comparison-line"
+                    aria-hidden="true"
+                  ></div>
+
+                  <div
+                    class="comparison-handle"
+                    aria-hidden="true"
+                  >
+                    ← →
+                  </div>
+
+                  <input
+                    class="comparison-range"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="50"
+                    aria-label="Comparer le jardin avant et après l’intervention"
+                  >
+
+                  <div class="comparison-project">
+                    <div>
+                      <span class="comparison-project-type">
+                        Remise en état
+                      </span>
+
+                      <h3>
+                        Retrouver un jardin <em>net et structuré</em>
+                      </h3>
+                    </div>
+
+                    <span class="comparison-project-location">
+                      Secteur de Sancerre
+                    </span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Projet avant / après 2 -->
+
+              <article
+                class="comparison-slide"
+                aria-label="Projet 2 sur 2"
+                aria-hidden="true"
+              >
+                <div class="comparison">
+                  <img
+                    class="comparison-after"
+                    src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1900&q=88"
+                    alt="Espace vert après aménagement"
+                  >
+
+                  <img
+                    class="comparison-before"
+                    src="https://images.unsplash.com/photo-1557429287-b2e26467fc2b?auto=format&fit=crop&w=1900&q=88"
+                    alt="Espace vert avant aménagement"
+                  >
+
+                  <div class="comparison-shade" aria-hidden="true"></div>
+
+                  <span class="comparison-label label-before">
+                    Avant
+                  </span>
+
+                  <span class="comparison-label label-after">
+                    Après
+                  </span>
+
+                  <div
+                    class="comparison-line"
+                    aria-hidden="true"
+                  ></div>
+
+                  <div
+                    class="comparison-handle"
+                    aria-hidden="true"
+                  >
+                    ← →
+                  </div>
+
+                  <input
+                    class="comparison-range"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="50"
+                    aria-label="Comparer l’espace vert avant et après l’aménagement"
+                  >
+
+                  <div class="comparison-project">
+                    <div>
+                      <span class="comparison-project-type">
+                        Création paysagère
+                      </span>
+
+                      <h3>
+                        Donner une nouvelle <em>cohérence</em> à l’extérieur
+                      </h3>
+                    </div>
+
+                    <span class="comparison-project-location">
+                      Val de Loire
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="carousel-controls">
+            <div
+              class="carousel-dots"
+              role="tablist"
+              aria-label="Choisir une comparaison"
+            >
+              <button
+                class="carousel-dot active"
+                type="button"
+                role="tab"
+                aria-label="Afficher la comparaison 1"
+                aria-selected="true"
+                data-slide="0"
+              ></button>
+
+              <button
+                class="carousel-dot"
+                type="button"
+                role="tab"
+                aria-label="Afficher la comparaison 2"
+                aria-selected="false"
+                data-slide="1"
+              ></button>
+            </div>
+
+            <div class="carousel-counter" aria-live="polite">
+              <strong id="currentSlideNumber">01</strong>
+              <span> / 02</span>
+            </div>
+
+            <div class="carousel-buttons">
+              <button
+                class="carousel-button"
+                id="previousSlide"
+                type="button"
+                aria-label="Afficher la comparaison précédente"
+              >
+                ←
+              </button>
+
+              <button
+                class="carousel-button"
+                id="nextSlide"
+                type="button"
+                aria-label="Afficher la comparaison suivante"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         RÉALISATIONS
+    ====================================================== -->
+
+    <section class="projects" id="realisations">
+      <div class="container">
+        <div class="projects-top">
+          <div data-reveal>
+            <p class="eyebrow">Réalisations</p>
+
+            <h2 class="section-title">
+              Des extérieurs conçus<br>
+              pour <em>durer.</em>
+            </h2>
+          </div>
+
+          <a href="#contact" class="btn btn-dark" data-reveal>
+            Nous contacter
+            <span class="btn-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="projects-grid">
+          <div class="project-column">
+            <article class="project-card tall" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1300&q=86"
+                alt="Aménagement paysager d’un jardin"
+                loading="lazy"
+              >
+
+              <div class="project-overlay">
+                <span class="project-type">
+                  Création paysagère
+                </span>
+
+                <h3>
+                  Un jardin structuré autour de <em>nouveaux usages</em>
+                </h3>
+
+                <div class="project-meta">
+                  Secteur de Sancerre
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="project-column">
+            <article class="project-card wide" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1558521958-0a228e77e984?auto=format&fit=crop&w=1300&q=86"
+                alt="Jardin verdoyant entretenu"
+                loading="lazy"
+              >
+
+              <div class="project-overlay">
+                <span class="project-type">
+                  Entretien régulier
+                </span>
+
+                <h3>
+                  Préserver un extérieur <em>net toute l’année</em>
+                </h3>
+
+                <div class="project-meta">
+                  Cosne-Cours-sur-Loire
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card square" data-reveal>
+              <img
+                src="https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=1300&q=86"
+                alt="Travail d’entretien dans un espace vert"
+                loading="lazy"
+              >
+
+              <div class="project-overlay">
+                <span class="project-type">
+                  Remise en état
+                </span>
+
+                <h3>
+                  Redonner de la <em>lisibilité</em> à un terrain
+                </h3>
+
+                <div class="project-meta">
+                  Belleville-sur-Loire
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         MÉTHODE
+    ====================================================== -->
+
+    <section class="method" id="methode">
+      <div class="container">
+        <div class="method-intro">
+          <div data-reveal>
+            <p class="eyebrow">Notre méthode</p>
+
+            <h2 class="section-title">
+              Du premier échange<br>
+              au <em>dernier détail.</em>
+            </h2>
+          </div>
+
+          <p class="section-lead" data-reveal>
+            Une visite sur place permet de comprendre vos attentes et de
+            proposer une intervention adaptée au terrain.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step" data-reveal>
+            <span class="step-number">01</span>
+
+            <h3>Premier échange</h3>
+
+            <p>
+              Nous précisons votre besoin, votre localisation et les
+              caractéristiques principales du terrain.
+            </p>
+          </article>
+
+          <article class="step" data-reveal>
+            <span class="step-number">02</span>
+
+            <h3>Visite du terrain</h3>
+
+            <p>
+              Nous observons les accès, les surfaces, les végétaux et les
+              contraintes avant toute proposition.
+            </p>
+          </article>
+
+          <article class="step" data-reveal>
+            <span class="step-number">03</span>
+
+            <h3>Proposition adaptée</h3>
+
+            <p>
+              La prestation est définie selon le travail nécessaire et la
+              fréquence d’intervention souhaitée.
+            </p>
+          </article>
+
+          <article class="step" data-reveal>
+            <span class="step-number">04</span>
+
+            <h3>Intervention soignée</h3>
+
+            <p>
+              Les travaux sont réalisés avec méthode, dans le respect du lieu
+              et avec une attention portée aux finitions.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         ZONE D’INTERVENTION
+    ====================================================== -->
+
+    <section class="area" id="secteur">
+      <div class="container area-grid">
+        <div class="area-copy" data-reveal>
+          <p class="eyebrow">Zone d’intervention</p>
+
+          <h2 class="section-title">
+            Entre <em>Sancerrois</em><br>
+            et <em>Val de Loire.</em>
+          </h2>
+
+          <p>
+            JS ENTRETIEN intervient principalement autour de Sancerre,
+            Belleville-sur-Loire et Cosne-Cours-sur-Loire, ainsi que dans les
+            communes proches de ce secteur.
+          </p>
+        </div>
+
+        <div class="map-card" data-reveal>
+          <iframe
+            title="Carte de la zone d’intervention de JS ENTRETIEN"
+            src="https://www.google.com/maps?q=47.4200,2.9200&z=10&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          <div class="map-cover">
+            <strong>Zone d’intervention</strong>
+            Sancerre, Belleville-sur-Loire, Cosne-Cours-sur-Loire et alentours.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         FAQ
+    ====================================================== -->
+
+    <section class="faq" id="faq">
+      <div class="container faq-grid">
+        <div class="faq-heading" data-reveal>
+          <p class="eyebrow">Questions fréquentes</p>
+
+          <h2 class="section-title">
+            Avant de<br>
+            <em>commencer.</em>
+          </h2>
+        </div>
+
+        <div class="faq-list" data-reveal>
+          <details>
+            <summary>Comment obtenir un devis ?</summary>
+
+            <div class="faq-answer">
+              Après un premier échange, une visite est organisée sur place.
+              Elle permet d’évaluer la surface, les accès, le travail
+              nécessaire et les contraintes du terrain.
+            </div>
+          </details>
+
+          <details>
+            <summary>Proposez-vous des interventions régulières ?</summary>
+
+            <div class="faq-answer">
+              Oui. Selon le besoin, l’intervention peut être ponctuelle ou
+              organisée régulièrement au fil de l’année.
+            </div>
+          </details>
+
+          <details>
+            <summary>Dans quelles communes intervenez-vous ?</summary>
+
+            <div class="faq-answer">
+              La zone principale couvre les secteurs de Sancerre,
+              Belleville-sur-Loire et Cosne-Cours-sur-Loire. La possibilité
+              d’intervenir sera confirmée selon la commune et la nature du
+              chantier.
+            </div>
+          </details>
+
+          <details>
+            <summary>Prenez-vous en charge différents types de jardins ?</summary>
+
+            <div class="faq-answer">
+              Oui. Chaque intervention est adaptée à la surface, aux végétaux,
+              à l’état du terrain et au résultat recherché.
+            </div>
+          </details>
+
+          <details>
+            <summary>Faut-il prévoir une visite avant les travaux ?</summary>
+
+            <div class="faq-answer">
+              Une visite est généralement nécessaire pour observer le terrain
+              et préparer une proposition adaptée.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="contact-top">
+          <div class="contact-copy" data-reveal>
+            <p class="eyebrow">Nous contacter</p>
+
+            <h2 class="section-title">
+              Parlons de votre<br>
+              <em>extérieur.</em>
+            </h2>
+
+            <p>
+              Contactez directement JS ENTRETIEN pour présenter votre besoin
+              et convenir, si nécessaire, d’une visite sur place.
+            </p>
+
+            <div class="contact-call">
+              <a href="tel:+33600000000" class="btn btn-primary">
+                Appeler maintenant
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-details" data-reveal>
+            <div class="contact-detail">
+              <span class="contact-detail-label">
+                Téléphone
+              </span>
+
+              <a href="tel:+33600000000">
+                06 00 00 00 00
+              </a>
+            </div>
+
+            <div class="contact-detail">
+              <span class="contact-detail-label">
+                E-mail
+              </span>
+
+              <a href="mailto:contact@js-entretien.fr">
+                contact@js-entretien.fr
+              </a>
+            </div>
+
+            <div class="contact-detail">
+              <span class="contact-detail-label">
+                Secteur
+              </span>
+
+              <p>
+                Sancerre, Belleville-sur-Loire,<br>
+                Cosne-Cours-sur-Loire et alentours
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <div class="footer-brand">
+            <a
+              href="#accueil"
+              class="logo"
+              aria-label="JS ENTRETIEN — Retour à l’accueil"
+            >
+              <span class="logo-mark" aria-hidden="true"></span>
+              <span>JS ENTRETIEN</span>
+            </a>
+
+            <span>Entretien et création d’espaces verts</span>
+          </div>
+
+          <div class="footer-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Confidentialité</a>
+          </div>
+
+          <span>
+            © <span id="currentYear"></span> JS ENTRETIEN
+          </span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    /* =========================================================
+       ÉLÉMENTS PRINCIPAUX
+    ========================================================= */
+
+    const header = document.querySelector("#siteHeader");
+    const progress = document.querySelector("#scrollProgress");
+    const heroMedia = document.querySelector("#heroMedia");
+
+    const menuToggle = document.querySelector("#menuToggle");
+    const mobilePanel = document.querySelector("#mobilePanel");
+    const mobileLinks = mobilePanel.querySelectorAll("a");
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    /* =========================================================
+       DÉFILEMENT
+    ========================================================= */
+
+    let ticking = false;
+
+    function updateScrollEffects() {
+      const scrollY = window.scrollY;
+
+      const documentHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const scrollRatio =
+        documentHeight > 0 ? scrollY / documentHeight : 0;
+
+      header.classList.toggle("scrolled", scrollY > 40);
+      progress.style.transform = `scaleX(${scrollRatio})`;
+
+      if (
+        !prefersReducedMotion &&
+        scrollY < window.innerHeight * 1.2
+      ) {
+        const offset = Math.min(scrollY * 0.12, 100);
+        const scale = 1.04 + Math.min(scrollY / 12000, 0.03);
+
+        heroMedia.style.transform =
+          `translate3d(0, ${offset}px, 0) scale(${scale})`;
+      }
+
+      ticking = false;
+    }
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          requestAnimationFrame(updateScrollEffects);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+    updateScrollEffects();
+
+    /* =========================================================
+       MENU MOBILE
+    ========================================================= */
+
+    function closeMobileMenu() {
+      menuToggle.classList.remove("active");
+      mobilePanel.classList.remove("open");
+      document.body.classList.remove("menu-open");
+
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Ouvrir le menu");
+    }
+
+    function openMobileMenu() {
+      menuToggle.classList.add("active");
+      mobilePanel.classList.add("open");
+      document.body.classList.add("menu-open");
+
+      menuToggle.setAttribute("aria-expanded", "true");
+      menuToggle.setAttribute("aria-label", "Fermer le menu");
+    }
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mobilePanel.classList.contains("open");
+
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", closeMobileMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
+    });
+
+    /* =========================================================
+       APPARITIONS PROGRESSIVES
+    ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll("[data-reveal]");
+
+    if (
+      prefersReducedMotion ||
+      !("IntersectionObserver" in window)
+    ) {
+      revealElements.forEach((element) => {
+        element.classList.add("revealed");
+      });
+    } else {
+      const revealObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -50px 0px"
+        }
+      );
+
+      revealElements.forEach((element) => {
+        revealObserver.observe(element);
+      });
+    }
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
+
+    const serviceItems = [
+      ...document.querySelectorAll(".service-item")
+    ];
+
+    const serviceImages = [
+      ...document.querySelectorAll(".service-image")
+    ];
+
+    const visualCaption =
+      document.querySelector("#visualCaption");
+
+    const visualNumber =
+      document.querySelector("#visualNumber");
+
+    const serviceCaptions = [
+      "Entretien ponctuel ou suivi régulier selon vos besoins.",
+      "Une taille propre et adaptée au développement des végétaux.",
+      "Des aménagements pensés pour le lieu et ses usages."
+    ];
+
+    function activateService(index) {
+      serviceItems.forEach((item, itemIndex) => {
+        item.classList.toggle("active", itemIndex === index);
+      });
+
+      serviceImages.forEach((image, imageIndex) => {
+        image.classList.toggle("active", imageIndex === index);
+      });
+
+      visualCaption.textContent = serviceCaptions[index];
+      visualNumber.textContent =
+        String(index + 1).padStart(2, "0");
+    }
+
+    serviceItems.forEach((item, index) => {
+      item.addEventListener("mouseenter", () => {
+        activateService(index);
+      });
+
+      item.addEventListener("click", () => {
+        activateService(index);
+      });
+    });
+
+    if ("IntersectionObserver" in window) {
+      const serviceObserver = new IntersectionObserver(
+        (entries) => {
+          const visibleEntries = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort(
+              (firstEntry, secondEntry) =>
+                secondEntry.intersectionRatio -
+                firstEntry.intersectionRatio
+            );
+
+          if (!visibleEntries.length) {
+            return;
+          }
+
+          const index = Number(
+            visibleEntries[0].target.getAttribute("data-service")
+          );
+
+          activateService(index);
+        },
+        {
+          threshold: [0.25, 0.45, 0.65],
+          rootMargin: "-25% 0px -40% 0px"
+        }
+      );
+
+      serviceItems.forEach((item) => {
+        serviceObserver.observe(item);
+      });
+    }
+
+    /* =========================================================
+       COMPARATEURS AVANT / APRÈS
+    ========================================================= */
+
+    const comparisons =
+      document.querySelectorAll(".comparison");
+
+    comparisons.forEach((comparison) => {
+      const range =
+        comparison.querySelector(".comparison-range");
+
+      const beforeImage =
+        comparison.querySelector(".comparison-before");
+
+      const line =
+        comparison.querySelector(".comparison-line");
+
+      const handle =
+        comparison.querySelector(".comparison-handle");
+
+      function updateComparison() {
+        const value = Number(range.value);
+
+        beforeImage.style.clipPath =
+          `inset(0 ${100 - value}% 0 0)`;
+
+        line.style.left = `${value}%`;
+        handle.style.left = `${value}%`;
+      }
+
+      range.addEventListener("input", updateComparison);
+      updateComparison();
+    });
+
+    /* =========================================================
+       CARROUSEL AVANT / APRÈS
+    ========================================================= */
+
+    const comparisonCarousel =
+      document.querySelector("#comparisonCarousel");
+
+    const comparisonTrack =
+      document.querySelector("#comparisonTrack");
+
+    const comparisonSlides = [
+      ...document.querySelectorAll(".comparison-slide")
+    ];
+
+    const carouselDots = [
+      ...document.querySelectorAll(".carousel-dot")
+    ];
+
+    const previousSlideButton =
+      document.querySelector("#previousSlide");
+
+    const nextSlideButton =
+      document.querySelector("#nextSlide");
+
+    const currentSlideNumber =
+      document.querySelector("#currentSlideNumber");
+
+    let currentSlide = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function displaySlide(index) {
+      const numberOfSlides = comparisonSlides.length;
+
+      currentSlide =
+        (index + numberOfSlides) % numberOfSlides;
+
+      comparisonTrack.style.transform =
+        `translateX(-${currentSlide * 100}%)`;
+
+      comparisonSlides.forEach((slide, slideIndex) => {
+        slide.setAttribute(
+          "aria-hidden",
+          slideIndex === currentSlide ? "false" : "true"
+        );
+      });
+
+      carouselDots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === currentSlide;
+
+        dot.classList.toggle("active", isActive);
+
+        dot.setAttribute(
+          "aria-selected",
+          isActive ? "true" : "false"
+        );
+      });
+
+      currentSlideNumber.textContent =
+        String(currentSlide + 1).padStart(2, "0");
+    }
+
+    previousSlideButton.addEventListener("click", () => {
+      displaySlide(currentSlide - 1);
+    });
+
+    nextSlideButton.addEventListener("click", () => {
+      displaySlide(currentSlide + 1);
+    });
+
+    carouselDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        displaySlide(Number(dot.dataset.slide));
+      });
+    });
+
+    comparisonCarousel.addEventListener(
+      "touchstart",
+      (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    comparisonCarousel.addEventListener(
+      "touchend",
+      (event) => {
+        touchEndX = event.changedTouches[0].clientX;
+
+        const movement = touchEndX - touchStartX;
+
+        if (Math.abs(movement) < 70) {
+          return;
+        }
+
+        if (movement < 0) {
+          displaySlide(currentSlide + 1);
+        } else {
+          displaySlide(currentSlide - 1);
+        }
+      },
+      { passive: true }
+    );
+
+    comparisonCarousel.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowLeft") {
+        displaySlide(currentSlide - 1);
+      }
+
+      if (event.key === "ArrowRight") {
+        displaySlide(currentSlide + 1);
+      }
+    });
+
+    displaySlide(0);
+
+    /* =========================================================
+       FAQ
+    ========================================================= */
+
+    const faqItems =
+      document.querySelectorAll(".faq-list details");
+
+    faqItems.forEach((item) => {
+      item.addEventListener("toggle", () => {
+        if (!item.open) {
+          return;
+        }
+
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.open = false;
+          }
+        });
+      });
+    });
+
+    /* =========================================================
+       ANNÉE DU PIED DE PAGE
+    ========================================================= */
+
+    document.querySelector("#currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
