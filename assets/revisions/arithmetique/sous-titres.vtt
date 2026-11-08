@@ -1,0 +1,4083 @@
+WEBVTT
+
+00:00:00.050 --> 00:00:03.007
+Imagine que tu veux transmettre un message à quelqu’un qui
+connaît la
+
+00:00:03.007 --> 00:00:05.964
+bonne clé, alors qu’un observateur voit tout ce qui passe
+sur le
+
+00:00:05.964 --> 00:00:06.211
+réseau.
+
+00:00:06.211 --> 00:00:10.979
+Chiffrer, c’est transformer le message pour protéger sa
+confidentialité, c’est-à-dire empêcher un
+
+00:00:10.979 --> 00:00:13.761
+lecteur non autorisé d’en comprendre le contenu.
+
+00:00:13.761 --> 00:00:17.237
+Déchiffrer, c’est retrouver le message avec la clé prévue.
+
+00:00:17.237 --> 00:00:21.270
+Ce n’est pas la même chose que décoder : un encodage, comme
+
+00:00:21.270 --> 00:00:24.632
+UTF-8, représente une information sans chercher à la garder
+secrète.
+
+00:00:24.746 --> 00:00:28.977
+La cryptographie utilise des opérations faciles à exécuter,
+mais dont certaines opérations
+
+00:00:28.977 --> 00:00:33.208
+inverses semblent très coûteuses quand on ne possède pas une
+information particulière.
+
+00:00:33.208 --> 00:00:36.862
+Multiplier deux grands nombres premiers est facile ;
+retrouver ces facteurs à
+
+00:00:36.862 --> 00:00:39.299
+partir de leur produit est une autre tâche.
+
+00:00:39.299 --> 00:00:43.066
+Le mot « semble » compte : on parle d’hypothèses de
+difficulté,
+
+00:00:43.066 --> 00:00:45.578
+pas d’une preuve que toute attaque est impossible.
+
+00:00:45.698 --> 00:00:49.351
+Le principe de Kerckhoffs, dans ton support, dit que la
+confidentialité doit
+
+00:00:49.351 --> 00:00:52.699
+reposer sur la clé et non sur le secret de l’algorithme.
+
+00:00:52.699 --> 00:00:54.711
+On peut donc publier la méthode.
+
+00:00:54.711 --> 00:00:58.350
+Il faut néanmoins vérifier à qui appartient une clé publique
+: un
+
+00:00:58.350 --> 00:01:01.686
+attaquant qui remplace la clé du destinataire peut tromper
+un expéditeur.
+
+00:01:01.686 --> 00:01:07.066
+Chiffrement, intégrité des données et authentification des
+personnes sont des objectifs distincts.
+
+00:01:07.066 --> 00:01:10.527
+Les exemples numériques de ce cours servent à comprendre les
+mécanismes ;
+
+00:01:10.527 --> 00:01:13.122
+leurs petites valeurs ne protègent pas un vrai échange.
+
+00:01:13.250 --> 00:01:16.771
+Quand on écrit que x appartient à l’ensemble des entiers
+relatifs, cela
+
+00:01:16.771 --> 00:01:20.293
+veut dire que x peut être négatif, nul ou positif, mais pas
+
+00:01:20.293 --> 00:01:22.053
+égal à une fraction non entière.
+
+00:01:22.053 --> 00:01:25.595
+Les accolades servent à décrire un ensemble ; le symbole «
+appartient
+
+00:01:25.595 --> 00:01:28.251
+» indique qu’un objet est l’un de ses éléments.
+
+00:01:28.251 --> 00:01:31.874
+Le symbole « pour tout » annonce que la propriété vaut pour
+
+00:01:31.874 --> 00:01:33.082
+chaque élément du domaine.
+
+00:01:33.082 --> 00:01:36.264
+« Il existe » demande au contraire au moins un exemple.
+
+00:01:36.264 --> 00:01:39.812
+« Si et seulement si » signifie que les deux implications
+sont
+
+00:01:39.812 --> 00:01:40.108
+vraies.
+
+00:01:40.226 --> 00:01:43.372
+Une fonction f de E vers F associe à chaque élément x
+
+00:01:43.372 --> 00:01:46.519
+de l’ensemble de départ E un unique élément f de x dans
+
+00:01:46.519 --> 00:01:47.306
+l’ensemble d’arrivée F.
+
+00:01:47.306 --> 00:01:51.085
+L’image est le résultat ; un antécédent est une entrée qui
+donne
+
+00:01:51.085 --> 00:01:51.715
+ce résultat.
+
+00:01:51.715 --> 00:01:55.577
+Une fonction est injective si deux entrées différentes n’ont
+jamais la même
+
+00:01:55.577 --> 00:01:55.898
+image.
+
+00:01:55.898 --> 00:01:58.779
+Elle est surjective si chaque élément de F est atteint.
+
+00:01:58.779 --> 00:02:02.485
+Elle est bijective si elle possède ces deux propriétés :
+chaque résultat
+
+00:02:02.485 --> 00:02:04.647
+possible correspond alors à une seule entrée.
+
+00:02:04.730 --> 00:02:06.233
+Pourquoi rappeler cela ?
+
+00:02:06.233 --> 00:02:10.626
+Pour déchiffrer sans ambiguïté, la transformation doit
+permettre de retrouver une entrée
+
+00:02:10.626 --> 00:02:12.822
+unique dans l’espace de messages retenu.
+
+00:02:12.822 --> 00:02:16.937
+Sur les restes modulo huit, multiplier par trois est
+bijectif : les
+
+00:02:16.937 --> 00:02:18.994
+huit entrées donnent huit résultats distincts.
+
+00:02:18.994 --> 00:02:22.390
+Multiplier par deux ne l’est pas : zéro et quatre donnent
+tous
+
+00:02:22.390 --> 00:02:22.956
+deux zéro.
+
+00:02:22.956 --> 00:02:25.006
+Une information a été perdue.
+
+00:02:25.006 --> 00:02:28.666
+La réciproque d’une bijection est la fonction qui revient du
+résultat à
+
+00:02:28.666 --> 00:02:32.326
+l’entrée ; son exposant moins un est une notation de
+fonction inverse,
+
+00:02:32.326 --> 00:02:33.546
+pas nécessairement une fraction.
+
+00:02:33.626 --> 00:02:37.851
+Une puissance à exposant entier positif répète une
+multiplication.
+
+00:02:37.851 --> 00:02:41.756
+Deux puissance trois signifie deux fois deux fois deux, soit
+huit ;
+
+00:02:41.756 --> 00:02:44.035
+cela ne signifie pas deux fois trois.
+
+00:02:44.035 --> 00:02:47.057
+Pour une base non nulle, la puissance zéro vaut un, ce qui
+
+00:02:47.057 --> 00:02:50.079
+permet de conserver la règle a puissance r fois a puissance
+s
+
+00:02:50.079 --> 00:02:53.102
+égale a puissance r plus s. Le carré correspond à l’exposant
+deux
+
+00:02:53.102 --> 00:02:54.613
+; le cube à l’exposant trois.
+
+00:02:54.613 --> 00:02:58.463
+Une puissance négative, dans les réels pour une base non
+nulle, est
+
+00:02:58.463 --> 00:02:59.746
+une puissance de l’inverse.
+
+00:02:59.746 --> 00:03:04.065
+Dans un anneau modulaire, cette écriture demande au
+contraire de vérifier que
+
+00:03:04.065 --> 00:03:04.785
+l’inverse existe.
+
+00:03:04.874 --> 00:03:07.959
+La racine carrée positive de N est le nombre positif ou nul
+
+00:03:07.959 --> 00:03:09.245
+dont le carré vaut N.
+
+00:03:09.245 --> 00:03:11.282
+Pour cent, elle vaut dix.
+
+00:03:11.282 --> 00:03:14.577
+Pour quatre-vingt-dix-sept, elle se trouve entre neuf et dix
+parce que neuf
+
+00:03:14.577 --> 00:03:17.048
+au carré vaut quatre-vingt-un et dix au carré cent.
+
+00:03:17.048 --> 00:03:22.040
+Une racine entière inférieure, utilisée dans le programme de
+primalité, vaut ici
+
+00:03:22.040 --> 00:03:22.456
+neuf.
+
+00:03:22.456 --> 00:03:25.587
+Il ne faut pas confondre une racine carrée et une division
+par
+
+00:03:25.587 --> 00:03:25.848
+deux.
+
+00:03:25.922 --> 00:03:29.438
+Un logarithme répond à la question inverse d’une puissance :
+à quel
+
+00:03:29.438 --> 00:03:32.661
+exposant faut-il élever une base pour obtenir une valeur
+positive ?
+
+00:03:32.661 --> 00:03:35.998
+Le logarithme en base deux de huit vaut trois car deux
+puissance
+
+00:03:35.998 --> 00:03:36.833
+trois vaut huit.
+
+00:03:36.833 --> 00:03:40.293
+Il mesure donc aussi combien de divisions par deux ramènent
+cette puissance
+
+00:03:40.293 --> 00:03:40.870
+à un.
+
+00:03:40.870 --> 00:03:45.350
+Le logarithme naturel, noté ln, est le logarithme en base e,
+une
+
+00:03:45.350 --> 00:03:47.964
+constante d’environ deux virgule sept cent dix-huit.
+
+00:03:47.964 --> 00:03:51.935
+Dans la formule de raréfaction, il augmente lentement avec
+N.
+
+00:03:51.935 --> 00:03:55.331
+Pour une base fixée supérieure à un, un changement de base
+multiplie
+
+00:03:55.331 --> 00:03:58.727
+le logarithme par une constante ; cela ne change pas sa
+classe
+
+00:03:58.727 --> 00:03:59.293
+grand O.
+
+00:03:59.293 --> 00:04:02.747
+Le logarithme discret que nous verrons plus tard est un
+autre problème,
+
+00:04:02.747 --> 00:04:03.898
+dans un groupe fini.
+
+00:04:04.010 --> 00:04:07.802
+Le grand sigma désigne une somme : on additionne les termes
+indiqués
+
+00:04:07.802 --> 00:04:08.434
+par l’indice.
+
+00:04:08.434 --> 00:04:11.526
+Le grand pi désigne un produit : on les multiplie.
+
+00:04:11.526 --> 00:04:15.439
+Un indice i sert à numéroter les termes, pas à multiplier
+automatiquement
+
+00:04:15.439 --> 00:04:16.092
+par i.
+
+00:04:16.092 --> 00:04:19.313
+La fonction pi de N qui compte les premiers est encore une
+
+00:04:19.313 --> 00:04:21.460
+notation différente du nombre pi de la géométrie.
+
+00:04:21.460 --> 00:04:25.249
+Enfin un bit vaut zéro ou un ; un octet regroupe huit
+
+00:04:25.249 --> 00:04:29.039
+bits et représente deux puissance huit, soit deux cent
+cinquante-six valeurs possibles,
+
+00:04:29.039 --> 00:04:31.249
+numérotées de zéro à deux cent cinquante-cinq.
+
+00:04:31.370 --> 00:04:35.297
+La complexité permet de comparer la quantité de travail d’un
+algorithme quand
+
+00:04:35.297 --> 00:04:36.279
+ses données grossissent.
+
+00:04:36.279 --> 00:04:41.275
+Une opération élémentaire est une action que l’on décide de
+compter :
+
+00:04:41.275 --> 00:04:43.357
+comparaison, affectation, addition, par exemple.
+
+00:04:43.357 --> 00:04:47.568
+La complexité en temps mesure le travail ; la complexité en
+espace
+
+00:04:47.568 --> 00:04:48.621
+mesure la mémoire.
+
+00:04:48.621 --> 00:04:52.350
+Elles ne sont pas identiques : conserver une immense table
+peut accélérer
+
+00:04:52.350 --> 00:04:55.146
+une recherche, mais coûter une mémoire impossible à fournir.
+
+00:04:55.202 --> 00:04:58.733
+La notation grand O donne une borne de croissance à partir
+d’une
+
+00:04:58.733 --> 00:04:59.322
+certaine taille.
+
+00:04:59.322 --> 00:05:02.581
+Formellement, il existe une constante positive c et un seuil
+n zéro
+
+00:05:02.581 --> 00:05:05.840
+au-delà duquel T de n est au plus c fois f de
+
+00:05:05.840 --> 00:05:06.111
+n.
+
+00:05:06.111 --> 00:05:09.784
+Pour douze n plus cinq, le terme linéaire finit par dominer.
+
+00:05:09.784 --> 00:05:13.152
+Pour quatre n carré plus deux n plus six, c’est le carré.
+
+00:05:13.152 --> 00:05:16.296
+On retient souvent une borne informative, ici O de n et O
+
+00:05:16.296 --> 00:05:19.440
+de n carré, même si des bornes plus grandes seraient aussi
+vraies.
+
+00:05:19.440 --> 00:05:22.844
+Ce n’est pas une durée exacte et cela ne compare pas
+automatiquement
+
+00:05:22.844 --> 00:05:24.547
+deux programmes sur de petites entrées.
+
+00:05:24.650 --> 00:05:27.888
+En cryptographie, surveille surtout la taille choisie.
+
+00:05:27.888 --> 00:05:31.104
+Le nombre N et le nombre de bits nécessaires pour l’écrire
+sont
+
+00:05:31.104 --> 00:05:31.639
+très différents.
+
+00:05:31.639 --> 00:05:34.647
+Un entier de k bits est de l’ordre de deux puissance k.
+
+00:05:34.647 --> 00:05:37.655
+Tester les diviseurs jusqu’à racine de N prend donc de
+l’ordre de
+
+00:05:37.655 --> 00:05:40.663
+deux puissance k sur deux essais : cela croît
+exponentiellement en k.
+
+00:05:40.663 --> 00:05:43.755
+Une boucle qui paraît modérée dans la valeur numérique peut
+être très
+
+00:05:43.755 --> 00:05:45.558
+coûteuse dans la taille réelle de l’entrée.
+
+00:05:45.626 --> 00:05:48.717
+Pour compter une boucle, repère combien de fois elle
+s’exécute et le
+
+00:05:48.717 --> 00:05:49.747
+coût de son corps.
+
+00:05:49.747 --> 00:05:53.669
+Parcourir n cases avec un travail constant par case donne
+une croissance
+
+00:05:53.669 --> 00:05:53.996
+linéaire.
+
+00:05:53.996 --> 00:05:57.613
+Deux boucles imbriquées qui parcourent chacune n valeurs
+donnent un carré.
+
+00:05:57.613 --> 00:06:01.673
+Diviser une quantité par deux jusqu’à atteindre un donne
+environ logarithme de
+
+00:06:01.673 --> 00:06:02.350
+n itérations.
+
+00:06:02.350 --> 00:06:05.981
+C’est le mécanisme de l’exponentiation rapide que nous
+verrons plus loin.
+
+00:06:05.981 --> 00:06:09.629
+Les opérations sur de très grands entiers ont elles-mêmes un
+coût :
+
+00:06:09.629 --> 00:06:12.668
+dire qu’une multiplication est constante est une
+simplification de modèle.
+
+00:06:12.794 --> 00:06:16.872
+La classe P regroupe les problèmes de décision résolus en
+temps polynomial
+
+00:06:16.872 --> 00:06:18.231
+par un algorithme déterministe.
+
+00:06:18.231 --> 00:06:21.281
+Un problème de décision appelle une réponse oui ou non.
+
+00:06:21.282 --> 00:06:25.379
+NP regroupe ceux pour lesquels une réponse positive peut
+être justifiée par
+
+00:06:25.379 --> 00:06:27.428
+un certificat vérifiable en temps polynomial.
+
+00:06:27.428 --> 00:06:30.742
+NP ne signifie pas « non polynomial ».
+
+00:06:30.742 --> 00:06:33.384
+On sait que P est incluse dans NP ; on ne sait
+
+00:06:33.384 --> 00:06:34.926
+pas si les deux classes sont égales.
+
+00:06:34.926 --> 00:06:39.005
+Une inclusion ne doit donc pas être présentée comme
+strictement démontrée ici.
+
+00:06:39.074 --> 00:06:41.958
+PSPACE porte sur une mémoire polynomialement bornée.
+
+00:06:41.958 --> 00:06:45.140
+EXP porte sur un temps exponentiellement borné.
+
+00:06:45.140 --> 00:06:48.215
+Être dans une classe donne une borne de ressources ; cela ne
+
+00:06:48.215 --> 00:06:50.521
+prouve pas que tous ses problèmes exigent ce coût.
+
+00:06:50.521 --> 00:06:53.906
+Un problème NP-complet est dans NP et au moins aussi
+difficile que
+
+00:06:53.906 --> 00:06:56.445
+tous les problèmes de NP via les réductions appropriées.
+
+00:06:56.445 --> 00:07:00.037
+Cela ne rend pas automatiquement difficile chaque instance
+concrète.
+
+00:07:00.146 --> 00:07:03.909
+Une fonction à sens unique est supposée facile à calculer et
+difficile
+
+00:07:03.909 --> 00:07:05.791
+à inverser sur les instances pertinentes.
+
+00:07:05.791 --> 00:07:09.543
+Une trappe rend le retour accessible à qui possède une
+information secrète.
+
+00:07:09.543 --> 00:07:13.016
+Il ne faut pas confondre une illustration de ce principe
+avec une
+
+00:07:13.016 --> 00:07:14.752
+preuve générale de sécurité d’un système.
+
+00:07:14.834 --> 00:07:18.782
+Une estimation de durée utilise un modèle, pas seulement une
+classe grand
+
+00:07:18.782 --> 00:07:19.111
+O.
+
+00:07:19.111 --> 00:07:22.987
+Si on suppose exactement k carré opérations et un milliard
+d’opérations par
+
+00:07:22.987 --> 00:07:26.863
+seconde, avec k égal deux cents, il faut quarante mille
+opérations :
+
+00:07:26.863 --> 00:07:29.770
+en divisant par un milliard, on trouve quarante
+microsecondes.
+
+00:07:29.770 --> 00:07:32.337
+Une microseconde est un millionième de seconde.
+
+00:07:32.337 --> 00:07:36.633
+Avec k cube, on obtient huit millions d’opérations, soit
+huit millisecondes ;
+
+00:07:36.633 --> 00:07:39.139
+une milliseconde est un millième de seconde.
+
+00:07:39.139 --> 00:07:42.559
+Ces valeurs supposent que chaque opération a le coût retenu
+et que
+
+00:07:42.559 --> 00:07:44.268
+la machine réalise réellement ce débit.
+
+00:07:44.330 --> 00:07:49.128
+Avec k puissance six, deux cents puissance six vaut
+soixante-quatre mille milliards
+
+00:07:49.128 --> 00:07:49.528
+d’opérations.
+
+00:07:49.528 --> 00:07:54.264
+Au même débit, cela donne soixante-quatre mille secondes,
+environ dix-sept virgule huit
+
+00:07:54.264 --> 00:07:54.659
+heures.
+
+00:07:54.659 --> 00:07:58.437
+Ce calcul montre pourquoi un polynôme de degré élevé peut
+coûter très
+
+00:07:58.437 --> 00:07:58.752
+cher.
+
+00:07:58.752 --> 00:08:02.700
+Les durées numériques du support sont illustratives : il ne
+faut pas
+
+00:08:02.700 --> 00:08:06.648
+les transformer en temps universels de multiplication, de
+PGCD ou de primalité,
+
+00:08:06.648 --> 00:08:10.267
+qui dépendent de l’algorithme, de la représentation et de la
+machine.
+
+00:08:10.267 --> 00:08:13.793
+Le calcul exact k puissance six pour k égal deux cents ne
+
+00:08:13.793 --> 00:08:15.556
+donne notamment pas trente-deux mille milliards.
+
+00:08:15.674 --> 00:08:19.761
+Une factorielle, notée N point d’exclamation, est le produit
+de tous les
+
+00:08:19.761 --> 00:08:21.463
+entiers de un jusqu’à N.
+
+00:08:21.463 --> 00:08:25.150
+Cinq factorielle vaut un fois deux fois trois fois quatre
+fois cinq,
+
+00:08:25.150 --> 00:08:26.071
+soit cent vingt.
+
+00:08:26.071 --> 00:08:28.740
+La taille même du résultat grandit très vite.
+
+00:08:28.740 --> 00:08:32.147
+Un algorithme qui utilise un nombre polynomial d’opérations
+dans la valeur N
+
+00:08:32.147 --> 00:08:35.555
+ne devient pas pour autant polynomial dans le nombre de bits
+qui
+
+00:08:35.555 --> 00:08:36.123
+représentent N.
+
+00:08:36.123 --> 00:08:39.395
+Si N est de l’ordre de deux puissance k, parcourir tous les
+
+00:08:39.395 --> 00:08:42.667
+entiers de un à N demande déjà un nombre exponentiel
+d’itérations en
+
+00:08:42.667 --> 00:08:42.940
+k.
+
+00:08:42.940 --> 00:08:46.935
+C’est cette distinction qui rend cohérentes les discussions
+du support sur la
+
+00:08:46.935 --> 00:08:47.267
+factorielle.
+
+00:08:47.354 --> 00:08:50.735
+Enfin, la mémoire se calcule avec ses unités : stocker un
+million
+
+00:08:50.735 --> 00:08:54.116
+d’entiers sur trente-deux octets demande au moins trente-
+deux millions d’octets, avant les
+
+00:08:54.116 --> 00:08:56.370
+coûts d’une liste ou des objets d’un langage.
+
+00:08:56.370 --> 00:09:00.644
+Un compromis temps-mémoire consiste à conserver des
+résultats pour éviter de les
+
+00:09:00.644 --> 00:09:01.000
+recalculer.
+
+00:09:01.000 --> 00:09:04.798
+Cela peut aider sur une petite borne, mais stocker tous les
+premiers
+
+00:09:04.798 --> 00:09:06.380
+cryptographiques ne devient pas réaliste.
+
+00:09:06.380 --> 00:09:10.556
+Définir la taille d’entrée, l’unité de travail et la
+représentation est donc
+
+00:09:10.556 --> 00:09:12.643
+la première étape d’une comparaison sérieuse.
+
+00:09:12.698 --> 00:09:15.517
+Dire que b divise a signifie qu’il existe un entier q tel
+
+00:09:15.517 --> 00:09:17.396
+que a soit égal à b fois q.
+
+00:09:17.396 --> 00:09:20.371
+Le nombre a est alors un multiple de b. Lis bien le
+
+00:09:20.371 --> 00:09:23.345
+sens : trois divise douze parce que douze égale trois fois
+quatre.
+
+00:09:23.345 --> 00:09:25.043
+Douze ne divise pas trois.
+
+00:09:25.043 --> 00:09:29.209
+La barre ne représente pas une fraction ; c’est une relation
+de
+
+00:09:29.209 --> 00:09:29.556
+divisibilité.
+
+00:09:29.666 --> 00:09:33.479
+Lorsque la division n’est pas exacte, la division
+euclidienne sépare le quotient
+
+00:09:33.479 --> 00:09:34.432
+et le reste.
+
+00:09:34.432 --> 00:09:38.132
+Avec un diviseur b strictement positif, on écrit a égal b
+fois
+
+00:09:38.132 --> 00:09:41.832
+q plus r, où r est compris entre zéro inclus et b
+
+00:09:41.832 --> 00:09:42.140
+exclu.
+
+00:09:42.140 --> 00:09:45.748
+Pour dix-sept divisé par cinq, q vaut trois et r vaut deux.
+
+00:09:45.748 --> 00:09:48.848
+Pour moins dix-sept, le quotient vaut moins quatre et le
+reste trois
+
+00:09:48.848 --> 00:09:51.948
+: cinq fois moins quatre plus trois redonne bien moins dix-
+sept. Un
+
+00:09:51.948 --> 00:09:55.048
+reste euclidien n’est donc pas forcément le résultat d’une
+troncature vers zéro.
+
+00:09:55.106 --> 00:09:56.911
+Pourquoi le reste est-il unique ?
+
+00:09:56.911 --> 00:10:00.867
+Si deux écritures respectaient ces bornes, leur différence
+donnerait un multiple de
+
+00:10:00.867 --> 00:10:03.503
+b strictement compris entre moins b et b.
+
+00:10:03.503 --> 00:10:08.048
+Le seul multiple possible serait zéro ; les restes, puis les
+quotients,
+
+00:10:08.048 --> 00:10:08.806
+seraient égaux.
+
+00:10:08.806 --> 00:10:12.986
+En Python, avec b positif, double barre calcule le quotient
+entier et
+
+00:10:12.986 --> 00:10:14.727
+pour cent calcule le reste.
+
+00:10:14.727 --> 00:10:18.372
+Tu peux vérifier l’identité en recomposant b fois q plus r.
+
+00:10:18.482 --> 00:10:21.376
+Si d divise deux entiers a et b, il divise toute combinaison
+
+00:10:21.376 --> 00:10:24.270
+entière de ces nombres : a plus b, a moins b, mais
+
+00:10:24.270 --> 00:10:27.164
+aussi u fois a plus v fois b. Écris a égal d
+
+00:10:27.164 --> 00:10:30.058
+fois s et b égal d fois t : la combinaison contient
+
+00:10:30.058 --> 00:10:31.022
+alors d en facteur.
+
+00:10:31.022 --> 00:10:35.800
+Cette observation apparemment simple justifie l’algorithme
+d’Euclide et le théorème de Bézout.
+
+00:10:35.906 --> 00:10:38.939
+Un entier premier est un entier au moins égal à deux dont
+
+00:10:38.939 --> 00:10:40.961
+les seuls diviseurs positifs sont un et lui-même.
+
+00:10:40.961 --> 00:10:44.221
+Un n’est pas premier ; zéro et les entiers négatifs ne sont
+
+00:10:44.221 --> 00:10:45.580
+pas premiers dans cette convention.
+
+00:10:45.580 --> 00:10:48.959
+Un entier supérieur à un qui n’est pas premier est composé.
+
+00:10:48.959 --> 00:10:52.263
+« Premiers entre eux », que nous utiliserons ensuite, est
+une autre
+
+00:10:52.263 --> 00:10:55.568
+expression : huit et neuf sont premiers entre eux sans être
+des
+
+00:10:55.568 --> 00:10:56.119
+nombres premiers.
+
+00:10:56.234 --> 00:10:59.642
+Pour tester un petit entier N, on cherche un diviseur.
+
+00:10:59.642 --> 00:11:02.561
+Si N est égal à a fois b et que a et
+
+00:11:02.561 --> 00:11:05.480
+b étaient tous les deux strictement supérieurs à la racine
+carrée de
+
+00:11:05.480 --> 00:11:06.696
+N, leur produit dépasserait N.
+
+00:11:06.696 --> 00:11:10.150
+Au moins un diviseur d’un nombre composé est donc inférieur
+ou égal
+
+00:11:10.150 --> 00:11:11.013
+à cette racine.
+
+00:11:11.013 --> 00:11:14.622
+Après avoir éliminé deux et les nombres pairs, on peut
+tester seulement
+
+00:11:14.622 --> 00:11:17.629
+trois, cinq, sept et ainsi de suite jusqu’à cette borne.
+
+00:11:17.629 --> 00:11:21.330
+Pour quatre-vingt-onze, sept est trouvé et suffit à prouver
+que le nombre
+
+00:11:21.330 --> 00:11:21.947
+est composé.
+
+00:11:21.947 --> 00:11:26.337
+Pour quatre-vingt-dix-sept, les essais trois, cinq, sept et
+neuf ne trouvent rien
+
+00:11:26.337 --> 00:11:27.434
+: c’est premier.
+
+00:11:27.554 --> 00:11:30.844
+Ton fichier 2isprime.py applique cette méthode.
+
+00:11:30.844 --> 00:11:35.572
+Pour un entier très grand, utiliser une racine entière, par
+exemple math.isqrt,
+
+00:11:35.572 --> 00:11:38.330
+évite les imprécisions d’un calcul en flottants.
+
+00:11:38.330 --> 00:11:42.057
+En revanche, même une racine entière exacte ne supprime pas
+le coût
+
+00:11:42.057 --> 00:11:43.609
+d’une immense quantité de divisions.
+
+00:11:43.609 --> 00:11:46.897
+Cette méthode est adaptée à l’apprentissage et aux petites
+valeurs.
+
+00:11:46.994 --> 00:11:52.455
+Le support p.19 affirme trop largement l’absence
+d’algorithme déterministe acceptable ; sa
+
+00:11:52.455 --> 00:11:55.641
+p.70 mentionne justement AKS, qui est polynomial.
+
+00:11:55.641 --> 00:11:59.605
+Il faut distinguer l’existence théorique d’un algorithme et
+les méthodes les plus
+
+00:11:59.605 --> 00:12:01.257
+pratiques pour les tailles cryptographiques.
+
+00:12:01.322 --> 00:12:05.140
+Le crible d’Ératosthène cherche tous les nombres premiers
+jusqu’à une borne.
+
+00:12:05.140 --> 00:12:08.663
+On commence par considérer tous les entiers à partir de deux
+comme
+
+00:12:08.663 --> 00:12:08.956
+candidats.
+
+00:12:08.956 --> 00:12:12.384
+Deux est le premier candidat : on conserve deux et on barre
+
+00:12:12.384 --> 00:12:12.955
+ses multiples.
+
+00:12:12.955 --> 00:12:16.332
+Le premier candidat non barré suivant est trois ; on barre
+ses
+
+00:12:16.332 --> 00:12:18.864
+multiples, puis ceux de cinq, et ainsi de suite.
+
+00:12:18.864 --> 00:12:21.992
+On peut commencer à p carré : les multiples plus petits ont
+
+00:12:21.992 --> 00:12:24.598
+déjà un facteur premier plus petit et ont été traités.
+
+00:12:24.598 --> 00:12:27.817
+Il suffit de poursuivre tant que p carré ne dépasse pas la
+
+00:12:27.817 --> 00:12:28.085
+borne.
+
+00:12:28.154 --> 00:12:33.104
+Dans ton fichier 1eratosthene.py, la variable T reçoit L
+sans copie.
+
+00:12:33.104 --> 00:12:36.411
+Les deux noms désignent la même liste, et retirer un élément
+pendant
+
+00:12:36.411 --> 00:12:38.616
+qu’on la parcourt peut faire sauter l’élément suivant.
+
+00:12:38.616 --> 00:12:41.326
+Cela peut laisser des composés parmi les résultats.
+
+00:12:41.326 --> 00:12:45.431
+Une table de booléens, indexée par les entiers, évite cette
+difficulté et
+
+00:12:45.431 --> 00:12:47.826
+rend le mécanisme du crible plus clair.
+
+00:12:47.826 --> 00:12:51.063
+La correction proposée sera séparée de ton original.
+
+00:12:51.146 --> 00:12:55.112
+Tout entier supérieur à un possède une décomposition en
+facteurs premiers, unique
+
+00:12:55.112 --> 00:12:56.764
+à l’ordre des facteurs près.
+
+00:12:56.764 --> 00:12:59.872
+Les exposants indiquent combien de fois le même facteur
+apparaît.
+
+00:12:59.872 --> 00:13:03.472
+Ainsi soixante contient deux fois le facteur deux, une fois
+trois et
+
+00:13:03.472 --> 00:13:04.372
+une fois cinq.
+
+00:13:04.372 --> 00:13:08.925
+Cette décomposition donne accès au PGCD, au PPCM et à la
+fonction
+
+00:13:08.925 --> 00:13:09.305
+d’Euler.
+
+00:13:09.386 --> 00:13:12.747
+La fonction pi de N compte les nombres premiers inférieurs
+ou égaux
+
+00:13:12.747 --> 00:13:13.308
+à N.
+
+00:13:13.308 --> 00:13:16.601
+Le théorème des nombres premiers dit que son rapport à N
+divisé
+
+00:13:16.601 --> 00:13:18.797
+par logarithme naturel de N tend vers un.
+
+00:13:18.797 --> 00:13:22.663
+Il décrit une tendance à grande échelle, pas le placement
+exact du
+
+00:13:22.663 --> 00:13:23.308
+prochain premier.
+
+00:13:23.308 --> 00:13:26.792
+Près d’un entier de k bits, la proportion de premiers est
+approximativement
+
+00:13:26.792 --> 00:13:30.277
+un sur k fois logarithme de deux ; parmi les candidats
+impairs,
+
+00:13:30.277 --> 00:13:32.310
+elle est environ deux fois plus grande.
+
+00:13:32.310 --> 00:13:35.826
+Pour deux cent cinquante-six bits, ces ordres de grandeur
+sont environ zéro
+
+00:13:35.826 --> 00:13:39.342
+virgule cinquante-six pour cent, puis un virgule treize pour
+cent. Préparer tous
+
+00:13:39.342 --> 00:13:42.858
+les premiers jusqu’à deux puissance deux cent cinquante-six
+serait irréaliste : on
+
+00:13:42.858 --> 00:13:44.323
+les cherche à la demande.
+
+00:13:44.450 --> 00:13:47.525
+Le plus grand commun diviseur de deux entiers non tous deux
+nuls
+
+00:13:47.525 --> 00:13:49.319
+est leur plus grand diviseur positif commun.
+
+00:13:49.319 --> 00:13:52.608
+Le plus petit commun multiple de deux entiers non nuls est
+leur
+
+00:13:52.608 --> 00:13:53.979
+plus petit multiple positif commun.
+
+00:13:53.979 --> 00:13:58.185
+Le PGCD répond à une question de découpage maximal identique
+; le
+
+00:13:58.185 --> 00:14:01.689
+PPCM répond à une question de première coïncidence de
+périodes.
+
+00:14:01.689 --> 00:14:05.673
+Le signe n’affecte pas ces nombres positifs : on utilise les
+valeurs
+
+00:14:05.673 --> 00:14:06.005
+absolues.
+
+00:14:06.122 --> 00:14:09.754
+Avec soixante et cent soixante-huit, les décompositions sont
+deux carré fois trois
+
+00:14:09.754 --> 00:14:12.479
+fois cinq et deux cube fois trois fois sept.
+
+00:14:12.479 --> 00:14:15.958
+Pour le PGCD, on garde les facteurs présents dans les deux
+nombres
+
+00:14:15.958 --> 00:14:19.438
+avec le plus petit exposant : deux carré fois trois donne
+douze.
+
+00:14:19.438 --> 00:14:22.699
+Pour le PPCM, on garde tous les facteurs avec le plus grand
+
+00:14:22.699 --> 00:14:25.960
+exposant : deux cube fois trois fois cinq fois sept donne
+huit
+
+00:14:25.960 --> 00:14:26.504
+cent quarante.
+
+00:14:26.504 --> 00:14:29.495
+Le produit douze fois huit cent quarante vaut bien le
+produit des
+
+00:14:29.495 --> 00:14:29.993
+deux nombres.
+
+00:14:30.098 --> 00:14:33.087
+Pourquoi Euclide fonctionne-t-il sans factorisation ?
+
+00:14:33.087 --> 00:14:36.266
+Si a égale b fois q plus r, un diviseur commun de
+
+00:14:36.266 --> 00:14:39.445
+a et b divise aussi r, puisque r égale a moins b
+
+00:14:39.445 --> 00:14:42.624
+fois q. Réciproquement, un diviseur commun de b et r divise
+a,
+
+00:14:42.624 --> 00:14:44.743
+puisque a égale b fois q plus r.
+
+00:14:44.743 --> 00:14:48.398
+Les deux couples ont exactement les mêmes diviseurs communs
+; leurs PGCD
+
+00:14:48.398 --> 00:14:49.311
+sont donc égaux.
+
+00:14:49.418 --> 00:14:52.769
+Dans le support p.22, une propriété est écrite sous une
+forme qui
+
+00:14:52.769 --> 00:14:54.445
+n’est pas vraie pour tout k.
+
+00:14:54.445 --> 00:14:57.288
+La propriété sûre à retenir est : le PGCD de a et
+
+00:14:57.288 --> 00:15:00.131
+b ne change pas quand on remplace a par a plus un
+
+00:15:00.131 --> 00:15:01.079
+multiple entier de b.
+
+00:15:01.079 --> 00:15:04.944
+Cela correspond exactement à la justification que nous
+venons de donner.
+
+00:15:05.018 --> 00:15:08.782
+Prenons l’exemple du support : deux cent quatre et cent
+soixante-huit.
+
+00:15:08.782 --> 00:15:12.335
+La première division donne un quotient un et un reste
+trente-six.
+
+00:15:12.335 --> 00:15:16.626
+Le PGCD recherché est donc aussi celui de cent soixante-huit
+et trente-six.
+
+00:15:16.626 --> 00:15:19.507
+La division suivante donne un reste vingt-quatre.
+
+00:15:19.507 --> 00:15:22.402
+Puis trente-six divisé par vingt-quatre donne douze.
+
+00:15:22.402 --> 00:15:26.277
+Enfin vingt-quatre est un multiple exact de douze : le reste
+devient
+
+00:15:26.277 --> 00:15:26.600
+zéro.
+
+00:15:26.714 --> 00:15:29.715
+On retourne le dernier reste non nul, ici douze.
+
+00:15:29.715 --> 00:15:30.993
+Pourquoi pas zéro ?
+
+00:15:30.993 --> 00:15:34.557
+Parce que l’algorithme termine avec le couple douze et zéro
+; tout
+
+00:15:34.557 --> 00:15:38.120
+entier divise zéro, donc le plus grand diviseur commun
+positif est celui
+
+00:15:38.120 --> 00:15:38.714
+de douze.
+
+00:15:38.714 --> 00:15:42.337
+À chaque étape, le nouveau reste est plus petit que le
+diviseur
+
+00:15:42.337 --> 00:15:44.149
+précédent et reste positif ou nul.
+
+00:15:44.149 --> 00:15:48.827
+Une suite strictement décroissante d’entiers positifs ne
+peut pas continuer indéfiniment :
+
+00:15:48.827 --> 00:15:50.386
+cela prouve la terminaison.
+
+00:15:50.450 --> 00:15:53.874
+En Python, conserver les deux anciennes valeurs est
+essentiel.
+
+00:15:53.874 --> 00:15:58.408
+L’affectation simultanée a, b égal b, a modulo b calcule le
+côté
+
+00:15:58.408 --> 00:16:00.675
+droit avant de remplacer les variables.
+
+00:16:00.675 --> 00:16:05.219
+Avec des affectations séparées maladroites, on pourrait
+écraser a avant d’avoir calculé
+
+00:16:05.219 --> 00:16:05.976
+le reste.
+
+00:16:05.976 --> 00:16:09.861
+Pour accepter les entrées négatives, on commence par les
+valeurs absolues.
+
+00:16:09.861 --> 00:16:13.201
+Si b est déjà nul, aucune division n’est nécessaire.
+
+00:16:13.298 --> 00:16:16.482
+Deux entiers sont premiers entre eux si ce PGCD vaut un.
+
+00:16:16.482 --> 00:16:20.203
+Cela n’impose pas qu’ils soient premiers séparément :
+quatorze et quinze n’ont
+
+00:16:20.203 --> 00:16:22.064
+aucun facteur commun supérieur à un.
+
+00:16:22.064 --> 00:16:25.340
+Ce critère va décider si une division modulaire est
+possible.
+
+00:16:25.340 --> 00:16:28.900
+L’exercice du support sur deux mille trente-sept et cinq
+mille trente-six se
+
+00:16:28.900 --> 00:16:31.866
+résout avec le même algorithme ; le PGCD vaut un.
+
+00:16:31.994 --> 00:16:35.272
+L’identité de Bézout ajoute une information au PGCD : il
+existe des
+
+00:16:35.272 --> 00:16:38.550
+entiers u et v tels que a fois u plus b fois
+
+00:16:38.550 --> 00:16:39.916
+v soit égal au PGCD.
+
+00:16:39.916 --> 00:16:43.705
+Les coefficients peuvent être négatifs ; ils ne sont pas
+uniques.
+
+00:16:43.705 --> 00:16:47.010
+Si le PGCD vaut un, cette combinaison vaut un.
+
+00:16:47.010 --> 00:16:50.889
+Réciproquement, si une combinaison entière de a et b vaut
+un, tout
+
+00:16:50.889 --> 00:16:54.444
+diviseur commun doit diviser un ; le PGCD vaut donc un.
+
+00:16:54.444 --> 00:16:57.842
+C’est la preuve des deux sens du critère « premiers entre
+eux
+
+00:16:57.842 --> 00:16:58.126
+».
+
+00:16:58.202 --> 00:17:02.362
+Pour deux cent trente-quatre et trente-cinq, Euclide produit
+les restes vingt-quatre, onze,
+
+00:17:02.362 --> 00:17:03.402
+deux et un.
+
+00:17:03.402 --> 00:17:06.665
+Remontons : un égale onze moins cinq fois deux.
+
+00:17:06.665 --> 00:17:10.481
+Comme deux égale vingt-quatre moins deux fois onze, cela
+donne onze fois
+
+00:17:10.481 --> 00:17:12.071
+onze moins cinq fois vingt-quatre.
+
+00:17:12.071 --> 00:17:16.168
+Remplaçons onze par trente-cinq moins vingt-quatre : on
+obtient onze fois trente-cinq
+
+00:17:16.168 --> 00:17:17.534
+moins seize fois vingt-quatre.
+
+00:17:17.534 --> 00:17:21.455
+Enfin vingt-quatre égale deux cent trente-quatre moins six
+fois trente-cinq.
+
+00:17:21.455 --> 00:17:25.108
+Le résultat est moins seize fois deux cent trente-quatre
+plus cent sept
+
+00:17:25.108 --> 00:17:25.716
+fois trente-cinq.
+
+00:17:25.716 --> 00:17:29.655
+Vérification : moins trois mille sept cent quarante-quatre
+plus trois mille sept
+
+00:17:29.655 --> 00:17:31.295
+cent quarante-cinq vaut bien un.
+
+00:17:31.394 --> 00:17:34.133
+L’algorithme étendu automatise cette remontée.
+
+00:17:34.133 --> 00:17:37.145
+Il transporte deux coefficients pour chaque reste.
+
+00:17:37.145 --> 00:17:40.999
+L’invariant, c’est la propriété qui reste vraie à chaque
+tour : chaque
+
+00:17:40.999 --> 00:17:43.568
+reste est une combinaison des deux entrées initiales.
+
+00:17:43.568 --> 00:17:47.090
+Quand on soustrait q fois le second reste au premier, on
+fait
+
+00:17:47.090 --> 00:17:49.144
+exactement la même opération sur leurs coefficients.
+
+00:17:49.144 --> 00:17:54.331
+Ton fichier 3euclide_etendu.py suit ce principe pour des
+entrées positives.
+
+00:17:54.331 --> 00:17:58.160
+Le rôle de u et v devient ainsi compréhensible, plutôt
+qu’une suite
+
+00:17:58.160 --> 00:17:59.436
+de variables à mémoriser.
+
+00:17:59.546 --> 00:18:02.822
+Une équation diophantienne cherche des solutions entières.
+
+00:18:02.822 --> 00:18:06.613
+Cela change le problème : quatre x plus six y égal trois
+
+00:18:06.613 --> 00:18:09.141
+admet des solutions réelles, mais aucune solution entière.
+
+00:18:09.141 --> 00:18:12.693
+La partie gauche est toujours paire ; la partie droite est
+impaire.
+
+00:18:12.693 --> 00:18:16.243
+Plus généralement, si d est le PGCD de a et b, chaque
+
+00:18:16.243 --> 00:18:19.496
+combinaison a x plus b y est un multiple de d.
+
+00:18:19.496 --> 00:18:21.388
+Il faut donc que d divise c.
+
+00:18:21.388 --> 00:18:24.404
+Cette condition est également suffisante grâce à Bézout.
+
+00:18:24.506 --> 00:18:27.737
+Si a u plus b v égale d et c égale d
+
+00:18:27.737 --> 00:18:30.967
+fois k, multiplier l’identité par k donne une première
+solution x zéro
+
+00:18:30.967 --> 00:18:33.390
+égal k u et y zéro égal k v.
+
+00:18:33.390 --> 00:18:35.665
+Ce n’est qu’une solution particulière.
+
+00:18:35.665 --> 00:18:39.914
+Pour trouver toutes les solutions, on compare une solution
+quelconque à celle-ci.
+
+00:18:39.914 --> 00:18:43.424
+La différence satisfait a fois x moins x zéro plus b fois
+
+00:18:43.424 --> 00:18:45.180
+y moins y zéro égal zéro.
+
+00:18:45.180 --> 00:18:48.503
+Après division par d, les coefficients a sur d et b sur
+
+00:18:48.503 --> 00:18:49.888
+d sont premiers entre eux.
+
+00:18:49.888 --> 00:18:52.760
+On en déduit que la variation de x est un multiple de
+
+00:18:52.760 --> 00:18:55.633
+b sur d, et celle de y le multiple opposé de a
+
+00:18:55.633 --> 00:18:56.111
+sur d.
+
+00:18:56.186 --> 00:18:59.468
+Pour cinq x plus trois y égal sept, Bézout donne moins cinq
+
+00:18:59.468 --> 00:19:01.110
+plus deux fois trois égal un.
+
+00:19:01.110 --> 00:19:04.997
+En multipliant par sept : moins trente-cinq plus quarante-
+deux égale sept. Une
+
+00:19:04.997 --> 00:19:07.265
+solution est donc moins sept et quatorze.
+
+00:19:07.265 --> 00:19:10.982
+Toutes les solutions sont moins sept plus trois t, et
+quatorze moins
+
+00:19:10.982 --> 00:19:12.531
+cinq t, avec t entier.
+
+00:19:12.531 --> 00:19:15.955
+Pour t égal trois, on retrouve deux et moins un : dix
+
+00:19:15.955 --> 00:19:17.097
+moins trois vaut sept.
+
+00:19:17.097 --> 00:19:20.991
+Si l’énoncé impose ensuite x et y positifs, il faut ajouter
+ces
+
+00:19:20.991 --> 00:19:23.911
+inégalités et chercher les valeurs entières de t
+compatibles.
+
+00:19:23.911 --> 00:19:25.871
+Ne pas les supposer sans les lire.
+
+00:19:25.946 --> 00:19:28.913
+Le théorème de Gauss dit ceci : si a divise le produit
+
+00:19:28.913 --> 00:19:31.881
+b fois c et si a et b sont premiers entre eux,
+
+00:19:31.881 --> 00:19:32.870
+alors a divise c.
+
+00:19:32.870 --> 00:19:35.988
+L’hypothèse sur le PGCD est indispensable.
+
+00:19:35.988 --> 00:19:39.273
+Six divise deux fois trois, mais six ne divise pas trois :
+
+00:19:39.273 --> 00:19:42.559
+on ne peut donc pas supprimer un facteur au hasard dans une
+
+00:19:42.559 --> 00:19:43.380
+relation de divisibilité.
+
+00:19:43.442 --> 00:19:46.987
+Pour comprendre la preuve, écris une identité de Bézout a u
+plus
+
+00:19:46.987 --> 00:19:48.168
+b v égale un.
+
+00:19:48.168 --> 00:19:51.703
+Multiplie-la par c : a c u plus b c v égale
+
+00:19:51.703 --> 00:19:51.997
+c.
+
+00:19:51.997 --> 00:19:53.982
+Le premier terme contient a.
+
+00:19:53.982 --> 00:19:57.168
+Le second est divisible par a parce que a divise b c.
+
+00:19:57.168 --> 00:19:59.601
+Leur somme c est donc divisible par a.
+
+00:19:59.601 --> 00:20:03.853
+La preuve réutilise simplement le fait qu’un diviseur commun
+divise les combinaisons
+
+00:20:03.853 --> 00:20:04.208
+entières.
+
+00:20:04.322 --> 00:20:07.562
+Si un premier p divise b fois c, soit p divise b,
+
+00:20:07.562 --> 00:20:10.802
+soit p est premier avec b ; dans ce deuxième cas Gauss
+
+00:20:10.802 --> 00:20:12.152
+oblige p à diviser c.
+
+00:20:12.152 --> 00:20:15.761
+Voilà pourquoi les nombres premiers jouent le rôle de
+briques dans une
+
+00:20:15.761 --> 00:20:16.061
+factorisation.
+
+00:20:16.178 --> 00:20:19.594
+Autre conséquence utile : si a et b sont premiers entre eux
+
+00:20:19.594 --> 00:20:22.441
+et divisent tous deux N, alors leur produit divise N.
+
+00:20:22.441 --> 00:20:25.628
+Sans cette hypothèse, il faut parler de PPCM.
+
+00:20:25.628 --> 00:20:29.207
+Par exemple quatre et six divisent douze, mais leur produit
+vingt-quatre ne
+
+00:20:29.207 --> 00:20:30.102
+le divise pas.
+
+00:20:30.102 --> 00:20:33.862
+Nous réutiliserons exactement cette distinction dans le
+théorème des restes chinois et
+
+00:20:33.862 --> 00:20:35.429
+dans la preuve de RSA.
+
+00:20:35.429 --> 00:20:39.704
+Pour bien choisir une méthode, demande-toi donc si tu
+connais une égalité
+
+00:20:39.704 --> 00:20:43.979
+entière, une divisibilité ou une congruence, puis repère où
+une condition de
+
+00:20:43.979 --> 00:20:45.404
+coprimalité permet une simplification.
+
+00:20:45.530 --> 00:20:48.911
+Sur une horloge de douze heures, quinze heures et trois
+heures pointent
+
+00:20:48.911 --> 00:20:49.756
+la même graduation.
+
+00:20:49.756 --> 00:20:53.206
+Les entiers ne sont pas égaux, mais leur différence est un
+multiple
+
+00:20:53.206 --> 00:20:53.781
+de douze.
+
+00:20:53.781 --> 00:20:55.754
+C’est le sens d’une congruence.
+
+00:20:55.754 --> 00:20:58.767
+On écrit a congru à b modulo n si n divise a
+
+00:20:58.767 --> 00:20:59.269
+moins b.
+
+00:20:59.269 --> 00:21:02.343
+Le modulo n est le nombre de positions avant de revenir au
+
+00:21:02.343 --> 00:21:03.112
+point de départ.
+
+00:21:03.112 --> 00:21:06.935
+Le support p.32 inverse la barre dans une des formulations :
+c’est
+
+00:21:06.935 --> 00:21:08.846
+bien n qui divise la différence.
+
+00:21:08.930 --> 00:21:12.804
+Modulo sept, quinze est congru à un car quinze moins un vaut
+
+00:21:12.804 --> 00:21:13.127
+quatorze.
+
+00:21:13.127 --> 00:21:16.591
+Trois est congru à moins onze car leur différence vaut aussi
+quatorze.
+
+00:21:16.591 --> 00:21:20.179
+Tous les nombres de la forme un plus sept fois k, avec
+
+00:21:20.179 --> 00:21:22.272
+k entier relatif, constituent une même classe.
+
+00:21:22.272 --> 00:21:26.763
+Cette classe contient moins treize, moins six, un, huit,
+quinze et ainsi
+
+00:21:26.763 --> 00:21:27.512
+de suite.
+
+00:21:27.512 --> 00:21:31.997
+Le représentant canonique est celui compris entre zéro et
+six, ici un.
+
+00:21:31.997 --> 00:21:35.562
+Il faut distinguer la classe infinie et son représentant
+pratique.
+
+00:21:35.618 --> 00:21:40.357
+L’ensemble quotient, noté Z sur n Z, regroupe ces classes ;
+il
+
+00:21:40.357 --> 00:21:41.936
+en contient exactement n.
+
+00:21:41.936 --> 00:21:45.742
+On peut calculer avec les représentants zéro jusqu’à n moins
+un en
+
+00:21:45.742 --> 00:21:47.645
+réduisant le résultat après chaque opération.
+
+00:21:47.645 --> 00:21:51.224
+Deux plus six donne huit, donc un modulo sept. Deux fois six
+
+00:21:51.224 --> 00:21:53.013
+donne douze, donc cinq modulo sept.
+
+00:21:53.090 --> 00:21:54.697
+Pourquoi est-ce légitime ?
+
+00:21:54.697 --> 00:21:57.896
+Si on remplace un nombre par lui-même plus un multiple de n,
+
+00:21:57.896 --> 00:22:00.829
+la somme ou le produit change encore d’un multiple de n.
+
+00:22:00.829 --> 00:22:03.432
+Le résultat appartient donc à la même classe.
+
+00:22:03.432 --> 00:22:06.794
+On peut ainsi réduire très tôt de gros calculs sans modifier
+le
+
+00:22:06.794 --> 00:22:07.354
+reste final.
+
+00:22:07.354 --> 00:22:12.124
+En revanche, une congruence n’autorise pas toutes les
+manipulations d’une égalité réelle,
+
+00:22:12.124 --> 00:22:13.316
+notamment la division.
+
+00:22:13.442 --> 00:22:17.548
+Une structure algébrique décrit les règles que respectent un
+ensemble et ses
+
+00:22:17.548 --> 00:22:17.891
+opérations.
+
+00:22:17.891 --> 00:22:20.984
+Ce vocabulaire te dit quelles manipulations sont permises.
+
+00:22:20.984 --> 00:22:24.351
+Une opération interne garde le résultat dans l’ensemble.
+
+00:22:24.351 --> 00:22:28.300
+L’associativité signifie que changer le regroupement de
+trois termes ne change pas
+
+00:22:28.300 --> 00:22:28.958
+le résultat.
+
+00:22:28.958 --> 00:22:33.516
+Un élément neutre laisse les autres éléments inchangés :
+zéro pour additionner,
+
+00:22:33.516 --> 00:22:34.655
+un pour multiplier.
+
+00:22:34.655 --> 00:22:37.127
+Un inverse permet de revenir au neutre.
+
+00:22:37.127 --> 00:22:41.212
+L’opposé de trois est moins trois pour l’addition ; son
+inverse multiplicatif
+
+00:22:41.212 --> 00:22:42.574
+est une autre question.
+
+00:22:42.674 --> 00:22:46.590
+Un groupe possède une opération associative, un neutre et un
+inverse pour
+
+00:22:46.590 --> 00:22:47.242
+chaque élément.
+
+00:22:47.242 --> 00:22:50.715
+Si l’ordre des deux termes ne change pas le résultat, on dit
+
+00:22:50.715 --> 00:22:51.583
+qu’il est commutatif.
+
+00:22:51.583 --> 00:22:55.443
+Les classes modulo n forment un groupe commutatif pour
+l’addition : chaque
+
+00:22:55.443 --> 00:22:56.729
+classe a son opposé.
+
+00:22:56.729 --> 00:23:01.175
+Avec une multiplication distributive sur l’addition, on
+obtient un anneau.
+
+00:23:01.175 --> 00:23:04.018
+Distributive veut dire que a fois b plus c se développe en
+
+00:23:04.018 --> 00:23:05.203
+a b plus a c.
+
+00:23:05.330 --> 00:23:09.676
+Un corps, dans la convention commutative utilisée ici,
+permet en plus d’inverser
+
+00:23:09.676 --> 00:23:12.212
+tout élément non nul pour la multiplication.
+
+00:23:12.212 --> 00:23:15.346
+Z modulo p est un corps lorsque p est premier.
+
+00:23:15.346 --> 00:23:19.003
+Attention à la p.39 du support : il ne faut pas retirer
+
+00:23:19.003 --> 00:23:20.527
+zéro pour définir ce corps.
+
+00:23:20.527 --> 00:23:24.577
+L’ensemble des seuls éléments inversibles, noté avec une
+étoile, est un groupe
+
+00:23:24.577 --> 00:23:27.951
+pour la multiplication, pas un corps avec les deux
+opérations.
+
+00:23:27.951 --> 00:23:31.756
+Modulo sept, six et un sont inversibles mais leur somme vaut
+zéro,
+
+00:23:31.756 --> 00:23:33.659
+qui sort de cet ensemble étoilé.
+
+00:23:33.722 --> 00:23:37.373
+Modulo huit, deux fois quatre vaut zéro alors qu’aucun des
+deux facteurs
+
+00:23:37.373 --> 00:23:38.590
+n’est zéro dans l’anneau.
+
+00:23:38.590 --> 00:23:40.643
+On parle de diviseurs de zéro.
+
+00:23:40.643 --> 00:23:44.262
+Cela explique pourquoi simplifier une multiplication peut
+échouer.
+
+00:23:44.262 --> 00:23:47.713
+Le vocabulaire n’est donc pas un décor abstrait : il évite
+des
+
+00:23:47.713 --> 00:23:50.014
+calculs faux et annonce les conditions de déchiffrement.
+
+00:23:50.138 --> 00:23:52.776
+L’inverse de a modulo n est un entier u dont le produit
+
+00:23:52.776 --> 00:23:54.535
+par a donne un reste égal à un.
+
+00:23:54.535 --> 00:23:57.191
+Ce n’est pas le nombre réel un divisé par a.
+
+00:23:57.191 --> 00:24:00.824
+Pour trois modulo sept, cinq convient car trois fois cinq
+vaut quinze,
+
+00:24:00.824 --> 00:24:02.641
+soit un plus deux fois sept.
+
+00:24:02.641 --> 00:24:06.693
+Pour trois modulo huit, trois convient car neuf laisse un
+reste un.
+
+00:24:06.693 --> 00:24:10.202
+Le même entier a peut donc avoir des inverses différents
+selon le
+
+00:24:10.202 --> 00:24:10.495
+modulo.
+
+00:24:10.586 --> 00:24:13.621
+Si le PGCD de a et n vaut un, Bézout fournit a
+
+00:24:13.621 --> 00:24:15.139
+u plus n v égal un.
+
+00:24:15.139 --> 00:24:18.751
+En réduisant modulo n, le terme n v disparaît ; a u
+
+00:24:18.751 --> 00:24:19.956
+est congru à un.
+
+00:24:19.956 --> 00:24:23.588
+Réciproquement, si a u est congru à un, il existe un entier
+
+00:24:23.588 --> 00:24:27.220
+v qui complète l’identité ; tout diviseur commun de a et n
+
+00:24:27.220 --> 00:24:27.825
+divise un.
+
+00:24:27.825 --> 00:24:30.416
+Le critère est donc nécessaire et suffisant.
+
+00:24:30.416 --> 00:24:33.650
+L’inverse est unique comme classe modulo n, même si on peut
+lui
+
+00:24:33.650 --> 00:24:35.536
+ajouter n autant de fois qu’on veut.
+
+00:24:35.666 --> 00:24:39.879
+Prenons l’exemple de ton support et de 4inversion_modn.py.
+
+00:24:39.879 --> 00:24:43.726
+Euclide étendu donne moins cent quatorze et soixante-treize
+pour deux cent trente-cinq
+
+00:24:43.726 --> 00:24:45.008
+et trois cent soixante-sept.
+
+00:24:45.008 --> 00:24:47.998
+Le premier coefficient donne un inverse négatif.
+
+00:24:47.998 --> 00:24:51.666
+On lui ajoute le modulo : moins cent quatorze plus trois
+cent
+
+00:24:51.666 --> 00:24:53.195
+soixante-sept vaut deux cent cinquante-trois.
+
+00:24:53.195 --> 00:24:57.592
+Vérification : deux cent trente-cinq fois deux cent
+cinquante-trois laisse le reste
+
+00:24:57.592 --> 00:24:57.958
+un.
+
+00:24:58.082 --> 00:25:02.374
+Pour quatre modulo huit, le PGCD vaut quatre : aucun
+inverse.
+
+00:25:02.374 --> 00:25:05.215
+Tous les produits de quatre sont pairs et ne peuvent pas
+laisser
+
+00:25:05.215 --> 00:25:06.399
+un reste un modulo huit.
+
+00:25:06.399 --> 00:25:10.530
+« Diviser par a » dans une congruence signifie donc
+multiplier par
+
+00:25:10.530 --> 00:25:12.940
+son inverse, après avoir prouvé qu’il existe.
+
+00:25:12.940 --> 00:25:16.658
+Pour les entrées négatives, un programme doit normaliser a
+modulo n ;
+
+00:25:16.658 --> 00:25:20.375
+pour n au moins deux, Python pour cent donne un représentant
+positif
+
+00:25:20.375 --> 00:25:22.544
+ou nul, et non toujours strictement positif.
+
+00:25:22.634 --> 00:25:26.414
+Le chiffrement de César remplace chaque symbole par un autre
+après un
+
+00:25:26.414 --> 00:25:27.045
+décalage fixe.
+
+00:25:27.045 --> 00:25:30.931
+Sur vingt-six lettres, on peut numéroter A par zéro, B par
+un,
+
+00:25:30.931 --> 00:25:32.227
+et ainsi de suite.
+
+00:25:32.227 --> 00:25:36.798
+Avec une clé de trois, la lettre Z, numéro vingt-cinq,
+devient C,
+
+00:25:36.798 --> 00:25:40.227
+numéro deux, parce que vingt-huit laisse deux modulo vingt-
+six.
+
+00:25:40.227 --> 00:25:42.595
+Pour revenir, on soustrait trois.
+
+00:25:42.595 --> 00:25:46.665
+Additionner une constante est une bijection quel que soit le
+modulo :
+
+00:25:46.665 --> 00:25:48.700
+l’opposé du décalage annule toujours l’opération.
+
+00:25:48.770 --> 00:25:52.815
+Ton support travaille sur des valeurs d’octets, de zéro à
+deux cent
+
+00:25:52.815 --> 00:25:53.152
+cinquante-cinq.
+
+00:25:53.152 --> 00:25:57.270
+Il parle d’ASCII sur huit bits, mais l’ASCII standard
+comporte cent vingt-huit
+
+00:25:57.270 --> 00:25:57.613
+codes.
+
+00:25:57.613 --> 00:26:01.665
+Pour les accents du message, il faut choisir explicitement
+un encodage.
+
+00:26:01.665 --> 00:26:05.847
+Nous utiliserons des octets UTF-8 : un caractère accentué
+peut occuper plusieurs
+
+00:26:05.847 --> 00:26:10.030
+octets ; le chiffrement s’applique à chaque octet, puis le
+déchiffrement restitue
+
+00:26:10.030 --> 00:26:12.470
+ces octets avant de décoder le texte.
+
+00:26:12.470 --> 00:26:16.733
+Cela évite de confondre caractère et nombre compris entre
+zéro et deux
+
+00:26:16.733 --> 00:26:17.444
+cent cinquante-cinq.
+
+00:26:17.570 --> 00:26:21.178
+Le chiffrement affine multiplie d’abord par a puis ajoute b.
+
+00:26:21.178 --> 00:26:25.112
+Pour déchiffrer, on retire b puis on multiplie par l’inverse
+de a.
+
+00:26:25.112 --> 00:26:29.785
+Si cet inverse n’existe pas, la transformation peut
+fusionner plusieurs entrées et
+
+00:26:29.785 --> 00:26:30.953
+perdre de l’information.
+
+00:26:30.953 --> 00:26:34.622
+Modulo huit, six x plus sept congru à treize revient à six
+
+00:26:34.622 --> 00:26:38.291
+x congru à six ; les solutions sont un et cinq modulo
+
+00:26:38.291 --> 00:26:38.596
+huit.
+
+00:26:38.596 --> 00:26:42.327
+Cinq x plus sept congru à treize devient cinq x congru à
+
+00:26:42.327 --> 00:26:42.638
+six.
+
+00:26:42.638 --> 00:26:46.606
+Cinq est son propre inverse modulo huit ; on obtient x
+congru
+
+00:26:46.606 --> 00:26:47.928
+à trente, donc six.
+
+00:26:48.050 --> 00:26:51.731
+Une attaque statistique de César compare les fréquences ou
+essaie toutes les
+
+00:26:51.731 --> 00:26:52.038
+clés.
+
+00:26:52.038 --> 00:26:54.924
+Un texte court ne garantit pas que la lettre la plus
+fréquente
+
+00:26:54.924 --> 00:26:56.367
+soit un espace ou un e.
+
+00:26:56.367 --> 00:26:59.985
+Pour un exercice, afficher et classer les deux cent
+cinquante-six décalages permet
+
+00:26:59.985 --> 00:27:03.000
+de discuter les limites au lieu d’annoncer une clé certaine.
+
+00:27:03.122 --> 00:27:05.569
+Une matrice est un tableau de coefficients.
+
+00:27:05.569 --> 00:27:08.952
+Une matrice carrée de taille deux possède deux lignes et
+deux colonnes.
+
+00:27:08.952 --> 00:27:12.241
+Un vecteur colonne regroupe ici deux symboles du message.
+
+00:27:12.241 --> 00:27:15.759
+Pour multiplier la matrice par ce vecteur, on multiplie les
+coefficients de
+
+00:27:15.759 --> 00:27:19.276
+la première ligne par les deux composantes puis on
+additionne ; on
+
+00:27:19.276 --> 00:27:20.742
+recommence avec la deuxième ligne.
+
+00:27:20.742 --> 00:27:23.190
+Le résultat forme le vecteur chiffré.
+
+00:27:23.190 --> 00:27:26.753
+L’ordre des facteurs compte : une matrice et un vecteur ne
+s’échangent
+
+00:27:26.753 --> 00:27:27.940
+pas comme deux nombres.
+
+00:27:28.058 --> 00:27:31.678
+Pour la matrice du support, première ligne quatre et trois,
+deuxième ligne
+
+00:27:31.678 --> 00:27:35.299
+cinq et un, le déterminant vaut quatre fois un moins trois
+fois
+
+00:27:35.299 --> 00:27:36.505
+cinq, soit moins onze.
+
+00:27:36.505 --> 00:27:38.940
+Modulo sept, cela donne trois.
+
+00:27:38.940 --> 00:27:42.692
+Le déterminant est un nombre associé à une matrice carrée ;
+ici
+
+00:27:42.692 --> 00:27:45.505
+son inversibilité décide si l’on peut inverser la matrice.
+
+00:27:45.505 --> 00:27:48.581
+Il ne suffit pas qu’il soit non nul lorsque le modulo est
+
+00:27:48.581 --> 00:27:50.888
+composé : il doit être premier avec le modulo.
+
+00:27:50.888 --> 00:27:54.496
+Une fois l’inverse du déterminant calculé, on échange les
+deux coefficients diagonaux
+
+00:27:54.496 --> 00:27:58.103
+et on change le signe des deux autres, puis on multiplie
+tout
+
+00:27:58.103 --> 00:27:59.005
+par cet inverse.
+
+00:27:59.090 --> 00:28:01.697
+L’inverse de trois modulo sept vaut cinq.
+
+00:28:01.697 --> 00:28:06.223
+On obtient donc la matrice de lignes cinq, six, puis trois,
+six.
+
+00:28:06.223 --> 00:28:10.134
+Pour le bloc deux, trois, la première sortie vaut quatre
+fois deux
+
+00:28:10.134 --> 00:28:13.394
+plus trois fois trois, soit dix-sept, donc trois modulo
+sept.
+
+00:28:13.394 --> 00:28:17.762
+La seconde vaut cinq fois deux plus trois, soit treize, donc
+six.
+
+00:28:17.762 --> 00:28:22.552
+En appliquant la matrice inverse à trois, six, on retrouve
+deux, trois.
+
+00:28:22.552 --> 00:28:25.617
+Le bloc cinq, un donne deux, cinq.
+
+00:28:25.617 --> 00:28:30.248
+Les quatre symboles chiffrés sont donc trois, six, deux,
+cinq.
+
+00:28:30.314 --> 00:28:33.956
+Le support parle de paquets de bits, mais l’opération de
+Hill regroupe
+
+00:28:33.956 --> 00:28:36.080
+ici des symboles, pas nécessairement des bits.
+
+00:28:36.080 --> 00:28:39.437
+Pour un nombre impair d’octets et des blocs de taille deux,
+il
+
+00:28:39.437 --> 00:28:42.794
+faut convenir d’un remplissage et conserver la longueur
+d’origine pour le retirer
+
+00:28:42.794 --> 00:28:43.353
+sans ambiguïté.
+
+00:28:43.353 --> 00:28:46.731
+Ton fichier Hill ne contient que la signature de fonction :
+la
+
+00:28:46.731 --> 00:28:50.108
+solution fournie sera un complément, pas un résultat de TP
+attribué à
+
+00:28:50.108 --> 00:28:50.671
+ton travail.
+
+00:28:50.762 --> 00:28:53.604
+Plusieurs congruences peuvent décrire une même quantité.
+
+00:28:53.604 --> 00:28:57.138
+Dans l’exemple du restaurant, diviser le nombre de personnes
+par quatre laisse
+
+00:28:57.138 --> 00:29:00.673
+un reste trois ; le diviser par cinq laisse un reste deux.
+
+00:29:00.673 --> 00:29:04.023
+On cherche tous les entiers qui respectent les deux
+contraintes, pas un
+
+00:29:04.023 --> 00:29:05.699
+quotient ni un seul nombre deviné.
+
+00:29:05.699 --> 00:29:10.973
+En essayant les nombres trois, sept, onze, quinze et dix-
+neuf, sept fonctionne.
+
+00:29:10.973 --> 00:29:13.762
+Tous les vingt pas, les deux restes se répètent.
+
+00:29:13.826 --> 00:29:17.347
+Le théorème des restes chinois affirme que si les modulos
+sont premiers
+
+00:29:17.347 --> 00:29:20.868
+entre eux, il existe une unique classe de solutions modulo
+leur produit.
+
+00:29:20.868 --> 00:29:24.973
+Pour construire cette classe, on fabrique deux interrupteurs
+mathématiques.
+
+00:29:24.973 --> 00:29:28.421
+Le premier doit valoir un modulo quatre et zéro modulo cinq.
+
+00:29:28.421 --> 00:29:32.539
+Cinq fois l’inverse de cinq modulo quatre convient : il vaut
+cinq.
+
+00:29:32.539 --> 00:29:36.077
+Le second doit valoir zéro modulo quatre et un modulo cinq.
+
+00:29:36.077 --> 00:29:40.181
+Quatre fois l’inverse de quatre modulo cinq convient : il
+vaut seize.
+
+00:29:40.181 --> 00:29:44.579
+Multiplier ces interrupteurs par les restes désirés, puis
+les additionner, donne trois
+
+00:29:44.579 --> 00:29:47.510
+fois cinq plus deux fois seize, soit quarante-sept.
+
+00:29:47.510 --> 00:29:50.379
+En réduisant modulo vingt, on trouve sept.
+
+00:29:50.450 --> 00:29:55.333
+Vérification obligatoire : sept laisse trois modulo quatre
+et deux modulo cinq.
+
+00:29:55.333 --> 00:29:59.183
+Toutes les solutions entières s’écrivent sept plus vingt
+fois t, avec t
+
+00:29:59.183 --> 00:29:59.504
+entier.
+
+00:29:59.504 --> 00:30:03.176
+Si le nombre de personnes doit être positif, on garde les
+valeurs
+
+00:30:03.176 --> 00:30:04.400
+positives de cette famille.
+
+00:30:04.400 --> 00:30:08.109
+Si l’énoncé ne donne pas d’intervalle, on ne peut pas
+choisir un
+
+00:30:08.109 --> 00:30:08.728
+effectif unique.
+
+00:30:08.728 --> 00:30:12.339
+La construction explique aussi le théorème : chaque terme
+règle une contrainte
+
+00:30:12.339 --> 00:30:15.650
+et s’annule dans l’autre, donc les contraintes ne se
+perturbent pas.
+
+00:30:15.770 --> 00:30:19.165
+Pour plus de deux congruences à modulos deux à deux premiers
+entre
+
+00:30:19.165 --> 00:30:20.862
+eux, on reprend les mêmes interrupteurs.
+
+00:30:20.862 --> 00:30:24.084
+Le produit de tous les modulos s’appelle M. Pour la
+contrainte numéro
+
+00:30:24.084 --> 00:30:27.306
+i, on prend M divisé par son modulo : ce nombre est
+
+00:30:27.306 --> 00:30:28.917
+multiple de tous les autres modulos.
+
+00:30:28.917 --> 00:30:32.060
+On le multiplie par son inverse dans le modulo manquant.
+
+00:30:32.060 --> 00:30:35.051
+Le terme obtenu vaut donc un pour cette contrainte et zéro
+pour
+
+00:30:35.051 --> 00:30:35.799
+toutes les autres.
+
+00:30:35.799 --> 00:30:38.667
+La somme pondérée par les restes donne la solution.
+
+00:30:38.786 --> 00:30:42.835
+Dans l’exercice des pirates du support, les restes sont
+trois modulo dix-sept,
+
+00:30:42.835 --> 00:30:45.197
+quatre modulo onze et cinq modulo six.
+
+00:30:45.197 --> 00:30:47.170
+Le produit vaut mille cent vingt-deux.
+
+00:30:47.170 --> 00:30:51.549
+Les trois produits partiels sont soixante-six, cent deux et
+cent quatre-vingt-sept.
+
+00:30:51.549 --> 00:30:54.315
+Leurs inverses utiles sont huit, quatre et un.
+
+00:30:54.315 --> 00:30:57.836
+La somme vaut quatre mille cent cinquante et un ; son reste
+
+00:30:57.836 --> 00:31:00.183
+modulo mille cent vingt-deux est sept cent quatre-vingt-
+cinq.
+
+00:31:00.183 --> 00:31:03.131
+On vérifie les trois restes avant d’accepter la réponse.
+
+00:31:03.131 --> 00:31:06.657
+La plus petite valeur positive est donc sept cent quatre-
+vingt-cinq.
+
+00:31:06.770 --> 00:31:10.431
+Si les modulos ne sont pas premiers entre eux, la formule
+précédente
+
+00:31:10.431 --> 00:31:11.957
+peut demander un inverse inexistant.
+
+00:31:11.957 --> 00:31:15.885
+Il faut d’abord vérifier la compatibilité : les deux restes
+doivent être
+
+00:31:15.885 --> 00:31:17.850
+congrus modulo le PGCD des modulos.
+
+00:31:17.850 --> 00:31:21.999
+Un modulo six et quatre modulo quinze sont compatibles car
+leur différence
+
+00:31:21.999 --> 00:31:24.073
+est trois, multiple du PGCD trois.
+
+00:31:24.073 --> 00:31:28.428
+La période commune est alors le PPCM, ici trente, et non le
+
+00:31:28.428 --> 00:31:29.154
+produit quatre-vingt-dix.
+
+00:31:29.154 --> 00:31:32.967
+En écrivant x égal un plus six k, la seconde contrainte
+devient
+
+00:31:32.967 --> 00:31:35.191
+six k congru à trois modulo quinze.
+
+00:31:35.191 --> 00:31:38.665
+Après division entière de l’équation par trois, deux k est
+congru à
+
+00:31:38.665 --> 00:31:42.139
+un modulo cinq ; k est donc congru à trois modulo cinq.
+
+00:31:42.139 --> 00:31:45.231
+On obtient x congru à dix-neuf modulo trente.
+
+00:31:45.231 --> 00:31:48.587
+Deux restes incompatibles donneraient au contraire aucune
+solution.
+
+00:31:48.674 --> 00:31:50.624
+La lettre grecque phi se lit fi.
+
+00:31:50.624 --> 00:31:53.465
+La fonction phi de n compte les entiers entre un et n
+
+00:31:53.465 --> 00:31:55.122
+moins un qui sont premiers avec n.
+
+00:31:55.122 --> 00:31:59.496
+Grâce au critère de l’inverse, elle compte exactement les
+éléments du groupe
+
+00:31:59.496 --> 00:32:01.319
+multiplicatif des unités modulo n.
+
+00:32:01.319 --> 00:32:05.126
+Pour huit, les éléments un, trois, cinq et sept sont
+premiers avec
+
+00:32:05.126 --> 00:32:07.348
+huit : phi de huit vaut quatre.
+
+00:32:07.348 --> 00:32:11.169
+Pour sept premier, tous les représentants non nuls
+conviennent : phi de
+
+00:32:11.169 --> 00:32:12.124
+sept vaut six.
+
+00:32:12.242 --> 00:32:15.458
+Si p est premier, phi de p puissance k vaut p puissance
+
+00:32:15.458 --> 00:32:17.335
+k moins p puissance k moins un.
+
+00:32:17.335 --> 00:32:21.624
+Pour comprendre cette soustraction, comptons de zéro jusqu’à
+p puissance k moins
+
+00:32:21.624 --> 00:32:21.981
+un.
+
+00:32:21.981 --> 00:32:25.097
+Les seuls nombres non premiers avec p puissance k sont les
+multiples
+
+00:32:25.097 --> 00:32:28.212
+de p ; il y en a p puissance k moins un,
+
+00:32:28.212 --> 00:32:28.731
+zéro compris.
+
+00:32:28.731 --> 00:32:31.058
+On retire ces multiples du total.
+
+00:32:31.058 --> 00:32:35.868
+Par exemple, modulo neuf, on retire zéro, trois et six : il
+
+00:32:35.868 --> 00:32:37.071
+reste six unités.
+
+00:32:37.130 --> 00:32:40.803
+La formule générale part de la décomposition en facteurs
+premiers et enlève
+
+00:32:40.803 --> 00:32:43.251
+la proportion des multiples de chaque premier distinct.
+
+00:32:43.251 --> 00:32:46.756
+Pour soixante, on calcule soixante fois un moins un demi,
+fois un
+
+00:32:46.756 --> 00:32:49.093
+moins un tiers, fois un moins un cinquième.
+
+00:32:49.093 --> 00:32:50.791
+Le résultat est seize.
+
+00:32:50.791 --> 00:32:54.728
+Chaque facteur premier est utilisé une seule fois, même s’il
+apparaît avec
+
+00:32:54.728 --> 00:32:57.354
+un exposant supérieur à un dans la décomposition.
+
+00:32:57.354 --> 00:33:00.343
+On ne multiplie pas deux fois par un demi pour le facteur
+
+00:33:00.343 --> 00:33:00.841
+deux carré.
+
+00:33:00.938 --> 00:33:03.996
+Si deux entiers sont premiers entre eux, phi de leur produit
+est
+
+00:33:03.996 --> 00:33:05.270
+le produit de leurs phi.
+
+00:33:05.270 --> 00:33:08.269
+Pour deux premiers distincts p et q, on obtient p moins un
+
+00:33:08.269 --> 00:33:09.268
+fois q moins un.
+
+00:33:09.268 --> 00:33:12.881
+Le mot « distincts » compte : pour p carré, cette dernière
+
+00:33:12.881 --> 00:33:16.493
+formule serait fausse ; il faut utiliser p fois p moins un.
+
+00:33:16.493 --> 00:33:19.320
+RSA choisit justement deux premiers distincts.
+
+00:33:19.394 --> 00:33:22.532
+Le théorème d’Euler affirme que si a est premier avec n,
+alors
+
+00:33:22.532 --> 00:33:25.147
+a élevé à phi de n vaut un modulo n.
+
+00:33:25.147 --> 00:33:29.409
+Son intérêt est de réduire certains calculs de puissances et
+de justifier
+
+00:33:29.409 --> 00:33:30.474
+des mécanismes cryptographiques.
+
+00:33:30.474 --> 00:33:33.798
+Il ne s’applique pas à n’importe quelle base : deux
+puissance quatre
+
+00:33:33.798 --> 00:33:35.737
+vaut zéro modulo huit, et non un.
+
+00:33:35.737 --> 00:33:38.805
+L’hypothèse sur le PGCD n’est donc pas un détail.
+
+00:33:38.930 --> 00:33:40.591
+Voici une idée de preuve.
+
+00:33:40.591 --> 00:33:44.148
+Prends la liste de tous les éléments inversibles modulo n.
+Multiplier chacun
+
+00:33:44.148 --> 00:33:47.705
+par a réordonne cette liste sans perdre ni fusionner
+d’éléments, parce que
+
+00:33:47.705 --> 00:33:48.891
+a est lui-même inversible.
+
+00:33:48.891 --> 00:33:52.320
+Le produit de la liste multipliée est donc égal au produit
+de
+
+00:33:52.320 --> 00:33:53.748
+la liste initiale modulo n.
+
+00:33:53.748 --> 00:33:56.537
+Mais le premier produit contient a une fois pour chacun des
+phi
+
+00:33:56.537 --> 00:33:57.234
+de n éléments.
+
+00:33:57.234 --> 00:34:00.472
+Le produit des éléments de la liste est inversible ; on peut
+
+00:34:00.472 --> 00:34:01.551
+l’annuler des deux côtés.
+
+00:34:01.551 --> 00:34:04.272
+Il reste a puissance phi de n congru à un.
+
+00:34:04.272 --> 00:34:08.963
+Nous avons utilisé une bijection et une annulation
+autorisée, deux rappels désormais
+
+00:34:08.963 --> 00:34:09.354
+expliqués.
+
+00:34:09.482 --> 00:34:12.608
+Si le modulo est un premier p, phi de p vaut p
+
+00:34:12.608 --> 00:34:13.129
+moins un.
+
+00:34:13.129 --> 00:34:16.910
+On retrouve la version multiplicative du petit théorème de
+Fermat pour une
+
+00:34:16.910 --> 00:34:18.485
+base non divisible par p.
+
+00:34:18.485 --> 00:34:21.783
+En multipliant par a, on obtient a puissance p congru à a
+
+00:34:21.783 --> 00:34:25.081
+; cette dernière forme reste vraie quand p divise a, puisque
+les
+
+00:34:25.081 --> 00:34:26.456
+deux côtés valent alors zéro.
+
+00:34:26.456 --> 00:34:28.298
+Ne confonds pas ces deux versions.
+
+00:34:28.370 --> 00:34:32.275
+Pour calculer trois puissance cent modulo sept, trois est
+premier avec sept
+
+00:34:32.275 --> 00:34:34.228
+et trois puissance six vaut un.
+
+00:34:34.228 --> 00:34:37.626
+Cent égale seize fois six plus quatre : la puissance se
+ramène
+
+00:34:37.626 --> 00:34:40.175
+à trois puissance quatre, dont le reste est quatre.
+
+00:34:40.175 --> 00:34:43.634
+Un exposant négatif demande d’abord une base inversible.
+
+00:34:43.634 --> 00:34:47.166
+Et réussir une égalité de Fermat ne prouve pas que le modulo
+
+00:34:47.166 --> 00:34:49.226
+est premier : nous étudierons les contre-exemples.
+
+00:34:49.298 --> 00:34:53.058
+Calculer d’abord une puissance gigantesque puis prendre son
+reste gaspille du travail
+
+00:34:53.058 --> 00:34:54.311
+et de la mémoire.
+
+00:34:54.311 --> 00:34:58.049
+Les congruences nous autorisent à réduire après chaque
+multiplication.
+
+00:34:58.049 --> 00:35:01.617
+Une autre idée permet d’éviter de multiplier la base autant
+de fois
+
+00:35:01.617 --> 00:35:03.997
+que l’exposant : écrire cet exposant en binaire.
+
+00:35:03.997 --> 00:35:07.935
+Un nombre binaire utilise seulement zéro et un ; chaque
+position représente
+
+00:35:07.935 --> 00:35:09.248
+une puissance de deux.
+
+00:35:09.248 --> 00:35:13.157
+Cent cinquante-quatre se décompose en cent vingt-huit plus
+seize plus huit plus
+
+00:35:13.157 --> 00:35:13.483
+deux.
+
+00:35:13.562 --> 00:35:17.463
+On calcule donc les puissances successives par carrés : la
+base, son
+
+00:35:17.463 --> 00:35:21.038
+carré, sa puissance quatre, sa puissance huit et ainsi de
+suite.
+
+00:35:21.038 --> 00:35:25.670
+Pour dix-sept modulo cent, les restes sont dix-sept, quatre-
+vingt-neuf, vingt et un,
+
+00:35:25.670 --> 00:35:30.301
+quarante et un, quatre-vingt-un, soixante et un, vingt et
+un, puis quarante
+
+00:35:30.301 --> 00:35:34.933
+et un pour les exposants un, deux, quatre, huit, seize,
+trente-deux, soixante-quatre
+
+00:35:34.933 --> 00:35:36.091
+et cent vingt-huit.
+
+00:35:36.091 --> 00:35:39.115
+Chaque étape demande un seul carré du reste précédent.
+
+00:35:39.194 --> 00:35:42.946
+On conserve ensuite les termes qui correspondent aux bits
+égaux à un
+
+00:35:42.946 --> 00:35:45.447
+: exposants cent vingt-huit, seize, huit et deux.
+
+00:35:45.447 --> 00:35:47.958
+Leur produit modulo cent vaut vingt-neuf.
+
+00:35:47.958 --> 00:35:51.283
+On a remplacé une très longue répétition par un nombre de
+carrés
+
+00:35:51.283 --> 00:35:53.223
+proportionnel au nombre de bits de l’exposant.
+
+00:35:53.330 --> 00:35:56.306
+L’algorithme garde un résultat initial égal à un.
+
+00:35:56.306 --> 00:36:00.654
+Si l’exposant courant est impair, il multiplie le résultat
+par la base
+
+00:36:00.654 --> 00:36:01.017
+courante.
+
+00:36:01.017 --> 00:36:04.510
+Il élève ensuite la base au carré et divise l’exposant par
+deux
+
+00:36:04.510 --> 00:36:05.383
+en quotient entier.
+
+00:36:05.383 --> 00:36:09.831
+L’invariant explique pourquoi cela marche : résultat fois
+base puissance exposant reste
+
+00:36:09.831 --> 00:36:12.054
+congru à la puissance initialement demandée.
+
+00:36:12.054 --> 00:36:16.063
+À la fin, l’exposant est zéro ; ce produit se réduit au
+
+00:36:16.063 --> 00:36:16.397
+résultat.
+
+00:36:16.397 --> 00:36:20.279
+Pour un modulo positif et un exposant nul, on retourne un
+modulo
+
+00:36:20.279 --> 00:36:24.160
+n. Python propose déjà pow avec trois arguments ; notre
+fonction pédagogique
+
+00:36:24.160 --> 00:36:25.777
+permet d’en comprendre le mécanisme.
+
+00:36:25.850 --> 00:36:29.410
+Quand on multiplie plusieurs fois par un élément inversible
+modulo n, les
+
+00:36:29.410 --> 00:36:32.377
+valeurs finissent par former un cycle qui revient à un.
+
+00:36:32.377 --> 00:36:36.767
+L’ordre multiplicatif de cet élément est le plus petit
+exposant strictement positif
+
+00:36:36.767 --> 00:36:37.864
+qui produit un.
+
+00:36:37.864 --> 00:36:41.028
+Le zéro de départ dans une table de puissances donne
+toujours un,
+
+00:36:41.028 --> 00:36:44.192
+mais il ne définit pas l’ordre : on cherche le premier
+retour
+
+00:36:44.192 --> 00:36:45.511
+après au moins une multiplication.
+
+00:36:45.626 --> 00:36:50.623
+Modulo sept, deux donne successivement deux, quatre, puis un
+: son ordre
+
+00:36:50.623 --> 00:36:51.456
+est trois.
+
+00:36:51.456 --> 00:36:56.645
+Trois donne trois, deux, six, quatre, cinq, puis un : son
+ordre
+
+00:36:56.645 --> 00:36:57.510
+est six.
+
+00:36:57.510 --> 00:37:00.260
+Six donne six puis un : son ordre est deux.
+
+00:37:00.260 --> 00:37:03.869
+Pour un modulo premier p, l’ordre d’un élément non nul
+divise p
+
+00:37:03.869 --> 00:37:04.471
+moins un.
+
+00:37:04.471 --> 00:37:07.749
+Une racine primitive est un élément dont l’ordre atteint p
+moins un
+
+00:37:07.749 --> 00:37:10.481
+; ses puissances parcourent alors toutes les classes non
+nulles.
+
+00:37:10.481 --> 00:37:14.100
+Modulo sept, trois et cinq sont des racines primitives.
+
+00:37:14.186 --> 00:37:18.031
+Cette idée précise le domaine sur lequel la puissance
+devient bijective.
+
+00:37:18.031 --> 00:37:21.605
+Avec une racine primitive g modulo p, il faut prendre un
+seul
+
+00:37:21.605 --> 00:37:25.179
+représentant de chaque exposant modulo p moins un, par
+exemple de zéro
+
+00:37:25.179 --> 00:37:26.371
+à p moins deux.
+
+00:37:26.371 --> 00:37:30.257
+Les puissances correspondantes parcourent une fois chacune
+les classes non nulles modulo
+
+00:37:30.257 --> 00:37:30.581
+p.
+
+00:37:30.581 --> 00:37:33.840
+Si tu inclus aussi l’exposant p moins un, tu retrouves un
+une
+
+00:37:33.840 --> 00:37:37.099
+seconde fois ; il n’y a plus unicité sur cet ensemble trop
+
+00:37:37.099 --> 00:37:37.371
+grand.
+
+00:37:37.371 --> 00:37:41.607
+C’est une correction importante de la présentation de la
+p.56 du support.
+
+00:37:41.666 --> 00:37:45.234
+L’ordre concerne donc une base donnée, pas seulement le
+modulo.
+
+00:37:45.234 --> 00:37:48.600
+Pour choisir des paramètres d’échange de clé, on ne peut pas
+supposer
+
+00:37:48.600 --> 00:37:50.563
+qu’une base quelconque parcourt tout le groupe.
+
+00:37:50.563 --> 00:37:53.822
+En pratique on peut aussi travailler dans un sous-groupe
+choisi ; ici
+
+00:37:53.822 --> 00:37:56.537
+nous restons sur les groupes petits et explicites du cours.
+
+00:37:56.642 --> 00:38:00.920
+Un logarithme discret cherche l’exposant qui produit une
+valeur donnée modulo un
+
+00:38:00.920 --> 00:38:01.276
+entier.
+
+00:38:01.276 --> 00:38:04.631
+Le mot discret indique que l’on travaille sur des ensembles
+d’entiers ou
+
+00:38:04.631 --> 00:38:07.987
+des groupes finis, pas sur une courbe continue comme le
+logarithme réel.
+
+00:38:07.987 --> 00:38:11.573
+On ne calcule pas ce logarithme en divisant deux logarithmes
+sur une
+
+00:38:11.573 --> 00:38:14.263
+calculatrice : la réduction modulo a changé le problème.
+
+00:38:14.378 --> 00:38:18.963
+Dans la table des puissances de cinq modulo sept, les
+exposants zéro,
+
+00:38:18.963 --> 00:38:23.548
+un, deux, trois, quatre et cinq donnent respectivement un,
+cinq, quatre, six,
+
+00:38:23.548 --> 00:38:24.694
+deux et trois.
+
+00:38:24.694 --> 00:38:28.445
+Pour obtenir six, il faut donc l’exposant trois dans cette
+plage.
+
+00:38:28.445 --> 00:38:32.392
+Si on ajoute six à cet exposant, les puissances recommencent
+le même
+
+00:38:32.392 --> 00:38:32.721
+cycle.
+
+00:38:32.721 --> 00:38:36.892
+La réponse générale est trois modulo six, et non trois
+modulo sept.
+
+00:38:36.892 --> 00:38:40.455
+Pour trois puissance k congru à quatre modulo sept, on
+trouve de
+
+00:38:40.455 --> 00:38:42.236
+même k égal quatre modulo six.
+
+00:38:42.362 --> 00:38:45.559
+Sur de petits paramètres, on peut chercher dans la table.
+
+00:38:45.559 --> 00:38:49.700
+Pour de grands groupes bien choisis, calculer la puissance
+reste rapide grâce
+
+00:38:49.700 --> 00:38:53.840
+à l’exponentiation binaire, tandis que retrouver l’exposant
+peut être difficile avec les
+
+00:38:53.840 --> 00:38:54.875
+algorithmes classiques connus.
+
+00:38:54.875 --> 00:38:59.321
+L’appartenance à une classe de complexité, à elle seule, ne
+démontre pas
+
+00:38:59.321 --> 00:39:00.062
+cette difficulté.
+
+00:39:00.062 --> 00:39:03.526
+On ne doit donc pas écrire « c’est NP, donc c’est difficile
+
+00:39:03.526 --> 00:39:04.680
+» comme une preuve.
+
+00:39:04.680 --> 00:39:07.967
+La difficulté dépend aussi du choix du groupe et des
+paramètres.
+
+00:39:08.042 --> 00:39:11.889
+Ce contraste permet à Alice et Bob de calculer une
+information partagée
+
+00:39:11.889 --> 00:39:13.492
+sans publier leurs exposants secrets.
+
+00:39:13.492 --> 00:39:16.989
+Il ne suffit toutefois pas d’affirmer qu’un problème de
+logarithme discret paraît
+
+00:39:16.989 --> 00:39:20.486
+difficile pour avoir prouvé la sécurité de toutes les
+variantes de tous
+
+00:39:20.486 --> 00:39:21.069
+les protocoles.
+
+00:39:21.069 --> 00:39:24.929
+On doit examiner exactement ce que l’adversaire voit, ce
+qu’il cherche et
+
+00:39:24.929 --> 00:39:26.216
+les hypothèses du système.
+
+00:39:26.216 --> 00:39:30.312
+Dans le prochain exemple, nous vérifierons d’abord l’égalité
+mathématique qui donne la
+
+00:39:30.312 --> 00:39:32.018
+même clé aux deux participants.
+
+00:39:32.138 --> 00:39:35.999
+Diffie–Hellman est un échange permettant de calculer une
+même valeur secrète à
+
+00:39:35.999 --> 00:39:38.574
+partir de paramètres publics et de secrets individuels.
+
+00:39:38.574 --> 00:39:41.427
+Il ne chiffre pas directement le texte du message.
+
+00:39:41.427 --> 00:39:44.167
+Le modulo p et la base g sont publics.
+
+00:39:44.167 --> 00:39:48.113
+Alice choisit son exposant secret A et publie g puissance A
+modulo
+
+00:39:48.113 --> 00:39:48.442
+p.
+
+00:39:48.442 --> 00:39:52.318
+Bob choisit son exposant secret B et publie g puissance B
+modulo
+
+00:39:52.318 --> 00:39:52.641
+p.
+
+00:39:52.641 --> 00:39:55.389
+Les exposants eux-mêmes ne traversent pas le réseau.
+
+00:39:55.466 --> 00:39:58.519
+Alice élève la valeur reçue de Bob à son exposant A.
+
+00:39:58.519 --> 00:40:01.935
+Elle obtient g puissance B, le tout à la puissance A, soit
+
+00:40:01.935 --> 00:40:03.927
+g puissance A fois B modulo p.
+
+00:40:03.927 --> 00:40:07.182
+Bob élève la valeur reçue d’Alice à son exposant B et
+obtient
+
+00:40:07.182 --> 00:40:08.809
+g puissance A fois B également.
+
+00:40:08.809 --> 00:40:12.947
+L’égalité vient de la règle des puissances et de la
+commutativité de
+
+00:40:12.947 --> 00:40:15.705
+la multiplication des exposants, pas d’une coïncidence
+numérique.
+
+00:40:15.818 --> 00:40:19.240
+Pour les valeurs de ton support, p vaut vingt-trois et g
+cinq.
+
+00:40:19.240 --> 00:40:23.480
+Alice choisit six et publie huit ; Bob choisit quinze et
+publie
+
+00:40:23.480 --> 00:40:23.834
+dix-neuf.
+
+00:40:23.834 --> 00:40:28.685
+Alice calcule dix-neuf puissance six modulo vingt-trois ;
+Bob calcule huit puissance
+
+00:40:28.685 --> 00:40:29.898
+quinze modulo vingt-trois.
+
+00:40:29.898 --> 00:40:31.360
+Les deux obtiennent deux.
+
+00:40:31.360 --> 00:40:35.175
+On vérifie ces deux calculs séparément dans les exercices et
+le programme.
+
+00:40:35.258 --> 00:40:39.035
+Un observateur voit p, g, huit et dix-neuf.
+
+00:40:39.035 --> 00:40:43.207
+Pour de bonnes grandes valeurs, retrouver l’exposant ou la
+clé doit être
+
+00:40:43.207 --> 00:40:44.945
+difficile selon les hypothèses pertinentes.
+
+00:40:44.945 --> 00:40:48.386
+Mais un attaquant actif peut remplacer les messages d’Alice
+et de Bob
+
+00:40:48.386 --> 00:40:51.827
+et établir une clé différente avec chacun : c’est une
+attaque de
+
+00:40:51.827 --> 00:40:52.113
+l’intercepteur.
+
+00:40:52.113 --> 00:40:54.350
+L’échange doit donc être authentifié.
+
+00:40:54.350 --> 00:40:57.587
+Dans un protocole complet, la valeur partagée passe aussi
+par une dérivation
+
+00:40:57.587 --> 00:41:00.824
+de clé ; on ne l’utilise pas naïvement comme mot de passe
+
+00:41:00.824 --> 00:41:01.903
+ou comme clé brute.
+
+00:41:01.903 --> 00:41:05.285
+Ces précisions complètent le schéma mathématique du support.
+
+00:41:05.354 --> 00:41:09.592
+ElGamal réutilise cette idée pour chiffrer un message
+appartenant au groupe choisi.
+
+00:41:09.591 --> 00:41:12.963
+Alice possède un exposant secret s et publie p, une base a
+
+00:41:12.963 --> 00:41:15.210
+et Q égal a puissance s modulo p.
+
+00:41:15.210 --> 00:41:18.843
+Bob choisit pour ce chiffrement un nouvel exposant aléatoire
+k.
+
+00:41:18.843 --> 00:41:21.862
+Il calcule C un égal a puissance k, puis masque le message
+
+00:41:21.862 --> 00:41:24.881
+M en le multipliant par Q puissance k modulo p. Il transmet
+
+00:41:24.881 --> 00:41:26.894
+les deux nombres C un et C deux.
+
+00:41:26.978 --> 00:41:30.305
+Alice connaît s. Elle élève C un à la puissance s et
+
+00:41:30.305 --> 00:41:33.633
+obtient a puissance k fois s. C’est exactement Q puissance
+k, le
+
+00:41:33.633 --> 00:41:34.742
+masque utilisé par Bob.
+
+00:41:34.742 --> 00:41:38.860
+Elle calcule son inverse modulaire et multiplie C deux par
+cet inverse.
+
+00:41:38.860 --> 00:41:41.164
+Le masque s’annule et M réapparaît.
+
+00:41:41.164 --> 00:41:44.838
+L’inverse existe parce que le masque est un élément non nul
+du
+
+00:41:44.838 --> 00:41:46.675
+groupe multiplicatif modulo le premier p.
+
+00:41:46.675 --> 00:41:50.296
+La formule du support utilisant p moins un moins s est une
+
+00:41:50.296 --> 00:41:53.916
+autre écriture, fondée sur Fermat, pour des exposants
+choisis dans le domaine
+
+00:41:53.916 --> 00:41:54.217
+habituel.
+
+00:41:54.338 --> 00:41:58.432
+L’exemple du support fixe s égal sept, p égal six cent
+soixante
+
+00:41:58.432 --> 00:42:02.526
+et un, la base vingt-trois, le message cent quatre-vingt-
+douze et l’exposant temporaire
+
+00:42:02.526 --> 00:42:02.867
+treize.
+
+00:42:02.867 --> 00:42:06.597
+La bibliothèque et le corrigé donnent les calculs détaillés
+de Q, C
+
+00:42:06.597 --> 00:42:10.327
+un, du masque et de C deux ; chaque puissance est obtenue
+
+00:42:10.327 --> 00:42:11.260
+avec l’algorithme rapide.
+
+00:42:11.260 --> 00:42:15.453
+Vérifie que le déchiffrement revient à cent quatre-vingt-
+douze, pas seulement que deux
+
+00:42:15.453 --> 00:42:16.851
+lignes du programme s’exécutent.
+
+00:42:16.922 --> 00:42:19.922
+Un nouvel aléa k est essentiel pour chaque chiffrement.
+
+00:42:19.922 --> 00:42:23.403
+Réutiliser le même masque permet de relier les messages : le
+quotient
+
+00:42:23.403 --> 00:42:26.304
+de deux chiffrés peut révéler le quotient des deux messages.
+
+00:42:26.304 --> 00:42:30.206
+Et le schéma ElGamal de base est malléable : modifier le
+second
+
+00:42:30.206 --> 00:42:33.133
+composant peut modifier le message déchiffré de manière
+prévisible.
+
+00:42:33.133 --> 00:42:37.217
+On étudie ici la construction algébrique, pas un format de
+messagerie prêt
+
+00:42:37.217 --> 00:42:37.898
+à déployer.
+
+00:42:38.018 --> 00:42:40.874
+RSA emploie deux premiers distincts p et q.
+
+00:42:40.874 --> 00:42:44.707
+Leur produit n définit l’espace des représentants des
+messages, de zéro à
+
+00:42:44.707 --> 00:42:45.665
+n moins un.
+
+00:42:45.665 --> 00:42:48.652
+La fonction d’Euler de ce produit vaut p moins un fois q
+
+00:42:48.652 --> 00:42:49.150
+moins un.
+
+00:42:49.150 --> 00:42:52.711
+On choisit ensuite un exposant public e premier avec cette
+valeur, puis
+
+00:42:52.711 --> 00:42:55.679
+on calcule d, l’inverse de e modulo phi de n.
+
+00:42:55.679 --> 00:42:59.363
+Le couple n, e est public ; d doit rester secret.
+
+00:42:59.363 --> 00:43:03.262
+Connaître p et q permet de recalculer phi et d : ces
+
+00:43:03.262 --> 00:43:04.886
+facteurs doivent également être protégés.
+
+00:43:04.946 --> 00:43:08.262
+Attention aux deux modulos : le message et ses puissances
+sont calculés
+
+00:43:08.262 --> 00:43:11.578
+modulo n, mais l’inverse qui produit la clé privée est
+calculé modulo
+
+00:43:11.578 --> 00:43:14.893
+phi de n. Confondre les deux donne une clé qui ne possède
+
+00:43:14.893 --> 00:43:15.999
+pas la propriété voulue.
+
+00:43:15.999 --> 00:43:19.563
+On choisit aussi p différent de q, sinon la formule de phi
+
+00:43:19.563 --> 00:43:20.751
+employée n’est plus correcte.
+
+00:43:20.858 --> 00:43:23.990
+Dans l’exemple du cours, p vaut onze et q treize.
+
+00:43:23.990 --> 00:43:27.253
+On obtient n égal cent quarante-trois et phi égal cent
+vingt.
+
+00:43:27.253 --> 00:43:29.108
+Sept est premier avec cent vingt.
+
+00:43:29.108 --> 00:43:32.242
+Comme cent vingt égale dix-sept fois sept plus un, on peut
+écrire
+
+00:43:32.242 --> 00:43:34.332
+un égal cent vingt moins dix-sept fois sept.
+
+00:43:34.332 --> 00:43:38.087
+L’inverse de sept est donc moins dix-sept modulo cent vingt,
+soit cent
+
+00:43:38.087 --> 00:43:38.400
+trois.
+
+00:43:38.400 --> 00:43:41.479
+Vérifions : sept fois cent trois vaut sept cent vingt et un,
+
+00:43:41.479 --> 00:43:43.532
+qui est un plus six fois cent vingt.
+
+00:43:43.658 --> 00:43:46.316
+Cette identité est le cœur de la construction.
+
+00:43:46.316 --> 00:43:49.465
+Le support p.66 comporte une coquille : c’est le produit e
+fois
+
+00:43:49.465 --> 00:43:52.613
+d, et non d seul, qui est égal à un plus un
+
+00:43:52.613 --> 00:43:55.762
+multiple de phi de n. Chiffrer élève le message à la
+puissance
+
+00:43:55.762 --> 00:43:58.911
+e modulo n ; déchiffrer élève le résultat à la puissance d.
+
+00:43:58.911 --> 00:44:02.598
+Une signature RSA est un autre schéma, avec des règles
+d’encodage et
+
+00:44:02.598 --> 00:44:06.285
+de vérification propres : il ne faut pas présenter cela
+simplement comme
+
+00:44:06.285 --> 00:44:08.436
+« chiffrer avec la clé privée ».
+
+00:44:08.522 --> 00:44:12.154
+Chiffrons le message trente-cinq avec la clé publique cent
+quarante-trois, sept. Sept
+
+00:44:12.154 --> 00:44:14.576
+se décompose en un plus deux plus quatre.
+
+00:44:14.576 --> 00:44:18.630
+Le carré de trente-cinq donne le reste quatre-vingt-un
+modulo cent quarante-trois.
+
+00:44:18.630 --> 00:44:23.075
+Le carré de ce reste, correspondant à la puissance quatre,
+donne cent
+
+00:44:23.075 --> 00:44:23.446
+vingt-six.
+
+00:44:23.446 --> 00:44:28.107
+On multiplie trente-cinq, quatre-vingt-un et cent vingt-six
+en réduisant modulo cent quarante-trois
+
+00:44:28.107 --> 00:44:30.049
+: on obtient cent trente-neuf.
+
+00:44:30.049 --> 00:44:35.135
+Le déchiffrement calcule cent trente-neuf puissance cent
+trois avec l’exponentiation rapide et
+
+00:44:35.135 --> 00:44:35.983
+retrouve trente-cinq.
+
+00:44:36.050 --> 00:44:38.326
+Pourquoi la construction fonctionne-t-elle ?
+
+00:44:38.326 --> 00:44:41.584
+Si m est premier avec n, Euler donne m puissance phi de
+
+00:44:41.584 --> 00:44:42.670
+n congru à un.
+
+00:44:42.670 --> 00:44:45.481
+Comme e fois d égale un plus k fois phi de n,
+
+00:44:45.481 --> 00:44:48.292
+m puissance e fois d est égal à m multiplié par une
+
+00:44:48.292 --> 00:44:49.932
+puissance de m puissance phi de n.
+
+00:44:49.932 --> 00:44:53.408
+Le second facteur vaut un modulo n ; il reste m.
+
+00:44:53.522 --> 00:44:56.590
+Mais le message peut être divisible par p ou par q.
+
+00:44:56.590 --> 00:44:59.114
+Il faut alors une preuve qui n’oublie pas ce cas.
+
+00:44:59.114 --> 00:45:01.025
+Raisonnons modulo p.
+
+00:45:01.025 --> 00:45:04.776
+Si p divise m, m et sa puissance positive valent tous deux
+
+00:45:04.776 --> 00:45:05.089
+zéro.
+
+00:45:05.089 --> 00:45:08.237
+Sinon Fermat donne m puissance p moins un congru à un ;
+
+00:45:08.237 --> 00:45:11.386
+l’exposant e fois d moins un étant multiple de p moins un,
+
+00:45:11.386 --> 00:45:14.010
+on retrouve encore m. Le même raisonnement vaut modulo q.
+
+00:45:14.010 --> 00:45:17.266
+Les deux résultats sont donc congrus à m modulo p et modulo
+
+00:45:17.266 --> 00:45:17.538
+q.
+
+00:45:17.538 --> 00:45:21.483
+Puisque p et q sont premiers entre eux, le théorème des
+restes
+
+00:45:21.483 --> 00:45:23.785
+chinois implique l’égalité modulo leur produit n.
+
+00:45:23.785 --> 00:45:26.090
+Cette preuve couvre aussi m égal zéro.
+
+00:45:26.210 --> 00:45:29.823
+Pour transformer un texte en entiers, il faut définir
+l’encodage et la
+
+00:45:29.823 --> 00:45:30.726
+taille des blocs.
+
+00:45:30.726 --> 00:45:34.500
+L’exemple p.67 avec p égal vingt-trois, q égal treize et e
+égal
+
+00:45:34.500 --> 00:45:38.275
+sept donne n égal deux cent quatre-vingt-dix-neuf, donc
+chaque octet inférieur à
+
+00:45:38.275 --> 00:45:40.792
+deux cent cinquante-six tient dans l’espace des messages.
+
+00:45:40.792 --> 00:45:44.656
+On encode le texte en UTF-8, on chiffre les octets, on les
+
+00:45:44.656 --> 00:45:46.910
+déchiffre puis on décode les octets retrouvés.
+
+00:45:46.910 --> 00:45:50.213
+Ce choix explicite résout la présence d’accents dans
+l’énoncé.
+
+00:45:50.330 --> 00:45:54.488
+L’attaque par diffusion du support montre qu’une primitive
+mathématique correcte ne suffit
+
+00:45:54.488 --> 00:45:56.567
+pas pour définir un chiffrement sûr.
+
+00:45:56.567 --> 00:46:00.727
+Supposons que le même entier M soit chiffré directement avec
+l’exposant trois
+
+00:46:00.727 --> 00:46:01.767
+pour trois destinataires.
+
+00:46:01.767 --> 00:46:04.267
+Leurs modulos sont deux à deux premiers entre eux.
+
+00:46:04.267 --> 00:46:07.720
+Un observateur récupère les trois restes de M au cube et
+connaît
+
+00:46:07.720 --> 00:46:08.871
+les trois modulos publics.
+
+00:46:08.871 --> 00:46:12.005
+Le théorème des restes chinois lui donne la classe de M au
+
+00:46:12.005 --> 00:46:13.833
+cube modulo le produit des trois modulos.
+
+00:46:13.946 --> 00:46:17.477
+Si M est inférieur à chacun des trois modulos, son cube est
+
+00:46:17.477 --> 00:46:18.949
+strictement inférieur à leur produit.
+
+00:46:18.949 --> 00:46:22.455
+Le représentant retrouvé par les restes chinois est alors
+exactement le cube
+
+00:46:22.455 --> 00:46:25.670
+de M, et non seulement un nombre congru à ce cube.
+
+00:46:25.670 --> 00:46:30.291
+Une racine cubique entière suffit à retrouver M ; aucune
+factorisation des
+
+00:46:30.291 --> 00:46:31.447
+modulos n’est nécessaire.
+
+00:46:31.514 --> 00:46:35.958
+Le cours utilise les modulos quatre-vingt-cinq, cent
+quarante-trois et cent trente-trois pour
+
+00:46:35.958 --> 00:46:37.069
+M égal soixante-deux.
+
+00:46:37.069 --> 00:46:41.017
+Les chiffrés valent soixante-treize, quatre-vingt-dix et
+cent vingt-cinq.
+
+00:46:41.017 --> 00:46:45.120
+La reconstruction donne deux cent trente-huit mille trois
+cent vingt-huit ; c’est
+
+00:46:45.120 --> 00:46:46.488
+exactement soixante-deux au cube.
+
+00:46:46.488 --> 00:46:49.522
+Le produit des modulos vaut un million six cent seize mille
+six
+
+00:46:49.522 --> 00:46:52.303
+cent quinze, donc le cube se trouve bien sous cette limite.
+
+00:46:52.370 --> 00:46:56.437
+Le complément pratique important est de distinguer RSA brut
+et un schéma
+
+00:46:56.437 --> 00:47:00.504
+d’encodage de chiffrement comme RSA-OAEP, décrit dans la RFC
+huit mille dix-sept.
+
+00:47:00.504 --> 00:47:04.082
+On ne réutilise pas les exercices sur de petits entiers
+comme bibliothèque
+
+00:47:04.082 --> 00:47:05.871
+de sécurité pour des données réelles.
+
+00:47:05.871 --> 00:47:09.719
+L’exposant public trois n’est pas à présenter comme un choix
+actuel universel
+
+00:47:09.719 --> 00:47:13.568
+des cartes bancaires : l’attaque enseignée repose sur des
+hypothèses précises de
+
+00:47:13.568 --> 00:47:16.134
+réutilisation du même message et d’absence d’encodage
+approprié.
+
+00:47:16.134 --> 00:47:21.004
+Dans notre code, le calcul reste volontairement pédagogique
+et identifié comme tel.
+
+00:47:21.122 --> 00:47:25.360
+Le petit théorème de Fermat donne une propriété nécessaire
+des nombres premiers.
+
+00:47:25.360 --> 00:47:27.974
+Si un entier n est premier et si la base a est
+
+00:47:27.974 --> 00:47:30.587
+comprise entre un et n moins un, alors a puissance n moins
+
+00:47:30.587 --> 00:47:32.111
+un est congru à un modulo n.
+
+00:47:32.111 --> 00:47:36.111
+Donc, si on trouve une base de cet intervalle qui échoue, n
+
+00:47:36.111 --> 00:47:37.111
+est certainement composé.
+
+00:47:37.111 --> 00:47:40.999
+C’est une application de la contraposée : si la conclusion
+nécessaire est
+
+00:47:40.999 --> 00:47:43.267
+fausse, l’hypothèse ne peut pas être vraie.
+
+00:47:43.346 --> 00:47:45.400
+La réciproque n’est pas garantie.
+
+00:47:45.400 --> 00:47:49.340
+Le nombre quatre-vingt-onze est composé, puisqu’il vaut sept
+fois treize, mais la
+
+00:47:49.340 --> 00:47:51.638
+base trois satisfait la congruence de Fermat.
+
+00:47:51.638 --> 00:47:55.374
+Pour le vérifier, on peut calculer les carrés successifs ou
+utiliser l’exponentiation
+
+00:47:55.374 --> 00:47:59.109
+rapide : trois puissance quatre est congru à moins dix ;
+trois
+
+00:47:59.109 --> 00:48:02.845
+puissance huit est congru à neuf ; les puissances permettent
+finalement de
+
+00:48:02.845 --> 00:48:04.401
+retrouver un pour l’exposant quatre-vingt-dix.
+
+00:48:04.401 --> 00:48:08.191
+On dit que quatre-vingt-onze est pseudopremier pour cette
+base, pas qu’il est
+
+00:48:08.191 --> 00:48:08.822
+devenu premier.
+
+00:48:08.930 --> 00:48:12.255
+Un nombre de Carmichael est un composé qui passe la
+congruence de
+
+00:48:12.255 --> 00:48:14.194
+Fermat pour toute base première avec lui.
+
+00:48:14.194 --> 00:48:17.298
+Cinq cent soixante et un vaut trois fois onze fois dix-sept
+;
+
+00:48:17.298 --> 00:48:20.402
+ses facteurs sont distincts et chacun de p moins un divise
+cinq
+
+00:48:20.402 --> 00:48:20.919
+cent soixante.
+
+00:48:20.919 --> 00:48:23.391
+Il trompe donc toutes les bases copremières.
+
+00:48:23.391 --> 00:48:26.969
+Une base qui partage un facteur avec lui peut néanmoins le
+détecter.
+
+00:48:26.969 --> 00:48:31.289
+Répéter Fermat n’offre ainsi pas, pour n’importe quel nombre
+composé, la garantie
+
+00:48:31.289 --> 00:48:33.089
+d’erreur que l’on pourrait imaginer.
+
+00:48:33.194 --> 00:48:36.594
+Les pourcentages de la p.73 ne doivent pas être repris comme
+une
+
+00:48:36.594 --> 00:48:39.995
+borne universelle de fiabilité : une probabilité dépend de
+la manière de
+
+00:48:39.995 --> 00:48:42.828
+choisir le nombre et les bases, et des hypothèses utilisées.
+
+00:48:42.828 --> 00:48:46.335
+Il faut distinguer « ce composé a échappé au test » et
+
+00:48:46.335 --> 00:48:49.842
+« quelle est la probabilité que le nombre tiré soit composé
+sachant
+
+00:48:49.842 --> 00:48:51.010
+le test réussi ».
+
+00:48:51.010 --> 00:48:53.392
+Ces deux probabilités ne se confondent pas.
+
+00:48:53.474 --> 00:48:55.911
+Miller–Rabin renforce le contrôle.
+
+00:48:55.911 --> 00:48:59.362
+Pour un entier impair n supérieur à trois, on écrit n moins
+
+00:48:59.362 --> 00:49:02.237
+un comme deux puissance s fois d, avec d impair.
+
+00:49:02.237 --> 00:49:05.257
+On obtient cette écriture en divisant n moins un par deux
+tant
+
+00:49:05.257 --> 00:49:06.515
+que le résultat est pair.
+
+00:49:06.515 --> 00:49:11.208
+Pour quatre-vingt-onze, quatre-vingt-dix égale deux fois
+quarante-cinq ; s vaut un et
+
+00:49:11.208 --> 00:49:11.990
+d quarante-cinq.
+
+00:49:11.990 --> 00:49:15.556
+Pour dix-sept, seize égale deux puissance quatre fois un.
+
+00:49:15.674 --> 00:49:18.526
+On choisit une base entre deux et n moins deux et on
+
+00:49:18.526 --> 00:49:20.427
+calcule x égal a puissance d modulo n.
+
+00:49:20.427 --> 00:49:24.009
+Si x vaut un ou moins un modulo n, cette base ne
+
+00:49:24.009 --> 00:49:25.203
+détecte pas de composition.
+
+00:49:25.203 --> 00:49:27.983
+Sinon on élève x au carré jusqu’à s moins un fois et
+
+00:49:27.983 --> 00:49:29.373
+on cherche la valeur moins un.
+
+00:49:29.373 --> 00:49:31.966
+Si elle n’apparaît pas, n est composé.
+
+00:49:31.966 --> 00:49:35.427
+Pourquoi cela examine-t-il quelque chose de plus précis que
+Fermat ?
+
+00:49:35.427 --> 00:49:38.127
+Dans un corps modulo un premier, les racines de x carré égal
+
+00:49:38.127 --> 00:49:40.828
+un sont seulement un et moins un, car x moins un fois
+
+00:49:40.828 --> 00:49:43.529
+x plus un vaut zéro et le corps n’a pas de diviseurs
+
+00:49:43.529 --> 00:49:43.979
+de zéro.
+
+00:49:43.979 --> 00:49:47.927
+Une chaîne de carrés compatible avec un premier doit
+respecter cette structure.
+
+00:49:48.050 --> 00:49:51.570
+Pour un composé impair fixé, au plus un quart des bases du
+
+00:49:51.570 --> 00:49:53.037
+domaine standard peuvent le tromper.
+
+00:49:53.037 --> 00:49:56.955
+Avec t bases choisies uniformément et indépendamment, la
+probabilité de toutes les
+
+00:49:56.955 --> 00:49:59.893
+manquer est donc au plus quatre puissance moins t.
+
+00:49:59.893 --> 00:50:03.473
+C’est une borne conditionnelle pour un composé fixé et un
+choix de
+
+00:50:03.473 --> 00:50:07.054
+bases spécifié ; ce n’est pas directement une probabilité a
+posteriori que
+
+00:50:07.054 --> 00:50:08.247
+le candidat soit premier.
+
+00:50:08.247 --> 00:50:13.248
+Un résultat positif signifie « probablement premier », alors
+qu’un témoin négatif
+
+00:50:13.248 --> 00:50:14.499
+prouve la composition.
+
+00:50:14.594 --> 00:50:18.500
+Le code traite zéro, un, deux, trois et les pairs avant de
+
+00:50:18.500 --> 00:50:21.755
+choisir une base, puis effectue cette décomposition et cette
+boucle.
+
+00:50:21.755 --> 00:50:25.781
+Cette préparation empêche notamment de tirer une base dans
+un intervalle vide.
+
+00:50:25.781 --> 00:50:29.228
+Le contrôle sera comparé au test exact par divisions sur de
+petites
+
+00:50:29.228 --> 00:50:30.952
+valeurs et à des composés connus.
+
+00:50:31.058 --> 00:50:34.520
+Pour générer un candidat de exactement k bits, tirer un
+nombre avec
+
+00:50:34.520 --> 00:50:37.983
+k bits aléatoires ne suffit pas : les premiers bits peuvent
+être
+
+00:50:37.983 --> 00:50:38.271
+nuls.
+
+00:50:38.271 --> 00:50:40.558
+On force donc le bit de poids fort à un.
+
+00:50:40.558 --> 00:50:43.326
+On force aussi le bit le plus faible à un pour ne
+
+00:50:43.326 --> 00:50:44.480
+tester que des nombres impairs.
+
+00:50:44.480 --> 00:50:48.290
+En Python, le module secrets fournit l’aléa destiné aux
+usages sensibles ;
+
+00:50:48.290 --> 00:50:52.100
+ce choix est plus approprié que le générateur random pour
+les secrets.
+
+00:50:52.100 --> 00:50:56.070
+Après de petits tests de divisibilité, on applique le test
+de primalité
+
+00:50:56.070 --> 00:50:58.716
+retenu et on recommence si le candidat échoue.
+
+00:50:58.778 --> 00:51:02.143
+Le support demande ensuite un RSA avec des blocs de deux
+cent
+
+00:51:02.143 --> 00:51:05.508
+cinquante-six bits et un module n strictement supérieur à
+deux puissance deux
+
+00:51:05.508 --> 00:51:06.069
+cent cinquante-six.
+
+00:51:06.069 --> 00:51:09.880
+Il faut respecter cette inégalité, pas seulement choisir une
+taille portant le
+
+00:51:09.880 --> 00:51:10.515
+même nom.
+
+00:51:10.515 --> 00:51:13.999
+Par exemple, deux premiers d’exactement cent trente bits ont
+un produit d’au
+
+00:51:13.999 --> 00:51:17.484
+moins deux puissance deux cent cinquante-huit, donc chaque
+entier d’un bloc de
+
+00:51:17.484 --> 00:51:18.936
+trente-deux octets tient sous n.
+
+00:51:18.936 --> 00:51:22.646
+Ces petites tailles restent celles d’un exercice, pas un
+choix de sécurité
+
+00:51:22.646 --> 00:51:23.883
+pour un service réel.
+
+00:51:23.954 --> 00:51:27.309
+Si e est fixé à sept, certains couples de premiers ne
+conviennent
+
+00:51:27.309 --> 00:51:30.664
+pas : dès que sept divise phi de n, l’inverse privé n’existe
+
+00:51:30.664 --> 00:51:30.943
+pas.
+
+00:51:30.943 --> 00:51:33.178
+Il faut alors tirer d’autres premiers.
+
+00:51:33.178 --> 00:51:35.257
+On vérifie aussi qu’ils sont distincts.
+
+00:51:35.257 --> 00:51:39.018
+La génération rend ces conditions explicites plutôt que de
+laisser une erreur
+
+00:51:39.018 --> 00:51:40.586
+apparaître au moment du déchiffrement.
+
+00:51:40.658 --> 00:51:44.839
+Un texte se convertit d’abord en octets UTF-8, puis en blocs
+de
+
+00:51:44.839 --> 00:51:46.582
+trente-deux octets, enfin en entiers.
+
+00:51:46.582 --> 00:51:50.651
+Pour revenir, il faut connaître la longueur de chaque bloc,
+surtout du
+
+00:51:50.651 --> 00:51:50.990
+dernier.
+
+00:51:50.990 --> 00:51:54.992
+Sans cette information, un octet nul placé au début pourrait
+disparaître pendant
+
+00:51:54.992 --> 00:51:57.661
+la conversion et l’aller-retour ne serait plus fidèle.
+
+00:51:57.661 --> 00:52:01.634
+Le corrigé joint conserve donc les longueurs, teste les
+accents et les
+
+00:52:01.634 --> 00:52:05.277
+octets nuls, et vérifie l’égalité exacte du message avant et
+après.
+
+00:52:05.277 --> 00:52:09.136
+La réussite sur un exemple ne remplace pas la vérification
+des conditions
+
+00:52:09.136 --> 00:52:09.779
+de construction.
+
+00:52:09.890 --> 00:52:12.669
+Le problème du sac à dos possède plusieurs variantes.
+
+00:52:12.669 --> 00:52:16.424
+Dans la variante d’optimisation, chaque objet a un poids et
+une valeur
+
+00:52:16.424 --> 00:52:19.866
+; on cherche une valeur totale maximale sans dépasser une
+capacité.
+
+00:52:19.866 --> 00:52:23.756
+Dans la variante utilisée ici pour la cryptographie, on
+cherche exactement une
+
+00:52:23.756 --> 00:52:26.998
+somme cible : chaque objet est soit présent, soit absent.
+
+00:52:26.998 --> 00:52:31.327
+Un bit b égal un signifie présent ; zéro signifie absent.
+
+00:52:31.327 --> 00:52:34.590
+La somme des poids sélectionnés doit être exactement W.
+
+00:52:34.706 --> 00:52:39.023
+Pour l’exemple d’optimisation p.76, les objets ont les poids
+treize, douze, huit
+
+00:52:39.023 --> 00:52:43.340
+et dix, et les valeurs sept, quatre, trois et trois ; la
+
+00:52:43.340 --> 00:52:44.419
+capacité vaut trente.
+
+00:52:44.419 --> 00:52:47.496
+Les deux premiers donnent une valeur onze pour un poids
+vingt-cinq.
+
+00:52:47.496 --> 00:52:51.761
+Les autres combinaisons admissibles ne dépassent pas cette
+valeur ; le corrigé
+
+00:52:51.761 --> 00:52:53.182
+vérifie les seize sous-ensembles.
+
+00:52:53.182 --> 00:52:57.953
+Pour l’exemple de somme exacte p.77, les poids cinquante-
+quatre, vingt-sept, soixante et
+
+00:52:57.953 --> 00:53:02.327
+onze, cinquante-six et seize sont associés à la cible cent
+quarante-neuf.
+
+00:53:02.327 --> 00:53:06.617
+La vérification exhaustive des trente-deux choix possibles
+ne trouve aucune solution.
+
+00:53:06.617 --> 00:53:10.159
+Cela donne une raison de contrôler un énoncé plutôt que
+d’inventer une
+
+00:53:10.159 --> 00:53:13.702
+combinaison : un problème de somme exacte peut très bien
+n’avoir aucune
+
+00:53:13.702 --> 00:53:13.997
+solution.
+
+00:53:14.090 --> 00:53:17.678
+Une suite est supercroissante quand chaque poids dépasse la
+somme de tous
+
+00:53:17.678 --> 00:53:18.276
+les précédents.
+
+00:53:18.276 --> 00:53:23.540
+Pour deux, trois, six, douze, trois dépasse deux, six
+dépasse cinq et
+
+00:53:23.540 --> 00:53:24.856
+douze dépasse onze.
+
+00:53:24.856 --> 00:53:28.053
+En partant du plus grand poids, le choix devient forcé.
+
+00:53:28.053 --> 00:53:31.103
+Si la cible restante vaut au moins ce poids, il faut le
+
+00:53:31.103 --> 00:53:34.153
+prendre, car tous les poids plus petits réunis ne pourraient
+pas le
+
+00:53:34.153 --> 00:53:34.407
+remplacer.
+
+00:53:34.407 --> 00:53:36.196
+Sinon il ne faut pas le prendre.
+
+00:53:36.196 --> 00:53:40.130
+Pour quinze, on prend douze, on laisse six, on prend trois,
+on
+
+00:53:40.130 --> 00:53:43.408
+laisse deux : les bits sont zéro, un, zéro, un.
+
+00:53:43.514 --> 00:53:47.379
+L’algorithme est glouton : il fait un choix local définitif
+à chaque
+
+00:53:47.379 --> 00:53:47.701
+étape.
+
+00:53:47.701 --> 00:53:51.054
+Ce choix est justifié par l’hypothèse supercroissante.
+
+00:53:51.054 --> 00:53:55.464
+Pour des poids quelconques, un glouton peut échouer même
+lorsqu’une solution existe.
+
+00:53:55.464 --> 00:53:58.875
+Il faut donc vérifier la propriété avant d’utiliser la
+recette et vérifier
+
+00:53:58.875 --> 00:54:00.580
+que le reste final vaut zéro.
+
+00:54:00.650 --> 00:54:04.747
+Merkle–Hellman transforme une suite facile à décoder en une
+suite publique qui
+
+00:54:04.747 --> 00:54:07.138
+ne montre plus directement sa structure supercroissante.
+
+00:54:07.137 --> 00:54:10.796
+La clé privée comprend la suite w, un module N strictement
+supérieur
+
+00:54:10.796 --> 00:54:14.454
+à la somme des poids et un multiplicateur A premier avec N.
+
+00:54:14.454 --> 00:54:17.967
+On publie pour chaque poids son produit par A réduit modulo
+N.
+
+00:54:17.967 --> 00:54:22.108
+Pour chiffrer un bloc de bits, on additionne les poids
+publics sélectionnés,
+
+00:54:22.108 --> 00:54:24.179
+sans réduire nécessairement cette somme publique.
+
+00:54:24.290 --> 00:54:28.529
+Pour déchiffrer, on multiplie cette somme par l’inverse de A
+modulo N.
+
+00:54:28.529 --> 00:54:32.277
+On retrouve alors la somme des poids privés sélectionnés
+modulo N.
+
+00:54:32.278 --> 00:54:35.252
+Pourquoi est-ce une somme exacte, et pas seulement un reste
+?
+
+00:54:35.252 --> 00:54:38.479
+Parce que toutes les sommes de poids privés sont inférieures
+à N,
+
+00:54:38.479 --> 00:54:40.093
+puisque N dépasse leur somme totale.
+
+00:54:40.093 --> 00:54:43.535
+On peut donc appliquer le glouton à la véritable cible
+privée et
+
+00:54:43.535 --> 00:54:44.396
+retrouver les bits.
+
+00:54:44.474 --> 00:54:47.132
+Reprenons chaque calcul de la p.80.
+
+00:54:47.132 --> 00:54:50.699
+Pour la suite deux, trois, six, douze, le module quarante-
+sept et le
+
+00:54:50.699 --> 00:54:54.266
+multiplicateur dix-sept, deux fois dix-sept vaut trente-
+quatre, trois fois dix-sept vaut cinquante
+
+00:54:54.266 --> 00:54:57.833
+et un donc quatre, six fois dix-sept vaut cent deux donc
+huit,
+
+00:54:57.833 --> 00:55:00.806
+et douze fois dix-sept vaut deux cent quatre donc seize.
+
+00:55:00.806 --> 00:55:05.133
+Les quatre valeurs publiques sont donc trente-quatre,
+quatre, huit et seize.
+
+00:55:05.133 --> 00:55:08.871
+L’inverse de dix-sept modulo quarante-sept vaut trente-six :
+leur produit vaut six
+
+00:55:08.871 --> 00:55:11.674
+cent douze, qui est un plus treize fois quarante-sept.
+
+00:55:11.810 --> 00:55:16.092
+Pour les bits un, zéro, un, un, la somme publique vaut
+trente-quatre
+
+00:55:16.092 --> 00:55:18.234
+plus huit plus seize, soit cinquante-huit.
+
+00:55:18.234 --> 00:55:22.541
+Trente-six fois cinquante-huit vaut deux mille quatre-vingt-
+huit, dont le reste modulo quarante-sept
+
+00:55:22.541 --> 00:55:23.259
+vaut vingt.
+
+00:55:23.259 --> 00:55:27.260
+Le glouton retrouve douze, six et deux, donc les bits
+initiaux.
+
+00:55:27.260 --> 00:55:31.496
+En revanche, la formulation générale de la p.79 demande des
+précautions :
+
+00:55:31.496 --> 00:55:35.378
+une congruence de sommes n’est pas automatiquement une
+égalité de sommes.
+
+00:55:35.378 --> 00:55:38.501
+Et la sécurité ne découle pas du simple fait que le problème
+
+00:55:38.501 --> 00:55:40.323
+général de sac à dos est NP-complet.
+
+00:55:40.323 --> 00:55:44.456
+Le système original de Merkle–Hellman est historiquement
+cassé ; il sert ici
+
+00:55:44.456 --> 00:55:46.523
+à comprendre une construction à trappe.

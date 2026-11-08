@@ -1,0 +1,17 @@
+{
+  "checks": 28281,
+  "result": "success",
+  "elgamal": {
+    "Q": 566,
+    "C1": 105,
+    "masque": 466,
+    "C2": 237,
+    "clair": 192
+  },
+  "rsa_p67": {
+    "n": 299,
+    "phi": 264,
+    "d": 151
+  },
+  "sac_a_dos_149": []
+}

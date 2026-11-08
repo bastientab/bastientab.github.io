@@ -1,0 +1,75 @@
+{
+  "duration": 3346.5839999999994,
+  "chapters": [
+    {
+      "index": 0,
+      "title": "Comprendre le langage du cours",
+      "start": 0
+    },
+    {
+      "index": 1,
+      "title": "Complexité et difficulté des problèmes",
+      "start": 271.32
+    },
+    {
+      "index": 2,
+      "title": "Divisibilité, nombres premiers et factorisation",
+      "start": 552.648
+    },
+    {
+      "index": 3,
+      "title": "PGCD, PPCM, Euclide et Bézout",
+      "start": 824.4
+    },
+    {
+      "index": 4,
+      "title": "Équations entières et théorème de Gauss",
+      "start": 1079.496
+    },
+    {
+      "index": 5,
+      "title": "Congruences, classes et inverses modulaires",
+      "start": 1245.4800000000005
+    },
+    {
+      "index": 6,
+      "title": "César, affine et Hill : retrouver le message",
+      "start": 1522.5840000000005
+    },
+    {
+      "index": 7,
+      "title": "Combiner plusieurs congruences",
+      "start": 1730.7120000000002
+    },
+    {
+      "index": 8,
+      "title": "Indicatrice d’Euler, petit théorème de Fermat et théorème d’Euler",
+      "start": 1908.6240000000003
+    },
+    {
+      "index": 9,
+      "title": "Puissances rapides, ordre et logarithme discret",
+      "start": 2089.248
+    },
+    {
+      "index": 10,
+      "title": "Diffie–Hellman et ElGamal",
+      "start": 2372.0879999999997
+    },
+    {
+      "index": 11,
+      "title": "RSA, de la génération des clés à l’attaque par diffusion",
+      "start": 2557.9679999999994
+    },
+    {
+      "index": 12,
+      "title": "Fermat, Carmichael, Miller–Rabin et génération de premiers",
+      "start": 2841.0719999999997
+    },
+    {
+      "index": 13,
+      "title": "Sac à dos, suites supercroissantes et Merkle–Hellman",
+      "start": 3129.8399999999997
+    }
+  ]
+}
