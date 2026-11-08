@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Maths — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Fiche de révision Maths (BUT R&amp;T) : étude de fonctions, fonctions usuelles, nombres complexes, polynômes, primitives et intégrales, avec outils interactifs.">
+  <meta name="description" content="Maths : contenu à préparer.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -25,14 +25,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
   <link rel="stylesheet" href="../assets/css/cours.css?v=1">
-
-  <script>
-    window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
-      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'input'] }
-    };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -70,312 +62,52 @@
     <section class="c-hero" aria-labelledby="page-title">
       <div class="container">
         <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">∑</span><span class="c-status is-ready">Fiche dispo</span></div>
+        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">∑</span><span class="c-status is-todo">À préparer</span></div>
         <h1 class="page-title" id="page-title">Maths</h1>
-        <p class="page-lead">Fonctions, complexes, polynômes, intégrales — avec outils interactifs.</p>
-        <div class="c-meta"><span class="c-tag">Tronc commun</span><span class="c-tag">7 outils</span></div>
+        <p class="page-lead">Contenu à préparer.</p>
       </div>
     </section>
-
     <div class="container c-layout">
       <nav class="c-toc" aria-label="Sommaire de la fiche">
         <p class="c-toc-title">Sommaire</p>
         <ol>
-          <li><a href="#intro">Introduction</a></li>
-          <li><a href="#ch1">Étude d'une fonction</a></li>
-          <li><a href="#ch2">Fonctions usuelles</a></li>
-          <li><a href="#ch3">Nombres complexes</a></li>
-          <li><a href="#ch4">Polynômes &amp; fractions</a></li>
-          <li><a href="#ch5">Primitives &amp; intégrales</a></li>
+          <li><a href="#documents">Documents originaux</a></li>
+          <li><a href="#cours">Cours expliqué point par point</a></li>
+          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
+          <li><a href="#video">Vidéo explicative approfondie</a></li>
+          <li><a href="#fiche">Fiche des notions essentielles</a></li>
+          <li><a href="#quiz">Quiz et mises en situation</a></li>
         </ol>
       </nav>
-
       <article class="c-content">
-        <!-- ===== Introduction ===== -->
-        <section class="c-section" id="intro" aria-labelledby="intro-t">
-          <h2 class="c-h2" id="intro-t"><span class="c-num">00</span>Introduction</h2>
-          <p class="c-lead">Synthèse du module de maths : étude de fonctions, fonctions usuelles, nombres complexes, polynômes et fractions rationnelles, primitives et intégrales. Chaque chapitre a son outil interactif pour vérifier tes calculs.</p>
-          <div class="c-callout">
-            <p><strong>Syntaxe des outils :</strong> <code>x**2</code> (ou <code>x^2</code>) pour x², <code>2*x</code> (le « * » est obligatoire), <code>sqrt(x)</code>, <code>exp(x)</code>, <code>ln(x)</code> (népérien), <code>log(x)</code> (base 10), <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>arctan</code>, <code>abs</code>, <code>pi</code>, <code>e</code>. La syntaxe <code>Math.sin(x)</code> marche aussi. Les résultats se mettent à jour pendant que tu tapes.</p>
-          </div>
+        <section class="c-section" id="documents" aria-labelledby="documents-title">
+          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
+          <p class="c-empty">Contenu à préparer.</p>
         </section>
 
-        <!-- ===== Chapitre I ===== -->
-        <section class="c-section" id="ch1" aria-labelledby="ch1-t">
-          <h2 class="c-h2" id="ch1-t"><span class="c-num">01</span>Étude d'une fonction réelle</h2>
-
-          <h3 class="c-h3">Continuité</h3>
-          <p>\(f\) est <strong>continue en \(a\)</strong> si \(\displaystyle\lim_{x \to a} f(x) = f(a)\). Elle est continue sur un intervalle si elle l'est en tout point de cet intervalle.</p>
-          <p>Limites à gauche et à droite : \(\lim_{x \to a^-} f(x)\) et \(\lim_{x \to a^+} f(x)\). \(f\) est continue en \(a\) si ces deux limites existent et valent \(f(a)\).</p>
-          <div class="c-block">
-            <p><strong>Exemple 1.</strong> \(f(x) = 2|x-1| + 1\) est continue sur \(\mathbb{R}\) (composée et somme de fonctions continues), mais elle n'est pas dérivable en \(x = 1\) : point anguleux (teste-le dans l'outil dérivée avec <code>2*abs(x-1)+1</code> et x₀ = 1).</p>
-            <p><strong>Exemple 2.</strong> \(g(x) = \dfrac{x-1}{\sqrt{x+8}-3}\) n'est pas définie en 1. Avec la quantité conjuguée : \(g(x) = \dfrac{(x-1)(\sqrt{x+8}+3)}{(x+8)-9} = \sqrt{x+8}+3 \xrightarrow[x \to 1]{} 6\). On prolonge par continuité avec \(g(1) = 6\).</p>
-          </div>
-
-          <h3 class="c-h3">Théorème des valeurs intermédiaires (TVI)</h3>
-          <p>Si \(f\) est continue sur \([a, b]\), alors pour tout réel \(\lambda\) compris entre \(f(a)\) et \(f(b)\), il existe au moins un \(c \in [a, b]\) tel que \(f(c) = \lambda\).</p>
-          <div class="c-callout"><p>Cas classique : si \(f(a)\) et \(f(b)\) sont de signes contraires, \(f\) s'annule au moins une fois sur \([a, b]\). Si en plus \(f\) est strictement monotone, la solution est <strong>unique</strong>.</p></div>
-
-          <h3 class="c-h3">Bijection</h3>
-          <p>Si \(f\) est continue et strictement monotone sur \(I\), alors \(f\) réalise une bijection de \(I\) sur \(f(I)\). Sa réciproque \(f^{-1}\) est continue, de même sens de variation, et sa courbe est la symétrique de celle de \(f\) par rapport à la droite \(y = x\).</p>
-
-          <div class="tool" id="tool-tvi">
-            <h4 class="tool-title">Outil — TVI &amp; dichotomie</h4>
-            <p class="tool-desc">Cherche une solution de f(x) = λ sur [a, b] par dichotomie (100 itérations).</p>
-            <div class="tool-grid">
-              <div class="field wide"><label for="an-fx">f(x)</label><input id="an-fx" type="text" value="x**3 - x - 2" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="an-a">a</label><input id="an-a" type="text" value="1" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="an-b">b</label><input id="an-b" type="text" value="2" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="an-lambda">λ</label><input id="an-lambda" type="text" value="0" spellcheck="false" autocomplete="off"></div>
-            </div>
-            <div class="tool-result" id="an-res" aria-live="polite"></div>
-            <canvas id="an-canvas" role="img" aria-label="Courbe de f, droite y = lambda et solution trouvée"></canvas>
-            <div class="tool-legend"><span><i style="background:var(--accent)"></i>f(x)</span><span><i style="background:var(--c-alt)"></i>y = λ et solution c</span><span><i style="background:var(--ink-3)"></i>bornes a et b</span></div>
-          </div>
-
-          <h3 class="c-h3">Dérivabilité</h3>
-          <p>\(f\) est dérivable en \(a\) si le taux d'accroissement \(\dfrac{f(a+h) - f(a)}{h}\) admet une limite finie quand \(h \to 0\). Cette limite est le nombre dérivé \(f'(a)\).</p>
-          <p><strong>Dérivées usuelles</strong></p>
-          <ul class="formula-list">
-            <li class="formula-item">\((k)' = 0\)</li>
-            <li class="formula-item">\((x)' = 1\)</li>
-            <li class="formula-item">\((x^n)' = n\,x^{n-1}\)</li>
-            <li class="formula-item">\(\left(\frac{1}{x}\right)' = -\frac{1}{x^2}\)</li>
-            <li class="formula-item">\((\sqrt{x})' = \frac{1}{2\sqrt{x}}\)</li>
-            <li class="formula-item">\((e^x)' = e^x\)</li>
-            <li class="formula-item">\((\ln x)' = \frac{1}{x}\)</li>
-            <li class="formula-item">\((\sin x)' = \cos x\)</li>
-            <li class="formula-item">\((\cos x)' = -\sin x\)</li>
-            <li class="formula-item">\((\tan x)' = 1 + \tan^2 x = \frac{1}{\cos^2 x}\)</li>
-            <li class="formula-item">\((a^x)' = \ln(a)\,a^x\)</li>
-          </ul>
-          <p><strong>Opérations</strong></p>
-          <ul class="formula-list">
-            <li class="formula-item"><span class="lbl">Somme</span>\((u+v)' = u' + v'\)</li>
-            <li class="formula-item"><span class="lbl">Produit</span>\((uv)' = u'v + uv'\)</li>
-            <li class="formula-item"><span class="lbl">Quotient</span>\(\left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2}\)</li>
-            <li class="formula-item"><span class="lbl">Composée</span>\((u \circ v)' = v' \cdot (u' \circ v)\)</li>
-            <li class="formula-item"><span class="lbl">Réciproque</span>\((f^{-1})'(y) = \frac{1}{f'(f^{-1}(y))}\)</li>
-          </ul>
-
-          <h3 class="c-h3">Tangente</h3>
-          <p>La tangente à la courbe de \(f\) au point d'abscisse \(x_0\) a pour équation :</p>
-          \[ y = f'(x_0)(x - x_0) + f(x_0) \]
-
-          <div class="tool" id="tool-derivee">
-            <h4 class="tool-title">Outil — Dérivée &amp; tangente</h4>
-            <p class="tool-desc">Calcule f'(x₀) numériquement, détecte les points anguleux et trace la tangente.</p>
-            <div class="tool-grid">
-              <div class="field wide"><label for="der-fx">f(x)</label><input id="der-fx" type="text" value="Math.sin(x) * Math.exp(x)" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="der-x0">x₀</label><input id="der-x0" type="text" value="0" spellcheck="false" autocomplete="off"></div>
-            </div>
-            <div class="tool-result" id="der-res" aria-live="polite"></div>
-            <canvas id="der-canvas" role="img" aria-label="Courbe de f et tangente au point x0"></canvas>
-            <div class="tool-legend"><span><i style="background:var(--accent)"></i>f(x)</span><span><i style="background:var(--c-alt)"></i>tangente en x₀</span></div>
-          </div>
-
-          <h3 class="c-h3">Asymptotes</h3>
-          <ul>
-            <li><strong>Verticale :</strong> si \(\lim_{x \to a} f(x) = \pm\infty\), la droite \(x = a\) est asymptote verticale.</li>
-            <li><strong>Horizontale :</strong> si \(\lim_{x \to \pm\infty} f(x) = \ell\), la droite \(y = \ell\) est asymptote horizontale.</li>
-            <li><strong>Oblique :</strong> si \(\lim_{x \to \pm\infty} \big[f(x) - (ax + b)\big] = 0\), la droite \(y = ax + b\) est asymptote oblique, avec \(a = \lim \frac{f(x)}{x}\) et \(b = \lim \big[f(x) - ax\big]\).</li>
-          </ul>
-
-          <div class="tool" id="tool-asym">
-            <h4 class="tool-title">Outil — Asymptotes</h4>
-            <p class="tool-desc">Cherche les asymptotes horizontales/obliques en ±∞ et les asymptotes verticales (racines du dénominateur, à écrire entre parenthèses).</p>
-            <div class="tool-grid">
-              <div class="field wide"><label for="as-fx">f(x)</label><input id="as-fx" type="text" value="(x**2 + 1) / (x - 1)" spellcheck="false" autocomplete="off"></div>
-            </div>
-            <div class="tool-result" id="as-res" aria-live="polite"></div>
-            <canvas id="as-canvas" role="img" aria-label="Courbe de f et ses asymptotes"></canvas>
-            <div class="tool-legend"><span><i style="background:var(--accent)"></i>f(x)</span><span><i style="background:var(--c-alt)"></i>asymptotes</span></div>
-          </div>
+        <section class="c-section" id="cours" aria-labelledby="cours-title">
+          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
+          <p class="c-empty">Contenu à préparer.</p>
         </section>
 
-        <!-- ===== Chapitre II ===== -->
-        <section class="c-section" id="ch2" aria-labelledby="ch2-t">
-          <h2 class="c-h2" id="ch2-t"><span class="c-num">02</span>Fonctions usuelles</h2>
-
-          <h3 class="c-h3">Exponentielle</h3>
-          <p>Définie sur \(\mathbb{R}\), strictement positive et croissante, \(e^0 = 1\) et \(e^{a+b} = e^a e^b\).</p>
-          <ul class="formula-list">
-            <li class="formula-item">\(\lim_{x \to +\infty} e^x = +\infty\)</li>
-            <li class="formula-item">\(\lim_{x \to -\infty} e^x = 0\)</li>
-            <li class="formula-item"><span class="lbl">Croissances comparées</span>\(\lim_{x \to +\infty} \frac{e^x}{x^n} = +\infty\)</li>
-            <li class="formula-item"><span class="lbl">Croissances comparées</span>\(\lim_{x \to -\infty} x^n e^x = 0\)</li>
-          </ul>
-
-          <h3 class="c-h3">Logarithme népérien</h3>
-          <p>Réciproque de l'exponentielle, défini sur \(]0, +\infty[\).</p>
-          <ul class="formula-list">
-            <li class="formula-item">\(\ln(1) = 0\)</li>
-            <li class="formula-item">\(\ln(e) = 1\)</li>
-            <li class="formula-item">\(\ln(ab) = \ln a + \ln b\)</li>
-            <li class="formula-item">\(\ln\left(\frac{a}{b}\right) = \ln a - \ln b\)</li>
-            <li class="formula-item">\(\ln(a^n) = n \ln a\)</li>
-            <li class="formula-item">\(\lim_{x \to 0^+} \ln x = -\infty\)</li>
-            <li class="formula-item">\(\lim_{x \to +\infty} \frac{\ln x}{x} = 0\)</li>
-          </ul>
-
-          <h3 class="c-h3">Fonctions trigonométriques réciproques</h3>
-          <div class="c-table-wrap">
-            <table class="c-table">
-              <thead><tr><th>Fonction</th><th>Définie sur</th><th>À valeurs dans</th><th>Dérivée</th></tr></thead>
-              <tbody>
-                <tr><td>\(\arcsin\)</td><td>\([-1, 1]\)</td><td>\(\left[-\frac{\pi}{2}, \frac{\pi}{2}\right]\)</td><td>\(\frac{1}{\sqrt{1-x^2}}\) sur \(]-1, 1[\)</td></tr>
-                <tr><td>\(\arccos\)</td><td>\([-1, 1]\)</td><td>\([0, \pi]\)</td><td>\(-\frac{1}{\sqrt{1-x^2}}\) sur \(]-1, 1[\)</td></tr>
-                <tr><td>\(\arctan\)</td><td>\(\mathbb{R}\)</td><td>\(\left]-\frac{\pi}{2}, \frac{\pi}{2}\right[\)</td><td>\(\frac{1}{1+x^2}\)</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3 class="c-h3">Développement limité (Mac Laurin)</h3>
-          <p>Au voisinage de 0, une fonction assez dérivable s'approche par un polynôme :</p>
-          \[ f(x) = \sum_{k=0}^{n} \frac{f^{(k)}(0)}{k!}\,x^k + o(x^n) \]
-
-          <div class="tool" id="tool-dl">
-            <h4 class="tool-title">Outil — Développement limité en 0</h4>
-            <p class="tool-desc">Calcule le DL de Mac Laurin à l'ordre n (0 à 8) et compare la courbe au polynôme.</p>
-            <div class="tool-grid">
-              <div class="field wide"><label for="dl-fx">f(x)</label><input id="dl-fx" type="text" value="Math.cos(x)" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="dl-n">ordre n</label><input id="dl-n" type="text" value="4" inputmode="numeric" spellcheck="false" autocomplete="off"></div>
-            </div>
-            <div class="tool-result" id="dl-res" aria-live="polite"></div>
-            <canvas id="dl-canvas" role="img" aria-label="Courbe de f et de son polynôme de Taylor"></canvas>
-            <div class="tool-legend"><span><i style="background:var(--accent)"></i>f(x)</span><span><i style="background:var(--c-alt)"></i>polynôme de Taylor</span></div>
-          </div>
+        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
+          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
+          <p class="c-empty">Contenu à préparer.</p>
         </section>
 
-        <!-- ===== Chapitre III ===== -->
-        <section class="c-section" id="ch3" aria-labelledby="ch3-t">
-          <h2 class="c-h2" id="ch3-t"><span class="c-num">03</span>Nombres complexes</h2>
-
-          <h3 class="c-h3">Forme algébrique</h3>
-          <p>\(z = a + ib\) avec \(a = \mathrm{Re}(z)\), \(b = \mathrm{Im}(z)\) et \(i^2 = -1\).</p>
-          <ul class="formula-list">
-            <li class="formula-item"><span class="lbl">Conjugué</span>\(\bar{z} = a - ib\)</li>
-            <li class="formula-item"><span class="lbl">Module</span>\(|z| = \sqrt{a^2 + b^2} = \sqrt{z\bar{z}}\)</li>
-            <li class="formula-item"><span class="lbl">Inverse</span>\(\frac{1}{z} = \frac{\bar{z}}{|z|^2}\)</li>
-          </ul>
-
-          <h3 class="c-h3">Formes trigonométrique &amp; exponentielle</h3>
-          <p>\(z = r(\cos\theta + i\sin\theta) = r\,e^{i\theta}\) avec \(r = |z|\) et \(\theta = \arg z\) : \(\cos\theta = \frac{a}{r}\), \(\sin\theta = \frac{b}{r}\).</p>
-          <ul class="formula-list">
-            <li class="formula-item">\(e^{a+ib} = e^a\,e^{ib}\)</li>
-            <li class="formula-item">\(e^{i\theta}\,e^{i\varphi} = e^{i(\theta+\varphi)}\)</li>
-            <li class="formula-item"><span class="lbl">Moivre</span>\(\left(e^{i\theta}\right)^n = e^{in\theta}\)</li>
-            <li class="formula-item"><span class="lbl">Euler</span>\(\cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2}\)</li>
-            <li class="formula-item"><span class="lbl">Euler</span>\(\sin\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}\)</li>
-          </ul>
-          <p><strong>Angle moitié</strong> (factorisation très utile) :</p>
-          \[ e^{ix} + e^{iy} = 2\,e^{i\frac{x+y}{2}} \cos\left(\frac{x-y}{2}\right) \]
-
-          <h3 class="c-h3">Racines n-ièmes</h3>
-          <p>Les solutions de \(z^n = r\,e^{i\theta}\) sont les \(n\) complexes \(z_k = r^{1/n}\,e^{i\frac{\theta + 2k\pi}{n}}\), pour \(k = 0, \dots, n-1\). Cas particulier : les racines n-ièmes de l'unité \(e^{2ik\pi/n}\).</p>
-
-          <div class="c-callout">
-            <p><strong>Lien avec les télécoms : le phaseur.</strong> Le signal \(s(t) = A\cos(\omega t + \varphi)\) est représenté par le complexe \(\underline{S} = A\,e^{i\varphi}\), avec \(s(t) = \mathrm{Re}\left(\underline{S}\,e^{i\omega t}\right)\). Additionner deux signaux de même pulsation revient à additionner leurs phaseurs.</p>
-          </div>
-
-          <div class="tool" id="tool-complexes">
-            <h4 class="tool-title">Outil — Calculatrice de complexes</h4>
-            <p class="tool-desc">Saisis z = a + ib sous la forme « a, b » (ex. « sqrt(3), 1 »).</p>
-            <div class="tool-grid">
-              <div class="field"><label for="cx-z1">z₁ (a, b)</label><input id="cx-z1" type="text" value="1, 2" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="cx-z2">z₂ (a, b)</label><input id="cx-z2" type="text" value="3, -1" spellcheck="false" autocomplete="off"></div>
-            </div>
-            <div class="tool-result" id="cx-res" aria-live="polite"></div>
-            <canvas id="cx-canvas" role="img" aria-label="Plan complexe avec z1, z2, leur somme et leur produit"></canvas>
-            <div class="tool-legend"><span><i style="background:var(--accent)"></i>z₁</span><span><i style="background:var(--c-alt)"></i>z₂</span><span><i style="background:var(--c-ok)"></i>z₁ + z₂</span><span><i style="background:var(--ink)"></i>z₁ · z₂</span></div>
-          </div>
+        <section class="c-section" id="video" aria-labelledby="video-title">
+          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
+          <p class="c-empty">Contenu à préparer.</p>
         </section>
 
-        <!-- ===== Chapitre IV ===== -->
-        <section class="c-section" id="ch4" aria-labelledby="ch4-t">
-          <h2 class="c-h2" id="ch4-t"><span class="c-num">04</span>Polynômes &amp; fractions rationnelles</h2>
-
-          <h3 class="c-h3">Polynômes</h3>
-          <p>\(P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_1 x + a_0\) avec \(a_n \neq 0\) : \(P\) est de degré \(n\). \(\alpha\) est racine de \(P\) si \(P(\alpha) = 0\), c'est-à-dire si \((x - \alpha)\) divise \(P\).</p>
-          <div class="c-callout"><p><strong>Théorème de D'Alembert-Gauss :</strong> tout polynôme de degré \(n \geq 1\) a exactement \(n\) racines dans \(\mathbb{C}\) (comptées avec leur multiplicité).</p></div>
-          <ul>
-            <li><strong>Dans \(\mathbb{C}\) :</strong> \(P\) se factorise en produit de facteurs de degré 1.</li>
-            <li><strong>Dans \(\mathbb{R}\) :</strong> \(P\) se factorise en facteurs de degré 1 et de degré 2 à discriminant négatif (irréductibles).</li>
-          </ul>
-
-          <h3 class="c-h3">Fractions rationnelles</h3>
-          <p>\(F(x) = \dfrac{P(x)}{Q(x)}\). Les <strong>zéros</strong> de \(F\) sont les racines de \(P\) (qui n'annulent pas \(Q\)), les <strong>pôles</strong> sont les racines de \(Q\). \(F\) est <strong>irréductible</strong> si \(P\) et \(Q\) n'ont pas de racine commune.</p>
-          <p><strong>Partie entière :</strong> si \(\deg P \geq \deg Q\), la division euclidienne donne \(P = QE + R\) avec \(\deg R &lt; \deg Q\), donc :</p>
-          \[ F = E + \frac{R}{Q} \]
-          <p><strong>Décomposition en éléments simples :</strong> \(\frac{R}{Q}\) s'écrit comme une somme de</p>
-          <ul class="formula-list">
-            <li class="formula-item"><span class="lbl">1re espèce (pôle réel p)</span>\(\dfrac{a}{(x-p)^k}\)</li>
-            <li class="formula-item"><span class="lbl">2e espèce (\(p^2 - 4q &lt; 0\))</span>\(\dfrac{ax+b}{(x^2+px+q)^k}\)</li>
-          </ul>
-          <div class="c-block"><p><strong>Exemple.</strong> \(\dfrac{1}{x^2-1} = \dfrac{1}{(x-1)(x+1)} = \dfrac{1/2}{x-1} - \dfrac{1/2}{x+1}\).</p></div>
-
-          <div class="tool" id="tool-poly">
-            <h4 class="tool-title">Outil — Fraction rationnelle</h4>
-            <p class="tool-desc">Coefficients du degré le plus haut au plus bas, séparés par des virgules (« 1, -3, 2 » = x² − 3x + 2). Donne zéros, pôles (dans ℂ), simplification et division euclidienne.</p>
-            <div class="tool-grid">
-              <div class="field"><label for="poly-num">P (numérateur)</label><input id="poly-num" type="text" value="1, -3, 2" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="poly-den">Q (dénominateur)</label><input id="poly-den" type="text" value="1, 0, -1" spellcheck="false" autocomplete="off"></div>
-            </div>
-            <div class="tool-result" id="poly-res" aria-live="polite"></div>
-          </div>
+        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
+          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
+          <p class="c-empty">Contenu à préparer.</p>
         </section>
 
-        <!-- ===== Chapitre V ===== -->
-        <section class="c-section" id="ch5" aria-labelledby="ch5-t">
-          <h2 class="c-h2" id="ch5-t"><span class="c-num">05</span>Primitives &amp; intégrales</h2>
-
-          <h3 class="c-h3">Primitives</h3>
-          <p>\(F\) est une primitive de \(f\) sur \(I\) si \(F' = f\). Toutes les primitives de \(f\) sont alors les \(F + C\), avec \(C\) constante.</p>
-          <ul class="formula-list">
-            <li class="formula-item">\(k \;\to\; kx\)</li>
-            <li class="formula-item">\(\frac{1}{x} \;\to\; \ln|x|\)</li>
-            <li class="formula-item">\(x^a \;\to\; \frac{x^{a+1}}{a+1}\) \((a \neq -1)\)</li>
-            <li class="formula-item">\(u'\,u^a \;\to\; \frac{u^{a+1}}{a+1}\) \((a \neq -1)\)</li>
-            <li class="formula-item">\(\frac{u'}{u} \;\to\; \ln|u|\)</li>
-            <li class="formula-item">\(u'\,e^u \;\to\; e^u\)</li>
-          </ul>
-          <p><strong>Linéarisation :</strong> \(\cos^2 x = \dfrac{1 + \cos 2x}{2}\) et \(\sin^2 x = \dfrac{1 - \cos 2x}{2}\).</p>
-
-          <h3 class="c-h3">Intégrale et propriétés</h3>
-          \[ \int_a^b f(x)\,dx = F(b) - F(a) \]
-          <ul class="formula-list">
-            <li class="formula-item"><span class="lbl">Chasles</span>\(\int_a^b f = \int_a^c f + \int_c^b f\)</li>
-            <li class="formula-item"><span class="lbl">Linéarité</span>\(\int_a^b (\alpha f + \beta g) = \alpha\int_a^b f + \beta\int_a^b g\)</li>
-            <li class="formula-item"><span class="lbl">Inversion des bornes</span>\(\int_b^a f = -\int_a^b f\)</li>
-          </ul>
-
-          <h3 class="c-h3">Intégration par parties (IPP)</h3>
-          \[ \int_a^b u'(x)\,v(x)\,dx = \big[u(x)\,v(x)\big]_a^b - \int_a^b u(x)\,v'(x)\,dx \]
-
-          <h3 class="c-h3">Changement de variable</h3>
-          <p>On pose \(x = u(t)\), donc \(dx = u'(t)\,dt\) : \(\displaystyle\int_{u(\alpha)}^{u(\beta)} f(x)\,dx = \int_\alpha^\beta f(u(t))\,u'(t)\,dt\). Ne pas oublier de changer les bornes !</p>
-          <div class="c-block">
-            <p><strong>Exemple.</strong> \(J = \displaystyle\int_0^1 \sqrt{1-x^2}\,dx\). On pose \(x = \cos t\), \(dx = -\sin t\,dt\) ; \(x = 0 \leftrightarrow t = \frac{\pi}{2}\) et \(x = 1 \leftrightarrow t = 0\).</p>
-            \[ J = \int_{\pi/2}^{0} \sqrt{1-\cos^2 t}\,(-\sin t)\,dt = \int_0^{\pi/2} \sin^2 t\,dt = \int_0^{\pi/2} \frac{1 - \cos 2t}{2}\,dt = \left[\frac{t}{2} - \frac{\sin 2t}{4}\right]_0^{\pi/2} = \frac{\pi}{4} \]
-            <p>(\(\sin t \geq 0\) sur \([0, \frac{\pi}{2}]\), donc \(\sqrt{\sin^2 t} = \sin t\). C'est bien l'aire d'un quart de disque de rayon 1.)</p>
-          </div>
-
-          <h3 class="c-h3">Intégrales généralisées</h3>
-          <p>Sur un intervalle non borné, on passe par une limite : \(\displaystyle\int_a^{+\infty} f(x)\,dx = \lim_{L \to +\infty} \int_a^L f(x)\,dx\) (idem en \(-\infty\)). L'intégrale <strong>converge</strong> si la limite est finie.</p>
-          <div class="c-block"><p>\(\int_1^{+\infty} \frac{dx}{x^2} = \lim_{L \to +\infty}\left(1 - \frac{1}{L}\right) = 1\) converge, alors que \(\int_1^{+\infty} \frac{dx}{x} = \lim_{L \to +\infty} \ln L = +\infty\) diverge.</p></div>
-
-          <div class="tool" id="tool-integrale">
-            <h4 class="tool-title">Outil — Intégrale numérique</h4>
-            <p class="tool-desc">Approxime ∫ f(x) dx par la méthode du point milieu. Borne infinie : tape <code>inf</code> ou <code>-inf</code>.</p>
-            <div class="tool-grid">
-              <div class="field wide"><label for="int-fx">f(x)</label><input id="int-fx" type="text" value="1 / x" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="int-a">a</label><input id="int-a" type="text" value="1" spellcheck="false" autocomplete="off"></div>
-              <div class="field"><label for="int-b">b</label><input id="int-b" type="text" value="Math.E" spellcheck="false" autocomplete="off"></div>
-            </div>
-            <div class="tool-result" id="int-res" aria-live="polite"></div>
-            <canvas id="int-canvas" role="img" aria-label="Courbe de f et aire sous la courbe entre a et b"></canvas>
-            <div class="tool-legend"><span><i style="background:var(--accent)"></i>f(x) et aire calculée</span><span><i style="background:var(--ink-3)"></i>bornes</span></div>
-          </div>
+        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
+          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
+          <p class="c-empty">Contenu à préparer.</p>
         </section>
       </article>
     </div>
@@ -390,7 +122,6 @@
   </footer>
 
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=1"></script>
-  <script defer src="../assets/js/maths-outils.js?v=1"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
 </body>
 </html>
