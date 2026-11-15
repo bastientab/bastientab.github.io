@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction au traitement d’images — Prépa ISIMA</title>
+  <meta name="description" content="Histogrammes, filtrage, contours et morphologie mathématique.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-imagerie.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/pixels.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Introduction au traitement d’images</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-imagerie/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Du pixel à la matrice</h3>
+<p>Une image numérique représente une scène par une grille d’échantillons appelés <strong>pixels</strong>. L’échantillonnage décide à quels endroits on mesure la scène. La quantification remplace chaque mesure par l’un des niveaux autorisés. Une image en niveaux de gris sur 8 bits a 256 intensités, de 0 à 255. Une image RGB associe trois composantes rouge, verte et bleue à chaque pixel.</p>
+<p>Quand tu lis une matrice, identifie ligne et colonne avant toute opération. À résolution réduite, un petit détail spatial peut disparaître. À nombre de niveaux réduit, un dégradé peut se transformer en bandes. Ce sont deux effets distincts.</p></div>
+<div class="c-block"><h3>2. Lire et modifier un histogramme</h3>
+<p>L’<strong>histogramme</strong> associe à chaque intensité le nombre de pixels qui la possèdent. Il indique si une image utilise une plage étroite ou large et si elle contient surtout des tons sombres ou clairs. Deux images dont les pixels sont simplement permutés ont le même histogramme.</p>
+<p>Pour <strong>étirer</strong> les niveaux entre un minimum <code>a</code> et un maximum <code>b</code> vers <code>0…M−1</code>, calcule <code>(v−a) × (M−1)/(b−a)</code> et applique la règle d’arrondi choisie. Vérifie les deux extrêmes. Une image constante a <code>b=a</code>. Il faut alors décider explicitement de conserver la valeur ou d’adopter un niveau de sortie convenu.</p>
+<p>Pour <strong>égaliser</strong>, calcule l’histogramme cumulé. Celui-ci donne le nombre de pixels dont le niveau est inférieur ou égal à la valeur examinée. On applique une transformation croissante issue du rang cumulé, par exemple <code>arrondi((M−1) × H(v)/N)</code> avec <code>N</code> pixels. Des pixels de même valeur restent liés et l’arrondi crée des regroupements. L’histogramme final peut donc rester irrégulier.</p></div>
+<div class="c-block"><h3>3. Traiter le voisinage</h3>
+<p>La distance de Manhattan additionne les déplacements horizontaux et verticaux. La distance euclidienne mesure le trajet à vol d’oiseau. La distance de l’échiquier retient le plus grand des deux déplacements. Au rayon 1, les deux premières donnent une croix et la troisième inclut aussi les diagonales. Dis si tu comptes le centre.</p>
+<p>Un <strong>filtre moyenneur 3×3</strong> remplace le pixel central par la somme des 9 valeurs divisée par 9. Un filtre gaussien donne plus de poids au centre. Une convolution emploie un masque qu’on retourne lorsqu’il est asymétrique. Si le masque est symétrique, cette étape ne change rien. Aux bords, choisis une convention, par exemple traiter uniquement les fenêtres complètes ou prolonger l’image.</p>
+<p>Le <strong>filtre médian</strong> trie les valeurs de la fenêtre et choisit celle du milieu. Un point aberrant isolé perturbe fortement une moyenne et peut laisser la médiane inchangée. Quand tu calcules une nouvelle image, lis toutes les fenêtres dans l’image d’origine.</p></div>
+<div class="c-block"><h3>4. Faire ressortir un contour</h3>
+<p>Un contour apparaît lorsque l’intensité change rapidement. Les masques de gradient tels que Sobel approximent la variation selon deux axes. Calcule <code>Gx</code> et <code>Gy</code> sur la même fenêtre. La norme <code>√(Gx²+Gy²)</code> mesure la force locale de la transition. La direction du gradient pointe vers la variation maximale, perpendiculairement au contour idéal.</p>
+<p>Un lissage peut limiter les faux contours dus au bruit. Une méthode à deux seuils peut conserver les vrais contours faibles à condition qu’ils soient connectés à des points forts. Garde la convention sur les signes des masques et le traitement des bords quand tu compares deux calculs.</p></div>
+<div class="c-block"><h3>5. Modifier des formes avec la morphologie</h3>
+<p>Une image binaire sépare le premier plan du fond. Un <strong>élément structurant</strong> est la petite forme qu’on déplace sur cette image. Pour l’érosion, une position est retenue si tout le motif translaté tient dans le premier plan. Pour la dilatation, la position est retenue si le motif réfléchi touche le premier plan. Avec un motif symétrique, la réflexion donne la même forme.</p>
+<p>Une <strong>ouverture</strong> applique une érosion suivie d’une dilatation. Elle peut éliminer des détails plus fins que le motif. Une <strong>fermeture</strong> applique les opérations dans l’autre ordre et peut combler des petits trous. Avec des niveaux de gris et un élément structurant plat, l’érosion prend un minimum local et la dilatation prend un maximum local dans leur voisinage respectif.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Les exercices à refaire sont intégrés aux trois supports. Les corrections indiquent la convention de calcul utilisée, en particulier aux bords de l’image.</p>
+  <ul><li><a href="#histo-ex">Histogrammes · Compter puis étirer les niveaux</a></li>
+  <li><a href="#pixel-ex">Filtrage · Comparer moyenneur et médian sur la grille</a></li>
+  <li><a href="#morpho-ex">Morphologie · Éroder puis dilater avec un élément structurant</a></li></ul>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <details class="acc" id="histo-ex"><summary>Support Histogrammes · Étendre les niveaux d’une image 4 bits</summary><div class="acc-body">
+  <p class="c-question"><strong>Énoncé.</strong> Le support donne une image de 25 pixels sur 4 bits. Calculer l’histogramme puis le résultat de l’étirement.</p>
+  <pre class="c-code"><code>4 4 9 10 10
+7 4 7  9 10
+7 7 4  7  9
+10 8 4 6  6
+10 7 6 6  6</code></pre>
+  <ol><li>Compte les niveaux <code>4, 6, 7, 8, 9, 10</code>. Ils apparaissent <code>5, 5, 6, 1, 3, 5</code> fois. La somme vaut 25.</li><li>Étends de <code>[4,10]</code> à <code>[0,15]</code>. Multiplie l’écart à 4 par <code>15/6</code>. Les nouveaux niveaux avant arrondi sont <code>0, 5, 7,5, 10, 12,5, 15</code>. Avec arrondi des demis au supérieur, ils deviennent <code>0, 5, 8, 10, 13, 15</code>. Chaque groupe garde son effectif.</li><li>Pour préparer une égalisation, cumule les effectifs <code>5, 10, 16, 17, 20, 25</code>. Vérifie que la dernière valeur est le nombre de pixels avant de convertir les rangs sur l’échelle de sortie.</li></ol>
+  </div></details>
+  <details class="acc" id="pixel-ex"><summary>Support Filtrage · Appliquer le moyenneur et le médian 3×3</summary><div class="acc-body">
+  <p class="c-question"><strong>Énoncé.</strong> Appliquer les deux filtres à la grille du support, puis comparer les résultats. On calcule les 9 positions intérieures où la fenêtre est complète.</p>
+  <pre class="c-code"><code>5 5 5 10 10
+5 0 5 10 10
+5 5 5 10 10
+2 2 5 15  5
+2 2 2  2  5</code></pre>
+  <figure><img loading="lazy" src="../assets/revisions/prepa-imagerie/schemas/filtres.png" alt="La fenêtre du pixel zéro contient huit valeurs 5. La moyenne vaut 40 sur 9 et la médiane 5."></figure>
+  <ol><li>Sur le pixel 0, les huit voisins valent 5. La moyenne vaut <code>40/9</code>. Une fois les valeurs triées, la cinquième vaut 5.</li><li>En déplaçant la fenêtre, les sommes du moyenneur sont <code>[40,55,75] ; [34,57,75] ; [30,48,59]</code>. Divise chaque terme par 9. La grille médiane vaut <code>[5,5,10] ; [5,5,10] ; [2,5,5]</code>.</li><li>Observe le dernier pixel intérieur. Sa fenêtre contient le 15, mais la médiane vaut 5. La moyenne utilise le poids de chacune des valeurs, tandis que le rang central est plus robuste à la valeur isolée.</li></ol>
+  </div></details>
+  <details class="acc" id="morpho-ex"><summary>Support Morphologie · Refaire l’érosion et la dilatation</summary><div class="acc-body">
+  <p class="c-question"><strong>Énoncé.</strong> Sur la grille binaire du support, éroder puis, séparément, dilater à l’aide de l’élément structurant dessiné au-dessus de chaque grille.</p>
+  <ol><li>Repère d’abord le point d’ancrage indiqué par X. Pour éroder, aligne-le sur la cellule que tu veux calculer. Marque 1 si toutes les cases du motif tombent sur le premier plan.</li><li>Repars de la grille initiale pour la dilatation. Réfléchis le motif autour de son ancrage quand il est asymétrique. Une seule intersection avec le premier plan suffit pour marquer 1.</li><li>Pour contrôler le raisonnement sur une ligne simple, prends <code>001110100</code> et un motif horizontal symétrique de trois cases, avec du fond hors de la ligne. L’érosion donne <code>000100000</code>, la dilatation <code>011111110</code>. L’ouverture donne <code>001110000</code> et retire le pixel isolé.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-imagerie/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-imagerie/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-imagerie/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Comprendre ce que contient un pixel</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="26.250">0:26 · Compter et étaler les intensités</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="75.333">1:15 · Déplacer la fenêtre du filtre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="126.000">2:06 · Éroder, dilater, ouvrir, fermer</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="156.167">2:36 · Histogrammes · Étendre l’image sur 4 bits</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="207.208">3:27 · Filtrage · Moyenneur ou médian</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="257.333">4:17 · Morphologie · Suivre un motif sur une ligne</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

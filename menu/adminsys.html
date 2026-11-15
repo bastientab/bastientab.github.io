@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin-sys — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Admin-sys : contenu à préparer.">
+  <title>Administration des systèmes — BUT1 R&amp;T</title>
+  <meta name="description" content="Comptes, droits, quotas, sauvegardes et conteneurs Windows et Linux.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,129 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">⚙</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Admin-sys</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">⚙</span></div>
+      <h1 class="page-title" id="page-title">Administration des systèmes</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/adminsys/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Organiser les comptes et les groupes</h3>
+<p>Un compte représente une identité. Un groupe représente un besoin commun, par exemple accéder aux fichiers des RH. Tu rattaches la permission au groupe, puis tu fais évoluer les membres. Pour vérifier une modification, commence par confirmer l’identité utilisée et les groupes de sa session.</p>
+<p>Sous Windows, <code>Get-LocalUser</code> liste les comptes locaux, <code>Get-LocalGroup</code> les groupes et <code>Get-LocalGroupMember -Group Direction</code> affiche les membres du groupe demandé. Un compte local et un compte de domaine peuvent porter un nom similaire et rester des identités différentes. En Linux, l’<strong>UID</strong> identifie le compte et le <strong>GID</strong> le groupe. <code>id</code> montre le groupe principal et les groupes supplémentaires. Les mots de passe sont stockés sous forme de hash, dans <code>/etc/shadow</code> sur une installation Linux utilisant shadow.</p></div>
+<div class="c-block"><h3>2. Comprendre les droits réellement appliqués</h3>
+<p>Sous Linux, <code>r</code> lit un fichier, <code>w</code> le modifie et <code>x</code> permet de l’exécuter. Pour un dossier, ces lettres signifient respectivement lister les noms, modifier ses entrées et traverser le dossier. Un dossier partagé de groupe peut nécessiter le bit <code>setgid</code> pour transmettre son groupe aux nouvelles entrées. Un mode <code>2770</code> combine ce bit et des droits complets pour propriétaire et groupe.</p>
+<p>Sous Windows, l’onglet Sécurité règle les permissions du système de fichiers. Par le réseau, les permissions du partage s’ajoutent au contrôle NTFS. Un utilisateur doit passer les deux contrôles. Examine aussi les droits hérités du dossier parent. Crée un compte témoin hors groupe pour vérifier les refus.</p>
+<p>Un <strong>quota</strong> limite l’espace ou le nombre d’objets qu’un utilisateur peut consommer selon le système utilisé. Il peut y avoir un seuil souple et une limite dure. Vérifie la configuration sur le bon volume et teste en ouvrant une session ordinaire.</p></div>
+<div class="c-block"><h3>3. Séparer disponibilité du disque et sauvegarde</h3>
+<p>Le <strong>RAID 0</strong> répartit les données entre disques sans redondance. Le <strong>RAID 1</strong> réplique les données. Le <strong>RAID 5</strong> répartit données et parité et tolère la perte d’un disque. Avec quatre disques de même taille, RAID 5 laisse approximativement trois disques de capacité utile. Dans tous les cas, une suppression ou un fichier chiffré peut être répercuté dans le volume. Il faut une copie restaurable séparée.</p>
+<p>Une sauvegarde <strong>complète</strong> capture tout le périmètre. Une <strong>différentielle</strong> reprend les changements depuis la dernière complète. Une <strong>incrémentielle</strong> reprend les changements depuis la sauvegarde précédente. La stratégie se juge en simulant une restauration et en contrôlant les fichiers restaurés.</p>
+<figure><img src="../assets/revisions/adminsys/schemas/sauvegardes.png" alt="La restauration incrémentielle utilise la sauvegarde complète puis tous les incréments. La différentielle utilise la complète et la dernière différentielle." loading="lazy"><figcaption>Pour restaurer mercredi, l’ordre des incréments compte. Si la copie incrémentielle de mardi manque, la reconstitution de l’état du mercredi peut devenir impossible.</figcaption></figure>
+</div>
+<div class="c-block"><h3>4. Passer de la VM au conteneur</h3>
+<p>Une <strong>machine virtuelle</strong> démarre un système invité avec son noyau. Un <strong>conteneur</strong> isole un processus et son environnement tout en partageant le noyau qui l’héberge. Docker Desktop peut utiliser une VM pour héberger des conteneurs Linux sur un autre système.</p>
+<p>Une <strong>image</strong> fournit les fichiers et réglages de démarrage. Le <strong>conteneur</strong> est une instance, même quand il est arrêté. Un <strong>volume</strong> stocke l’état séparément. Quand la tâche demande la persistance, recrée le conteneur et rattache le volume pour contrôler que les données reviennent.</p>
+<p>Publier un port associe un port de l’hôte à un port du conteneur. La commande <code>docker run -d -p 127.0.0.1:8080:80 nginx</code> rend le service accessible depuis la machine hôte sur 8080 dans un exemple local. Vérifie le mappage avec <code>docker ps</code>, puis envoie une requête HTTP au port publié.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#adm-windows">TD1 · Tester des permissions Windows avec deux comptes</a></li>
+<li><a href="#adm-linux">TD2 · Créer un groupe et tester l’accès sur Linux</a></li>
+<li><a href="#adm-backup">Cours · Choisir les copies nécessaires à une restauration</a></li>
+<li><a href="#adm-docker">TP5 · Démarrer et inspecter deux serveurs HTTP en conteneurs</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="adm-windows"><summary>TD1 · Permettre à une seule personne des RH d’accéder à Confidentiel</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Créer Direction, RH et Salariés, limiter le dossier Confidentiel à Direction, puis ouvrir ce dossier à un seul compte RH et comparer deux solutions.</p>
+<ol><li>Dans la VM Windows, crée les groupes locaux et les comptes du TD. Vérifie les membres avec <code>Get-LocalGroupMember -Group Direction</code>. Dans les propriétés du dossier, va dans <strong>Sécurité → Avancé</strong> et contrôle quelles permissions proviennent du dossier parent.</li>
+<li>Crée par exemple le groupe <code>Confidentiel-Lecture</code>, ajoute ce compte RH et accorde uniquement le niveau requis au groupe. Ajouter ce compte à Direction pourrait ouvrir d’autres ressources. Une permission directe sur le compte peut fonctionner et devient plus difficile à gérer quand les exceptions s’accumulent.</li>
+<li>Refais les essais dans trois sessions ordinaires, avec Direction, le compte RH autorisé et un second RH. Après changement d’appartenance, rouvre la session. Si le dossier est partagé, vérifie séparément l’accès local et l’accès par le réseau.</li></ol></div></details>
+<details class="acc" id="adm-linux"><summary>TD2 · Vérifier qu’un dossier est réellement limité au groupe</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Créer trois groupes et des utilisateurs sous Linux, puis vérifier qu’un dossier peut être accessible par un groupe et interdit à un autre.</p>
+<ol><li>Dans la VM Debian du TD, sélectionne des identifiants libres avec <code>getent group</code> et <code>getent passwd</code>. Exemple pour un groupe et son premier utilisateur, <code>sudo addgroup --gid 1001 grp1</code> puis <code>sudo adduser --uid 2001 --ingroup grp1 u1</code>. Vérifie avec <code>id u1</code>.</li>
+<li>Crée un dossier de test. Donne-lui le groupe <code>grp1</code> avec <code>chgrp</code> et applique le mode <code>2770</code> avec <code>chmod</code>. Vérifie la troisième triade de droits et l’héritage de groupe sur un fichier créé dans le dossier.</li>
+<li>Refais la création et la lecture depuis u1, puis depuis un compte d’un autre groupe. Si u1 échoue aussi, vérifie la traversée des dossiers parents, l’identité de sa session et le groupe réellement associé au dossier.</li></ol></div></details>
+<details class="acc" id="adm-backup"><summary>Application du cours · Restaurer les fichiers au mercredi</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> On fait une sauvegarde complète lundi et une sauvegarde chaque jour. Quelles copies faut-il pour retrouver l’état du mercredi ?</p>
+<ol><li>En mode incrémentiel, pars de la complète de lundi. Applique ce qui a changé mardi, puis ce qui a changé mercredi.</li><li>En mode différentiel, pars de la complète de lundi et applique la différentielle de mercredi, calculée par rapport à lundi.</li><li>Restaure vers un dossier de test. Compare un document créé mardi et un document modifié mercredi. Vérifie également les droits et l’état des fichiers supprimés selon la politique de l’outil.</li></ol></div></details>
+<details class="acc" id="adm-docker"><summary>TP5 · Distinguer image, conteneur et serveur réellement accessible</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Vérifier Docker avec <code>hello-world</code>, récupérer deux images de serveur HTTP et contrôler les conteneurs et les ports.</p>
+<ol><li>Dans la machine du TP, lance <code>docker run --rm hello-world</code> et lis le message. Avec <code>docker image ls</code>, vérifie que l’image est disponible. Le conteneur de test sort après impression du message.</li>
+<li>Exemple avec Nginx et Apache. Utilise <code>docker run -d --name web-a -p 127.0.0.1:8080:80 nginx</code> puis <code>docker run -d --name web-b -p 127.0.0.1:8081:80 httpd</code>. Les deux écoutent sur 80 dans leur propre environnement. Les ports publiés sur l’hôte diffèrent.</li>
+<li>Compare <code>docker image ls</code> et <code>docker ps -a</code>. Lance une requête vers <code>http://127.0.0.1:8080</code> puis 8081. Si une requête échoue, vérifie l’état du conteneur, le port publié et la sortie de <code>docker logs</code>.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/adminsys/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/adminsys/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/adminsys/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Une identité, plusieurs groupes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="44.583">0:44 · Lire les permissions réelles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="92.667">1:32 · Disques et sauvegardes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="146.875">2:26 · VM et conteneurs</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="171.333">2:51 · TD1 · Ouvrir le dossier Confidentiel à un compte RH</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="195.833">3:15 · TD2 · Donner un dossier à un groupe Linux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="219.458">3:39 · TP5 · Démarrer deux serveurs HTTP</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

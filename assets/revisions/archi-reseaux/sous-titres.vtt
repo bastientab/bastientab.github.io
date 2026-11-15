@@ -1,0 +1,363 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.726
+Imagine plusieurs personnes sur une seule fréquence
+radio.
+
+00:00:03.726 --> 00:00:07.035
+Si deux parlent en même temps, leurs signaux se
+mélangent.
+
+00:00:07.035 --> 00:00:11.631
+Dans les premiers réseaux Ethernet, des ordinateurs
+partageaient aussi un câble.
+
+00:00:11.631 --> 00:00:15.276
+Le mécanisme CSMA CD demandait d'écouter le support,
+de détecter une
+
+00:00:15.276 --> 00:00:18.921
+collision si elle se produisait, puis d'attendre un
+délai avant de
+
+00:00:18.921 --> 00:00:20.246
+tenter l'envoi à nouveau.
+
+00:00:20.246 --> 00:00:23.427
+Avec un hub, les câbles ressemblent à une étoile, et
+le
+
+00:00:23.427 --> 00:00:26.030
+support restait partagé du point de vue des postes.
+
+00:00:26.392 --> 00:00:30.459
+Avec un commutateur, chaque port forme une liaison
+séparée.
+
+00:00:30.459 --> 00:00:33.972
+Quand une trame arrive, le commutateur apprend où se
+trouve son
+
+00:00:33.972 --> 00:00:35.888
+émetteur en regardant la MAC source.
+
+00:00:35.888 --> 00:00:38.315
+Puis il cherche la destination.
+
+00:00:38.315 --> 00:00:42.212
+S'il connaît déjà son port, un seul voisin reçoit la
+trame.
+
+00:00:42.212 --> 00:00:45.645
+S'il ne connaît pas le port, plusieurs copies peuvent
+partir dans
+
+00:00:45.645 --> 00:00:46.893
+le même réseau local.
+
+00:00:46.893 --> 00:00:50.093
+Sur un lien moderne en duplex intégral, le poste et le
+
+00:00:50.093 --> 00:00:52.420
+switch peuvent parler en même temps sans collision.
+
+00:00:52.767 --> 00:00:56.038
+Ajoutons un câble de secours entre deux switches.
+
+00:00:56.038 --> 00:00:59.576
+Si tout le monde transmet sur tous les liens, une
+diffusion
+
+00:00:59.576 --> 00:01:01.185
+peut circuler et se multiplier.
+
+00:01:01.185 --> 00:01:04.744
+En plus, les switches voient parfois passer la même
+adresse source
+
+00:01:04.744 --> 00:01:06.038
+sur deux ports différents.
+
+00:01:06.038 --> 00:01:08.918
+La table d'adresses devient instable.
+
+00:01:08.918 --> 00:01:12.318
+Le protocole STP maintient un chemin logique sans
+boucle en bloquant
+
+00:01:12.318 --> 00:01:14.481
+une partie des ports pour les données.
+
+00:01:14.481 --> 00:01:18.378
+Le câble redondant reste disponible si un autre tombe.
+
+00:01:18.725 --> 00:01:22.633
+Pour raisonner sur une topologie, fais ces trois
+étapes dans l'ordre.
+
+00:01:22.633 --> 00:01:24.937
+Encercle la racine.
+
+00:01:24.937 --> 00:01:28.660
+Pour chaque autre switch, trace son chemin le moins
+coûteux jusqu'à
+
+00:01:28.660 --> 00:01:29.337
+la racine.
+
+00:01:29.337 --> 00:01:31.874
+Enfin, traite chaque segment.
+
+00:01:31.874 --> 00:01:35.513
+Cherche de quel côté le chemin vers la racine est
+meilleur.
+
+00:01:35.513 --> 00:01:39.578
+En cas d'égalité, les identifiants et les numéros de
+port départagent
+
+00:01:39.578 --> 00:01:40.317
+les candidats.
+
+00:01:40.317 --> 00:01:43.998
+Ce raisonnement te permet de prévoir le résultat avant
+de taper
+
+00:01:43.998 --> 00:01:44.668
+une commande.
+
+00:01:45.017 --> 00:01:47.969
+RSTP poursuit le même objectif.
+
+00:01:47.969 --> 00:01:51.116
+On distingue l'état du port, qui indique s'il apprend
+ou transmet,
+
+00:01:51.116 --> 00:01:54.264
+et son rôle, qui indique à quoi il sert dans la
+
+00:01:54.264 --> 00:01:54.550
+topologie.
+
+00:01:54.550 --> 00:01:57.883
+Un port en rôle alternate donne un chemin de repli.
+
+00:01:57.883 --> 00:02:01.754
+Sur certains liens point à point, les voisins
+échangent des messages
+
+00:02:01.754 --> 00:02:02.810
+pour s'accorder rapidement.
+
+00:02:02.810 --> 00:02:06.707
+On évite ainsi une partie de l'attente du STP
+historique.
+
+00:02:07.058 --> 00:02:10.666
+Un VLAN permet de réunir des postes sur un même réseau
+
+00:02:10.666 --> 00:02:11.322
+local logique.
+
+00:02:11.322 --> 00:02:14.321
+Par exemple, un poste du VLAN dix peut parler à un
+
+00:02:14.321 --> 00:02:16.775
+autre poste du même VLAN sur le switch voisin.
+
+00:02:16.775 --> 00:02:20.033
+Pourtant, sur ce même switch, un poste du VLAN vingt
+ne
+
+00:02:20.033 --> 00:02:22.106
+recevra pas la diffusion du VLAN dix.
+
+00:02:22.106 --> 00:02:25.427
+Le port access donne le VLAN des trames du poste.
+
+00:02:25.427 --> 00:02:29.123
+Le trunk sert à faire traverser plusieurs VLAN entre
+les deux
+
+00:02:29.123 --> 00:02:29.459
+switches.
+
+00:02:29.808 --> 00:02:33.655
+Sur le dessin, regarde le même paquet de gauche à
+droite.
+
+00:02:33.655 --> 00:02:36.315
+Le poste envoie une trame non taguée.
+
+00:02:36.315 --> 00:02:40.089
+En entrant au switch, sa trame est associée au VLAN
+dix.
+
+00:02:40.089 --> 00:02:43.692
+Sur le trunk, le tag indique dix au switch suivant.
+
+00:02:43.692 --> 00:02:47.454
+En ressortant vers le poste final, la trame est non
+taguée.
+
+00:02:47.454 --> 00:02:51.206
+Pour joindre un autre sous-réseau, il faut une
+interface de niveau
+
+00:02:51.206 --> 00:02:51.548
+trois.
+
+00:02:51.548 --> 00:02:54.231
+Un trunk seul ne fait pas de routage.
+
+00:02:54.600 --> 00:02:57.369
+Faisons un exemple à partir du cours.
+
+00:02:57.369 --> 00:02:59.366
+A est la racine.
+
+00:02:59.366 --> 00:03:02.477
+B et C ont chacun un lien direct de même coût
+
+00:03:02.477 --> 00:03:03.043
+vers A.
+
+00:03:03.043 --> 00:03:06.266
+Le port vers A est donc le port racine de chacun.
+
+00:03:06.266 --> 00:03:09.293
+Il reste le segment entre B et C.
+
+00:03:09.293 --> 00:03:12.136
+Supposons l'identifiant de B plus bas.
+
+00:03:12.136 --> 00:03:15.040
+B gagne le départage sur ce segment.
+
+00:03:15.040 --> 00:03:18.165
+Le côté de C reste bloqué pour les données.
+
+00:03:18.165 --> 00:03:21.535
+Tu as supprimé la boucle alors que le câble est
+toujours
+
+00:03:21.535 --> 00:03:21.842
+branché.
+
+00:03:22.183 --> 00:03:25.160
+Coupe mentalement le lien entre A et C.
+
+00:03:25.160 --> 00:03:27.722
+C n'atteint plus A en direct.
+
+00:03:27.722 --> 00:03:31.342
+Le lien vers B devient alors le chemin restant vers la
+
+00:03:31.342 --> 00:03:32.329
+racine après convergence.
+
+00:03:32.329 --> 00:03:36.288
+Sur la maquette, vérifie l'identifiant du pont racine.
+
+00:03:36.288 --> 00:03:39.290
+Compare ensuite le rôle des deux ports de C.
+
+00:03:39.290 --> 00:03:42.723
+Tu dois pouvoir expliquer le résultat avec les coûts
+et la
+
+00:03:42.723 --> 00:03:43.347
+panne observée.
+
+00:03:43.683 --> 00:03:46.280
+On repart de la question du TP.
+
+00:03:46.280 --> 00:03:49.516
+Les deux postes partagent le même réseau local.
+
+00:03:49.516 --> 00:03:53.290
+Relève les deux adresses MAC et les deux adresses
+IPv4.
+
+00:03:53.290 --> 00:03:56.035
+Construis d'abord une couche Ethernet.
+
+00:03:56.035 --> 00:03:58.155
+Ajoute la couche IP.
+
+00:03:58.155 --> 00:04:02.359
+Puis ajoute ICMP avec le type huit, qui désigne la
+requête.
+
+00:04:02.359 --> 00:04:06.011
+Dans Scapy, la barre oblique sert à empiler les
+couches.
+
+00:04:06.011 --> 00:04:09.246
+Avant l'envoi, relis la trame avec show pour vérifier
+que tu
+
+00:04:09.246 --> 00:04:11.305
+as placé chaque adresse au bon niveau.
+
+00:04:11.642 --> 00:04:16.016
+Lance la capture avant d'envoyer la trame, sur
+l'interface utilisée.
+
+00:04:16.016 --> 00:04:19.692
+Dans Wireshark, repère la requête de type huit.
+
+00:04:19.692 --> 00:04:23.724
+Si le deuxième poste répond, un retour de type zéro
+apparaît.
+
+00:04:23.724 --> 00:04:26.445
+Relis les adresses sur les deux lignes.
+
+00:04:26.445 --> 00:04:30.138
+Pour la question suivante, réutilise la même trame
+avec la fonction
+
+00:04:30.138 --> 00:04:31.481
+qui attend une réponse.
+
+00:04:31.481 --> 00:04:34.663
+Si Scapy n'en affiche pas, compare les captures de
+part et
+
+00:04:34.663 --> 00:04:37.266
+d'autre pour savoir si la requête est même arrivée.
+
+00:04:37.600 --> 00:04:41.172
+Garde la bonne adresse IP et remplace la MAC de
+destination
+
+00:04:41.172 --> 00:04:43.445
+par une adresse unicast inconnue du switch.
+
+00:04:43.445 --> 00:04:46.325
+Plusieurs ports peuvent recevoir une copie.
+
+00:04:46.325 --> 00:04:50.545
+Si le poste destination capture en mode promiscuité,
+il peut voir
+
+00:04:50.545 --> 00:04:51.312
+cette trame.
+
+00:04:51.312 --> 00:04:54.103
+Sa pile réseau ne doit pas pour autant la traiter
+comme
+
+00:04:54.103 --> 00:04:55.626
+une trame qui lui est adressée.
+
+00:04:55.626 --> 00:04:59.007
+Garde le même filtre et refais le test avec la bonne
+
+00:04:59.007 --> 00:04:59.315
+MAC.
+
+00:04:59.315 --> 00:05:02.942
+C'est la comparaison des deux essais qui explique le
+résultat.

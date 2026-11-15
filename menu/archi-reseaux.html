@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture des réseaux et réseaux locaux — BUT1 R&amp;T</title>
+  <meta name="description" content="Commutation Ethernet, STP, RSTP, VLAN et capture de trames.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/archi-reseaux.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/switch.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Architecture des réseaux et réseaux locaux</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/archi-reseaux/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block">
+  <h3>1. Ethernet partagé, Ethernet commuté</h3>
+  <p>Dans un Ethernet historique à câble partagé ou avec des hubs, plusieurs stations utilisent le même support. Deux émissions qui se chevauchent provoquent une <strong>collision</strong>. Avec CSMA/CD, chacun écoute avant d’émettre. Si une collision est détectée, la station interrompt la transmission et attend une durée aléatoire avant de réessayer.</p>
+  <p>Sur un lien point à point entre un poste et un commutateur en <strong>duplex intégral</strong>, les deux appareils peuvent émettre et recevoir en même temps. Le mécanisme de détection de collisions du support partagé ne s’applique plus. Les noms comme <code>100BASE-TX</code> indiquent notamment le débit nominal et le type de liaison. Vérifie le mode négocié des deux côtés si l’interface rencontre des erreurs.</p>
+  <p>Un commutateur apprend le port et le VLAN d’une <strong>MAC source</strong>. Pour transmettre, il recherche ensuite la MAC de destination dans le même VLAN. Si elle est inconnue, il diffuse la trame sur les autres ports qui transportent ce VLAN. Le destinataire peut relever des trames dans une capture sans que sa pile réseau accepte une trame destinée à une autre MAC.</p>
+</div>
+<div class="c-block">
+  <h3>2. Pourquoi le réseau a besoin de STP</h3>
+  <p>Un triangle de commutateurs donne deux chemins entre certains ports. Une trame diffusée peut être recopiée indéfiniment. La même MAC peut alors apparaître tour à tour sur des ports différents et les liens se saturer. STP conserve les câbles redondants et choisit quels ports peuvent transmettre au niveau de la liaison.</p>
+  <ol><li>Les commutateurs échangent des <strong>BPDU</strong>, messages qui décrivent le pont et le chemin connus. Le plus petit identifiant de pont gagne l’élection de la <strong>racine</strong>. La priorité est comparée avant les éléments de départage.</li><li>Sur un commutateur autre que la racine, le <strong>port racine</strong> est le meilleur chemin vers le pont racine. Compare d’abord les coûts cumulés, puis les identifiants et ports de départage.</li><li>Pour un segment, un port <strong>désigné</strong> assure l’accès au meilleur chemin. Les chemins redondants qui créeraient une boucle sont bloqués pour les données. Avec RSTP, retiens notamment le rôle <em>alternate</em> pour un chemin de remplacement.</li></ol>
+  <p>Le STP historique passe par des états d’écoute et d’apprentissage avant de transmettre. RSTP regroupe ses états en <em>discarding</em>, <em>learning</em> et <em>forwarding</em>. Il accélère la transition sur des liens point à point grâce à des échanges entre voisins et reconnaît les ports de bord configurés pour des postes.</p>
+</div>
+<div class="c-block">
+  <h3>3. Séparer les diffusions avec les VLAN</h3>
+  <p>Un <strong>VLAN</strong> délimite un réseau local logique sur un ou plusieurs commutateurs. Deux postes peuvent être branchés au même équipement et appartenir à des réseaux locaux différents. Une diffusion ARP du VLAN 10 reste dans le VLAN 10.</p>
+  <figure><img src="../assets/revisions/archi-reseaux/schemas/trunk.png" alt="Les trames passent sans tag sur les ports access et traversent le trunk avec le tag du VLAN 10." loading="lazy"><figcaption>Le VLAN reste le même d’un bout à l’autre. Le tag est visible sur la liaison entre les deux commutateurs dans cet exemple.</figcaption></figure>
+  <p>Un port <strong>access</strong> associe le poste à un VLAN. Un <strong>trunk</strong> transporte plusieurs VLAN. Sur une liaison 802.1Q, le tag permet au voisin de retrouver le VLAN de la trame. Si un VLAN natif circule sans tag, assure-toi que les deux extrémités appliquent la même convention. Vérifie aussi la liste des VLAN autorisés.</p>
+  <p>Deux réseaux IPv4 distincts ont besoin d’un routeur ou d’une interface de niveau 3 pour communiquer. Pour le premier test, relie deux postes du même VLAN et du même sous-réseau. Pour le deuxième, fais traverser le trunk à ce même trafic. Pour le troisième, vérifie le chemin jusqu’à la passerelle et le chemin retour.</p>
+</div>
+<div class="c-block">
+  <h3>4. Vérifier l’encapsulation dans une capture</h3>
+  <p>Quand tu construis une trame avec Scapy, tu peux choisir indépendamment les champs Ethernet, IPv4 et ICMP. La destination MAC est celle du prochain saut sur ce lien. La destination IPv4 est celle du destinataire final. <code>show()</code> te permet de relire les champs que tu as construits. Une capture contient aussi les champs calculés au moment de l’envoi.</p>
+  <p><code>sendp()</code> envoie au niveau de la liaison. <code>srp1()</code> attend une première réponse au niveau de la liaison, avec un délai qu’on peut borner. Dans une VM ou sur un réseau de TP autorisé, choisis explicitement l’interface et vérifie l’IP, la MAC et le port du switch avant d’interpréter un silence.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <ul>
+    <li><a href="#stp-exemple">Poly R103 · Dérouler une élection STP sur un triangle</a></li>
+    <li><a href="#vlan-exemple">Poly R103 · Suivre un VLAN sur deux commutateurs</a></li>
+    <li><a href="#tp7-scapy">TP7, questions 6 à 8 · Construire et vérifier une requête ICMP</a></li>
+    <li><a href="#tp7-mac">TP7 · Tester une MAC inconnue et expliquer la capture</a></li>
+  </ul>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <details class="acc" id="stp-exemple"><summary>Application du poly · Choisir le lien qui reste en secours</summary><div class="acc-body">
+    <p class="c-question"><strong>Exemple d’application.</strong> Trois commutateurs A, B et C forment un triangle. A a l’identifiant le plus petit. Les liens directs ont le même coût et B a un identifiant plus petit que C. Quel port est bloqué ?</p>
+    <ol><li>A gagne l’élection et devient la racine. B et C choisissent chacun leur port vers A. Passer par l’autre commutateur ajouterait un lien et donc du coût.</li><li>Sur B–C, leurs coûts vers A sont égaux. L’identifiant de B départage. Le port de B est désigné et celui de C reste en secours.</li><li>Si A–C tombe, recalcule les chemins. C ne voit plus A en direct et peut atteindre A via B. Dans une maquette, vérifie d’abord le pont racine, puis les rôles de ports avec <code>show spanning-tree</code>.</li></ol>
+  </div></details>
+  <details class="acc" id="vlan-exemple"><summary>Application du poly · Expliquer la traversée du trunk</summary><div class="acc-body">
+    <p class="c-question"><strong>Exemple d’application.</strong> Deux postes distants sont dans le VLAN 10 et tentent de communiquer. Le VLAN 20 partage le même trunk. Qu’observer devant les postes et entre les deux switches ?</p>
+    <ol><li>Place les deux ports de poste en access VLAN 10. Vérifie que le VLAN existe localement aux deux bouts. Entre les switches, vérifie le mode trunk et que 10 figure parmi les VLAN autorisés.</li><li>Suis une demande ARP. Elle est sans tag devant les postes, puis porte le VLAN 10 entre les commutateurs selon la configuration du schéma. Elle ne doit pas ressortir sur un port access du VLAN 20.</li><li>Si les deux postes peuvent parler sur le même switch sans pouvoir traverser le trunk, regarde <code>show interfaces trunk</code> et <code>show spanning-tree vlan 10</code>. Une absence sur le trunk peut venir d’un VLAN filtré ou d’un chemin bloqué.</li></ol>
+  </div></details>
+  <details class="acc" id="tp7-scapy"><summary>TP7, questions 6 à 8 · Construire le ping au niveau Ethernet</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Construire une requête ping vers le deuxième poste, l’envoyer pendant que Wireshark capture, puis renvoyer la même trame en demandant à Scapy d’attendre une réponse.</p>
+    <ol><li>Dans la maquette, relève les MAC et IP des deux interfaces. Construis <code>Ether(src=mac_a, dst=mac_b)/IP(src=ip_a, dst=ip_b)/ICMP(type=8)</code>. Donne à chaque variable la valeur du poste correspondant.</li><li>Lance la capture des deux côtés, puis <code>sendp(trame, iface=interface)</code>. Dans Wireshark, filtre <code>icmp</code>. La requête est de type 8 et la réponse attendue de type 0. Compare les adresses sur les deux lignes.</li><li>Pour récupérer une réponse dans Scapy, essaie <code>reponse = srp1(trame, iface=interface, timeout=3)</code>. Si elle est absente, distingue sur la capture une requête jamais arrivée d’une requête arrivée sans réponse.</li></ol>
+  </div></details>
+  <details class="acc" id="tp7-mac"><summary>TP7 · Une trame capturée peut-elle rester sans réponse ?</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Reprendre la trame avec une MAC de destination fictive, en gardant l’IP du deuxième poste. Expliquer pourquoi une capture peut la montrer sur le poste cible.</p>
+    <ol><li>Change uniquement la MAC de destination avec une MAC unicast absente de la table du switch. Le commutateur traite alors la trame comme un unicast inconnu et peut la recopier sur plusieurs ports de ce VLAN.</li><li>Le poste cible peut la voir dans une capture en mode promiscuité. Compare la MAC de destination à celle de ce poste. Si elles diffèrent, il est cohérent que la pile réseau ne traite pas la requête ICMP.</li><li>Refais l’expérience avec la MAC correcte, puis avec une capture au même endroit. La différence entre les deux essais permet de distinguer la réception physique du traitement du paquet.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/archi-reseaux/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/archi-reseaux/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/archi-reseaux/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Du câble partagé au commutateur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="52.667">0:52 · Bloquer la boucle avec STP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="126.958">2:06 · Suivre le VLAN 10 sur un trunk</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="174.500">2:54 · Poly R103 · Choisir le port de secours</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="223.583">3:43 · TP7 · Fabriquer un vrai ping avec Scapy</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="277.500">4:37 · TP7 · Une trame apparaît, mais le PC répond-il ?</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
