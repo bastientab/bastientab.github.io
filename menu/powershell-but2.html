@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programmation événementielle — PowerShell — BUT2 R&amp;T</title>
+  <meta name="description" content="Apprends à manipuler des objets, écrire des scripts et automatiser le travail sur les fichiers avec PowerShell.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/powershell-but2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">PS</span></div>
+      <h1 class="page-title" id="page-title">Programmation événementielle — PowerShell</h1>
+      <p class="page-lead">Apprends à manipuler des objets, écrire des scripts et automatiser le travail sur les fichiers avec PowerShell.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S3</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Exercices corrigés</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/powershell-but2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <div class="c-block"><h3>1. Lire une commande dans la console</h3>
+    <p>PowerShell est un interpréteur de commandes et un langage de scripts. Dans une <strong>cmdlet</strong> comme <code>Get-ChildItem</code>, le verbe <code>Get</code> indique qu’on récupère une information, et <code>ChildItem</code> désigne les éléments contenus dans un dossier. Les <strong>paramètres</strong> précisent l’emplacement, le filtre ou le type de résultat attendu.</p>
+    <p><code>Get-Command</code> cherche dans les commandes disponibles. <code>Get-Help Get-ChildItem -Examples</code> affiche des exemples si l’aide est installée. Un alias, comme <code>sl</code> pour <code>Set-Location</code>, est un raccourci. Vérifie son sens avec <code>Get-Alias -Name sl</code> et préfère les noms complets dans un script que tu veux relire.</p>
+  </div>
+  <div class="c-block"><h3>2. Suivre les objets dans un pipeline</h3>
+    <p>Ce que la console affiche est une vue des <strong>objets</strong> produits. L’objet fichier porte des propriétés, par exemple <code>Name</code>, <code>Extension</code> et <code>Length</code>. Une méthode est une action que propose un type d’objet. <code>Get-Member</code> te montre ces propriétés et méthodes.</p>
+    <pre><code>Get-ChildItem -File |
+    Where-Object { $_.Extension -eq '.txt' } |
+    Select-Object Name, Length</code></pre>
+    <p>Lis de gauche à droite. D’abord on liste les fichiers. Ensuite, <code>$_</code> désigne l’objet en cours et <code>-eq</code> vérifie que son extension est <code>.txt</code>. La dernière commande conserve deux propriétés. Utilise <code>Format-Table</code> au moment de l’affichage, après les traitements sur les données.</p>
+  </div>
+  <div class="c-block"><h3>3. Lire une entrée et produire un résultat</h3>
+    <p>Un script s’enregistre avec l’extension <code>.ps1</code>. Pour le lancer depuis son dossier, indique son chemin, comme <code>./exemple.ps1</code>. Déclare les paramètres en haut dans <code>param(...)</code>. <code>Read-Host</code> demande une saisie et renvoie du texte par défaut. Un paramètre <code>[int]</code> convertit une entrée compatible en entier.</p>
+    <p>Une expression seule ou <code>Write-Output</code> peut envoyer un résultat à la commande suivante. <code>Write-Host</code> sert à afficher un message. Une chaîne entre guillemets doubles développe les variables, et <code>$()</code> permet d’insérer une expression. Les guillemets simples conservent le texte littéral.</p>
+  </div>
+  <div class="c-block"><h3>4. Choisir, répéter et stocker</h3>
+    <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Situation</th><th>Construction</th></tr></thead><tbody>
+      <tr><td>Traiter quelques cas selon une valeur</td><td><code>if</code>, <code>elseif</code>, <code>else</code> ou <code>switch</code></td></tr>
+      <tr><td>Parcourir un tableau d’objets</td><td><code>foreach ($Fichier in $Fichiers)</code></td></tr>
+      <tr><td>Répéter avec une position qui avance</td><td><code>for</code> et mise à jour de l’index</td></tr>
+      <tr><td>Répéter tant qu’une condition vaut vrai</td><td><code>while</code> teste d’abord, <code>do … while</code> exécute au moins une fois</td></tr>
+    </tbody></table></div>
+    <p>Un tableau se construit par exemple avec <code>@('janvier','avril')</code>. Le premier élément est à l’indice 0. Pour fusionner deux chaînes caractère par caractère, parcours leurs indices avec une boucle et vérifie que l’indice existe dans chaque chaîne avant de lire. Une comparaison numérique s’écrit par exemple <code>$Note -ge 10</code>.</p>
+  </div>
+  <div class="c-block"><h3>5. Encadrer les paramètres et les erreurs</h3>
+    <p>Une <strong>fonction</strong> regroupe des instructions qu’on appelle par leur nom. Dans une fonction avancée, <code>[CmdletBinding()]</code> ajoute des paramètres communs. <code>[Parameter(Mandatory)]</code> rend un argument obligatoire, <code>[ValidateRange(...)]</code> le contraint, et <code>[Alias(...)]</code> permet un autre nom de paramètre.</p>
+    <p>La <strong>portée</strong> détermine où un nom est visible. Une affectation dans une fonction crée normalement une variable dans la portée locale. Donne les données à la fonction en paramètres et récupère les résultats par sa sortie. <code>$PROFILE</code> donne le chemin du profil, un script de démarrage qui peut personnaliser la console.</p>
+    <p><code>try</code> exécute une action susceptible d’échouer, <code>catch</code> traite une erreur qui interrompt l’instruction, et <code>finally</code> sert notamment à libérer une ressource. Sur une commande qui signale habituellement une erreur et continue, <code>-ErrorAction Stop</code> permet de la faire intercepter. <code>throw</code> signale une précondition non respectée.</p>
+  </div>
+  <div class="c-block"><h3>6. Écrire une fonction qui accepte un pipeline</h3>
+    <p>Avec <code>ValueFromPipeline</code>, l’objet complet peut être lié à un paramètre compatible. Avec <code>ValueFromPipelineByPropertyName</code>, PowerShell cherche une propriété portant le nom du paramètre ou d’un de ses alias. Par exemple, avec un paramètre <code>$Name</code>, il peut prendre la propriété <code>Name</code> de chaque objet transmis.</p>
+    <p><code>begin</code> initialise une fois. <code>process</code> traite les objets qui arrivent. <code>end</code> renvoie le résultat final, comme le nombre total. Pour lire plus sur la liaison des entrées et les erreurs, consulte la <a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_pipelines">documentation du pipeline</a> et celle de <a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_try_catch_finally">try/catch</a>.</p>
+  </div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Exercices corrigés</h2>
+  <details class="acc" open><summary>Introduction, p. 19 · Rechercher des commandes et examiner Windows</summary><div class="acc-body">
+    <ol><li>Commence par <code>Get-Help Get-Alias</code>, puis ajoute <code>-Examples</code>. Pour chercher les alias dont le nom commence par <code>m</code>, utilise <code>Get-Alias -Name 'm*'</code>.</li>
+    <li><code>(Get-Alias -Name sl).Definition</code> affiche la commande cible de cet alias. Pour partir de la commande cible et retrouver ses raccourcis, utilise <code>Get-Alias -Definition Get-ChildItem</code>.</li>
+    <li><code>Get-Volume -DriveLetter C</code> affiche les informations du volume sous Windows. Avec <code>Get-Location | Get-Member</code> tu explores l’objet du chemin courant. La propriété <code>(Get-Location).Path</code> donne seulement le chemin.</li>
+    <li>Pour l’existence et la liste d’exécutables demandées, utilise <code>Test-Path -LiteralPath 'C:/Windows' -PathType Container</code>, puis <code>Get-ChildItem -LiteralPath 'C:/Windows' -File -Filter '*.exe'</code>.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Introduction, p. 19 · Créer, copier et renommer les fichiers du TD</summary><div class="acc-body">
+    <p>Le sujet place le dossier à la racine de <code>C:/</code>. Vérifie que le compte du labo te permet d’y écrire. Pour refaire le même exercice dans ton espace, commence dans un dossier de test où tu as les droits.</p>
+    <pre><code>New-Item -ItemType Directory -Path 'TpPowerShell'
+Set-Location -LiteralPath 'TpPowerShell'
+Set-Content -LiteralPath 'Exercice1.txt' -Value 'Exercice PowerShell'
+Get-ChildItem
+Copy-Item -LiteralPath 'Exercice1.txt' -Destination 'Exercice2.txt'
+Rename-Item -LiteralPath 'Exercice1.txt' -NewName 'essai1.txt'
+Get-Content -LiteralPath 'essai1.txt', 'Exercice2.txt'</code></pre>
+    <p>Avant la copie, la liste contient <code>Exercice1.txt</code>. À la fin, chaque lecture affiche la même phrase et la liste contient <code>essai1.txt</code> et <code>Exercice2.txt</code>.</p>
+  </div></details>
+  <details class="acc"><summary>Scripts, p. 18 · Calculer la factorielle de n</summary><div class="acc-body">
+    <p>La factorielle de n multiplie les entiers de 1 à n. Le résultat initial vaut 1, car c’est l’élément neutre de la multiplication. La factorielle de 0 vaut 1.</p>
+    <pre><code>param([Parameter(Mandatory)][ValidateRange(0,20)][int]$N)
+
+[long]$Resultat = 1
+for ($i = 2; $i -le $N; $i++) {
+    $Resultat *= $i
+}
+$Resultat</code></pre>
+    <p>Lance ton fichier avec <code>-N 5</code>, puis <code>-N 0</code>. Tu dois obtenir 120 puis 1. Un entier signé de 64 bits permet d’aller jusqu’à 20! dans ce script.</p>
+  </div></details>
+  <details class="acc"><summary>Scripts, p. 18 · Renommer les .txt en .old dans un dossier</summary><div class="acc-body">
+    <ol><li>Reçois <code>$Dossier</code> comme paramètre et vérifie <code>Test-Path -LiteralPath $Dossier -PathType Container</code>. Prépare deux fichiers d’essai dans ce dossier avant le lancement.</li>
+    <li>Parcours les fichiers retournés par <code>Get-ChildItem -LiteralPath $Dossier -File -Filter '*.txt'</code>. Pour chaque fichier, crée le futur nom avec <code>[IO.Path]::ChangeExtension($Fichier.Name, '.old')</code>.</li>
+    <li>Construit le chemin cible avec <code>Join-Path $Fichier.DirectoryName $Nom</code>. Si <code>Test-Path -LiteralPath $Cible</code> vaut vrai, signale ce nom en conflit et passe au fichier suivant.</li>
+    <li>Vérifie la simulation avec <code>Rename-Item -LiteralPath $Fichier.FullName -NewName $Nom -WhatIf</code>. Quand elle montre le changement attendu, lance sur la copie de test sans <code>-WhatIf</code> et vérifie les extensions et le contenu.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Scripts, p. 18 · Fusionner deux chaînes en alternant les lettres</summary><div class="acc-body">
+    <p>Utilise une boucle qui va jusqu’à la longueur de la chaîne la plus longue. À chaque indice, ajoute la lettre de la première chaîne si l’indice existe, puis fais de même avec la seconde.</p>
+    <pre><code>param([string]$A, [string]$B)
+
+$Resultat = ''
+for ($i = 0; $i -lt [Math]::Max($A.Length, $B.Length); $i++) {
+    if ($i -lt $A.Length) { $Resultat += $A[$i] }
+    if ($i -lt $B.Length) { $Resultat += $B[$i] }
+}
+$Resultat</code></pre>
+    <p>Avec <code>janvier</code> et <code>avril</code>, les groupes sont <code>ja | av | nr | vi | il | e | r</code>, ce qui donne <strong>jaavnrviiler</strong>. Vérifie aussi le cas où une chaîne est vide.</p>
+  </div></details>
+  <details class="acc"><summary>Fonctions, p. 9 · Compter les éléments d’un dossier donné</summary><div class="acc-body">
+    <p>La fonction prend un chemin textuel. La validation vérifie qu’il désigne un dossier. La construction <code>@(...)</code> donne un tableau, y compris si la commande renvoie zéro ou un seul résultat.</p>
+    <pre><code>function Get-NombreEntrees {
+    [CmdletBinding()]
+    param([Parameter(Mandatory)][string]$Dossier)
+
+    if (-not (Test-Path -LiteralPath $Dossier -PathType Container)) {
+        throw "Dossier introuvable : $Dossier"
+    }
+    @(Get-ChildItem -LiteralPath $Dossier -ErrorAction Stop).Count
+}
+
+Get-NombreEntrees -Dossier './TpPowerShell'</code></pre>
+  </div></details>
+  <details class="acc"><summary>Fonctions, p. 9 · Compter les entrées, les fichiers et les scripts en pipeline</summary><div class="acc-body">
+    <p>Les trois versions suivent le même chemin. On reçoit les objets envoyés par <code>Get-ChildItem</code>, on en traite un à la fois, puis on renvoie un entier. Le type <code>FileInfo</code> identifie un fichier. La propriété <code>Extension</code> permet de voir si c’est un script.</p>
+    <pre><code>function Measure-Entrees {
+    [CmdletBinding()]
+    param(
+        [Parameter(ValueFromPipeline)]
+        [System.IO.FileSystemInfo]$Entree,
+
+        [ValidateSet('Tout','Fichier','Script')]
+        [string]$Type = 'Tout'
+    )
+
+    begin { $Total = 0 }
+    process {
+        if ($null -ne $Entree) {
+            switch ($Type) {
+                'Tout' { $Total++ }
+                'Fichier' {
+                    if ($Entree -is [System.IO.FileInfo]) { $Total++ }
+                }
+                'Script' {
+                    if ($Entree -is [System.IO.FileInfo] -and
+                        $Entree.Extension -eq '.ps1') { $Total++ }
+                }
+            }
+        }
+    }
+    end { $Total }
+}
+
+Get-ChildItem -LiteralPath './TpPowerShell' | Measure-Entrees -Type Script</code></pre>
+    <p>Teste sur un dossier qui contient <code>a.ps1</code>, <code>b.txt</code> et un sous-dossier. Les trois choix doivent renvoyer 3, 2 et 1 respectivement. Pour compter les extensions dans la dernière question bonus, filtre les fichiers, puis applique <code>Group-Object Extension | Select-Object Name, Count</code>.</p>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/powershell-but2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/powershell-but2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/powershell-but2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Ouvrir PowerShell et lire une cmdlet</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="26.375">0:26 · Trouver une commande et lire l’aide</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="53.083">0:53 · Propriétés, objets et pipeline</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="107.792">1:47 · Passer de la console au script</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="138.250">2:18 · Conditions, boucles et tableaux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="168.042">2:48 · Paramètres, fonctions et portée</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="199.333">3:19 · Gérer l’échec d’une commande</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="228.375">3:48 · Recevoir les éléments du pipeline</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Exercices corrigés · 4:19</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="259.458">4:19 · Exercice 1 · Aide, alias et disque C</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="287.750">4:47 · Exercice 1 · Créer, copier et renommer</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="316.333">5:16 · Scripts · Calculer une factorielle</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="342.875">5:42 · Scripts · Préparer le renommage en .old</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="372.667">6:12 · Fonctions · Compter tous les éléments</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="400.667">6:40 · Fonctions · Compter les fichiers ou scripts</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="431.417">7:11 · Scripts · Alterner les lettres de deux mots</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="459.792">7:39 · Fonctions · Grouper les fichiers par extension</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
