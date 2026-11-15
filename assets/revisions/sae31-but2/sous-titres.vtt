@@ -1,0 +1,577 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:02.305
+Imagine deux horloges.
+
+00:00:02.305 --> 00:00:05.491
+L’une indique quand changer de bit ou de symbole.
+
+00:00:05.491 --> 00:00:09.364
+L’autre indique quand calculer une valeur numérique du
+signal.
+
+00:00:09.364 --> 00:00:13.200
+Entre les deux, il peut y avoir trente-deux valeurs
+par symbole.
+
+00:00:13.200 --> 00:00:16.361
+MATLAB produit ces valeurs en bande de base.
+
+00:00:16.361 --> 00:00:20.551
+Le Pluto utilise ensuite sa propre porteuse pour
+émettre le signal
+
+00:00:20.551 --> 00:00:20.932
+radio.
+
+00:00:20.932 --> 00:00:23.972
+À la réception, le trajet s’inverse.
+
+00:00:23.972 --> 00:00:27.405
+Il faut encore retrouver où commence une trame et à
+quel
+
+00:00:27.405 --> 00:00:28.653
+instant lire chaque symbole.
+
+00:00:29.017 --> 00:00:32.668
+À gauche du schéma, tu contrôles les données dans
+MATLAB.
+
+00:00:32.668 --> 00:00:36.047
+C’est le bon endroit pour comparer les bits d’entrée
+et de
+
+00:00:36.047 --> 00:00:37.275
+sortie sans le matériel.
+
+00:00:37.275 --> 00:00:41.111
+Après conversion, le module reçoit une liste complexe.
+
+00:00:41.111 --> 00:00:45.364
+Il faut le configurer avec la fréquence
+d’échantillonnage de cette liste.
+
+00:00:45.364 --> 00:00:49.083
+Si l’émetteur et le récepteur sont d’accord sur leurs
+réglages, la
+
+00:00:49.083 --> 00:00:51.111
+réception doit retrouver la forme d’onde.
+
+00:00:51.111 --> 00:00:54.787
+Le passage par l’air peut ajouter du bruit, un
+déphasage ou
+
+00:00:54.787 --> 00:00:56.124
+un décalage de fréquence.
+
+00:00:56.475 --> 00:00:59.807
+Commence avec quelques bits connus et une grille de
+temps.
+
+00:00:59.807 --> 00:01:03.518
+Pour le NRZ, prépare un niveau par bit, puis répète-le
+pour
+
+00:01:03.518 --> 00:01:05.543
+couvrir les échantillons de sa case.
+
+00:01:05.543 --> 00:01:08.904
+En Manchester dans la convention du poly, un un
+descend et
+
+00:01:08.904 --> 00:01:10.432
+un zéro monte au milieu.
+
+00:01:10.432 --> 00:01:13.226
+Pour deux B un Q, prépare des paires.
+
+00:01:13.226 --> 00:01:15.878
+Pour M L T trois, garde en mémoire la position dans
+
+00:01:15.878 --> 00:01:18.288
+le cycle et ne change d’état que sur un un.
+
+00:01:18.288 --> 00:01:22.253
+Vérifie les niveaux et le nombre d’échantillons avant
+de regarder le
+
+00:01:22.253 --> 00:01:22.614
+spectre.
+
+00:01:22.975 --> 00:01:26.831
+Dans une modulation d’amplitude, les oscillations
+rapides restent à la même
+
+00:01:26.831 --> 00:01:29.285
+fréquence, mais leur enveloppe suit le modulant.
+
+00:01:29.285 --> 00:01:32.271
+Pour du son, le T P demande d’enlever la moyenne et
+
+00:01:32.271 --> 00:01:34.714
+de mettre l’amplitude crête à crête à deux volts.
+
+00:01:34.714 --> 00:01:38.717
+En P S K, la valeur du symbole change l’orientation du
+
+00:01:38.717 --> 00:01:39.445
+point complexe.
+
+00:01:39.445 --> 00:01:42.766
+En F S K, le point tourne continuellement.
+
+00:01:42.766 --> 00:01:46.540
+La vitesse et le sens de cette rotation indiquent la
+fréquence
+
+00:01:46.540 --> 00:01:46.883
+choisie.
+
+00:01:47.225 --> 00:01:49.749
+Dessine un point sur un cercle.
+
+00:01:49.749 --> 00:01:53.523
+À chaque nouvel échantillon, observe l’angle parcouru.
+
+00:01:53.523 --> 00:01:57.282
+Si le point avance régulièrement dans le sens positif,
+la fréquence
+
+00:01:57.282 --> 00:01:59.332
+obtenue est au-dessus de la porteuse.
+
+00:01:59.332 --> 00:02:02.114
+Dans l’autre sens, elle est en dessous.
+
+00:02:02.114 --> 00:02:04.887
+Si le point reste au même endroit à I égal un
+
+00:02:04.887 --> 00:02:07.408
+et Q égal zéro, il n’y a pas de rotation.
+
+00:02:07.408 --> 00:02:11.194
+Le Pluto émet alors une porteuse à la fréquence
+centrale du
+
+00:02:11.194 --> 00:02:11.538
+canal.
+
+00:02:11.892 --> 00:02:15.739
+Le débit compte des bits et la rapidité compte des
+symboles.
+
+00:02:15.739 --> 00:02:19.333
+En F S K binaire, les deux ont la même valeur
+
+00:02:19.333 --> 00:02:19.660
+numérique.
+
+00:02:19.660 --> 00:02:22.903
+En Q P S K, deux bits sont envoyés par symbole
+
+00:02:22.903 --> 00:02:25.261
+et la rapidité est deux fois plus petite.
+
+00:02:25.261 --> 00:02:28.778
+Le produit par trente-deux donne la fréquence des
+échantillons.
+
+00:02:28.778 --> 00:02:32.117
+Si tu gardes la fréquence F S K dans la configuration
+
+00:02:32.117 --> 00:02:35.457
+Q P S K, le débit réellement émis sera trop élevé.
+
+00:02:35.457 --> 00:02:38.778
+Calcule cette valeur avant de régler le matériel.
+
+00:02:39.142 --> 00:02:42.744
+Une capture peut commencer au milieu d’un message
+répété.
+
+00:02:42.744 --> 00:02:46.071
+La première alternance aide à retrouver le rythme,
+puis une séquence
+
+00:02:46.071 --> 00:02:49.398
+de Barker donne un repère que tu peux retrouver par
+corrélation.
+
+00:02:49.398 --> 00:02:53.083
+Après ce repère, le récepteur lit le nombre de bits à
+
+00:02:53.083 --> 00:02:53.418
+prendre.
+
+00:02:53.418 --> 00:02:57.105
+Le C R C vérifie ensuite que les données sont
+cohérentes
+
+00:02:57.105 --> 00:02:58.111
+avec leur contrôle.
+
+00:02:58.111 --> 00:03:01.300
+Un bon test consiste à recevoir d’abord une trame
+intacte, puis
+
+00:03:01.300 --> 00:03:04.488
+à inverser un bit protégé et à vérifier que le
+contrôle
+
+00:03:04.488 --> 00:03:04.778
+échoue.
+
+00:03:05.142 --> 00:03:08.687
+Commence par garder un seul canal audio et au plus
+vingt
+
+00:03:08.687 --> 00:03:09.332
+mille échantillons.
+
+00:03:09.332 --> 00:03:11.427
+Enlève la moyenne.
+
+00:03:11.427 --> 00:03:14.696
+Mesure l’écart entre la valeur la plus haute et la
+plus
+
+00:03:14.696 --> 00:03:14.994
+basse.
+
+00:03:14.994 --> 00:03:18.137
+En multipliant par deux et en divisant par cet écart,
+tu
+
+00:03:18.137 --> 00:03:20.423
+obtiens la crête à crête qui est demandée.
+
+00:03:20.423 --> 00:03:22.935
+Vérifie les crêtes séparément.
+
+00:03:22.935 --> 00:03:26.834
+Sur un extrait asymétrique, une des crêtes peut
+dépasser un en
+
+00:03:26.834 --> 00:03:27.543
+valeur absolue.
+
+00:03:27.543 --> 00:03:32.059
+Si le coefficient de l’enveloppe devient négatif,
+l’enveloppe détectée déforme le
+
+00:03:32.059 --> 00:03:32.469
+son.
+
+00:03:32.808 --> 00:03:35.883
+Le sujet donne un numéro de canal par groupe.
+
+00:03:35.883 --> 00:03:39.364
+Remplace N dans le calcul par celui indiqué au banc.
+
+00:03:39.364 --> 00:03:42.109
+Prépare d’abord des échantillons constants.
+
+00:03:42.109 --> 00:03:45.261
+Ils ne portent aucune modulation en bande de base,
+donc tu
+
+00:03:45.261 --> 00:03:48.126
+dois chercher une seule raie principale près de la
+porteuse.
+
+00:03:48.126 --> 00:03:51.523
+Si l’analyseur ne montre pas la raie attendue, vérifie
+l’accord en
+
+00:03:51.523 --> 00:03:54.920
+fréquence, le canal choisi et le trajet de mesure
+avant de
+
+00:03:54.920 --> 00:03:55.847
+reprendre ton script.
+
+00:03:56.183 --> 00:03:59.703
+Ne confonds pas la fréquence recherchée à l’analyseur
+et celle du
+
+00:03:59.703 --> 00:04:01.624
+ton numérique à l’écran de MATLAB.
+
+00:04:01.624 --> 00:04:05.263
+Dans un exemple, la porteuse attendue est à deux mille
+quatre
+
+00:04:05.263 --> 00:04:06.256
+cent deux mégahertz.
+
+00:04:06.256 --> 00:04:09.985
+Un écart de mille deux cents hertz représente environ
+zéro virgule
+
+00:04:09.985 --> 00:04:11.342
+cinq partie par million.
+
+00:04:11.342 --> 00:04:14.994
+Ensuite on envoie un ton numérique à cinquante
+kilohertz.
+
+00:04:14.994 --> 00:04:18.277
+Si le récepteur est centré sur la porteuse, il doit
+retrouver
+
+00:04:18.277 --> 00:04:21.561
+ce ton près de cinquante kilohertz, avec un écart
+éventuel lié
+
+00:04:21.561 --> 00:04:22.457
+aux deux horloges.
+
+00:04:22.808 --> 00:04:27.076
+Pour le premier message de neuf bits, calcule
+cinquante microsecondes par
+
+00:04:27.076 --> 00:04:27.464
+bit.
+
+00:04:27.464 --> 00:04:31.680
+Divise cette durée par trente-deux pour obtenir le pas
+d’échantillonnage.
+
+00:04:31.680 --> 00:04:35.936
+À cent kilohertz de déviation, trace le sens de
+rotation pour
+
+00:04:35.936 --> 00:04:37.097
+un, zéro, un.
+
+00:04:37.097 --> 00:04:40.323
+I garde la même forme à l’inversion de fréquence pour
+une
+
+00:04:40.323 --> 00:04:41.496
+phase nulle de départ.
+
+00:04:41.496 --> 00:04:43.579
+Q change de signe.
+
+00:04:43.579 --> 00:04:47.541
+Sur un modulateur de phase continue, conserve la phase
+atteinte à
+
+00:04:47.541 --> 00:04:48.261
+la frontière.
+
+00:04:48.261 --> 00:04:52.440
+Au récepteur, règle le même nombre d’échantillons, le
+même espacement entre
+
+00:04:52.440 --> 00:04:54.719
+tons et la même fréquence d’échantillonnage.
+
+00:04:55.058 --> 00:04:58.547
+Le nombre que fournit le sujet, cent kilohertz, est la
+déviation
+
+00:04:58.547 --> 00:05:00.450
+de chaque côté de la porteuse.
+
+00:05:00.450 --> 00:05:04.371
+La séparation entre les deux tons fait donc deux cents
+kilohertz.
+
+00:05:04.371 --> 00:05:07.557
+C’est elle qui sert pour le paramètre de séparation de
+la
+
+00:05:07.557 --> 00:05:10.744
+fonction F S K mod. Compare deux messages simples,
+uniquement des
+
+00:05:10.744 --> 00:05:13.930
+uns puis uniquement des zéros, pour confirmer le sens
+de rotation.
+
+00:05:13.930 --> 00:05:17.900
+Quand tu ajoutes le préambule, recalcule le nombre
+d’échantillons.
+
+00:05:17.900 --> 00:05:21.111
+Les trente-huit bits du message court et de son en-
+tête occupent
+
+00:05:21.111 --> 00:05:22.570
+mille deux cent seize points.
+
+00:05:22.933 --> 00:05:26.339
+Transforme le texte en octets avec le même encodage à
+l’émission
+
+00:05:26.339 --> 00:05:27.577
+et à la réception.
+
+00:05:27.577 --> 00:05:30.445
+Fixe l’ordre des bits dans chaque octet.
+
+00:05:30.445 --> 00:05:34.366
+Le champ longueur compte des bits utiles, pas des
+caractères.
+
+00:05:34.366 --> 00:05:37.890
+À la réception, après avoir repéré le préambule,
+vérifie que le
+
+00:05:37.890 --> 00:05:41.094
+tampon contient le champ longueur et toutes les
+données attendues.
+
+00:05:41.094 --> 00:05:43.950
+Décode seulement les bits utiles prévus.
+
+00:05:43.950 --> 00:05:47.724
+Pour le test d’erreur, inverse un bit utile reçu et
+vérifie
+
+00:05:47.724 --> 00:05:49.440
+que le détecteur signale l’échec.
+
+00:05:49.808 --> 00:05:53.548
+Sur le dessin, regarde les deux cases qui portent un
+nombre
+
+00:05:53.548 --> 00:05:53.888
+seize.
+
+00:05:53.888 --> 00:05:57.185
+La première contient la suite de synchronisation.
+
+00:05:57.185 --> 00:06:00.371
+Celle du milieu encode un nombre avec seize bits.
+
+00:06:00.371 --> 00:06:03.240
+Si on transmet le texte O K, il y a deux
+
+00:06:03.240 --> 00:06:05.849
+octets, donc le nombre inscrit dans cette case vaut
+seize.
+
+00:06:05.849 --> 00:06:09.579
+Après le champ de longueur, lis seulement seize bits
+utiles, puis
+
+00:06:09.579 --> 00:06:10.935
+les bits de contrôle.
+
+00:06:10.935 --> 00:06:14.080
+Si tu lis jusqu’à la fin du tampon sans compter, tu
+
+00:06:14.080 --> 00:06:16.082
+peux inclure le début d’une autre trame.
+
+00:06:16.433 --> 00:06:20.256
+Dans la partie M P S K, commence avec quatre états.
+
+00:06:20.256 --> 00:06:23.743
+Divise quarante mille trois cent vingt bits par deux
+pour obtenir
+
+00:06:23.743 --> 00:06:25.011
+le nombre de symboles.
+
+00:06:25.011 --> 00:06:29.067
+Le débit de vingt kilobits par seconde correspond à
+dix kilobauds.
+
+00:06:29.067 --> 00:06:32.586
+Avec le filtre, les échantillons au milieu des
+symboles doivent revenir
+
+00:06:32.586 --> 00:06:35.464
+près des points attendus une fois la chaîne
+synchronisée.
+
+00:06:35.464 --> 00:06:38.935
+Compare les mesures en faisant varier un seul
+paramètre à la
+
+00:06:38.935 --> 00:06:39.251
+fois.
+
+00:06:39.251 --> 00:06:42.434
+Un déphasage fixe tourne le nuage, un décalage de
+fréquence le
+
+00:06:42.434 --> 00:06:45.616
+fait tourner au fil du temps, et du bruit disperse les
+
+00:06:45.616 --> 00:06:45.905
+points.
+
+00:06:46.267 --> 00:06:49.864
+Après filtrage, repère l’instant où la valeur de I et
+de
+
+00:06:49.864 --> 00:06:51.499
+Q correspond à un symbole.
+
+00:06:51.499 --> 00:06:55.322
+Les valeurs entre cet instant et le suivant dessinent
+la transition.
+
+00:06:55.322 --> 00:06:58.237
+Si tu mets tous les points sur le plan, tu obtiens
+
+00:06:58.237 --> 00:06:59.562
+des traits entre les constellations.
+
+00:06:59.562 --> 00:07:03.685
+Pour comparer avec le dessin théorique, n’affiche que
+les instants de
+
+00:07:03.685 --> 00:07:04.060
+décision.
+
+00:07:04.060 --> 00:07:07.390
+Une Q P S K à dix kilobauds et un coefficient
+
+00:07:07.390 --> 00:07:10.720
+de zéro virgule quatre donne environ quatorze
+kilohertz de largeur occupée
+
+00:07:10.720 --> 00:07:12.234
+dans le modèle du filtre.
+
+00:07:12.600 --> 00:07:14.927
+Prends deux échantillons voisins.
+
+00:07:14.927 --> 00:07:18.914
+En multipliant le courant par le conjugué du
+précédent, tu gardes
+
+00:07:18.914 --> 00:07:20.001
+leur différence d’angle.
+
+00:07:20.001 --> 00:07:23.499
+Divise cet angle par le temps écoulé pour obtenir la
+vitesse
+
+00:07:23.499 --> 00:07:26.680
+de rotation, puis convertis de radians par seconde en
+hertz.
+
+00:07:26.680 --> 00:07:30.374
+Normalise par l’excursion prévue au T P. Pour le son,
+conserve
+
+00:07:30.374 --> 00:07:33.396
+la correspondance entre nombre de points et fréquence
+réelle.
+
+00:07:33.396 --> 00:07:37.354
+À un mégahertz, cinq cent mille points couvrent une
+demi-seconde.
+
+00:07:37.354 --> 00:07:41.337
+Sans rééchantillonnage, un son lu plus vite change de
+durée.

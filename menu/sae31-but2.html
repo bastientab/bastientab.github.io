@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAÉ 3.01 — Projet de transmission — BUT2 R&amp;T</title>
+  <meta name="description" content="Réviser les codages MATLAB, les modulations et la transmission avec les Pluto SDR.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/sae31-but2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=apercu-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">3.01</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 3.01 — Projet de transmission</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae31-but2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le projet de transmission</h2>
+  <div class="c-block">
+    <h3>1. Passer des bits aux échantillons avec MATLAB</h3>
+    <p>Un <strong>bit</strong> est une valeur d’information. Un <strong>symbole</strong> est l’état du signal que l’émetteur choisit pour transmettre un ou plusieurs bits. Un <strong>échantillon</strong> mesure ou représente numériquement le signal à un instant. Pour une rapidité R et N échantillons par symbole, règle la fréquence d’échantillonnage à <strong>F<sub>e</sub> = R × N</strong>. Utilise <code>t = (0:Ntotal-1)/Fe</code> pour obtenir exactement le nombre de points voulu.</p>
+    <p>En NRZ, répète le niveau pendant toute la case. Manchester utilise deux demi-cases et une transition centrale. En 2B1Q, forme des dibits puis applique les quatre niveaux du cours. En MLT-3, conserve l’état d’une case à la suivante et avance dans le cycle seulement quand le bit vaut 1. Pour vérifier un script, commence par un train court dont tu sais déjà dessiner le résultat.</p>
+    <p>Le chronogramme montre les niveaux et l’horloge. Le spectre montre les fréquences présentes. Avant de prendre une FFT, construis son axe avec la vraie F<sub>e</sub>. Par exemple, sur N points le pas fréquentiel de la grille vaut F<sub>e</sub>/N. Relie une différence de spectre à la durée et à la fréquence des transitions, pas seulement à la forme du tracé.</p>
+  </div>
+  <div class="c-block">
+    <h3>2. Distinguer AM, ASK, PSK et FSK</h3>
+    <p>En <strong>AM</strong>, une porteuse sinusoïdale est multipliée par une enveloppe liée au signal modulant. En ASK, l’amplitude prend des valeurs qui représentent des symboles. En PSK c’est la phase qui change. En FSK, les symboles utilisent des fréquences différentes. La première FSK du TP est un exercice logiciel à 2 kHz de déviation, tandis que la transmission de texte sur le Pluto prend ±100 kHz.</p>
+    <p>Pour un extrait sonore, centre les échantillons en retirant leur moyenne puis règle la crête à crête. Si le signal a des crêtes dissymétriques, une crête à crête de 2 après centrage ne garantit pas que chaque crête soit limitée à ±1. Vérifie donc l’enveloppe de l’AM pour savoir si le signal passe en surmodulation.</p>
+  </div>
+  <div class="c-block">
+    <h3>3. Comprendre le rôle du Pluto et les deux voies I/Q</h3>
+    <figure><img src="../assets/revisions/sae31-but2/schemas/chaine.png" alt="Chaîne MATLAB et Pluto SDR, des bits aux échantillons I/Q puis du récepteur au message" loading="lazy"><figcaption>Le logiciel prépare les échantillons en bande de base. Le Pluto les transpose autour de la fréquence radio configurée.</figcaption></figure>
+    <p>Écris C(t)=I(t)+jQ(t). Le modulateur du sujet combine I·cos(2πf<sub>p</sub>t) et −Q·sin(2πf<sub>p</sub>t). Avec C=1+j0, il reste une porteuse non modulée. Avec C=exp(j2πf₀t), I et Q valent respectivement cos(2πf₀t) et sin(2πf₀t). Le signal radio devient un cosinus à <strong>f<sub>p</sub>+f₀</strong>.</p>
+    <p>Si le second Pluto est accordé sur f<sub>p</sub>, le pic complexe devrait réapparaître à f₀. L’écart mesuré vient notamment des références de fréquence des deux appareils. Pour comparer une erreur relative d’oscillateur, divise l’écart absolu en hertz par la fréquence porteuse, puis multiplie par 10⁶. Avec une FFT complexe et un axe centré, le signe du décalage reste visible.</p>
+  </div>
+  <div class="c-block">
+    <h3>4. Construire une trame et retrouver le bon début</h3>
+    <figure><img src="../assets/revisions/sae31-but2/schemas/trame.png" alt="Les cinq champs de la trame du TP, dans l’ordre : synchronisation, Barker, longueur, message puis CRC" loading="lazy"><figcaption>Trame texte du sujet. La séquence courte de l’exercice précédent utilise les deux premiers champs puis le message.</figcaption></figure>
+    <p>Une <strong>trame</strong> organise les données transmises. Dans le TP, seize bits alternés aident à synchroniser, puis treize bits de Barker donnent un repère identifiable par corrélation. La trame texte contient ensuite une longueur sur seize bits, le message et un CRC. La longueur se compte en bits. Avec deux octets de texte, elle vaut 16 même si elle occupe elle-même un champ de 16 bits.</p>
+    <p>Fixe l’encodage du texte et l’ordre des bits des octets aux deux extrémités. Le <strong>CRC</strong> permet de détecter une altération si l’émetteur et le récepteur utilisent les mêmes paramètres et contrôlent les mêmes champs. Vérifie que le tampon est assez long pour lire le champ annoncé avant d’en extraire le message.</p>
+  </div>
+  <div class="c-block">
+    <h3>5. Observer la QPSK, le filtre et les défauts du canal</h3>
+    <p>La M-PSK choisit un angle parmi M. Avec M=4, deux bits déterminent un point. Après mise en forme en cosinus surélevé, compare le spectre et les échantillons aux instants de décision. Inclure tous les échantillons pendant les transitions montre les trajectoires. Une constellation de symboles se lit aux instants correctement synchronisés, après avoir pris en compte le retard du filtre.</p>
+    <p>Un déphasage fixe fait tourner les points du même angle. Un écart de fréquence ajoute un angle croissant dans le temps. Du bruit disperse les points. Change un seul effet à la fois et conserve les réglages pour pouvoir expliquer la différence. Avec davantage d’états sur le même cercle, les points sont plus proches sur le plan angulaire.</p>
+  </div>
+  <div class="c-block">
+    <h3>6. Fabriquer et démoduler la FM en complexe</h3>
+    <p>En FM, l’écart instantané de fréquence suit le son. Intègre ce son pour obtenir la phase θ(t), puis crée C(t)=exp(jθ(t)). Pour limiter la crête de l’écart à Δf, prends θ(t)=2πΔf∫m(t)dt / max(|m|), à condition que max(|m|) soit non nul. Dans MATLAB, l’intégrale numérique se construit avec <code>cumtrapz(t,m)</code> en secondes.</p>
+    <p>À la réception, applique <code>angle(r(k)*conj(r(k-1)))</code>. La différence d’angles approximée, multipliée par F<sub>e</sub>/(2π), donne l’écart signé de fréquence. Évite que la différence dépassant ±π soit ambiguë et utilise le taux réel de capture. Pour écouter, adapte la cadence à celle du son ou rééchantillonne.</p>
+  </div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="coverage-title">
+  <h2 class="c-h2" id="coverage-title">Du cours aux TD et TP</h2>
+  <div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Notion</th><th scope="col">Application du sujet</th><th scope="col">À savoir refaire</th></tr></thead><tbody>
+    <tr><th scope="row">Codage et FFT</th><td>Reprise MATLAB</td><td>Tracer NRZ, Manchester, 2B1Q et MLT-3 et lire le véritable axe des fréquences.</td></tr>
+    <tr><th scope="row">AM et I/Q</th><td>Modulation du son et porteuse Pluto</td><td>Calculer une enveloppe et expliquer pourquoi une rotation I/Q décale la fréquence.</td></tr>
+    <tr><th scope="row">FSK et trame</th><td>Transmission du texte</td><td>Relier débit, horloge, longueur, Barker et vérification CRC.</td></tr>
+    <tr><th scope="row">M-PSK et FM</th><td>Simulation de constellation, puis partie FM</td><td>Isoler les effets du canal et dériver la phase pour récupérer le modulant.</td></tr>
+  </tbody></table></div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <details class="acc" open><summary>Reprise MATLAB · Modifier le script NRZ</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Analyser en temps et en fréquence le script NRZ fourni, puis produire un signal Manchester, 2B1Q et MLT-3.</p>
+    <ol><li>Repère où sont choisis les bits, le débit et la fréquence d’échantillonnage. Calcule le nombre de points par bit et vérifie qu’il divise la longueur de la sortie.</li><li>Sur <code>101</code>, les niveaux NRZ bipolaires valent +, −, +. Pour Manchester dans la convention du poly, construis les demi-niveaux <code>[+ −] [− +] [+ −]</code>. Choisis un nombre pair d’échantillons par bit.</li><li>Avec <code>10 | 01</code>, le tableau 2B1Q du cours donne +3A, −A. En MLT-3, pars de 0 et utilise le cycle <code>+E, 0, −E, 0</code> aux 1 successifs. Les 0 gardent le dernier niveau.</li><li>Trace le signal avec les mêmes unités temporelles, puis la FFT avec la fréquence réellement choisie pour les échantillons. Compare ce qui change à débit d’information constant.</li></ol>
+  </div></details>
+  <details class="acc"><summary>AM · Centrer et normaliser l’audio</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Charger le son demandé, garder au plus 20 000 échantillons, centrer le modulant, le mettre à 2 V crête à crête et générer l’AM pour un indice de 1.</p>
+    <ol><li>Avec <code>audioread</code>, conserve la fréquence du fichier et choisis un canal. Limite la colonne à ses 20 000 premières lignes si elle en contient assez.</li><li>Calcule <code>x = x - mean(x)</code>, puis multiplie par <code>2/(max(x)-min(x))</code> si l’écart est non nul. Vérifie moyenne et crête à crête.</li><li>Sur un axe à la cadence de la simulation, multiplie <code>1+x</code> par la porteuse. Si tu dois représenter une porteuse hors de la bande permise par la cadence audio, rééchantillonne ou simule d’abord le signal en bande de base. Trace l’enveloppe et les bandes latérales. Vérifie si <code>1+x</code> change de signe.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Pluto SDR · Émettre une porteuse puis mesurer le décalage</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Émettre sur le canal attribué au TP. Mesurer la porteuse et son erreur en ppm, puis émettre un ton complexe de 50 kHz et comparer émission et réception.</p>
+    <ol><li>Calcule f<sub>p</sub>=2400+2n MHz à partir du numéro donné au banc. Envoie des échantillons complexes constants. Centre l’analyseur à cette fréquence, réduis le span et règle la RBW pour relever le maximum.</li><li>Si, par exemple, une porteuse attendue de 2402 MHz est mesurée 1200 Hz plus haut, l’erreur vaut [1200/(2,402×10⁹)] × 10⁶ ≈ <strong>0,50 ppm</strong>. Utilise ta mesure réelle dans le compte rendu.</li><li>Émets C(t)=exp(j2π·50000t). Compare la raie en réception complexe à 50 kHz. Si elle est à 53 kHz, l’écart résiduel vaut +3 kHz. Pour compenser ce cas, multiplie la réception par exp(−j2π·3000t) puis contrôle que la raie est revenue vers 50 kHz.</li></ol>
+  </div></details>
+  <details class="acc"><summary>FSK · Émettre le message court et retrouver la trame</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Transmettre les neuf bits <code>101011010</code> à 20 kbit/s, avec ±100 kHz et 32 échantillons par bit. Ajouter la synchronisation et le Barker, puis retrouver le message.</p>
+    <ol><li>Calcule T<sub>b</sub>=50 µs, F<sub>e</sub>=640 kHz et 9×32=288 échantillons pour le message seul. Si tu ajoutes les 29 bits d’en-tête, recalcule la longueur à <strong>38×32=1216</strong> points.</li><li>Les deux tons sont séparés de 200 kHz. Dans <code>fskmod</code> et <code>fskdemod</code>, c’est cette séparation que tu fournis. Vérifie le sens des fréquences avec deux séquences connues de 0 et de 1. Utilise la même cadence et le même nombre de points par symbole des deux côtés. <a href="https://www.mathworks.com/help/comm/ref/fskmod.html">Documentation MATLAB de fskmod</a></li><li>Une capture de 2×N points donne la place de contenir une trame répétée, à condition que la radio reçoive effectivement ces points sans perte. Ce réglage ne donne pas l’indice du début de trame. Repère le préambule, contrôle la position renvoyée par le détecteur sur une simulation connue, puis extrais les bits utiles dans les bornes du tampon.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Texte · Distinguer longueur du message et contrôle CRC</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Transmettre un texte de longueur variable, le reconstruire à la réception, puis provoquer une erreur pour vérifier le CRC.</p>
+    <ol><li>Choisis un encodage, par exemple UTF-8. Sérialise chaque octet selon un ordre fixé. Pour <code>OK</code>, deux octets donnent 16 bits utiles. Écris la valeur 16 dans le champ longueur de 16 bits.</li><li>Après le Barker, lis d’abord les 16 bits de longueur puis ce nombre de bits utiles. Vérifie que la longueur correspond à des octets entiers et laisse la place au CRC. Contrôle le CRC avec exactement le même polynôme et les mêmes paramètres.</li><li>Accepte la trame intacte. Inverse un bit du message avant de contrôler la copie, puis vérifie que l’erreur est détectée. Ne présente pas un texte reconstitué comme valide si le contrôle a échoué.</li></ol>
+  </div></details>
+  <details class="acc"><summary>M-PSK · Dimensionner, simuler et relever le spectre</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Simuler puis émettre 40 320 bits à 20 kbit/s, M=4 au départ, 32 échantillons par symbole et un cosinus surélevé de coefficient 0,4. Comparer l’effet du filtre, du bruit et des décalages.</p>
+    <ol><li>En QPSK, tu obtiens 20 160 symboles à 10 kbaud et <strong>320 kHz</strong> d’échantillonnage. Le signal symbolique sans transitoires représente 645 120 échantillons si tu produis 32 points par symbole. Un filtre peut introduire un retard à prendre en compte dans les observations.</li><li>Affiche I/Q, FFT et constellation aux bons instants. Compare au filtre désactivé et indique dans quelles conditions tu observes la bande. L’occupation idéale autour de la porteuse vaut environ (1+0,4)×10 kbaud = <strong>14 kHz</strong> dans le modèle du cosinus surélevé.</li><li>Recommence avec 8, puis 16 états en refaisant R=D/log₂(M) et F<sub>e</sub>=32R. Fais un essai par perturbation. Émets ensuite sur le banc avec les réglages attribués et relève le spectre effectivement mesuré.</li></ol>
+  </div></details>
+  <details class="acc"><summary>FM · Revenir du signal reçu à la piste audio</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Générer la phase FM à partir du son, recevoir 500 000 échantillons à 1 MHz et reconstituer le modulant avec les quatre étapes du TP.</p>
+    <ol><li>Intègre le son à sa vraie cadence, puis multiplie par 2π·Δf/m<sub>max</sub>. Prends l’exponentielle complexe. Lorsque l’émetteur lit les points, utilise une cadence cohérente avec celle de leur génération. Si le TP envoie les mêmes N points à un taux différent, la nouvelle durée est N/F<sub>e</sub>.</li><li>La capture couvre 500 000/1 000 000=<strong>0,5 s</strong>. Enlève au besoin un décalage résiduel constant. Pour chaque paire de points voisins, prends l’argument du produit avec le conjugué, multiplie par F<sub>e</sub> et divise par 2πΔf pour retrouver le modulant normalisé.</li><li>Une remise à l’échelle absolue demande de connaître la normalisation de départ. Si le but est l’écoute, ramène le rythme à une cadence audio appropriée et ajuste le niveau d’écoute séparément.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae31-but2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae31-but2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae31-but2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Suivre une chaîne radio de bout en bout</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="56.375">0:56 · Refaire les codages en MATLAB</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="82.875">1:22 · Amplitude, phase et fréquence</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="107.125">1:47 · Ce que signifie I plus j Q</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="131.792">2:11 · Fréquence d’échantillonnage et débit</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="159.042">2:39 · Identifier la trame et détecter une erreur</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Questions TD &amp; TP · 3:05</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="185.042">3:05 · TP · Analyser un signal sinusoïdal et un son en AM</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="212.708">3:32 · TP · Retrouver la porteuse attribuée</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="262.708">4:22 · TP · Calculer les paramètres FSK du message</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="322.833">5:22 · TP · Reconstruire le texte et tester le CRC</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="376.333">6:16 · TP · Simuler la QPSK avant d’émettre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="432.500">7:12 · TP · Démoduler la FM par différence de phase</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAÉ 3.02 — Applications communicantes — BUT2 R&amp;T</title>
+  <meta name="description" content="NetMonitor, supervision réseau, JavaFX et programmation client-serveur.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/sae32-but2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=apercu-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">3.02</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 3.02 — Applications communicantes</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae32-but2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le projet NetMonitor</h2>
+  <div class="c-block">
+    <h3>1. Partir d’une application locale, puis la faire communiquer</h3>
+    <p>NetMonitor doit enregistrer le parc, suivre son état et aider les techniciens à traiter les incidents. Les premiers chapitres posent le modèle et la persistance locale. Le cours JavaFX et TCP prépare une architecture où plusieurs clients peuvent consulter ou modifier un même parc via le serveur.</p>
+    <figure><img src="../assets/revisions/sae32-but2/schemas/netmonitor.png" alt="Architecture locale avec services et JSON, puis architecture client-serveur avec JavaFX et TCP" loading="lazy"><figcaption>Les règles métier restent utiles quand l’interface locale devient un client réseau.</figcaption></figure>
+    <p>La supervision observe un équipement depuis un point de mesure. Un état <code>DOWN</code> peut refléter une panne, un chemin inaccessible ou une mesure manquante selon la règle retenue. Définis la règle avant d’interpréter un tableau de bord. Le premier modèle peut partir de mesures simulées. Indique explicitement quelles données sont simulées et comment elles sont collectées ensuite.</p>
+  </div>
+  <div class="c-block">
+    <h3>2. Organiser les classes et leurs relations</h3>
+    <p>Un <code>NetworkDevice</code> représente un appareil identifié de manière stable. Un <code>Measurement</code> associe une valeur horodatée et une unité à un équipement. Un <code>Event</code> décrit un changement observé. Un <code>Incident</code> est un problème que quelqu’un peut prendre en charge. Un <code>User</code> porte un rôle et peut recevoir une affectation selon les règles du projet.</p>
+    <p>Le diagramme demandé peut montrer un équipement relié à plusieurs mesures ou incidents, chacun renvoyant à cet équipement. Distingue état de l’appareil et état de l’incident. Une machine peut redevenir joignable alors que le technicien termine encore le diagnostic de son incident.</p>
+    <figure><img src="../assets/revisions/sae32-but2/schemas/incident.png" alt="Une mesure ou un événement déclenche une règle métier qui peut ouvrir un incident suivi par un technicien" loading="lazy"><figcaption>Le suivi d’un incident commence après l’interprétation d’un événement selon une règle.</figcaption></figure>
+  </div>
+  <div class="c-block">
+    <h3>3. Séparer les règles du stockage</h3>
+    <p>Un <strong>service métier</strong> valide un ajout, cherche les doublons et contrôle les changements d’état. Il peut être appelé par la fenêtre ou, plus tard, par le serveur. Une couche de stockage enregistre ensuite le résultat. Avec JSON, conserve les identifiants pour relier les mesures, les incidents et les équipements au rechargement. Avec JDBC, on change la manière de stocker et d’interroger les données.</p>
+    <p>Fichier absent au premier lancement et fichier existant invalide sont deux cas différents. Pour le premier, on peut démarrer avec un état vide. Pour le second, signale l’erreur en conservant l’ancienne copie. Vérifie qu’un redémarrage retrouve tant les valeurs que leurs relations.</p>
+  </div>
+  <div class="c-block">
+    <h3>4. Authentifier, autoriser et afficher</h3>
+    <p>L’authentification dit qui est connecté. L’autorisation contrôle les actions de cet utilisateur. Une vue JavaFX peut masquer les actions interdites. Le service qui exécute l’action vérifie aussi le rôle, surtout si un client réseau peut appeler la même opération. La matrice du sujet est un exemple à compléter pour les états d’incident et les droits de clôture.</p>
+    <p>Le tableau de bord calcule à partir des objets le total d’appareils, les états <code>UP</code>, <code>WARNING</code> et <code>DOWN</code>, ainsi que les incidents ouverts. Une table et un graphique doivent se mettre à jour à partir de la même donnée. Vérifie le cas d’un parc vide et celui d’un appareil qui change d’état.</p>
+  </div>
+  <div class="c-block">
+    <h3>5. Lire et écrire sur une socket</h3>
+    <p>Le serveur ouvre un <code>ServerSocket</code> et attend dans <code>accept()</code>. Le client ouvre une <code>Socket</code> vers l’adresse et le port. Après acceptation, chacun possède une extrémité capable de lire et d’écrire. TCP transmet un flux d’octets ordonné. Si l’exemple du cours choisit une ligne par requête, le client doit envoyer la fin de ligne et vider le tampon pour que <code>readLine()</code> puisse terminer.</p>
+    <p>Définis qui parle en premier, à quoi ressemble une commande et comment le serveur répond à une commande inconnue. Par exemple, <code>LIST</code> et <code>OK</code> sont une convention possible à définir dans le projet. Ne pars pas du principe que l’API TCP impose une forme de message.</p>
+  </div>
+  <div class="c-block">
+    <h3>6. Gérer plusieurs clients sans bloquer la fenêtre</h3>
+    <p>Si le premier client bloque en lecture et si la boucle d’accueil le traite elle-même, le deuxième ne peut pas être pris en charge. Le cours propose une <strong>tâche par connexion</strong>, par exemple déléguée à un <code>ExecutorService</code>. La boucle d’accueil revient aussitôt attendre une autre socket. Quand deux tâches modifient le même état, protège les opérations combinées comme « vérifier puis ajouter ».</p>
+    <p>JavaFX a son propre fil d’exécution pour l’interface. Fais les lectures réseau en arrière-plan et applique ensuite le résultat sur le fil JavaFX avec <code>Platform.runLater</code>. Contrôle aussi les erreurs et fin de connexion, pour que la fermeture d’un client ne ferme pas le serveur. <a href="https://openjfx.io/javadoc/24/javafx.graphics/javafx/application/Platform.html#runLater(java.lang.Runnable)">Documentation de Platform.runLater</a></p>
+  </div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="coverage-title">
+  <h2 class="c-h2" id="coverage-title">Du cours aux TD et TP</h2>
+  <div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Notion</th><th scope="col">Où la travailler</th><th scope="col">À savoir refaire</th></tr></thead><tbody>
+    <tr><th scope="row">Supervision et cahier des charges</th><td>Sujet ch. 1–4</td><td>Justifier les fonctionnalités avec des critères de test.</td></tr>
+    <tr><th scope="row">Modèle et persistance</th><td>Sujet ch. 5–6</td><td>Modéliser les cardinalités et retrouver la collection après redémarrage.</td></tr>
+    <tr><th scope="row">Droits et statistiques</th><td>Sujet ch. 7–8</td><td>Tester deux rôles et recalculer le tableau de bord après une modification.</td></tr>
+    <tr><th scope="row">TCP et tâches</th><td>Poly Sockets et JavaFX</td><td>Définir un échange, faire répondre deux clients et mettre à jour la vue sans la bloquer.</td></tr>
+  </tbody></table></div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <details class="acc" open><summary>Sujet ch. 4 · Écrire un cahier des charges que tu peux tester</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Détailler la gestion du parc, des utilisateurs et des incidents, l’interface, la persistance et la robustesse.</p>
+    <ol><li>Pour chaque fonctionnalité, note l’acteur, l’action, les conditions et le résultat visible. Exemple : un administrateur valide un équipement doté d’un identifiant libre, puis retrouve l’objet dans la liste.</li><li>Ajoute un cas d’échec par action sensible : doublon, données invalides, rôle non autorisé, fichier illisible. Indique quel message et quel état restant permettent de vérifier l’échec.</li><li>Lie le critère de persistance à un redémarrage et celui du tableau de bord à une modification d’état qui change le compteur.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Sujet ch. 5 · Construire l’UML et les opérations locales</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Modéliser utilisateur, équipement, incident, événement et mesure puis ajouter, retirer, modifier, rechercher et lister des équipements.</p>
+    <ol><li>Dans l’UML, dessine un équipement avec un identifiant stable et ses liens 1–n avec les mesures et les incidents. Fais préciser par le modèle qui peut prendre un incident et si une affectation peut rester vide.</li><li>Donne les actions d’ajout et de recherche au service. Passe-lui les données de la vue, impose l’unicité de l’identifiant et vérifie que renommer l’appareil laisse son historique rattaché au même objet.</li><li>Teste l’objet absent et le doublon. Lors d’une suppression, choisis et documente la règle sur les mesures et incidents liés. Vérifie qu’aucune référence impossible n’est sauvée.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Sujet ch. 6 · Sauvegarder et relire le parc</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Proposer un format structuré, conserver les données entre deux exécutions et gérer l’absence ou l’inaccessibilité du stockage.</p>
+    <ol><li>Dans le JSON, conserve les champs propres à l’équipement une fois. Dans un incident, référence son identifiant. À la lecture, reconstruis ces liens et vérifie les identifiants requis.</li><li>Sur un dossier de test, ajoute deux appareils et un incident, ferme puis relance. Compare les valeurs et le lien vers le bon appareil. Le nombre d’objets ne doit pas doubler après ouverture.</li><li>Place ensuite un JSON invalide sur une copie. Vérifie le message et l’absence d’écrasement. Si l’écriture échoue après modification, annonce que les données restent en mémoire ou refuse la modification, selon le comportement que tu as choisi et documenté.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Sujet ch. 7–8 · Tester les deux rôles et les chiffres de JavaFX</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Authentifier les utilisateurs, leur proposer les actions qui correspondent à leur rôle et calculer les chiffres du tableau de bord à partir des données.</p>
+    <ol><li>Avec un administrateur, crée un équipement. Avec un technicien, vérifie qu’il apparaît dans la liste et que l’action administrative est refusée. Fais séparément le test d’affectation d’un incident selon la matrice retenue.</li><li>Charge trois appareils, un dans chaque état. Le tableau donne 3 au total et 1 dans chaque état. Fais passer <code>DOWN</code> vers <code>UP</code>. Le total reste 3, <code>UP</code> passe à 2 et <code>DOWN</code> vaut 0.</li><li>Crée un incident ouvert et un fermé. Vérifie le compteur ouvert et le graphique par gravité à partir de la même collection. Pour une interface en réseau, déclenche la mise à jour sur le fil JavaFX une fois les données reçues.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Application du cours · Vérifier un serveur à deux clients</summary><div class="acc-body">
+    <p class="c-question"><strong>Exercice appliqué au cours.</strong> Reprendre le serveur du poly et vérifier que le client JavaFX peut échanger en TCP même pendant l’attente d’un autre client.</p>
+    <ol><li>Pars en boucle locale avec un port de test. Sur le serveur, conserve une boucle <code>accept()</code> et envoie chaque socket acceptée à une tâche dédiée.</li><li>Fais connecter A sans rien lui faire écrire. B doit pouvoir envoyer une commande complète, vider son tampon et obtenir une réponse. Fais fermer A puis rejoue B.</li><li>Si B reste bloqué, sépare le délai de connexion du délai de lecture. Vérifie le port, la tâche côté serveur, la fin de ligne et le <code>flush</code>. Garde le cas de test et le comportement observé, puis recommence depuis JavaFX en laissant la fenêtre réactive.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae32-but2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae32-but2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae32-but2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Lire le projet NetMonitor par étapes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="50.833">0:50 · Modéliser un équipement et ses relations</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="104.292">1:44 · Écrire un service testable</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="127.083">2:07 · Faire survivre les données au redémarrage</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="155.542">2:35 · JavaFX et séparation des responsabilités</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="180.458">3:00 · Échanger des messages par TCP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="232.083">3:52 · Servir plusieurs clients sans bloquer l’accueil</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:19</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="259.708">4:19 · Projet · Rédiger le cahier des charges</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="284.083">4:44 · Projet · Tester persistance et robustesse</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="335.708">5:35 · Projet · Vérifier deux profils</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="391.417">6:31 · Projet · Justifier les compteurs du tableau de bord</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="416.833">6:56 · Cours appliqué · Diagnostiquer deux clients</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

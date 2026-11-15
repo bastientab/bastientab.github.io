@@ -108,8 +108,8 @@
 }
 .c-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: transparent; }
 .c-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-a.c-card[data-kind="cours"]:is(:hover, :focus-visible) { text-decoration: none; }
-a.c-card[data-kind="cours"]:is(:hover, :focus-visible) .c-card-foot > span:first-child { text-decoration: underline; }
+a.c-card:is(:hover, :focus-visible) { text-decoration: none; }
+a.c-card:is(:hover, :focus-visible) .c-card-foot > span:first-child { text-decoration: underline; }
 .c-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .c-ico {
   display: inline-grid; place-items: center; flex: none;

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAÉ 3.CYBER.03 — Réseau multisite — BUT2 R&amp;T</title>
+  <meta name="description" content="Reprendre le TP OSPF et la maquette BGP du TD dans Packet Tracer.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/saecyber03-but2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=apercu-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">CY.03</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 3.CYBER.03 — Réseau multisite</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/saecyber03-but2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le réseau multisite</h2>
+  <div class="c-block">
+    <h3>1. Relier les sites et suivre la table de routage</h3>
+    <p>Un poste compare sa destination à son propre réseau à l’aide du masque. Pour un réseau distant, il transmet vers sa passerelle. Le routeur choisit dans sa table le <strong>préfixe le plus précis</strong> qui couvre l’adresse. Une route connectée représente un réseau de ses interfaces. Une route statique indique un prochain saut décidé par l’administrateur. Une route dynamique vient d’un protocole comme OSPF ou BGP.</p>
+    <p>Commence par faire fonctionner chacun des liens et vérifier les passerelles. Construis ensuite le routage. Lors d’un test, repère l’adresse source et vérifie le chemin aller et le chemin retour. Un voisinage établi sur le transit valide une étape, tandis que le ping de PC à PC teste aussi les LAN.</p>
+  </div>
+  <div class="c-block">
+    <h3>2. Comprendre l’état de liens et le rôle des aires OSPF</h3>
+    <p>Les routeurs échangent des annonces d’état de liens, appelées <strong>LSA</strong>, pour connaître la topologie. Ils synchronisent leur base LSDB puis calculent des chemins de coût minimal. Le coût demandé sur le lien du TP se règle à 100 sur l’interface concernée. Sur plusieurs liens, le calcul additionne les coûts du chemin retenu.</p>
+    <figure><a href="../assets/revisions/saecyber03-but2/schemas/aires-ospf.png"><img src="../assets/revisions/saecyber03-but2/schemas/aires-ospf.png" alt="Maquette OSPF du TP : aire 50 à gauche, aire 0 et commutateur au milieu, aire 40 à droite" loading="lazy"></a><figcaption>Topologie du TP1. Les routeurs de bordure se raccordent à la dorsale en gardant leurs interfaces locales dans leur aire.</figcaption></figure>
+    <p>Une <strong>aire</strong> regroupe des interfaces et des liens. Dans la deuxième maquette, l’aire 0 sert de dorsale entre les aires 50 et 40. Les routeurs de bordure d’aire y ont une interface. Dans IOS, une route <code>O</code> est intra-aire et <code>O IA</code> indique une autre aire. Le numéro de processus dans IOS est local à chaque routeur. Les deux voisins doivent en revanche être d’accord sur l’aire de leur segment et les paramètres OSPF échangés.</p>
+  </div>
+  <div class="c-block">
+    <h3>3. Lire le voisinage, l’authentification et l’élection</h3>
+    <p>Un <strong>Hello</strong> sert à découvrir et garder les voisins. Un <strong>DBD</strong> résume les informations détenues. Les <strong>LSR</strong> demandent des données, les <strong>LSU</strong> transportent des mises à jour et les <strong>LSAck</strong> les confirment. Pour observer tous ces échanges, capture dès la formation du voisinage. Sur un réseau déjà stable, les Hello seront beaucoup plus visibles que certains autres types.</p>
+    <p>Sur un réseau Ethernet partagé, OSPF élit un <strong>DR</strong> et un <strong>BDR</strong>. Les autres routeurs peuvent rester en 2-Way entre eux et atteindre Full vis-à-vis du DR ou du BDR. L’élection compare la priorité d’interface, puis le Router ID. Une priorité de 0 empêche d’être élu et un nouveau routeur de priorité supérieure ne préempte pas l’élection déjà établie.</p>
+    <p>Le TP fait activer l’authentification à condensat MD5 sur la maquette IOS. Les voisins doivent être configurés avec le même mode et les paramètres de clé voulus. Une capture montre le type d’authentification et l’identifiant de clé. La protection sert à authentifier les messages et leurs données de routage restent lisibles. <a href="https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/ip-routing/b-ip-routing/m_iro-cfg-0.html">Documentation Cisco IOS OSPF</a></p>
+  </div>
+  <div class="c-block">
+    <h3>4. Distinguer routage intra-AS, eBGP et redistribution</h3>
+    <p>Un <strong>AS</strong> est un système autonome qui applique une politique de routage. Dans le TD3, les routeurs de deux AS différents établissent des sessions <strong>eBGP</strong> sur les liaisons frontières. BGP échange des préfixes et des attributs comme <code>AS_PATH</code> et <code>NEXT_HOP</code>. Une route présente dans la table BGP mérite encore d’être vérifiée dans la table de routage effective.</p>
+    <figure><img src="../assets/revisions/saecyber03-but2/schemas/transit.png" alt="Trajet du TD3 : R3 dans AS100, R2 et R4 dans AS200, R5 dans AS300, eBGP aux deux bords et OSPF au milieu" loading="lazy"><figcaption>Dans la deuxième maquette du TD3, OSPF transporte l’information nécessaire entre les deux bords de l’AS200.</figcaption></figure>
+    <p>La <strong>redistribution</strong> rend certaines routes d’un protocole disponibles dans un autre. Par exemple, le routeur de bordure du TP peut injecter dans OSPF les routes statiques d’une zone. Avec la métrique externe de type 2 du cas du TD, une route réinjectée peut apparaître sous <code>O E2</code>. Contrôle précisément les préfixes redistribués et évite la réinjection d’une route vers son protocole d’origine. Pour la maquette, suis un réseau de bout en bout dans chaque table.</p>
+  </div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="coverage-title">
+  <h2 class="c-h2" id="coverage-title">Du cours aux TD et TP</h2>
+  <p>Le sujet du TP1 est disponible. Les démarches du TD3 sont reconstituées à partir du compte rendu et de la topologie Packet Tracer disponibles.</p>
+  <div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Notion</th><th scope="col">Où la travailler</th><th scope="col">À savoir refaire</th></tr></thead><tbody>
+    <tr><th scope="row">Interfaces, passerelles et voisinage</th><td>TP1, 1–2</td><td>Adressage, voisin, LSDB, route distante et tests aller-retour.</td></tr>
+    <tr><th scope="row">Authentification, aires et élection</th><td>TP1, 3–5</td><td>Capturer les échanges et expliquer les rôles DR/BDR et le marquage interaire.</td></tr>
+    <tr><th scope="row">Redistribution de statiques</th><td>TP1, 6</td><td>Vérifier l’origine et l’installation de la route externe avant le ping.</td></tr>
+    <tr><th scope="row">Frontières eBGP et AS de transit</th><td>TD3, deux topologies</td><td>Configurer les voisins, suivre le préfixe, relier la capture aux routes des quatre routeurs.</td></tr>
+  </tbody></table></div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <details class="acc" open><summary>TP1, 1–2 · Adresser la maquette et monter un voisinage OSPF</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Configurer les deux routeurs selon le plan du groupe, régler le coût des liens à 100, observer les paquets, les tables et la base de données, puis vérifier l’échange entre les deux PC.</p>
+    <ol><li>Exemple de l’aire 50 : utilise <code>192.168.50.0/24</code>, <code>10.0.50.0/24</code> et <code>192.168.51.0/24</code>. Place <code>10.0.50.1</code> et <code>10.0.50.2</code> sur le transit, des adresses différentes sur les deux LAN et les passerelles correspondantes sur les PC. Vérifie <code>show ip interface brief</code> et le ping du transit.</li><li>Active OSPF sur les interfaces de transit et de LAN dans l’aire de ton groupe, avec <code>ip ospf 1 area 50</code> pour cet exemple. Règle <code>ip ospf cost 100</code> selon le sujet. Garde les interfaces LAN passives si elles annoncent le réseau sans voisin routeur.</li><li>Contrôle <code>show ip ospf neighbor</code>, <code>show ip ospf database</code> et <code>show ip route ospf</code>. Depuis le routeur de gauche, la route vers le LAN droit doit pointer vers le routeur de droite. Vérifie le retour et fais le ping de PC à PC.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP1, 3 · Activer et observer l’authentification</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Expliquer l’authentification OSPF, activer MD5 sur les deux routeurs du TP et mettre en évidence son utilisation dans la capture.</p>
+    <ol><li>Sur l’interface de transit, configure <code>ip ospf authentication message-digest</code> et <code>ip ospf message-digest-key 1 md5 &lt;clé-du-labo&gt;</code> sur les deux côtés. Le numéro est un identifiant de clé et la valeur fournie au banc reste dans la maquette.</li><li>Contrôle le voisinage puis capture un paquet OSPF. Déplie l’en-tête et relève le type cryptographique et l’identifiant de clé. Si les Hello arrivent mais que les routeurs restent sans voisinage, vérifie aire, temporisations, type de réseau et authentification.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP1, 4–5 · Construire le backbone et lire l’élection</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Relier les groupes par un switch sur l’aire 0, comparer les captures et tables de routage, puis identifier et expliquer l’élection du DR et du BDR.</p>
+    <ol><li>Utilise le schéma du TP pour ranger chaque interface dans l’aire de son segment. Sur le backbone, utilise le plan d’adressage commun prévu pour éviter de reprendre la même IP que l’autre groupe.</li><li>Capture les échanges lorsque les nouveaux liens se mettent en place. Classe les paquets par rôle. Dans les tables, repère un préfixe d’une autre aire avec <code>O IA</code> et identifie son prochain saut.</li><li>Sur le réseau partagé, lis la priorité et les rôles dans <code>show ip ospf interface</code> et <code>show ip ospf neighbor</code>. Un prochain renouvellement de l’élection dépend de la priorité puis du Router ID. Ne déduis pas le rôle à partir de la seule valeur théorique quand l’élection a déjà eu lieu.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP1, 6 · Redistribuer les statiques de la zone verte</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Passer la zone verte en routage statique et faire annoncer ses routes par Router4 dans l’aire 0. Comparer les tables de Router3 et Router4.</p>
+    <ol><li>Fais installer à Router4 la route statique vers le LAN de la zone. Vérifie aussi la route de retour de l’autre routeur de la zone.</li><li>Dans le processus OSPF de Router4, <code>redistribute static subnets</code> permet d’injecter les routes statiques de la maquette. Contrôle les préfixes à faire passer et limite la redistribution à ceux du TP si d’autres statiques sont présentes.</li><li>Sur Router4, compare la route statique locale et la LSDB. Sur Router3, cherche la route externe distante et son prochain saut. Teste séparément l’aller et le retour plutôt que de déduire la connectivité de l’annonce seule.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD3 · Établir BGP entre AS100 et AS200</summary><div class="acc-body">
+    <p class="c-question"><strong>Consigne reconstituée d’après le compte rendu.</strong> Relier les deux LAN avec une session eBGP entre les routeurs du transit en <code>10.0.0.0/30</code>, puis vérifier préfixes, échanges et connectivité.</p>
+    <ol><li>Configure R0 en <code>10.0.0.1/30</code> et R1 en <code>10.0.0.2/30</code> sur le transit. Leurs LAN sont respectivement <code>192.168.10.0/24</code> et <code>192.168.20.0/24</code>. Vérifie le lien et les passerelles avant BGP.</li><li>Dans <code>router bgp 100</code> sur R0, indique <code>neighbor 10.0.0.2 remote-as 200</code> et annonce <code>network 192.168.10.0 mask 255.255.255.0</code> si la route exacte existe. R1 configure l’opération symétrique pour son LAN et son voisin.</li><li>Lis <code>show ip bgp summary</code> puis la table de routage. En mode Simulation, isole TCP 179 et les messages BGP OPEN, KEEPALIVE et UPDATE. Le compte rendu donne la démarche et ne conserve pas un relevé de chaque paquet.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD3 · Faire transiter un préfixe par l’AS200</summary><div class="acc-body">
+    <p class="c-question"><strong>Consigne reconstituée d’après le compte rendu.</strong> Relier AS100 et AS300 à travers R2 et R4 dans AS200, avec OSPF au centre. Comparer les voisins, les échanges et les routes sur l’ensemble du trajet.</p>
+    <ol><li>Monte les deux relations eBGP aux bords et le voisinage OSPF entre R2 et R4. Vérifie d’abord chaque relation indépendamment. Le sujet décrit une maquette Packet Tracer, avec OSPF pour la partie interne.</li><li>Pour un LAN extérieur, suis la route eBGP reçue à un bord, son transport sous forme de route externe OSPF vers l’autre bord, puis son annonce eBGP. Le compte rendu montre la reprise des routes externes dans BGP. Pour limiter les boucles, sélectionne les préfixes autorisés à chaque export et vérifie le chemin inverse.</li><li>Sur R2, compare la route du LAN proche apprise en BGP et la route du LAN à l’autre bout du transit apprise sous <code>O E2</code> dans la maquette. Relie chaque entrée au prochain saut qui l’a fournie. Complète avec un aller-retour de PC à PC.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/saecyber03-but2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/saecyber03-but2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/saecyber03-but2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Suivre une route dans le réseau multisite</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="22.625">0:22 · Comprendre les voisins et les aires OSPF</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="73.833">1:13 · Lire les messages OSPF dans une capture</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="99.292">1:39 · DR et BDR sur un segment partagé</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="127.083">2:07 · Authentifier la relation OSPF</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="152.542">2:32 · Comprendre la frontière avec BGP</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Questions TD &amp; TP · 3:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="180.833">3:00 · TP1 · Configurer les deux routeurs et valider le LAN</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="232.000">3:52 · TP1 · Réunir les aires et observer les routes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="283.417">4:43 · TP1 · Redistribuer les routes de la zone statique</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="311.000">5:11 · TD3 · Vérifier la première topologie BGP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="366.250">6:06 · TD3 · Expliquer la redistribution dans l’AS de transit</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
