@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chaînes de transmission numérique et transmissions avancées — BUT2 R&amp;T</title>
+  <meta name="description" content="Suis les bits du signal de départ à la réception. Apprends à calculer le débit, lire le bruit et expliquer l’OFDM.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/transmission.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">∿</span></div>
+      <h1 class="page-title" id="page-title">Chaînes de transmission numérique et transmissions avancées</h1>
+      <p class="page-lead">Suis les bits du signal de départ à la réception. Apprends à calculer le débit, lire le bruit et expliquer l’OFDM.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S3</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/transmission/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <div class="c-block"><h3>1. De l’information au signal</h3>
+    <p>Un <strong>bit</strong> vaut 0 ou 1. Un <strong>symbole</strong> est l’un des états que l’émetteur peut envoyer pendant un intervalle. Avec quatre états équiprobables, un symbole peut représenter deux bits. Le récepteur récupère l’horloge, mesure le signal au bon instant et décide quel état était le plus probable.</p>
+    <p>En <strong>bande de base</strong>, le train d’impulsions occupe les fréquences autour de zéro. Pour transmettre dans une autre plage, un modulateur déplace l’information autour d’une porteuse. Entre les deux, le canal atténue le signal, déforme parfois les impulsions et ajoute du bruit. Le TEB, ou BER en anglais, est le nombre de bits erronés divisé par le nombre de bits observés.</p>
+  </div>
+  <div class="c-block"><h3>2. Coder les bits et retrouver l’horloge</h3>
+    <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Code</th><th>Ce que fait l’émetteur</th><th>Repère au récepteur</th></tr></thead><tbody>
+    <tr><td>NRZ</td><td>Maintient un niveau pendant tout le bit</td><td>Une longue suite identique donne peu de transitions</td></tr>
+    <tr><td>RZ</td><td>Revient à zéro à l’intérieur du bit pour les états impulsionnels</td><td>Les impulsions occupent une fraction de la durée du bit</td></tr>
+    <tr><td>Manchester</td><td>Place une transition au milieu de chaque bit</td><td>Le sens obéit à la convention posée</td></tr>
+    <tr><td>Miller</td><td>Place une transition au milieu d’un 1 et au bord entre deux 0 consécutifs</td><td>Suivre les bits voisins et l’état précédent</td></tr>
+    <tr><td>HDB3</td><td>Alterne la polarité des marques et remplace quatre zéros par un motif avec violation</td><td>Identifie la violation et rétablit les zéros selon la parité des marques</td></tr>
+    <tr><td>2B1Q</td><td>Convertit chaque paire de bits en un niveau parmi quatre</td><td>Décide avec trois seuils entre niveaux voisins</td></tr>
+    </tbody></table></div>
+    <p>Sur une paire différentielle, le récepteur soustrait les deux tensions. Une perturbation identique sur les deux fils s’annule idéalement. Dans un code différentiel, l’information se lit aussi dans l’évolution d’un état par rapport au précédent, ce qui est une convention de codage distincte.</p>
+  </div>
+  <div class="c-block"><h3>3. Bande passante, bruit et débit</h3>
+    <p>Une impulsion courte demande des fréquences variées. Un canal ou un filtre étroit étale les impulsions, qui peuvent alors se recouvrir. C’est l’<strong>interférence entre symboles</strong>. Le critère de Nyquist vise à annuler, aux instants d’échantillonnage, la contribution des symboles voisins. Un filtre en cosinus surélevé augmente la largeur occupée selon son coefficient α. Sur le diagramme de l’œil, la hauteur ouverte indique la marge en amplitude et la largeur ouverte la marge sur l’instant de décision.</p>
+    <p>Avec M états et une rapidité R en bauds, le débit brut vaut <strong>D = R log₂(M)</strong>. Dans le modèle idéal en bande de base sans bruit et de largeur B, la rapidité limite de Nyquist vaut 2B. La capacité de Shannon en présence de bruit vaut <strong>B log₂(1+S/N)</strong>, avec S/N en linéaire. Cette capacité est une borne théorique.</p>
+    <p>Pour comparer des transmissions numériques, calcule l’énergie par bit <strong>E<sub>b</sub> = S/D</strong>. Avec du bruit blanc sur la bande B du TD, <strong>N<sub>0</sub> = N/B</strong>. On obtient E<sub>b</sub>/N<sub>0</sub> = (S/N) × (B/D). Un rapport de puissances devient 10 log₁₀(rapport) en dB.</p>
+  </div>
+  <div class="c-block"><h3>4. Moduler l’amplitude, la fréquence ou la phase</h3>
+    <p>En <strong>ASK</strong>, l’amplitude dépend du symbole. En <strong>FSK</strong>, c’est la fréquence. En <strong>PSK</strong>, c’est la phase. La phase mesure le décalage d’un cycle par rapport à une référence. En BPSK, les deux points sont opposés. En QPSK, quatre points représentent chacun deux bits.</p>
+    <p>Le plan <strong>I/Q</strong> donne deux coordonnées au symbole. Chaque voie multiplie une porteuse, et les deux porteuses sont décalées d’un quart de tour. Une 16-QAM combine amplitude et phase pour transporter quatre bits par symbole. À énergie moyenne et conditions comparables, des points plus serrés réduisent la marge face au bruit. Dans une constellation étiquetée en Gray, les voisins immédiats diffèrent souvent d’un seul bit.</p>
+  </div>
+  <div class="c-block"><h3>5. Compresser et protéger les données</h3>
+    <ul>
+      <li><strong>Compression sans perte.</strong> RLE regroupe une répétition, Huffman donne des mots plus courts aux symboles fréquents, LZW ajoute au dictionnaire des séquences rencontrées. Le décodeur doit reconstruire les mêmes données.</li>
+      <li><strong>Compression avec perte.</strong> Des codecs audio ou vidéo réduisent volontairement certains détails pour gagner davantage sur le débit. Un facteur de compression de 67,5 divise le débit initial par 67,5.</li>
+      <li><strong>Détection ou correction.</strong> Le CRC vérifie un reste polynomial par des XOR. Un code de distance minimale d détecte jusqu’à d−1 erreurs ou en corrige jusqu’à ⌊(d−1)/2⌋ en décodage par proximité. Le rendement k/n vaut données utiles divisées par taille codée.</li>
+      <li><strong>Codes et rafales.</strong> Le code de Hamming (7,4) utilise trois contrôles pour localiser une erreur simple. Reed–Solomon protège des symboles. Un code convolutif dépend des bits précédents et Viterbi cherche le chemin de métrique minimale dans son treillis. L’entrelacement répartit une rafale entre plusieurs mots. Le poinçonnage supprime des bits codés selon un motif connu, ce qui relève le rendement et réduit la redondance.</li>
+    </ul>
+  </div>
+  <div class="c-block"><h3>6. Partager le canal et l’adapter aux multi-trajets</h3>
+    <p>Le multiplexage répartit les utilisateurs en <strong>temps</strong> (TDM), en <strong>fréquence</strong> (FDM) ou en <strong>codes</strong> (CDMA). Dans un CDMA idéal, une corrélation avec le code du bon utilisateur conserve son signal et annule les contributions des codes orthogonaux. Le DSSS étale un signal en multipliant ses symboles par une séquence plus rapide. Il peut servir à l’étalement et au repérage d’un préambule.</p>
+    <p>Les trajets réfléchis arrivent en retard. Si l’étalement maximal vaut Δt, le cours estime la bande de cohérence par <strong>B<sub>c</sub> ≈ 1/Δt</strong>. Un canal plus large peut subir des variations de gain selon la fréquence. La diversité exploite plusieurs versions d’une information, par exemple sur des fréquences suffisamment espacées, à plusieurs instants ou sur plusieurs antennes. Un mobile introduit un décalage Doppler d’ordre v f<sub>p</sub>/c et le temps de cohérence s’estime par son inverse.</p>
+    <p>En <strong>OFDM</strong>, on envoie en parallèle sur N sous-porteuses. Leur espacement vaut Δf = 1/T<sub>u</sub>, avec T<sub>u</sub> la durée utile. Si Δf est bien inférieur à B<sub>c</sub>, chaque sous-canal voit approximativement un gain constant. Le préfixe cyclique recopie la fin du symbole devant lui. Lorsqu’il couvre l’étalement des trajets et que la réception est synchronisée, le récepteur peut éliminer le chevauchement du symbole précédent sur la portion utile. Le préfixe prend du temps, les erreurs de fréquence dégradent l’orthogonalité et les crêtes peuvent solliciter l’amplificateur.</p>
+  </div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Corrigés du TD et du TP</h2>
+  <details class="acc" open><summary>TD p. 3–4 · Respecter le TEB sur la liaison de 50 m</summary><div class="acc-body">
+    <ol>
+      <li>La perte vaut 30 × 50/100 = <strong>15 dB</strong>. L’émission de 200 mW vaut 23,01 dBm. À la réception, il reste 8,01 dBm soit <strong>6,325 mW</strong>. Les 0,6 mW de bruit valent −2,22 dBm.</li>
+      <li>Divise le bruit en watts par 50 MHz : <strong>N₀ = 1,2 × 10⁻¹¹ W/Hz</strong>, soit −79,21 dBm/Hz. Divise le signal en watts par 100 Mbit/s : <strong>E<sub>b</sub> ≈ 6,325 × 10⁻¹¹ J</strong>.</li>
+      <li>S/N ≈ 10,54, soit 10,23 dB. E<sub>b</sub>/N₀ ≈ 5,27, soit <strong>7,22 dB</strong>. La courbe fournie passe sous 10⁻⁵ au voisinage de 9,5 dB. Le réglage actuel est sous ce seuil.</li>
+      <li>Ramène 9,5 dB à 8,91 en linéaire. Pour la solution débit, résous S/(D N₀) = 8,91 : <strong>D ≈ 59,1 Mbit/s</strong> au seuil. Pour les deux autres, la réception doit atteindre ≈10,70 mW. Avec 200 mW à l’émission la perte maximale est ≈12,72 dB, donc <strong>42,4 m</strong> à 0,3 dB/m. Avec 15 dB de perte, il faut ≈<strong>338 mW</strong> à l’émission. Choisis un réglage du bon côté du seuil avec une marge, car il est lu sur un graphe.</li>
+    </ol>
+  </div></details>
+  <details class="acc"><summary>TD p. 5 · Tracer les premiers bits en bande de base</summary><div class="acc-body">
+    <p>Découpe la grille aux limites des bits <code>1 0 1 0 0 0 0 1</code>. Avec 1=+V et 0=0, le NRZ unipolaire donne <code>+V, 0, +V, 0, 0, 0, 0, +V</code>. En NRZ à deux polarités remplace chaque 0 V par −V si le cours adopte cette convention.</p>
+    <p>Pour Manchester, subdivise chaque case en deux. Avec 1 montant et 0 descendant, les quatre premiers bits donnent <code>− + | + − | − + | + −</code>. En Miller, marque le milieu des bits 1, puis seulement les frontières entre les zéros consécutifs. L’état à droite d’une transition est l’inverse de l’état juste avant.</p>
+    <p>Pour HDB3, à la suite de quatre zéros, utilise le motif <code>000V</code> si le nombre de marques depuis la dernière violation est impair, <code>B00V</code> s’il est pair. <code>B</code> respecte l’alternance et <code>V</code> reprend le signe de la dernière impulsion non nulle. En 2B1Q, commence par former <code>10 | 10 | 00 | 01</code> et applique les quatre niveaux du tableau du cours.</p>
+  </div></details>
+  <details class="acc"><summary>TP IQ et QPSK · Associer les dibits aux points</summary><div class="acc-body">
+    <ol><li>Sur le banc de Télécom 3, affiche I et Q, puis déclenche sur l’horloge du symbole. Lis les niveaux au milieu du plateau pour une série de dibits connus.</li><li>Place I à l’horizontale et Q à la verticale. Associe chaque dibit à son couple mesuré et vérifie qu’on retrouve quatre points. Prends la convention de câblage du sujet pour établir les signes.</li><li>Affiche la constellation ou le mode XY, puis compare les points stables et les transitions. Si l’assignation est tournée d’un quart de tour, vérifie l’ordre des voies et la phase de la référence avant de modifier l’étiquetage.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD p. 26 · Calculer les distances et contrôler une trame par CRC</summary><div class="acc-body">
+    <p>Dans le premier code, deux mots diffèrent, suivant la paire, sur un seul bloc de quatre bits ou sur les deux blocs. La distance minimale est <strong>4</strong>. Le mot <code>0000 0111</code> est invalide. Il est à distance 1 de <code>0000 1111</code> et à distance 3 de <code>0000 0000</code>. On le corrige vers le premier sous l’hypothèse d’au plus une erreur. Pour le tableau des quatre mots de longueur 5, en comparant les six paires on obtient une distance minimale de 3. Il détecte donc toutes les erreurs doubles ou corrige toutes les erreurs simples, selon le mode de décodage.</p>
+    <p>Avec <code>e=11010</code>, E(x)=x⁴+x³+x. Écris <code>1101000</code> en réservant deux bits au contrôle. Divise par <code>110</code> en XOR : <code>1101000 ⊕ 1100000 = 0001000</code>, puis <code>0001000 ⊕ 0001100 = 0000100</code> et <code>0000100 ⊕ 0000110 = 0000010</code>. Le reste <code>10</code> complète le mot <strong><code>1101010</code></strong>. Au récepteur, le mot entier donne un reste nul. En inversant le bit de poids fort, l’erreur x⁶ donne un reste x, et le contrôle signale la trame.</p>
+  </div></details>
+  <details class="acc"><summary>TD p. 28–29 · Compter les créneaux et la redondance</summary><div class="acc-body">
+    <p>La voie V1 met 8 bits dans chaque trame. Pour 128 kbit/s, on émet une trame toutes les <strong>62,5 µs</strong>. V2 occupe 16 bits, soit 256 kbit/s. V3 occupe 32 bits, soit 512 kbit/s. Les 80 bits sortent à 1,28 Mbit/s et 56 sur 80 sont utiles, soit 70 %. Si on allonge chaque cycle de 20 µs, le débit moyen des bits envoyés devient 80/82,5 µs ≈ 970 kbit/s ; le débit instantané durant le créneau actif reste 1,28 Mbit/s. Au même rythme de ligne, la part de durée portant des données utiles passe à ≈53 %.</p>
+    <p>Pour les caméras, compte <code>1920 × 1080 × 25 × 24</code> bits par seconde avant compression, soit 1,24416 Gbit/s chacune. Divise par 500, multiplie par 7 créneaux équivalents, puis par 204/188 et par 2. Après poinçonnage, multiplie par 3/4. Le résultat est ≈28,35 Mbit/s, soit ≈9,45 Mbaud en 8-PSK avant l’intervalle de garde.</p>
+  </div></details>
+  <details class="acc"><summary>TD p. 30–31 · Séparer les deux utilisateurs en CDMA</summary><div class="acc-body">
+    <p>Pose 1→+1 et 0→−1. Multiplie chaque signe par son code. La somme donne successivement <code>[2,0,0,−2]</code>, <code>[0,−2,2,0]</code> et <code>[0,2,−2,0]</code>. Chaque bloc contient quatre éléments par bit.</p>
+    <p>Prends le produit scalaire avec C₁ = [1,1,−1,−1]. Tu obtiens +4, −4, +4, donc <strong>101</strong>. Avec C₂ = [1,−1,1,−1], tu obtiens +4, +4, −4, donc <strong>110</strong>. Le produit croisé des codes alignés vaut zéro. Pour trouver leur alignement, utilise par exemple la corrélation d’un préambule connu.</p>
+  </div></details>
+  <details class="acc"><summary>TD p. 32–34 · Dimensionner l’OFDM en 5G et en TNT</summary><div class="acc-body">
+    <ol>
+      <li>En 5G, 100 m en plus donnent <strong>0,333 µs</strong> et B<sub>c</sub> ≈ 3 MHz. La bande de 20 MHz dépasse cette valeur. Sans OFDM, l’intervalle par symbole est 1/12,5 Mbaud = 80 ns : des trajets peuvent déborder sur plusieurs symboles.</li>
+      <li>Le TD découpe 20 MHz en 64 sous-porteuses, soit <strong>312,5 kHz</strong> chacune et T<sub>u</sub> = 3,2 µs. Le préfixe de 1 µs dépasse l’étalement, et 312,5 kHz est bien plus étroit que 3 MHz.</li>
+      <li>À 100 km/h, convertis la vitesse à 27,8 m/s. Le décalage Doppler maximal est de l’ordre de 27,8 × 3,5 GHz / c ≈ 324 Hz. Avec la convention du cours T<sub>c</sub> ≈ 1/f<sub>d</sub>, cela donne ≈3,1 ms, bien plus que 4,2 µs par symbole total. La variation se surveille sur plusieurs symboles avec des pilotes.</li>
+      <li>Pour le premier exemple TNT du TD, 6 × 270 / 67,5 = 24 Mbit/s. Après entrelacement et codes, 24 × 204/188 × 3/2 ≈ 39,06 Mbit/s, soit ≈1,08 kbaud sur chacune des 6047 sous-porteuses utiles en 64-QAM. Une garde de 926/32 ≈ 28,9 µs couvre les 6,7 µs associés aux 2 km de différence de trajet.</li>
+    </ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/transmission/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/transmission/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/transmission/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Suivre les bits d’un bout à l’autre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.667">0:23 · Bande passante et interférences</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="49.042">0:49 · Horloge, durée et codages</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="77.333">1:17 · Débit, baud et capacité</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="101.667">1:41 · Énergie par bit et taux d’erreur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="125.500">2:05 · ASK, FSK, PSK et le plan IQ</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="206.542">3:26 · Compression, redondance et multiplexage</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="262.375">4:22 · Trajets multiples, diversité et OFDM</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Corrigés du TD et du TP · 4:47</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="287.208">4:47 · TD · Calculer le bruit de la liaison de 50 m</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="389.167">6:29 · TD · Construire un chronogramme de codage</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="452.917">7:32 · TP · Observer une constellation QPSK</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="478.375">7:58 · TD · Passer de 20 MHz à 64 sous-porteuses</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="533.625">8:53 · TD · Reconnaître une erreur de transmission</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="562.708">9:22 · TD · Compter les créneaux d’une trame</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

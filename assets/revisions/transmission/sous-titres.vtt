@@ -1,0 +1,734 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.919
+Une chaîne de transmission transforme une information
+en un signal que
+
+00:00:03.919 --> 00:00:05.307
+le canal peut transporter.
+
+00:00:05.307 --> 00:00:08.530
+L’émetteur décide à quoi ressemble un symbole.
+
+00:00:08.530 --> 00:00:12.430
+Le récepteur doit ensuite repérer les bons instants de
+lecture et
+
+00:00:12.430 --> 00:00:13.494
+reconstituer les bits.
+
+00:00:13.494 --> 00:00:17.706
+Le canal réduit l’amplitude, peut étaler les
+impulsions et ajoute du
+
+00:00:17.706 --> 00:00:18.089
+bruit.
+
+00:00:18.089 --> 00:00:21.347
+On juge la transmission sur un débit utile, un taux
+d’erreur
+
+00:00:21.347 --> 00:00:23.420
+et aussi la latence et sa variation.
+
+00:00:23.767 --> 00:00:28.079
+Pour modifier rapidement un signal, il faut des
+composantes de fréquence
+
+00:00:28.079 --> 00:00:28.472
+variées.
+
+00:00:28.472 --> 00:00:31.854
+Un canal étroit ne transmet pas toutes les
+composantes.
+
+00:00:31.854 --> 00:00:35.603
+Le front devient plus progressif, et une impulsion
+peut encore être
+
+00:00:35.603 --> 00:00:37.307
+présente quand arrive la suivante.
+
+00:00:37.307 --> 00:00:40.530
+On appelle ça une interférence entre symboles.
+
+00:00:40.530 --> 00:00:44.060
+Un diagramme de l’œil superpose des morceaux de
+signal.
+
+00:00:44.060 --> 00:00:47.304
+Un œil ouvert indique qu’il existe une zone où les
+niveaux
+
+00:00:47.304 --> 00:00:48.778
+sont bien séparés pour décider.
+
+00:00:49.142 --> 00:00:52.731
+La synchronisation dit où commence chaque symbole.
+
+00:00:52.731 --> 00:00:55.807
+Sans elle, tu pourrais lire entre deux niveaux au lieu
+de
+
+00:00:55.807 --> 00:00:57.204
+lire la valeur du bit.
+
+00:00:57.204 --> 00:01:00.746
+Un codage NRZ peut garder longtemps le même niveau.
+
+00:01:00.746 --> 00:01:04.769
+En Manchester, la transition au milieu de chaque bit
+donne un
+
+00:01:04.769 --> 00:01:05.501
+repère régulier.
+
+00:01:05.501 --> 00:01:09.018
+Le sens associé à zéro ou un dépend de la convention.
+
+00:01:09.018 --> 00:01:13.013
+En différentiel, concentre-toi sur les transitions
+entre états.
+
+00:01:13.013 --> 00:01:17.082
+Cela aide notamment quand la polarité de réception est
+inversée.
+
+00:01:17.433 --> 00:01:21.072
+Avec quatre états, un symbole peut désigner deux bits.
+
+00:01:21.072 --> 00:01:24.433
+À même rapidité en bauds, cela double le débit brut
+par
+
+00:01:24.433 --> 00:01:25.655
+rapport à deux états.
+
+00:01:25.655 --> 00:01:29.430
+Nyquist donne une limite idéale sans bruit liée à la
+bande
+
+00:01:29.430 --> 00:01:29.773
+passante.
+
+00:01:29.773 --> 00:01:33.081
+Shannon fixe une capacité théorique en présence de
+bruit, égale à
+
+00:01:33.081 --> 00:01:36.390
+B fois log en base deux de un plus S sur
+
+00:01:36.390 --> 00:01:36.991
+N linéaire.
+
+00:01:36.991 --> 00:01:41.047
+Ne multiplie pas des déci bels comme s’ils
+représentaient des rapports
+
+00:01:41.047 --> 00:01:41.415
+ordinaires.
+
+00:01:41.767 --> 00:01:44.903
+La puissance mesure l’énergie par seconde.
+
+00:01:44.903 --> 00:01:48.726
+Pour obtenir l’énergie associée à un bit, divise la
+puissance utile
+
+00:01:48.726 --> 00:01:49.768
+par le débit.
+
+00:01:49.768 --> 00:01:52.624
+Si le bruit est blanc et mesuré sur la bande B,
+
+00:01:52.624 --> 00:01:55.479
+on obtient sa densité en divisant le bruit par la
+bande.
+
+00:01:55.479 --> 00:01:58.892
+Le rapport énergie par bit sur densité de bruit aide à
+
+00:01:58.892 --> 00:02:01.374
+comparer une modulation et le taux d’erreur attendu.
+
+00:02:01.374 --> 00:02:05.246
+Pour lire une courbe, passe par l’unité exacte de son
+axe.
+
+00:02:05.600 --> 00:02:09.923
+Les trois familles transportent une information en
+contrôlant des propriétés différentes
+
+00:02:09.923 --> 00:02:11.101
+de la porteuse.
+
+00:02:11.101 --> 00:02:14.533
+En ASK, les états n’ont pas la même amplitude.
+
+00:02:14.533 --> 00:02:18.087
+En FSK, ils n’utilisent pas la même fréquence.
+
+00:02:18.087 --> 00:02:21.714
+En PSK, les états occupent des phases différentes.
+
+00:02:21.714 --> 00:02:25.789
+Le modulateur I Q combine deux voies sinusoïdales
+décalées d’un quart
+
+00:02:25.789 --> 00:02:26.530
+de tour.
+
+00:02:26.530 --> 00:02:30.121
+Dans le plan I Q, chaque symbole correspond à un
+point.
+
+00:02:30.121 --> 00:02:33.547
+Un bruit peut déplacer la mesure et faire choisir le
+mauvais
+
+00:02:33.547 --> 00:02:33.859
+point.
+
+00:02:34.225 --> 00:02:37.655
+Regarde maintenant la constellation comme une carte.
+
+00:02:37.655 --> 00:02:42.025
+Plus la modulation a de positions, plus chaque symbole
+transporte de
+
+00:02:42.025 --> 00:02:42.423
+bits.
+
+00:02:42.423 --> 00:02:46.284
+À puissance et réglages comparables, rapprocher les
+points réduit la marge
+
+00:02:46.284 --> 00:02:47.337
+face au bruit.
+
+00:02:47.337 --> 00:02:51.087
+Une modulation plus robuste peut être préférable quand
+la qualité baisse,
+
+00:02:51.087 --> 00:02:53.133
+au prix d’un débit plus faible.
+
+00:02:53.133 --> 00:02:55.926
+Le codage Gray place souvent des mots qui ne diffèrent
+que
+
+00:02:55.926 --> 00:02:58.718
+par un bit sur des voisins proches, pour limiter les
+erreurs
+
+00:02:58.718 --> 00:03:00.241
+binaires quand on confond deux voisins.
+
+00:03:00.600 --> 00:03:03.896
+Chaque point correspond à un état qu’on peut envoyer.
+
+00:03:03.896 --> 00:03:07.235
+Pour le point à gauche, projette à l’horizontale pour
+lire la
+
+00:03:07.235 --> 00:03:07.842
+valeur I.
+
+00:03:07.842 --> 00:03:10.391
+La hauteur indique la valeur Q.
+
+00:03:10.391 --> 00:03:14.144
+Le récepteur ne voit pas toujours le point exactement
+à sa
+
+00:03:14.144 --> 00:03:14.827
+position attendue.
+
+00:03:14.827 --> 00:03:17.927
+Le bruit peut éloigner l’échantillon de ce point.
+
+00:03:17.927 --> 00:03:21.310
+Tant qu’il est dans la bonne zone, on retrouve le
+symbole.
+
+00:03:21.310 --> 00:03:25.893
+Si l’échantillon franchit la frontière, le récepteur
+peut sélectionner le symbole
+
+00:03:25.893 --> 00:03:26.310
+voisin.
+
+00:03:26.642 --> 00:03:30.832
+La compression économise des bits, par exemple sur une
+vidéo.
+
+00:03:30.832 --> 00:03:34.011
+Un code correcteur fait l’inverse pour un autre besoin
+: il
+
+00:03:34.011 --> 00:03:37.190
+ajoute une information structurée qui aide à retrouver
+les bits après
+
+00:03:37.190 --> 00:03:37.768
+le bruit.
+
+00:03:37.768 --> 00:03:40.968
+Le rendement du code est le nombre de bits utiles
+divisé
+
+00:03:40.968 --> 00:03:43.295
+par le nombre de bits transmis après codage.
+
+00:03:43.295 --> 00:03:47.756
+Le multiplexage regroupe plusieurs flux, par exemple
+par créneaux de temps.
+
+00:03:47.756 --> 00:03:51.553
+Ne déduis pas le débit total en oubliant l’en-tête ou
+la
+
+00:03:51.553 --> 00:03:51.898
+redondance.
+
+00:03:52.267 --> 00:03:56.220
+Dans l’exercice de la télé, chaque chaîne commence à
+deux cent
+
+00:03:56.220 --> 00:03:57.658
+soixante-dix mégabits par seconde.
+
+00:03:57.658 --> 00:04:01.837
+Après compression, chacune occupe quatre mégabits par
+seconde.
+
+00:04:01.837 --> 00:04:04.962
+En en regroupant six, on monte à vingt-quatre.
+
+00:04:04.962 --> 00:04:09.504
+Reed Solomon transforme cent quatre-vingt-huit unités
+utiles en deux cent quatre
+
+00:04:09.504 --> 00:04:10.329
+unités protégées.
+
+00:04:10.329 --> 00:04:13.994
+Puis le second code transforme deux entrées en trois
+sorties.
+
+00:04:13.994 --> 00:04:17.082
+Les deux codes augmentent le débit à transmettre.
+
+00:04:17.082 --> 00:04:20.536
+La compression économise des bits pour la vidéo et le
+codage
+
+00:04:20.536 --> 00:04:22.106
+en ajoute pour la protéger.
+
+00:04:22.475 --> 00:04:25.433
+Un écho est une copie qui arrive en retard parce que
+
+00:04:25.433 --> 00:04:27.315
+le signal a suivi un autre trajet.
+
+00:04:27.315 --> 00:04:31.977
+L’O F D M répartit le débit sur plusieurs sous-
+porteuses espacées
+
+00:04:31.977 --> 00:04:32.400
+régulièrement.
+
+00:04:32.400 --> 00:04:35.611
+Le temps utile devient plus long sur chacune.
+
+00:04:35.611 --> 00:04:38.960
+On ajoute un préfixe cyclique pour protéger la partie
+utile si
+
+00:04:38.960 --> 00:04:41.396
+les retards restent plus courts que la garde.
+
+00:04:41.396 --> 00:04:45.757
+La diversité utilise plusieurs observations moins
+corrélées pour mieux résister aux
+
+00:04:45.757 --> 00:04:46.947
+creux de réception.
+
+00:04:47.308 --> 00:04:50.641
+Pour le TD, commence avec la puissance d’émission.
+
+00:04:50.641 --> 00:04:54.253
+Deux cents milliwatts donnent vingt-trois virgule zéro
+un d B m.
+
+00:04:54.253 --> 00:04:57.209
+En retirant quinze, tu obtiens huit virgule zéro un.
+
+00:04:57.209 --> 00:05:00.552
+Le bruit de zéro virgule six milliwatt correspond à
+moins deux
+
+00:05:00.552 --> 00:05:03.894
+virgule vingt-deux d B m. Le rapport signal sur bruit
+est
+
+00:05:03.894 --> 00:05:06.021
+donc environ dix virgule vingt-trois déci bels.
+
+00:05:06.021 --> 00:05:09.062
+Pour le rapport par bit, il faut encore tenir compte
+du
+
+00:05:09.062 --> 00:05:10.445
+débit et de la bande.
+
+00:05:10.808 --> 00:05:13.969
+Convertis la bande et le débit avant de diviser.
+
+00:05:13.969 --> 00:05:18.118
+La puissance reçue, environ six virgule trente-deux
+milliwatts, divisée par cent
+
+00:05:18.118 --> 00:05:20.758
+millions donne l’énergie par bit en joules.
+
+00:05:20.758 --> 00:05:24.533
+Divise ensuite par la densité de bruit et convertis le
+rapport
+
+00:05:24.533 --> 00:05:25.562
+en déci bels.
+
+00:05:25.562 --> 00:05:29.143
+Sur la courbe du sujet, on lit environ neuf virgule
+cinq
+
+00:05:29.143 --> 00:05:30.771
+pour dix puissance moins cinq.
+
+00:05:30.771 --> 00:05:34.524
+Comme sept virgule vingt-deux est inférieur, le cahier
+des charges n’est
+
+00:05:34.524 --> 00:05:35.207
+pas atteint.
+
+00:05:35.558 --> 00:05:39.258
+Pour les trois solutions, garde les autres paramètres
+constants.
+
+00:05:39.258 --> 00:05:43.218
+Si seul le débit change, réécris l’expression de
+l’énergie par bit
+
+00:05:43.218 --> 00:05:45.018
+pour isoler le débit maximal.
+
+00:05:45.018 --> 00:05:48.807
+Si tu changes la longueur, calcule quelle perte
+maximale tu peux
+
+00:05:48.807 --> 00:05:51.562
+supporter, puis divise-la par le coefficient du câble.
+
+00:05:51.562 --> 00:05:55.777
+Si tu règles l’émetteur, détermine la puissance reçue
+minimale puis remonte
+
+00:05:55.777 --> 00:05:57.310
+les pertes jusqu’à l’émission.
+
+00:05:57.310 --> 00:06:00.937
+Le résultat dépend de la lecture du seuil sur la
+courbe.
+
+00:06:01.308 --> 00:06:05.008
+Reprenons les opérations avec le seuil lu sur la
+courbe.
+
+00:06:05.008 --> 00:06:08.690
+Ne remplace pas le rapport dans l’équation par neuf
+virgule cinq,
+
+00:06:08.690 --> 00:06:10.364
+puisqu’il est en déci bels.
+
+00:06:10.364 --> 00:06:13.844
+Convertis-le en huit virgule quatre-vingt-onze
+environ.
+
+00:06:13.844 --> 00:06:16.924
+Divise la puissance reçue en watts par ce nombre et
+par
+
+00:06:16.924 --> 00:06:19.445
+la densité de bruit pour trouver le débit limite.
+
+00:06:19.445 --> 00:06:23.531
+Pour la longueur et la puissance d’émission, calcule
+d’abord la réception
+
+00:06:23.531 --> 00:06:25.388
+cible, dix virgule sept milliwatts.
+
+00:06:25.388 --> 00:06:28.893
+Garde une petite marge car le seuil est lu
+graphiquement.
+
+00:06:29.267 --> 00:06:33.249
+Le TD donne une suite de bits avec plusieurs zéros
+successifs.
+
+00:06:33.249 --> 00:06:36.545
+Trace les frontières avant de dessiner le signal.
+
+00:06:36.545 --> 00:06:40.381
+Pour le NRZ, laisse chaque niveau stable pendant la
+case.
+
+00:06:40.381 --> 00:06:43.811
+Pour Manchester, divise chaque case en deux et trace
+la transition
+
+00:06:43.811 --> 00:06:45.994
+au milieu selon la légende du sujet.
+
+00:06:45.994 --> 00:06:50.552
+Avec un codage différentiel, note l’état précédent
+avant chaque changement.
+
+00:06:50.552 --> 00:06:54.144
+Vérifie ta dernière case en relisant le dessin comme
+si tu
+
+00:06:54.144 --> 00:06:55.124
+étais le récepteur.
+
+00:06:55.475 --> 00:06:57.398
+0 | 1 | 0.
+
+00:06:57.398 --> 00:07:01.307
+NRZ unipolaire : +V | 0 | +V | 0.
+
+00:07:01.307 --> 00:07:03.931
+Manchester : − + | + − | − + |
+
+00:07:03.931 --> 00:07:04.408
++ −.
+
+00:07:04.408 --> 00:07:07.496
+Regarde les quatre premiers bits du TD.
+
+00:07:07.496 --> 00:07:11.445
+En NRZ unipolaire, tu tiens le niveau positif pendant
+la première
+
+00:07:11.445 --> 00:07:13.599
+case, puis zéro pendant la seconde.
+
+00:07:13.599 --> 00:07:16.692
+Avec la convention où le un monte en Manchester, la
+première
+
+00:07:16.692 --> 00:07:18.942
+case commence en bas et finit en haut.
+
+00:07:18.942 --> 00:07:21.307
+La seconde fait l’inverse.
+
+00:07:21.307 --> 00:07:24.491
+À la frontière entre ces deux cases le niveau reste
+donc
+
+00:07:24.491 --> 00:07:25.070
+en haut.
+
+00:07:25.070 --> 00:07:28.758
+La transition obligatoire a lieu au milieu de chaque
+bit.
+
+00:07:28.758 --> 00:07:32.643
+Vérifie cette position avant de continuer le
+chronogramme.
+
+00:07:33.017 --> 00:07:36.323
+Pour le banc Q P S K, identifie les voies I
+
+00:07:36.323 --> 00:07:39.630
+et Q du montage, puis place l’oscilloscope en X Y.
+Fais
+
+00:07:39.630 --> 00:07:42.035
+apparaître les quatre états et relève leurs
+coordonnées.
+
+00:07:42.035 --> 00:07:45.762
+Associe les dibits à partir de la table du montage,
+car
+
+00:07:45.762 --> 00:07:47.795
+deux conventions peuvent permuter les étiquettes.
+
+00:07:47.795 --> 00:07:50.980
+Observe ce qui change quand tu modifies le réglage du
+filtre
+
+00:07:50.980 --> 00:07:52.427
+ou du point de mesure.
+
+00:07:52.427 --> 00:07:54.935
+Un beau carré ne suffit pas si tu as branché les
+
+00:07:54.935 --> 00:07:57.442
+axes à l’envers ou si la décision doit se faire à
+
+00:07:57.442 --> 00:07:58.126
+un autre instant.
+
+00:07:58.475 --> 00:08:01.626
+Dans le TD sur la liaison cinq G, cent mètres en
+
+00:08:01.626 --> 00:08:04.491
+plus correspondent à environ un tiers de microseconde
+dans l’air.
+
+00:08:04.491 --> 00:08:09.562
+Vingt mégahertz répartis sur soixante-quatre sous-
+porteuses donnent trois cent douze virgule
+
+00:08:09.562 --> 00:08:10.484
+cinq kilohertz.
+
+00:08:10.484 --> 00:08:13.008
+La durée utile est l’inverse.
+
+00:08:13.008 --> 00:08:15.951
+Compare le retard de l’écho à la garde : un tiers
+
+00:08:15.951 --> 00:08:18.893
+est inférieur à un, donc la garde est suffisante dans
+ce
+
+00:08:18.893 --> 00:08:19.160
+modèle.
+
+00:08:19.160 --> 00:08:22.807
+Pour la sélectivité, compare la largeur d’une sous-
+porteuse à la bande
+
+00:08:22.807 --> 00:08:25.790
+de cohérence selon la définition retenue dans le
+cours.
+
+00:08:26.142 --> 00:08:30.528
+Prends l’inverse du retard maximal pour obtenir
+environ trois mégahertz.
+
+00:08:30.528 --> 00:08:34.224
+Une bande complète de vingt mégahertz peut voir des
+gains très
+
+00:08:34.224 --> 00:08:34.560
+différents.
+
+00:08:34.560 --> 00:08:38.763
+Sur une des sous-porteuses, l’écart de fréquences est
+beaucoup plus petit.
+
+00:08:38.763 --> 00:08:41.961
+On assimile alors la réponse du canal à un seul gain
+
+00:08:41.961 --> 00:08:43.996
+et une seule phase pour cette sous-porteuse.
+
+00:08:43.996 --> 00:08:47.281
+Si le récepteur roule à cent kilomètres par heure, le
+Doppler
+
+00:08:47.281 --> 00:08:49.670
+est de l’ordre de trois cent vingt-quatre hertz.
+
+00:08:49.670 --> 00:08:53.347
+Le canal change alors à l’échelle de quelques
+millisecondes.
+
+00:08:53.725 --> 00:08:56.993
+Dans le TD sur les erreurs, regarde le reçu et les
+
+00:08:56.993 --> 00:08:58.479
+mots proposés bit par bit.
+
+00:08:58.479 --> 00:09:01.867
+Vers celui qui finit par quatre uns, seul le premier
+zéro
+
+00:09:01.867 --> 00:09:03.099
+du second bloc change.
+
+00:09:03.099 --> 00:09:06.397
+Vers le mot tout à zéro, on doit inverser les trois
+
+00:09:06.397 --> 00:09:06.996
+derniers bits.
+
+00:09:06.996 --> 00:09:09.735
+Comme quatre bits au moins séparent deux mots valides,
+une erreur
+
+00:09:09.735 --> 00:09:12.474
+simple ne peut nous rapprocher de deux mots à la fois.
+
+00:09:12.474 --> 00:09:15.804
+Avec l’hypothèse d’une erreur au maximum, on corrige
+donc vers le
+
+00:09:15.804 --> 00:09:17.621
+mot qui finit par quatre uns.
+
+00:09:17.621 --> 00:09:21.180
+Si trois erreurs ont pu se produire, ce raisonnement
+ne garantit
+
+00:09:21.180 --> 00:09:22.474
+plus le mot d’origine.
+
+00:09:22.808 --> 00:09:26.492
+Dans le TD sur le multiplexage temporel, la première
+voie occupe
+
+00:09:26.492 --> 00:09:27.832
+un des dix créneaux.
+
+00:09:27.832 --> 00:09:30.969
+Elle transmet donc huit bits à chaque répétition.
+
+00:09:30.969 --> 00:09:34.703
+Puisqu’il faut débiter cent vingt-huit mille bits de
+cette voie par
+
+00:09:34.703 --> 00:09:38.436
+seconde, divise huit par ce débit pour obtenir
+soixante-deux virgule cinq
+
+00:09:38.436 --> 00:09:38.775
+microsecondes.
+
+00:09:38.775 --> 00:09:41.778
+Le débit brut compte les quatre-vingts bits.
+
+00:09:41.778 --> 00:09:45.936
+Sept créneaux portent les données des utilisateurs,
+les autres servent à
+
+00:09:45.936 --> 00:09:48.959
+la synchronisation, la signalisation et la détection
+d’erreurs.
+
+00:09:48.959 --> 00:09:52.454
+Le rendement est donc de soixante-dix pour cent avant
+l’ajout de
+
+00:09:52.454 --> 00:09:53.089
+la garde.

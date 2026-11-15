@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Probabilités et statistiques — BUT2 R&amp;T</title>
+  <meta name="description" content="Apprends à lire une série de mesures, estimer une moyenne et tester un modèle à partir des deux TD du semestre.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/stats-but2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">∑</span></div>
+      <h1 class="page-title" id="page-title">Probabilités et statistiques</h1>
+      <p class="page-lead">Apprends à lire une série de mesures, estimer une moyenne et tester un modèle à partir des deux TD du semestre.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S4</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Corrigés des TD</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/stats-but2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <p class="c-block">Les explications reprennent les notions utilisées dans les deux TD disponibles du semestre 4.</p>
+  <div class="c-block"><h3>1. Transformer des observations en tableau</h3>
+    <p>L’<strong>effectif</strong> d’une valeur est le nombre de fois où elle apparaît. Sa <strong>fréquence</strong> est l’effectif divisé par N, le nombre total d’observations. La fréquence cumulée à une valeur donnée additionne toutes les fréquences jusqu’à cette valeur incluse.</p>
+    <p>Exemple avec dix temps d’attente. Quatre personnes attendent 1 minute, trois attendent 2 minutes et trois attendent 4 minutes. La fréquence de 2 minutes est 30 %, et la fréquence cumulée à 2 minutes est 70 %. Le <strong>mode</strong> est la valeur de l’effectif maximal, ici 1 minute.</p>
+  </div>
+  <div class="c-block"><h3>2. Distinguer la valeur moyenne et la dispersion</h3>
+    <p>La <strong>moyenne pondérée</strong> compte chaque valeur autant de fois qu’elle apparaît. Calcule la somme des produits valeur × effectif et divise par N. Dans l’exemple, (4×1 + 3×2 + 3×4)/10 = 2,2 minutes. La <strong>variance descriptive</strong> moyenne les écarts à la moyenne mis au carré. Tu obtiens le même résultat en calculant la moyenne des carrés moins le carré de la moyenne. L’<strong>écart-type</strong> est sa racine et se lit dans l’unité d’origine.</p>
+    <p>La <strong>médiane</strong> partage les données ordonnées en deux moitiés. Les premier et troisième quartiles donnent des seuils autour de 25 % et 75 %. L’écart Q₃−Q₁ renseigne sur la largeur de la partie centrale. Sur des données brutes, vérifie la convention demandée, car les tableurs proposent plusieurs variantes.</p>
+  </div>
+  <div class="c-block"><h3>3. Exploiter des données regroupées par intervalles</h3>
+    <p>Une classe <code>[10 ; 15[</code> contient 10 et toutes les valeurs strictement inférieures à 15. Si les classes ont des largeurs différentes, la <strong>surface</strong> de chaque barre doit représenter l’effectif dans un histogramme. Prends donc une hauteur proportionnelle à effectif/largeur. Le TD emploie une largeur exprimée en unités de 5.</p>
+    <p>Si seules les classes sont connues, remplace les mesures par le milieu de leur classe pour estimer la moyenne et l’écart-type. Pour un quartile, repère la première classe dont le cumul atteint le rang voulu, puis interpole en supposant une répartition uniforme dans cette classe. Cette approximation dépend du regroupement.</p>
+  </div>
+  <div class="c-block"><h3>4. Simuler une loi normale et lire une probabilité</h3>
+    <p>Une <strong>variable aléatoire</strong> associe une mesure à une expérience. Pour la loi normale, μ positionne le centre et σ représente l’écart-type. La fonction F(x) donne la probabilité que X soit au plus égale à x. Entre a et b, la probabilité vaut <strong>F(b)−F(a)</strong>. Un logiciel peut aussi calculer l’inverse de F, qui transforme une probabilité cumulée en quantile.</p>
+    <p>C’est le processus du TD sur les résistances. Tire une valeur uniforme entre 0 et 1, puis applique la fonction inverse de la normale de moyenne 1000 Ω et d’écart-type 20 Ω. En répétant, tu obtiens une série plausible. La moyenne d’une série finie varie à chaque nouveau tirage.</p>
+  </div>
+  <div class="c-block"><h3>5. Ajuster une droite à deux séries</h3>
+    <p>Trace les couples <code>(x, y)</code> en nuage. Pour la droite <strong>de Mayer</strong>, partage les points ordonnés par x en deux groupes et relie leurs deux points moyens. Pour les <strong>moindres carrés</strong>, choisis la droite qui minimise les carrés des écarts verticaux. Sa pente vaut covariance(x,y)/variance(x), avec la même convention de calcul dans les deux termes. Son ordonnée à l’origine vaut moyenne(y)−pente×moyenne(x).</p>
+    <p>Un coefficient de <strong>corrélation</strong> proche de 1 indique une association linéaire croissante marquée. Vérifie le nuage et la plage où tu as des mesures avant d’utiliser la droite pour prédire.</p>
+  </div>
+  <div class="c-block"><h3>6. Donner un intervalle à une moyenne</h3>
+    <p>Un échantillon donne une moyenne observée x̄ et un écart-type estimé s. Pour estimer la variance avec les écarts calculés autour de x̄, divise leur somme des carrés par n−1. L’<strong>erreur standard</strong> vaut s/√n. Elle renseigne sur la variation de x̄ d’un échantillon à l’autre.</p>
+    <p>Pour des observations indépendantes avec variance de la population inconnue, l’intervalle de Student s’écrit <strong>x̄ ± t × s/√n</strong>. Prends le quantile bilatéral demandé avec n−1 degrés de liberté. La formule est exacte sous un modèle normal et fournit une approximation usuelle avec un grand échantillon adapté. À 95 %, sur des répétitions de la méthode dans les mêmes conditions, environ 95 % des intervalles contiennent la moyenne de la population.</p>
+  </div>
+  <div class="c-block"><h3>7. Comparer un modèle aux observations</h3>
+    <p>Le test d’ajustement du <strong>khi-deux</strong> compare un effectif observé O à un attendu E dans chaque classe. Calcule E = n × probabilité de la classe sous le modèle, puis additionne (O−E)²/E. Couvre toutes les valeurs possibles du modèle, y compris les queues, et regroupe les classes voisines où E est trop petit.</p>
+    <p>Avec k classes finales et p paramètres estimés sur les mêmes données, prends k−1−p degrés de liberté dans le cadre du TD. Si la statistique dépasse le seuil, rejette le modèle au risque annoncé. Une valeur sous le seuil signifie que les observations sont compatibles avec le modèle au seuil choisi.</p>
+  </div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Corrigés des TD</h2>
+  <details class="acc" open><summary>TD1, exercice I · Retrouver le mode, la moyenne et l’écart-type</summary><div class="acc-body">
+    <ol><li>Attribue aux valeurs 0 à 5 les effectifs 8, 24, 12, 60, 80 et 16. La somme vaut <strong>200</strong>. Les cumuls sont 8, 32, 44, 104, 184 et 200 ; 52 % des observations sont au plus égales à 3.</li>
+    <li>La valeur 4 apparaît 80 fois, ce qui en fait le mode. Les deux observations du milieu, de rangs 100 et 101, valent chacune 3.</li>
+    <li>Multiplie les valeurs par leurs effectifs, additionne et divise par 200. Tu obtiens <strong>628/200 = 3,14</strong>. Applique le même calcul aux carrés : 2292/200 = 11,46. Soustrais 3,14² pour obtenir une variance de 1,6004, puis prends la racine, soit <strong>1,265</strong> environ.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD1, exercice II · Tracer l’histogramme et estimer les quartiles</summary><div class="acc-body">
+    <ol><li>Les effectifs sont 3, 14, 25, 20, 18, 26, 10, 4, soit N=120. Pour <code>[0 ; 10[</code>, la largeur vaut deux unités de 5, donc la hauteur corrigée est 3/2=1,5. Pour <code>[15 ; 20[</code> la largeur vaut une unité, donc la hauteur vaut 25. Répète puis garde les vraies largeurs sur l’axe horizontal.</li>
+    <li>Le 60ᵉ rang est dans <code>[20 ; 25[</code>. Le cumul précédent vaut 42 et l’effectif de la classe vaut 20. Avance de (60−42)/20 de la largeur de 5 depuis la borne 20. La médiane estimée vaut <strong>24,5</strong>.</li>
+    <li>Pour Q₁ (rang 30), prends 15+5×(30−17)/25 = 17,6. Pour Q₃ (rang 90), prends 30+5×(90−80)/26 ≈ 31,92. Avec les milieux et leurs poids, la moyenne estimée vaut <strong>25,6875</strong> et l’écart-type descriptif ≈10,95.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD1, exercice III · Contrôler une simulation de résistances</summary><div class="acc-body">
+    <ol><li>Remplis les lignes demandées avec l’inverse de la loi normale de paramètres 1000 et 20, appliquée à une valeur aléatoire uniforme par ligne. Le classeur utilise <code>NORMINV(RAND(),1000,20)</code> sous noms anglais. L’équivalent en français dépend de la version du tableur.</li><li>Calcule la moyenne et l’écart-type de la plage. Compare chaque série à ses paramètres puis recalcule : chaque valeur et les deux résumés peuvent changer.</li><li>Pour réutiliser exactement le même tirage dans le tableau et le graphique, copie les cellules puis colle leurs valeurs dans une zone de travail. La probabilité théorique entre 980 et 1020 Ω correspond à un écart-type de part et d’autre de 1000, soit environ 68 %.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD1, exercice IV · Faire les ajustements de la latence</summary><div class="acc-body">
+    <ol><li>Trace les dix points en nuage, avec x en abscisse et la latence en ordonnée. Pour Mayer, calcule les moyennes des cinq premiers puis des cinq derniers couples. Tu obtiens <strong>A(3 ; 5,86)</strong> et <strong>B(8 ; 16,46)</strong>.</li><li>Pente (16,46−5,86)/(8−3)=2,12. En remplaçant x par 3 et y par 5,86, tu trouves l’ordonnée à l’origine −0,5. Affiche y=2,12x−0,5 sur la plage des mesures.</li><li>Pour les moindres carrés, utilise les dix points. La droite est <strong>y ≈ 2,0824x−0,2933</strong> et r≈0,975. Compare la forme du nuage et les écarts verticaux des deux droites sur les mêmes axes.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD Estimation · Encadrer le temps de transit moyen</summary><div class="acc-body">
+    <ol><li>Sur les 100 observations de la feuille, calcule x̄≈89,5660 et s≈5,08479 avec n−1 au dénominateur de la variance. Pour une moyenne, calcule s/√100≈0,50848.</li><li>Pour 95 % avec 99 degrés de liberté, prends t₀,₉₇₅≈1,9842. La marge vaut environ 1,0089. Ajoute-la et retranche-la à la moyenne.</li><li>Résultat <strong>[88,56 ; 90,57]</strong> dans l’unité du tableau. Il s’agit de l’intervalle estimé pour la moyenne de la population.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD Estimation · Comparer les effectifs à une loi normale</summary><div class="acc-body">
+    <ol><li>Avec les classes successives délimitées par 79, 83, 87, 91, 95 et 99, les observés sont <code>1, 8, 19, 32, 25, 13, 2</code>. Prolonge la première et la dernière classe jusqu’aux infinis pour couvrir toute la normale. Sur les données du TD, cela ne modifie pas les observés.</li><li>Estime μ par 89,566 et σ par 5,08479. Pour chaque classe, calcule 100×(F(b)−F(a)), soit environ <code>1,89 ; 7,94 ; 20,86 ; 30,41 ; 24,64 ; 11,08 ; 3,18</code>. Vérifie que leur somme avant arrondi vaut 100.</li><li>Les deux effectifs théoriques extrêmes sont sous 5. Regroupe chacun avec son voisin puis calcule la somme (O−E)²/E sur les cinq classes. Tu trouves <strong>χ²≈0,36</strong>. Avec 5−1−2=2 degrés de liberté, le seuil à 5 % vaut ≈5,99. On ne rejette pas la loi normale à ce seuil.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/stats-but2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/stats-but2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/stats-but2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Effectifs, fréquences et cumul</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="24.375">0:24 · Moyenne, variance et écart-type</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="54.250">0:54 · Classes inégales et histogramme</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="106.167">1:46 · Médiane et quartiles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="127.792">2:07 · Probabilités et loi normale</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="181.208">3:01 · Estimer une moyenne</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="203.958">3:23 · Tester un ajustement au khi-deux</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Corrigés des TD · 3:46</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="226.958">3:46 · TD1 · Refaire le tableau de l’exercice I</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="275.667">4:35 · TD1 · Interpoler la médiane de l’exercice II</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="335.083">5:35 · TD1 · Ajuster la latence avec Mayer et la régression</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="362.375">6:02 · TD · Estimer le temps de transit</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="388.708">6:28 · TD · Comparer la loi normale aux mesures</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="450.375">7:30 · TD1 · Contrôler un tirage du tableur</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,726 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.840
+Une fréquence décrit combien de fois l’onde se répète
+en une
+
+00:00:03.840 --> 00:00:04.180
+seconde.
+
+00:00:04.180 --> 00:00:07.918
+La longueur d’onde est la distance parcourue pendant
+une période.
+
+00:00:07.918 --> 00:00:11.296
+Si la vitesse ne change pas, une fréquence plus grande
+donne
+
+00:00:11.296 --> 00:00:12.832
+une longueur d’onde plus courte.
+
+00:00:12.832 --> 00:00:16.631
+Dans une fibre, la vitesse est inférieure à celle du
+vide.
+
+00:00:16.631 --> 00:00:20.242
+Pour calculer un retard, divise la distance par la
+vitesse dans
+
+00:00:20.242 --> 00:00:22.869
+ce milieu, puis garde l’unité de temps correcte.
+
+00:00:23.225 --> 00:00:26.843
+Pour mettre des chiffres sur la formule, prends une
+onde à
+
+00:00:26.843 --> 00:00:27.501
+cent mégahertz.
+
+00:00:27.501 --> 00:00:31.069
+Divise trois cents millions de mètres par seconde par
+cent millions
+
+00:00:31.069 --> 00:00:32.366
+de cycles par seconde.
+
+00:00:32.366 --> 00:00:34.744
+Un cycle occupe trois mètres.
+
+00:00:34.744 --> 00:00:38.002
+Si la même fréquence passe dans un milieu d’indice un
+virgule
+
+00:00:38.002 --> 00:00:41.261
+cinq, l’onde y parcourt environ deux cents millions de
+mètres par
+
+00:00:41.261 --> 00:00:41.557
+seconde.
+
+00:00:41.557 --> 00:00:44.597
+Le générateur garde la même cadence.
+
+00:00:44.597 --> 00:00:48.143
+Comme chaque cycle avance de moins loin, sa longueur
+d’onde devient
+
+00:00:48.143 --> 00:00:48.788
+deux mètres.
+
+00:00:49.142 --> 00:00:52.094
+Pense à une charge de test positive.
+
+00:00:52.094 --> 00:00:55.768
+La direction du champ électrique est celle de la force
+qu’elle
+
+00:00:55.768 --> 00:00:56.101
+subirait.
+
+00:00:56.101 --> 00:00:59.693
+Pour un fil parcouru par un courant, le champ
+magnétique tourne
+
+00:00:59.693 --> 00:01:00.673
+autour du fil.
+
+00:01:00.673 --> 00:01:04.627
+Dans une situation d’onde plane, on peut représenter
+le champ électrique
+
+00:01:04.627 --> 00:01:08.581
+et le champ magnétique perpendiculaires, avec une
+direction de propagation perpendiculaire
+
+00:01:08.581 --> 00:01:09.300
+aux deux.
+
+00:01:09.300 --> 00:01:13.552
+Une antenne reçoit mieux une polarisation compatible
+avec la sienne.
+
+00:01:13.892 --> 00:01:17.508
+Un déci bel donne un rapport, pas une puissance à lui
+
+00:01:17.508 --> 00:01:17.837
+seul.
+
+00:01:17.837 --> 00:01:21.280
+Le d B m prend comme référence un milliwatt.
+
+00:01:21.280 --> 00:01:24.563
+Si tu soustrais deux puissances en d B m, le résultat
+
+00:01:24.563 --> 00:01:26.354
+est une différence en d B.
+
+00:01:26.354 --> 00:01:30.589
+Le coefficient d’atténuation dit combien de déci bels
+on perd par
+
+00:01:30.589 --> 00:01:30.974
+kilomètre.
+
+00:01:30.974 --> 00:01:34.925
+Multiplie-le par la distance, puis soustrais la perte
+à la puissance
+
+00:01:34.925 --> 00:01:35.643
+de départ.
+
+00:01:35.643 --> 00:01:39.244
+N’additionne pas les puissances exprimées en d B m
+comme des
+
+00:01:39.244 --> 00:01:40.226
+puissances en watts.
+
+00:01:40.600 --> 00:01:44.312
+Une fibre guide la lumière grâce à la différence
+d’indices.
+
+00:01:44.312 --> 00:01:47.233
+À la frontière entre le cœur et la gaine, on mesure
+
+00:01:47.233 --> 00:01:49.092
+les angles par rapport à la normale.
+
+00:01:49.092 --> 00:01:52.676
+Pour un rayon venant du milieu d’indice plus grand, la
+réflexion
+
+00:01:52.676 --> 00:01:54.631
+devient totale au-delà de l’angle critique.
+
+00:01:54.631 --> 00:01:58.042
+À l’entrée, parle plutôt de l’angle par rapport à
+l’axe de
+
+00:01:58.042 --> 00:01:58.663
+la fibre.
+
+00:01:58.663 --> 00:02:03.033
+L’ouverture numérique détermine le cône où la lumière
+incidente peut être
+
+00:02:03.033 --> 00:02:03.430
+guidée.
+
+00:02:03.808 --> 00:02:07.545
+Imagine un rayon presque parallèle à la paroi
+intérieure.
+
+00:02:07.545 --> 00:02:10.094
+Son angle avec la normale est grand.
+
+00:02:10.094 --> 00:02:14.200
+Avec les indices du TD, il faut dépasser environ
+quatre-vingt virgule
+
+00:02:14.200 --> 00:02:14.947
+six degrés.
+
+00:02:14.947 --> 00:02:18.879
+Un rayon à quatre-vingt-cinq degrés reste guidé à cet
+endroit du
+
+00:02:18.879 --> 00:02:19.236
+modèle.
+
+00:02:19.236 --> 00:02:22.949
+À soixante-quinze degrés, une partie de la lumière
+peut passer dans
+
+00:02:22.949 --> 00:02:23.624
+la gaine.
+
+00:02:23.624 --> 00:02:27.218
+L’angle d’entrée de quatorze degrés qu’on va retrouver
+dans le corrigé
+
+00:02:27.218 --> 00:02:28.525
+est une autre mesure.
+
+00:02:28.525 --> 00:02:32.221
+Il est pris dans l’air, face à l’extrémité, par
+rapport à
+
+00:02:32.221 --> 00:02:32.557
+l’axe.
+
+00:02:32.892 --> 00:02:36.412
+Quand plusieurs rayons parcourent des chemins
+différents en fibre multimode, ils
+
+00:02:36.412 --> 00:02:38.332
+n’arrivent pas tous en même temps.
+
+00:02:38.332 --> 00:02:40.648
+C’est une cause de dispersion.
+
+00:02:40.648 --> 00:02:45.011
+Même en monomode, la propagation dépend notamment de
+la longueur d’onde.
+
+00:02:45.011 --> 00:02:48.418
+Une impulsion étalée peut déborder sur la suivante.
+
+00:02:48.418 --> 00:02:51.751
+Augmenter la puissance ne resserre pas les impulsions.
+
+00:02:51.751 --> 00:02:54.910
+Un bilan de puissance suffisant n’est donc pas à lui
+seul
+
+00:02:54.910 --> 00:02:56.347
+une preuve de débit suffisant.
+
+00:02:56.725 --> 00:02:59.383
+Un coupleur divise la puissance.
+
+00:02:59.383 --> 00:03:03.299
+Pour deux sorties égales, chacune reçoit idéalement la
+moitié, soit une
+
+00:03:03.299 --> 00:03:07.214
+perte d’environ trois déci bels, avant les pertes
+supplémentaires du composant
+
+00:03:07.214 --> 00:03:07.570
+réel.
+
+00:03:07.570 --> 00:03:11.589
+Le W D M sépare des canaux suivant leur longueur
+d’onde.
+
+00:03:11.589 --> 00:03:15.573
+Un amplificateur remonte la puissance, mais il ajoute
+ses propres contraintes
+
+00:03:15.573 --> 00:03:18.109
+et ne reconstruit pas nécessairement le signal.
+
+00:03:18.109 --> 00:03:21.966
+Dans un bilan, ajoute les gains et soustrais les
+pertes, tronçon
+
+00:03:21.966 --> 00:03:22.668
+par tronçon.
+
+00:03:23.017 --> 00:03:26.821
+Dans la fibre, le réflectomètre envoie une impulsion
+et écoute ce
+
+00:03:26.821 --> 00:03:27.513
+qui revient.
+
+00:03:27.513 --> 00:03:30.594
+Comme le signal fait un aller et un retour, la
+distance
+
+00:03:30.594 --> 00:03:33.114
+vaut la vitesse fois le retard divisé par deux.
+
+00:03:33.114 --> 00:03:36.582
+Un pic peut indiquer une réflexion à un connecteur.
+
+00:03:36.582 --> 00:03:40.087
+Sur une ligne coaxiale, une charge qui n’est pas
+adaptée à
+
+00:03:40.087 --> 00:03:42.317
+l’impédance du câble provoque aussi une réflexion.
+
+00:03:42.317 --> 00:03:46.374
+L’adaptation améliore le transfert et limite l’onde
+réfléchie.
+
+00:03:46.725 --> 00:03:49.948
+Si le réflectomètre reçoit un retour au bout de huit
+microsecondes,
+
+00:03:49.948 --> 00:03:53.171
+multiplie le temps par la vitesse de la lumière dans
+la
+
+00:03:53.171 --> 00:03:53.464
+fibre.
+
+00:03:53.464 --> 00:03:56.344
+Le trajet total vaut mille six cents mètres.
+
+00:03:56.344 --> 00:03:59.947
+La réflexion vient d’un événement situé deux fois
+moins loin.
+
+00:03:59.947 --> 00:04:02.521
+Imagine un écho contre un mur.
+
+00:04:02.521 --> 00:04:05.720
+Le temps que tu entends comprend le trajet jusqu’au
+mur et
+
+00:04:05.720 --> 00:04:06.883
+le trajet de retour.
+
+00:04:06.883 --> 00:04:10.532
+Dans le TP, l’appareil fait cette conversion à partir
+de l’indice
+
+00:04:10.532 --> 00:04:11.859
+que tu as renseigné.
+
+00:04:12.225 --> 00:04:15.999
+Dans le TD, commence par mettre les deux indices au
+carré.
+
+00:04:15.999 --> 00:04:19.535
+Soustrais celui de la gaine à celui du cœur, puis
+prends
+
+00:04:19.535 --> 00:04:20.177
+la racine.
+
+00:04:20.177 --> 00:04:23.817
+Comme la fibre est dans l’air, cette ouverture donne
+le sinus
+
+00:04:23.817 --> 00:04:25.141
+de l’angle d’entrée maximal.
+
+00:04:25.141 --> 00:04:29.423
+Utilise la fonction arc sinus et vérifie que la
+calculatrice affiche
+
+00:04:29.423 --> 00:04:30.202
+des degrés.
+
+00:04:30.202 --> 00:04:33.612
+Pour calculer le retard axial des cent mètres de
+fibre, utilise
+
+00:04:33.612 --> 00:04:35.472
+L fois n un sur c.
+
+00:04:35.472 --> 00:04:39.682
+Avec un indice de un virgule cinq, on obtient environ
+cinq
+
+00:04:39.682 --> 00:04:40.447
+cents nanosecondes.
+
+00:04:40.808 --> 00:04:44.300
+Passe d’abord de cinq milliwatts à environ sept d B m.
+
+00:04:44.300 --> 00:04:47.793
+Sur deux cent vingt kilomètres, la perte vaut quatre-
+vingt-huit déci bels.
+
+00:04:47.793 --> 00:04:50.636
+À l’arrivée tu as environ moins quatre-vingt-un.
+
+00:04:50.636 --> 00:04:54.226
+Pour garder une marge de trois déci bels au-dessus de
+la
+
+00:04:54.226 --> 00:04:56.837
+sensibilité moins trente-six, il faut atteindre moins
+trente-trois.
+
+00:04:56.837 --> 00:04:59.815
+Il manque environ quarante-huit déci bels.
+
+00:04:59.815 --> 00:05:03.365
+Avec des gains de cinq, il faut donc dix
+amplificateurs dans
+
+00:05:03.365 --> 00:05:04.655
+le modèle de l’exercice.
+
+00:05:05.017 --> 00:05:09.075
+Comme l’entrée nominale vaut moins trente-cinq, le
+premier amplificateur arrive quand
+
+00:05:09.075 --> 00:05:11.658
+on a perdu environ quarante-deux déci bels.
+
+00:05:11.658 --> 00:05:15.983
+À zéro virgule quatre par kilomètre, cela fait environ
+cent cinq
+
+00:05:15.983 --> 00:05:16.376
+kilomètres.
+
+00:05:16.376 --> 00:05:20.190
+Chaque amplification ramène à moins trente, puis douze
+kilomètres et demi
+
+00:05:20.190 --> 00:05:22.271
+plus loin on retrouve moins trente-cinq.
+
+00:05:22.271 --> 00:05:26.228
+Place les amplificateurs un à un, et calcule la perte
+restante
+
+00:05:26.228 --> 00:05:27.307
+après le dernier.
+
+00:05:27.307 --> 00:05:30.445
+La page déroule le contrôle de l’hypsogramme.
+
+00:05:30.808 --> 00:05:33.859
+Pour la Q P S K, repère séparément les voies en
+
+00:05:33.859 --> 00:05:36.910
+quadrature et fais apparaître les quatre états en mode
+X Y.
+
+00:05:36.910 --> 00:05:40.174
+Pour le codage bande de base, aligne la capture sur
+les
+
+00:05:40.174 --> 00:05:42.548
+frontières et mesure un symbole avec les curseurs.
+
+00:05:42.548 --> 00:05:46.535
+Pour la modulation ASK, le niveau de porteuse varie
+avec la
+
+00:05:46.535 --> 00:05:46.898
+donnée.
+
+00:05:46.898 --> 00:05:50.893
+Compare ensuite la fréquence en FSK et la phase en
+PSK.
+
+00:05:50.893 --> 00:05:54.128
+Identifie par mesure ce qui change dans chaque cas.
+
+00:05:54.128 --> 00:05:57.507
+Un tracé déformé demande d’abord de vérifier le
+réglage et le
+
+00:05:57.507 --> 00:05:59.043
+choix du point de capture.
+
+00:05:59.392 --> 00:06:02.442
+Le plan qui apparaît correspond au mode X Y.
+
+00:06:02.442 --> 00:06:05.665
+Un point à gauche a une composante I négative.
+
+00:06:05.665 --> 00:06:09.979
+S’il est aussi au-dessus de l’axe, sa composante Q est
+positive.
+
+00:06:09.979 --> 00:06:12.577
+Les deux valeurs sont lues au même instant.
+
+00:06:12.577 --> 00:06:15.564
+En remplaçant un dibit par un autre sur le banc, tu
+
+00:06:15.564 --> 00:06:17.736
+peux voir le point choisi changer de quadrant.
+
+00:06:17.736 --> 00:06:21.029
+Identifie les quatre couples avec la table du montage
+et regarde
+
+00:06:21.029 --> 00:06:24.023
+les passages entre eux après avoir établi les valeurs
+stables.
+
+00:06:24.392 --> 00:06:27.741
+Le mesureur de champ présente à la fois un niveau et
+
+00:06:27.741 --> 00:06:30.481
+des indicateurs qui renseignent la qualité du signal
+numérique.
+
+00:06:30.481 --> 00:06:34.537
+Configure d’abord le bon type de réception selon
+l’antenne ou le
+
+00:06:34.537 --> 00:06:34.905
+satellite.
+
+00:06:34.905 --> 00:06:38.913
+Pour le satellite, reprends les paramètres de l’annexe
+du sujet.
+
+00:06:38.913 --> 00:06:43.177
+Le niveau peut être visible sans que le démodulateur
+soit verrouillé.
+
+00:06:43.177 --> 00:06:46.434
+Compare la qualité et les erreurs avec le réglage
+voulu, puis
+
+00:06:46.434 --> 00:06:48.802
+note précisément le point où tu as mesuré.
+
+00:06:49.142 --> 00:06:53.087
+Vérifie d’abord les raccords et monte les fibres
+d’amorce prévues.
+
+00:06:53.087 --> 00:06:57.450
+La pente de la trace donne une indication de
+l’atténuation distribuée.
+
+00:06:57.450 --> 00:07:00.746
+Une chute à un endroit est une perte localisée.
+
+00:07:00.746 --> 00:07:03.503
+Un pic est souvent lié à une réflexion.
+
+00:07:03.503 --> 00:07:06.766
+Place les curseurs sur des portions stables de fibre,
+pas sur
+
+00:07:06.766 --> 00:07:07.952
+le haut du pic.
+
+00:07:07.952 --> 00:07:12.027
+Compare la perte d’un tronçon à sa longueur pour
+obtenir une
+
+00:07:12.027 --> 00:07:12.768
+atténuation linéique.
+
+00:07:12.768 --> 00:07:16.292
+Une impulsion plus longue aide à voir loin, mais peut
+masquer
+
+00:07:16.292 --> 00:07:17.253
+deux événements proches.
+
+00:07:17.600 --> 00:07:21.496
+Entre deux événements, choisis un morceau propre de la
+trace.
+
+00:07:21.496 --> 00:07:25.383
+Si sa puissance descend de zéro virgule soixante-dix
+déci bel sur
+
+00:07:25.383 --> 00:07:29.270
+deux kilomètres, son atténuation répartie vaut zéro
+virgule trente-cinq déci bel
+
+00:07:29.270 --> 00:07:29.976
+par kilomètre.
+
+00:07:29.976 --> 00:07:33.714
+Cet exemple te donne le calcul à refaire avec tes
+mesures.
+
+00:07:33.933 --> 00:07:37.699
+Pour le câble coaxial, repère la référence de
+l’appareil et compare
+
+00:07:37.699 --> 00:07:39.410
+les pertes à fréquence égale.
+
+00:07:39.410 --> 00:07:43.332
+Quand la charge est adaptée, la réflexion doit être
+plus faible.
+
+00:07:43.332 --> 00:07:47.094
+Pour l’antenne, conserve la distance et la
+polarisation.
+
+00:07:47.094 --> 00:07:50.766
+Fais varier seulement l’angle, relève les niveaux et
+normalise-les au maximum
+
+00:07:50.766 --> 00:07:52.768
+si le sujet te le demande.
+
+00:07:52.768 --> 00:07:55.709
+Compare au diagramme simulé dans le même plan.
+
+00:07:55.709 --> 00:07:59.567
+Les réflexions de la salle peuvent expliquer un écart
+entre calcul
+
+00:07:59.567 --> 00:08:00.268
+et mesure.
+
+00:08:00.642 --> 00:08:03.981
+Pour isoler la perte de la fibre de cinq cents mètres
+
+00:08:03.981 --> 00:08:06.106
+au TD, commence par mesurer la référence.
+
+00:08:06.106 --> 00:08:08.974
+On lit moins huit virgule quatre-vingt-trois.
+
+00:08:08.974 --> 00:08:12.138
+Insère la fibre dans le parcours sans changer la
+longueur d’onde
+
+00:08:12.138 --> 00:08:13.864
+ni le réglage de la source.
+
+00:08:13.864 --> 00:08:17.173
+Le niveau descend à moins neuf virgule trente-quatre.
+
+00:08:17.173 --> 00:08:19.942
+Soustrais le second niveau au premier.
+
+00:08:19.942 --> 00:08:23.332
+Les deux nombres sont négatifs, et tu obtiens bien une
+perte
+
+00:08:23.332 --> 00:08:26.106
+positive de zéro virgule cinquante et un déci bel.
+
+00:08:26.106 --> 00:08:29.953
+Divise par un demi kilomètre pour obtenir un virgule
+zéro deux
+
+00:08:29.953 --> 00:08:31.351
+déci bel par kilomètre.
+
+00:08:31.725 --> 00:08:35.128
+Imagine que tu veuilles envoyer un petit échantillon
+de la lumière
+
+00:08:35.128 --> 00:08:36.675
+vers un appareil de mesure.
+
+00:08:36.675 --> 00:08:40.494
+Le répartiteur du TD redirige dix pour cent sur une
+sortie
+
+00:08:40.494 --> 00:08:41.883
+et quatre-vingt-dix sur l’autre.
+
+00:08:41.883 --> 00:08:44.861
+Écris d’abord ces deux fractions en linéaire.
+
+00:08:44.861 --> 00:08:48.897
+Pour la petite sortie, le logarithme de zéro virgule
+un, multiplié
+
+00:08:48.897 --> 00:08:50.731
+par dix, donne moins dix.
+
+00:08:50.731 --> 00:08:53.922
+On dit qu’on a perdu dix déci bels par rapport à
+
+00:08:53.922 --> 00:08:54.212
+l’entrée.
+
+00:08:54.212 --> 00:08:58.640
+Sur la grande sortie, l’écart est seulement d’environ
+zéro virgule quarante-six
+
+00:08:58.640 --> 00:08:59.445
+déci bel.
+
+00:08:59.445 --> 00:09:03.207
+Ensuite prends les pertes propres au composant si
+elles sont fournies.
+
+00:09:03.558 --> 00:09:06.835
+Dans les exercices sur les champs, dessine d’abord le
+point où
+
+00:09:06.835 --> 00:09:08.325
+on te demande la réponse.
+
+00:09:08.325 --> 00:09:11.897
+Pour une charge positive, place une flèche du côté qui
+s’éloigne
+
+00:09:11.897 --> 00:09:12.871
+de cette charge.
+
+00:09:12.871 --> 00:09:16.376
+Pour une charge négative, la flèche pointe vers elle.
+
+00:09:16.376 --> 00:09:19.566
+Pour un courant dans un conducteur droit, place ton
+pouce dans
+
+00:09:19.566 --> 00:09:20.726
+le sens du courant.
+
+00:09:20.726 --> 00:09:24.085
+Tes doigts donnent le sens de rotation du champ autour
+du
+
+00:09:24.085 --> 00:09:24.391
+fil.
+
+00:09:24.391 --> 00:09:28.165
+Au point d’observation, la flèche est tangente à ce
+cercle.
+
+00:09:28.165 --> 00:09:31.925
+Si deux fils contribuent au champ au même point,
+dessine les
+
+00:09:31.925 --> 00:09:34.317
+deux flèches avant d’additionner séparément les
+composantes.
