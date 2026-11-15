@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Web — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Web : contenu à préparer.">
+  <title>Développement Web — S2 — BUT1 R&amp;T</title>
+  <meta name="description" content="PHP, formulaires, tableaux associatifs et accès aux données avec PDO.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-2">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,136 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--web" aria-hidden="true"><img src="../assets/revisions/visuels/html5.svg" alt="" width="64" height="64" decoding="async"><img src="../assets/revisions/visuels/css3.svg" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Web</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/html5.svg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Développement Web — S2</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/web/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Comprendre le trajet de la requête</h3>
+<p>Le navigateur envoie une requête HTTP au serveur. Le serveur exécute le fichier <strong>PHP</strong> demandé, construit une réponse, puis renvoie généralement du HTML. Le navigateur affiche ce résultat. Il peut exécuter du JavaScript reçu dans la page. Le PHP qui a produit la réponse s’exécute côté serveur.</p>
+<figure><img src="../assets/revisions/web/schemas/formulaire.png" alt="Le navigateur adresse les champs à auth.php et le serveur renvoie la page HTML générée." loading="lazy"><figcaption>Vérifie l’action, la méthode et les noms des champs avant de déboguer la logique PHP.</figcaption></figure>
+</div>
+<div class="c-block"><h3>2. Calculer et parcourir des données en PHP</h3>
+<p>Un nom de variable commence par <code>$</code>. <code>=</code> affecte, <code>===</code> compare la valeur et le type, et <code>.</code> concatène du texte. Avec <code>if</code>, traite les cas distincts. Avec <code>foreach</code>, parcours les éléments d’un tableau ou ses paires clé-valeur. Un tableau associatif utilise des clés telles que <code>titre</code> ou <code>technicien_id</code>.</p>
+<p>Une fonction reçoit ses paramètres et peut renvoyer une valeur avec <code>return</code>. Par exemple <code>calculerTtc($ht, $taux)</code> peut renvoyer un nombre et laisser la page appliquer son format d’affichage. Utilise <code>require __DIR__ . '/includes/donnees.php';</code> quand le reste du traitement dépend de ce fichier.</p>
+</div>
+<div class="c-block"><h3>3. Traiter et valider un formulaire</h3>
+<p>Un champ doit avoir un <code>name</code> pour que sa valeur soit envoyée. Une méthode <code>POST</code> transmet les champs dans le corps. Une méthode <code>GET</code> transmet les paramètres dans l’URL. Pour associer un formulaire POST à une page PHP, lis <code>$_POST</code> dans cette page. <code>required</code> aide dans le navigateur. Vérifie également ce que le serveur a vraiment reçu.</p>
+<p>Le code PHP peut refuser une requête directe ou un champ manquant avant de parcourir les données. Lors de l’affichage, échappe le texte avec <code>htmlspecialchars</code> dans un contexte HTML. Pour obtenir l’identifiant d’un détail, vérifie qu’il est entier, puis cherche l’enregistrement et contrôle que l’utilisateur connecté a le droit de le lire.</p>
+</div>
+<div class="c-block"><h3>4. Passer d’un tableau à une base MySQL</h3>
+<p><strong>PDO</strong> est l’interface qui ouvre la connexion et exécute les requêtes depuis PHP. Le DSN précise l’hôte, le nom de la base et le jeu de caractères. Utilise un marqueur de paramètre pour les valeurs comme l’identifiant d’un technicien. Une requête préparée sépare le texte SQL de ces valeurs.</p>
+<pre class="c-code"><code>$req = $pdo-&gt;prepare('SELECT id, titre, statut
+                      FROM interventions
+                      WHERE technicien_id = :id');
+$req-&gt;execute(['id' =&gt; $identifiant]);
+$interventions = $req-&gt;fetchAll(PDO::FETCH_ASSOC);</code></pre>
+<p>Le résultat associatif s’affiche ensuite avec un <code>foreach</code> similaire à celui de la version sur tableau. Les détails doivent reprendre le contrôle d’autorisation. Si la requête peut recevoir un identifiant venant de l’URL, filtre aussi par le technicien connecté.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#web-ttc">Exercice PHP · Convertir le prix HT en TTC</a></li>
+<li><a href="#web-form">TP des interventions · Faire fonctionner le POST</a></li>
+<li><a href="#web-details">TP des interventions · Filtrer la liste et vérifier le détail</a></li>
+<li><a href="#web-pdo">Cours PDO · Remplacer le tableau par une requête préparée</a></li></ul>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="web-ttc"><summary>Exercice PHP · Afficher le prix TTC</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé reconstitué à partir de l’exercice.</strong> Afficher le prix HT de 700,15 €, le taux de TVA de 20 % et le prix TTC.</p>
+<ol><li>Convertis 20 % en <code>0.20</code> pour le calcul. La TVA correspond à <code>700.15 × 0.20 = 140.03</code> euros.</li>
+<li>Ajoute la TVA au prix initial, ou multiplie directement par <code>1 + 0.20</code>. Tu obtiens <strong>840,18 €</strong>.</li>
+<li>Pour une sortie avec deux décimales et une virgule, passe le résultat à <code>number_format($ttc, 2, ',', ' ')</code>. Garde le formatage pour la sortie.</li></ol></div></details>
+<details class="acc" id="web-form"><summary>TP des interventions · Récupérer les variables de connexion</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Créer le formulaire de connexion qui envoie le login et le mot de passe vers <code>auth.php</code>. Vérifier le cas où on ouvre <code>auth.php</code> directement.</p>
+<ol><li>Renseigne <code>action="auth.php"</code>, <code>method="post"</code> et les attributs <code>name="login"</code> et <code>name="mot_de_passe"</code>. Vérifie l’attribut <code>type="password"</code> pour masquer la saisie.</li>
+<li>Vérifie la méthode et la présence des champs sur le serveur. Avec une ouverture directe par l’URL, le cas attendu est le message invitant à se connecter. Avec le formulaire, parcours les techniciens et compare le couple saisi aux valeurs de test du sujet.</li>
+<li>Teste un couple correct et un couple incorrect. Pour cette démonstration, affiche seulement l’état de la validation. Dans une application réelle, utilise des mots de passe hachés, une session et <code>password_verify()</code>.</li></ol></div></details>
+<details class="acc" id="web-details"><summary>TP des interventions · Montrer les tâches du technicien et ouvrir un détail</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Afficher uniquement les interventions affectées à la personne connectée, puis créer un lien vers le détail par identifiant.</p>
+<ol><li>Après authentification, associe l’identifiant du technicien à sa session. Parcours la liste et conserve les lignes dont <code>technicien_id</code> correspond. Compte la liste filtrée pour afficher le bon total. Prévois le message du sujet quand cette liste est vide.</li>
+<li>Dans le tableau HTML, affiche le titre, le type, la salle et le statut. Pour chaque titre, crée un lien vers <code>intervention.php?id=…</code>. Dans la page cible, valide l’identifiant du lien et cherche la ligne.</li>
+<li>Contrôle l’affectation dans la page de détail elle-même. Essaie une tâche du compte connecté, une tâche d’un autre compte et un identifiant inconnu. La présence d’un lien dans la liste est une aide de navigation. La vérification dans la page cible décide si la donnée est accessible.</li></ol></div></details>
+<details class="acc" id="web-pdo"><summary>Application du cours · Charger les mêmes interventions via PDO</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Refaire le filtrage des interventions avec MySQL tout en gardant le même tableau HTML.</p>
+<ol><li>Dans le fichier de connexion, initialise PDO à partir des paramètres de la base. Dans la page, prépare une requête qui filtre <code>technicien_id</code> par un marqueur et passe l’identifiant lors de l’exécution.</li>
+<li>Récupère les lignes en tableaux associatifs. Reprends les mêmes essais qu’avec les tableaux PHP, y compris le cas sans résultat et le compte qui tente d’ouvrir un détail qui ne lui est pas affecté.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/web/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/web/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/web/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Le navigateur demande, PHP répond</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="25.958">0:25 · Variables et tableaux associatifs</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="102.458">1:42 · Vérifier une requête avant de traiter</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="153.083">2:33 · PDO pour obtenir les données</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="199.000">3:19 · Exercice PHP · Afficher le prix TTC</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="223.208">3:43 · TP · Relier le formulaire au traitement</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="248.667">4:08 · TP · Afficher la liste et ouvrir un seul détail</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

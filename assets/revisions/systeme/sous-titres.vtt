@@ -1,0 +1,366 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.407
+Quand tu tapes une commande, c'est d'abord le shell
+qui reçoit
+
+00:00:03.407 --> 00:00:04.008
+le texte.
+
+00:00:04.008 --> 00:00:08.028
+Il décide comment découper les arguments et où envoyer
+le résultat.
+
+00:00:08.028 --> 00:00:12.121
+Le système s'occupe ensuite de l'accès aux fichiers et
+de l'exécution.
+
+00:00:12.121 --> 00:00:15.124
+Commence par regarder ton répertoire courant.
+
+00:00:15.124 --> 00:00:18.236
+Un chemin relatif se comprend depuis ce point.
+
+00:00:18.236 --> 00:00:21.337
+Un chemin absolu commence à la racine.
+
+00:00:21.337 --> 00:00:24.623
+Si ton nom contient un espace, mets le chemin entre
+guillemets
+
+00:00:24.623 --> 00:00:26.116
+pour qu'il reste un argument.
+
+00:00:26.475 --> 00:00:29.268
+Les droits se lisent dans trois petits groupes.
+
+00:00:29.268 --> 00:00:31.891
+Le premier est pour le propriétaire.
+
+00:00:31.891 --> 00:00:34.673
+Le deuxième est pour le groupe du fichier.
+
+00:00:34.673 --> 00:00:36.976
+Le dernier est pour les autres.
+
+00:00:36.976 --> 00:00:40.637
+Avec un masque zéro vingt-deux, on enlève l'écriture
+au groupe et
+
+00:00:40.637 --> 00:00:41.302
+aux autres.
+
+00:00:41.302 --> 00:00:45.219
+Un dossier neuf garde normalement la traversée, et un
+fichier texte
+
+00:00:45.219 --> 00:00:47.712
+neuf ne devient pas exécutable tout seul.
+
+00:00:47.712 --> 00:00:51.046
+Vérifie ce que ta machine a appliqué en lisant les
+caractères
+
+00:00:51.046 --> 00:00:53.472
+de la commande L S, avec l'option L.
+
+00:00:53.808 --> 00:00:57.250
+Imagine que chaque commande a un tuyau d'entrée et un
+tuyau
+
+00:00:57.250 --> 00:00:57.876
+de sortie.
+
+00:00:57.876 --> 00:01:01.222
+Une redirection écrit la sortie dans un fichier.
+
+00:01:01.222 --> 00:01:04.236
+Un tube la fait passer à une autre commande.
+
+00:01:04.236 --> 00:01:07.386
+Si tu veux compter les lignes qui contiennent un
+nombre, tu
+
+00:01:07.386 --> 00:01:09.677
+peux filtrer d'abord, puis compter les lignes
+retenues.
+
+00:01:09.677 --> 00:01:13.293
+La sortie d'erreur reste distincte : une erreur
+affichée à l'écran
+
+00:01:13.293 --> 00:01:16.908
+n'est pas automatiquement écrite par une redirection
+de la sortie normale.
+
+00:01:17.267 --> 00:01:20.611
+Le script reçoit les éléments placés après son nom.
+
+00:01:20.611 --> 00:01:23.001
+Le premier arrive dans dollar un.
+
+00:01:23.001 --> 00:01:27.199
+Entoure ce paramètre de guillemets, sinon un chemin
+contenant plusieurs mots
+
+00:01:27.199 --> 00:01:28.344
+peut être découpé.
+
+00:01:28.344 --> 00:01:30.722
+Puis teste le type du chemin.
+
+00:01:30.722 --> 00:01:34.673
+Un dossier aussi peut passer le test d'exécution, car
+cette permission
+
+00:01:34.673 --> 00:01:36.469
+signifie qu'on peut le traverser.
+
+00:01:36.469 --> 00:01:40.004
+Pour un fichier exécutable, teste donc à la fois que
+c'est
+
+00:01:40.004 --> 00:01:42.253
+un fichier ordinaire et qu'il est exécutable.
+
+00:01:42.600 --> 00:01:46.394
+Quand tu démarres un programme, le système lui
+attribue un numéro
+
+00:01:46.394 --> 00:01:47.084
+de processus.
+
+00:01:47.084 --> 00:01:49.927
+En arrière-plan, le shell continue.
+
+00:01:49.927 --> 00:01:54.131
+Dollar point d'exclamation se réfère au dernier
+lancement en arrière-plan.
+
+00:01:54.131 --> 00:01:57.080
+Si le père a besoin de la réponse du fils, il
+
+00:01:57.080 --> 00:01:58.420
+fait wait sur ce numéro.
+
+00:01:58.420 --> 00:02:02.790
+Après wait, dollar point d'interrogation donne le
+statut de la commande
+
+00:02:02.790 --> 00:02:03.187
+précédente.
+
+00:02:03.187 --> 00:02:07.158
+Lis-le tout de suite sinon une autre commande
+remplacera sa valeur.
+
+00:02:07.517 --> 00:02:10.898
+Dans le TP trois, commence par relever ton masque.
+
+00:02:10.898 --> 00:02:13.655
+Crée le dossier et le fichier texte.
+
+00:02:13.655 --> 00:02:17.356
+Si les modes sont sept cinquante-cinq et six quarante-
+quatre, explique la
+
+00:02:17.356 --> 00:02:20.383
+différence par les droits demandés avant application
+du masque.
+
+00:02:20.383 --> 00:02:23.741
+Ajoute l'exécution au propriétaire du fichier.
+
+00:02:23.741 --> 00:02:26.854
+Lance maintenant point barre oblique Test droits.
+
+00:02:26.854 --> 00:02:30.232
+Si le fichier contient le shebang du sujet et sa ligne
+
+00:02:30.232 --> 00:02:32.075
+d'affichage, tu dois lire le message.
+
+00:02:32.433 --> 00:02:36.354
+Enlève l'exécution au propriétaire et recommence
+directement.
+
+00:02:36.354 --> 00:02:39.908
+Si ton compte n'a plus la permission, la commande
+échoue.
+
+00:02:39.908 --> 00:02:43.584
+Lance ensuite le même fichier en donnant son nom à
+Bash.
+
+00:02:43.584 --> 00:02:47.788
+Le système exécute Bash, et Bash ouvre le fichier en
+lecture.
+
+00:02:47.788 --> 00:02:51.795
+Tu peux donc constater deux résultats différents pour
+le même contenu.
+
+00:02:51.795 --> 00:02:55.818
+Cette petite expérience t'aide à expliquer à quoi sert
+vraiment le
+
+00:02:55.818 --> 00:02:56.550
+bit d'exécution.
+
+00:02:56.892 --> 00:03:00.935
+Dans Pseudo dir, vérifie d'abord que tu as reçu un
+répertoire.
+
+00:03:00.935 --> 00:03:03.251
+Parcours ensuite ses entrées.
+
+00:03:03.251 --> 00:03:07.234
+Si un élément est un dossier, affiche son nom entre
+crochets.
+
+00:03:07.234 --> 00:03:10.667
+Pour une entrée qui est un fichier ordinaire et qui
+passe
+
+00:03:10.667 --> 00:03:12.540
+le test d'exécution, ajoute une étoile.
+
+00:03:12.540 --> 00:03:16.327
+Sinon, affiche le nom du fichier ordinaire tel quel.
+
+00:03:16.327 --> 00:03:19.660
+Teste un dossier vide et un nom contenant un espace.
+
+00:03:19.660 --> 00:03:22.479
+Tu vérifies ainsi le glob et les guillemets.
+
+00:03:22.808 --> 00:03:25.393
+Suis le schéma de gauche à droite.
+
+00:03:25.393 --> 00:03:28.432
+Le père lance Fils avec vingt comme argument.
+
+00:03:28.432 --> 00:03:32.106
+Le fils lit vingt dans dollar un, affiche son numéro
+et
+
+00:03:32.106 --> 00:03:32.440
+dort.
+
+00:03:32.440 --> 00:03:35.454
+Pendant ce temps, le père attend le PID.
+
+00:03:35.454 --> 00:03:38.460
+Une fois le fils terminé avec exit vingt, l'attente
+rend la
+
+00:03:38.460 --> 00:03:40.099
+main et le père lit vingt.
+
+00:03:40.099 --> 00:03:43.383
+En lancement au premier plan, il attend directement.
+
+00:03:43.383 --> 00:03:47.095
+Avec exec, le programme du père est remplacé et
+n'exécute plus
+
+00:03:47.095 --> 00:03:48.445
+les lignes qui suivent.
+
+00:03:48.808 --> 00:03:51.491
+Reprends le scénario dans la VM.
+
+00:03:51.491 --> 00:03:55.701
+Dans le deuxième terminal, repère le PID exact du fils
+pendant
+
+00:03:55.701 --> 00:03:56.467
+son sommeil.
+
+00:03:56.467 --> 00:03:59.445
+Le signal neuf termine le processus.
+
+00:03:59.445 --> 00:04:02.975
+Le père peut alors lire cent trente-sept, qui combine
+cent vingt-huit
+
+00:04:02.975 --> 00:04:04.579
+et le numéro du signal.
+
+00:04:04.579 --> 00:04:07.572
+C'est un bon cas pour comprendre qu'un statut peut
+indiquer une
+
+00:04:07.572 --> 00:04:10.565
+fin par signal, en plus des codes que le fils choisit
+
+00:04:10.565 --> 00:04:11.381
+en appelant exit.
+
+00:04:11.725 --> 00:04:15.842
+Les crochets désignent un chiffre et les accolades
+demandent deux répétitions.
+
+00:04:15.842 --> 00:04:19.408
+La commande cherche un endroit où les deux chiffres se
+suivent.
+
+00:04:19.408 --> 00:04:22.018
+Dans a un deux trois, il y en a.
+
+00:04:22.018 --> 00:04:25.143
+Dans un a deux, les chiffres sont séparés.
+
+00:04:25.143 --> 00:04:28.170
+L'option C compte les lignes sélectionnées.
+
+00:04:28.170 --> 00:04:31.694
+Même si une ligne contient trois paires différentes,
+elle compte pour
+
+00:04:31.694 --> 00:04:32.655
+une seule ligne.
+
+00:04:32.655 --> 00:04:35.843
+Mets les deux exemples dans un fichier et vérifie que
+le
+
+00:04:35.843 --> 00:04:36.712
+résultat est un.
+
+00:04:37.058 --> 00:04:40.506
+Pour cette question, le début de ligne fait partie de
+la
+
+00:04:40.506 --> 00:04:40.820
+condition.
+
+00:04:40.820 --> 00:04:45.037
+Le petit accent au début du motif signifie : commence
+exactement
+
+00:04:45.037 --> 00:04:46.187
+en première colonne.
+
+00:04:46.187 --> 00:04:50.029
+Après lui, les crochets donnent les deux caractères
+qui déclenchent le
+
+00:04:50.029 --> 00:04:50.378
+filtre.
+
+00:04:50.378 --> 00:04:52.976
+L'option V inverse la sélection.
+
+00:04:52.976 --> 00:04:55.931
+Prépare trois lignes : une avec le dièse
+immédiatement, une avec
+
+00:04:55.931 --> 00:04:58.885
+un espace avant le dièse et une avec un pour cent
+
+00:04:58.885 --> 00:04:59.423
+au début.
+
+00:04:59.423 --> 00:05:01.923
+Seule la ligne indentée reste.

@@ -1,0 +1,349 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:02.109
+Suis les deux flèches.
+
+00:00:02.109 --> 00:00:05.295
+Le navigateur envoie les champs vers le serveur.
+
+00:00:05.295 --> 00:00:10.075
+Le serveur exécute la page PHP demandée, qui construit
+le HTML.
+
+00:00:10.075 --> 00:00:13.972
+En retour, le navigateur reçoit et affiche ce
+résultat.
+
+00:00:13.972 --> 00:00:17.100
+Si tu lis le code de la page depuis le navigateur,
+
+00:00:17.100 --> 00:00:19.376
+tu vois surtout le HTML qui est arrivé.
+
+00:00:19.376 --> 00:00:22.532
+Pour comprendre un calcul côté serveur, regarde la
+requête et les
+
+00:00:22.532 --> 00:00:25.687
+valeurs qu'elle transporte, puis ce que le programme
+en a fait.
+
+00:00:26.058 --> 00:00:29.268
+Une variable PHP commence par un dollar.
+
+00:00:29.268 --> 00:00:33.116
+Il faut distinguer le calcul le plus simple de son
+affichage.
+
+00:00:33.116 --> 00:00:36.943
+Calcule d'abord le prix, puis transforme-le si
+nécessaire pour le montrer
+
+00:00:36.943 --> 00:00:37.638
+à l'écran.
+
+00:00:37.638 --> 00:00:41.450
+Une comparaison stricte contrôle la valeur mais aussi
+le type.
+
+00:00:41.450 --> 00:00:44.345
+Ça compte pour un identifiant : le texte deux transmis
+par
+
+00:00:44.345 --> 00:00:47.240
+un formulaire et le nombre deux ne sont pas du même
+
+00:00:47.240 --> 00:00:47.503
+type.
+
+00:00:47.503 --> 00:00:50.726
+Valide et convertis la donnée avant de comparer.
+
+00:00:51.058 --> 00:00:53.423
+Imagine une pile de tickets.
+
+00:00:53.423 --> 00:00:56.831
+Sur chacun, il y a une salle, un statut et le
+
+00:00:56.831 --> 00:00:57.761
+numéro du technicien.
+
+00:00:57.761 --> 00:01:00.849
+Un tableau associatif donne un nom à ces champs.
+
+00:01:00.849 --> 00:01:04.268
+Avec foreach, considère un ticket à la fois.
+
+00:01:04.268 --> 00:01:08.035
+Compare le numéro au compte connecté, et ajoute le
+ticket à
+
+00:01:08.035 --> 00:01:10.089
+la liste visible seulement s'ils correspondent.
+
+00:01:10.089 --> 00:01:13.508
+Le nombre à afficher est la taille de la liste
+filtrée.
+
+00:01:13.850 --> 00:01:17.967
+Sur un exemple de trois tickets, lis leur affectation
+dans l'ordre.
+
+00:01:17.967 --> 00:01:21.533
+Premier ticket, technicien un : on le garde.
+
+00:01:21.533 --> 00:01:25.369
+Deuxième ticket, technicien deux : on passe à la
+suite.
+
+00:01:25.369 --> 00:01:28.972
+Troisième ticket, technicien un : on le garde.
+
+00:01:28.972 --> 00:01:31.337
+Le total à montrer est deux.
+
+00:01:31.337 --> 00:01:34.560
+Essaie ensuite un technicien qui n'a aucune tâche.
+
+00:01:34.560 --> 00:01:38.101
+Il faut distinguer ce cas normal d'une erreur de
+recherche.
+
+00:01:38.101 --> 00:01:42.182
+Le sujet demande alors d'afficher qu'aucune
+intervention n'est affectée.
+
+00:01:42.558 --> 00:01:46.164
+Un champ affiché n'est envoyé que si sa configuration
+le permet,
+
+00:01:46.164 --> 00:01:47.802
+notamment s'il porte un nom.
+
+00:01:47.802 --> 00:01:51.264
+Pour ce formulaire, le destinataire est auth point
+PHP, la méthode
+
+00:01:51.264 --> 00:01:54.726
+est post, et le nom login sert de clé côté serveur.
+
+00:01:54.726 --> 00:01:58.722
+Teste aussi l'ouverture de cette page directement dans
+le navigateur.
+
+00:01:58.722 --> 00:02:01.320
+Dans ce cas, les champs n'arrivent pas.
+
+00:02:01.320 --> 00:02:04.809
+C'est à la page PHP de gérer ce cas, même si
+
+00:02:04.809 --> 00:02:06.712
+le navigateur valide déjà le formulaire.
+
+00:02:07.058 --> 00:02:10.771
+Les deux requêtes répondent à deux besoins différents
+dans le TP.
+
+00:02:10.771 --> 00:02:13.871
+On envoie les données de connexion avec post.
+
+00:02:13.871 --> 00:02:17.646
+Pour ouvrir un détail, on utilise un lien avec un
+identifiant
+
+00:02:17.646 --> 00:02:18.332
+dans l'adresse.
+
+00:02:18.332 --> 00:02:22.313
+Si un identifiant n'arrive pas en PHP, regarde la
+requête avant
+
+00:02:22.313 --> 00:02:23.761
+de toucher à l'algorithme.
+
+00:02:23.761 --> 00:02:26.996
+Vérifie la méthode puis le nom exact des champs.
+
+00:02:26.996 --> 00:02:30.763
+Un champ login sans attribut name peut apparaître
+normalement à l'écran
+
+00:02:30.763 --> 00:02:32.817
+et rester absent du corps envoyé.
+
+00:02:33.183 --> 00:02:36.978
+Quand on passe à MySQL, une partie du travail déménage
+vers
+
+00:02:36.978 --> 00:02:37.668
+la base.
+
+00:02:37.668 --> 00:02:41.135
+Au lieu de parcourir tous les tickets en PHP, demande
+à
+
+00:02:41.135 --> 00:02:43.342
+la base uniquement ceux du technicien choisi.
+
+00:02:43.342 --> 00:02:46.761
+Prépare la requête avec un marqueur pour
+l'identifiant.
+
+00:02:46.761 --> 00:02:49.138
+Passe la valeur à l'exécution.
+
+00:02:49.138 --> 00:02:52.968
+Tu peux ensuite relire la liste sous forme de tableaux
+associatifs
+
+00:02:52.968 --> 00:02:55.057
+et réutiliser le même code d'affichage.
+
+00:02:55.433 --> 00:02:57.638
+Compare les deux requêtes.
+
+00:02:57.638 --> 00:03:01.312
+Pour une liste, le technicien est la seule valeur qui
+nous
+
+00:03:01.312 --> 00:03:01.646
+intéresse.
+
+00:03:01.646 --> 00:03:05.112
+Pour afficher le détail d'une tâche, on cherche une
+seule ligne
+
+00:03:05.112 --> 00:03:06.057
+avec son numéro.
+
+00:03:06.057 --> 00:03:09.611
+Il faut aussi vérifier que cette ligne appartient au
+technicien.
+
+00:03:09.611 --> 00:03:13.375
+Une tâche d'un autre technicien et un numéro absent ne
+doivent
+
+00:03:13.375 --> 00:03:14.060
+rien afficher.
+
+00:03:14.060 --> 00:03:17.738
+Tu peux tester ces deux situations avec le même compte
+et
+
+00:03:17.738 --> 00:03:18.741
+deux identifiants différents.
+
+00:03:19.100 --> 00:03:22.775
+Vingt pour cent veut dire vingt pour cent parts, soit
+zéro
+
+00:03:22.775 --> 00:03:24.111
+virgule vingt comme multiplicateur.
+
+00:03:24.111 --> 00:03:26.427
+Calcule d'abord la taxe.
+
+00:03:26.427 --> 00:03:28.597
+Ajoute le prix HT.
+
+00:03:28.597 --> 00:03:31.832
+Tu peux aussi multiplier par un virgule vingt et
+vérifier que
+
+00:03:31.832 --> 00:03:33.891
+les deux écritures donnent la même réponse.
+
+00:03:33.891 --> 00:03:37.677
+Pour finir, formate le résultat avec deux décimales.
+
+00:03:37.677 --> 00:03:41.103
+En PHP, garde le point dans la valeur numérique et
+passe
+
+00:03:41.103 --> 00:03:42.972
+à la virgule pour l'affichage seulement.
+
+00:03:43.308 --> 00:03:46.174
+Commence par un test très simple : clique sur le
+bouton
+
+00:03:46.174 --> 00:03:49.039
+et vérifie dans les outils réseau du navigateur que le
+post
+
+00:03:49.039 --> 00:03:50.342
+part vers la bonne page.
+
+00:03:50.342 --> 00:03:52.584
+Fais ensuite trois essais.
+
+00:03:52.584 --> 00:03:56.420
+Des données de test correctes doivent donner une
+session valide.
+
+00:03:56.420 --> 00:03:59.557
+Des données incorrectes doivent produire un refus.
+
+00:03:59.557 --> 00:04:03.798
+Enfin, l'ouverture directe d'auth doit demander de se
+connecter.
+
+00:04:03.798 --> 00:04:07.418
+Utilise un indicateur de succès dans tes traces sans
+afficher de
+
+00:04:07.418 --> 00:04:08.405
+mot de passe.
+
+00:04:08.767 --> 00:04:12.798
+Une fois connecté, le technicien voit seulement ses
+propres lignes.
+
+00:04:12.798 --> 00:04:16.854
+Maintenant, imagine qu'il modifie le nombre dans la
+barre d'adresse.
+
+00:04:16.854 --> 00:04:19.979
+Le nombre proposé dans le lien est une entrée.
+
+00:04:19.979 --> 00:04:22.197
+Il peut être modifié.
+
+00:04:22.197 --> 00:04:25.522
+La page de détail doit donc rechercher à la fois
+l'identifiant
+
+00:04:25.522 --> 00:04:27.638
+de la tâche et l'identifiant du technicien.
+
+00:04:27.638 --> 00:04:31.510
+Essaie un identifiant valide qui appartient au compte,
+un identifiant valide
+
+00:04:31.510 --> 00:04:33.974
+d'un autre compte et un numéro inexistant.
+
+00:04:34.350 --> 00:04:38.209
+Le passage au SQL change la manière d'obtenir les
+lignes.
+
+00:04:38.209 --> 00:04:41.432
+Le comportement de la page doit rester cohérent.
+
+00:04:41.432 --> 00:04:44.398
+Rejoue les mêmes cas et compare les résultats.
+
+00:04:44.398 --> 00:04:47.910
+Si le mauvais compte voit une intervention, vérifie
+non seulement la
+
+00:04:47.910 --> 00:04:50.464
+requête de liste mais aussi celle du détail.
+
+00:04:50.464 --> 00:04:53.467
+Chaque page qui affiche une donnée doit pouvoir
+expliquer pourquoi ce
+
+00:04:53.467 --> 00:04:55.378
+compte a le droit de la lire.
