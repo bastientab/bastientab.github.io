@@ -110,7 +110,7 @@
 .c-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 a.c-card:is(:hover, :focus-visible) { text-decoration: none; }
 a.c-card:is(:hover, :focus-visible) .c-card-foot > span:first-child { text-decoration: underline; }
-.c-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.c-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 64px; }
 .c-ico {
   display: inline-grid; place-items: center; flex: none;
   min-width: 46px; height: 46px; padding: 0 8px; border-radius: 14px;
@@ -143,6 +143,20 @@ a.c-card:is(:hover, :focus-visible) .c-card-foot > span:first-child { text-decor
 .back-link:hover { color: var(--accent); }
 .c-hero-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
 .c-hero .c-ico { min-width: 58px; height: 58px; font-size: 1.1rem; border-radius: 18px; }
+.c-ico.c-ico--image {
+  width: 64px; min-width: 64px; height: 64px; padding: 9px;
+  box-sizing: border-box; border-radius: 16px; overflow: hidden;
+  background: var(--c-ico-tint);
+}
+.c-ico--image img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.c-ico--maths.c-ico--image { padding: 0; background: var(--bg-soft); }
+.c-ico--maths img { object-fit: cover; object-position: center 42%; }
+.c-ico--python { --c-ico-tint: #eef6fd; }
+.c-ico--c { --c-ico-tint: #eaf1fb; }
+.c-ico--java { --c-ico-tint: #fdf0ed; }
+.c-visual-credits { margin: 0 auto; padding: 0 0 16px; font-size: .82rem; color: var(--ink-2); }
+.c-visual-credits summary { cursor: pointer; width: fit-content; }
+.c-visual-credits p { margin: 8px 0 0; }
 
 /* ---------- Page de cours : sommaire + contenu ---------- */
 .c-layout {
