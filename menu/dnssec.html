@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services réseaux avancés — DNSSEC — BUT2 R&amp;T</title>
+  <meta name="description" content="Cours expliqué de DNS et DNSSEC en BUT2, corrigés du TP BIND9 et vidéo chapitrée.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/dnssec.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Tous les cours</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">DNS</span></div>
+      <h1 class="page-title" id="page-title">Services réseaux avancés — DNSSEC</h1>
+      <p class="page-lead">Comprendre une réponse DNS, configurer BIND9 et vérifier les signatures, étape par étape.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S3</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Corrigés du TP</a></li>
+        <li><a href="#video">Vidéo</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/dnssec/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <p>Tu vas apprendre à lire une réponse DNS, construire une zone sur BIND9 et expliquer pourquoi un résolveur accepte ou rejette une réponse signée.</p>
+  <div class="c-block">
+    <h3>1. Du nom à l’adresse</h3>
+    <p><strong>Le DNS est un annuaire distribué.</strong> Tu demandes une information associée à un nom, par exemple l’adresse IPv4 de <code>client.secu.rt.</code>. Le point final indique un nom complet, en partant de l’hôte jusqu’à la racine DNS.</p>
+    <p>Un domaine désigne une branche de l’arbre des noms. Une <strong>zone</strong> correspond à la partie de l’arbre dont des serveurs publient les données. Une administration peut déléguer un sous-domaine à d’autres serveurs et leur confier la gestion de cette partie.</p>
+    <ol>
+      <li>Ton poste demande une réponse au <strong>résolveur récursif</strong>.</li>
+      <li>En cas d’absence du cache, le résolveur peut interroger la racine, puis le serveur du domaine de premier niveau (TLD), puis les serveurs faisant autorité. Chaque renvoi lui indique où chercher ensuite.</li>
+      <li>Il retourne la réponse et peut la conserver pendant la durée indiquée par le <strong>TTL</strong>, exprimée en secondes. Le temps restant baisse quand une réponse mise en cache est réutilisée.</li>
+    </ol>
+    <details class="acc"><summary>Aller plus loin sur la récursion et la racine</summary><div class="acc-body">
+      <p>Une demande récursive charge le résolveur de trouver la réponse ou de signaler l’échec. Dans une interrogation itérative, un serveur peut répondre avec les données qu’il connaît ou renvoyer vers une autre autorité. Un relais transmet les requêtes à un autre résolveur selon sa configuration. Les treize identités des serveurs racine représentent un ensemble d’instances réparties géographiquement.</p>
+    </div></details>
+  </div>
+  <div class="c-block">
+    <h3>2. Lire une ligne DNS et une réponse</h3>
+    <pre class="c-code"><code>client.secu.rt.   300   IN   A   172.25.0.42</code></pre>
+    <p>On lit le <strong>nom</strong>, le TTL de 300 secondes, la <strong>classe</strong> <code>IN</code> (Internet), le <strong>type</strong> <code>A</code> et la <strong>donnée</strong>, ici une IPv4. Dans le paquet DNS, <code>RDLENGTH</code> donne la longueur de la donnée <code>RDATA</code> en octets.</p>
+    <div class="c-table-wrap"><table class="c-table">
+      <thead><tr><th>Type</th><th>Ce que tu obtiens</th><th>Exemple dans le TP</th></tr></thead>
+      <tbody>
+        <tr><td>A / AAAA</td><td>Une IPv4 / IPv6</td><td>Adresse de <code>client.secu.rt.</code></td></tr>
+        <tr><td>NS</td><td>Les noms des serveurs de la zone</td><td><code>ns1.secu.rt.</code> et <code>ns2.secu.rt.</code></td></tr>
+        <tr><td>SOA</td><td>Le primaire, le contact, la version et des délais de gestion de zone</td><td>Le secondaire compare le numéro de série</td></tr>
+        <tr><td>MX</td><td>Serveur de messagerie et priorité, le plus petit nombre étant préféré</td><td><code>10 mail.secu.rt.</code></td></tr>
+        <tr><td>CNAME</td><td>Un alias vers un autre nom</td><td><code>pop.secu.rt.</code> pointe vers <code>mail.secu.rt.</code></td></tr>
+        <tr><td>PTR</td><td>Le nom associé à une adresse via la zone inverse</td><td><code>42.0.25.172.in-addr.arpa.</code></td></tr>
+      </tbody>
+    </table></div>
+    <p>Avec <code>dig</code>, la section <strong>QUESTION</strong> reprend le nom et le type demandés. <strong>ANSWER</strong> contient la réponse. <strong>AUTHORITY</strong> peut indiquer une délégation ou les preuves associées à une réponse négative. <strong>ADDITIONAL</strong> peut donner des adresses utiles pour joindre les serveurs mentionnés.</p>
+    <details class="acc"><summary>Aller plus loin sur les flags et les délais du SOA</summary><div class="acc-body">
+      <p><code>qr</code> indique une réponse, <code>rd</code> une demande de récursion, <code>ra</code> la disponibilité de la récursion et <code>aa</code> une réponse faisant autorité. L’identifiant relie requête et réponse. Le code de réponse précise le résultat, par exemple <code>NOERROR</code>, <code>NXDOMAIN</code> ou <code>SERVFAIL</code>.</p>
+      <p>Dans le SOA, après le numéro de série, <em>refresh</em> indique quand vérifier si la version a changé. <em>Retry</em> fixe le délai de nouvel essai après un échec. <em>Expire</em> limite la durée pendant laquelle le secondaire peut continuer à servir sa copie en l’absence de rafraîchissement. La dernière valeur intervient dans le TTL des réponses négatives.</p>
+      <p>Le DNS classique utilise UDP et TCP sur le port 53. Un client peut refaire sa requête en TCP si la réponse UDP est tronquée. Un transfert complet de zone utilise TCP.</p>
+    </div></details>
+  </div>
+  <div class="c-block">
+    <h3>3. Qui possède la zone ?</h3>
+    <ul>
+      <li>Le <strong>primaire</strong> contient les données de référence. Tu modifies la zone dessus et tu augmentes le numéro de série du SOA.</li>
+      <li>Le <strong>secondaire</strong> obtient une copie et répond lui aussi avec autorité. Il peut récupérer toute la zone (<code>AXFR</code>) ou seulement les changements disponibles (<code>IXFR</code>).</li>
+      <li>Le <strong>relais</strong> transmet les requêtes à un autre serveur. Dans la dernière partie du TP, tu transformes le secondaire en relais pour <code>secu.rt</code>.</li>
+    </ul>
+    <p><strong>TSIG</strong> protège un échange entre deux machines qui partagent un secret. Chacune peut calculer ou vérifier un code d’authentification HMAC. Le destinataire vérifie l’émetteur et l’intégrité du message. Le contenu reste lisible sur le réseau.</p>
+    <details class="acc"><summary>Aller plus loin sur le transfert signé</summary><div class="acc-body">
+      <p>Le nom de clé et l’algorithme doivent correspondre des deux côtés, ainsi que le secret lui-même. Les horloges doivent être suffisamment proches pour que le contrôle de la fenêtre de temps réussisse. Dans ton TP, le secret est généré localement et transféré hors du DNS. TKEY est un mécanisme distinct de gestion ou d’établissement de clés, selon le mode utilisé.</p>
+    </div></details>
+  </div>
+  <div class="c-block">
+    <h3>4. Pourquoi la réponse peut être trompeuse</h3>
+    <p><strong>Empoisonner un cache</strong>, c’est faire accepter une information forgée à un résolveur pour que d’autres clients en héritent. Une fausse réponse doit arriver au bon moment et correspondre notamment à la question, à l’identifiant et aux paramètres réseau de la requête en cours.</p>
+    <p>L’attaque de Kaminsky multiplie les essais en provoquant des requêtes sur de nouveaux noms, absents du cache. Le but est notamment de faire accepter une fausse délégation, afin que des requêtes futures soient envoyées vers le mauvais serveur.</p>
+    <p>On utilise <strong>DNSSEC</strong> pour vérifier l’origine et l’intégrité des données DNS à l’aide de signatures. Les noms et les adresses restent visibles. Une machine autorisée mais compromise peut encore publier de mauvaises données. La protection dépend donc aussi de la maîtrise des clés et de la zone.</p>
+  </div>
+  <div class="c-block">
+    <h3>5. Qu’est-ce qui est signé ?</h3>
+    <p>Un <strong>RRset</strong> regroupe les enregistrements qui ont le même nom, le même type et la même classe. Si un nom a deux adresses IPv4, les deux lignes <code>A</code> font partie du même jeu. La clé privée signe ce jeu. La clé publique permet de vérifier sa signature.</p>
+    <ul>
+      <li><strong>DNSKEY</strong> publie une clé publique, avec les flags, le champ protocole (3 pour DNSSEC) et l’algorithme.</li>
+      <li><strong>RRSIG</strong> transporte la signature, le type couvert, la période de validité, l’identifiant de clé et le signataire. Le champ <em>Labels</em> concerne le nom propriétaire du jeu. Le numéro de clé aide à retrouver la bonne clé, mais c’est la vérification cryptographique qui confirme la signature.</li>
+      <li><strong>DS</strong> contient une empreinte liée à la <code>DNSKEY</code> de la zone enfant. C’est la zone parente qui publie et signe le jeu de DS.</li>
+    </ul>
+  </div>
+  <div class="c-block">
+    <h3>6. Comment le résolveur sait quelle clé croire</h3>
+    <ol>
+      <li>Il part d’une <strong>ancre de confiance</strong>, généralement celle de la racine pour le DNS public.</li>
+      <li>Il vérifie le jeu DS du parent, puis compare l’empreinte à la clé publique publiée par la zone enfant.</li>
+      <li>Dans le modèle du TP, la <strong>KSK</strong> authentifie le jeu <code>DNSKEY</code> où figure la <strong>ZSK</strong>. La ZSK sert ensuite à vérifier les autres jeux de données signés.</li>
+      <li>Il répète cette logique de délégation jusqu’à la zone concernée. Pour une zone privée comme <code>secu.rt</code>, le TP installe une ancre locale.</li>
+    </ol>
+    <p><code>dig +dnssec</code> demande les données DNSSEC via le bit <strong>DO</strong>. Un <code>RRSIG</code> visible indique une signature reçue. Le bit <strong>AD</strong> dans la réponse indique que le résolveur de confiance considère les données comme authentifiées.</p>
+    <details class="acc"><summary>Aller plus loin sur les résultats de validation</summary><div class="acc-body">
+      <p><em>Secure</em> indique qu’une chaîne et des signatures ont permis de valider les données. <em>Insecure</em> peut correspondre à une délégation dont l’absence de DS a été authentifiée. <em>Bogus</em> indique un problème de validation alors que les données devraient être sûres. L’absence d’AD seule ne permet pas de trancher entre ces cas. Une réponse <code>SERVFAIL</code> demande de vérifier aussi la connectivité, l’horloge et les journaux.</p>
+    </div></details>
+  </div>
+  <div class="c-block">
+    <h3>7. Vérifier une absence</h3>
+    <p><strong>NXDOMAIN</strong> signifie que le nom n’existe pas. Une réponse <strong>NODATA</strong> signifie que le nom existe mais qu’il n’a pas le type demandé, par exemple un hôte qui a un <code>A</code> mais aucun <code>AAAA</code>.</p>
+    <p><strong>NSEC</strong> prouve l’absence en indiquant le nom suivant dans l’ordre de la zone et les types présents au nom courant. <strong>NSEC3</strong> utilise un ordre fondé sur des empreintes de noms. Le résolveur contrôle les preuves et leurs signatures. Des noms prévisibles restent devinables par comparaison de hachages.</p>
+  </div>
+</section>
+
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TP</h2>
+  <p>Les titres reprennent les questions de ton énoncé. Les adresses <code>172.25.0.10</code> (ns1), <code>.11</code> (ns2), <code>.42</code> (client) et <code>.25</code> (mail) servent d’exemple. Remplace-les par tes adresses et compare tes sorties aux résultats attendus.</p>
+
+  <details class="acc" open><summary>I · Résoudre un nom et expliquer le résultat</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Trouver l’adresse de <code>google.com</code> avec <code>dig</code>, recommencer, comparer les réponses, puis analyser <code>+trace</code> et les paquets.</p>
+    <pre class="c-code"><code>dig @8.8.8.8 google.com. A
+dig @8.8.8.8 google.com. A
+dig @8.8.8.8 google.com. A +norecurse
+dig google.com. A +trace</code></pre>
+    <ol>
+      <li>Sur le premier essai, relève <code>SERVER</code>, le code de réponse, les lignes <code>A</code> et leurs TTL. Pour les outils en ligne demandés en I A, sélectionne le même type et compare aussi le résolveur utilisé par l’outil.</li>
+      <li>Relance la même commande sans attendre. Un TTL plus faible sur le même résultat est compatible avec l’utilisation d’un cache. Plusieurs IP signifient que plusieurs adresses sont annoncées. Le nombre de machines physiques ne se déduit pas de ce total.</li>
+      <li><code>+norecurse</code> désactive la demande de récursion. Une réponse du cache, un renvoi ou un refus sont possibles selon le serveur. Avec <code>+trace</code>, identifie la racine (<code>.</code>), le TLD (<code>com.</code>), puis les serveurs de <code>google.com.</code>. La commande envoie elle-même des requêtes le long de la délégation.</li>
+      <li>Dans Wireshark, filtre avec <code>dns</code>. Associe question et réponse grâce à l’identifiant, aux adresses et aux ports. Relève <code>RD</code> dans la requête et compare les réponses. Ton poste voit les paquets qu’il envoie et reçoit. Pour observer le travail interne d’un résolveur distant, il faudrait une capture à cet endroit.</li>
+    </ol>
+    <p>Pour l’inventaire demandé sur <code>uca.fr.</code>, interroge les types <code>SOA</code>, <code>NS</code>, <code>MX</code>, <code>A</code> et <code>AAAA</code> séparément. Les noms visibles dans les réponses donnent des pistes de recherche. Une requête <code>ANY</code> n’offre pas un inventaire exhaustif des sous-domaines.</p>
+  </div></details>
+
+  <details class="acc"><summary>II · Installer BIND9 et examiner sa configuration</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Installer le serveur, vérifier son état et son port, repérer les zones configurées et expliquer ce que montre <code>rndc dumpdb</code>.</p>
+    <pre class="c-code"><code>sudo apt update
+sudo apt install bind9 dnsutils
+systemctl status named
+sudo journalctl -fu named
+sudo ss -luntp 'sport = :53'</code></pre>
+    <ol>
+      <li>Sur Debian, <code>bind9</code> fournit le serveur et <code>dnsutils</code> fournit <code>dig</code>. Si l’unité sur ta VM s’appelle <code>bind9</code>, utilise ce nom à la place de <code>named</code>. Quitte le journal en direct avec <kbd>Ctrl+C</kbd>.</li>
+      <li>Dans <code>ss</code>, vérifie le port 53 en UDP et TCP ainsi que les adresses d’écoute. Pour une requête distante, le serveur doit écouter sur une adresse joignable depuis l’autre VM.</li>
+      <li>Lis <code>/etc/bind/named.conf</code> et suis les directives <code>include</code>. <code>named.conf.options</code> regroupe les options générales, <code>named.conf.local</code> les zones que tu ajoutes, et <code>named.conf.default-zones</code> les zones par défaut. Pour <code>.</code>, suis le chemin du fichier réellement déclaré. Une zone de type <code>hint</code> fournit les points de départ utilisés pour joindre la racine.</li>
+      <li>Si la récursion est autorisée depuis ton poste, interroge le serveur sur <code>www.google.com</code> puis <code>www.yahoo.com</code>. Lance <code>sudo rndc dumpdb -cache</code>, puis ouvre le fichier indiqué par l’option <code>dump-file</code> ou généré dans le répertoire de travail de BIND. Repère les informations stockées et compare-les aux requêtes que tu viens de faire.</li>
+    </ol>
+    <p>Pour le traceroute, commence par résoudre le nom d’une identité racine, puis lance <code>traceroute</code> vers l’adresse obtenue. Ce trajet représente le chemin depuis ton réseau vers l’instance jointe au moment du test.</p>
+  </div></details>
+
+  <details class="acc"><summary>III A · Déclarer et remplir la zone primaire secu.rt</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Déclarer <code>secu.rt</code> dans <code>named.conf.local</code>, créer <code>db.secu</code> et tester les ressources demandées.</p>
+    <h3>1. Déclarer la zone sur ns1</h3>
+    <p>Ouvre <code>/etc/bind/named.conf.local</code> sur le serveur primaire et ajoute ce bloc.</p>
+    <pre class="c-code"><code>zone "secu.rt" {
+    type primary;
+    file "/etc/bind/db.secu";
+    allow-transfer { none; };
+};</code></pre>
+    <p>Le bloc indique à BIND de servir une zone primaire à partir du fichier donné. Les transferts sont fermés à ce stade. La partie V ajoutera l’autorisation TSIG.</p>
+    <h3>2. Écrire les données de la zone</h3>
+    <p>Crée <code>/etc/bind/db.secu</code> avec les IP du labo. Dans cet exemple, <code>@</code> vaut <code>secu.rt.</code>. Les noms courts sont complétés par l’origine. Les noms finissant par un point sont déjà complets.</p>
+    <pre class="c-code"><code>$TTL 300
+$ORIGIN secu.rt.
+@ IN SOA ns1.secu.rt. hostmaster.secu.rt. (
+    2026102001 3600 900 604800 300
+)
+@      IN NS     ns1.secu.rt.
+@      IN NS     ns2.secu.rt.
+ns1    IN A      172.25.0.10
+ns2    IN A      172.25.0.11
+client IN A      172.25.0.42
+mail   IN A      172.25.0.25
+@      IN MX 10  mail.secu.rt.
+pop    IN CNAME  mail.secu.rt.
+imap   IN CNAME  mail.secu.rt.
+smtp   IN CNAME  mail.secu.rt.</code></pre>
+    <p><code>hostmaster.secu.rt.</code> représente le contact <code>hostmaster@secu.rt</code>. L’ordre des nombres du SOA est série, refresh, retry, expire, puis TTL négatif. Incrémente la série quand tu modifies le contenu de la zone.</p>
+    <h3>3. Charger la zone et vérifier chaque réponse</h3>
+    <pre class="c-code"><code>sudo named-checkconf
+sudo named-checkzone secu.rt /etc/bind/db.secu
+sudo rndc reconfig
+dig @172.25.0.10 secu.rt. SOA +norecurse
+dig @172.25.0.10 secu.rt. NS +norecurse
+dig @172.25.0.10 client.secu.rt. A +norecurse
+dig @172.25.0.10 secu.rt. MX +norecurse
+dig @172.25.0.10 mail.secu.rt. A +norecurse
+dig @172.25.0.10 pop.secu.rt. CNAME +norecurse
+dig @172.25.0.10 imap.secu.rt. CNAME +norecurse
+dig @172.25.0.10 smtp.secu.rt. CNAME +norecurse</code></pre>
+    <p><strong>Résultat attendu.</strong> <code>NOERROR</code> et <code>aa</code>, le serveur annoncé dans <code>SERVER</code> et les valeurs prévues dans ton fichier. Pour charger de nouvelles données après une modification du fichier, utilise <code>sudo rndc reload secu.rt</code>. En cas d’échec, lis les messages de <code>named-checkzone</code> et le journal. Contrôle également le chemin du fichier et ses permissions.</p>
+  </div></details>
+
+  <details class="acc"><summary>III B · Créer la zone inverse et tester les PTR</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Déclarer <code>0.25.172.in-addr.arpa</code>, remplir <code>db.172.25.0</code> et tester les adresses de la partie précédente.</p>
+    <p>Dans <code>named.conf.local</code>, ajoute une seconde zone <code>type primary</code> de nom <code>0.25.172.in-addr.arpa</code> avec <code>file "/etc/bind/db.172.25.0";</code> et transferts fermés. Écris ensuite le fichier annoncé.</p>
+    <pre class="c-code"><code>$TTL 300
+$ORIGIN 0.25.172.in-addr.arpa.
+@ IN SOA ns1.secu.rt. hostmaster.secu.rt. (
+    2026102001 3600 900 604800 300
+)
+@  IN NS  ns1.secu.rt.
+10 IN PTR ns1.secu.rt.
+11 IN PTR ns2.secu.rt.
+25 IN PTR mail.secu.rt.
+42 IN PTR client.secu.rt.</code></pre>
+    <pre class="c-code"><code>sudo named-checkconf
+sudo named-checkzone 0.25.172.in-addr.arpa /etc/bind/db.172.25.0
+sudo rndc reconfig
+dig @172.25.0.10 -x 172.25.0.42 +norecurse</code></pre>
+    <p>Lis la question construite par <code>dig -x</code>. Pour <code>172.25.0.42</code>, elle vaut <code>42.0.25.172.in-addr.arpa.</code>. La ligne <code>PTR</code> attendue renvoie <code>client.secu.rt.</code>. Recommence avec chaque IP du tableau. Les enregistrements inverses sont configurés séparément des enregistrements <code>A</code>.</p>
+  </div></details>
+
+  <details class="acc"><summary>IV · Configurer le poste client et faire fonctionner le nom court</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Faire résoudre <code>client.secu.rt</code> puis le nom court <code>client</code> depuis le poste client.</p>
+    <ol>
+      <li>Depuis le poste client, lance <code>dig @172.25.0.10 client.secu.rt. A</code>. Valide d’abord que le serveur est joignable et renvoie l’adresse prévue.</li>
+      <li>Dans le profil de connexion de la VM, configure <code>172.25.0.10</code> comme serveur DNS et <code>secu.rt</code> comme domaine de recherche. Sur un poste géré par NetworkManager, ces réglages se trouvent dans les paramètres IPv4 du profil. Sur un autre système, utilise le gestionnaire réseau de la VM. Enregistre et réactive la connexion.</li>
+      <li>Vérifie le résolveur effectif avec <code>resolvectl status</code> si le système l’utilise. Compare <code>getent hosts client.secu.rt</code> et <code>getent hosts client</code>. Teste ensuite les deux noms avec <code>ping</code> comme demandé.</li>
+      <li>Dans Wireshark, filtre <code>dns</code> et regarde le nom réellement envoyé. Si la résolution fonctionne mais que le ping expire, distingue un problème DNS d’un blocage ICMP ou d’une cible non joignable.</li>
+    </ol>
+  </div></details>
+
+  <details class="acc"><summary>V · Configurer ns2 et authentifier le transfert TSIG</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Faire récupérer la zone par le secondaire, sécuriser le transfert avec une clé symétrique, puis contrôler la redondance.</p>
+    <ol>
+      <li>Installe BIND9 sur <code>ns2</code>. Pour observer un premier transfert sur les VM isolées du TP, tu peux autoriser temporairement la seule IP de <code>ns2</code> sur le primaire et déclarer <code>primaries { 172.25.0.10; };</code> sur le secondaire. Remplace ensuite cette autorisation IP par la clé, comme ci-dessous.</li>
+      <li>Sur <code>ns1</code>, génère le secret avec <code>tsig-keygen -a hmac-sha512 tp-xfr</code> et conserve le résultat dans un fichier <code>/etc/bind/keys/tp-xfr.key</code> lisible par l’utilisateur du service seulement et par l’administrateur. Copie le même fichier sur <code>ns2</code> par un canal privé. La déclaration produite contient le nom, l’algorithme et le secret. Le secret reste hors du compte rendu.</li>
+      <li>Sur les deux serveurs, ajoute la directive <code>include "/etc/bind/keys/tp-xfr.key";</code> dans <code>named.conf.local</code>, en dehors des blocs <code>zone</code>. Sur <code>ns1</code>, remplace <code>allow-transfer { none; };</code> (ou l’autorisation IP) dans <code>secu.rt</code> par <code>allow-transfer { key tp-xfr; };</code>.</li>
+      <li>Sur <code>ns2</code>, déclare la zone secondaire. Le fichier de copie se trouve dans un répertoire que BIND peut écrire.</li>
+    </ol>
+    <pre class="c-code"><code>zone "secu.rt" {
+    type secondary;
+    primaries { 172.25.0.10 key tp-xfr; };
+    file "/var/cache/bind/db.secu";
+};</code></pre>
+    <pre class="c-code"><code># Sur les deux serveurs, primaire en premier
+sudo named-checkconf
+sudo rndc reconfig
+# Sur ns2
+sudo rndc retransfer secu.rt
+dig @172.25.0.10 secu.rt. SOA +norecurse
+dig @172.25.0.11 secu.rt. SOA +norecurse
+dig @172.25.0.11 client.secu.rt. A +norecurse</code></pre>
+    <p><strong>Contrôle.</strong> Les deux SOA doivent avoir la même série. <code>ns2</code> doit répondre avec <code>aa</code> et servir l’adresse prévue. Dans Wireshark, compare l’échange de transfert sur TCP/53 et repère les champs TSIG. Le choix HMAC-SHA512 correspond à l’exercice. Pour connaître les algorithmes disponibles sur ta version, consulte <code>man tsig-keygen</code>.</p>
+    <p>Ajoute <code>ns2</code> aux DNS du poste client puis arrête temporairement <code>ns1</code> dans le labo. Une requête directe vers <code>ns2</code> vérifie le serveur secondaire. Une requête via le système et une capture vérifient le comportement réel de bascule. Remets <code>ns1</code> en service après le test.</p>
+  </div></details>
+
+  <details class="acc"><summary>VI · Comparer avec et sans DNSSEC et suivre les clés</summary><div class="acc-body">
+    <p><strong>Questions du TP.</strong> Comparer les réponses <code>SOA .</code>, analyser le graphe DNSViz et relever l’expiration d’une signature sur <code>pm.</code>.</p>
+    <pre class="c-code"><code>dig SOA .
+dig +dnssec SOA .
+dig +dnssec DNSKEY . +multi
+dig +dnssec DNSKEY fr. +multi
+dig +dnssec DS fr. +multi
+dig +dnssec DNSKEY pm. +multi</code></pre>
+    <ol>
+      <li>Sur les deux premières réponses, compare les lignes <code>SOA</code> et <code>RRSIG SOA</code>. La requête <code>+dnssec</code> demande les données DNSSEC avec <code>DO</code>. Regarde séparément <code>ad</code> dans l’en-tête de la réponse du résolveur de confiance. <code>+multi</code> change la présentation.</li>
+      <li>Dans DNSViz, ouvre successivement <code>fr.</code>, <code>bortzmeyer.fr.</code> et <code>sources.org.</code> comme demandé. Compte les <code>DNSKEY</code> affichées au moment du test. Identifie celles qui vérifient les signatures du jeu DNSKEY, celles qui signent le reste et les DS publiés par le parent. Compare le graphe à la sortie de <code>dig</code>.</li>
+      <li>Pour <code>pm.</code>, trouve la ligne <code>RRSIG DNSKEY</code>, puis lis le champ d’expiration avant le champ de début de validité. La suite <code>AAAAMMJJhhmmss</code> est en UTC. Relève les valeurs réellement affichées. La date et le nombre de clés peuvent changer quand la zone les renouvelle.</li>
+      <li>Pour le domaine de test invalide indiqué dans l’énoncé, compare la requête normale et <code>+cd</code> vers le même résolveur. Si le service de test est indisponible, relève le statut observé et l’erreur affichée. Dans tes notes de TP, ce test signalait une délégation défaillante. Cette observation ne suffit pas à expliquer une signature invalide.</li>
+    </ol>
+  </div></details>
+
+  <details class="acc"><summary>VII · Signer secu.rt et comparer NSEC et NSEC3</summary><div class="acc-body">
+    <p><strong>Questions du TP.</strong> Générer une ZSK et une KSK, signer la zone, rendre les signatures visibles dans <code>dig</code>, puis refaire une signature avec NSEC3.</p>
+    <ol>
+      <li>Sur <code>ns1</code>, travaille dans un dossier de signature privé et copie le fichier de zone de départ. Prends les tailles RSA demandées par l’exercice. En sortie, note les deux noms de fichiers de clés.</li>
+      <li>Dans la copie de <code>db.secu</code>, ajoute les deux enregistrements <code>DNSKEY</code> issus des fichiers <code>.key</code>, ou deux directives <code>$INCLUDE</code> pointant vers ces fichiers publics. Les fichiers <code>.private</code> restent dans le dossier de travail.</li>
+    </ol>
+    <pre class="c-code"><code>dnssec-keygen -a RSASHA256 -b 1024 -n ZONE secu.rt
+dnssec-keygen -a RSASHA256 -b 2048 -f KSK -n ZONE secu.rt
+dnssec-signzone -o secu.rt -x db.secu
+named-checkzone secu.rt db.secu.signed</code></pre>
+    <ol start="3">
+      <li>Copie le fichier signé dans <code>/etc/bind/db.secu.signed</code> en conservant l’accès en lecture pour BIND. Sur le primaire, remplace le chemin <code>file</code> de la zone par ce fichier, vérifie avec <code>named-checkconf</code> et recharge avec <code>sudo rndc reload</code>.</li>
+      <li>Contrôle la présence de <code>DNSKEY</code>, de <code>RRSIG</code> et de la preuve d’absence. Une zone peut servir des signatures avant qu’un résolveur ait un chemin de confiance pour les valider.</li>
+    </ol>
+    <pre class="c-code"><code>dig @172.25.0.10 secu.rt. DNSKEY +dnssec +multi
+dig @172.25.0.10 client.secu.rt. A +dnssec +norecurse
+dig @172.25.0.10 absent.secu.rt. A +dnssec +norecurse</code></pre>
+    <p>Pour NSEC3, dans le dossier de signature, augmente la série dans la zone source si tu dois mettre à jour un secondaire, puis signe avec <code>dnssec-signzone -o secu.rt -x -3 AABBCCDD db.secu</code>. Ce sel est repris comme valeur d’exercice. Remplace le fichier signé servi par BIND, recharge et relance la requête sur le nom absent. Regarde les <code>NSEC3</code> et leurs signatures dans <code>AUTHORITY</code>. Tu peux aussi demander le type <code>NSEC3PARAM</code> au sommet de zone.</p>
+    <details class="acc"><summary>Pourquoi aucune signature n’apparaît ?</summary><div class="acc-body">
+      <p>Vérifie d’abord le serveur interrogé et la présence de <code>+dnssec</code>. Ensuite, contrôle le chemin <code>file</code>, la lecture du fichier signé par BIND et les logs au rechargement. Pour tester la validité, regarde également l’horloge du résolveur et les dates des RRSIG.</p>
+    </div></details>
+  </div></details>
+
+  <details class="acc"><summary>VIII · Configurer le relais, diagnostiquer SERVFAIL et établir la confiance</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Remplacer la zone secondaire par un relais, expliquer les flags, puis permettre au relais de valider les réponses en lui fournissant une ancre de confiance.</p>
+    <ol>
+      <li>Sur <code>ns2</code>, remplace le bloc <code>zone "secu.rt"</code> de la partie V par le bloc ci-dessous. Vérifie la syntaxe et recharge. La zone limitée à <code>secu.rt</code> transmet ses requêtes au primaire.</li>
+    </ol>
+    <pre class="c-code"><code>zone "secu.rt" {
+    type forward;
+    forward only;
+    forwarders { 172.25.0.10; };
+};</code></pre>
+    <ol start="2">
+      <li>Teste le point de départ sur <code>ns1</code>, puis l’interrogation normale via <code>ns2</code>. Si <code>ns2</code> renvoie <code>SERVFAIL</code>, essaie la même requête avec <code>+cd</code>. Une réponse avec <code>+cd</code> seulement oriente vers la validation. Si les deux échouent, contrôle la connectivité, les ACL de récursion et le journal du relais.</li>
+    </ol>
+    <pre class="c-code"><code>dig @172.25.0.10 secu.rt. SOA +dnssec +norecurse
+dig @172.25.0.11 secu.rt. SOA +dnssec +multi
+dig @172.25.0.11 secu.rt. SOA +dnssec +multi +cd</code></pre>
+    <ol start="3">
+      <li>Sur le primaire, identifie la clé publique KSK à partir de ton fichier de génération <code>.key</code>. Sur le relais, avec la validation DNSSEC activée et la récursion autorisée pour le client du labo, ajoute ce bloc hors de la déclaration <code>zone</code>. Remplace le texte entre chevrons par les données publiques exactes. Copie aussi les flags, le protocole et l’algorithme de la clé si ceux de ta configuration diffèrent.</li>
+    </ol>
+    <pre class="c-code"><code>trust-anchors {
+    "secu.rt." static-key 257 3 8 "&lt;CLÉ PUBLIQUE KSK EN BASE64&gt;";
+};</code></pre>
+    <pre class="c-code"><code>sudo named-checkconf
+sudo rndc reload
+dig @172.25.0.11 secu.rt. SOA +dnssec +multi +adflag</code></pre>
+    <p><strong>Résultat attendu après correction.</strong> <code>NOERROR</code>, <code>SOA</code> et <code>RRSIG SOA</code>, puis <code>ad</code> dans les flags du relais de confiance. <code>+adflag</code> (abrégé <code>+ad</code> dans l’énoncé) annonce que le client sait interpréter AD. La validation dépend des réglages du relais, de la cohérence des signatures et de l’ancre. Comme l’ancre est statique, actualise-la lors d’un changement de la clé de confiance.</p>
+  </div></details>
+</section>
+
+
+<section class="c-section" id="video" aria-labelledby="video-title">
+  <h2 class="c-h2" id="video-title">Vidéo du cours et du TP</h2>
+  <p>11:07 · Voix de synthèse Ariane</p>
+  <video id="dnssec-player" controls preload="none" playsinline
+         poster="../assets/revisions/dnssec/video-affiche.jpg"
+         style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+    <source src="../assets/revisions/dnssec/cours-video.mp4" type="video/mp4">
+    <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/dnssec/sous-titres.vtt">
+    Ton navigateur ne peut pas lire cette vidéo.
+  </video>
+  <h3>Chapitres</h3>
+  <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul><li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="0.000">0:00 · À quoi sert le DNS ?</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="34.083">0:34 · Qui répond à une requête ?</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="67.083">1:07 · Lire les enregistrements</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="115.250">1:55 · Pourquoi sécuriser le DNS ?</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="144.250">2:24 · Ce que DNSSEC vérifie</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="174.083">2:54 · La chaîne de confiance</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="206.667">3:26 · Prouver qu’un nom n’existe pas</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="238.542">3:58 · Primaire, secondaire et relais</button></li></ul></div></details>
+  <details class="acc"><summary>Corrigés du TP · 4:30</summary><div class="acc-body"><ul><li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="270.500">4:30 · I · Comparer les requêtes dig</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="307.375">5:07 · II · Installer et contrôler BIND9</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="333.208">5:33 · III A · Déclarer secu.rt</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="362.667">6:02 · III A · Remplir db.secu</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="400.042">6:40 · III A · Vérifier avant de recharger</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="430.875">7:10 · III B et IV · Inverse et poste client</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="465.000">7:45 · V · Transférer la zone avec TSIG</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="499.292">8:19 · VI · Lire la signature et sa validation</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="538.333">8:58 · VII · Signer et servir la zone</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="580.500">9:40 · VIII · Diagnostiquer SERVFAIL</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="635.625">10:35 · VIII · Vérifier la correction</button></li></ul></div></details>
+</section>
+
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("dnssec-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-dnssec-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.dnssecTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
