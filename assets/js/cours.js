@@ -1,6 +1,6 @@
 /* =========================================================
    cours.js — Espace révisions
-   - menu : recherche + filtres (Tout / Prépa ISIMA / BUT1 / BUT2 / SAÉ)
+   - menu : recherche + filtres (Tout / Prépa ISIMA / BUT1 / BUT2)
    - fiches : sommaire actif, tout ouvrir / fermer, ancres dans les accordéons
    (le thème, le header, le burger… sont gérés par main.js)
    ========================================================= */
@@ -27,8 +27,7 @@
     var shown = 0;
 
     cards.forEach(function (card) {
-      var okCat = current === 'all' || card.getAttribute('data-cat') === current ||
-        (current === 'sae' && card.getAttribute('data-kind') === 'sae');
+      var okCat = current === 'all' || card.getAttribute('data-cat') === current;
       var hay = norm(card.textContent + ' ' + (card.getAttribute('data-tags') || ''));
       var okQ = words.every(function (w) { return hay.indexOf(w) !== -1; });
       card.hidden = !(okCat && okQ);
