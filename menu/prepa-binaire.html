@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Représentation en binaire et logique booléenne — Prépa ISIMA</title>
+  <meta name="description" content="Numération, entiers signés, flottants, Hamming et circuits logiques.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-binaire.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">01</span></div>
+      <h1 class="page-title" id="page-title">Représentation en binaire et logique booléenne</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="https://pagesperso.g-scop.grenoble-inp.fr/aurelielagoutte/wp-content/uploads/sites/20/2023/07/poly_Repr_binaire.pdf" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block" id="bases">
+  <h3>1. Lire un entier et changer de base</h3>
+  <p>Un <strong>bit</strong> est un chiffre qui vaut 0 ou 1. Huit bits forment un <strong>octet</strong>. Le poids d’une case indique combien on ajoute quand elle vaut 1. On commence à droite avec le poids 1, puis on double en remontant vers la gauche.</p>
+  <table><thead><tr><th scope="row">Poids</th><th>128</th><th>64</th><th>32</th><th>16</th><th>8</th><th>4</th><th>2</th><th>1</th></tr></thead><tbody><tr><th scope="row">Bits de 151</th><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td></tr></tbody></table>
+  <p>Lis <code>10010111</code> en additionnant 128 + 16 + 4 + 2 + 1 = 151. Pour aller du décimal au binaire, les divisions par 2 donnent les bits dans l’ordre inverse. Le premier reste vaut 0 ou 1 selon que le nombre de départ est pair ou impair. Pour l’octal, groupe les bits par 3 depuis la droite. Pour l’hexadécimal, groupe-les par 4. Le chiffre <code>A</code> vaut 10 et <code>F</code> vaut 15.</p>
+  <p>À gauche, les zéros ajoutés changent la taille du mot sans changer sa valeur non signée. Avec <em>n</em> bits, on a 2<sup>n</sup> mots distincts. Comme on représente aussi 0, le dernier entier est 2<sup>n</sup>−1. Pour les capacités, 1 Kio = 1024 octets. En revanche, 1 ko = 1000 octets.</p>
+</div>
+<div class="c-block" id="signes">
+  <h3>2. Choisir une convention pour les entiers négatifs</h3>
+  <p>La même suite de bits peut désigner plusieurs valeurs. Pour lire un entier, demande d’abord <strong>combien de bits sont utilisés</strong> et <strong>quelle convention s’applique</strong>.</p>
+  <table><thead><tr><th>Convention sur 8 bits</th><th>Comment coder −5</th><th>Plage</th></tr></thead><tbody>
+  <tr><th scope="row">Valeur absolue signée</th><td><code>1|0000101</code>. Le 1 indique le signe, les 7 autres bits donnent 5.</td><td>−127 à 127</td></tr>
+  <tr><th scope="row">Complément à 1</th><td><code>11111010</code>. Inverse tous les bits de <code>00000101</code>.</td><td>−127 à 127</td></tr>
+  <tr><th scope="row">Complément à 2</th><td><code>11111011</code>. Ajoute 1 au complément à 1 et garde les 8 bits.</td><td>−128 à 127</td></tr>
+  <tr><th scope="row">Excédent 128</th><td><code>01111011</code>. Écris −5 + 128 = 123 comme un entier non signé.</td><td>−128 à 127</td></tr>
+  </tbody></table>
+  <p>En complément à 2, le premier bit pèse −128 au lieu de +128. Par exemple <code>10011011</code> donne −128 + 16 + 8 + 2 + 1 = −101. Pour passer à davantage de bits, recopie le bit de signe à gauche. La valeur absolue signée et le complément à 1 possèdent chacun deux mots pour zéro.</p>
+  <p>Une <strong>retenue</strong> est le report vers le bit suivant. Un <strong>débordement signé</strong> signifie que le vrai résultat sort de la plage. Sur 8 bits en complément à 2, <code>01111111 + 00000001 → 10000000</code> est un débordement, car 127 + 1 vaut 128 et le mot obtenu sera lu −128.</p>
+  <p>Pour soustraire, additionne l’opposé en complément à 2. Décaler d’une case vers la gauche multiplie la valeur par 2 tant que le résultat tient dans le format. Pour diviser un entier négatif pair par 2 en complément à 2, décale vers la droite en propageant le bit de signe. Pour les négatifs impairs, vérifie le sens de l’arrondi de l’opération utilisée.</p>
+</div>
+<div class="c-block" id="flottants">
+  <h3>3. Écrire une fraction et lire un flottant IEEE 754</h3>
+  <p>À droite de la virgule, les poids valent 1/2, 1/4, 1/8, etc. Pour convertir une fraction, multiplie-la par 2, écris la partie entière et recommence avec ce qui reste. Une fraction réduite termine en binaire si son dénominateur est une puissance de 2. Ainsi <code>0,125 = 0,001₂</code>, alors que <code>0,1</code> a un développement périodique.</p>
+  <p>En simple précision, IEEE 754 range <strong>1 bit de signe, 8 bits d’exposant et 23 bits de fraction</strong>. Pour un nombre normal, écris la grandeur sous la forme <code>1,f × 2^e</code>. On stocke <code>E=e+127</code>, puis seulement les bits <code>f</code> après la virgule. En double précision, les tailles sont 1, 11 et 52 bits, avec un biais de 1023.</p>
+  <p>Quand <code>E=0</code>, une fraction nulle donne zéro et les autres valeurs sont sous-normales avec un 0 avant la virgule. Quand les bits de l’exposant valent tous 1, une fraction nulle représente un infini et une fraction non nulle un NaN. Une valeur trop fine pour le format doit être arrondie. Pour additionner deux flottants à la main, aligne les exposants, additionne les significandes signées, puis normalise et arrondis le résultat.</p>
+  <p>Pour multiplier, multiplie les significandes, additionne les <em>exposants réels</em> et prends un signe négatif si un seul facteur est négatif. Renormalise avant de remettre le biais. Additionner les exposants stockés ferait compter le biais deux fois.</p>
+</div>
+<div class="c-block" id="transmission">
+  <h3>4. Caractères, parité et code de Hamming</h3>
+  <p>Une table de caractères attribue des numéros aux signes. ASCII attribue 98 à <code>b</code> sur 7 bits. Unicode attribue un point de code aux caractères et UTF-8 décrit la manière de l’écrire en octets. Par exemple, <code>é</code> vaut <code>U+00E9</code> et s’écrit <code>C3 A9</code> en UTF-8.</p>
+  <p>Un contrôle de <strong>parité paire</strong> exige un nombre pair de 1 sur le mot entier. Il détecte un nombre impair d’inversions et laisse passer un nombre pair d’inversions. Hamming répartit plusieurs contrôles sur des groupes différents. Les places 1, 2, 4, 8… portent les bits de contrôle. Le contrôle 4 surveille les positions dont le bit de poids 4 vaut 1, telles que 4, 5, 6 et 7. Avec <em>m</em> bits de données, choisis le plus petit <em>r</em> tel que 2<sup>r</sup> ≥ m+r+1. Il faut un résultat pour chaque position et un résultat pour l’absence d’erreur.</p>
+  <p>À la réception, additionne les indices des contrôles qui échouent. Cette somme forme le <strong>syndrome</strong>. Quand on suppose une seule erreur, le syndrome indique la case à inverser. Avec deux erreurs, le syndrome peut pointer une autre case. Il faut donc annoncer l’hypothèse d’erreur simple avant de corriger.</p>
+</div>
+<div class="c-block" id="logique">
+  <h3>5. De la table de vérité au circuit</h3>
+  <p>Une <strong>variable booléenne</strong> vaut 0 ou 1. Le ET vaut 1 quand les deux entrées valent 1. Le OU vaut 1 quand au moins une entrée vaut 1. Le OU exclusif, ou XOR, vaut 1 pour deux entrées différentes. Le NON inverse une entrée. Lis un schéma de gauche à droite et donne un nom au résultat de chaque porte.</p>
+  <p>Pour écrire une formule à partir d’une table de vérité, prends chaque ligne de sortie 1. Écris un terme ET où les entrées à 0 sont niées, puis réunis les termes par OU. Par exemple <code>f(a,b)=1</code> aux lignes 01 et 11 donne <code>(¬a∧b)∨(a∧b)=b</code>. Dans une carte de Karnaugh, l’ordre <code>00 01 11 10</code> rapproche justement les cases qui ne diffèrent que d’un bit. Les bords opposés se rejoignent.</p>
+  <p>Groupe les 1 en rectangles de taille 1, 2, 4, 8… et garde les variables constantes dans chaque groupe. Un chevauchement est permis. Grouper les 0 donne la formule de la fonction complémentaire, puis les lois de De Morgan permettent de retrouver la fonction. Pour économiser des portes, factorise les termes communs et compare les expressions sur la table de vérité.</p>
+  <p>Un <strong>multiplexeur 4 vers 1</strong> choisit l’une de quatre entrées grâce à deux bits de commande. Pour réaliser une fonction de trois variables, utilise deux variables comme sélection, puis observe ce que devient la sortie pour la troisième variable. Sur chaque entrée du multiplexeur, câble une constante, la troisième variable ou sa négation.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Les quatre TD vont de la lecture des bits jusqu’à la réalisation d’un circuit. Chaque lien ouvre le groupe de questions qui fait travailler la notion.</p>
+  <ul>
+    <li><a href="#td1">TD1 · Changer de base et représenter les entiers</a></li>
+    <li><a href="#td2">TD2 · Encoder, décoder et additionner des flottants</a></li>
+    <li><a href="#td3">TD3 · Encoder des caractères et corriger une erreur simple</a></li>
+    <li><a href="#td4">TD4 · Simplifier la logique et construire le circuit</a></li>
+  </ul>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <div id="td1"><h3>TD1 · Entiers, tailles et bases</h3>
+  <details class="acc"><summary>Exercices 1 à 6 · Convertir et choisir le nombre de chiffres</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Convertir 5 Kio en octets puis en bits, lire les quatre mots non signés de l’exercice 2 et déterminer le nombre minimal de bits pour écrire les entiers de 0 à 999.</p>
+    <ol><li>Calcule 5 × 1024 = 5120 octets, puis 5120 × 8 = 40 960 bits. Vérifie les unités après chacune des multiplications.</li><li>Avec les poids de droite à gauche, lis <code>1100=12</code>, <code>001011=11</code>, <code>10010111=151</code> et <code>11111111=255</code>. Pour 202, sur huit bits, <code>1100 1010</code> devient <code>CA</code> en hexadécimal. En octal, le même mot se regroupe en <code>011 001 010</code> et donne <code>312</code>.</li><li>Il faut 1000 valeurs distinctes. 2<sup>9</sup>=512 est insuffisant et 2<sup>10</sup>=1024 suffit. En base 3, 3<sup>6</sup>=729 et 3<sup>7</sup>=2187 donnent 7 chiffres. En décimal, 3 chiffres suffisent.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Exercices 7 à 9 · Interpréter les conventions signées</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Coder 18, −5, −35, −127 et −128 en valeur absolue signée, complément à 1, complément à 2 et excédent 128, sur un octet.</p>
+    <table><thead><tr><th>Valeur</th><th>VAS</th><th>C1</th><th>C2</th><th>Excédent 128</th></tr></thead><tbody>
+    <tr><th scope="row">18</th><td>00010010</td><td>00010010</td><td>00010010</td><td>10010010</td></tr>
+    <tr><th scope="row">−5</th><td>10000101</td><td>11111010</td><td>11111011</td><td>01111011</td></tr>
+    <tr><th scope="row">−35</th><td>10100011</td><td>11011100</td><td>11011101</td><td>01011101</td></tr>
+    <tr><th scope="row">−127</th><td>11111111</td><td>10000000</td><td>10000001</td><td>00000001</td></tr>
+    <tr><th scope="row">−128</th><td>Hors plage</td><td>Hors plage</td><td>10000000</td><td>00000000</td></tr>
+    </tbody></table>
+    <p>Pour −35, pars de <code>00100011</code>. En VAS, positionne le signe. En C1, inverse l’octet entier. En C2, ajoute 1 après inversion. En excédent, code 93, le résultat de 128−35. Pour vérifier le codage C2, additionne les poids du mot avec un poids négatif à gauche.</p>
+  </div></details>
+  <details class="acc"><summary>Exercices 10 à 13 · Distinguer Carry et Overflow</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Sur un octet en complément à 2, effectuer −1 + 1 et 127 + 127 en précisant Carry et Overflow. Effectuer ensuite 9−15 et −24/4.</p>
+    <ol><li><code>11111111 + 00000001 = 1 00000000</code>. Carry vaut 1 puisque la retenue franchit l’octet. Le résultat signé vaut 0, donc Overflow vaut 0.</li><li><code>01111111 + 01111111 = 11111110</code>. Carry vaut 0. Le résultat se lit −2 en C2 alors que l’addition vaut 254. Overflow vaut donc 1. Un positif et un négatif donnent toujours un résultat compris entre les deux opérandes, donc dans la plage autorisée.</li><li><code>00001001 + 11110001 = 11111010</code>, soit −6. Pour −24/4, décale deux fois le mot <code>11101000</code> vers la droite avec extension du signe. Tu obtiens <code>11111010</code>, encore −6.</li></ol>
+  </div></details></div>
+  <div id="td2"><h3>TD2 · Flottants</h3>
+  <details class="acc"><summary>Exercices 1 et 2 · Coder −6,125 puis décoder un mot</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Donner le mot simple précision de −6,125 en indiquant sa forme normalisée. Décoder ensuite <code>1 | 10000001 | 01000000000000000000000</code>.</p>
+    <ol><li>Pour 6,125, réunis 6 = <code>110₂</code> et 1/8 = <code>0,001₂</code>. Le résultat normalisé vaut <code>1,10001₂ × 2²</code>.</li><li>Le signe vaut 1 et l’exposant stocké représente 129. Écris <code>1 | 10000001 | 10001000000000000000000</code>. Vérifie que la fraction contient 23 bits.</li><li>Dans le second mot, 129−127 donne encore 2. La significande <code>1,01₂</code> vaut 1,25. On obtient <code>−1,25 × 4 = −5</code>.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Exercices 3 à 5 · Limites et calcul avec des flottants</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Donner les deux valeurs absolues extrêmes des nombres normaux en simple précision, puis expliquer comment effectuer une addition sur deux mots.</p>
+    <ol><li>Le minimum normal a <code>E=1</code> et une fraction nulle. C’est 2<sup>−126</sup>. Le maximum a <code>E=254</code> et les 23 bits de fraction à 1. C’est (2−2<sup>−23</sup>) × 2<sup>127</sup>.</li><li>Pour la question sur l’ordre, compare d’abord les signes. Parmi les positifs normaux, l’exposant biaisé est croissant avec l’exposant réel, puis la fraction départage deux exposants égaux. Parmi les négatifs, l’ordre des valeurs numériques s’inverse par rapport à celui de leurs grandeurs.</li><li>Au 5(c), décode les deux mots en <code>1,1₂ × 2⁻²</code> et <code>1,0₂ × 2⁻³</code>. Réécris le second <code>0,1₂ × 2⁻²</code>. Leur somme vaut <code>10,0₂ × 2⁻² = 1,0₂ × 2⁻¹</code>, soit <code>0 | 01111110 | 00000000000000000000000</code> et une valeur de 0,5.</li></ol>
+  </div></details></div>
+  <div id="td3"><h3>TD3 · ASCII et Hamming</h3>
+  <details class="acc"><summary>Exercices 1 et 2 · Ajouter et vérifier un bit de parité</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Écrire <code>b</code>, <code>5</code>, <code>P</code> et <code>#</code> en ASCII avec un bit de parité paire à gauche. Tester ensuite le mot reçu <code>0100 0100</code>.</p>
+    <ol><li>Lis les codes ASCII non signés 98, 53, 80 et 35. Les représentations sur 7 bits ont respectivement 3, 4, 2 et 3 bits à 1.</li><li>Ajoute donc à gauche 1, 0, 0 et 1. Les octets obtenus valent <code>E2</code>, <code>35</code>, <code>50</code> et <code>A3</code> en hexadécimal.</li><li>Le mot reçu contient deux 1. La parité est valide. Enlève le bit à gauche pour lire <code>1000100</code>, soit 68, le caractère <code>D</code>. La parité valide laisse ouvertes les erreurs portant sur un nombre pair de bits.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Exercices 3 à 6 · Placer les bits de contrôle et lire le syndrome</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Trouver combien de contrôles sont nécessaires pour 1, 4, 8 et 21 bits de données, puis coder <code>0110</code> avec parité paire.</p>
+    <ol><li>Teste 2<sup>r</sup> ≥ m+r+1 pour chaque longueur. Il faut respectivement 2, 3, 4 et 5 contrôles, soit des mots transmis de 3, 7, 12 et 26 positions.</li><li>Numérote les cases de droite à gauche comme dans le poly. Les bits de <code>0110</code> occupent de gauche à droite les positions 7, 6, 5 et 3. Le contrôle 1 voit un seul 1 parmi 3, 5 et 7. Le contrôle 2 voit un seul 1 parmi 3, 6 et 7. Le contrôle 4 en voit deux parmi 5, 6 et 7. On écrit <code>0 1 1 0 0 1 1</code>.</li><li>Pour décoder les chaînes de l’exercice 6, passe en parité impaire. Note les groupes qui contiennent à tort un nombre pair de 1 et additionne leurs indices. Corrige la case indiquée, retire les contrôles, puis sépare les données en blocs de 7 bits avant de chercher les lettres ASCII.</li></ol>
+  </div></details></div>
+  <div id="td4"><h3>TD4 · Logique et circuits</h3>
+  <details class="acc"><summary>Exercices 1 à 3 · Évaluer une fonction et utiliser Karnaugh</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Évaluer <code>f₁=(a∨b)∧(c∨d)</code> quand a=c=1, b=d=0, puis lorsque a=d=1 et que b et c sont inconnus. Simplifier ensuite la première carte de l’exercice 2.</p>
+    <ol><li>Dans les deux cas, chaque parenthèse contient au moins un 1. Les deux parenthèses valent donc 1 et la sortie aussi.</li><li>Dans la carte, l’ordre des colonnes est <code>00, 01, 11, 10</code>. Les colonnes <code>01</code> et <code>11</code> sont pleines de 1. Leur seul bit constant est <code>d=1</code>, ce qui donne le terme <code>d</code>.</li><li>Les deux 1 restants en colonne <code>00</code> peuvent être groupés avec ceux de la colonne <code>01</code> sur les deux premières lignes. Dans ce rectangle, <code>a=0</code> et <code>c=0</code>. Résultat <code>d ∨ (¬a ∧ ¬c)</code>. Vérifie par exemple que la ligne <code>ab=11</code>, colonne <code>cd=00</code> donne bien 0.</li></ol>
+    <figure><img loading="lazy" src="../assets/revisions/prepa-binaire/schemas/karnaugh.png" alt="Carte de Karnaugh du TD4 avec un groupe vert sur les colonnes 01 et 11 et un groupe orange sur les deux premières lignes et colonnes."><figcaption>Les deux groupes se recouvrent. Chaque 1 est couvert, et chaque variable qui change dans un groupe s’élimine.</figcaption></figure>
+  </div></details>
+  <details class="acc"><summary>Exercices 4 à 6 · Passer d’une expression aux portes</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Tracer le circuit de <code>E₁=A¬B+AB¬C</code> et reconnaître les portions réutilisables pour économiser des portes.</p>
+    <ol><li>Traduis les produits par des ET. Inverse B et C sur les branches qui en ont besoin. L’expression directe rassemble les deux produits dans un OU.</li><li>Factorise A. À l’intérieur, <code>¬B ∨ (B∧¬C) = ¬B ∨ ¬C</code>. En effet, si B vaut 0, la parenthèse vaut 1, et si B vaut 1 elle prend la valeur de ¬C. Le circuit simplifié forme d’abord <code>¬(B∧C)</code>, puis le combine avec A par un ET.</li><li>Pour le dé, remplis les lignes <code>001</code> à <code>110</code>. Fais une colonne par LED et marque les entrées inutilisées explicitement. La ligne <code>011</code> allume a, d et g. Simplifie chaque colonne comme une fonction indépendante et regroupe les signaux communs avant de câbler.</li></ol>
+  </div></details></div>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-binaire/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-binaire/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-binaire/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Un même octet, plusieurs lectures</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="25.542">0:25 · Bases, poids et regroupements</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="93.333">1:33 · Entiers négatifs</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="141.208">2:21 · Virgule et flottants</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="188.500">3:08 · Caractères, parité et Hamming</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="234.917">3:54 · Logique et portes</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="279.042">4:39 · TD1 · Représenter moins cinq et moins cent vingt-huit</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="351.958">5:51 · TD2 · Encoder moins six virgule cent vingt-cinq</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="406.833">6:46 · TD3 · Placer les contrôles sur 0110</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="430.500">7:10 · TD4 · Grouper les cases utiles</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="./#credits-visuels">Crédits des visuels</a>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
