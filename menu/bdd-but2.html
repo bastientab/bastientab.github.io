@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -145,7 +146,22 @@ GROUP BY s.id, s.nom;</code></pre>
     <p>Dans un déclencheur, <code>NEW</code> correspond à la ligne proposée et <code>OLD</code> à l’ancienne quand elle existe. Utilise <code>SIGNAL SQLSTATE '45000'</code> pour remonter une erreur métier. Pour une règle simple d’unicité, <code>UNIQUE</code> protège aussi lors d’écritures simultanées.</p>
   </div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Polys DBA, TD1/1 bis/2, TP MySQL 1 à 4 et sujet d’examen pratique disponible.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Démarrage, comptes et privilèges</th><td>DBA partie 1, TD1/1 bis et TP1</td><td>Vérifier la connexion, définir utilisateur et hôte, tester le droit convenu et une action interdite.</td></tr>
+      <tr><th scope="row">Tables, clés, index et sauvegarde</th><td>DBA partie 1, TD1</td><td>Créer dans l’ordre des références, expliquer l’index qui sert un accès et vérifier une restauration sur une base de test.</td></tr>
+      <tr><th scope="row">Jointures et agrégats</th><td>TD2 Requêtes et TP2</td><td>Décider LEFT JOIN ou INNER JOIN, vérifier un résultat à zéro et distinguer WHERE et HAVING.</td></tr>
+      <tr><th scope="row">Fonctions, procédures, paramètres et curseurs</th><td>DBA partie 2, TD2 et TP2–3</td><td>Retourner une valeur depuis une fonction, appeler une procédure, traiter la fin du curseur et vérifier ce qui a été modifié.</td></tr>
+      <tr><th scope="row">Déclencheurs et intégrité</th><td>DBA partie 2, TD2 Trigger et TP4</td><td>Choisir BEFORE ou AFTER et lire OLD/NEW. Préparer un essai accepté et un essai refusé puis vérifier la table.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les exemples utilisent le schéma de la médiathèque. On prend <code>etat_reparation=1</code> pour « en cours » comme dans les travaux du cours. Pour les exercices qui portent sur un prêt courant, le TP retient une date de retour future. Si tu importes des données historiques, crée des cas de test datés autour d’aujourd’hui.</p>
   <details class="acc" open><summary>TD1 · Créer la base et faire évoluer le schéma</summary><div class="acc-body">
@@ -238,6 +254,25 @@ DELIMITER ;</code></pre>
     <ol><li>Teste une modification du nom qui doit passer et une modification du courriel qui doit échouer. <code>&lt;=&gt;</code> compare aussi correctement si une valeur est <code>NULL</code>.</li>
     <li>Dans un <code>BEFORE INSERT ON Emprunter</code>, contrôle <code>NEW.ref</code> et <code>NEW.nb_jours</code>. Refuse un PC en réparation ou déjà prêté. Refuse aussi un modèle antérieur à 2012 si la durée dépasse 7 jours, un étudiant restreint au-delà de 3 jours et un PC sous le seuil de mémoire (4 dans les données de l’exercice) au-delà de 4 jours. Répète le contrôle sur <code>UPDATE</code> si les prêts peuvent être modifiés.</li>
     <li>Pour le double courriel, utilise un <code>BEFORE INSERT ON Etudiant</code> avec <code>EXISTS</code> et <code>SIGNAL</code>. Ajoute aussi une contrainte <code>UNIQUE</code> si tu contrôles le schéma et que les données existantes la respectent. Vérifie les deux insertions, même adresse puis adresse différente.</li></ol>
+  </div></details>
+<details class="acc"><summary>Sujet pratique A · Transposer les méthodes de la médiathèque à l’hôtel</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Avec Client, Chambre, Reservation et ClientBlackliste, retrouver les chambres en travaux, les clients blacklistés et le nombre de réservations par client en 2026. Écrire aussi une fonction de comptage, une procédure de mise en liste noire et une procédure à curseur qui retire du catalogue les chambres Standard sous 50 €.</p>
+    <ol>
+      <li>Le filtre sur l’état se fait dans <code>WHERE etat = 'Travaux'</code>. Pour les contacts blacklistés, relie les tables sur <code>id_client</code> ou utilise un <code>EXISTS</code> corrélé. Celui-ci renvoie chaque client une seule fois.</li>
+      <li>Pour compter aussi les clients à zéro, pars de Client et mets le filtre de dates dans la jointure. Compte la clé de Reservation, jamais la ligne produite par le <code>LEFT JOIN</code>.</li>
+    </ol>
+    <pre class="c-code"><code>SELECT c.nom, COUNT(r.id_res) AS total
+FROM Client AS c
+LEFT JOIN Reservation AS r
+  ON r.id_client = c.id_client
+ AND r.date_arrivee &gt;= '2026-01-01'
+ AND r.date_arrivee &lt; '2027-01-01'
+GROUP BY c.id_client, c.nom;</code></pre>
+    <ol start="3">
+      <li>Dans la fonction, filtre sur le paramètre <code>c_id</code> et retourne <code>COUNT(*)</code>. Dans <code>blacklister_client</code>, utilise la liste de colonnes <code>(id_client, date_incident, motif)</code> et les valeurs <code>(id_c, CURDATE(), raison)</code>. Contrôle le résultat avec une consultation par identifiant.</li>
+      <li>Pour <code>RenovationChambres</code>, déclare un curseur sur les numéros des chambres <code>Standard</code> dont <code>prix_nuit &lt; 50.00</code>, puis un gestionnaire <code>NOT FOUND</code>. Après chaque lecture réussie, affiche le message pour ce numéro et supprime par <code>num_chambre</code>. Teste sur une copie et contrôle les clés étrangères. Une réservation existante peut interdire la suppression. Traite ce cas sans supprimer les réservations pour contourner la contrainte.</li>
+      <li>Pour vérifier, prends une chambre à 49 €, une à 50 € et une chambre non standard. Seule la première répond au filtre. Le sujet demande une capture de la commande exécutée et de son résultat.</li>
+    </ol>
   </div></details>
 </section>
       <section class="c-section" id="video" aria-labelledby="video-title">

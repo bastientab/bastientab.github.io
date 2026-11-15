@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -113,8 +114,30 @@
     <p>Sur un câble coaxial, une désadaptation entre la ligne et la charge renvoie une partie de l’onde. Le coefficient de réflexion en tension est Γ=(ZL−Z₀)/(ZL+Z₀) dans le modèle de ligne. Une adaptation idéale donne Γ=0. Sur un banc à deux ports, <code>S11</code> décrit la réflexion au port d’entrée et <code>S21</code> la transmission vers le second port dans les conditions de mesure.</p>
     <p>Un <strong>diagramme d’antenne</strong> décrit comment la réception ou le rayonnement varie avec l’angle, dans un plan fixé. Compare les mesures à distance et polarisation constantes. En télévision, le niveau est un indicateur parmi d’autres. Le verrouillage du démodulateur et les mesures d’erreur renseignent le décodage du signal numérique.</p>
   </div>
+<div class="c-block">
+  <h3>Calculer et orienter les champs du TD4</h3>
+  <p>Pour une charge ponctuelle q à distance r dans l’air, le champ électrique a pour module <strong>k|q|/r²</strong> avec k≈9×10⁹ N·m²/C². Convertis les longueurs en mètres et les charges en coulombs. Dessine l’axe qui passe par la source et le point demandé. La flèche s’éloigne d’une charge positive et se dirige vers une charge négative. Si une charge d’essai q′ est indiquée, sa force est q′E. Une charge d’essai négative subit donc une force opposée au champ.</p>
+  <p>Pour des sources multiples, dessine une flèche pour chaque source, puis projette sur les axes et additionne les composantes avec leurs signes. Dans un exemple d’application, +2 nC à 0,30 m donne 200 V/m. Si une autre contribution vaut 150 V/m dans le sens opposé sur le même axe, le résultat vaut 50 V/m dans le sens de la première flèche.</p>
+  <p>Près d’un fil rectiligne supposé long, <strong>H = I/(2πr)</strong> en A/m et <strong>B = μH</strong> en teslas. Le pouce suit le courant et les doigts indiquent le sens du champ. Dans l’exercice à deux fils, dessine les deux cercles qui passent par le point étudié. Les champs sont tangents à ces cercles. Décide d’après les flèches s’il faut additionner ou soustraire sur l’axe commun.</p>
+</div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Les trois chapitres du poly R306, les quatre TD et les sept TP de Télécom 3.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Propagation, polarisation et ondes</th><td>Poly ch. 1, TP7 antennes</td><td>Passer de fréquence à longueur d’onde. Tenir distance et polarisation constantes pendant une mesure angulaire.</td></tr>
+      <tr><th scope="row">Guidage et temps de propagation</th><td>Poly ch. 2, TD1 et TP5</td><td>Calculer l’ouverture et le seuil de réflexion, puis distinguer retard, dispersion et perte.</td></tr>
+      <tr><th scope="row">Coupleurs, WDM et amplification</th><td>Poly ch. 2, TD2–3</td><td>Appliquer le partage de puissance, placer les gains et conserver une marge à la réception.</td></tr>
+      <tr><th scope="row">Mesures optiques et électriques</th><td>TP4–6</td><td>Régler le mesureur TV, interpréter un retour OTDR et comparer les paramètres S11 et S21 du câble.</td></tr>
+      <tr><th scope="row">Champs électriques et magnétiques</th><td>Poly ch. 3, TD4</td><td>Déterminer signe, direction et ordre de grandeur. Additionner les composantes des contributions au point demandé.</td></tr>
+      <tr><th scope="row">Mesure en modulation numérique</th><td>TP1–3</td><td>Régler le déclenchement, lire les deux voies d’oscilloscope et distinguer ce qui change en ASK, FSK et PSK.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <details class="acc" open><summary>TD1 · Puissance, ouverture numérique et retard</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Calculer la puissance de sortie pour deux longueurs et deux longueurs d’onde, puis retrouver l’angle d’entrée d’une fibre.</p>

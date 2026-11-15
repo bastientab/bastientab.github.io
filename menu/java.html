@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -182,8 +183,29 @@ for (int valeur : mesures) {
     <p><code>IOException</code> est une exception <strong>vérifiée</strong> : le compilateur impose de la traiter ou de la déclarer. <code>NumberFormatException</code> et <code>IndexOutOfBoundsException</code> héritent de <code>RuntimeException</code> et sont non vérifiées. Tu peux quand même les traiter lorsqu’une saisie peut les provoquer. Mets les <code>catch</code> spécifiques avant ceux des classes mères.</p>
     <p>Dans la classe métier, vérifie d’abord la valeur, puis modifie l’objet seulement si elle est valide. À la frontière de l’application (menu ou lecture de fichier), gère l’erreur et donne une suite à l’utilisateur. Pour un flux, préfère un <code>try</code> avec ressources, comme <code>try (BufferedReader lecteur = Files.newBufferedReader(chemin))</code>. Il ferme automatiquement le lecteur, même en cas d’exception.</p>
   </div>
+<div class="c-block">
+  <h3>Prévoir la méthode appelée et l’état des objets</h3>
+  <p>Dans le TD des figures et le TP SmartBuilding, sépare trois questions. Quels membres vois-tu à partir du type écrit à gauche ? Quelle signature l’appel choisit-il d’après ses arguments ? Quel objet va fournir l’implémentation ? Une <strong>surcharge</strong> propose plusieurs signatures. Une <strong>redéfinition</strong> remplace une implémentation héritée pour la même signature.</p>
+  <p>Prends <code>Figure f = new Cercle(...)</code>. L’appel <code>f.afficher()</code> est autorisé si <code>afficher</code> est déclaré par Figure. Si Cercle le redéfinit, c’est le corps de Cercle qui s’exécute. Si une méthode <code>getRayon()</code> existe seulement dans Cercle, la variable déclarée Figure ne permet pas de l’appeler directement. Le choix du type de référence détermine ce qui est accessible même quand l’objet est bien un Cercle.</p>
+  <p>Dans le TD sur les identifiants, fais deux colonnes sur ton brouillon. Dans la première, note le compteur partagé de classe. Dans la deuxième, note l’identifiant propre à chaque objet. À chaque construction, incrémente une seule fois le compteur, puis copie sa valeur dans le nouvel objet. Vérifie qu’afficher d’abord l’objet 2 puis l’objet 1 ne fait pas changer leurs numéros.</p>
+</div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Poly Java, TD1, TP Messagerie, TP Exceptions et comptes rendus SmartBuilding/SmartParking pour les sujets manquants.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Primitives, références et chaînes</th><td>Poly et TD1</td><td>Suivre les valeurs, distinguer identité et égalité et prévoir ce que change une affectation.</td></tr>
+      <tr><th scope="row">Conditions, boucles, collections</th><td>TD triangle et TP Messagerie</td><td>Dériver le nombre d’espaces et d’étoiles, gérer un destinataire par son nom, traiter les limites des pages de résultats.</td></tr>
+      <tr><th scope="row">Classes, constructeurs et champs de classe</th><td>TD Segment et identifiants</td><td>Valider des paramètres, utiliser this et distinguer le champ statique partagé de celui qui appartient à un objet.</td></tr>
+      <tr><th scope="row">Abstraction et polymorphisme</th><td>TD Figures et compte rendu SmartBuilding</td><td>Définir un contrat et choisir le type de référence. Prédire la méthode exécutée pour deux objets différents de la même liste.</td></tr>
+      <tr><th scope="row">Exceptions et fichiers</th><td>TP Exceptions, questions 1–17</td><td>Choisir où lever et où intercepter. Vérifier qu’une ligne mal formée est signalée et que les lignes valides suivantes sont chargées.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Teste chaque méthode avec une entrée simple, puis avec la situation qui doit échouer. Les sorties ci-dessous sont les contrôles à obtenir avec les valeurs indiquées.</p>
   <h3 class="c-h3">TD1 · Consolidation de programmation</h3>

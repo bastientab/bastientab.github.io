@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo</a></li>
       </ol>
@@ -170,7 +171,23 @@
   </div>
 </section>
 
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Poly Services réseaux avancés et TP DNSSEC, parties I à VIII.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Résolution, récursion, cache</th><td>TP I</td><td>Lire l’adresse, le serveur qui répond, le TTL et les drapeaux. Comparer dig normal, +norecurse et +trace.</td></tr>
+      <tr><th scope="row">Zone, SOA et types DNS</th><td>TP II–IV</td><td>Installer BIND9, déclarer les zones, expliquer la série et les points finaux, tester A, MX, CNAME et PTR, puis le suffixe de recherche côté client.</td></tr>
+      <tr><th scope="row">Primaire, secondaire et TSIG</th><td>TP V</td><td>Transférer la zone et distinguer contrôle des fichiers, numéro de série et authentification du transfert.</td></tr>
+      <tr><th scope="row">Empoisonnement, RRset, RRSIG, DNSKEY et DS</th><td>TP VI–VII</td><td>Montrer ce que signe le RRSIG. Suivre le DS depuis le parent et comparer la réponse validée à la réponse qui expose simplement des signatures.</td></tr>
+      <tr><th scope="row">NSEC et NSEC3</th><td>TP VII</td><td>Comparer une absence de nom à une absence de type. Expliquer ce que l’intervalle contient dans chaque preuve.</td></tr>
+      <tr><th scope="row">Relais et ancre de confiance</th><td>TP VIII</td><td>Diagnostiquer SERVFAIL avec une requête normale puis +cd. Contrôler la confiance et les drapeaux sur la vraie réponse après correction.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les titres reprennent les questions de ton énoncé. Les adresses <code>172.25.0.10</code> (ns1), <code>.11</code> (ns2), <code>.42</code> (client) et <code>.25</code> (mail) servent d’exemple. Remplace-les par tes adresses et compare tes sorties aux résultats attendus.</p>
 

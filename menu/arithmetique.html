@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#td-tp">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -258,7 +259,22 @@
 <p><strong>Merkle–Hellman.</strong> Multiplie les poids privés par A modulo N, avec N supérieur à leur somme et PGCD(A,N)=1. On publie les poids transformés. Pour revenir d’un chiffré, multiplie par A⁻¹ modulo N. Le résultat est exactement la somme privée, donc on applique le glouton. On étudie ici le procédé historique.</p>
 </div>
       </section>
-      <section class="c-section" id="td-tp" aria-labelledby="exercices-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Poly Arithmétique pour la cryptographie, trois séries de TD et exercices de programmation proposés dans le poly.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Complexité, nombres premiers et factorisation</th><td>TD1 et TP crible</td><td>Justifier un coût de boucles, comparer crible et test de primalité et distinguer facteur, multiple et diviseur.</td></tr>
+      <tr><th scope="row">PGCD, Bézout et équations</th><td>TD PGCD/Bézout et TP Euclide</td><td>Remonter les restes pour calculer deux coefficients et expliquer quand une équation diophantienne possède une solution.</td></tr>
+      <tr><th scope="row">Congruences et inverses</th><td>TD modulo, TP affine/Hill</td><td>Savoir dire si un inverse existe, vérifier une inversion matricielle modulo 7 et résoudre les restes chinois sous leurs hypothèses.</td></tr>
+      <tr><th scope="row">Euler, Fermat, ordre et logarithme discret</th><td>TD puissances et TP carrés successifs</td><td>Choisir le théorème après avoir vérifié ses conditions et calculer une puissance par carrés successifs.</td></tr>
+      <tr><th scope="row">Protocoles, clés et attaques étudiées</th><td>TP DH, ElGamal, RSA, diffusion, tests de primalité, Merkle–Hellman</td><td>Faire un calcul aller-retour avec les paramètres du sujet et identifier l’hypothèse qui rend possible l’attaque présentée.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#td-tp">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="td-tp" aria-labelledby="exercices-title">
         <h2 class="c-h2" id="exercices-title">Questions TD &amp; TP</h2>
         <p>Pour chaque question, suis le calcul dans l’ordre et refais la dernière vérification avec les nombres de l’énoncé.</p>
         <h3 class="c-h3">TD</h3>

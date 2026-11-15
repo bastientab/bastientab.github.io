@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -120,7 +121,21 @@
     <p><code>begin</code> initialise une fois. <code>process</code> traite les objets qui arrivent. <code>end</code> renvoie le résultat final, comme le nombre total. Pour lire plus sur la liaison des entrées et les erreurs, consulte la <a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_pipelines">documentation du pipeline</a> et celle de <a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_try_catch_finally">try/catch</a>.</p>
   </div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Trois livres du cours R309 avec exercices en fin de support. Le fichier de TP retrouvé est vide.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Aide, alias et objets</th><td>Introduction p. 19</td><td>Retrouver une commande par son alias ou sa définition et inspecter les propriétés d’un résultat.</td></tr>
+      <tr><th scope="row">Variables, boucles et script</th><td>Scripts p. 18</td><td>Refaire la factorielle et la fusion de chaînes en suivant chaque itération. Tester les valeurs limites.</td></tr>
+      <tr><th scope="row">Paramètres et erreurs</th><td>Scripts p. 12–18</td><td>Valider un dossier, prévisualiser un renommage et gérer une collision ou une lecture impossible.</td></tr>
+      <tr><th scope="row">Fonctions et pipeline</th><td>Fonctions et scripts p. 9</td><td>Compter tout, seulement les fichiers, ou les .ps1. Mettre le compteur à zéro dans begin, le mettre à jour dans process et le retourner dans end.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <details class="acc" open><summary>Introduction, p. 19 · Rechercher des commandes et examiner Windows</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Affiche l’aide de Get-Alias et ses exemples. Trouve les alias en m, la commande de sl et les alias de Get-ChildItem. Inspecte ensuite le volume C et le dossier courant.</p>

@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -116,8 +117,37 @@
     <p>Le <strong>ranging</strong> mesure le délai entre chaque ONT et l’OLT afin que, malgré des distances différentes, les salves montantes arrivent chacune dans le bon créneau. Le <strong>DBA</strong> distribue ensuite la capacité selon les profils et la demande. En descendant, les ONT partagent le support optique. Le cours traite le filtrage des flux par identifiant, le chiffrement pour la confidentialité et la <strong>FEC</strong> pour corriger des erreurs avec des octets supplémentaires. Ce sont trois mécanismes distincts.</p>
     <p>Le <strong>triple play</strong> transporte Internet, télévision et voix. Associe les flux aux VLAN et aux politiques de priorité demandés. <strong>QinQ</strong> ajoute un tag opérateur autour du tag client pour transporter les VLAN d’un client sans renuméroter ses réseaux. Compare les tags avant et après le point d’entrée de l’opérateur. Dans le TP GPON, la traduction de VLAN est une autre action qui change l’identifiant associé au service.</p>
   </div>
+<div class="c-block">
+  <h3>Dimensionner les T-CONT pour le TD Huawei</h3>
+  <p>Un <strong>flux</strong> se reconnaît par son service et son VLAN. Le <strong>port GEM</strong> permet de le transporter dans le PON. Le <strong>T-CONT</strong> représente un groupe de trafic pour l’allocation montante. Plusieurs ports GEM peuvent partager un T-CONT. Le nombre de services ne fixe donc pas à lui seul le nombre de T-CONT.</p>
+  <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Type (poly p. 37)</th><th>Ce que l’OLT réserve ou garantit</th><th>Plafond</th></tr></thead><tbody>
+    <tr><td>1</td><td>Débit fixe X</td><td>Z = X</td></tr>
+    <tr><td>2</td><td>Débit garanti Y selon le besoin</td><td>Z = Y</td></tr>
+    <tr><td>3</td><td>Débit garanti Y et surplus éventuel</td><td>Z &gt; Y</td></tr>
+    <tr><td>4</td><td>Best effort, sans part fixe ni garantie</td><td>Z</td></tr>
+    <tr><td>5</td><td>Combinaison de parts fixe X et garantie Y, avec supplément possible</td><td>Z ≥ X + Y</td></tr>
+  </tbody></table></div>
+  <p>Dans le TD, commence par identifier les garanties attendues. Une proposition explicable sépare la voix à débit fixe du trafic Internet en rafales. Pour la TV, sépare les flux reçus des échanges montants du décodeur. Choisis un T-CONT de type 2 ou 3 si ces échanges doivent disposer d’une garantie. Si les échanges restent en best effort, ils peuvent partager le profil Internet. Indique le débit garanti et le plafond seulement après avoir défini le besoin. Le sujet laisse ces valeurs à justifier.</p>
+  <h4>Partie 3 du TP ONT · Donner une sortie IP au BRAS</h4>
+  <p>Commence par vérifier la session PPPoE et l’adresse IP attribuée à l’ONT. Sur la machine BRAS du labo, repère le côté où arrivent les clients PPP et l’interface de sortie qui a une route vers le réseau de l’IUT. Active le transfert IP, autorise dans le pare-feu l’aller et les réponses, puis applique la traduction de source sur l’interface de sortie pour la plage privée attribuée. Vérifie d’abord un ping vers le BRAS, puis vers une adresse extérieure à la plage privée. Compare les adresses source observées des deux côtés. Une session ouverte avec un premier ping réussi mais sans sortie oriente le diagnostic vers le routage ou le NAT.</p>
+</div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Poly Technologies d’accès, TD PPPoE/IPoE et Huawei, TP GPON parties OLT et ONT.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Supports et équipements</th><td>Poly p. 2–16 et 22–46, TD PPPoE/IPoE</td><td>Nommer la boucle locale et la collecte. Suivre DSLAM/NRA ou ONT/OLT/NRO selon le support.</td></tr>
+      <tr><th scope="row">Choix PPPoE ou IPoE</th><td>Poly p. 17–21, TD PPPoE/IPoE et TP ONT</td><td>Identifier découverte, négociation, authentification et paramétrage IP. En IPoE, expliquer le relais DHCP et le rôle possible du port ou du VLAN.</td></tr>
+      <tr><th scope="row">Transmission montante, ranging, DBA, T-CONT et GEM</th><td>Poly p. 29–42, TD Huawei et TP OLT</td><td>Décrire pourquoi les salves ne se chevauchent pas. Suivre un service du profil d’abonné à son port GEM et distinguer débit fixe, garanti et maximal.</td></tr>
+      <tr><th scope="row">Triple play, VLAN et priorité</th><td>Poly p. 47–59, TD Huawei et TP OLT</td><td>Séparer Internet, TV et voix, puis justifier chaque VLAN, priorité et association à un port LAN. Distinguer QinQ de la translation.</td></tr>
+      <tr><th scope="row">Mode WAN et diagnostic</th><td>TP ONT, parties 1 à 3</td><td>Dire quel matériel termine PPPoE, confirmer l’adresse WAN et distinguer un défaut optique d’un problème VLAN, session ou routage.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les versions téléchargeables des deux TP GPON masquent les identifiants des équipements. Utilise les sujets de ton dossier de cours pour la connexion au labo.</p>
   <details class="acc" open><summary>TD · Expliquer les phases de l’accès abonné</summary><div class="acc-body">

@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -127,8 +128,33 @@
     <p>Un domaine organise les identités et les services d’annuaire. Un <strong>site</strong> représente des sous-réseaux et la façon dont ils sont reliés. Dans le support Sites et services AD, un poste du réseau <code>192.168.70.0/24</code> peut appartenir au même domaine que celui de <code>192.168.69.0/24</code> tout en utilisant d’abord un contrôleur proche de son site.</p>
     <p>Associe chaque sous-réseau IP à son site dans <strong>Sites et services Active Directory</strong>, vérifie le trajet IP entre contrôleurs, puis vérifie que les machines utilisent les DNS du domaine. Depuis un client, <code>nltest /dsgetsite</code> donne le site détecté. Sur les contrôleurs, <code>repadmin /replsummary</code> aide à voir les erreurs de réplication. Un ping réussi confirme le trajet IP, tandis que la découverte de site, la résolution DNS et l’état de réplication se contrôlent chacun séparément.</p>
   </div>
+<div class="c-block">
+  <h3>Diagnostiquer une GPO avec le poste du TP3</h3>
+  <p>Pars du résultat attendu. Pour un lecteur mappé, vérifie d’abord qu’il s’agit d’un paramètre utilisateur et que le compte de test est dans le périmètre du lien vers l’OU. Pour une restriction machine, vérifie où se trouve le compte ordinateur. Le filtrage de sécurité et les autorisations doivent ensuite permettre à la cible de lire et d’appliquer la GPO.</p>
+  <ol>
+    <li>Connecte-toi avec le compte demandé sur le poste joint au domaine. Vérifie le DNS du domaine et l’accès au partage avec le chemin UNC indépendamment du lecteur.</li>
+    <li>Après mise à jour des stratégies, lance <code>gpresult /r</code> dans la session. Prends le rapport utilisateur pour un lecteur mappé. Au besoin, <code>gpresult /h rapport.html</code> permet de relire les stratégies appliquées et celles filtrées. Rouvre la session si le paramètre se traite à la connexion.</li>
+    <li>Si la GPO apparaît mais que le lecteur manque, vérifie le nom du partage, les droits de partage et les droits sur le dossier. Si la GPO n’apparaît pas, reprends le lien, la cible et le filtrage avant de modifier les droits du dossier.</li>
+  </ol>
+</div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Supports GPO et Sites AD, TD Cass’Auto et six TP d’annuaire Windows.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Forêt, domaine, OU et groupes</th><td>TD Cass’Auto, TP1–2</td><td>Justifier l’organisation et différencier emplacement d’administration, appartenance à un groupe et droit donné sur une ressource.</td></tr>
+      <tr><th scope="row">DNS, AD DS et DHCP</th><td>TP1</td><td>Promouvoir le serveur, joindre le client, créer l’étendue et la réservation demandées, puis vérifier le bail et la résolution.</td></tr>
+      <tr><th scope="row">Partages, lecteurs, droits et quotas</th><td>TP2, TP4</td><td>Relier un groupe au dossier Atelier, vérifier avec deux comptes de rôles différents et distinguer ACL, partage, quota et filtrage de fichiers.</td></tr>
+      <tr><th scope="row">Stratégies de groupe</th><td>Support GPO, TP3</td><td>Distinguer ordinateur et utilisateur. Appliquer à la bonne OU puis vérifier les stratégies résultantes à partir de la machine cible.</td></tr>
+      <tr><th scope="row">Disponibilité et délégation</th><td>TP5</td><td>Distinguer réplication AD, réplication des fichiers, secours DHCP et droit de réinitialiser un mot de passe. Tester un arrêt contrôlé du bon service.</td></tr>
+      <tr><th scope="row">Sites et sous-réseaux</th><td>Support Sites et services AD, TP6</td><td>Relier les deux sous-réseaux, faire reconnaître le bon site au poste et vérifier DNS et réplication entre contrôleurs.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les exemples respectent les consignes des VM de l’IUT. Remplace les noms et les adresses d’exemple par ceux de ton labo et utilise des comptes de test pour les vérifications.</p>
   <details class="acc" open><summary>TD · Ranger les utilisateurs et préparer les droits de Cass’Auto</summary><div class="acc-body">

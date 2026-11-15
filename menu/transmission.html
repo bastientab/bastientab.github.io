@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -126,16 +127,51 @@
     <p>Le <strong>modulant</strong> contient l’information. La <strong>porteuse</strong> est une sinusoïde à la fréquence f<sub>p</sub>. Multiplie deux cosinus de fréquences f<sub>1</sub> et f<sub>2</sub>. L’identité trigonométrique sépare le produit en deux cosinus aux fréquences somme et différence, chacun pondéré par la moitié du produit des amplitudes. Pour un signal formé de plusieurs fréquences, la même opération translate son spectre.</p>
     <p>En AM usuelle, le signal multiplie une amplitude positive qui varie. Si cette amplitude change de signe, l’enveloppe rectifiée ne suit plus fidèlement le message. En AM à porteuse supprimée, le récepteur peut remultiplier par une porteuse synchronisée, puis filtrer les composantes hautes. En FM, c’est la fréquence instantanée qui suit le signal modulant. En PM, c’est le déphasage. Un indice de modulation ou une excursion de fréquence décrit l’amplitude de la variation et influe sur la bande utilisée.</p>
   </div>
+<div class="c-block">
+  <h3>AM · Tracer l’enveloppe, le signal et son spectre</h3>
+  <p>Dans le TD p. 13, la porteuse est à 25 kHz et son amplitude vaut 5 V. Le modulant est <code>2 cos(2π·2000t)</code>. Le multiplicateur vaut 0,2, donc l’indice de modulation vaut <strong>0,4</strong>. L’expression complète est <code>5[1 + 0,4 cos(2π·2000t)] cos(2π·25000t)</code>.</p>
+  <ol>
+    <li>Dessine d’abord les limites entre lesquelles oscille la porteuse. L’enveloppe du haut vaut 5(1+0,4 cos), celle du bas est son opposée. Le haut varie entre <strong>3 V et 7 V</strong>. Le modulant refait un cycle en 0,5 ms et la porteuse en 40 µs.</li>
+    <li>Trace les oscillations rapides entre les enveloppes. Sur une capture inconnue, lis les deux niveaux extrêmes de l’enveloppe positive. L’indice vaut (Amax−Amin)/(Amax+Amin) et le niveau de porteuse vaut (Amax+Amin)/2.</li>
+    <li>Développe le produit des cosinus. Le terme de porteuse reste à 25 kHz avec amplitude temporelle 5 V. Les deux bandes latérales sont à <strong>23 et 27 kHz</strong>, chacune d’amplitude 1 V. En spectre bilatéral, chaque cosinus donne deux raies de poids moitié. Pour un modulant de largeur 3 kHz en bande de base positive, le canal AM va de 22 à 28 kHz, soit <strong>6 kHz</strong>.</li>
+  </ol>
+  <figure><img src="../assets/revisions/transmission/schemas/am-td.png" alt="Signal AM du TD entre ses enveloppes et spectre positif avec raies à 23, 25 et 27 kHz" loading="lazy"><figcaption>Tracé avec les valeurs du TD p. 13. En bas, les hauteurs indiquent les amplitudes des cosinus, dans la représentation à fréquences positives.</figcaption></figure>
+  <h4>Récupérer le modulant (TD p. 14)</h4>
+  <p>Un détecteur d’enveloppe suit les variations lentes de l’amplitude. Il faut une constante de temps assez grande devant la période de porteuse et assez petite devant celle de l’enveloppe. Pour une AM ordinaire, l’enveloppe suit le modulant tant que le facteur entre crochets reste positif. On retire ensuite sa composante continue.</p>
+  <p>En démodulation synchrone, multiplie par le cosinus de référence à 25 kHz. Avec cos²(a)=(1+cos(2a))/2, la sortie est <code>(5/2)[1+0,4 cos(2π·2000t)][1+cos(2π·50000t)]</code>. Garde la composante à 2 kHz et le continu avec le passe-bas, élimine les raies vers 48, 50 et 52 kHz. Une fois le continu enlevé, il reste un cosinus à 2 kHz dont le gain peut être ajusté.</p>
+</div>
+<div class="c-block">
+  <h3>FM et PM · Passer de la phase à la fréquence instantanée</h3>
+  <p>Si la phase totale est θ(t) en radians, la fréquence instantanée est θ′(t)/(2π). Dans <code>2 sin(1000t+0,5 cos(2π·10t))</code>, la dérivée donne <strong>1000/(2π)−5 sin(2π·10t)</strong> en hertz. En PM, le modulant agit directement sur la phase. En FM, il agit sur la fréquence instantanée, donc il faut intégrer la fréquence pour retrouver la phase.</p>
+  <p>Pour l’exercice FM p. 15, la porteuse vaut 25 kHz. Un modulant de crête 2 V provoque un écart maximal de 5 kHz, donc le coefficient est de 2500 Hz/V. Pour un modulant à 2 kHz, <code>fᵢ(t)=25000+5000 cos(2π·2000t)</code>, qui varie entre <strong>20 et 30 kHz</strong>. En intégrant, on obtient <code>5 cos(2π·25000t+2,5 sin(2π·2000t))</code>. Le nombre 2,5 est l’indice β=Δf/fm.</p>
+  <p>Sur une sinusoïde FM, les raies sont espacées de fm de part et d’autre de la porteuse. On utilise la règle de Carson pour une largeur utile approchée, <strong>2(Δf+fmax)</strong>. Dans le cas audio du TD, 75 kHz d’excursion et 20 kHz de fréquence modulante maximale donnent 190 kHz autour de 88 MHz. Le rapport Δf/fmax vaut 3,75.</p>
+</div>
   <div class="c-block"><h3>6. Moduler l’amplitude, la fréquence ou la phase</h3>
     <p>En <strong>ASK</strong>, l’amplitude dépend du symbole. En <strong>FSK</strong>, c’est la fréquence. En <strong>PSK</strong>, c’est la phase. La phase mesure le décalage d’un cycle par rapport à une référence. En BPSK, les deux points sont opposés. En QPSK, quatre points représentent chacun deux bits.</p>
     <p>Le plan <strong>I/Q</strong> donne deux coordonnées au symbole. Chaque voie multiplie une porteuse, et les deux porteuses sont décalées d’un quart de tour. Une 16-QAM combine amplitude et phase pour transporter quatre bits par symbole. À énergie moyenne et conditions comparables, des points plus serrés réduisent la marge face au bruit. Dans une constellation étiquetée en Gray, les voisins immédiats diffèrent souvent d’un seul bit.</p>
   </div>
+<div class="c-block">
+  <h3>ASK, OOK, FSK et PSK · Refaire les chronogrammes du TD p. 16</h3>
+  <p>À 1 Mbit/s et un bit par symbole, chaque case dure 1 µs. Prends le train <code>1 | 0 | 1 | 1</code>. Pour l’ASK du TD, représente le modulant normalisé par +1 ou −1 et multiplie la porteuse par <code>1 + 0,5 × modulant</code>. La porteuse de référence à 0 dBm sous 50 Ω vaut √(2×0,001×50)≈<strong>0,316 V crête</strong>. Ses amplitudes deviennent ≈0,474 V pour 1 et ≈0,158 V pour 0 dans cette convention.</p>
+  <ul>
+    <li><strong>OOK.</strong> Supprime la porteuse dans la case du 0. Pour les 1, garde une amplitude constante. Le schéma alterne donc présence et absence.</li>
+    <li><strong>FSK.</strong> Garde l’amplitude. Mets 868,5 MHz dans les cases des 1 et 867,5 MHz dans celle du 0 avec cette attribution. Sur un dessin, représente la fréquence la plus élevée par des oscillations plus rapprochées.</li>
+    <li><strong>BPSK.</strong> Continue à une seule fréquence. Pour la convention de phase 0 pour 1 et π pour 0, inverse le signe de la sinusoïde pendant la case du 0.</li>
+  </ul>
+  <p>Le débit ASK filtré reste 1 Mbaud. Pour α=0,4, la largeur du spectre transposé autour de la porteuse vaut (1+α)R = <strong>1,4 MHz</strong>. Pour comparer les courbes de bruit, convertis d’abord Eᵦ/N₀ avec B/D. Ici, 10 dB de S/N et B/D=2,5 donnent environ 14 dB de Eᵦ/N₀. Le graphe du sujet indique SNR sur l’axe. Précise la convention que tu suis avant d’y placer ton résultat.</p>
+</div>
 <div class="c-block"><h3>7. Calculer un point I/Q et comparer les constellations</h3>
     <p>Avec la convention du poly, <strong>v(t)=I cos(ωt)−Q sin(ωt)</strong>. Écris C=I+jQ. Son module √(I²+Q²) donne l’amplitude de la sinusoïde, et sa phase est <code>atan2(Q,I)</code>, ce qui tient compte du quadrant. Avec I=0,5 et Q=1, le point est en haut à droite, l’amplitude vaut ≈1,118 V et la phase ≈63,4°.</p>
     <p>Une BPSK se ramène à deux valeurs opposées sur l’axe I. Une FSK peut s’obtenir en faisant tourner C à +Δf ou −Δf pendant le symbole. En QPSK normalisée, les coordonnées d’un point diagonal valent ±1/√2 : le point reste à distance 1 de l’origine. En M-PSK, augmenter M resserre les angles, tandis qu’en QAM plusieurs rayons sont possibles.</p>
     <figure><a href="../assets/revisions/transmission/schemas/qpsk-poly.png"><img src="../assets/revisions/transmission/schemas/qpsk-poly.png" alt="Constellation du poly et chronogrammes des bits, des composantes I et Q et de l’onde modulée" loading="lazy"></a><figcaption>Extrait du poly, p. 103. Repère les plateaux de I et Q, puis reporte leur intersection dans la constellation.</figcaption></figure>
     <p>Au décodage I/Q, deux mélangeurs puis deux passe-bas isolent les composantes. Une phase de référence imparfaite fait pivoter la constellation. La <strong>DQPSK</strong> code des différences de phase successives. Par exemple, +45° puis +135° portent la phase de 0° à 45°, puis à 180°. Le TD emploie cette méthode pour changer de constellation à chaque symbole. L’<strong>EVM</strong> compare les points reçus aux points de référence et mesure leur écart relatif. Le TEB compte, lui, les erreurs sur les bits.</p>
   </div>
+<div class="c-block">
+  <h3>16-QAM · Relier le mot du TD à la tension et à la largeur du canal</h3>
+  <p>Le TD p. 19 sépare les quatre bits en deux dibits. Fais lire le premier au convertisseur de la branche I, le deuxième à celui de Q. La table donne <code>00 → −1</code>, <code>01 → −0,33</code>, <code>10 → +0,33</code>, <code>11 → +1</code>. Croise les quatre niveaux de I avec les quatre de Q pour dessiner les seize points. Place ainsi <code>1110</code> en (1 ; 0,33), puis <code>0010</code> en (−1 ; 0,33).</p>
+  <p>13 dBm correspondent à 10<sup>1,3</sup> mW. Sous 50 Ω, calcule d’abord la tension efficace √(PR)≈1,0 V, puis la crête ≈1,41 V. Pour <code>1110</code>, avec les coefficients de la table et le signe de Q du montage, écris ≈1,41[cos(ωt)−0,33 sin(ωt)]. En inversant l’exercice au récepteur, multiplie par chacune des références I et Q puis retire les termes à deux fois la porteuse. Les termes utiles réduits de moitié permettent de retrouver I et Q après compensation du gain.</p>
+  <p>À 27 Mbit/s, quatre bits par symbole donnent 6,75 Mbaud. Le cosinus surélevé α=0,4 occupe 1,4×6,75=<strong>9,45 MHz</strong> autour de 645 MHz, soit environ 640,275 à 649,725 MHz. Au TD p. 23, l’exercice vidéo donne α=1,3, hors du domaine usuel de 0 à 1 du cosinus surélevé. Demande la valeur prévue avant de valider un choix de modulation à partir de cette donnée.</p>
+</div>
 <div class="c-block"><h3 id="compression">8. Compression sans perte</h3>
     <p>Compresser consiste à écrire les mêmes informations avec moins de bits lorsqu’il y a de la redondance. Le décodeur doit reconstruire exactement l’original. Le gain dépend des données et des bits nécessaires pour décrire le code. Le <strong>facteur de compression</strong> rapporte taille d’origine à taille codée. L’<strong>entropie</strong> H = −Σ p(x) log₂ p(x) mesure l’information moyenne d’un symbole dans le modèle du cours.</p>
     <h4>RLE · Compter les répétitions consécutives</h4>
@@ -161,6 +197,26 @@
     <p>Le <strong>CRC</strong> forme un reste en division binaire. Il sert à détecter une corruption, par exemple en fin de trame. Reed–Solomon ajoute de la redondance au niveau de symboles de plusieurs bits. Pour le code C(204,188) du TD, 16 symboles sont ajoutés et jusqu’à 8 symboles erronés inconnus sont corrigeables sous les hypothèses usuelles du code. Une erreur de plusieurs bits dans le même symbole compte alors comme une erreur de symbole.</p>
     <p>Un code <strong>convolutif</strong> combine le bit courant et de précédents bits mémorisés. À chaque étape du <strong>treillis</strong>, Viterbi compare les sorties attendues aux bits observés, additionne les distances et conserve le meilleur chemin arrivant à chaque état. Le gain de codage se lit comme l’écart en E<sub>b</sub>/N<sub>0</sub> nécessaire pour atteindre le même TEB, à conventions identiques.</p>
   </div>
+<div class="c-block">
+  <h3>Viterbi · Dérouler le treillis du TD p. 27</h3>
+  <p>On mémorise deux bits, donc il y a quatre états. Démarre dans <strong>00</strong>. À partir de chaque état, essaye le bit entrant 0 et le bit entrant 1. La première sortie recopie ce bit. La seconde est le XOR du bit entrant et des deux bits mémorisés. Le nouvel état contient le bit entrant puis l’ancien bit le plus récent.</p>
+  <div class="c-table-wrap"><table class="c-table"><thead><tr><th>État au départ</th><th>Entrée 0 → sortie / nouvel état</th><th>Entrée 1 → sortie / nouvel état</th></tr></thead><tbody>
+    <tr><td>00</td><td>00 / 00</td><td>11 / 10</td></tr>
+    <tr><td>01</td><td>01 / 00</td><td>10 / 10</td></tr>
+    <tr><td>10</td><td>01 / 01</td><td>10 / 11</td></tr>
+    <tr><td>11</td><td>00 / 01</td><td>11 / 11</td></tr>
+  </tbody></table></div>
+  <p>Le reçu est <code>11 | 11 | 10 | 10</code>. À la deuxième paire, le chemin qui est en 10 et reçoit le bit 0 prédit <code>01</code>. Il ajoute 1 à son coût et arrive dans l’état 01. À la paire suivante, l’état 10 peut être atteint de deux façons. Le chemin <code>001</code> y arrive avec un coût de 5 et <code>101</code> avec un coût de 1. On garde <code>101</code>, car les transitions suivantes dépendront du même état dans les deux cas.</p>
+  <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Paire lue</th><th>00</th><th>01</th><th>10</th><th>11</th></tr></thead><tbody>
+    <tr><td>Départ</td><td>0</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td>11</td><td>2</td><td>—</td><td>0</td><td>—</td></tr>
+    <tr><td>11</td><td>4</td><td>1</td><td>2</td><td>1</td></tr>
+    <tr><td>10</td><td>3</td><td>2</td><td>1</td><td>2</td></tr>
+    <tr><td>10</td><td>4</td><td>3</td><td>2</td><td><strong>1</strong></td></tr>
+  </tbody></table></div>
+  <p>Remonte depuis l’état 11 de coût 1. Les états retenus sont <code>00 → 10 → 01 → 10 → 11</code>. Les bits entrants au fil du trajet forment <strong>1011</strong>. On suppose ici que le TD laisse l’état final libre. Si le codeur remet explicitement ses deux mémoires à zéro à la fin, on part de l’état final imposé.</p>
+  <figure><img src="../assets/revisions/transmission/schemas/viterbi-td.png" alt="Treillis à quatre états. Le chemin retenu suit 00, 10, 01, 10 et 11." loading="lazy"><figcaption>Les branches grises représentent les transitions possibles. Le trajet vert est celui que le tableau des coûts permet de retrouver.</figcaption></figure>
+</div>
   <div class="c-block"><h3>11. Partager le canal et l’adapter aux multi-trajets</h3>
     <p>Le multiplexage répartit les utilisateurs en <strong>temps</strong> (TDM), en <strong>fréquence</strong> (FDM) ou en <strong>codes</strong> (CDMA). Dans un CDMA idéal, une corrélation avec le code du bon utilisateur conserve son signal et annule les contributions des codes orthogonaux. Le DSSS étale un signal en multipliant ses symboles par une séquence plus rapide. Il peut servir à l’étalement et au repérage d’un préambule.</p>
     <p>Les trajets réfléchis arrivent en retard. Si l’étalement maximal vaut Δt, le cours estime la bande de cohérence par <strong>B<sub>c</sub> ≈ 1/Δt</strong>. Un canal plus large peut subir des variations de gain selon la fréquence. La diversité exploite plusieurs versions d’une information, par exemple sur des fréquences suffisamment espacées, à plusieurs instants ou sur plusieurs antennes. Un mobile introduit un décalage Doppler d’ordre v f<sub>p</sub>/c et le temps de cohérence s’estime par son inverse.</p>
@@ -173,7 +229,27 @@
     <p>Le multiplexage spatial <strong>SDM</strong> distingue des chemins spatiaux. En <strong>MIMO</strong>, plusieurs antennes permettent de recevoir plusieurs observations. Si les chemins sont assez indépendants, on peut séparer des flux émis en parallèle, ou exploiter la redondance pour rendre une transmission plus robuste. La matrice du canal contient les gains et phases de chaque paire d’antennes.</p>
   </div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Poly R304/R305 (12 chapitres), TD de transmission (p. 2–36) et TP IQ/QPSK de Télécom 3. Le TP sert à vérifier sur l’oscilloscope le lien entre dibits, voies I/Q et constellation.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Cahier des charges, chaîne, horloge, débit et bruit</th><td>TD p. 2–4 et 8</td><td>Distinguer temps de propagation, gigue, baud, débit et TEB. Partir des unités pour passer de dBm à Eᵦ/N₀.</td></tr>
+      <tr><th scope="row">Codage bande de base et Ethernet</th><td>TD p. 5–7</td><td>Tracer NRZ, Manchester, Miller, RZ, HDB3 et 2B1Q. Sur 100BASE-TX, appliquer la table 4B/5B et poursuivre le cycle MLT-3.</td></tr>
+      <tr><th scope="row">Capacité, filtrage et œil</th><td>TD p. 8–11</td><td>Convertir S/N avant Shannon. Calculer la bande d’un cosinus surélevé et lire l’instant de décision sur un œil.</td></tr>
+      <tr><th scope="row">Transposition, AM et FM</th><td>TD p. 12–15</td><td>Prédire les raies somme et différence. Retrouver un indice AM sur une enveloppe, puis calculer la fréquence instantanée d’une FM.</td></tr>
+      <tr><th scope="row">ASK, FSK, PSK et rôle du bruit</th><td>TD p. 16</td><td>Sur un bit, expliquer ce qui change pour chaque modulation. Comparer les occupations avec les mêmes hypothèses de filtrage.</td></tr>
+      <tr><th scope="row">I/Q, QPSK, QAM et phase différentielle</th><td>TD p. 17–23 et TP IQ/QPSK</td><td>Passer des bits aux projections puis au signal réel. Choisir une valence compatible avec la bande et mesurer l’erreur sur la constellation.</td></tr>
+      <tr><th scope="row">Compression</th><td>TD p. 24–25</td><td>Construire l’arbre Huffman, mettre à jour la table adaptative après émission, refaire le dictionnaire LZW. Expliquer ce que la quantification fait perdre en compression avec perte.</td></tr>
+      <tr><th scope="row">Parité, CRC, Hamming, convolutif et redondance</th><td>TD p. 26–27</td><td>Repérer une erreur simple, suivre un XOR polynomial et retrouver le mot reçu avec les états et coûts de Viterbi.</td></tr>
+      <tr><th scope="row">Multiplexage et dimensionnement</th><td>TD p. 28–29</td><td>Séparer débit utile, débit brut, redondance, rendement et garde. Calculer d’abord par flux puis pour le multiplex.</td></tr>
+      <tr><th scope="row">Canal sélectif, étalement, diversité et OFDM</th><td>TD p. 30–36</td><td>Faire une corrélation CDMA, comparer retard et garde, déduire bande et temps de cohérence et distinguer DMT, OFDMA et MIMO.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <details class="acc" open><summary>TD p. 3–4 · Respecter le TEB sur la liaison de 50 m</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Pour une paire torsadée de 50 m, à 100 Mbit/s, avec 200 mW émis, 0,6 mW de bruit, 30 dB de perte par 100 m et 50 MHz de bande, calcule N₀, Eᵦ et les rapports. Le TEB est-il sous 10⁻⁵ ? Trouve les trois réglages qui permettraient de passer le seuil.</p>

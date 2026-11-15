@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -125,7 +126,22 @@
     <p>La DMZ du poly illustre une autre séparation. Trois interfaces distinguent Internet, serveurs exposés et réseau interne. Un serveur Web public peut recevoir sur son port publié tandis qu’un accès vers les postes internes suit un jeu de règles différent. Pour expliquer un rejet, relève l’interface d’entrée, la destination et l’état de suivi avant de modifier le filtrage.</p>
   </div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Poly Réseaux de campus, TP iptables, Wi-Fi/RADIUS, portail captif et sujet de DS pratique.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Architecture, VLAN, routage et DMZ</th><td>Poly p. 3–12, TP1 et DS</td><td>Placer les ports, étiquettes et passerelles puis dessiner le trajet du client jusqu’à la sortie.</td></tr>
+      <tr><th scope="row">Tables et chaînes de filtrage</th><td>Poly p. 13–18, TP1</td><td>Choisir INPUT, OUTPUT ou FORWARD à partir du destinataire réel. Ajouter un compteur ou une règle de journalisation pour localiser un refus.</td></tr>
+      <tr><th scope="row">Traduction d’adresse et de port</th><td>Poly p. 19–33, TP1</td><td>Reconnaître les traductions statiques et dynamiques. Vérifier avant et après la passerelle en regardant IP et ports.</td></tr>
+      <tr><th scope="row">Wi-Fi, DHCP et RADIUS</th><td>Poly p. 34–50, TP2</td><td>Distinguer le bail du poste et son authentification. Identifier Request, Challenge, Accept et Reject et localiser le tunnel PEAP.</td></tr>
+      <tr><th scope="row">Portail et état après connexion</th><td>Poly p. 51–53, TP3 et DS</td><td>Comparer le HTTP avant et après authentification. Vérifier SSID, bail, passage du trafic et journalisation comme dans le sujet pratique.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Dans les exemples, <code>LAN</code> et <code>WAN</code> représentent les vrais noms d’interfaces de la maquette. Confirme leur rôle avec <code>ip -br addr</code> avant d’ajouter des règles.</p>
   <details class="acc" open><summary>TP1 · Installer la passerelle et choisir la bonne chaîne</summary><div class="acc-body">

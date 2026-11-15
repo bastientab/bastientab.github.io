@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=couverture-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,6 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
@@ -116,7 +117,22 @@
     <p>En fibre, le <strong>CWDM</strong> espace davantage ses canaux optiques que le DWDM. Dans un multiplexage temporel, la capacité d’un canal est au contraire distribuée entre créneaux. Le cours présente <strong>SDH</strong>, une hiérarchie de trames synchrones STM, puis <strong>OTN</strong> qui transporte des clients variés dans des structures adaptées et apporte des fonctions de supervision et de correction. Pour savoir quelle table lire au TD, demande-toi si le nœud commute une longueur d’onde, une capacité dans une trame, ou un paquet IP.</p>
   </div>
 </section>
-      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+      <section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Support croisé · Poly Réseaux opérateurs, TD1 services optiques, TD2 transport/commutation et TP MPLS.</p>
+  <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th scope="col">Notion du cours</th><th scope="col">Où la travailler</th><th scope="col">Ce que tu dois savoir refaire</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Boucle locale, collecte, transport, POP et IXP</th><td>Poly p. 6–21, TD1</td><td>Suivre l’infrastructure entre villes et repérer le raccordement utile à un client.</td></tr>
+      <tr><th scope="row">Fibre noire, WDM, ROADM</th><td>Poly p. 25–34, TD1–2</td><td>Identifier qui installe les équipements, choisir les longueurs d’onde et vérifier les deux sens sur le chemin.</td></tr>
+      <tr><th scope="row">Multiplexage SDH et OTN</th><td>Poly p. 35–45, TD1–2</td><td>Expliquer pourquoi louer une longueur d’onde et louer une capacité OTN donnent deux niveaux de service. Vérifier les créneaux à chaque nœud.</td></tr>
+      <tr><th scope="row">Routage et OSPF</th><td>TD2 et TP OSPF/MPLS, partie 3</td><td>Vérifier les liens, les voisins et la route, puis provoquer la coupure prévue et distinguer reconvergence et perte du support.</td></tr>
+      <tr><th scope="row">MPLS, LDP et LFIB</th><td>Poly p. 51–67, TP partie 4</td><td>Faire le lien entre destination IP, route et échange de labels dans le TP. Lire le paquet avant et après chaque routeur.</td></tr>
+    </tbody>
+  </table></div>
+  <p><a href="#corriges">Voir les questions et les démarches détaillées</a></p>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <details class="acc" open><summary>TD1 · Choisir fibre noire, λ ou service OTN</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Dire ce que l’opérateur A peut vendre sur son réseau sans équipement actif, puis déterminer ce qu’il doit installer pour louer des canaux optiques.</p>
