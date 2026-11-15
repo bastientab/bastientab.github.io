@@ -34,6 +34,12 @@
   margin: 0 0 14px;
   color: var(--ink);
 }
+.c-menu-formation {
+  display: block;
+  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-top: 0.28em;
+}
 .page-lead {
   color: var(--ink-2);
   font-size: clamp(1.05rem, 1.6vw, 1.22rem);
