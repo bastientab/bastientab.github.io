@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Réseaux de campus — BUT2 R&amp;T</title>
+  <meta name="description" content="Suivre un paquet du terminal jusqu’à Internet, le filtrer et contrôler l’accès Wi-Fi avec RADIUS.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/campus.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">LAN</span></div>
+      <h1 class="page-title" id="page-title">Réseaux de campus</h1>
+      <p class="page-lead">Suivre un paquet du terminal jusqu’à Internet, le filtrer et contrôler l’accès Wi-Fi avec RADIUS.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S3</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/campus/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <p>On suit le paquet d’un client Wi-Fi. À chaque étape, identifie le rôle de l’équipement, l’adresse du destinataire et la règle qui autorise ou détourne le trafic.</p>
+  <div class="c-block">
+    <h3>1. Construire le réseau du campus</h3>
+    <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Couche</th><th>Rôle</th><th>Exemple</th></tr></thead><tbody>
+    <tr><td>Accès</td><td>Raccorder les postes et les points d’accès.</td><td>Affecter un poste à un VLAN, vérifier son bail.</td></tr>
+    <tr><td>Distribution</td><td>Regrouper les réseaux d’accès et appliquer les politiques.</td><td>Router entre VLAN, filtrer, donner une priorité à certains flux.</td></tr>
+    <tr><td>Cœur</td><td>Transporter les flux entre les grandes zones et vers les sorties.</td><td>Maintenir un deuxième chemin pour résister à une panne.</td></tr></tbody></table></div>
+    <p>Un <strong>VLAN</strong> délimite un réseau de couche 2. Un port d’accès attache le terminal à un VLAN, tandis qu’un trunk permet de transporter plusieurs VLAN en identifiant les trames. Pour passer entre deux sous-réseaux, le paquet doit passer par une passerelle de couche 3. On peut y appliquer une <strong>ACL</strong>, une liste de règles qui autorise ou refuse un trafic selon ses caractéristiques.</p>
+    <details class="acc"><summary>Redondance, agrégation et QoS</summary><div class="acc-body"><p>Une redondance ajoute un chemin. Spanning Tree permet d’éviter les boucles de couche 2. LACP regroupe plusieurs liens compatibles en une interface logique. La QoS classe et traite différemment les flux quand les files se remplissent. Ce n’est pas une augmentation de débit. Compare des mesures avec <code>iperf3</code> dans un test contrôlé.</p></div></details>
+  </div>
+  <div class="c-block">
+    <h3>2. Choisir la chaîne de filtrage</h3>
+    <ul><li><code>INPUT</code> traite ce qui vise le pare-feu, par exemple un ping vers sa propre adresse.</li><li><code>FORWARD</code> traite ce qui transite, par exemple le trafic d’un client vers un serveur derrière le pare-feu.</li><li><code>OUTPUT</code> traite ce que la passerelle émet.</li></ul>
+    <p>Dans une chaîne, l’ordre compte. Une décision terminale peut empêcher les lignes suivantes de voir le paquet. Si aucune règle ne décide, la politique de la chaîne intégrée s’applique. <code>DROP</code> jette le paquet. <code>REJECT</code> signale le refus. <code>LOG</code> journalise sans prendre à lui seul une décision d’autorisation. Vérifie les compteurs avec <code>iptables -nvL</code>.</p>
+    <p>Le <strong>suivi de connexion</strong> reconnaît les paquets d’une même conversation. Autorise le sens interne vers externe pour ouvrir les connexions voulues, et <code>ESTABLISHED,RELATED</code> pour permettre le retour. Une connexion nouvelle depuis l’extérieur reste bloquée en l’absence de règle d’ouverture.</p>
+  </div>
+  <div class="c-block">
+    <h3>3. Comprendre ce que change le NAT</h3>
+    <ol><li><strong>DNAT</strong> change la destination avant la décision de routage. Exemple : le port 8080 de la passerelle est redirigé vers le port 80 du serveur interne.</li><li><strong>SNAT</strong> fixe la nouvelle adresse source à la sortie. <code>MASQUERADE</code> s’appuie sur l’adresse de l’interface externe, notamment lorsqu’elle est obtenue dynamiquement.</li><li>Avec du <strong>PAT</strong>, les ports permettent de distinguer plusieurs flux qui passent par la même adresse ou de publier un service sur un port différent. Les règles de filtrage doivent encore laisser passer le trafic prévu.</li></ol>
+    <p>Pour vérifier, capture le même flux à l’entrée et à la sortie de la passerelle. Compare l’IP et le port sources et destinations. Vérifie aussi que la réponse repasse par le routeur qui a créé la translation.</p>
+  </div>
+  <div class="c-block">
+    <h3>4. Séparer l’accès Wi-Fi de l’authentification RADIUS</h3>
+    <p>Le terminal rejoint un <strong>SSID</strong> annoncé par la borne. La configuration IP peut ensuite provenir de DHCP. Avec 802.1X, la borne interroge RADIUS pour la décision d’accès. Dans ce vocabulaire, le client RADIUS est la borne, appelée <strong>NAS</strong>. Le terminal appartient à l’utilisateur qui se présente à la borne.</p>
+    <p><code>Access-Request</code> transporte la demande, <code>Access-Challenge</code> poursuit l’échange quand nécessaire, <code>Access-Accept</code> confirme l’accès et <code>Access-Reject</code> refuse. <strong>AAA</strong> distingue vérifier l’identité, décider ce qu’elle peut faire et consigner les événements d’accès. Le secret borne–serveur est distinct du mot de passe de l’utilisateur.</p>
+  </div>
+  <div class="c-block">
+    <h3>5. Pourquoi le portail capture-t-il le premier accès Web ?</h3>
+    <p>Le client non autorisé essaye une requête HTTP. Dans l’exercice, la passerelle marque le trafic puis le redirige vers sa page locale. Le portail demande des identifiants et consulte RADIUS. En cas d’accord, le pare-feu applique une exception pour la session du client. Le TP utilise l’adresse MAC sur le réseau local pour cet essai.</p>
+    <details class="acc"><summary>Ce que montrent les captures</summary><div class="acc-body"><p>Le test demandé porte sur HTTP. Rediriger arbitrairement du HTTPS vers un autre serveur provoque notamment des problèmes de certificat. Fais une nouvelle connexion HTTP après chaque changement : un flux déjà suivi peut continuer avec la traduction décidée à son ouverture.</p></div></details>
+  </div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Corrigés guidés des TP</h2>
+  <p>Dans les exemples, <code>LAN</code> et <code>WAN</code> représentent les vrais noms d’interfaces de la maquette. Confirme leur rôle avec <code>ip -br addr</code> avant d’ajouter des règles.</p>
+  <details class="acc" open><summary>TP1 · Installer la passerelle et choisir la bonne chaîne</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Faire transiter le trafic du réseau interne par Linux, appliquer des politiques restrictives et autoriser un ping vers la passerelle.</p>
+    <ol><li>Relie un port de la passerelle au poste interne et l’autre au réseau extérieur du labo. Configure le poste avec une IP du LAN et comme route par défaut l’IP LAN de Linux. Sur Linux, contrôle les deux réseaux avec <code>ip route</code> et active <code>sudo sysctl -w net.ipv4.ip_forward=1</code>.</li>
+    <li>Dans la maquette du TP, prépare les règles de trafic déjà suivi et de boucle locale, puis applique les politiques demandées depuis la console du labo. Pour le ping qui vise la passerelle, autorise en <code>INPUT</code> les requêtes ICMP du LAN. Si la politique <code>OUTPUT</code> bloque, autorise les réponses correspondantes.</li>
+    <li>Test : le ping de l’adresse LAN de la passerelle réussit. Avec <code>iptables -nvL INPUT</code>, les compteurs de la règle augmentent. Un ping vers un autre poste nécessite en plus son trajet <code>FORWARD</code> et son retour.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP1 · Comparer Telnet et isoler le trafic Web</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Comparer <code>REJECT</code> et <code>DROP</code> puis n’autoriser que les connexions Web initiées de l’intérieur.</p>
+    <ol><li>Prépare une même tentative TCP vers le port 23 de la maquette. Choisis <code>INPUT</code> si l’adresse cible est Linux, <code>FORWARD</code> si elle est derrière Linux. Fais un essai avec <code>REJECT</code>, remplace cette règle par <code>DROP</code>, puis refais la capture.</li>
+    <li>Avec <code>REJECT</code>, le client peut voir un refus immédiat. Avec <code>DROP</code>, repère les retransmissions et l’absence de réponse de la règle. Vérifie les compteurs pour savoir quelle ligne a réellement traité les paquets.</li>
+    <li>Dans <code>FORWARD</code>, autorise le Web sortant du LAN vers le WAN, puis autorise en retour seulement le trafic <code>ESTABLISHED,RELATED</code>. Si tu testes avec un nom, prévois aussi la résolution via le DNS choisi. Vérifie l’accès depuis le réseau interne, puis confirme qu’une nouvelle connexion en sens inverse est refusée.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP1 · Traduire les adresses et publier le serveur Web de test</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Comparer un pool NAT, le partage de l’IP extérieure et la redirection vers le serveur Apache interne.</p>
+    <pre class="c-code"><code>iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o WAN -j MASQUERADE
+iptables -t nat -A PREROUTING -i WAN -p tcp --dport 8080 \
+  -j DNAT --to-destination 10.0.0.2:80</code></pre>
+    <ol><li>Pour le NAT dynamique, utilise le pool d’adresses attribué au groupe et une règle <code>SNAT --to-source début-fin</code> sur le trafic du LAN. Vérifie que les adresses du pool sont joignables sur le côté extérieur et compare la source des flux avant et après la passerelle. Pour le mode overload, remplace le pool par <code>MASQUERADE</code>.</li>
+    <li>Dans l’exercice Apache, mets le serveur interne sur <code>10.0.0.2</code> si tu utilises ce plan. Teste d’abord Apache depuis le LAN. Ajoute ensuite la redirection du port choisi et l’autorisation <code>FORWARD</code> vers l’adresse et le port après translation. La route de retour du serveur doit passer par Linux.</li>
+    <li>Depuis le poste extérieur, ouvre l’adresse WAN et le port 8080. Observe le flux avant translation, puis port 80 vers le serveur. Contrôle que les connexions non prévues restent bloquées.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP2 · Distribuer le bail Wi-Fi et accéder à Internet</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Mettre la borne en 10.0.0.1, distribuer 10.0.0.2 à 10.0.0.10 côté Linux, puis tester la salle et Internet.</p>
+    <ol><li>Configure le SSID du labo et l’adresse de gestion <code>10.0.0.1/24</code>. Donne à l’interface LAN de Linux une autre IP fixe hors du pool, par exemple <code>10.0.0.254</code>. Lorsque Linux distribue les baux, garde la borne en accès/bridge sans serveur DHCP concurrent.</li>
+    <li>Dans le DHCP du labo, déclare le sous-réseau <code>10.0.0.0/24</code>, le pool <code>.2</code> à <code>.10</code>, le routeur <code>.254</code> et le DNS de l’exercice. Connecte le client et relève son adresse, masque et route. Vérifie d’abord le ping vers Linux.</li>
+    <li>Si un poste de la salle ne peut pas répondre, inspecte la route de retour et le pare-feu. Pour l’accès sortant seulement, le masquage simplifie le retour. Pour joindre le téléphone depuis la salle comme au DS, il faut un trajet approprié vers son réseau et une règle de filtrage adaptée.</li>
+    <li>Capture sur les deux interfaces en filtrant l’IP du client côté LAN. Pour le journal, ajoute un préfixe distinct et une limite de débit avant la décision de filtrage, puis rapproche l’IP du bail, l’heure et le compte de test.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP2 · Faire authentifier le Wi-Fi par FreeRADIUS</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Vérifier un mauvais et un bon mot de passe avec <code>radtest</code>, puis faire authentifier un client via la borne.</p>
+    <ol><li>Installe FreeRADIUS sur Linux. Dans la définition des clients, déclare l’adresse de la borne (NAS) et le secret de la maquette. Dans la base de comptes utilisée par le TP, prépare un utilisateur de test avec son propre mot de passe.</li>
+    <li>Lance le mode diagnostic <code>freeradius -X</code> après avoir arrêté l’instance qui occupe déjà le port. Pour un essai local, utilise <code>radtest compte motdepasse localhost 0 secret-local</code>. Le quatrième argument est le numéro du port NAS, pas le port UDP du serveur. Le secret utilisé est celui du client local déclaré.</li>
+    <li>Attends <code>Access-Reject</code> avec le mot de passe incorrect, puis <code>Access-Accept</code> avec le bon. Configure ensuite l’adresse et le port RADIUS sur la borne avec son propre secret. Refais le test depuis le terminal et corrèle le compte, la borne et les événements du journal, sans mettre les secrets dans les captures.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP3 · Rediriger une connexion HTTP et laisser passer le client autorisé</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Envoyer le client non authentifié vers le portail, puis laisser passer ses nouvelles connexions après accord de RADIUS.</p>
+    <pre class="c-code"><code>iptables -t mangle -N internet
+iptables -t mangle -A PREROUTING -i LAN -p tcp --dport 80 -j internet
+iptables -t mangle -A internet -j MARK --set-mark 80
+iptables -t nat -A PREROUTING -i LAN -p tcp --dport 80 \
+  -m mark --mark 80 -j DNAT --to-destination 10.0.0.254</code></pre>
+    <ol><li>Valide séparément le routage du TP et l’authentification RADIUS. Installe le serveur Web du portail puis contrôle que le client peut atteindre sa page locale.</li>
+    <li>Dans la maquette, commence sans exception. La requête HTTP venant du LAN reçoit la marque 80 et sa destination devient la passerelle du sujet. Compare capture et compteurs des chaînes <code>mangle</code> et <code>nat</code>.</li>
+    <li>Après succès d’authentification, ajoute une exception <code>RETURN</code> en tête de la chaîne pour le client de test identifié par la MAC. Teste sur une nouvelle connexion. Après suppression de l’exception, la redirection doit revenir. Le Web ne doit pas exécuter des commandes construites directement à partir de saisies de l’utilisateur. Pour l’intégration, valide l’IP/MAC et isole l’actualisation de la règle dans la maquette.</li></ol>
+  </div></details>
+  <details class="acc"><summary>DS pratique · Valider SSID, bail, trajet, authentification et log</summary><div class="acc-body">
+    <p><strong>Question du sujet.</strong> Montrer un SSID visible, l’accès Internet depuis le téléphone, le ping depuis la salle, l’authentification RADIUS et un journal qui identifie le trafic du téléphone.</p>
+    <ol><li>Montre le SSID puis l’adresse du téléphone. Teste l’accès Web et conserve la capture qui montre la translation sortante.</li>
+    <li>Depuis la salle, vérifie le ping de l’IP du téléphone. Coupe son Wi-Fi et relance pour confirmer qu’il s’agissait de ce chemin. Si la requête arrive sans réponse, inspecte le filtre ICMP et la route inverse.</li>
+    <li>Relève l’accord de RADIUS et montre un extrait de journal lié au bail et à l’heure du téléphone. Masque les mots de passe et réduis la capture aux échanges nécessaires au test.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/campus/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/campus/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/campus/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Les trois rôles d’un campus</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="54.083">0:54 · VLAN, ports et passerelles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="106.125">1:46 · Les trois chaînes de filtrage</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="153.875">2:33 · Le suivi des connexions</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="180.417">3:00 · NAT, PAT et adresses visibles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="229.292">3:49 · RADIUS et portail captif</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Corrigés TD et TP · 4:41</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="281.417">4:41 · TP1 · Mettre en place la passerelle</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="308.375">5:08 · TP1 · Distinguer REJECT et DROP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="332.875">5:32 · TP1 · Tester les deux traductions</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="357.375">5:57 · TP2 · Wi-Fi, DHCP et captures</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="412.000">6:52 · TP2 · Tester FreeRADIUS</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="443.375">7:23 · TP3 · Suivre une redirection du portail</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="496.708">8:16 · DS de TP · Rassembler les preuves</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
