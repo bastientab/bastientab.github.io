@@ -1,0 +1,724 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:04.155
+Écrire Main point Java, c’est écrire le texte du
+programme.
+
+00:00:04.155 --> 00:00:07.746
+La classe publique Main porte le même nom que son
+fichier.
+
+00:00:07.746 --> 00:00:11.691
+Le compilateur javac vérifie ce texte et produit du
+bytecode dans
+
+00:00:11.691 --> 00:00:13.126
+un fichier point class.
+
+00:00:13.126 --> 00:00:16.785
+La commande java lance la machine virtuelle et lui
+demande d’exécuter
+
+00:00:16.785 --> 00:00:17.783
+la classe Main.
+
+00:00:17.783 --> 00:00:20.868
+Elle commence dans la méthode main, qui est statique
+car elle
+
+00:00:20.868 --> 00:00:22.832
+peut être appelée sans créer d’objet Main.
+
+00:00:23.183 --> 00:00:26.540
+Une variable de type int contient un entier.
+
+00:00:26.540 --> 00:00:29.812
+Sept divisé par deux avec des entiers donne trois.
+
+00:00:29.812 --> 00:00:33.100
+En mettant deux point zéro, on demande une division
+avec un
+
+00:00:33.100 --> 00:00:35.192
+réel et on obtient trois virgule cinq.
+
+00:00:35.192 --> 00:00:39.175
+Une variable String contient une référence vers un
+objet texte.
+
+00:00:39.175 --> 00:00:42.999
+Pour vérifier le contenu de deux chaînes, utilise
+equals.
+
+00:00:42.999 --> 00:00:46.721
+Le double égal compare les références si les deux
+opérandes sont
+
+00:00:46.721 --> 00:00:47.398
+des objets.
+
+00:00:47.767 --> 00:00:51.516
+Si j’affecte capteur à autre, je copie une référence.
+
+00:00:51.516 --> 00:00:55.143
+C’est comme si deux étiquettes désignaient le même
+appareil.
+
+00:00:55.143 --> 00:00:59.425
+Quand je désactive l’appareil avec la deuxième
+étiquette, la première désigne
+
+00:00:59.425 --> 00:01:01.761
+toujours le même appareil, maintenant désactivé.
+
+00:01:01.761 --> 00:01:05.436
+Une chaîne fonctionne différemment : trim renvoie une
+nouvelle chaîne sans
+
+00:01:05.436 --> 00:01:06.773
+les espaces aux bords.
+
+00:01:06.773 --> 00:01:10.486
+Pour conserver cette version dans la variable,
+réaffecte-la.
+
+00:01:10.850 --> 00:01:13.839
+L’indice zéro désigne la première case.
+
+00:01:13.839 --> 00:01:17.552
+Pour trois éléments, les indices valides vont de zéro
+à deux.
+
+00:01:17.552 --> 00:01:20.714
+Un tableau garde la taille fixée à la création.
+
+00:01:20.714 --> 00:01:23.704
+Une liste peut grandir quand on appelle add.
+
+00:01:23.704 --> 00:01:26.903
+Le type entre chevrons indique ce qu’on peut y mettre.
+
+00:01:26.903 --> 00:01:30.161
+Pour un capteur, la liste permet de conserver les
+différents objets
+
+00:01:30.161 --> 00:01:32.234
+dans l’ordre où tu les as ajoutés.
+
+00:01:32.600 --> 00:01:35.959
+Pour retrouver la dernière valeur, pars de la longueur
+trois et
+
+00:01:35.959 --> 00:01:36.570
+enlève un.
+
+00:01:36.570 --> 00:01:39.462
+Tu obtiens l’indice deux et la valeur quinze.
+
+00:01:39.462 --> 00:01:43.278
+Si tu écris directement trois comme indice, tu essaies
+de sortir
+
+00:01:43.278 --> 00:01:43.972
+du tableau.
+
+00:01:43.972 --> 00:01:47.679
+C’est aussi pour ça que la condition d’une boucle
+d’indices s’écrit
+
+00:01:47.679 --> 00:01:49.364
+strictement inférieur à la longueur.
+
+00:01:49.364 --> 00:01:53.138
+Avec une liste, le raisonnement est le même, mais tu
+appelles
+
+00:01:53.138 --> 00:01:53.481
+size.
+
+00:01:53.808 --> 00:01:56.356
+Une condition donne vrai ou faux.
+
+00:01:56.356 --> 00:01:59.373
+Un if choisit un bloc à exécuter, un else traite le
+
+00:01:59.373 --> 00:02:02.389
+cas contraire et un switch convient bien pour des
+choix de
+
+00:02:02.389 --> 00:02:02.937
+menu numérotés.
+
+00:02:02.937 --> 00:02:06.546
+For rassemble le départ, la condition et la mise à
+jour
+
+00:02:06.546 --> 00:02:07.202
+de l’indice.
+
+00:02:07.202 --> 00:02:10.217
+While continue tant que la condition est vraie.
+
+00:02:10.217 --> 00:02:13.611
+Break quitte la boucle et continue passe au tour
+suivant.
+
+00:02:13.611 --> 00:02:16.909
+Pour relire un menu, vérifie que le choix de quitter
+peut
+
+00:02:16.909 --> 00:02:17.508
+être atteint.
+
+00:02:17.850 --> 00:02:21.513
+Dans un for, l’initialisation se fait une seule fois.
+
+00:02:21.513 --> 00:02:24.773
+Avant chaque tour, la condition est évaluée.
+
+00:02:24.773 --> 00:02:28.486
+Avec zéro, un puis deux, on exécute le bloc.
+
+00:02:28.486 --> 00:02:31.158
+L’incrément se fait après le bloc.
+
+00:02:31.158 --> 00:02:34.995
+Quand i atteint trois, la condition devient fausse et
+Java exécute
+
+00:02:34.995 --> 00:02:36.391
+la suite du programme.
+
+00:02:36.391 --> 00:02:40.379
+Si tu remplaces inférieur par inférieur ou égal, tu
+ajoutes un
+
+00:02:40.379 --> 00:02:40.741
+tour.
+
+00:02:41.100 --> 00:02:44.579
+Une classe est la description des objets qu’on veut
+fabriquer.
+
+00:02:44.579 --> 00:02:47.325
+Un objet possède ses propres données.
+
+00:02:47.325 --> 00:02:51.957
+Le constructeur reçoit les informations nécessaires et
+initialise son état.
+
+00:02:51.957 --> 00:02:55.740
+Le mot private évite que n’importe quel morceau du
+programme écrive
+
+00:02:55.740 --> 00:02:57.116
+directement dans le capteur.
+
+00:02:57.116 --> 00:03:00.792
+En exposant des méthodes comme désactiver, la classe
+garde le contrôle
+
+00:03:00.792 --> 00:03:02.128
+de ce qui change.
+
+00:03:02.475 --> 00:03:06.406
+Un capteur de température est un capteur, avec une
+mesure en
+
+00:03:06.406 --> 00:03:06.763
+plus.
+
+00:03:06.763 --> 00:03:10.342
+La sous-classe hérite des méthodes accessibles du
+parent.
+
+00:03:10.342 --> 00:03:14.419
+Le constructeur de l’enfant délègue au parent le
+travail commun avec
+
+00:03:14.419 --> 00:03:14.790
+super.
+
+00:03:14.790 --> 00:03:18.345
+Les attributs privés du parent font toujours partie de
+l’objet, mais
+
+00:03:18.345 --> 00:03:20.930
+l’enfant passe par les accesseurs pour les consulter.
+
+00:03:21.267 --> 00:03:24.886
+Ici la variable est déclarée Capteur, donc la méthode
+doit exister
+
+00:03:24.886 --> 00:03:27.847
+dans ce type pour que le compilateur accepte l’appel.
+
+00:03:27.847 --> 00:03:31.964
+À l’exécution, le vrai objet est un capteur de
+température.
+
+00:03:31.964 --> 00:03:34.562
+Java appelle sa redéfinition.
+
+00:03:34.562 --> 00:03:38.212
+Une classe abstraite peut contenir du code commun et
+imposer des
+
+00:03:38.212 --> 00:03:39.207
+méthodes sans corps.
+
+00:03:39.207 --> 00:03:42.601
+Chaque sous-classe concrète doit alors fournir sa
+version.
+
+00:03:42.601 --> 00:03:46.670
+Ajouter une méthode avec d’autres paramètres, c’est
+une surcharge.
+
+00:03:47.017 --> 00:03:50.594
+Une exception est un objet qui signale une difficulté.
+
+00:03:50.594 --> 00:03:52.396
+Throw la lance.
+
+00:03:52.396 --> 00:03:55.766
+Throws annonce à l’appelant qu’une exception peut
+remonter.
+
+00:03:55.766 --> 00:03:59.377
+Catch reçoit ce qui a effectivement été lancé et
+permet de
+
+00:03:59.377 --> 00:04:00.361
+décider quoi faire.
+
+00:04:00.361 --> 00:04:04.203
+Pour une exception vérifiée, le compilateur exige de
+la traiter ou
+
+00:04:04.203 --> 00:04:05.251
+de la déclarer.
+
+00:04:05.251 --> 00:04:09.533
+Number Format Exception est non vérifiée : le
+compilateur n’impose rien,
+
+00:04:09.533 --> 00:04:11.869
+mais ton menu peut évidemment l’intercepter.
+
+00:04:12.225 --> 00:04:14.896
+Un fichier ouvert est une ressource.
+
+00:04:14.896 --> 00:04:18.940
+Si une lecture échoue, la suite normale du bloc est
+interrompue.
+
+00:04:18.940 --> 00:04:22.481
+Finally permet de placer la fermeture sur le chemin
+normal et
+
+00:04:22.481 --> 00:04:23.768
+le chemin qui échoue.
+
+00:04:23.768 --> 00:04:27.206
+Avec un try avec ressources, Java s’occupe de fermer
+le lecteur
+
+00:04:27.206 --> 00:04:28.768
+à la sortie du bloc.
+
+00:04:28.768 --> 00:04:32.089
+Cela ne fait pas disparaître les erreurs de lecture :
+il
+
+00:04:32.089 --> 00:04:34.503
+faut encore traiter ou propager I O Exception.
+
+00:04:34.850 --> 00:04:38.406
+Pour résoudre la question du triangle, numérote les
+lignes à partir
+
+00:04:38.406 --> 00:04:39.052
+de un.
+
+00:04:39.052 --> 00:04:42.647
+À chaque ligne tu enlèves un espace et tu ajoutes deux
+
+00:04:42.647 --> 00:04:42.974
+étoiles.
+
+00:04:42.974 --> 00:04:46.308
+Pour la ligne i, écris hauteur moins i espaces puis
+deux
+
+00:04:46.308 --> 00:04:47.521
+i moins un étoiles.
+
+00:04:47.521 --> 00:04:50.805
+La dernière ligne utilise donc zéro espace.
+
+00:04:50.805 --> 00:04:54.704
+Teste trois lignes pour vérifier la forme, puis huit
+pour comparer
+
+00:04:54.704 --> 00:04:55.413
+à l’énoncé.
+
+00:04:55.767 --> 00:04:58.168
+Le segment contient deux points.
+
+00:04:58.168 --> 00:05:01.587
+Donne à Point deux accesseurs pour lire ses
+coordonnées.
+
+00:05:01.587 --> 00:05:05.859
+Le constructeur à quatre nombres fabrique deux points
+et appelle le
+
+00:05:05.859 --> 00:05:06.636
+constructeur principal.
+
+00:05:06.636 --> 00:05:10.999
+La méthode longueur utilise les différences
+horizontale et verticale.
+
+00:05:10.999 --> 00:05:16.354
+Si tu déplaces seulement l’origine jusqu’à trois,
+zéro, l’écart horizontal disparaît.
+
+00:05:16.354 --> 00:05:18.633
+La longueur devient quatre.
+
+00:05:18.975 --> 00:05:22.914
+La question Figure demande de garantir trois méthodes
+dans toutes les
+
+00:05:22.914 --> 00:05:25.420
+figures : afficher, changer l’échelle et tourner.
+
+00:05:25.420 --> 00:05:29.121
+Écris les trois signatures abstraites dans la classe
+de base.
+
+00:05:29.121 --> 00:05:33.472
+L’exercice suivant demande un numéro différent à
+chaque objet créé.
+
+00:05:33.472 --> 00:05:36.756
+Un compteur statique est partagé entre les objets.
+
+00:05:36.756 --> 00:05:40.222
+Incrémente-le au moment de construire puis garde une
+copie dans le
+
+00:05:40.222 --> 00:05:41.168
+champ de l’objet.
+
+00:05:41.168 --> 00:05:44.378
+Trois constructions donnent un, deux, trois.
+
+00:05:44.725 --> 00:05:48.744
+Pour vérifier le compteur, garde les deux objets dans
+des variables.
+
+00:05:48.744 --> 00:05:52.035
+Quand le deuxième est créé, le compteur de classe
+passe à
+
+00:05:52.035 --> 00:05:52.334
+deux.
+
+00:05:52.334 --> 00:05:55.570
+Le premier a déjà copié la valeur un dans son propre
+
+00:05:55.570 --> 00:05:55.864
+champ.
+
+00:05:55.864 --> 00:05:59.244
+Affiche le numéro du premier encore une fois : il doit
+
+00:05:59.244 --> 00:05:59.859
+rester un.
+
+00:05:59.859 --> 00:06:03.734
+Si les deux objets affichent deux, tu as probablement
+rendu le
+
+00:06:03.734 --> 00:06:05.496
+numéro individuel statique par erreur.
+
+00:06:05.850 --> 00:06:09.636
+Le sujet demande d’abord de répartir les
+responsabilités.
+
+00:06:09.636 --> 00:06:12.675
+Utilisateur représente une personne.
+
+00:06:12.675 --> 00:06:17.210
+Message transporte le texte et les numéros qui
+permettent d’identifier l’expéditeur
+
+00:06:17.210 --> 00:06:18.447
+et le destinataire.
+
+00:06:18.447 --> 00:06:22.148
+Le service gère la liste des utilisateurs et les
+boîtes.
+
+00:06:22.148 --> 00:06:25.870
+Commence par construire deux utilisateurs, puis teste
+l’envoi du premier vers
+
+00:06:25.870 --> 00:06:28.239
+le second avant de développer le menu.
+
+00:06:28.600 --> 00:06:32.486
+Pour plus de vingt utilisateurs, demande le nom avant
+d’afficher les
+
+00:06:32.486 --> 00:06:32.839
+choix.
+
+00:06:32.839 --> 00:06:36.546
+Un numéro est plus fiable que la position dans une
+liste
+
+00:06:36.546 --> 00:06:36.883
+filtrée.
+
+00:06:36.883 --> 00:06:40.703
+À la réception, garde l’ordre d’arrivée et n’efface
+aucun message quand
+
+00:06:40.703 --> 00:06:42.092
+tu affiches la liste.
+
+00:06:42.092 --> 00:06:45.266
+Seule la consultation d’un message le retire.
+
+00:06:45.266 --> 00:06:49.003
+Teste un envoi, une première lecture, puis une
+deuxième lecture qui
+
+00:06:49.003 --> 00:06:51.381
+doit signaler que le message n’existe plus.
+
+00:06:51.767 --> 00:06:55.111
+Imagine que ta boîte contient vingt-et-un messages.
+
+00:06:55.111 --> 00:06:58.653
+Le premier écran affiche les indices zéro à dix-neuf.
+
+00:06:58.653 --> 00:07:01.572
+Quand tu demandes le suivant, pars de vingt et prends
+la
+
+00:07:01.572 --> 00:07:04.491
+plus petite valeur entre quarante et la taille vingt-
+et-un comme borne
+
+00:07:04.491 --> 00:07:04.756
+exclue.
+
+00:07:04.756 --> 00:07:07.795
+Il reste exactement une case à afficher.
+
+00:07:07.795 --> 00:07:11.376
+Ce test attrape l’erreur classique qui consiste à
+essayer d’afficher des
+
+00:07:11.376 --> 00:07:13.003
+cases au-delà de la boîte.
+
+00:07:13.350 --> 00:07:16.866
+Le TP part d’un capteur commun que tu testes seul.
+
+00:07:16.866 --> 00:07:20.800
+Ensuite chaque sous-classe ajoute sa mesure et sa
+forme d’analyse.
+
+00:07:20.800 --> 00:07:24.121
+Place ensuite les trois objets dans une seule liste.
+
+00:07:24.121 --> 00:07:27.712
+La boucle appelle analyser sur une référence Capteur.
+
+00:07:27.712 --> 00:07:30.396
+Chaque objet répond avec sa version.
+
+00:07:30.396 --> 00:07:34.476
+Si tu ajoutes un quatrième type, la boucle peut rester
+identique.
+
+00:07:34.850 --> 00:07:38.676
+Pour le premier objet, teste l’identité avant même de
+t’occuper de
+
+00:07:38.676 --> 00:07:39.371
+la mesure.
+
+00:07:39.371 --> 00:07:42.646
+Le constructeur de la classe de base stocke la pièce
+et
+
+00:07:42.646 --> 00:07:44.432
+l’identifiant et met actif à vrai.
+
+00:07:44.432 --> 00:07:49.138
+Le constructeur du capteur de température s’occupe
+ensuite de la température.
+
+00:07:49.138 --> 00:07:52.447
+Désactive le capteur avec la méthode héritée.
+
+00:07:52.447 --> 00:07:55.723
+Si l’identifiant et la pièce restent corrects, tu as
+bien séparé
+
+00:07:55.723 --> 00:07:58.403
+l’état commun de la mesure propre à la sous-classe.
+
+00:07:58.767 --> 00:08:02.098
+Le TP démarre par un test qui réussit, vingt-trois
+virgule cinq
+
+00:08:02.098 --> 00:08:05.126
+avec un point dans la saisie, puis la chaîne bonjour.
+
+00:08:05.126 --> 00:08:07.908
+Dans le second cas la conversion échoue.
+
+00:08:07.908 --> 00:08:11.260
+Un numéro quinze est bien un entier, mais il ne
+désigne
+
+00:08:11.260 --> 00:08:12.479
+aucun des trois capteurs.
+
+00:08:12.479 --> 00:08:15.906
+Enfin une température de cent cinquante est bien un
+nombre, pourtant
+
+00:08:15.906 --> 00:08:18.398
+elle est interdite par la règle du capteur.
+
+00:08:18.398 --> 00:08:22.013
+Déclenche une exception avant d’écraser l’ancienne
+valeur.
+
+00:08:22.350 --> 00:08:26.418
+Le TP te demande de refuser l’analyse d’un capteur
+désactivé.
+
+00:08:26.418 --> 00:08:28.967
+Place le contrôle avant l’analyse.
+
+00:08:28.967 --> 00:08:32.986
+Ajoute throws à la méthode intermédiaire quand elle
+transmet l’exception.
+
+00:08:32.986 --> 00:08:36.349
+Dans ton menu, tu peux intercepter une erreur précise
+ou toutes
+
+00:08:36.349 --> 00:08:38.795
+les erreurs de capteur avec leur classe mère.
+
+00:08:38.795 --> 00:08:42.010
+Si tu écris les deux catchs, mets le type précis avant
+
+00:08:42.010 --> 00:08:42.594
+le parent.
+
+00:08:42.933 --> 00:08:46.548
+Dans le fichier du TP, chaque ligne contient cinq
+champs.
+
+00:08:46.548 --> 00:08:49.980
+Contrôle le type de capteur et convertis la valeur
+dans le
+
+00:08:49.980 --> 00:08:50.604
+bon type.
+
+00:08:50.604 --> 00:08:53.435
+Place le catch de format à l’intérieur de la boucle
+pour
+
+00:08:53.435 --> 00:08:56.266
+que la ligne trois incorrecte n’empêche pas les lignes
+quatre et
+
+00:08:56.266 --> 00:08:57.038
+cinq d’être lues.
+
+00:08:57.038 --> 00:09:00.592
+Place le traitement des erreurs d’ouverture autour du
+fichier.
+
+00:09:00.592 --> 00:09:03.723
+En transmettant la cause originale à l’exception de
+format, tu gardes
+
+00:09:03.723 --> 00:09:06.854
+à la fois le numéro de ligne et l’erreur de
+conversion.
+
+00:09:07.225 --> 00:09:10.128
+Garde le même format dans les deux sens.
+
+00:09:10.128 --> 00:09:13.279
+À la lecture, le moins un dans split garde aussi le
+
+00:09:13.279 --> 00:09:14.712
+dernier champ s’il est vide.
+
+00:09:14.712 --> 00:09:17.848
+Tu peux donc afficher une erreur explicite de valeur
+au lieu
+
+00:09:17.848 --> 00:09:18.989
+de perdre le champ.
+
+00:09:18.989 --> 00:09:23.008
+Dans une exception de format, conserve le texte et son
+numéro.
+
+00:09:23.008 --> 00:09:26.884
+Transmets aussi l’exception de conversion au
+constructeur parent pour permettre à
+
+00:09:26.884 --> 00:09:28.646
+get cause de la retrouver.
+
+00:09:29.017 --> 00:09:33.002
+Dans ton compte rendu SmartParking, on retrouve le
+même mécanisme que
+
+00:09:33.002 --> 00:09:34.089
+pour les capteurs.
+
+00:09:34.089 --> 00:09:38.244
+Voiture et moto sont deux véhicules qui calculent leur
+prix différemment.
+
+00:09:38.244 --> 00:09:41.917
+Mets-les dans le même parking et vérifie six euros
+puis deux
+
+00:09:41.917 --> 00:09:42.251
+euros.
+
+00:09:42.251 --> 00:09:46.197
+Essaie ensuite un troisième véhicule avec une capacité
+de deux.
+
+00:09:46.197 --> 00:09:49.126
+La vérification doit précéder l’ajout.
+
+00:09:49.126 --> 00:09:53.151
+Après l’erreur, affiche la liste et vérifie qu’elle
+contient toujours exactement
+
+00:09:53.151 --> 00:09:54.249
+les deux premiers.

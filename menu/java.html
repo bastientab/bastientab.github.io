@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consolidation de programmation — Java et POO — BUT2 R&amp;T</title>
+  <meta name="description" content="Écrire des classes, faire travailler plusieurs types d’objets ensemble et gérer les erreurs de saisie ou de fichier.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/java.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">Java</span></div>
+      <h1 class="page-title" id="page-title">Consolidation de programmation — Java et POO</h1>
+      <p class="page-lead">Écrire des classes, faire travailler plusieurs types d’objets ensemble et gérer les erreurs de saisie ou de fichier.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S3</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/java/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <p>On part de petits programmes, puis on assemble les mêmes mécanismes dans une messagerie et dans l’application SmartBuilding.</p>
+
+  <div class="c-block">
+    <h3>1. Que se passe-t-il quand tu lances un programme ?</h3>
+    <pre class="c-code"><code>javac Main.java
+java Main</code></pre>
+    <ol>
+      <li>Le <strong>JDK</strong> fournit les outils de développement, dont le compilateur <code>javac</code>. Il vérifie le fichier source et produit un fichier <code>.class</code> contenant du bytecode, un format intermédiaire.</li>
+      <li>La <strong>JVM</strong> (machine virtuelle Java) exécute ce bytecode. Un même fichier compilé peut fonctionner sur plusieurs systèmes si la JVM et les dépendances sont compatibles.</li>
+      <li>Pour les programmes du cours, la porte d’entrée est <code>public static void main(String[] args)</code>. <code>static</code> permet de l’appeler au niveau de la classe, <code>void</code> indique qu’elle ne renvoie aucune valeur et <code>args</code> contient les paramètres saisis après le nom de la classe.</li>
+    </ol>
+    <p>Une classe publique <code>Main</code> se place dans <code>Main.java</code>. Les accolades délimitent les blocs, et la plupart des instructions simples finissent par <code>;</code>. En général une classe prend un nom comme <code>CapteurTemperature</code>, une méthode un nom comme <code>getIdentifiant</code> et une constante un nom comme <code>TARIF_HORAIRE</code>.</p>
+    <details class="acc"><summary>Aller plus loin sur les packages et les imports</summary><div class="acc-body">
+      <p>Un <strong>package</strong> organise tes classes et évite les collisions de noms. <code>import java.util.ArrayList;</code> permet ensuite d’écrire <code>ArrayList</code> en abrégé. <code>String</code>, <code>Math</code> et <code>System</code> viennent de <code>java.lang</code>, importé automatiquement. Si <code>Main</code> appartient au package <code>tp3</code>, lance <code>java -cp out tp3.Main</code> après avoir compilé vers <code>out</code>.</p>
+    </div></details>
+  </div>
+
+  <div class="c-block">
+    <h3>2. Quelle valeur contient une variable ?</h3>
+    <div class="c-table-wrap"><table class="c-table">
+      <thead><tr><th scope="col">Exemple</th><th scope="col">Ce que Java fait</th></tr></thead>
+      <tbody>
+        <tr><td><code>int q = 7 / 2;</code></td><td>Division entière, résultat 3.</td></tr>
+        <tr><td><code>double q = 7 / 2.0;</code></td><td>Division réelle, résultat 3.5.</td></tr>
+        <tr><td><code>7 % 2</code></td><td>Reste de la division entière, soit 1.</td></tr>
+        <tr><td><code>String nom = "Alice";</code></td><td>La variable contient une référence à un objet texte.</td></tr>
+        <tr><td><code>Capteur autre = capteur;</code></td><td>Les deux variables désignent le même objet. Le modifier via l’une se voit via l’autre.</td></tr>
+      </tbody>
+    </table></div>
+    <p>Les huit types primitifs sont <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>char</code> et <code>boolean</code>. Une variable locale doit recevoir une valeur avant d’être lue. Le cast <code>(int) 3.9</code> supprime la partie fractionnaire, tandis que <code>Math.round(3.9)</code> arrondit à 4. Déclarer <code>double q = 7 / 2</code> ne change pas le calcul à droite, qui vaut déjà 3.</p>
+    <p><code>String</code> est immuable, c’est-à-dire que ses méthodes de transformation renvoient une nouvelle chaîne. <code>nom.trim()</code> ne modifie donc pas <code>nom</code> si tu ne réaffectes pas le résultat. Pour comparer le contenu, utilise <code>equals</code>. <code>==</code> compare l’identité des objets pour des références. <code>null</code> représente une référence qui ne désigne aucun objet.</p>
+    <details class="acc"><summary>Lire et découper une chaîne sans se tromper d’indice</summary><div class="acc-body">
+      <p>Pour <code>"Java"</code>, <code>length()</code> vaut 4, <code>charAt(0)</code> donne <code>'J'</code> et <code>substring(1,3)</code> donne <code>"av"</code>, car la borne finale est exclue. <code>indexOf</code> retourne l’indice trouvé ou −1. Dans le TP, <code>split(";", -1)</code> garde aussi un dernier champ vide pour que tu puisses le détecter.</p>
+    </div></details>
+  </div>
+
+  <div class="c-block">
+    <h3>3. Quand utiliser un tableau, une liste ou une boucle ?</h3>
+    <pre class="c-code"><code>int[] mesures = {4, 8, 15};
+List&lt;Integer&gt; historiques = new ArrayList&lt;&gt;();
+for (int valeur : mesures) {
+    historiques.add(valeur);
+}</code></pre>
+    <ul>
+      <li>Un tableau a une taille fixée et se lit avec <code>mesures[i]</code>. Une liste s’agrandit avec <code>add</code> et se lit avec <code>get(i)</code>. L’indice commence à 0, donc le dernier indice valide est la taille moins 1. Pour parcourir la structure, <code>array.length</code> est un champ et <code>liste.size()</code> une méthode.</li>
+      <li>Pour des types primitifs dans une liste, Java utilise des types objets comme <code>Integer</code> pour <code>int</code>. Le type entre chevrons impose ce que la liste peut accepter.</li>
+      <li><code>if</code> et <code>else</code> sélectionnent un chemin. Avec <code>&amp;&amp;</code>, si la gauche est fausse, Java n’évalue pas la droite. Par exemple, <code>x != null &amp;&amp; x.length() &gt; 0</code> évite d’appeler une méthode sans objet. Un <code>switch</code> convient aux choix numérotés du menu.</li>
+      <li><code>for</code> sert quand tu peux décrire départ, condition et mise à jour. <code>for (Capteur c : capteurs)</code> parcourt directement les éléments. <code>while</code> teste avant d’entrer, <code>do…while</code> exécute une première fois avant de tester. <code>break</code> quitte la boucle et <code>continue</code> saute au tour suivant.</li>
+    </ul>
+  </div>
+
+  <div class="c-block">
+    <h3>4. Pourquoi créer des objets au lieu de tout mettre dans Main ?</h3>
+    <p>Imagine deux capteurs dans deux salles. La <strong>classe</strong> décrit les données et les actions communes. Chaque <strong>instance</strong> a son propre état. Le constructeur est appelé par <code>new</code>. <code>this.piece = piece</code> affecte le paramètre <code>piece</code> à l’attribut de l’objet courant.</p>
+    <pre class="c-code"><code>class Capteur {
+    private final String identifiant;
+    private boolean actif = true;
+
+    Capteur(String identifiant) {
+        this.identifiant = identifiant;
+    }
+
+    public boolean isActif() { return actif; }
+    public void desactiver() { actif = false; }
+}</code></pre>
+    <p>L’<strong>encapsulation</strong> consiste à rendre les données privées et à proposer des méthodes qui contrôlent leurs changements. <code>final</code> empêche d’affecter de nouveau <code>identifiant</code>. <code>static</code> appartient à la classe entière, ce qui permet d’avoir un compteur partagé avec un numéro distinct stocké dans chaque objet.</p>
+    <details class="acc"><summary>Visibilité et passage de paramètres</summary><div class="acc-body">
+      <p><code>private</code> limite l’accès à la classe. Le niveau sans mot-clé donne accès aux classes du même package. <code>protected</code> donne aussi accès aux sous-classes dans les conditions prévues par Java. <code>public</code> expose le membre. Java passe les paramètres par valeur : avec un objet, la méthode reçoit une copie de sa référence et peut donc modifier le même objet, mais la réaffectation du paramètre ne change pas la variable de l’appelant.</p>
+    </div></details>
+  </div>
+
+  <div class="c-block">
+    <h3>5. Un capteur, plusieurs comportements</h3>
+    <ol>
+      <li>Dans <code>Capteur</code>, place ce que tous partagent : identifiant, pièce, état. <strong>Hériter</strong>, c’est définir une sous-classe comme <code>CapteurTemperature extends Capteur</code>. Avec <code>super(identifiant, piece)</code>, le constructeur transmet au parent la partie commune.</li>
+      <li>Définis une opération <code>analyser()</code> commune. L’attribut température et son contrôle appartiennent à la sous-classe. <code>@Override</code> signale que tu redéfinis une méthode héritée avec la même signature. Une <strong>surcharge</strong> donne au même nom une autre liste de paramètres.</li>
+      <li>Écris <code>Capteur c = new CapteurTemperature(...)</code>. Le compilateur vérifie que <code>Capteur</code> possède la méthode appelée. À l’exécution, la JVM sélectionne la version de l’objet concret. Ce <strong>polymorphisme</strong> permet une seule boucle pour les trois capteurs.</li>
+    </ol>
+    <p>Quand une base doit fournir des méthodes communes et imposer une méthode particulière aux enfants, rends-la <code>abstract</code>. <code>public abstract void analyser();</code> est une signature sans corps. On instancie une sous-classe concrète, qui doit fournir sa version.</p>
+    <div class="c-callout"><p>Relis la relation dans les deux sens. Un capteur de température <strong>est un</strong> capteur. Un segment <strong>contient</strong> deux points, donc on lui donne deux attributs <code>Point</code>.</p></div>
+  </div>
+
+  <div class="c-block">
+    <h3>6. Où faut-il traiter une exception ?</h3>
+    <div class="c-table-wrap"><table class="c-table">
+      <thead><tr><th scope="col">Mot-clé</th><th scope="col">Rôle</th><th scope="col">Dans SmartBuilding</th></tr></thead>
+      <tbody>
+        <tr><td><code>throw</code></td><td>Lance l’objet exception.</td><td>Le capteur refuse une température hors limites.</td></tr>
+        <tr><td><code>throws</code></td><td>Déclare une exception qui peut remonter.</td><td>La méthode auxiliaire laisse le menu décider quoi afficher.</td></tr>
+        <tr><td><code>try / catch</code></td><td>Tente une opération et choisit le traitement pour l’erreur reçue.</td><td>La saisie « bonjour » donne un message et le menu repasse au choix suivant.</td></tr>
+        <tr><td><code>finally</code></td><td>Exécute le nettoyage à la sortie du bloc, y compris quand une exception remonte.</td><td>Fermer un flux que tu as déjà réussi à ouvrir.</td></tr>
+      </tbody>
+    </table></div>
+    <p><code>IOException</code> est une exception <strong>vérifiée</strong> : le compilateur impose de la traiter ou de la déclarer. <code>NumberFormatException</code> et <code>IndexOutOfBoundsException</code> héritent de <code>RuntimeException</code> et sont non vérifiées. Tu peux quand même les traiter lorsqu’une saisie peut les provoquer. Mets les <code>catch</code> spécifiques avant ceux des classes mères.</p>
+    <p>Dans la classe métier, vérifie d’abord la valeur, puis modifie l’objet seulement si elle est valide. À la frontière de l’application (menu ou lecture de fichier), gère l’erreur et donne une suite à l’utilisateur. Pour un flux, préfère un <code>try</code> avec ressources, comme <code>try (BufferedReader lecteur = Files.newBufferedReader(chemin))</code>. Il ferme automatiquement le lecteur, même en cas d’exception.</p>
+  </div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <p>Teste chaque méthode avec une entrée simple, puis avec la situation qui doit échouer. Les sorties ci-dessous sont les contrôles à obtenir avec les valeurs indiquées.</p>
+  <h3 class="c-h3">TD1 · Consolidation de programmation</h3>
+  <details class="acc" open><summary>1 · Afficher le triangle d’étoiles</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Afficher un triangle isocèle de hauteur saisie, avec la dernière ligne au bord gauche.</p>
+    <ol>
+      <li>Lis un entier <code>hauteur</code> et décide quoi afficher si cette hauteur n’est pas positive. Numérote les lignes à partir de 1.</li>
+      <li>Sur la ligne <code>i</code>, écris <code>hauteur - i</code> espaces puis <code>2 * i - 1</code> étoiles, sans retour à la ligne entre les deux. Utilise deux boucles internes ou <code>String.repeat</code>.</li>
+      <li>Avec une hauteur de 3, attends deux espaces puis une étoile, un espace puis trois étoiles, zéro espace puis cinq étoiles. Avec 8, la dernière ligne affiche 15 étoiles.</li>
+    </ol>
+    <pre class="c-code"><code>for (int i = 1; i &lt;= hauteur; i++) {
+    System.out.println(" ".repeat(hauteur - i) + "*".repeat(2 * i - 1));
+}</code></pre>
+  </div></details>
+  <details class="acc"><summary>2 · Manipuler un segment à partir de deux points</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Définir les deux constructeurs de <code>Segment</code>, calculer sa longueur, déplacer chaque extrémité et afficher les coordonnées.</p>
+    <ol>
+      <li>Dans <code>Point</code>, ajoute <code>getX()</code> et <code>getY()</code> pour lire les coordonnées privées. Dans <code>Segment</code>, déclare les deux champs privés de type <code>Point</code>.</li>
+      <li>Le constructeur à deux points les affecte à l’origine et à l’extrémité. Si chaque segment doit avoir ses propres points, crée une copie des coordonnées à ce moment. Le constructeur à quatre nombres délègue avec <code>this(new Point(xOr, yOr), new Point(xExt, yExt))</code>.</li>
+      <li>Calcule <code>dx = extremite.getX() - origine.getX()</code> et la même différence pour <code>dy</code>. Retourne <code>Math.hypot(dx, dy)</code>. Chaque méthode de déplacement appelle <code>deplace</code> sur le bon point, puis <code>affiche</code> affiche les deux extrémités.</li>
+    </ol>
+    <div class="c-callout"><p><strong>Vérifie.</strong> De (0,0) à (3,4), la longueur vaut 5. Après avoir déplacé l’origine de (3,0), elle vaut 4. L’extrémité n’a pas bougé.</p></div>
+  </div></details>
+  <details class="acc"><summary>3 · Imposer trois opérations à chaque figure</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Écrire une classe abstraite <code>Figure</code> qui impose l’affichage, l’homothétie et la rotation.</p>
+    <pre class="c-code"><code>abstract class Figure {
+    public abstract void affiche();
+    public abstract void homothetie(double coeff);
+    public abstract void rotation(double angle);
+}</code></pre>
+    <p>Place seulement la signature dans la base, sans accolades de méthode. Dans une sous-classe concrète, implémente les trois signatures avec <code>@Override</code>. Retire l’une des méthodes pour voir le compilateur signaler le contrat incomplet, puis remets-la.</p>
+  </div></details>
+  <details class="acc"><summary>4 · Donner un numéro unique à chaque nouvel objet</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Attribuer 1 au premier objet et incrémenter sans réutiliser les identifiants. Renvoyer le numéro de l’objet et le dernier numéro attribué.</p>
+    <pre class="c-code"><code>class ObjetNumerote {
+    private static int dernierIdent;
+    private final int ident;
+
+    ObjetNumerote() { ident = ++dernierIdent; }
+    int getIdent() { return ident; }
+    static int getIdentMax() { return dernierIdent; }
+}</code></pre>
+    <p>Le compteur est commun, le numéro est propre à chaque objet. Crée trois objets et vérifie les numéros 1, 2, 3, puis vérifie que le premier garde 1 et que <code>ObjetNumerote.getIdentMax()</code> vaut 3.</p>
+  </div></details>
+
+  <h3 class="c-h3">TP1 · Messagerie instantanée</h3>
+  <details class="acc"><summary>Concevoir les classes, les conteneurs et l’inscription</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Proposer les classes, les méthodes, leur ordre d’implémentation et les structures utilisées.</p>
+    <ol>
+      <li>Commence par <code>Utilisateur</code> (id, nom, prénom, courriel) et <code>Message</code> (id, expéditeur, destinataire, texte). Rends les champs privés. Un id sert à retrouver un objet même si l’affichage est filtré.</li>
+      <li>Dans le service, stocke les utilisateurs par identifiant avec une <code>LinkedHashMap&lt;Integer, Utilisateur&gt;</code> si tu veux retrouver directement un id et garder l’ordre d’inscription. Prévois par destinataire une <code>ArrayList&lt;Message&gt;</code> à laquelle on ajoute les messages en fin de liste.</li>
+      <li>Implémente l’inscription avant l’envoi. Nettoie le nom et le prénom avec <code>trim</code>, vérifie les champs obligatoires, puis rejette un doublon sur le couple nom-prénom. Deux personnes ayant le même nom et des prénoms différents restent possibles. Attribue le numéro et crée la boîte seulement après ces vérifications.</li>
+      <li>Teste deux inscriptions valides, puis une inscription avec le même couple nom-prénom et une avec un champ vide. Vérifie que les échecs ne modifient pas la liste des inscrits.</li>
+    </ol>
+  </div></details>
+  <details class="acc"><summary>Envoyer, chercher, paginer et supprimer après lecture</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Gérer la sélection du destinataire au-delà de 20 inscrits, afficher les messages par pages de 20 et supprimer celui qui est lu.</p>
+    <ol>
+      <li>Vérifie que l’expéditeur et le destinataire existent et sont distincts. Au-delà de 20 utilisateurs, filtre les candidats par nom ou par couple nom-prénom, puis affiche leurs vrais identifiants. Lors de la sélection, vérifie que l’id choisi correspond à un destinataire autorisé.</li>
+      <li>Ajoute un message valide à la fin de la boîte du destinataire. Un ajout à la fin, suivi d’une lecture de gauche à droite, donne l’ordre d’arrivée. Donne un identifiant au message lui-même pour distinguer deux messages du même expéditeur.</li>
+      <li>Pour la page <code>p</code> numérotée depuis 0, l’intervalle va de <code>p * 20</code> inclus à <code>Math.min(debut + 20, boite.size())</code> exclu. Vérifie d’abord que la page existe. Parcourir les entrées pour remplir la page ne change pas la boîte.</li>
+      <li>Pour consulter, recherche l’id dans la boîte du destinataire courant. Affiche le contenu puis supprime uniquement ce message. Le contrôle doit précéder la suppression. Une saisie non numérique, un id inconnu, une page absente ou un envoi invalide donnent un message et un retour au menu.</li>
+    </ol>
+    <div class="c-callout"><p><strong>Test global.</strong> Avec 21 messages dans une boîte, regarde les pages 20 puis 1. Lis un message et vérifie que lui seul disparaît. Recommence avec le même id et vérifie que le menu reste utilisable.</p></div>
+  </div></details>
+
+  <h3 class="c-h3">SmartBuilding · Héritage et polymorphisme</h3>
+  <p>Cette partie s’appuie sur le déroulé de ton compte rendu de TP2. Le sujet original n’a pas été retrouvé dans les fichiers disponibles.</p>
+  <details class="acc"><summary>Construire les capteurs, puis les traiter dans la même boucle</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Faire une première classe <code>Capteur</code>, puis spécialiser température, luminosité et présence.</p>
+    <ol>
+      <li>Commence avec <code>identifiant</code>, <code>piece</code> et <code>actif</code>. Dans le constructeur de base, affecte l’identité et la pièce, et initialise <code>actif</code> à <code>true</code>. Vérifie avec C01 dans « Salle A », puis désactive et relis l’état.</li>
+      <li>Pour chaque type de mesure, appelle <code>super(identifiant, piece)</code> dans le constructeur et ajoute son champ. La température et la luminosité sont numériques. La présence est un booléen. Ajoute les accesseurs et redéfinis l’affichage quand la mesure doit être incluse.</li>
+      <li>Place les trois objets dans une liste <code>ArrayList&lt;Capteur&gt;</code>. Essaie <code>c.analyser()</code> dans une boucle. L’affichage propre à chaque mesure confirme que Java appelle le corps de la sous-classe.</li>
+      <li>Une fois les sous-classes testées, rends <code>Capteur</code> abstraite et impose <code>analyser()</code> si c’est le contrat retenu. Remplace les créations directes de <code>Capteur</code> par celles des sous-classes.</li>
+    </ol>
+  </div></details>
+
+  <h3 class="c-h3">TP3 · Exceptions, fichiers et menu SmartBuilding</h3>
+  <details class="acc"><summary>1 à 3 · Intercepter une mauvaise saisie ou un numéro absent</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Tester la saisie d’une température, puis distinguer une mauvaise conversion et un indice hors limites.</p>
+    <ol>
+      <li>Lis une ligne avec <code>nextLine()</code> puis appelle <code>Double.parseDouble(texte.trim())</code>. « 23.5 », « 18 » et « -4.5 » se convertissent. « bonjour », « abc » et « 25,3 » échouent avec ce parseur, qui attend un point décimal.</li>
+      <li>Entoure la conversion et l’action qui en dépend d’un <code>try</code>, puis affiche « veuillez saisir un nombre valide » dans le <code>catch (NumberFormatException e)</code>. L’objet ne doit être modifié qu’après une conversion réussie.</li>
+      <li>Liste les trois capteurs avec les indices 0, 1, 2. Lis le numéro avec <code>Integer.parseInt</code>. L’entrée « bonjour » échoue à la conversion, alors que 15 se convertit et provoque <code>IndexOutOfBoundsException</code> sur <code>get(15)</code>. Intercepte-les séparément, ou vérifie les bornes avant <code>get</code>.</li>
+    </ol>
+  </div></details>
+  <details class="acc"><summary>4 à 8 · Règles de mesure, propagation et hiérarchie</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Refuser les valeurs incohérentes, empêcher l’analyse d’un capteur inactif et transmettre les détails de l’erreur à l’appelant.</p>
+    <ol>
+      <li>Une température est valide entre −50 et 80 inclus. La luminosité doit être positive ou nulle. Teste 22.5, −70, 150, puis 600, 0 et −50. Contrôle avant d’affecter le champ. Écarte aussi <code>NaN</code> et les infinis si tu acceptes des saisies <code>double</code>.</li>
+      <li>Définis <code>CapteurException extends Exception</code>, puis <code>CapteurInactifException</code> et <code>ValeurCapteurInvalideException</code> qui en héritent. Dans <code>analyserCapteur</code>, teste l’état et lance la première si nécessaire. Déclare <code>throws CapteurInactifException</code> si la méthode laisse l’erreur remonter.</li>
+      <li>Dans le menu, tente une analyse sur un capteur actif puis désactivé. Intercepte d’abord les types précis si tu veux des messages différents. Un seul <code>catch (CapteurException e)</code> convient quand tu veux traiter toutes les erreurs de capteur de la même façon.</li>
+      <li>Dans <code>ValeurCapteurInvalideException</code>, conserve l’identifiant et la valeur reçue dans des champs et expose des accesseurs. Après <code>t1.setTemperature(150)</code>, le bloc de gestion doit pouvoir afficher T01 et 150.0 à partir de l’exception.</li>
+    </ol>
+  </div></details>
+  <details class="acc"><summary>9 à 12 · Sauvegarder et recharger les capteurs</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Sauvegarder dans <code>capteurs.txt</code>, garantir la fermeture, puis recréer les capteurs et traiter le fichier absent.</p>
+    <pre class="c-code"><code>TEMPERATURE;T01;Salle A;true;21.5
+LUMINOSITE;L01;Hall;true;640.0
+PRESENCE;P01;Salle B;true;true</code></pre>
+    <ol>
+      <li>Sérialise un objet par ligne avec les cinq champs du sujet. Garde le même encodage et le même ordre des champs au chargement. Si les champs texte proviennent d’une saisie, refuse les points-virgules et retours à la ligne ou définis une règle d’échappement.</li>
+      <li>Teste d’abord une écriture simple. Avec <code>finally</code>, ferme seulement le flux déjà ouvert. Compare ensuite avec <code>try (var writer = Files.newBufferedWriter(chemin))</code> et écris les lignes dans le bloc. Si une écriture échoue, le flux est fermé et l’<code>IOException</code> peut remonter.</li>
+      <li>Au chargement, lis ligne à ligne et reconstruis l’objet en fonction du premier champ. Applique la mesure et l’état avant d’ajouter le capteur à la collection. Affiche les trois objets obtenus. Teste un chemin qui n’existe pas. Avec <code>Files.newBufferedReader</code>, un chemin absent se signale normalement par <code>NoSuchFileException</code>, sous-classe d’<code>IOException</code>.</li>
+    </ol>
+  </div></details>
+  <details class="acc"><summary>13 à 17 · Garder les lignes valides et relancer le menu</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Distinguer ligne mal formée, cause d’origine et erreur de fichier, puis réunir les opérations dans le menu final.</p>
+    <ol>
+      <li>Compte les vraies lignes dès <code>readLine()</code>. Fais <code>ligne.split(";", -1)</code>, exige cinq champs, vérifie l’état textuel <code>true</code> ou <code>false</code> puis sélectionne le type de capteur. Convertis la mesure avec le bon parseur et passe par les mêmes validations que pour une modification au clavier.</li>
+      <li>Crée <code>FormatCapteurException</code> avec le numéro, la ligne et la cause. Si la conversion lance <code>NumberFormatException</code>, passe-la au constructeur parent avec <code>super(message, cause)</code>. <code>getCause()</code> permet ensuite de savoir pourquoi le format a échoué.</li>
+      <li>Dans la boucle, intercepte seulement l’erreur de format autour de la ligne courante. Compte-la et continue. Intercepte l’erreur de fichier à l’extérieur. Pour le scénario de la partie 14, attends T01, L01, P01 et T03 chargés, et une ligne incorrecte signalée au numéro 3.</li>
+      <li>Dans le menu final, lis le choix dans une boucle et sépare affichage, modification, activation, désactivation, analyse, chargement et sauvegarde. Teste une option invalide, un capteur absent, une mesure invalide, un capteur désactivé et un fichier absent. Après chacun de ces cas, vérifie que le menu se réaffiche et que 0 permet toujours de quitter.</li>
+    </ol>
+  </div></details>
+
+  <details class="acc"><summary>SmartParking · Mobiliser les mêmes notions dans un autre projet</summary><div class="acc-body">
+    <p>Le déroulé ci-dessous est repris de ton compte rendu SmartParking. Le sujet original n’a pas été retrouvé dans les fichiers disponibles.</p>
+    <ol>
+      <li>Dans la classe abstraite <code>Vehicule</code>, mets l’immatriculation, la marque et la durée. Vérifie que la durée est strictement positive avant de l’enregistrer. Les classes <code>Voiture</code> et <code>Moto</code> implémentent leur propre <code>calculerPrix()</code>.</li>
+      <li>Dans <code>Parking.ajouterVehicule</code>, compare la taille à la capacité avant de modifier la liste. Si elle est atteinte, lance <code>ParkingCompletException</code>. Parcours ensuite la liste avec des références <code>Vehicule</code> et appelle <code>calculerPrix()</code>.</li>
+      <li>Avec les tarifs de l’exercice, une voiture de 3 h coûte 6 € et une moto de 2 h coûte 2 €. Avec une capacité de 2, la troisième insertion doit échouer, sans modifier les deux premières entrées.</li>
+    </ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/java/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/java/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/java/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Du fichier Java au programme</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.083">0:23 · Types, références et chaînes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="70.750">1:10 · Tableaux, listes et indices</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="113.708">1:53 · Conditions et boucles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="161.000">2:41 · Classe, objet et encapsulation</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="182.375">3:02 · Héritage et constructeur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="201.167">3:21 · Polymorphisme et contrat abstrait</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="226.917">3:46 · Déclencher, propager, traiter</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="252.125">4:12 · Fermer les fichiers même en cas d’erreur</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Corrigés TD et TP · 4:34</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="274.750">4:34 · TD1 · Afficher un triangle</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="295.667">4:55 · TD1 · Construire un segment</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="318.875">5:18 · TD1 · Figure et identifiant unique</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="365.750">6:05 · TP1 · Concevoir la messagerie</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="388.500">6:28 · TP1 · Recherche, pages et lecture</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="433.250">7:13 · TP2 · Faire évoluer SmartBuilding</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="478.667">7:58 · TP3 · Séparer les erreurs</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="502.250">8:22 · TP3 · Propager une exception du capteur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="522.833">8:42 · TP3 · Charger malgré une ligne invalide</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="568.917">9:28 · SmartParking · Tester les deux tarifs</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
