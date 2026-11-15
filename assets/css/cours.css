@@ -108,6 +108,8 @@
 }
 .c-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: transparent; }
 .c-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+a.c-card[data-kind="cours"]:is(:hover, :focus-visible) { text-decoration: none; }
+a.c-card[data-kind="cours"]:is(:hover, :focus-visible) .c-card-foot > span:first-child { text-decoration: underline; }
 .c-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .c-ico {
   display: inline-grid; place-items: center; flex: none;
@@ -141,11 +143,6 @@
 .back-link:hover { color: var(--accent); }
 .c-hero-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
 .c-hero .c-ico { min-width: 58px; height: 58px; font-size: 1.1rem; border-radius: 18px; }
-.c-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.c-tag {
-  font-family: var(--mono); font-size: .78rem; padding: 5px 11px; border-radius: 999px;
-  border: 1px solid var(--line); color: var(--ink-2);
-}
 
 /* ---------- Page de cours : sommaire + contenu ---------- */
 .c-layout {
@@ -199,6 +196,26 @@
 .c-content figure { margin: 16px 0; min-width: 0; }
 .c-content figure img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
 .c-content figcaption { margin-top: 6px; color: var(--ink-2); font-size: .9rem; line-height: 1.5; }
+.c-image-zoom {
+  display: block; width: 100%; padding: 0; border: 0; border-radius: 12px;
+  background: none; cursor: zoom-in;
+}
+.c-image-zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.c-image-preview {
+  position: fixed; inset: 0; box-sizing: border-box;
+  width: 100%; height: 100%; max-width: none; max-height: none;
+  margin: 0; padding: clamp(10px, 3vw, 36px); border: 0;
+  background: transparent; overflow: hidden; cursor: zoom-out;
+}
+.c-image-preview[open] {
+  display: grid; grid-template: minmax(0, 1fr) / minmax(0, 1fr); place-items: center;
+}
+.c-image-preview::backdrop { background: rgba(15, 23, 42, .42); backdrop-filter: blur(9px); }
+.c-image-preview img {
+  display: block; max-width: 100%; max-height: 100%; object-fit: contain;
+  border-radius: 10px; background: #fff; cursor: default;
+}
+html:has(.c-image-preview[open]) { overflow: hidden; }
 .c-figure-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px 20px; align-items: center; }
 .c-figure-grid h4 { margin: 0 0 6px; }
 .c-figure-grid p, .c-figure-grid figure { margin: 0; }

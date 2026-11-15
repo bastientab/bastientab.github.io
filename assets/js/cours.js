@@ -87,6 +87,49 @@
     apply();
   }
 
+  /* ---------- Schémas : agrandissement dans la page ---------- */
+  var figures = $$('.c-content figure > img, .c-content figure > a > img');
+  var preview = document.createElement('dialog');
+  if (figures.length && typeof preview.showModal === 'function') {
+    var previewImage = document.createElement('img');
+    var opener;
+    preview.className = 'c-image-preview';
+    preview.setAttribute('aria-label', 'Image agrandie');
+    preview.appendChild(previewImage);
+    document.body.appendChild(preview);
+
+    preview.addEventListener('click', function (e) {
+      if (e.target === preview) preview.close();
+    });
+    preview.addEventListener('close', function () {
+      if (preview.open) return;
+      previewImage.removeAttribute('src');
+      opener.focus({ preventScroll: true });
+    });
+
+    figures.forEach(function (image) {
+      var trigger = image.parentElement.closest('a');
+      if (trigger && !/\.(avif|gif|jpe?g|png|svg|webp)$/i.test(new URL(trigger.href).pathname)) return;
+      if (!trigger) {
+        trigger = document.createElement('button');
+        trigger.type = 'button';
+        image.before(trigger);
+        trigger.appendChild(image);
+      }
+      trigger.classList.add('c-image-zoom');
+      trigger.setAttribute('aria-haspopup', 'dialog');
+      trigger.setAttribute('aria-label', image.alt ? 'Agrandir : ' + image.alt : 'Agrandir l’image');
+      trigger.addEventListener('click', function (e) {
+        if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        opener = trigger;
+        previewImage.alt = image.alt;
+        previewImage.src = trigger.href || image.currentSrc || image.src;
+        preview.showModal();
+      });
+    });
+  }
+
   /* ---------- Fiches : sommaire actif ---------- */
   var tocLinks = $$('.c-toc a[href^="#"]');
   if (tocLinks.length && 'IntersectionObserver' in window) {
