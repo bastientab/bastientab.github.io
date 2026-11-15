@@ -1,10 +1,10 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.796
+00:00:00.100 --> 00:00:03.750
 Imagine que tu connaisses le nom d’un resto, mais pas
 son
 
-00:00:03.796 --> 00:00:04.132
+00:00:03.750 --> 00:00:04.082
 adresse.
 
 00:00:04.082 --> 00:00:07.856
@@ -27,11 +27,11 @@ l’adresse qui
 00:00:18.462 --> 00:00:19.597
 finit par quarante-deux.
 
-00:00:19.975 --> 00:00:23.462
+00:00:19.975 --> 00:00:23.425
 Une zone, c’est la partie des noms que des serveurs
 ont
 
-00:00:23.462 --> 00:00:24.730
+00:00:23.425 --> 00:00:24.680
 la responsabilité de publier.
 
 00:00:24.680 --> 00:00:28.268
@@ -47,7 +47,7 @@ client et le nom
 00:00:32.524 --> 00:00:33.834
 du serveur de messagerie.
 
-00:00:34.183 --> 00:00:38.791
+00:00:34.183 --> 00:00:38.741
 Sur Internet, ton ordinateur s’adresse généralement à
 un résolveur.
 
@@ -64,7 +64,7 @@ de la racine puis, par exemple, de la zone point F
 00:00:47.982 --> 00:00:50.383
 R, jusqu’au serveur qui fait autorité pour le nom.
 
-00:00:50.725 --> 00:00:54.303
+00:00:50.725 --> 00:00:54.253
 En récursif, tu lui demandes le résultat final.
 
 00:00:54.253 --> 00:00:57.935
@@ -83,7 +83,7 @@ Le T T L, en secondes, indique combien de temps une
 00:01:05.264 --> 00:01:06.815
 donnée peut rester en cache.
 
-00:01:07.183 --> 00:01:09.781
+00:01:07.183 --> 00:01:09.731
 Lis cette ligne de gauche à droite.
 
 00:01:09.731 --> 00:01:12.967
@@ -99,7 +99,7 @@ Triple A, lui, sert aux adresses I P version six.
 00:01:19.915 --> 00:01:23.114
 Dans le T P, on utilise surtout le type A.
 
-00:01:23.475 --> 00:01:26.122
+00:01:23.475 --> 00:01:26.072
 N S indique les serveurs de noms.
 
 00:01:26.072 --> 00:01:29.674
@@ -115,7 +115,7 @@ pour
 00:01:35.372 --> 00:01:37.849
 que le secondaire puisse détecter la nouvelle version.
 
-00:01:38.183 --> 00:01:41.995
+00:01:38.183 --> 00:01:41.945
 M X indique à quel serveur remettre les mails du
 domaine.
 
@@ -135,11 +135,11 @@ Pour une I P version quatre, le nom de la requête
 inverse reprend les octets à l’envers, sous in addr
 arpa.
 
-00:01:55.350 --> 00:01:58.645
+00:01:55.350 --> 00:01:58.615
 Imagine que tu demandes l’adresse du resto et que
 quelqu’un te
 
-00:01:58.645 --> 00:02:00.742
+00:01:58.615 --> 00:02:00.692
 glisse la mauvaise avant le vrai renseignement.
 
 00:02:00.692 --> 00:02:04.360
@@ -150,11 +150,11 @@ garde en
 cache, d’autres clients reçoivent ensuite la mauvaise
 adresse.
 
-00:02:07.392 --> 00:02:11.031
+00:02:07.392 --> 00:02:10.997
 Pour tromper le résolveur à distance, une réponse
 forgée doit correspondre
 
-00:02:11.031 --> 00:02:12.686
+00:02:10.997 --> 00:02:12.636
 à la requête en cours.
 
 00:02:12.636 --> 00:02:17.048
@@ -169,11 +169,11 @@ frais, absents du
 cache, et en essayant de faire accepter une fausse
 délégation.
 
-00:02:24.350 --> 00:02:28.021
+00:02:24.350 --> 00:02:27.979
 Si deux adresses A portent le même nom, elles forment
 un
 
-00:02:28.021 --> 00:02:28.688
+00:02:27.979 --> 00:02:28.638
 jeu d’enregistrements.
 
 00:02:28.638 --> 00:02:31.065
@@ -190,7 +190,7 @@ vient
 00:02:37.611 --> 00:02:38.503
 du signataire reconnu.
 
-00:02:38.850 --> 00:02:41.901
+00:02:38.850 --> 00:02:41.851
 R R sig contient la signature.
 
 00:02:41.851 --> 00:02:45.559
@@ -209,11 +209,11 @@ comment savoir
 00:02:52.394 --> 00:02:53.849
 que c’est la bonne ?
 
-00:02:54.183 --> 00:02:57.958
+00:02:54.183 --> 00:02:57.912
 Le résolveur commence avec une clé qu’il a déjà décidé
 de
 
-00:02:57.958 --> 00:02:58.301
+00:02:57.912 --> 00:02:58.251
 croire.
 
 00:02:58.251 --> 00:03:00.959
@@ -233,10 +233,10 @@ l’empreinte à
 00:03:09.561 --> 00:03:11.658
 celle de la clé de la fille.
 
-00:03:12.017 --> 00:03:14.890
+00:03:12.017 --> 00:03:14.865
 Dans le schéma à deux clés de ton T P, la
 
-00:03:14.890 --> 00:03:17.764
+00:03:14.865 --> 00:03:17.714
 K S K signe l’ensemble des clés publiques de la zone.
 
 00:03:17.714 --> 00:03:20.937
@@ -249,11 +249,11 @@ résolveur peut
 00:03:24.720 --> 00:03:26.440
 contrôler les signatures des réponses.
 
-00:03:26.767 --> 00:03:30.364
+00:03:26.767 --> 00:03:30.330
 Quand le serveur dit que le nom n’existe pas, un
 attaquant
 
-00:03:30.364 --> 00:03:32.000
+00:03:30.330 --> 00:03:31.950
 pourrait inventer cette absence aussi.
 
 00:03:31.950 --> 00:03:35.847
@@ -266,11 +266,11 @@ existe,
 00:03:38.883 --> 00:03:41.092
 mais qui ne possède pas le type demandé.
 
-00:03:41.433 --> 00:03:44.794
+00:03:41.433 --> 00:03:44.755
 N sec indique quels noms encadrent le nom manquant
 dans l’ordre
 
-00:03:44.794 --> 00:03:45.710
+00:03:44.755 --> 00:03:45.660
 de la zone.
 
 00:03:45.660 --> 00:03:48.994
@@ -291,7 +291,7 @@ bien ce qu’il
 00:03:57.920 --> 00:03:58.271
 demandait.
 
-00:03:58.642 --> 00:04:01.693
+00:03:58.642 --> 00:04:01.643
 Le primaire détient la zone de référence.
 
 00:04:01.643 --> 00:04:04.327
@@ -310,15 +310,15 @@ A X F R désigne un transfert complet et I X
 00:04:13.785 --> 00:04:15.675
 F R un transfert des changements.
 
-00:04:16.017 --> 00:04:19.322
+00:04:16.017 --> 00:04:19.298
 T sig permet aux deux serveurs de s’authentifier à
 l’aide d’un
 
-00:04:19.322 --> 00:04:22.628
+00:04:19.298 --> 00:04:22.580
 secret partagé et de vérifier que leurs messages n’ont
 pas été
 
-00:04:22.628 --> 00:04:22.928
+00:04:22.580 --> 00:04:22.878
 modifiés.
 
 00:04:22.878 --> 00:04:26.837
@@ -328,7 +328,7 @@ serveur.
 00:04:26.837 --> 00:04:30.244
 Il ne possède pas la copie autoritaire du secondaire.
 
-00:04:30.600 --> 00:04:32.536
+00:04:30.600 --> 00:04:32.486
 Première question.
 
 00:04:32.486 --> 00:04:36.175
@@ -350,7 +350,7 @@ Si je recommence et que le T T L baisse, c’est
 00:04:47.029 --> 00:04:49.165
 un indice que la réponse vient du cache.
 
-00:04:49.517 --> 00:04:53.977
+00:04:49.517 --> 00:04:53.927
 Avec plus no recurse, je retire la demande de
 recherche récursive.
 
@@ -367,10 +367,10 @@ En capture réseau, je filtre sur D N S et j’observe
 00:05:04.805 --> 00:05:07.126
 les serveurs interrogés et le type demandé.
 
-00:05:07.475 --> 00:05:10.803
+00:05:07.475 --> 00:05:10.769
 Sur la machine Debian du T P, j’installe Bind neuf et
 
-00:05:10.803 --> 00:05:12.316
+00:05:10.769 --> 00:05:12.266
 le paquet qui fournit Dig.
 
 00:05:12.266 --> 00:05:14.521
@@ -380,17 +380,17 @@ Bind répond aux requêtes.
 Dig permet d’en envoyer pour vérifier le travail du
 serveur.
 
-00:05:18.725 --> 00:05:21.758
+00:05:18.725 --> 00:05:21.742
 Je vérifie ensuite que le service nommé named tourne
 et qu’il
 
-00:05:21.758 --> 00:05:24.791
+00:05:21.742 --> 00:05:24.759
 écoute sur le port cinquante-trois, en U D P et en
 
-00:05:24.791 --> 00:05:27.824
+00:05:24.759 --> 00:05:27.776
 T C P. Si le service refuse de démarrer, j’ouvre son
 
-00:05:27.824 --> 00:05:28.100
+00:05:27.776 --> 00:05:28.050
 journal.
 
 00:05:28.050 --> 00:05:31.412
@@ -400,7 +400,7 @@ je reprends
 00:05:31.412 --> 00:05:32.940
 ce nom dans les commandes.
 
-00:05:33.308 --> 00:05:36.556
+00:05:33.308 --> 00:05:36.506
 Le fichier named point conf est le point d’entrée.
 
 00:05:36.506 --> 00:05:40.636
@@ -413,7 +413,7 @@ Pour une zone du T P, je travaille donc dans named
 00:05:43.552 --> 00:05:45.673
 point conf point local, sur N S un.
 
-00:05:46.058 --> 00:05:49.575
+00:05:46.058 --> 00:05:49.525
 Je mets le nom sé-cu point R T après zone.
 
 00:05:49.525 --> 00:05:53.643
@@ -429,10 +429,10 @@ Jusque-là on a déclaré la zone.
 00:05:59.146 --> 00:06:02.405
 Maintenant, il faut remplir le fichier annoncé.
 
-00:06:02.767 --> 00:06:06.743
+00:06:02.767 --> 00:06:06.698
 Dans D B point sé-cu, arobase désigne le nom de la
 
-00:06:06.743 --> 00:06:07.105
+00:06:06.698 --> 00:06:07.055
 zone.
 
 00:06:07.055 --> 00:06:10.983
@@ -450,7 +450,7 @@ Puis j’annonce les deux serveurs, N S un et N S
 00:06:18.529 --> 00:06:18.856
 deux.
 
-00:06:19.225 --> 00:06:22.191
+00:06:19.225 --> 00:06:22.141
 J’ajoute les adresses des serveurs et du client.
 
 00:06:22.141 --> 00:06:24.604
@@ -474,11 +474,11 @@ On fait pareil pour imap et smtp.
 00:06:37.043 --> 00:06:39.788
 Le point final garde les noms complets.
 
-00:06:40.142 --> 00:06:43.667
+00:06:40.142 --> 00:06:43.639
 Je vérifie la syntaxe de Bind avec named check conf,
 puis
 
-00:06:43.667 --> 00:06:46.551
+00:06:43.639 --> 00:06:46.501
 le fichier de la zone avec named check zone.
 
 00:06:46.501 --> 00:06:49.454
@@ -491,7 +491,7 @@ Si le numéro de série n’a pas changé alors que je
 modifie la zone plus tard, le secondaire peut garder
 sa version.
 
-00:06:55.683 --> 00:06:59.053
+00:06:55.683 --> 00:06:59.003
 Avec Dig, j’interroge directement N S un.
 
 00:06:59.003 --> 00:07:02.770
@@ -507,11 +507,11 @@ Je répète le contrôle avec N S, M X et C
 00:07:08.367 --> 00:07:10.621
 name afin de vérifier chaque type demandé.
 
-00:07:10.975 --> 00:07:14.867
+00:07:10.975 --> 00:07:14.833
 Pour la zone inverse du réseau cent soixante-douze
 point vingt-cinq point
 
-00:07:14.867 --> 00:07:16.637
+00:07:14.833 --> 00:07:16.587
 zéro, j’inverse ces trois octets.
 
 00:07:16.587 --> 00:07:20.067
@@ -525,11 +525,11 @@ Le P T R pointe vers client point sé-cu point R
 T. Dig tiret x transforme l’adresse en requête
 inverse.
 
-00:07:26.850 --> 00:07:30.336
+00:07:26.850 --> 00:07:30.309
 Sur le poste client, je renseigne l’adresse du serveur
 D N
 
-00:07:30.336 --> 00:07:33.504
+00:07:30.309 --> 00:07:33.454
 S dans les paramètres réseau, puis le domaine de
 recherche.
 
@@ -549,14 +549,14 @@ Un ping en échec peut aussi être lié au réseau ou
 00:07:43.869 --> 00:07:44.741
 à un filtrage.
 
-00:07:45.100 --> 00:07:47.847
+00:07:45.100 --> 00:07:47.824
 Je génère la clé sur N S un et je mets
 
-00:07:47.847 --> 00:07:50.593
+00:07:47.824 --> 00:07:50.547
 la même déclaration de clé dans un fichier protégé sur
 les
 
-00:07:50.593 --> 00:07:51.093
+00:07:50.547 --> 00:07:51.043
 deux machines.
 
 00:07:51.043 --> 00:07:55.502
@@ -572,11 +572,11 @@ Le secret ne doit pas apparaître dans la capture ou le
 00:07:59.205 --> 00:07:59.805
 compte rendu.
 
-00:08:00.142 --> 00:08:03.624
+00:08:00.142 --> 00:08:03.594
 Sur N S deux, j’indique qu’il est secondaire et qu’il
 contacte
 
-00:08:03.624 --> 00:08:05.840
+00:08:03.594 --> 00:08:05.790
 le primaire avec la clé T sig.
 
 00:08:05.790 --> 00:08:09.663
@@ -593,14 +593,14 @@ le secondaire répond avec autorité.
 Dans Wireshark, je repère le transfert et les champs T
 sig.
 
-00:08:19.392 --> 00:08:22.402
+00:08:19.392 --> 00:08:22.379
 Le T P demande de comparer deux requêtes S O A
 
-00:08:22.402 --> 00:08:25.413
+00:08:22.379 --> 00:08:25.367
 vers la racine, puis d’afficher les clés de la zone
 point
 
-00:08:25.413 --> 00:08:25.960
+00:08:25.367 --> 00:08:25.910
 F R.
 
 00:08:25.910 --> 00:08:30.298
@@ -615,7 +615,7 @@ Je cherche les R R sig, leur type couvert et, dans
 00:08:36.443 --> 00:08:38.325
 les flags, le bit A D.
 
-00:08:38.683 --> 00:08:42.348
+00:08:38.683 --> 00:08:42.298
 La seule présence d’une signature ne dit pas qu’elle
 est valable.
 
@@ -638,14 +638,14 @@ Pour la date demandée dans le T P, je lis le
 00:08:55.325 --> 00:08:58.082
 champ d’expiration du R R sig, en temps universel.
 
-00:08:58.433 --> 00:09:01.380
+00:08:58.433 --> 00:09:01.361
 Sur le primaire, je crée les deux paires de clés avec
 
-00:09:01.380 --> 00:09:04.328
+00:09:01.361 --> 00:09:04.290
 les paramètres du T P. J’ajoute les enregistrements
 publics issus des
 
-00:09:04.328 --> 00:09:06.203
+00:09:04.290 --> 00:09:06.153
 fichiers point key au fichier de zone.
 
 00:09:06.153 --> 00:09:09.939
@@ -655,15 +655,15 @@ servent à
 00:09:09.939 --> 00:09:10.283
 signer.
 
-00:09:10.642 --> 00:09:13.654
+00:09:10.642 --> 00:09:13.630
 Je signe le fichier de zone depuis le dossier qui
 contient
 
-00:09:13.654 --> 00:09:16.667
+00:09:13.630 --> 00:09:16.619
 les clés, puis je fais pointer la déclaration vers le
 fichier
 
-00:09:16.667 --> 00:09:16.941
+00:09:16.619 --> 00:09:16.891
 signé.
 
 00:09:16.891 --> 00:09:19.562
@@ -676,11 +676,11 @@ requête ne
 00:09:23.273 --> 00:09:25.298
 recevra aucune signature de la zone.
 
-00:09:25.642 --> 00:09:29.338
+00:09:25.642 --> 00:09:29.292
 Je vérifie d’abord les clés publiées, puis je demande
 un nom
 
-00:09:29.338 --> 00:09:29.674
+00:09:29.292 --> 00:09:29.624
 absent.
 
 00:09:29.624 --> 00:09:33.079
@@ -696,7 +696,7 @@ je compare
 00:09:39.367 --> 00:09:40.224
 les preuves obtenues.
 
-00:09:40.600 --> 00:09:42.573
+00:09:40.600 --> 00:09:42.523
 Dernière question.
 
 00:09:42.523 --> 00:09:45.933
@@ -718,11 +718,11 @@ Je vérifie d’abord que N S un répond et sert bien
 00:09:55.332 --> 00:09:55.979
 les signatures.
 
-00:09:56.350 --> 00:09:59.945
+00:09:56.350 --> 00:09:59.908
 Si le relais répond serve fail, je compare la même
 question
 
-00:09:59.945 --> 00:10:01.252
+00:09:59.908 --> 00:10:01.202
 avec plus C D.
 
 00:10:01.202 --> 00:10:04.833
@@ -742,7 +742,7 @@ bloquer
 00:10:12.408 --> 00:10:13.837
 à cause de son contrôle.
 
-00:10:14.183 --> 00:10:18.448
+00:10:14.183 --> 00:10:18.398
 Notre zone privée n’a pas de délégation signée depuis
 la racine.
 
@@ -763,11 +763,11 @@ Je vérifie no error, la signature et le bit A D.
 00:10:32.148 --> 00:10:35.359
 C’est la validation du relais qu’on voulait démontrer.
 
-00:10:35.725 --> 00:10:39.744
+00:10:35.725 --> 00:10:39.709
 Reprends maintenant la requête normale vers N S deux
 après avoir
 
-00:10:39.744 --> 00:10:41.571
+00:10:39.709 --> 00:10:41.521
 contrôlé et rechargé sa configuration.
 
 00:10:41.521 --> 00:10:44.525
@@ -780,10 +780,10 @@ lire A D.
 Dans cette dernière requête, je laisse le résolveur
 faire son contrôle.
 
-00:10:49.892 --> 00:10:53.026
+00:10:49.892 --> 00:10:52.991
 Quand tout fonctionne, je lis no error et je vois le
 
-00:10:53.026 --> 00:10:54.450
+00:10:52.991 --> 00:10:54.400
 S O A sous Answer.
 
 00:10:54.400 --> 00:10:57.709
