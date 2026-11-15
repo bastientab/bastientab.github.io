@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Algorithmique et programmation Python — Prépa ISIMA</title>
+  <meta name="description" content="Variables, entrées-sorties, conditions et chaînes en Python.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-python.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--python" aria-hidden="true"><img src="../assets/revisions/visuels/python.svg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Algorithmique et programmation Python</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block" id="valeurs">
+  <h3>1. Faire évoluer les valeurs d’un programme</h3>
+  <p>Une <strong>instruction</strong> demande une action. Une <strong>expression</strong> calcule une valeur. Dans <code>val = 2 * val</code>, Python évalue d’abord l’expression à droite, puis associe le nouveau résultat au nom <code>val</code>. Si <code>val</code> vaut 7 avant cette ligne, il vaut 14 après. Pour suivre un programme, écris la valeur avant et après chaque affectation.</p>
+  <table><thead><tr><th>Instruction</th><th>État de val</th></tr></thead><tbody><tr><td><code>val = 7</code></td><td>7</td></tr><tr><td><code>val = 2 * val</code></td><td>14</td></tr><tr><td><code>print(val)</code></td><td>14, avec un affichage dans le terminal</td></tr></tbody></table>
+  <p>Le <strong>type</strong> indique les opérations possibles. <code>7</code> est un entier, <code>7.0</code> un flottant, <code>"7"</code> un texte et <code>True</code> un booléen. <code>=</code> change la valeur associée à un nom. <code>==</code> compare deux valeurs et produit un booléen.</p>
+</div>
+<div class="c-block" id="entrees">
+  <h3>2. Lire une saisie, calculer et afficher</h3>
+  <p><code>input()</code> renvoie toujours une chaîne. Si tu veux calculer avec un entier, convertis avec <code>int()</code>. Pour un réel saisi avec un point décimal, utilise <code>float()</code>. Une saisie incompatible avec le format de conversion provoque une <code>ValueError</code>. Dans les TD, on peut commencer par suivre la convention de saisie donnée par le sujet.</p>
+  <figure><img loading="lazy" src="../assets/revisions/prepa-python/schemas/saisie.png" alt="La saisie 7 est lue comme chaîne, convertie en entier, puis multipliée pour afficher 14."><figcaption>Le type change au moment de la conversion. Avec la chaîne <code>"7"</code>, la multiplication par 2 produirait <code>"77"</code>.</figcaption></figure>
+  <p>Pour les opérations, <code>/</code> donne un quotient réel, <code>//</code> donne le quotient entier arrondi vers le bas et <code>%</code> donne le reste cohérent avec ce quotient. Ainsi <code>17 == (17 // 5) * 5 + (17 % 5)</code>. <code>**</code> calcule une puissance. Pour afficher proprement, une chaîne formatée comme <code>f"{a} + {b} = {a+b}"</code> insère les valeurs et le calcul aux endroits indiqués.</p>
+</div>
+<div class="c-block" id="conditions">
+  <h3>3. Tester une condition avant de choisir une branche</h3>
+  <p><code>and</code> exige que les deux conditions soient vraies. <code>or</code> en exige au moins une. <code>not</code> inverse la valeur logique. <code>0 &lt;= n &lt; 20</code> vérifie les deux bornes avec une seule expression. Sur une plage, écris toujours si chaque borne est incluse.</p>
+  <p>Python évalue <code>and</code> et <code>or</code> de gauche à droite. Dans <code>b == 0 or a // b &gt; 5</code>, quand <code>b</code> vaut zéro, la première partie suffit. Python ne tente donc aucune division. Cet arrêt dès que la décision est connue s’appelle le <strong>court-circuit</strong>.</p>
+  <p><code>if</code> exécute un bloc seulement si son test réussit. <code>elif</code> essaie une autre condition quand les précédentes échouent. <code>else</code> prend le cas restant. Un bloc correspond aux lignes décalées du même niveau. Deux <code>if</code> successifs peuvent tous deux s’exécuter et le second lit les valeurs déjà modifiées par le premier.</p>
+</div>
+<div class="c-block" id="chaines">
+  <h3>4. Manipuler des chaînes de caractères</h3>
+  <p>Une chaîne est une suite ordonnée de caractères. <code>s[0]</code> lit le premier caractère si la chaîne est non vide. <code>s[-1]</code> lit le dernier. <code>s[1:4]</code> prend les indices 1, 2 et 3. <code>len(s)</code> compte les caractères de la chaîne et <code>+</code> colle deux textes.</p>
+  <p>Les méthodes <code>.lower()</code> et <code>.upper()</code> renvoient de nouvelles chaînes. Pour interpréter <code>" Français "</code>, <code>langue.strip().lower()</code> enlève les blancs aux extrémités et uniformise la casse. Pour tester une seule voyelle majuscule, demande à la fois <code>len(y) == 1</code> et <code>y in "AEIOUY"</code>. La condition sur la longueur évite d’accepter la chaîne vide ou une sous-chaîne de plusieurs lettres.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+  <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+  <p>Les deux supports retrouvés portent sur les bases du semestre. Les boucles, fonctions et structures de données avancées demandent leurs supports pour être développées au même niveau.</p>
+  <ul>
+    <li><a href="#td1-double">TD1 · Types, saisies et calculs</a></li>
+    <li><a href="#td1-affichage">TD1 · Mettre en forme une sortie</a></li>
+    <li><a href="#td2-logique">TD2 · Écrire et contrôler les conditions</a></li>
+    <li><a href="#td2-if">TD2 · Comparer deux programmes et lire les blocs</a></li>
+    <li><a href="#td2-texte">TD2 · Chaînes et conditions combinées</a></li>
+    <li><a href="#td2-duree">TD2 · Décomposer une durée et gérer les cas limites</a></li>
+  </ul>
+</section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <details class="acc" id="td1-double"><summary>TD1, ex. 1 et 3 · Doubler un entier et calculer avec deux réels</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Lire un entier dans <code>val</code>, doubler sa valeur, puis l’afficher. Dans l’exercice 3, lire deux réels et afficher leur somme et leur produit.</p>
+    <pre class="c-code"><code>val = int(input("Entier ? "))
+val = 2 * val
+print(val)</code></pre>
+    <p>Avec 7, la sortie est 14. Si tu enlèves <code>int()</code>, <code>val</code> contient la chaîne <code>"7"</code>. <code>2 * val</code> répète cette chaîne. Pour l’exercice 3, lis <code>x</code> et <code>y</code> avec <code>float()</code>. Avec 3.25 et 7, contrôle <code>x + y = 10.25</code> et <code>x * y = 22.75</code>.</p>
+  </div></details>
+  <details class="acc" id="td1-affichage"><summary>TD1, ex. 2, 7 à 9 · Mettre en forme le damier et les résultats</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Saisir A et B, afficher le damier A–B–A puis B–A–B puis A–B–A, et produire une ligne de la forme <code>A-B-A-B!</code>.</p>
+    <pre class="c-code"><code>print(a, b, a)
+print(b, a, b)
+print(a, b, a)
+print(a, b, a, b, sep="-", end="!\n")</code></pre>
+    <p>Chaque <code>print</code> termine sa ligne. Pour coller le point d’exclamation au dernier nombre, utilise <code>end</code>. Dans les trois exercices de calcul, identifie l’opération à partir des unités et de l’énoncé. <code>heures_par_semaine * semaines</code> donne des heures, <code>longueur * largeur</code> donne une aire et <code>2 ** n</code> calcule la puissance. Avec 3, le dernier résultat vaut 8.</p>
+  </div></details>
+  <details class="acc" id="td2-logique"><summary>TD2, ex. 1 et 2 · Compter les cas et éviter la division par zéro</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Déterminer les entiers qui vérifient <code>A &gt;= 3 and A &lt; 5</code> et <code>A &gt;= 3 or A &lt; 5</code>. Tester ensuite si le quotient entier de a par b dépasse 5 ou si b vaut 0.</p>
+    <ol><li>Avec <code>and</code>, l’entier doit satisfaire les deux inégalités. Il reste 3 et 4. Avec <code>or</code>, tout entier inférieur à 3 satisfait la deuxième condition et tout entier supérieur ou égal à 3 satisfait la première. Tous les entiers passent.</li><li>Écris <code>b == 0 or a // b &gt; 5</code>. Essaie <code>a=20,b=0</code> pour vérifier l’absence d’erreur, puis <code>a=20,b=4</code> pour vérifier que 5 est exclu, et enfin <code>a=20,b=3</code> pour vérifier le cas vrai.</li><li>Pour « exactement un entier impair », calcule le nombre de conditions vraies. <code>sum((a % 2 != 0, b % 2 != 0, c % 2 != 0)) == 1</code> compte les trois booléens. Une écriture avec <code>or</code> seul exprimerait « au moins un ».</li></ol>
+  </div></details>
+  <details class="acc" id="td2-if"><summary>TD2, ex. 4, 6 et 9 · Choisir entre if, elif et plusieurs if</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Comparer un programme qui fait <code>3*n+1</code> si n est impair et <code>n//2</code> sinon à un programme qui effectue deux <code>if</code> successifs. Écrire ensuite la condition pour une année bissextile.</p>
+    <ol><li>Avec n=3, le premier test réussit. La nouvelle valeur est 10. Dans le programme avec <code>else</code>, la branche de division est écartée et la sortie est 10. Dans celui avec le second <code>if</code>, ce dernier lit 10, constate que la valeur est paire et la divise. La sortie est 5.</li><li>Pour l’année bissextile, utilise <code>annee % 400 == 0 or (annee % 4 == 0 and annee % 100 != 0)</code>. 1900 échoue, 2000 réussit, 2024 réussit et 2023 échoue. Ces quatre tests couvrent les règles et leurs exceptions.</li><li>Dans l’exercice 9, valide d’abord <code>1 &lt;= n &lt;= 100</code>. Pour le premier diviseur, teste 2 puis 3 jusqu’à 6 dans une chaîne <code>if</code>/<code>elif</code>. Pour tous les diviseurs, écris des <code>if</code> indépendants. Pour 12, les sorties sont respectivement 2 et la suite 2, 3, 4, 6.</li></ol>
+  </div></details>
+  <details class="acc" id="td2-texte"><summary>TD2, ex. 5 et 7 · Comparer une langue et valider un caractère</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Choisir la salutation selon la langue et déterminer si <code>x</code> est une lettre minuscule et si <code>y</code> est la même en majuscule.</p>
+    <p>Normalise d’abord la langue. Teste <code>langue == "français"</code>, puis <code>langue == "anglais"</code> dans un <code>elif</code> et traite les autres saisies par <code>else</code>. Pour l’alphabet latin non accentué, teste <code>len(x) == 1 and "a" &lt;= x &lt;= "z" and y == x.upper()</code>. Vérifie <code>("b","B")</code>, <code>("b","b")</code> et <code>("","")</code> avant de conclure.</p>
+  </div></details>
+  <details class="acc" id="td2-duree"><summary>TD2, ex. 8 · Décomposer 93 901 secondes</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Convertir le nombre de secondes en jours, heures, minutes et secondes, en omettant les quantités nulles et en accordant les unités.</p>
+    <pre class="c-code"><code>total = int(input("Donner un nombre de secondes : "))
+jours, reste = divmod(total, 86_400)
+heures, reste = divmod(reste, 3_600)
+minutes, secondes = divmod(reste, 60)</code></pre>
+    <p><code>divmod(x,y)</code> renvoie le quotient entier et le reste ensemble. Après un jour, il reste 7501 secondes. Après deux heures, il reste 301 secondes. Après cinq minutes, il reste 1 seconde. Pour l’affichage, ajoute une unité seulement si la quantité est positive. Dans ce cas, écris le mot au singulier si elle vaut 1 et au pluriel sinon. Avec 93 900, tu obtiens « 1 jour, 2 heures, 5 minutes ».</p>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-python/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-python/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-python/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · De la saisie au résultat</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="49.042">0:49 · Quotient, reste et conditions</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="90.542">1:30 · Branches et chaînes</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="133.958">2:13 · TD1 · Doubler puis afficher</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="159.083">2:39 · TD2 · Éviter la division par zéro</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="183.750">3:03 · TD2 · Deux if et une valeur modifiée</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="212.792">3:32 · TD2 · Reconnaître une année bissextile</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="239.125">3:59 · TD2 · Décomposer 93 901 secondes</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="./#credits-visuels">Crédits des visuels</a>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
