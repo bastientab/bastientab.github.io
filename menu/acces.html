@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -96,6 +96,7 @@
     <li>Pour l’accès et les options comme l’IPTV, l’opérateur peut identifier l’abonné grâce au compte PPP, à la ligne, au port ou à des informations remontées par le relais DHCP. Le bail donne une durée et son renouvellement constitue un indice d’activité, tandis que PPP peut tester la liaison avec les messages LCP.</li></ol>
   </div>
   <div class="c-block"><h3>3. Comprendre le partage du support GPON</h3>
+    <figure><img src="../assets/revisions/acces/schemas/gpon.png" alt="Trajet GPON avec ONT, coupleur et OLT, et correspondance entre service GEM et débit montant" loading="lazy"><figcaption>Sur la maquette, le GEM identifie un transport de service. Le T-CONT intervient dans l’allocation des transmissions montantes.</figcaption></figure>
     <p>Dans un PON, l’<strong>OLT</strong> est l’équipement de l’opérateur et l’<strong>ONT</strong> termine la fibre chez l’abonné. Un <strong>coupleur passif</strong> répartit le signal sans alimenter un commutateur. Les directions sont séparées optiquement. En descendant, la lumière est distribuée aux branches. En montant, l’OLT attribue des créneaux de transmission aux ONT.</p>
     <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Notion</th><th>Ce qu’elle règle</th></tr></thead><tbody>
     <tr><td>Ranging</td><td>Compense les écarts de temps de propagation.</td></tr>
@@ -106,27 +107,33 @@
     <p>Le partage du signal explique l’utilité de la protection du trafic descendant. Un profil de ligne peut associer ports GEM, T-CONT et VLAN. Le profil de service décrit les ports et capacités côté abonné. À l’OLT, la règle de service fait le lien entre les identifiants opérateur et abonné.</p>
   </div>
   <div class="c-block"><h3>4. Savoir où se termine le WAN</h3>
+    <figure><img src="../assets/revisions/acces/schemas/wan.png" alt="Comparaison des modes routeur et pont dans le TP GPON" loading="lazy"><figcaption>En mode route, l’ONT porte la session WAN et le poste voit le réseau local. En mode pont, l’équipement derrière l’ONT porte cette session.</figcaption></figure>
     <p>En <strong>Route WAN</strong>, l’ONT peut terminer la session, disposer d’une adresse WAN et router depuis son réseau local. En <strong>Bridge WAN</strong>, l’ONT transporte les trames entre le réseau et le port LAN associé. C’est alors le PC ou le routeur du client qui récupère son adresse, avec PPPoE ou DHCP selon le scénario.</p>
     <p>Un VLAN peut séparer plusieurs services sur une même fibre. Associe à chaque profil la bonne liaison physique et le bon port. Une adresse locale de gestion n’est pas l’adresse WAN négociée par le service.</p>
   </div>
+  <div class="c-block"><h3>5. Comparer les accès et transporter plusieurs services</h3>
+    <p>Dans <strong>FTTH</strong>, la fibre atteint le logement. Dans FTTB, elle atteint le bâtiment et une autre liaison peut continuer jusqu’à l’abonné. Dans FTTC, le dernier tronçon part d’un point plus loin du logement. Le cours compare aussi un accès xDSL sur paire téléphonique, un réseau coaxial et un accès hertzien. Pour expliquer une différence, commence par nommer le dernier support et l’équipement qui le termine, DSLAM pour le DSL ou OLT et ONT pour le PON.</p>
+    <p>Le <strong>ranging</strong> mesure le délai entre chaque ONT et l’OLT afin que, malgré des distances différentes, les salves montantes arrivent chacune dans le bon créneau. Le <strong>DBA</strong> distribue ensuite la capacité selon les profils et la demande. En descendant, les ONT partagent le support optique. Le cours traite le filtrage des flux par identifiant, le chiffrement pour la confidentialité et la <strong>FEC</strong> pour corriger des erreurs avec des octets supplémentaires. Ce sont trois mécanismes distincts.</p>
+    <p>Le <strong>triple play</strong> transporte Internet, télévision et voix. Associe les flux aux VLAN et aux politiques de priorité demandés. <strong>QinQ</strong> ajoute un tag opérateur autour du tag client pour transporter les VLAN d’un client sans renuméroter ses réseaux. Compare les tags avant et après le point d’entrée de l’opérateur. Dans le TP GPON, la traduction de VLAN est une autre action qui change l’identifiant associé au service.</p>
+  </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les versions téléchargeables des deux TP GPON masquent les identifiants des équipements. Utilise les sujets de ton dossier de cours pour la connexion au labo.</p>
   <details class="acc" open><summary>TD · Expliquer les phases de l’accès abonné</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Identifier chaque équipement, comparer les phases PPPoE et IPoE, et expliquer comment le réseau attribue et maintient l’adresse.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Identifier chaque équipement, comparer les phases PPPoE et IPoE, et expliquer comment le réseau attribue et maintient l’adresse.</p>
     <ol><li>Sur la figure DSL, identifie la box côté abonné, le MSAN ou DSLAM qui agrège les lignes et le BRAS côté réseau. Place ensuite RADIUS pour les informations d’identité et le serveur DHCP pour l’attribution quand elle est utilisée.</li>
     <li>En PPPoE, trace les quatre étapes : découverte de la session, réglage de la liaison PPP, authentification, négociation réseau. Dans une capture, distingue PADS, qui fixe la session, du message IPCP qui négocie l’adresse IPv4.</li>
     <li>En IPoE, trace <code>DISCOVER → OFFER → REQUEST → ACK</code>. Le premier message est une diffusion locale, donc dessine le relais si le serveur n’est pas sur ce réseau. Indique l’identifiant de ligne ou du port si l’opérateur s’appuie dessus pour donner un service distinct.</li></ol>
   </div></details>
   <details class="acc"><summary>TD Huawei · Choisir les paramètres WAN par service</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Préparer des interfaces séparées pour Internet, IPTV sur LAN4 et ToIP.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Préparer des interfaces séparées pour Internet, IPTV sur LAN4 et ToIP.</p>
     <ol><li>Pour chaque interface, relève type de service, mode route ou bridge, VLAN, priorité et liaison aux ports. En IPoE, l’adresse peut être dynamique (DHCP) ou fixe. Avec une IP fixe, prépare adresse, masque, passerelle et DNS si nécessaire. En PPPoE, la session utilise les paramètres d’authentification fournis.</li>
     <li>Internet peut être routé pour les postes du réseau local. Pour une IPTV qui attend un accès direct, la variante bridge associe son VLAN au port LAN4 côté décodeur. Pour la téléphonie prise en charge par la box, associe le service voix aux paramètres opérateur et à la fonction de téléphonie. Les identifiants de VLAN et priorités sont ceux du scénario, à vérifier dans l’énoncé ou la maquette.</li>
     <li>Vérifie dans l’état WAN quel profil est actif et quel port a le service. Teste un flux de chaque type plutôt que déduire le fonctionnement de tous les services d’un ping Internet.</li></ol>
   </div></details>
   <details class="acc"><summary>TP GPON côté OLT · Préparer les profils et confirmer l’ONT</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Relier le DBA, le T-CONT, le GEM et l’ONT détecté sur l’OLT.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Relier le DBA, le T-CONT, le GEM et l’ONT détecté sur l’OLT.</p>
     <pre class="c-code"><code>dba-profile add profile-name ftth_dba_2 type4 max 20480
 ont-lineprofile gpon profile-name ftth2
  tcont 6 dba-profile-name ftth_dba_2
@@ -138,13 +145,13 @@ ont-lineprofile gpon profile-name ftth2
     <li>Dans <code>interface gpon 0/0</code>, utilise <code>display ont autofind 0</code>. Identifie ton numéro de série sur le matériel et confirme l’ONT avec les deux profils, sur l’identifiant 2 demandé. Vérifie avec <code>display ont info 0 all</code> : <code>active</code>, <code>online</code>, <code>normal</code> et <code>match</code> sont les états recherchés.</li></ol>
   </div></details>
   <details class="acc"><summary>TP GPON côté OLT · Vérifier la traduction de VLAN</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Transporter le VLAN abonné 1002 via le port GEM 15 et le remettre sur le VLAN opérateur 100.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Transporter le VLAN abonné 1002 via le port GEM 15 et le remettre sur le VLAN opérateur 100.</p>
     <ol><li>Prépare la table de trafic du sujet. Vérifie le débit d’information engagé (CIR) et la priorité dans <code>display traffic table ip</code>.</li>
     <li>Dans le <code>service-port</code>, vérifie ensemble : VLAN de sortie 100, port GPON <code>0/0/0</code>, ONT 2, GEM 15, VLAN utilisateur 1002 et mode <code>tag-transform translate</code>. Utilise le profil de trafic dans les directions demandées.</li>
     <li>Génère un trafic de test depuis l’ONT. Vérifie le VLAN sur le point de capture autorisé côté réseau. Une liaison optique en ligne confirme la connectivité GPON. Le test Ethernet confirme le chemin du service.</li></ol>
   </div></details>
   <details class="acc"><summary>TP GPON côté ONT · Comparer les trois profils WAN</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Observer PPPoE Route WAN, PPPoE Bridge WAN et IPoE Bridge WAN avec la préconfiguration VLAN 1001 de l’ONT 1.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Observer PPPoE Route WAN, PPPoE Bridge WAN et IPoE Bridge WAN avec la préconfiguration VLAN 1001 de l’ONT 1.</p>
     <ol><li>Après préparation de la maquette, relève dans <strong>Status → Optical Information</strong> la puissance réellement affichée et son unité. Vérifie l’état de liaison avant de lancer des essais réseau.</li>
     <li>Prépare le serveur PPPoE Linux sur l’interface du labo et la configuration CHAP avec le compte de test. Fixe l’IP du serveur et le début de plage selon le plan du groupe. Lance Wireshark avant d’appliquer le profil WAN.</li>
     <li>En <strong>Route WAN</strong>, active PPPoE sur la box et associe LAN1, avec l’étiquette 1001. Vérifie l’adresse WAN de la box et compare à l’adresse LAN du PC. Repère la liaison PPP et le ping dans la capture côté serveur.</li>
@@ -156,7 +163,7 @@ ont-lineprofile gpon profile-name ftth2
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/acces/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/acces/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/acces/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/acces/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -170,7 +177,7 @@ ont-lineprofile gpon profile-name ftth2
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="160.042">2:40 · GPON : directions, temps et capacité</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="216.542">3:36 · du service Ethernet à la fibre</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés TD et TP · 4:02</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:02</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="242.833">4:02 · TD · Comparer PPPoE et IPoE</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="298.917">4:58 · TP OLT · Faire apparaître l’ONT</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="355.708">5:55 · TP OLT · Vérifier le chemin d’un VLAN</button></li>

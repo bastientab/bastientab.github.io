@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#td-tp">Corrigés du TD et du TP</a></li>
+        <li><a href="#td-tp">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -136,6 +136,7 @@
 <p><strong>Construire une liste.</strong> Le crible barre les multiples de chaque premier p à partir de p². Les multiples plus petits ont déjà été atteints. Le nombre de premiers jusqu’à N, π(N), est asymptotiquement voisin de N/ln(N). La proportion diminue quand N grandit.</p>
 </div>
 <div class="c-block"><h3 class="c-h3" id="ch-euclide">PGCD, PPCM, Euclide et Bézout</h3>
+    <figure><img src="../assets/revisions/arithmetique/schemas/euclide.png" alt="Les cinq divisions d’Euclide du couple 145,55 aboutissent au dernier reste non nul 5" loading="lazy"><figcaption>Pour Bézout, repars de la ligne qui donne 5, puis remonte les égalités pour l’écrire à partir de 145 et de 55.</figcaption></figure>
 <p><strong>Comment trouver le PGCD de 180 et 126 sans les factoriser ?</strong></p>
 <ol><li><strong>180 = 1 × 126 + 54</strong> · Reprendre 126 et 54</li><li><strong>126 = 2 × 54 + 18</strong> · Reprendre 54 et 18</li><li><strong>54 = 3 × 18 + 0</strong> · S’arrêter. Le PGCD vaut 18.</li></ol>
 <p>Le dernier reste différent de zéro sert aussi de point de départ à la remontée de Bézout.</p>
@@ -258,11 +259,11 @@
 </div>
       </section>
       <section class="c-section" id="td-tp" aria-labelledby="exercices-title">
-        <h2 class="c-h2" id="exercices-title">Corrigés guidés du TD et du TP</h2>
+        <h2 class="c-h2" id="exercices-title">Questions TD &amp; TP</h2>
         <p>Pour chaque question, suis le calcul dans l’ordre et refais la dernière vérification avec les nombres de l’énoncé.</p>
         <h3 class="c-h3">TD</h3>
 <details class="acc" open><summary>Complexité — quelle est la complexité des cinq boucles du TD1 ?</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Donner la complexité des cinq boucles du TD1 et de l’algorithme qui exécute A puis choisit entre B et une boucle autour de C.</p>
+<p class="c-question"><strong>Énoncé.</strong> Donner la complexité des cinq boucles du TD1 et de l’algorithme qui exécute A puis choisit entre B et une boucle autour de C.</p>
 <ol>
 <li>Pour i de 1 à 10 et j de 1 à n, il y a exactement 10n impressions. C’est O(n).</li>
 <li>Pour i de 1 à n et j de i à n, il y en a n−i+1 au tour i. La somme n+(n−1)+…+1 vaut n(n+1)/2. C’est O(n²).</li>
@@ -271,14 +272,14 @@
 <li>Pour la boucle qui double t, il faut ⌈log₂(m)⌉ tours pour atteindre m, répétés m+1 fois si m≥2. La croissance est O(m log m).</li></ol>
 <div class="c-callout"><p>Avec A suivi d’un test n&lt;100, la branche B intervient seulement pour un nombre fini de tailles. Au-delà, T=T_A+nT_C. Dans les trois cas de l’énoncé, on obtient respectivement O(n log n), O(n²), O(n²).</p></div></div></details>
 <details class="acc"><summary>Complexité — convertir les bits et factoriser 716957</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Combien de chiffres décimaux peut-on écrire sur 256, 768 ou 1024 bits ? Estimer aussi le temps de multiplication pour 256 bits et factoriser 716957.</p>
+<p class="c-question"><strong>Énoncé.</strong> Combien de chiffres décimaux peut-on écrire sur 256, 768 ou 1024 bits ? Estimer aussi le temps de multiplication pour 256 bits et factoriser 716957.</p>
 <ol>
 <li>Le maximum sur k bits est 2^k−1. Le nombre de chiffres décimaux vaut ⌊log₁₀(2^k−1)⌋+1, soit 78, 232 et 309 chiffres pour les maxima sur 256, 768 et 1024 bits. Tous les entiers de 256 bits n’ont pas forcément 78 chiffres.</li>
 <li>Pour k=256 et un débit d’un milliard d’opérations/s, le modèle k² donne 65 536 opérations, soit 65,5 µs. Avec k log₂(k), on obtient 2048 opérations, soit environ 2,05 µs. On utilise un coefficient 1 pour les ordres de grandeur.</li>
 <li>Pour 716957, teste les diviseurs premiers jusqu’à √716957. Tu trouves 787, puis calcule le quotient 911. Vérifie 787×911=716957. La multiplication suffit à contrôler un facteur proposé.</li></ol>
 </div></details>
 <details class="acc"><summary>PGCD et PPCM — factoriser, puis retrouver le diviseur commun</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Calculer les PGCD par factorisation et par Euclide, puis le PPCM de 126 et 180. Trouver le diviseur qui donne les restes 10 et 11 pour 4294 et 3521.</p>
+<p class="c-question"><strong>Énoncé.</strong> Calculer les PGCD par factorisation et par Euclide, puis le PPCM de 126 et 180. Trouver le diviseur qui donne les restes 10 et 11 pour 4294 et 3521.</p>
 <ol>
 <li>126=2×3²×7 et 180=2²×3²×5. Prends les exposants communs minimums pour obtenir 18. Pour 390 et 720, on trouve 30. Pour 180 et 606, on trouve 6. Pour contrôler par Euclide, remplace le plus grand nombre par son reste à chaque tour.</li>
 <li>PPCM(126,180)=2²×3²×5×7=1260. Le contrôle 1260×18=126×180=22 680 vérifie le lien entre les deux.</li>
@@ -286,7 +287,7 @@
 <li>Pour quotient égal au reste en divisant par 4, écris n=4r+r=5r avec r∈{0,1,2,3}. Résultats 0,5,10,15. Pour quotient 15 et reste 5, le plus petit diviseur possible vaut 6, donc le plus petit dividende vaut 95.</li></ol>
 </div></details>
 <details class="acc"><summary>Divisibilité — exploiter une forme simple</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Dans les naturels, résoudre x²−y²=21, x²−7xy=17, n²+n=20 et n²+2n=35. Étudier ensuite la divisibilité de 2n+3 par n−2 et celle de p²−1 par 24.</p>
+<p class="c-question"><strong>Énoncé.</strong> Dans les naturels, résoudre x²−y²=21, x²−7xy=17, n²+n=20 et n²+2n=35. Étudier ensuite la divisibilité de 2n+3 par n−2 et celle de p²−1 par 24.</p>
 <ol>
 <li>Pour x²−y²=21, factorise (x−y)(x+y). Les couples de facteurs positifs sont (1,21) et (3,7). Additionne et soustrais pour trouver (x,y)=(11,10) ou (5,2).</li>
 <li>Pour x²−7xy=17, x divise 17. x=1 donne un y négatif. Pour x=17, 17−7y=1 donne y=16/7. Il n’y a donc pas de couple naturel.</li>
@@ -294,13 +295,13 @@
 <li>Si n−2 divise 2n+3, il divise 2n+3−2(n−2)=7. Ainsi n−2 vaut ±1 ou ±7, donc n∈{−5,1,3,9} dans ℤ. Pour p premier &gt;5, p est impair et non divisible par 3. Donc p²≡1 modulo 8 et modulo 3, d’où 24∣p²−1.</li></ol>
 </div></details>
 <details class="acc"><summary>Contraintes de PGCD — somme 360 et candidats sous 200</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Déterminer les couples de somme 360 et de PGCD 18, puis les entiers n&lt;200 tels que PGCD(n,324)=12.</p>
+<p class="c-question"><strong>Énoncé.</strong> Déterminer les couples de somme 360 et de PGCD 18, puis les entiers n&lt;200 tels que PGCD(n,324)=12.</p>
 <ol>
 <li>Pour PGCD(x,y)=18 et x+y=360, pose x=18a,y=18b. Alors a+b=20 et PGCD(a,b)=1. Cela revient à PGCD(a,20)=1. Prends a∈{1,3,7,9,11,13,17,19}, puis b=20−a.</li>
 <li>Pour PGCD(n,324)=12, écris n=12k et 324=12×27. Il faut 1≤k≤16 et 3∤k. Les valeurs sont 12,24,48,60,84,96,120,132,156,168,192.</li></ol>
 </div></details>
 <details class="acc"><summary>Bézout — calculer u et v pour les deux couples de l’énoncé</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Trouver u et v pour les couples (145,55) et (432,77). Prouver que les entiers consécutifs sont premiers entre eux, puis faire de même pour 7n+4 et 5n+3.</p>
+<p class="c-question"><strong>Énoncé.</strong> Trouver u et v pour les couples (145,55) et (432,77). Prouver que les entiers consécutifs sont premiers entre eux, puis faire de même pour 7n+4 et 5n+3.</p>
 <pre class="c-code"><code>145 = 2 × 55 + 35
  55 = 1 × 35 + 20
  35 = 1 × 20 + 15
@@ -312,14 +313,14 @@
 <li>Pour deux entiers consécutifs, (n+1)−n=1 suffit. Pour a=7n+4 et b=5n+3, calcule 7b−5a=1. Dans les deux cas, Bézout prouve que le PGCD vaut 1.</li></ol>
 </div></details>
 <details class="acc"><summary>Équations diophantiennes — deux équations et deux auberges</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Résoudre 4x−5y=1 et 19x−33y=1, puis traduire les deux problèmes d’auberge en équations entières.</p>
+<p class="c-question"><strong>Énoncé.</strong> Résoudre 4x−5y=1 et 19x−33y=1, puis traduire les deux problèmes d’auberge en équations entières.</p>
 <ol>
 <li>Pour 4x−5y=1, réduis modulo 5. x≡4 (mod 5) car 4⁻¹≡4. En posant x=4+5t, tu obtiens y=3+4t. Pour 19x−33y=1, l’inverse de 19 modulo 33 est 7, donc x=7+33t et y=4+19t.</li>
 <li>Pour 100 pièces, écris 8h+5f=100. Réduis modulo 5 : 3h≡0, donc h multiple de 5. Entre 1 et 12, h vaut 5 ou 10, ce qui donne (5,12) et (10,4). Si zéro homme est permis, ajoute (0,20).</li>
 <li>Pour le repas, retire les remises de 9 € et 13 € du total à plein tarif, 28×26=728 €. On cherche 9e+13c=115. Modulo 9, 4c≡7, donc c≡4 (mod 9). La borne 0≤c≤8 impose c=4. Puis e=7, et il reste 17 personnes au plein tarif.</li></ol>
 <div class="c-callout"><p>Pour 11n+3 et 13n−1, la combinaison 13a−11b vaut 50. Le PGCD vaut 50 exactement si 50 divise les deux. La première condition donne 11n≡−3 (mod 50), soit n≡27 (mod 50). La seconde est alors vérifiée. Pour 50x−11y=3, on peut écrire x=6+11t et y=27+50t.</p></div></div></details>
 <details class="acc"><summary>Modulo — tables, critères et inverse modulo 63</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Dans les tables modulo 5 et 9, repérer les non-inversibles. Retrouver les critères de divisibilité et déterminer lesquels de 4, 12, 14 et 25 sont inversibles modulo 63.</p>
+<p class="c-question"><strong>Énoncé.</strong> Dans les tables modulo 5 et 9, repérer les non-inversibles. Retrouver les critères de divisibilité et déterminer lesquels de 4, 12, 14 et 25 sont inversibles modulo 63.</p>
 <ol>
 <li>Pour chaque case des tables, calcule (i+j) mod n ou (ij) mod n. Réduis 37 modulo 9 : c’est 1. Ajouter 37 revient à décaler la ligne d’un cran. Multiplier par 37 laisse chaque reste inchangé. Modulo 5, seul 0 n’est pas inversible. Modulo 9, ce sont 0,3,6.</li>
 <li>Comme 10≡1 modulo 3 et 9, chaque puissance de 10 vaut 1. Le nombre a le même reste que la somme de ses chiffres. Modulo 11, 10≡−1, donc on alterne les signes en commençant par les unités.</li>
@@ -327,7 +328,7 @@
 <li>Pour les quatre inversions suivantes du TD, 5⁻¹≡8 (mod 13), 17⁻¹≡11 (mod 93), 67⁻¹≡7 (mod 13). 27 n’a pas d’inverse modulo 93. Pour 17, par exemple, 93=5×17+8 et 17=2×8+1 donnent 1=11×17−2×93.</li></ol>
 </div></details>
 <details class="acc"><summary>Affine et restes chinois — résoudre les systèmes du TD</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Inverser 6 modulo 77, résoudre 6x+11≡8, puis traiter les cinq systèmes du TD avec le théorème des restes chinois.</p>
+<p class="c-question"><strong>Énoncé.</strong> Inverser 6 modulo 77, résoudre 6x+11≡8, puis traiter les cinq systèmes du TD avec le théorème des restes chinois.</p>
 <ol>
 <li>Pour 6x+11≡8 (mod 77), retire 11. 77=12×6+5 et 6=5+1 donnent 1=13×6−77. L’inverse existe et vaut 13. Multiplie −3 par 13 : x≡−39≡38 (mod 77).</li>
 <li>Pour les systèmes du TD, pars de la première congruence et substitue. Pour x≡3 (mod 4) et x≡5 (mod 7), x=3+4t, donc 4t≡2 (mod 7). Multiplie par 2, inverse de 4. t≡4, puis x≡19 (mod 28).</li>
@@ -335,7 +336,7 @@
 <li>Les autres systèmes du TD donnent 3 (mod 28) pour les deux restes 3, 200 (mod 210) pour les restes 5 et 4 modulo 15 et 14, puis 23 (mod 30) pour les restes 1,2,3 modulo 2,3,5. Contrôle-les en prenant les restes un par un.</li></ol>
 <div class="c-callout"><p>Avec les pirates du support p.49–50, les modulos 17,11,6 donnent N=1122. Les produits partiels 66,102,187 ont pour inverses 8,4,1. La somme 3×66×8+4×102×4+5×187 vaut 4151. Son plus petit reste positif est 785, qui laisse bien 3,4,5.</p></div></div></details>
 <details class="acc"><summary>Euler et Fermat — indicatrices, derniers chiffres et puissances</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Calculer les indicatrices demandées, préciser les hypothèses de Fermat et d’Euler, trouver les deux derniers chiffres des puissances proposées et calculer 5²⁰³ modulo 100.</p>
+<p class="c-question"><strong>Énoncé.</strong> Calculer les indicatrices demandées, préciser les hypothèses de Fermat et d’Euler, trouver les deux derniers chiffres des puissances proposées et calculer 5²⁰³ modulo 100.</p>
 <ol>
 <li>φ(100)=φ(4)φ(25)=2×20=40. φ(77)=6×10=60 et φ(1024)=1024−512=512. Pour remplir les valeurs sous 20, barre dans 1…n les multiples des facteurs premiers de n. Par exemple, pour 12, seuls 1,5,7,11 restent.</li>
 <li>Fermat permet de réduire 103 modulo 100 pour 5^103 mod 101. On obtient 5³=125, soit 24. De même, 17^16 mod 13 se ramène à 4⁴, soit 9. Pour 3^(6n)−1, 3⁶≡1 modulo 7, donc l’expression est divisible par 7.</li>
@@ -343,7 +344,7 @@
 <li>Pour 5^203 mod 100, le PGCD de 5 et 100 n’est pas 1. Dès 5², le reste vaut 25, et 25×5 laisse encore 25. Cela donne 25 pour toutes les puissances suivantes. En complément, isole les modulos 4 et 25 et combine leurs restes.</li></ol>
 </div></details>
 <details class="acc"><summary>Logarithmes discrets — remplir les tables modulo 11</summary><div class="acc-body">
-<p><strong>Question du TD.</strong> Construire les tables des puissances de 2 et de 3 dans ℤ/11ℤ, puis en déduire les ordres et les logarithmes discrets.</p>
+<p class="c-question"><strong>Énoncé.</strong> Construire les tables des puissances de 2 et de 3 dans ℤ/11ℤ, puis en déduire les ordres et les logarithmes discrets.</p>
 <ol>
 <li>Pour les exposants k=0,…,10, pars de 1 et multiplie chaque fois par la base. Pour 2, les valeurs sont 1,2,4,8,5,10,9,7,3,6,1. Pour 3, elles sont 1,3,9,5,4,1,3,9,5,4,1.</li>
 <li>Le premier retour à 1 donne un ordre de 10 pour 2 et de 5 pour 3. La base 2 est une racine primitive modulo 11.</li>
@@ -351,7 +352,7 @@
 </div></details>
 <h3 class="c-h3">TP</h3>
 <details class="acc"><summary>Crible, test de primalité et raréfaction — support p.18–20</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Programmer le crible, un test de primalité et une comparaison de π(N) avec N/ln(N).</p>
+<p class="c-question"><strong>Énoncé.</strong> Programmer le crible, un test de primalité et une comparaison de π(N) avec N/ln(N).</p>
 <pre class="c-code"><code>crible(20)   → [2, 3, 5, 7, 11, 13, 17, 19]
 isprime(1)   → False
 isprime(49)  → False
@@ -361,7 +362,7 @@ isprime(97)  → True</code></pre><ol>
 <li>Pour le tracé demandé p.20, pars d’un seul crible à la borne maximale, calcule les décomptes cumulés π(N), trace-les face à N/ln(N) pour N≥2, puis observe le rapport. Pour un entier près de 2^256, la densité estimée est 1/(256 ln 2), environ 0,56 %.</li></ol>
 </div></details>
 <details class="acc"><summary>Euclide étendu et inverses — support p.26 et p.40</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Programmer Euclide étendu et l’inversion modulo n, puis contrôler les résultats sur les couples donnés dans le support.</p>
+<p class="c-question"><strong>Énoncé.</strong> Programmer Euclide étendu et l’inversion modulo n, puis contrôler les résultats sur les couples donnés dans le support.</p>
 <pre class="c-code"><code>Entrées (a, n)     Sortie attendue
 (235, 367)         253
 (3, 7)             5
@@ -373,7 +374,7 @@ isprime(97)  → True</code></pre><ol>
 <li>Pour inverser, exige d=1 et n≥2. Avec les autres entrées du TP, 3 mod 7 donne 5, 3 mod 8 donne 3, 4 mod 7 donne 2, et 4 mod 8 n’a pas d’inverse.</li></ol>
 </div></details>
 <details class="acc"><summary>César, affine et Hill — support p.35 et p.41–43</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Programmer César et l’affine. Inverser la matrice du sujet modulo 7, puis chiffrer et déchiffrer les blocs (2,3) et (5,1).</p>
+<p class="c-question"><strong>Énoncé.</strong> Programmer César et l’affine. Inverser la matrice du sujet modulo 7, puis chiffrer et déchiffrer les blocs (2,3) et (5,1).</p>
 <ol>
 <li>Pour César, fixe l’alphabet et la convention pour les espaces et accents. Convertis chaque lettre en indice, applique (x+d) mod n, puis reconvertis. Au retour, utilise −d. Teste le passage de Z à C avec d=3.</li>
 <li>Pour affine, programme le calcul (ax+b) mod n et son retour par l’inverse de a. Dans les équations p.41, 6x+7≡13 (mod 8) donne 3x≡3 (mod 4), donc deux restes possibles 1 et 5 modulo 8. Avec 5x+7≡13, 5 est son propre inverse modulo 8 et l’unique reste vaut 6.</li>
@@ -381,7 +382,7 @@ isprime(97)  → True</code></pre><ol>
 <li>Découpe (2,3,5,1) en deux colonnes. M(2,3)=(17,13)≡(3,6). M(5,1)=(23,26)≡(2,5). Pour revenir, M⁻¹(3,6)=(51,45)≡(2,3) et M⁻¹(2,5)=(40,36)≡(5,1). Pour une phrase, applique la même boucle aux blocs de ton encodage et conserve la longueur initiale si tu ajoutes du remplissage.</li></ol>
 </div></details>
 <details class="acc"><summary>Exponentiation rapide — support p.57–58</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Dérouler les carrés successifs pour calculer 17¹⁵⁴ modulo 100 et programmer l’exponentiation modulaire.</p>
+<p class="c-question"><strong>Énoncé.</strong> Dérouler les carrés successifs pour calculer 17¹⁵⁴ modulo 100 et programmer l’exponentiation modulaire.</p>
 <pre class="c-code"><code>Exposant      1   2   4   8  16  32  64  128
 Reste        17  89  21  41  81  61  21   41</code></pre><ol>
 <li>Pour 17^154, construis les carrés modulo 100. Pour les exposants 1,2,4,8,16,32,64,128, les restes sont 17,89,21,41,81,61,21,41.</li>
@@ -389,14 +390,14 @@ Reste        17  89  21  41  81  61  21   41</code></pre><ol>
 <li>Pour programmer sans construire de table, initialise résultat à 1 mod n et réduis la base. Si l’exposant est impair, multiplie le résultat par la base. Mets la base au carré puis divise l’exposant par deux en gardant le quotient entier. Réduis chaque produit modulo n. Vérifie aussi l’exposant 0.</li></ol>
 </div></details>
 <details class="acc"><summary>Diffie–Hellman et ElGamal — support p.59–60</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Retrouver les valeurs publiques et le secret commun de Diffie–Hellman. Calculer ensuite la clé publique, le chiffré et le déchiffré de l’exemple ElGamal.</p>
+<p class="c-question"><strong>Énoncé.</strong> Retrouver les valeurs publiques et le secret commun de Diffie–Hellman. Calculer ensuite la clé publique, le chiffré et le déchiffré de l’exemple ElGamal.</p>
 <ol>
 <li>Diffie–Hellman : pour p=23, g=5, A=6, B=15, calcule indépendamment C=5⁶ mod 23=8 et D=5¹⁵ mod 23=19. Fais ensuite D⁶ mod 23 et C¹⁵ mod 23. Les deux donnent le secret 2.</li>
 <li>ElGamal : pour p=661, g=23, s=7, M=192, k=13, calcule Q=23⁷ mod 661=566. Calcule C₁=23¹³ mod 661=105 puis Q¹³ mod 661=466. Le produit 192×466 mod 661 donne C₂=237.</li>
 <li>Au déchiffrement, C₁⁷ mod 661 donne aussi 466. Son inverse vaut 461. Contrôle 466×461=325×661+1, puis 237×461 mod 661=192. Dans tes fonctions, vérifie l’égalité des deux masques et l’aller-retour.</li></ol>
 </div></details>
 <details class="acc"><summary>RSA avec de petits nombres — support p.63–67</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Construire les deux clés RSA et faire un aller-retour sur un nombre, puis sur la phrase du support.</p>
+<p class="c-question"><strong>Énoncé.</strong> Construire les deux clés RSA et faire un aller-retour sur un nombre, puis sur la phrase du support.</p>
 <pre class="c-code"><code>Construire d      7 × 103 ≡ 1  (mod 120)
 Chiffrer          35^7    ≡ 139 (mod 143)
 Déchiffrer        139^103 ≡ 35  (mod 143)</code></pre><ol>
@@ -405,28 +406,28 @@ Déchiffrer        139^103 ≡ 35  (mod 143)</code></pre><ol>
 <li>Pour la phrase du TP, convertis en octets UTF-8 pour conserver les caractères accentués. Chaque octet est inférieur à 299. Chiffre puis déchiffre chaque entier, reconstitue les octets et décode à la fin. Vérifie l’égalité exacte de la phrase.</li></ol>
 </div></details>
 <details class="acc"><summary>Attaque RSA par diffusion — support p.68</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> À partir des trois chiffrés interceptés et des trois clés publiques, retrouver le message envoyé.</p>
+<p class="c-question"><strong>Énoncé.</strong> À partir des trois chiffrés interceptés et des trois clés publiques, retrouver le message envoyé.</p>
 <ol>
 <li>Utilise les chiffrés 73,90,125 et les modulos 85,143,133. Calcule N=1 616 615 et les trois produits partiels N/nᵢ, soit 19 019,11 305,12 155.</li>
 <li>Inverse chacun de ces produits dans son modulo. Tu obtiens 4, 18 et 110. Fais 73×19 019×4 + 90×11 305×18 + 125×12 155×110 et réduis modulo N. Tu trouves 238 328. Vérifie les trois restes.</li>
 <li>Comme M³&lt;N, cette valeur est le cube entier. Calcule sa racine cubique entière et vérifie 62³=238 328.</li></ol>
 </div></details>
 <details class="acc"><summary>Tester et générer un premier probable — support p.72</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Implanter Fermat, le comparer à Miller–Rabin, puis générer un premier probable de 256 bits avec le générateur demandé.</p>
+<p class="c-question"><strong>Énoncé.</strong> Implanter Fermat, le comparer à Miller–Rabin, puis générer un premier probable de 256 bits avec le générateur demandé.</p>
 <ol>
 <li>Pour Fermat, traite 2 et 3 séparément, rejette les pairs et les nombres sous 2. Tire une base dans [2,n−2], calcule a^(n−1) mod n et rejette si le résultat diffère de 1. Teste 91 avec a=3 pour observer une réussite sur un composé.</li>
 <li>Pour Miller–Rabin, divise n−1 par 2 tant qu’il est pair. Conserve s et la partie impaire d. Accepte un tour si a^d vaut 1 ou n−1 modulo n. Sinon, teste les s−1 carrés successifs. Si aucun ne vaut n−1, rejette le candidat. Avec n=21 et a=2, d=5, s=2, la chaîne donne 11 puis 16 : le test rejette.</li>
 <li>Pour un candidat de 256 bits, fixe le bit de rang 255 et celui de rang 0 après le tirage <code>secrets.randbits(256)</code>. Vérifie <code>bit_length()</code> et la parité. Répète jusqu’à ce que les tests retenus acceptent. Utilise des bases indépendantes à chaque tour.</li></ol>
 </div></details>
 <details class="acc"><summary>RSA par blocs de 256 bits — support p.72</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Générer les clés avec e=7 et n&gt;2²⁵⁶, puis chiffrer et déchiffrer le texte en blocs de 256 bits.</p>
+<p class="c-question"><strong>Énoncé.</strong> Générer les clés avec e=7 et n&gt;2²⁵⁶, puis chiffrer et déchiffrer le texte en blocs de 256 bits.</p>
 <ol>
 <li>Génère p et q distincts puis vérifie n=pq&gt;2^256, comme demandé. Vérifie PGCD(7,(p−1)(q−1))=1 avant de calculer d.</li>
 <li>Encode la phrase en UTF-8 et coupe les octets en blocs de 32. Transforme chaque bloc en entier en utilisant le même ordre d’octets dans les deux sens. Conserve la longueur de chaque bloc, spécialement celle du dernier.</li>
 <li>Chiffre et déchiffre les entiers modulo n. Reconstruis les blocs avec leurs longueurs, concatène-les puis décode les octets. Teste un bloc qui commence par 0 et un dernier bloc court. Cela contrôle des cas qu’un simple test avec un seul nombre laisserait passer.</li></ol>
 </div></details>
 <details class="acc"><summary>Sac à dos et Merkle–Hellman — support p.76–81</summary><div class="acc-body">
-<p><strong>Question du TP.</strong> Trouver le meilleur sous-ensemble sous la limite du sac à dos, examiner les sommes cibles du support, puis retrouver les quatre bits cachés dans Z=58.</p>
+<p class="c-question"><strong>Énoncé.</strong> Trouver le meilleur sous-ensemble sous la limite du sac à dos, examiner les sommes cibles du support, puis retrouver les quatre bits cachés dans Z=58.</p>
 <ol>
 <li>Pour les quatre objets p.76, énumère les 16 sous-ensembles. Garde ceux de poids ≤30, compare les valeurs et vérifie que les objets 1 et 2 donnent le maximum : poids 25, valeur 11.</li>
 <li>Pour la cible 149 p.77, les 32 sous-ensembles de (54,27,71,56,16) ne donnent pas cette somme. En code, compare le total à 149 pour chaque choix. Pour la suite supercroissante (2,3,6,12) et la cible 15, prends 12 puis 3.</li>
@@ -458,7 +459,7 @@ Déchiffrer        139^103 ≡ 35  (mod 143)</code></pre><ol>
 <li><button class="btn btn-ghost btn-sm" type="button" data-arith-time="514.375">8:34 · RSA, les deux modulos et la diffusion</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-arith-time="564.167">9:24 · Fermat, Miller–Rabin et génération</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-arith-time="609.542">10:09 · Sac à dos et Merkle–Hellman</button></li></ul></div></details>
-        <details class="acc"><summary>Corrigés TD et TP · 10:40</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 10:40</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-arith-time="640.000">10:40 · TD · Compter les tours</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-arith-time="673.958">11:13 · TD · Retrouver le diviseur</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-arith-time="700.625">11:40 · TD · Bézout et le problème d’auberge</button></li>

@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés des TD</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -107,6 +107,7 @@
     <p>Un coefficient de <strong>corrélation</strong> proche de 1 indique une association linéaire croissante marquée. Vérifie le nuage et la plage où tu as des mesures avant d’utiliser la droite pour prédire.</p>
   </div>
   <div class="c-block"><h3>6. Donner un intervalle à une moyenne</h3>
+    <figure><img src="../assets/revisions/stats-but2/schemas/estimation.png" alt="Étapes de calcul de l’intervalle de Student et du test du khi-deux" loading="lazy"><figcaption>Les nombres de la première ligne viennent des 100 mesures du temps de transit. La deuxième ligne explique l’ordre des calculs dans le test d’ajustement.</figcaption></figure>
     <p>Un échantillon donne une moyenne observée x̄ et un écart-type estimé s. Pour estimer la variance avec les écarts calculés autour de x̄, divise leur somme des carrés par n−1. L’<strong>erreur standard</strong> vaut s/√n. Elle renseigne sur la variation de x̄ d’un échantillon à l’autre.</p>
     <p>Pour des observations indépendantes avec variance de la population inconnue, l’intervalle de Student s’écrit <strong>x̄ ± t × s/√n</strong>. Prends le quantile bilatéral demandé avec n−1 degrés de liberté. La formule est exacte sous un modèle normal et fournit une approximation usuelle avec un grand échantillon adapté. À 95 %, sur des répétitions de la méthode dans les mêmes conditions, environ 95 % des intervalles contiennent la moyenne de la population.</p>
   </div>
@@ -116,27 +117,33 @@
   </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés des TD</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <details class="acc" open><summary>TD1, exercice I · Retrouver le mode, la moyenne et l’écart-type</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Avec les effectifs 8, 24, 12, 60, 80 et 16 associés aux valeurs de 0 à 5, complète les fréquences et cumuls, puis calcule mode, moyenne et écart-type.</p>
     <ol><li>Attribue aux valeurs 0 à 5 les effectifs 8, 24, 12, 60, 80 et 16. La somme vaut <strong>200</strong>. Les cumuls sont 8, 32, 44, 104, 184 et 200 ; 52 % des observations sont au plus égales à 3.</li>
     <li>La valeur 4 apparaît 80 fois, ce qui en fait le mode. Les deux observations du milieu, de rangs 100 et 101, valent chacune 3.</li>
     <li>Multiplie les valeurs par leurs effectifs, additionne et divise par 200. Tu obtiens <strong>628/200 = 3,14</strong>. Applique le même calcul aux carrés : 2292/200 = 11,46. Soustrais 3,14² pour obtenir une variance de 1,6004, puis prends la racine, soit <strong>1,265</strong> environ.</li></ol>
   </div></details>
   <details class="acc"><summary>TD1, exercice II · Tracer l’histogramme et estimer les quartiles</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Pour la série regroupée en classes de largeurs inégales, complète les effectifs réduits, réalise l’histogramme et estime les quartiles et la médiane à partir des fréquences cumulées.</p>
     <ol><li>Les effectifs sont 3, 14, 25, 20, 18, 26, 10, 4, soit N=120. Pour <code>[0 ; 10[</code>, la largeur vaut deux unités de 5, donc la hauteur corrigée est 3/2=1,5. Pour <code>[15 ; 20[</code> la largeur vaut une unité, donc la hauteur vaut 25. Répète puis garde les vraies largeurs sur l’axe horizontal.</li>
     <li>Le 60ᵉ rang est dans <code>[20 ; 25[</code>. Le cumul précédent vaut 42 et l’effectif de la classe vaut 20. Avance de (60−42)/20 de la largeur de 5 depuis la borne 20. La médiane estimée vaut <strong>24,5</strong>.</li>
     <li>Pour Q₁ (rang 30), prends 15+5×(30−17)/25 = 17,6. Pour Q₃ (rang 90), prends 30+5×(90−80)/26 ≈ 31,92. Avec les milieux et leurs poids, la moyenne estimée vaut <strong>25,6875</strong> et l’écart-type descriptif ≈10,95.</li></ol>
   </div></details>
   <details class="acc"><summary>TD1, exercice III · Contrôler une simulation de résistances</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Simule des résistances suivant une loi normale de moyenne 1000 Ω et d’écart-type 20 Ω. Compare les statistiques de la série simulée à ces paramètres.</p>
     <ol><li>Remplis les lignes demandées avec l’inverse de la loi normale de paramètres 1000 et 20, appliquée à une valeur aléatoire uniforme par ligne. Le classeur utilise <code>NORMINV(RAND(),1000,20)</code> sous noms anglais. L’équivalent en français dépend de la version du tableur.</li><li>Calcule la moyenne et l’écart-type de la plage. Compare chaque série à ses paramètres puis recalcule : chaque valeur et les deux résumés peuvent changer.</li><li>Pour réutiliser exactement le même tirage dans le tableau et le graphique, copie les cellules puis colle leurs valeurs dans une zone de travail. La probabilité théorique entre 980 et 1020 Ω correspond à un écart-type de part et d’autre de 1000, soit environ 68 %.</li></ol>
   </div></details>
   <details class="acc"><summary>TD1, exercice IV · Faire les ajustements de la latence</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Trace les dix couples de latence, calcule la droite de Mayer et la droite de régression, puis mesure la corrélation.</p>
     <ol><li>Trace les dix points en nuage, avec x en abscisse et la latence en ordonnée. Pour Mayer, calcule les moyennes des cinq premiers puis des cinq derniers couples. Tu obtiens <strong>A(3 ; 5,86)</strong> et <strong>B(8 ; 16,46)</strong>.</li><li>Pente (16,46−5,86)/(8−3)=2,12. En remplaçant x par 3 et y par 5,86, tu trouves l’ordonnée à l’origine −0,5. Affiche y=2,12x−0,5 sur la plage des mesures.</li><li>Pour les moindres carrés, utilise les dix points. La droite est <strong>y ≈ 2,0824x−0,2933</strong> et r≈0,975. Compare la forme du nuage et les écarts verticaux des deux droites sur les mêmes axes.</li></ol>
   </div></details>
   <details class="acc"><summary>TD Estimation · Encadrer le temps de transit moyen</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> À partir des 100 relevés de temps de transit de la feuille, calcule la moyenne et l’écart-type d’échantillon, puis encadre la moyenne par un intervalle à 95 %.</p>
     <ol><li>Sur les 100 observations de la feuille, calcule x̄≈89,5660 et s≈5,08479 avec n−1 au dénominateur de la variance. Pour une moyenne, calcule s/√100≈0,50848.</li><li>Pour 95 % avec 99 degrés de liberté, prends t₀,₉₇₅≈1,9842. La marge vaut environ 1,0089. Ajoute-la et retranche-la à la moyenne.</li><li>Résultat <strong>[88,56 ; 90,57]</strong> dans l’unité du tableau. Il s’agit de l’intervalle estimé pour la moyenne de la population.</li></ol>
   </div></details>
   <details class="acc"><summary>TD Estimation · Comparer les effectifs à une loi normale</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Sur les classes bornées par 79, 83, 87, 91, 95 et 99 ms, compare les effectifs du tableur à ceux attendus pour la loi normale ajustée. Le test rejette-t-il le modèle à 5 % ?</p>
     <ol><li>Avec les classes successives délimitées par 79, 83, 87, 91, 95 et 99, les observés sont <code>1, 8, 19, 32, 25, 13, 2</code>. Prolonge la première et la dernière classe jusqu’aux infinis pour couvrir toute la normale. Sur les données du TD, cela ne modifie pas les observés.</li><li>Estime μ par 89,566 et σ par 5,08479. Pour chaque classe, calcule 100×(F(b)−F(a)), soit environ <code>1,89 ; 7,94 ; 20,86 ; 30,41 ; 24,64 ; 11,08 ; 3,18</code>. Vérifie que leur somme avant arrondi vaut 100.</li><li>Les deux effectifs théoriques extrêmes sont sous 5. Regroupe chacun avec son voisin puis calcule la somme (O−E)²/E sur les cinq classes. Tu trouves <strong>χ²≈0,36</strong>. Avec 5−1−2=2 degrés de liberté, le seuil à 5 % vaut ≈5,99. On ne rejette pas la loi normale à ce seuil.</li></ol>
   </div></details>
 </section>
@@ -144,7 +151,7 @@
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/stats-but2/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/stats-but2/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/stats-but2/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/stats-but2/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -158,7 +165,7 @@
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="181.208">3:01 · Estimer une moyenne</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="203.958">3:23 · Tester un ajustement au khi-deux</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés des TD · 3:46</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 3:46</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="226.958">3:46 · TD1 · Refaire le tableau de l’exercice I</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="275.667">4:35 · TD1 · Interpoler la médiane de l’exercice II</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="335.083">5:35 · TD1 · Ajuster la latence avec Mayer et la régression</button></li>

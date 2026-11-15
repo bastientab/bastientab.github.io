@@ -196,6 +196,17 @@
 .c-block { padding: 22px; border-radius: 20px; background: var(--bg-elev); border: 1px solid var(--line); margin: 16px 0; }
 .c-block > :first-child { margin-top: 0; }
 .c-block > :last-child { margin-bottom: 0; }
+.c-content figure { margin: 16px 0; min-width: 0; }
+.c-content figure img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
+.c-content figcaption { margin-top: 6px; color: var(--ink-2); font-size: .9rem; line-height: 1.5; }
+.c-figure-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 12px 20px; align-items: center; }
+.c-figure-grid h4 { margin: 0 0 6px; }
+.c-figure-grid p, .c-figure-grid figure { margin: 0; }
+.c-question { padding: 12px 14px; border-left: 3px solid #0b8269; background: var(--bg-soft); border-radius: 0 10px 10px 0; }
+@media (max-width: 760px) {
+  .c-figure-grid { grid-template-columns: minmax(0, 1fr); }
+  .c-figure-grid figure { margin-bottom: 14px; }
+}
 .c-callout {
   margin: 16px 0; padding: 16px 20px; border-radius: 16px;
   border-left: 4px solid var(--accent); background: var(--accent-soft);

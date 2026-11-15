@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -100,12 +100,14 @@
   </div>
   <div class="c-block">
     <h3>2. Pourquoi DNS et DHCP ne font-ils pas la même chose ?</h3>
+    <figure><img src="../assets/revisions/annuaire/schemas/dhcp.png" alt="Les quatre messages DHCP, avec les options qui accompagnent le bail" loading="lazy"><figcaption>L’adresse ne suffit pas pour rejoindre le domaine. Le client Windows reçoit aussi l’adresse du DNS qu’il utilisera pour localiser les services AD.</figcaption></figure>
     <ol><li><strong>DHCP</strong> fournit une adresse, un masque et des options pendant un <strong>bail</strong>. L’étendue contient la plage du réseau et ses paramètres. Une réservation fixe l’adresse attribuée à un client identifié sans régler cette adresse à la main sur le poste.</li>
     <li><strong>DNS</strong> indique où joindre les services. Un enregistrement <code>A</code> associe un nom à une IPv4, <code>CNAME</code> crée un alias et <code>SRV</code> annonce un service, par exemple la découverte de contrôleurs de domaine.</li>
     <li>Quand le client rejoint le domaine, vérifie dans <code>ipconfig /all</code> à la fois son adresse et le DNS qu’il utilise. Une adresse correcte avec un DNS qui ignore le domaine ne suffit pas.</li></ol>
   </div>
   <div class="c-block">
     <h3>3. Comment tester l’accès à un dossier partagé ?</h3>
+    <figure><img src="../assets/revisions/annuaire/schemas/droits.png" alt="Compte Active Directory relié aux droits du dossier par deux groupes" loading="lazy"><figcaption>Applique ce trajet au TP Atelier. Vérifie l’appartenance aux groupes du compte de test puis lis les droits de la ressource.</figcaption></figure>
     <p>Le chemin <code>\\serveur\Atelier</code> désigne un <strong>partage SMB</strong>. Quand l’accès se fait par le réseau, l’autorisation du partage et l’autorisation du fichier ou du dossier doivent toutes les deux permettre l’action. Les permissions <strong>NTFS</strong> sont portées par les dossiers et fichiers et peuvent être héritées de leur parent.</p>
     <p>Dans l’exercice, un membre Atelier doit accéder au dossier commun. Les sous-dossiers Démontage et Magasin ont chacun une équipe différente. Contrôle quelles permissions ont été héritées avant de donner accès à une équipe. Vérifie ensuite depuis le client avec un compte de cette équipe puis avec un compte qui doit être bloqué.</p>
     <details class="acc"><summary>Répertoire personnel, script et bureau redirigé</summary><div class="acc-body"><p>Un répertoire personnel associe l’utilisateur à un emplacement sur le serveur, par exemple via le lecteur H. Un script de connexion peut monter d’autres lecteurs. Une redirection de dossiers place certaines données utilisateur, comme le Bureau, sur un chemin réseau. Cela facilite l’accès depuis plusieurs postes et les sauvegardes, mais l’accès dépend du réseau et du serveur.</p></div></details>
@@ -121,33 +123,37 @@
     <ul><li>Un second contrôleur reçoit une réplication de l’annuaire. Vérifie <code>repadmin /replsummary</code> et essaye la résolution DNS et la connexion depuis le client.</li><li>Le basculement DHCP synchronise l’étendue et les baux selon le mode choisi. Le second serveur doit être autorisé. Il ne faut pas créer deux étendues indépendantes qui distribuent les mêmes adresses.</li><li>DFS peut fournir un espace de noms et une réplication pour des dossiers. La disponibilité d’un partage doit être testée à part, et une réplication ne remplace pas une sauvegarde.</li></ul>
     <p>Le gestionnaire FSRM traite un autre besoin : limiter l’espace occupé ou bloquer certains types de fichiers. La déduplication réduit l’espace utilisé par les données répétées sur un volume. Mesure ces effets séparément avant d’en tirer une conclusion.</p>
   </div>
+  <div class="c-block"><h3>6. Faire la différence entre un site AD et un domaine</h3>
+    <p>Un domaine organise les identités et les services d’annuaire. Un <strong>site</strong> représente des sous-réseaux et la façon dont ils sont reliés. Dans le support Sites et services AD, un poste du réseau <code>192.168.70.0/24</code> peut appartenir au même domaine que celui de <code>192.168.69.0/24</code> tout en utilisant d’abord un contrôleur proche de son site.</p>
+    <p>Associe chaque sous-réseau IP à son site dans <strong>Sites et services Active Directory</strong>, vérifie le trajet IP entre contrôleurs, puis vérifie que les machines utilisent les DNS du domaine. Depuis un client, <code>nltest /dsgetsite</code> donne le site détecté. Sur les contrôleurs, <code>repadmin /replsummary</code> aide à voir les erreurs de réplication. Un ping réussi confirme le trajet IP, tandis que la découverte de site, la résolution DNS et l’état de réplication se contrôlent chacun séparément.</p>
+  </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les exemples respectent les consignes des VM de l’IUT. Remplace les noms et les adresses d’exemple par ceux de ton labo et utilise des comptes de test pour les vérifications.</p>
   <details class="acc" open><summary>TD · Ranger les utilisateurs et préparer les droits de Cass’Auto</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Proposer la forêt, les domaines, les rôles, les OU, les groupes et les règles d’accès aux dossiers.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Proposer la forêt, les domaines, les rôles, les OU, les groupes et les règles d’accès aux dossiers.</p>
     <ol><li>Pour un seul site, propose une forêt et un domaine. Un contrôleur avec AD DS et DNS suffit au premier exercice. DHCP distribue les paramètres réseau et le rôle de serveur de fichiers fournit les partages. Ajoute un second contrôleur si le scénario demande de limiter la dépendance à une machine.</li>
     <li>Crée des OU Comptabilité, Atelier, Direction, RH et Groupes. Place Démontage et Magasin sous Atelier dans l’arborescence si cette hiérarchie te sert à appliquer les stratégies. Crée un groupe de sécurité global par équipe. Donne les droits des ressources aux groupes plutôt qu’aux personnes.</li>
     <li>Pour les photos communes, crée un groupe qui rassemble Démontage et Magasin et donne-lui le droit adapté au partage de photos. Garde les sous-dossiers privés à part. Pour chaque accès, note le chemin, le groupe attendu et s’il a besoin de lecture ou de modification.</li>
     <li>Prépare les comptes par secteur avec un identifiant distinct. Fais le test de connexion avec un utilisateur standard. Un serveur de fichiers peut être un serveur membre : il n’a pas à devenir contrôleur du domaine pour appliquer les permissions de groupes AD.</li></ol>
   </div></details>
   <details class="acc"><summary>TP1 · Installer AD DS, DNS et intégrer le poste Windows 11</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Utiliser le réseau <code>192.168.69.0/24</code>, promouvoir le serveur et joindre le poste client.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Utiliser le réseau <code>192.168.69.0/24</code>, promouvoir le serveur et joindre le poste client.</p>
     <ol><li>Dans les paramètres réseau de la VM, repère la carte du TP et la carte Internet. Donne une IPv4 fixe à la carte locale, par exemple <code>192.168.69.10/24</code> si cette adresse est libre. Garde le nom d’origine du serveur comme demandé.</li>
     <li>Ouvre <strong>Gestionnaire de serveur → Gérer → Ajouter des rôles et fonctionnalités</strong>. Sélectionne AD DS et ses outils. Dans la notification, choisis <strong>Promouvoir ce serveur en contrôleur de domaine</strong>, puis <strong>Ajouter une nouvelle forêt</strong>. Renseigne le domaine choisi au TD, conserve le rôle DNS, règle le mot de passe de restauration et redémarre après validation.</li>
     <li>Sur le poste Windows 11 du labo, configure provisoirement une IPv4 du même réseau et le DNS du serveur. Exécute <code>nslookup -type=SRV _ldap._tcp.dc._msdcs.&lt;domaine&gt;</code> avec le vrai domaine. Rejoins le domaine depuis les paramètres système, puis redémarre.</li>
     <li>Sur le serveur, ouvre <strong>Utilisateurs et ordinateurs Active Directory</strong> et retrouve le poste. Sur le client, ouvre une session avec un compte du domaine et contrôle <code>whoami</code>. Termine par un essai avec un compte standard.</li></ol>
   </div></details>
   <details class="acc"><summary>TP1 · Créer l’étendue DHCP, réserver une adresse et ajouter un alias</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Distribuer 100 adresses, sans exclusion, avec un bail d’un jour, puis réserver celle du poste.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Distribuer 100 adresses, sans exclusion, avec un bail d’un jour, puis réserver celle du poste.</p>
     <ol><li>Dans <strong>Gestionnaire de serveur → Gérer → Ajouter des rôles et fonctionnalités</strong>, ajoute <strong>Serveur DHCP</strong>. Termine la post-configuration, puis ouvre <strong>Outils → DHCP</strong>. Sur le serveur, vérifie l’<strong>autorisation</strong> avec le compte prévu dans le domaine.</li>
     <li>Dans <strong>IPv4 → Nouvelle étendue</strong>, saisis début <code>192.168.69.100</code> et fin <code>192.168.69.199</code>, masque <code>255.255.255.0</code>, aucune exclusion et 1 jour de bail. Place les IP fixes hors de la plage. Renseigne le routeur demandé par le sujet et le DNS du domaine, puis active l’étendue.</li>
     <li>Sur le poste, passe IPv4 et DNS en automatique. Exécute <code>ipconfig /release</code>, <code>ipconfig /renew</code> et <code>ipconfig /all</code>. Vérifie une adresse dans la plage, un bail et le DNS prévu. Dans <strong>Baux d’adresses</strong>, utilise le bail du client pour créer la réservation et renouvelle pour vérifier.</li>
     <li>Dans <strong>Outils → DNS → Zones de recherche directe</strong>, repère le nom du client. Crée un nouvel alias CNAME avec comme cible son nom complet. Vérifie la résolution du vrai nom et de l’alias avec <code>nslookup</code>. Si le ping échoue alors que la résolution est bonne, vérifie le réseau et le filtrage ICMP.</li></ol>
   </div></details>
   <details class="acc"><summary>TP2 · Créer le répertoire H et monter les lecteurs de Direction</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Donner à un utilisateur un répertoire de base et tester les lecteurs Pourtous et Direction.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Donner à un utilisateur un répertoire de base et tester les lecteurs Pourtous et Direction.</p>
     <ol><li>Prépare le répertoire de base sur le serveur, partage sa racine et attribue les droits à chaque compte sur son sous-dossier. Dans les propriétés AD de l’utilisateur, va dans <strong>Profil → Dossier de base</strong>, choisis la lettre H et indique le chemin UNC du répertoire.</li>
     <li>Pour les utilisateurs suivants, utilise un script PowerShell qui prépare le chemin, les permissions et les attributs de répertoire personnel. Vérifie une connexion et un fichier créé depuis H et assure-toi qu’un autre compte ne peut pas lire ce dossier.</li>
     <li>Pour le script d’ouverture de session du TP, place un fichier <code>.bat</code> dans le dossier de scripts du domaine et renseigne son nom dans le profil AD. Les commandes utilisent le <strong>nom du partage</strong> après le nom du serveur.</li></ol>
@@ -157,43 +163,43 @@ net use</code></pre>
     <p>Pour la variante du sujet qui supprime d’abord les lecteurs, utilise <code>net use * /delete /y</code> dans le scénario de test demandé. Pour un usage courant, supprimer uniquement les lettres gérées évite de toucher aux autres lecteurs.</p>
   </div></details>
   <details class="acc"><summary>TP3 · Mapper K, déployer un fond et vérifier l’installation</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Appliquer le lecteur K à Atelier, tester deux modes de fond d’écran et vérifier le déploiement côté ordinateur.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Appliquer le lecteur K à Atelier, tester deux modes de fond d’écran et vérifier le déploiement côté ordinateur.</p>
     <ol><li>Dans <strong>Gestion de stratégie de groupe</strong>, crée et lie une GPO à l’OU Atelier. Modifie <strong>Configuration utilisateur → Préférences → Paramètres Windows → Mappages de lecteurs</strong>. Choisis le chemin <code>\\SERVEUR\Pourtous</code>, K et le libellé « Partage ». Contrôle avec <code>gpupdate /force</code>, puis <code>net use</code> dans la session Atelier.</li>
     <li>Pour un papier peint réseau, adresse une GPO utilisateur à Direction et pointe vers une image lisible. Pour le second mode, fais copier le fichier par <strong>Configuration ordinateur → Préférences → Paramètres Windows → Fichiers</strong> sur la bonne OU de postes. Fais référencer le chemin local par le réglage utilisateur du second groupe.</li>
     <li>Pour RSAT, dépose le script de démarrage dans la GPO ordinateur via <strong>Stratégies → Paramètres Windows → Scripts</strong>. Vérifie au prochain démarrage que les fonctionnalités attendues sont présentes. Pour le MSI de Notepad++, utilise un chemin UNC que le compte ordinateur peut lire, dans le volet <strong>Installation de logiciel</strong>, puis redémarre et vérifie l’installation et le retrait.</li>
     <li>Si le résultat est absent, compare <code>gpresult /r</code> sur le compte ou le poste ciblé avec une session témoin en dehors du périmètre.</li></ol>
   </div></details>
   <details class="acc"><summary>TP3 · Restreindre le panneau et tester le verrouillage</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Interdire le panneau de configuration pour la cible Atelier et appliquer la stratégie de mot de passe et de verrouillage du domaine.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Interdire le panneau de configuration pour la cible Atelier et appliquer la stratégie de mot de passe et de verrouillage du domaine.</p>
     <ol><li>Dans une GPO utilisateur liée à Atelier, active l’interdiction d’accès au panneau de configuration et aux paramètres du PC dans les modèles d’administration. Si un groupe doit affiner la cible, utilise le filtrage de sécurité sur l’OU déjà liée et conserve la lecture de la GPO nécessaire aux ordinateurs clients.</li>
     <li>Dans la stratégie qui s’applique au niveau du domaine, ouvre <strong>Configuration ordinateur → Stratégies → Paramètres Windows → Paramètres de sécurité → Stratégies de comptes</strong>. Règle le seuil à 3, la durée à 10 minutes, avec une fenêtre de réinitialisation cohérente. Pour le TP, règle 10 caractères minimum, complexité et durée maximale d’environ 90 jours.</li>
     <li>Vérifie avec <code>Get-ADDefaultDomainPasswordPolicy</code>. Depuis le client, provoque trois échecs sur un compte de test. Observe le verrouillage dans AD, relève <code>lockoutTime</code> et déverrouille le compte pour terminer le test.</li></ol>
   </div></details>
   <details class="acc"><summary>TP4 · Isoler Magasin et Démontage sous Atelier</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Donner accès à Atelier et limiter chaque sous-dossier à son groupe.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Donner accès à Atelier et limiter chaque sous-dossier à son groupe.</p>
     <ol><li>Prépare Atelier et ses sous-dossiers puis partage Atelier. Dans <strong>Propriétés → Sécurité → Avancé</strong>, observe les permissions que chaque dossier enfant hérite.</li>
     <li>Sur Démontage, adapte l’héritage pour enlever l’accès du groupe large Atelier. Conserve les permissions administratives, puis accorde <strong>Modifier</strong> au groupe Démontage. Applique la même méthode pour Magasin avec le bon groupe au lieu de dupliquer le droit de Démontage.</li>
     <li>Sur le client, teste un compte de chaque groupe et le groupe Direction si le sujet lui donne accès. Vérifie une lecture, une création et une suppression dans le périmètre autorisé, puis un accès refusé hors périmètre. Si un ajout de groupe ne semble pas pris en compte, ouvre une nouvelle session.</li></ol>
   </div></details>
   <details class="acc"><summary>TP4 · Dédupliquer et limiter les sous-dossiers</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Économiser l’espace des fichiers répétés, fixer un quota de 100 Mo et filtrer les exécutables.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Économiser l’espace des fichiers répétés, fixer un quota de 100 Mo et filtrer les exécutables.</p>
     <ol><li>Installe <strong>Déduplication des données</strong> dans les services de fichiers. Sur le volume du labo, configure-la pour un serveur de fichiers à usage général et règle l’âge à 0 jour pour l’essai. Lance <code>BackgroundOptimization</code> depuis le planificateur et compare l’état du volume avec <code>Get-DedupStatus</code>.</li>
     <li>Ouvre FSRM. Crée un modèle de quota dur de 100 Mo. Cible Atelier avec l’option qui applique un quota individuel aux sous-dossiers existants et futurs. Essaie de dépasser la limite dans Magasin et Démontage. Vérifie à part si la racine Atelier a reçu un quota propre.</li>
     <li>Dans le filtrage de fichiers, applique le modèle de blocage des exécutables au dossier Atelier. Teste un fichier d’une extension couverte et un texte autorisé. Consulte le journal Application pour expliquer un refus.</li></ol>
   </div></details>
   <details class="acc"><summary>TP5 · Répliquer AD et les fichiers, puis tester le secours DHCP</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Ajouter un second serveur, mettre les services en continuité et vérifier séparément les basculements.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Ajouter un second serveur, mettre les services en continuité et vérifier séparément les basculements.</p>
     <ol><li>Configure le second serveur sur le réseau du labo avec le DNS du premier. Ajoute-le au domaine. Dans la promotion AD DS, choisis un contrôleur supplémentaire du domaine existant. Après redémarrage, vérifie l’annuaire et le DNS sur les deux serveurs, puis contrôle l’état de la réplication avec <code>repadmin /replsummary</code>.</li>
     <li>Pour les fichiers, utilise la console <strong>Gestion DFS</strong> pour créer l’espace de noms prévu et ajouter les deux cibles. Configure le groupe de réplication et le membre principal avant la synchronisation initiale. Teste un fichier créé et un accès depuis le chemin DFS quand une cible est indisponible.</li>
     <li>Installe et autorise DHCP sur le partenaire. Sur le premier serveur, fais <strong>clic droit sur l’étendue IPv4 → Configurer un basculement</strong>. Choisis le partenaire et le mode de secours demandé, puis vérifie l’étendue synchronisée sur le second. Refais un renouvellement côté client dans les conditions de panne du TP.</li></ol>
   </div></details>
   <details class="acc"><summary>TP5 · Déléguer la réinitialisation des mots de passe à Atelier</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Permettre au responsable de réinitialiser seulement les mots de passe des utilisateurs de son OU.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Permettre au responsable de réinitialiser seulement les mots de passe des utilisateurs de son OU.</p>
     <ol><li>Crée le groupe <code>Responsable_atelier</code> et ajoute un compte standard de test. Dans la console AD, fais <strong>clic droit sur l’OU Atelier → Délégation de contrôle</strong>, ajoute le groupe et sélectionne la tâche de réinitialisation des mots de passe.</li>
     <li>Sur Windows 11, installe les outils RSAT nécessaires s’ils ne sont pas déjà présents. Connecte-toi avec le compte de test, ouvre la console AD et réinitialise un utilisateur Atelier. Recommence avec un utilisateur d’une autre OU et vérifie que l’opération est refusée.</li></ol>
   </div></details>
   <details class="acc"><summary>TP6 · Concevoir les deux sites de MaisonPaille</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Définir le plan d’adressage, les groupes, les partages, le DHCP et les GPO pour les deux sites.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Définir le plan d’adressage, les groupes, les partages, le DHCP et les GPO pour les deux sites.</p>
     <ol><li>Propose par exemple <code>192.168.10.0/24</code> pour Administration et <code>192.168.20.0/24</code> pour Production. Prévois le routage et un DNS capable de résoudre le domaine des deux côtés. Dans <strong>Sites et services AD</strong>, crée les deux sites et lie chaque sous-réseau à son site.</li>
     <li>Organise les OU et les groupes des services Direction, DRH, bureau d’étude, Magasin, Menuiserie et Montage. Définis un partage commun et les sous-dossiers privés suivant la même méthode qu’au TP4. Vérifie les droits avec un utilisateur de chaque équipe.</li>
     <li>Crée une étendue DHCP par sous-réseau avec la passerelle locale et les DNS du domaine. Utilise un relais DHCP si les requêtes doivent atteindre un serveur derrière un routeur. Déploie les lecteurs utiles et les règles de verrouillage avec les GPO adaptées à leur cible.</li></ol>
@@ -203,7 +209,7 @@ net use</code></pre>
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/annuaire/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/annuaire/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/annuaire/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/annuaire/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -216,7 +222,7 @@ net use</code></pre>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="130.875">2:10 · Comment une GPO atteint sa cible</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="160.917">2:40 · Gestion des fichiers et continuité</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés TD et TP · 3:09</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 3:09</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="189.667">3:09 · TD · Organiser Cass’Auto</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="222.125">3:42 · TP1 · Installer AD DS et joindre Windows 11</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="252.167">4:12 · TP1 · Créer l’étendue DHCP</button></li>

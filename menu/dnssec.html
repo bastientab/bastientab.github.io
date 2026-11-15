@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo</a></li>
       </ol>
     </nav></aside>
@@ -88,6 +88,7 @@
   <p>Tu vas apprendre à lire une réponse DNS, construire une zone sur BIND9 et expliquer pourquoi un résolveur accepte ou rejette une réponse signée.</p>
   <div class="c-block">
     <h3>1. Du nom à l’adresse</h3>
+    <figure><img src="../assets/revisions/dnssec/schemas/resolution.png" alt="Chaîne de résolution sur un cache vide, du client à la racine, au TLD et au serveur de zone" loading="lazy"><figcaption>À chaque délégation, le résolveur reçoit une indication sur le serveur suivant. Le poste client ne contacte que son résolveur.</figcaption></figure>
     <p><strong>Le DNS est un annuaire distribué.</strong> Tu demandes une information associée à un nom, par exemple l’adresse IPv4 de <code>client.secu.rt.</code>. Le point final indique un nom complet, en partant de l’hôte jusqu’à la racine DNS.</p>
     <p>Un domaine désigne une branche de l’arbre des noms. Une <strong>zone</strong> correspond à la partie de l’arbre dont des serveurs publient les données. Une administration peut déléguer un sous-domaine à d’autres serveurs et leur confier la gestion de cette partie.</p>
     <ol>
@@ -150,6 +151,7 @@
   </div>
   <div class="c-block">
     <h3>6. Comment le résolveur sait quelle clé croire</h3>
+    <figure><img src="../assets/revisions/dnssec/schemas/confiance.png" alt="Chaîne de confiance DNSSEC, de l’ancre aux données signées" loading="lazy"><figcaption>Le DS est publié par le parent et identifie une clé enfant. Le RRSIG est vérifié avec une clé de la zone qui porte les données.</figcaption></figure>
     <ol>
       <li>Il part d’une <strong>ancre de confiance</strong>, généralement celle de la racine pour le DNS public.</li>
       <li>Il vérifie le jeu DS du parent, puis compare l’empreinte à la clé publique publiée par la zone enfant.</li>
@@ -169,11 +171,11 @@
 </section>
 
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les titres reprennent les questions de ton énoncé. Les adresses <code>172.25.0.10</code> (ns1), <code>.11</code> (ns2), <code>.42</code> (client) et <code>.25</code> (mail) servent d’exemple. Remplace-les par tes adresses et compare tes sorties aux résultats attendus.</p>
 
   <details class="acc" open><summary>I · Résoudre un nom et expliquer le résultat</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Trouver l’adresse de <code>google.com</code> avec <code>dig</code>, recommencer, comparer les réponses, puis analyser <code>+trace</code> et les paquets.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Trouver l’adresse de <code>google.com</code> avec <code>dig</code>, recommencer, comparer les réponses, puis analyser <code>+trace</code> et les paquets.</p>
     <pre class="c-code"><code>dig @8.8.8.8 google.com. A
 dig @8.8.8.8 google.com. A
 dig @8.8.8.8 google.com. A +norecurse
@@ -188,7 +190,7 @@ dig google.com. A +trace</code></pre>
   </div></details>
 
   <details class="acc"><summary>II · Installer BIND9 et examiner sa configuration</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Installer le serveur, vérifier son état et son port, repérer les zones configurées et expliquer ce que montre <code>rndc dumpdb</code>.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Installer le serveur, vérifier son état et son port, repérer les zones configurées et expliquer ce que montre <code>rndc dumpdb</code>.</p>
     <pre class="c-code"><code>sudo apt update
 sudo apt install bind9 dnsutils
 systemctl status named
@@ -204,8 +206,9 @@ sudo ss -luntp 'sport = :53'</code></pre>
   </div></details>
 
   <details class="acc"><summary>III A · Déclarer et remplir la zone primaire secu.rt</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Déclarer <code>secu.rt</code> dans <code>named.conf.local</code>, créer <code>db.secu</code> et tester les ressources demandées.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Déclarer <code>secu.rt</code> dans <code>named.conf.local</code>, créer <code>db.secu</code> et tester les ressources demandées.</p>
     <h3>1. Déclarer la zone sur ns1</h3>
+    <figure><img src="../assets/revisions/dnssec/schemas/bind9.png" alt="Trajet d’une résolution et sens de la demande de transfert de ns2 vers ns1" loading="lazy"><figcaption>ns1 charge les fichiers de zone du TP. ns2 demande leur transfert. TSIG authentifie l’échange entre ces deux serveurs.</figcaption></figure>
     <p>Ouvre <code>/etc/bind/named.conf.local</code> sur le serveur primaire et ajoute ce bloc.</p>
     <pre class="c-code"><code>zone "secu.rt" {
     type primary;
@@ -247,7 +250,7 @@ dig @172.25.0.10 smtp.secu.rt. CNAME +norecurse</code></pre>
   </div></details>
 
   <details class="acc"><summary>III B · Créer la zone inverse et tester les PTR</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Déclarer <code>0.25.172.in-addr.arpa</code>, remplir <code>db.172.25.0</code> et tester les adresses de la partie précédente.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Déclarer <code>0.25.172.in-addr.arpa</code>, remplir <code>db.172.25.0</code> et tester les adresses de la partie précédente.</p>
     <p>Dans <code>named.conf.local</code>, ajoute une seconde zone <code>type primary</code> de nom <code>0.25.172.in-addr.arpa</code> avec <code>file "/etc/bind/db.172.25.0";</code> et transferts fermés. Écris ensuite le fichier annoncé.</p>
     <pre class="c-code"><code>$TTL 300
 $ORIGIN 0.25.172.in-addr.arpa.
@@ -267,7 +270,7 @@ dig @172.25.0.10 -x 172.25.0.42 +norecurse</code></pre>
   </div></details>
 
   <details class="acc"><summary>IV · Configurer le poste client et faire fonctionner le nom court</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Faire résoudre <code>client.secu.rt</code> puis le nom court <code>client</code> depuis le poste client.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Faire résoudre <code>client.secu.rt</code> puis le nom court <code>client</code> depuis le poste client.</p>
     <ol>
       <li>Depuis le poste client, lance <code>dig @172.25.0.10 client.secu.rt. A</code>. Valide d’abord que le serveur est joignable et renvoie l’adresse prévue.</li>
       <li>Dans le profil de connexion de la VM, configure <code>172.25.0.10</code> comme serveur DNS et <code>secu.rt</code> comme domaine de recherche. Sur un poste géré par NetworkManager, ces réglages se trouvent dans les paramètres IPv4 du profil. Sur un autre système, utilise le gestionnaire réseau de la VM. Enregistre et réactive la connexion.</li>
@@ -277,7 +280,7 @@ dig @172.25.0.10 -x 172.25.0.42 +norecurse</code></pre>
   </div></details>
 
   <details class="acc"><summary>V · Configurer ns2 et authentifier le transfert TSIG</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Faire récupérer la zone par le secondaire, sécuriser le transfert avec une clé symétrique, puis contrôler la redondance.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Faire récupérer la zone par le secondaire, sécuriser le transfert avec une clé symétrique, puis contrôler la redondance.</p>
     <ol>
       <li>Installe BIND9 sur <code>ns2</code>. Pour observer un premier transfert sur les VM isolées du TP, tu peux autoriser temporairement la seule IP de <code>ns2</code> sur le primaire et déclarer <code>primaries { 172.25.0.10; };</code> sur le secondaire. Remplace ensuite cette autorisation IP par la clé, comme ci-dessous.</li>
       <li>Sur <code>ns1</code>, génère le secret avec <code>tsig-keygen -a hmac-sha512 tp-xfr</code> et conserve le résultat dans un fichier <code>/etc/bind/keys/tp-xfr.key</code> lisible par l’utilisateur du service seulement et par l’administrateur. Copie le même fichier sur <code>ns2</code> par un canal privé. La déclaration produite contient le nom, l’algorithme et le secret. Le secret reste hors du compte rendu.</li>
@@ -302,7 +305,7 @@ dig @172.25.0.11 client.secu.rt. A +norecurse</code></pre>
   </div></details>
 
   <details class="acc"><summary>VI · Comparer avec et sans DNSSEC et suivre les clés</summary><div class="acc-body">
-    <p><strong>Questions du TP.</strong> Comparer les réponses <code>SOA .</code>, analyser le graphe DNSViz et relever l’expiration d’une signature sur <code>pm.</code>.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Comparer les réponses <code>SOA .</code>, analyser le graphe DNSViz et relever l’expiration d’une signature sur <code>pm.</code>.</p>
     <pre class="c-code"><code>dig SOA .
 dig +dnssec SOA .
 dig +dnssec DNSKEY . +multi
@@ -318,7 +321,7 @@ dig +dnssec DNSKEY pm. +multi</code></pre>
   </div></details>
 
   <details class="acc"><summary>VII · Signer secu.rt et comparer NSEC et NSEC3</summary><div class="acc-body">
-    <p><strong>Questions du TP.</strong> Générer une ZSK et une KSK, signer la zone, rendre les signatures visibles dans <code>dig</code>, puis refaire une signature avec NSEC3.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Générer une ZSK et une KSK, signer la zone, rendre les signatures visibles dans <code>dig</code>, puis refaire une signature avec NSEC3.</p>
     <ol>
       <li>Sur <code>ns1</code>, travaille dans un dossier de signature privé et copie le fichier de zone de départ. Prends les tailles RSA demandées par l’exercice. En sortie, note les deux noms de fichiers de clés.</li>
       <li>Dans la copie de <code>db.secu</code>, ajoute les deux enregistrements <code>DNSKEY</code> issus des fichiers <code>.key</code>, ou deux directives <code>$INCLUDE</code> pointant vers ces fichiers publics. Les fichiers <code>.private</code> restent dans le dossier de travail.</li>
@@ -341,7 +344,7 @@ dig @172.25.0.10 absent.secu.rt. A +dnssec +norecurse</code></pre>
   </div></details>
 
   <details class="acc"><summary>VIII · Configurer le relais, diagnostiquer SERVFAIL et établir la confiance</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Remplacer la zone secondaire par un relais, expliquer les flags, puis permettre au relais de valider les réponses en lui fournissant une ancre de confiance.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Remplacer la zone secondaire par un relais, expliquer les flags, puis permettre au relais de valider les réponses en lui fournissant une ancre de confiance.</p>
     <ol>
       <li>Sur <code>ns2</code>, remplace le bloc <code>zone "secu.rt"</code> de la partie V par le bloc ci-dessous. Vérifie la syntaxe et recharge. La zone limitée à <code>secu.rt</code> transmet ses requêtes au primaire.</li>
     </ol>
@@ -375,7 +378,7 @@ dig @172.25.0.11 secu.rt. SOA +dnssec +multi +adflag</code></pre>
   <video id="dnssec-player" controls preload="none" playsinline
          poster="../assets/revisions/dnssec/video-affiche.jpg?v=montage-2"
          style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-    <source src="../assets/revisions/dnssec/cours-video.mp4?v=montage-2" type="video/mp4">
+    <source src="../assets/revisions/dnssec/cours-video.mp4?v=schemas-1" type="video/mp4">
     <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/dnssec/sous-titres.vtt">
     Ton navigateur ne peut pas lire cette vidéo.
   </video>
@@ -388,7 +391,7 @@ dig @172.25.0.11 secu.rt. SOA +dnssec +multi +adflag</code></pre>
 <li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="174.083">2:54 · La chaîne de confiance</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="206.667">3:26 · Prouver qu’un nom n’existe pas</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="238.542">3:58 · Primaire, secondaire et relais</button></li></ul></div></details>
-  <details class="acc"><summary>Corrigés du TP · 4:30</summary><div class="acc-body"><ul><li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="270.500">4:30 · I · Comparer les requêtes dig</button></li>
+  <details class="acc"><summary>Questions TD &amp; TP · 4:30</summary><div class="acc-body"><ul><li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="270.500">4:30 · I · Comparer les requêtes dig</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="307.375">5:07 · II · Installer et contrôler BIND9</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="333.208">5:33 · III A · Déclarer secu.rt</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="362.667">6:02 · III A · Remplir db.secu</button></li>

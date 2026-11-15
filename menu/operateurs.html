@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -94,6 +94,7 @@
     <tr><td>Service de transport</td><td>Un service présenté à une interface, souvent Ethernet.</td><td>Adapter le trafic client au débit et aux paramètres convenus.</td></tr></tbody></table></div>
   </div>
   <div class="c-block"><h3>2. Placer plusieurs signaux sur une fibre</h3>
+    <figure><img src="../assets/revisions/operateurs/schemas/couches.png" alt="Support optique et services transportés au-dessus" loading="lazy"><figcaption>Dans le TD, vendre une fibre noire donne l’usage du support. Vendre une longueur d’onde ou un service OTN implique une couche équipée.</figcaption></figure>
     <p>Le <strong>WDM</strong> combine des signaux émis à des longueurs d’onde différentes. Le multiplexeur les regroupe et le démultiplexeur les sépare. En <strong>DWDM</strong>, les canaux sont rapprochés pour transporter davantage de longueurs d’onde. Un amplificateur optique aide à compenser des pertes du trajet.</p>
     <p>À Clermont, un <strong>ROADM</strong> peut laisser un canal traverser le nœud, l’extraire vers un équipement de la ville ou y ajouter un canal. Sa décision porte sur un canal optique, selon son port et sa longueur d’onde. Une longueur d’onde peut être réutilisée sur un autre tronçon indépendant si le plan optique le permet.</p>
   </div>
@@ -106,33 +107,39 @@
     <p>Deux liaisons ne garantissent pas deux chemins utilisés. Le routeur suit sa table. Un chemin de secours devient utile si une route alternative existe ou si le protocole converge vers elle après la panne.</p>
   </div>
   <div class="c-block"><h3>5. Commuter un paquet par étiquettes MPLS</h3>
+    <figure><img src="../assets/revisions/operateurs/schemas/mpls.png" alt="Chemin MPLS avec insertion, échange et retrait de label" loading="lazy"><figcaption>Pour le ping R0 vers R4, compare chaque capture à la LFIB du bon routeur. L’opération peut changer d’un saut à l’autre, notamment avec le retrait du label à l’avant-dernier saut.</figcaption></figure>
     <ol><li>À l’entrée du domaine, le routeur classe les paquets dans une <strong>FEC</strong>, un groupe auquel il applique le même traitement. Il peut pousser un label (<em>push</em>).</li><li>Au milieu du domaine, la <strong>LFIB</strong> associe un label entrant à une opération et à un prochain saut. Le label peut être remplacé (<em>swap</em>). Il a un sens local sur le chemin.</li><li>À la sortie, le label est retiré (<em>pop</em>). Le dernier calcul peut être réalisé par l’avant-dernier routeur si l’équipement de sortie annonce le retrait implicite.</li></ol>
     <p><strong>LDP</strong> annonce les associations entre destinations et labels. La <strong>LIB</strong> conserve les correspondances connues. La LFIB sélectionne les actions utilisées pour les paquets. En <strong>traffic engineering</strong>, on peut chercher à diriger un trafic sur un chemin explicite, notamment si le chemin de coût minimal est chargé.</p>
   </div>
+  <div class="c-block"><h3>6. Situer un point de présence et les familles de multiplexage</h3>
+    <p>La <strong>boucle locale</strong> relie l’abonné au point de raccordement. La <strong>collecte</strong> agrège ce trafic vers le réseau de transport. Un <strong>POP</strong> est un lieu où l’opérateur dispose d’équipements et peut raccorder un client ou un partenaire. Un <strong>IXP</strong> sert à l’interconnexion de réseaux qui souhaitent échanger leurs flux. Sur les cartes du cours, suis les liaisons entre villes puis repère où se fait le raccordement.</p>
+    <p>En fibre, le <strong>CWDM</strong> espace davantage ses canaux optiques que le DWDM. Dans un multiplexage temporel, la capacité d’un canal est au contraire distribuée entre créneaux. Le cours présente <strong>SDH</strong>, une hiérarchie de trames synchrones STM, puis <strong>OTN</strong> qui transporte des clients variés dans des structures adaptées et apporte des fonctions de supervision et de correction. Pour savoir quelle table lire au TD, demande-toi si le nœud commute une longueur d’onde, une capacité dans une trame, ou un paquet IP.</p>
+  </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <details class="acc" open><summary>TD1 · Choisir fibre noire, λ ou service OTN</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Dire ce que l’opérateur A peut vendre sur son réseau sans équipement actif, puis déterminer ce qu’il doit installer pour louer des canaux optiques.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Dire ce que l’opérateur A peut vendre sur son réseau sans équipement actif, puis déterminer ce qu’il doit installer pour louer des canaux optiques.</p>
     <ol><li>Sans éclairer, propose une fibre noire si un chemin physique continu est disponible entre les deux sites. Sur la carte du sujet, trace les tronçons et vérifie le chemin plutôt que de déduire la couverture d’un nom de ville.</li>
     <li>Pour louer un canal, place aux extrémités de quoi émettre et recevoir la longueur d’onde. Sur les nœuds concernés, mets les fonctions d’ajout, d’extraction et de passage. Ajoute les équipements d’amplification si le budget optique du trajet l’exige.</li>
     <li>Pour transporter un service Ethernet dans OTN, ajoute les interfaces clientes et les commutateurs OTN. Relève les débits et services dans les fiches remises pour le TD. Les valeurs du sujet décrivent ces offres à la date de leurs fiches.</li></ol>
   </div></details>
   <details class="acc"><summary>TD2 · Dessiner les deux sens Clermont–Aubière</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Compter les trajets optiques monodirectionnels et proposer des tables optiques et OTN avec 10 slots pour l’IP.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Compter les trajets optiques monodirectionnels et proposer des tables optiques et OTN avec 10 slots pour l’IP.</p>
     <ol><li>Trace un canal dans chacun des deux sens. Note les ports <code>client</code>, <code>ligne</code> et, au besoin, <code>fibre aller</code> et <code>fibre retour</code>. On a besoin de deux trajets directionnels. Leur réutilisation éventuelle de la même fréquence dépend du plan optique.</li>
     <li>À Clermont, ajoute λ aller du port local vers la fibre de ligne, et extrais λ retour vers le port local. À Aubière, effectue les opérations inverses. Affecte des interfaces concrètes de ton dessin à ces entrées et sorties.</li>
     <li>Dans la table OTN de départ, associe le port du routeur aux slots 1 à 10 d’un port de ligne disponible. À l’arrivée, relie ces slots au port du routeur distant. Reproduis la correspondance dans l’autre sens, indépendamment.</li>
     <li>Pour ajouter le client Ethernet, cherche 5 slots libres par sens, par exemple 11 à 15 si disponibles. Ajoute les correspondances OTN. Une nouvelle longueur d’onde peut être nécessaire si le canal existant manque de capacité ou si le service exige un trajet distinct.</li></ol>
   </div></details>
   <details class="acc"><summary>TD2 · Construire les routes IP et analyser une coupure</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Faire passer les flux IP par Clermont, puis étudier ce qui arrive si le câble Clermont–Aubière est coupé.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Faire passer les flux IP par Clermont, puis étudier ce qui arrive si le câble Clermont–Aubière est coupé.</p>
     <ol><li>Clermont connaît son LAN <code>192.168.101.0/24</code>. Donne-lui une sortie vers Aubière pour <code>192.168.102.0/24</code> et vers Gerzat pour <code>192.168.103.0/24</code>.</li>
     <li>Aubière garde son LAN <code>.102</code> et utilise Clermont pour <code>.101</code> et <code>.103</code>. Gerzat garde <code>.103</code> et envoie vers Clermont pour <code>.101</code> et <code>.102</code>. Le lien direct Aubière–Gerzat n’est pas choisi dans ces tables.</li>
     <li>Après une coupure, distingue la capacité physique restante de la présence d’une route utilisable. Pour emprunter l’autre chemin, il faut des routes de secours ou le recalcul dynamique, plus un transport optique encore disponible.</li></ol>
   </div></details>
   <details class="acc"><summary>TP · Configurer OSPF et vérifier la convergence</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Adresser la maquette, faire joindre R4 depuis R0 et expliquer le coût du chemin choisi derrière R1.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Adresser la maquette, faire joindre R4 depuis R0 et expliquer le coût du chemin choisi derrière R1.</p>
+    <figure><a href="../assets/revisions/operateurs/schemas/topologie-tp.png"><img src="../assets/revisions/operateurs/schemas/topologie-tp.png" alt="Topologie MPLS du TP avec R0 à gauche, R1 et R4 aux bords du domaine, et R2, R3 et R5 à l’intérieur" loading="lazy"></a><figcaption>Sujet MPLS, p. 1. Commence par identifier les routeurs de bordure R1 et R4. R0 est à l’extérieur du domaine, et R2, R3 et R5 sont au cœur. Reviens à cette figure pour lire les captures interface par interface.</figcaption></figure>
     <pre class="c-code"><code>router ospf 1
  network &lt;réseau-du-lien&gt; &lt;masque-générique&gt; area 0
 show ip ospf neighbor
@@ -142,7 +149,7 @@ show ip route ospf</code></pre>
     <li>Capture entre R1 et R2 avant leur mise en route comme dans le sujet. Repère les Hello, les résumés de la base et les annonces d’état de liens. Vérifie ensuite que les routes attendues sont présentes et que R0 peut joindre les deux interfaces indiquées de R4.</li></ol>
   </div></details>
   <details class="acc"><summary>TP · Capturer les trames MPLS et relier chaque label à la LFIB</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Expliquer le trajet du ping R0 → R4, relever l’EtherType, le label et les TTL sur chaque lien.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Expliquer le trajet du ping R0 → R4, relever l’EtherType, le label et les TTL sur chaque lien.</p>
     <ol><li>Active <code>ip cef</code> si le système du TP l’exige, puis <code>mpls ip</code> sur les interfaces du domaine. R0 est hors du domaine, et seules les interfaces des routeurs en liaison MPLS doivent disposer de cette configuration.</li>
     <li>Avec <code>show mpls forwarding-table</code>, associe le préfixe de sortie à l’interface et au label. Sur R0–R1 on attend une trame transportant IP directement. Dans le domaine, une en-tête MPLS doit être visible là où un label est effectivement transporté. Compare les labels aux actions de la LFIB, hop par hop.</li>
     <li>Sur R3–R4, cherche un éventuel <code>Pop Label</code> sur R3. Note les TTL observés et le mode de propagation de la maquette. Le TTL qui diminue au milieu du domaine est celui du label pertinent. L’aspect du TTL IP à la sortie dépend du traitement configuré.</li>
@@ -153,7 +160,7 @@ show ip route ospf</code></pre>
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/operateurs/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/operateurs/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/operateurs/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/operateurs/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -167,7 +174,7 @@ show ip route ospf</code></pre>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="188.000">3:08 · OSPF et le choix du chemin</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="242.208">4:02 · MPLS, LDP et labels</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés TD et TP · 4:28</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:28</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="268.458">4:28 · TD1 · Choisir ce que l’opérateur A vend</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="296.083">4:56 · TD2 · Clermont–Aubière dans les deux sens</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="326.375">5:26 · TD2 · Ajouter un client sans louer inutilement</button></li>

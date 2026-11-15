@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -109,6 +109,7 @@
   </div>
   <div class="c-block">
     <h3>3. Lire une jointure et repérer les lignes perdues</h3>
+    <figure><img src="../assets/revisions/bdd-but2/schemas/requete.png" alt="Étapes de la jointure, du filtrage, du regroupement et du comptage pour le TD médiathèque" loading="lazy"><figcaption>Pour compter les emprunts, relie d’abord les bonnes clés. Pour filtrer selon le nombre obtenu, utilise HAVING après GROUP BY.</figcaption></figure>
     <pre class="c-code"><code>SELECT s.id, s.nom, COUNT(e.ref) AS nb_emprunts
 FROM Etudiant AS s
 LEFT JOIN Emprunter AS e ON e.etd_id = s.id
@@ -145,10 +146,11 @@ GROUP BY s.id, s.nom;</code></pre>
   </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Les exemples utilisent le schéma de la médiathèque. On prend <code>etat_reparation=1</code> pour « en cours » comme dans les travaux du cours. Pour les exercices qui portent sur un prêt courant, le TP retient une date de retour future. Si tu importes des données historiques, crée des cas de test datés autour d’aujourd’hui.</p>
   <details class="acc" open><summary>TD1 · Créer la base et faire évoluer le schéma</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Créer <code>entrepot</code> avec <code>client</code>, <code>produit</code>, <code>ventes</code>, ajouter le mail et retirer la remise.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Créer <code>entrepot</code> avec <code>client</code>, <code>produit</code>, <code>ventes</code>, ajouter le mail et retirer la remise.</p>
+    <figure><a href="../assets/revisions/bdd-but2/schemas/entrepot-td.png"><img src="../assets/revisions/bdd-but2/schemas/entrepot-td.png" alt="Schéma du TD avec les tables produit, client et ventes et les deux relations" loading="lazy"></a><figcaption>TD1, exercice 1. Ventes référence le produit par IDProduit et le client par IDC. Crée les tables référencées avant la table qui porte ces clés étrangères.</figcaption></figure>
     <ol><li>Crée la base puis sélectionne-la avec <code>USE entrepot</code>. Crée <code>client</code> avec <code>IDC INT PRIMARY KEY</code> et <code>produit</code> avec <code>IDPRODUIT VARCHAR(15) PRIMARY KEY</code>. Reprends les autres colonnes du schéma de l’énoncé.</li>
     <li>Crée ensuite <code>ventes</code>, dont la clé est <code>IDLigne</code>. <code>IDC</code> et <code>IDProduit</code> reprennent les mêmes types que les colonnes référencées, puis reçoivent les deux clés étrangères.</li>
     <li>Ajoute une colonne puis retire celle que le sujet abandonne. Avant une suppression sur des données réelles, recense les requêtes qui utilisent la colonne et sauvegarde les données nécessaires.</li></ol>
@@ -177,7 +179,7 @@ SHOW CREATE TABLE client;
 SHOW CREATE TABLE ventes;</code></pre>
   </div></details>
   <details class="acc"><summary>TD1 et TP1 · Créer les comptes, tester les droits</summary><div class="acc-body">
-    <p><strong>Question du TD et du TP.</strong> Préparer MySQL, puis attribuer à John les droits sur la table et seulement trois colonnes modifiables.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Préparer MySQL, puis attribuer à John les droits sur la table et seulement trois colonnes modifiables.</p>
     <pre class="c-code"><code>CREATE USER 'john'@'localhost' IDENTIFIED BY '&lt;mot-de-passe-du-labo&gt;';
 GRANT SELECT, INSERT, DELETE ON mabase.Matable TO 'john'@'localhost';
 GRANT UPDATE (nom, sexe, commentaires) ON mabase.Matable TO 'john'@'localhost';
@@ -188,19 +190,19 @@ SHOW GRANTS FOR 'john'@'localhost';</code></pre>
     <li>Répète le <code>GRANT</code> sur chacun des périmètres nécessaires pour <code>mabase</code> et <code>entrepot</code>. Depuis John, vérifie que <code>UPDATE</code> sur une colonne autorisée passe et qu’un <code>DELETE</code> est refusé.</li></ol>
   </div></details>
   <details class="acc"><summary>TD1 bis · Construire la matrice des droits du portail</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Identifier les profils, leurs actions autorisées et écrire le SQL pour un profil.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Identifier les profils, leurs actions autorisées et écrire le SQL pour un profil.</p>
     <ol><li>Client : créer des commandes et lire les siennes. Secrétaire : lire et ajouter les clients, les supprimer quand la demande est validée. Commerciaux : gérer les produits. Responsable : modifier ou supprimer les commandes.</li>
     <li>Pour la secrétaire, teste <code>GRANT SELECT, INSERT, DELETE ON entrepot.client TO 'secretaire'@'localhost'</code> après création du compte. Vérifie qu’aucun privilège plus large, accordé directement ou via un rôle, ne donne accès aux commandes.</li>
     <li>Pour le client, contrôle le propriétaire via l’application ou une routine qui relie la session à son identifiant. Accorder <code>SELECT</code> sur toute la table donnerait aussi les commandes des autres.</li></ol>
   </div></details>
   <details class="acc"><summary>TD2 · Écrire les cinq requêtes de la médiathèque</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Afficher les étudiants, les PC en réparation, les étudiants restreints et les emprunts de juillet 2024, puis compter ces emprunts par personne.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Afficher les étudiants, les PC en réparation, les étudiants restreints et les emprunts de juillet 2024, puis compter ces emprunts par personne.</p>
     <ol><li>Liste les étudiants avec <code>SELECT * FROM Etudiant</code>. Pour les PC, sélectionne <code>PC p</code> avec <code>EXISTS (SELECT 1 FROM Maintenance m WHERE m.ref=p.ref AND m.etat_reparation=1)</code>. Même si plusieurs interventions correspondent, <code>EXISTS</code> ne répète pas le PC.</li>
     <li>Pour les personnes restreintes, pars d'<code>Etudiant s</code>, garde les lignes dont l’id apparaît dans <code>EtudiantRestreint</code>, puis sélectionne le nom et le courriel.</li>
     <li>Pour le détail de juillet, joins <code>Etudiant.id</code> à <code>Emprunter.etd_id</code> et filtre les dates sur l’intervalle <code>['2024-07-01', '2024-08-01'[</code>. Affiche nom et ref. Pour les totaux y compris 0, utilise la jointure gauche du cours et vérifie un étudiant sans emprunt et deux homonymes.</li></ol>
   </div></details>
   <details class="acc"><summary>TD2 et TP2 · Construire les fonctions de calcul</summary><div class="acc-body">
-    <p><strong>Question du TD et du TP.</strong> Retourner le nombre d’emprunts, savoir si un PC est en réparation, compter les disponibilités et obtenir les courriels.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Retourner le nombre d’emprunts, savoir si un PC est en réparation, compter les disponibilités et obtenir les courriels.</p>
     <pre class="c-code"><code>DELIMITER //
 CREATE FUNCTION nb_emprunts(p_id INT)
 RETURNS INT READS SQL DATA
@@ -216,14 +218,14 @@ DELIMITER ;</code></pre>
     <li><code>EmailEnCours()</code> agrège avec <code>GROUP_CONCAT(DISTINCT s.email ORDER BY s.email)</code>. Teste un étudiant qui a deux prêts et un autre qui n’en a aucun. Deux prêts ne doivent produire qu’un seul courriel dans la chaîne.</li></ol>
   </div></details>
   <details class="acc"><summary>TD2 et TP3 · Procédures, curseur et ancien parc</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Détecter les déclarations de durée inférieures d’au moins trois jours et préparer le retrait des machines anciennes.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Détecter les déclarations de durée inférieures d’au moins trois jours et préparer le retrait des machines anciennes.</p>
     <ol><li>Écris une procédure <code>inserer_etudiant(p_id,p_raison)</code> qui ajoute id, <code>CURDATE()</code> et motif. Pour la liste d’invitation, le curseur lit les courriels des étudiants restreints, et chaque tour ajoute un courriel au résultat.</li>
     <li>Pour le contrôle de durée, le curseur lit <code>etd_id</code>, les deux dates et <code>nb_jours</code>. Si les dates sont renseignées, calcule <code>DATEDIFF(date_ret,date_emp) - nb_jours</code>. À partir de 3, insère une restriction ou ajoute le motif « Une fausse déclaration. » à celle qui existe. Le test 2 → 9 avec 4 jours déclarés déclenche la règle.</li>
     <li>Pour la question de préparation, sélectionne les <code>modele &lt; 2015</code> et exclue tout emprunt actif. Pour les lignes restantes, crée une intervention en cours si elle n’existe pas. Pour la procédure de suppression de ce lot, vérifie d’abord les références dans les tables d’emprunts et de maintenance. La clé étrangère peut imposer l’archivage ou le retrait ordonné des dépendances.</li>
     <li>Pour <code>MajPC</code>, liste d’abord les références concernées par <code>memoire &lt; 4 OR modele &lt; 2015</code> et calcule le motif. Puis retire ces références dans la base de test en gérant leurs dépendances. Vérifie qu’un modèle 2015 à 4 Go reste présent.</li></ol>
   </div></details>
   <details class="acc"><summary>TD2 et TP4 · Refuser une modification ou une réservation</summary><div class="acc-body">
-    <p><strong>Question du TD et du TP.</strong> Interdire le changement de courriel, identifier les emprunts invalides et refuser une inscription en double.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Interdire le changement de courriel, identifier les emprunts invalides et refuser une inscription en double.</p>
     <pre class="c-code"><code>DELIMITER //
 CREATE TRIGGER interdit_email BEFORE UPDATE ON Etudiant
 FOR EACH ROW
@@ -242,7 +244,7 @@ DELIMITER ;</code></pre>
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/bdd-but2/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/bdd-but2/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/bdd-but2/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/bdd-but2/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -259,7 +261,7 @@ DELIMITER ;</code></pre>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="288.208">4:48 · Changer le schéma ou son contenu</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="317.083">5:17 · Comprendre l’ordre des opérations</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés TD et TP · 5:46</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 5:46</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="346.042">5:46 · TD1 · Créer un compte et limiter ses droits</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="400.417">6:40 · TD2 · Les emprunts de juillet 2024</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="425.583">7:05 · TP2 · Compter les PC disponibles</button></li>

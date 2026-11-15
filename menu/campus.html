@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -88,6 +88,7 @@
   <p>On suit le paquet d’un client Wi-Fi. À chaque étape, identifie le rôle de l’équipement, l’adresse du destinataire et la règle qui autorise ou détourne le trafic.</p>
   <div class="c-block">
     <h3>1. Construire le réseau du campus</h3>
+    <figure><a href="../assets/revisions/campus/schemas/architecture-poly.png"><img src="../assets/revisions/campus/schemas/architecture-poly.png" alt="Architecture de campus du poly, avec les quatre étages, des liens redondants et une sortie Internet" loading="lazy"></a><figcaption>Poly Réseau de campus, p. 4. Remonte d’un poste jusqu’à Internet. L’accès raccroche le terminal, la distribution agrège, le cœur transporte et la sortie contrôle les échanges externes.</figcaption></figure>
     <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Couche</th><th>Rôle</th><th>Exemple</th></tr></thead><tbody>
     <tr><td>Accès</td><td>Raccorder les postes et les points d’accès.</td><td>Affecter un poste à un VLAN, vérifier son bail.</td></tr>
     <tr><td>Distribution</td><td>Regrouper les réseaux d’accès et appliquer les politiques.</td><td>Router entre VLAN, filtrer, donner une priorité à certains flux.</td></tr>
@@ -97,6 +98,7 @@
   </div>
   <div class="c-block">
     <h3>2. Choisir la chaîne de filtrage</h3>
+    <figure><img src="../assets/revisions/campus/schemas/trajet.png" alt="Comparaison de deux paquets atteignant la même interface Linux et traités par INPUT ou FORWARD" loading="lazy"><figcaption>Sur la passerelle du TP, un paquet destiné à Linux passe par INPUT. Un paquet destiné au réseau extérieur est traité par FORWARD.</figcaption></figure>
     <ul><li><code>INPUT</code> traite ce qui vise le pare-feu, par exemple un ping vers sa propre adresse.</li><li><code>FORWARD</code> traite ce qui transite, par exemple le trafic d’un client vers un serveur derrière le pare-feu.</li><li><code>OUTPUT</code> traite ce que la passerelle émet.</li></ul>
     <p>Dans une chaîne, l’ordre compte. Une décision terminale peut empêcher les lignes suivantes de voir le paquet. Si aucune règle ne décide, la politique de la chaîne intégrée s’applique. <code>DROP</code> jette le paquet. <code>REJECT</code> signale le refus. <code>LOG</code> journalise sans prendre à lui seul une décision d’autorisation. Vérifie les compteurs avec <code>iptables -nvL</code>.</p>
     <p>Le <strong>suivi de connexion</strong> reconnaît les paquets d’une même conversation. Autorise le sens interne vers externe pour ouvrir les connexions voulues, et <code>ESTABLISHED,RELATED</code> pour permettre le retour. Une connexion nouvelle depuis l’extérieur reste bloquée en l’absence de règle d’ouverture.</p>
@@ -108,6 +110,7 @@
   </div>
   <div class="c-block">
     <h3>4. Séparer l’accès Wi-Fi de l’authentification RADIUS</h3>
+    <figure><img src="../assets/revisions/campus/schemas/wifi.png" alt="Échanges DHCP pour l’adressage et 802.1X vers FreeRADIUS pour l’authentification" loading="lazy"><figcaption>Sur un réseau protégé en 802.1X, l’accès est autorisé avant de pouvoir utiliser le trajet DHCP. Les deux lignes détaillent deux échanges distincts.</figcaption></figure>
     <p>Le terminal rejoint un <strong>SSID</strong> annoncé par la borne. La configuration IP peut ensuite provenir de DHCP. Avec 802.1X, la borne interroge RADIUS pour la décision d’accès. Dans ce vocabulaire, le client RADIUS est la borne, appelée <strong>NAS</strong>. Le terminal appartient à l’utilisateur qui se présente à la borne.</p>
     <p><code>Access-Request</code> transporte la demande, <code>Access-Challenge</code> poursuit l’échange quand nécessaire, <code>Access-Accept</code> confirme l’accès et <code>Access-Reject</code> refuse. <strong>AAA</strong> distingue vérifier l’identité, décider ce qu’elle peut faire et consigner les événements d’accès. Le secret borne–serveur est distinct du mot de passe de l’utilisateur.</p>
   </div>
@@ -116,24 +119,29 @@
     <p>Le client non autorisé essaye une requête HTTP. Dans l’exercice, la passerelle marque le trafic puis le redirige vers sa page locale. Le portail demande des identifiants et consulte RADIUS. En cas d’accord, le pare-feu applique une exception pour la session du client. Le TP utilise l’adresse MAC sur le réseau local pour cet essai.</p>
     <details class="acc"><summary>Ce que montrent les captures</summary><div class="acc-body"><p>Le test demandé porte sur HTTP. Rediriger arbitrairement du HTTPS vers un autre serveur provoque notamment des problèmes de certificat. Fais une nouvelle connexion HTTP après chaque changement : un flux déjà suivi peut continuer avec la traduction décidée à son ouverture.</p></div></details>
   </div>
+  <div class="c-block"><h3>6. Suivre l’échange d’authentification du Wi-Fi</h3>
+    <p>Le <strong>supplicant</strong> est le client qui présente son identité. L’<strong>authenticator</strong>, la borne dans le TP, contrôle le passage sur le réseau et relaie l’échange au serveur RADIUS. À une demande <code>Access-Request</code>, celui-ci peut demander une preuve supplémentaire avec <code>Access-Challenge</code>, autoriser avec <code>Access-Accept</code> ou refuser avec <code>Access-Reject</code>.</p>
+    <p><strong>EAP</strong> est un cadre pour des méthodes d’authentification. Avec EAP-TLS, le serveur et le client peuvent s’authentifier par certificat. Avec PEAP, on établit d’abord un tunnel TLS avec le serveur, dont le client doit vérifier le certificat, puis une méthode interne comme celle de la capture du cours échange la preuve utilisateur. Un test <code>radtest</code> peut valider une réponse RADIUS avant le test avec le vrai poste et la méthode EAP de la borne.</p>
+    <p>La DMZ du poly illustre une autre séparation. Trois interfaces distinguent Internet, serveurs exposés et réseau interne. Un serveur Web public peut recevoir sur son port publié tandis qu’un accès vers les postes internes suit un jeu de règles différent. Pour expliquer un rejet, relève l’interface d’entrée, la destination et l’état de suivi avant de modifier le filtrage.</p>
+  </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés des TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Dans les exemples, <code>LAN</code> et <code>WAN</code> représentent les vrais noms d’interfaces de la maquette. Confirme leur rôle avec <code>ip -br addr</code> avant d’ajouter des règles.</p>
   <details class="acc" open><summary>TP1 · Installer la passerelle et choisir la bonne chaîne</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Faire transiter le trafic du réseau interne par Linux, appliquer des politiques restrictives et autoriser un ping vers la passerelle.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Faire transiter le trafic du réseau interne par Linux, appliquer des politiques restrictives et autoriser un ping vers la passerelle.</p>
     <ol><li>Relie un port de la passerelle au poste interne et l’autre au réseau extérieur du labo. Configure le poste avec une IP du LAN et comme route par défaut l’IP LAN de Linux. Sur Linux, contrôle les deux réseaux avec <code>ip route</code> et active <code>sudo sysctl -w net.ipv4.ip_forward=1</code>.</li>
     <li>Dans la maquette du TP, prépare les règles de trafic déjà suivi et de boucle locale, puis applique les politiques demandées depuis la console du labo. Pour le ping qui vise la passerelle, autorise en <code>INPUT</code> les requêtes ICMP du LAN. Si la politique <code>OUTPUT</code> bloque, autorise les réponses correspondantes.</li>
     <li>Test : le ping de l’adresse LAN de la passerelle réussit. Avec <code>iptables -nvL INPUT</code>, les compteurs de la règle augmentent. Un ping vers un autre poste nécessite en plus son trajet <code>FORWARD</code> et son retour.</li></ol>
   </div></details>
   <details class="acc"><summary>TP1 · Comparer Telnet et isoler le trafic Web</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Comparer <code>REJECT</code> et <code>DROP</code> puis n’autoriser que les connexions Web initiées de l’intérieur.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Comparer <code>REJECT</code> et <code>DROP</code> puis n’autoriser que les connexions Web initiées de l’intérieur.</p>
     <ol><li>Prépare une même tentative TCP vers le port 23 de la maquette. Choisis <code>INPUT</code> si l’adresse cible est Linux, <code>FORWARD</code> si elle est derrière Linux. Fais un essai avec <code>REJECT</code>, remplace cette règle par <code>DROP</code>, puis refais la capture.</li>
     <li>Avec <code>REJECT</code>, le client peut voir un refus immédiat. Avec <code>DROP</code>, repère les retransmissions et l’absence de réponse de la règle. Vérifie les compteurs pour savoir quelle ligne a réellement traité les paquets.</li>
     <li>Dans <code>FORWARD</code>, autorise le Web sortant du LAN vers le WAN, puis autorise en retour seulement le trafic <code>ESTABLISHED,RELATED</code>. Si tu testes avec un nom, prévois aussi la résolution via le DNS choisi. Vérifie l’accès depuis le réseau interne, puis confirme qu’une nouvelle connexion en sens inverse est refusée.</li></ol>
   </div></details>
   <details class="acc"><summary>TP1 · Traduire les adresses et publier le serveur Web de test</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Comparer un pool NAT, le partage de l’IP extérieure et la redirection vers le serveur Apache interne.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Comparer un pool NAT, le partage de l’IP extérieure et la redirection vers le serveur Apache interne.</p>
     <pre class="c-code"><code>iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o WAN -j MASQUERADE
 iptables -t nat -A PREROUTING -i WAN -p tcp --dport 8080 \
   -j DNAT --to-destination 10.0.0.2:80</code></pre>
@@ -142,20 +150,20 @@ iptables -t nat -A PREROUTING -i WAN -p tcp --dport 8080 \
     <li>Depuis le poste extérieur, ouvre l’adresse WAN et le port 8080. Observe le flux avant translation, puis port 80 vers le serveur. Contrôle que les connexions non prévues restent bloquées.</li></ol>
   </div></details>
   <details class="acc"><summary>TP2 · Distribuer le bail Wi-Fi et accéder à Internet</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Mettre la borne en 10.0.0.1, distribuer 10.0.0.2 à 10.0.0.10 côté Linux, puis tester la salle et Internet.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Mettre la borne en 10.0.0.1, distribuer 10.0.0.2 à 10.0.0.10 côté Linux, puis tester la salle et Internet.</p>
     <ol><li>Configure le SSID du labo et l’adresse de gestion <code>10.0.0.1/24</code>. Donne à l’interface LAN de Linux une autre IP fixe hors du pool, par exemple <code>10.0.0.254</code>. Lorsque Linux distribue les baux, garde la borne en accès/bridge sans serveur DHCP concurrent.</li>
     <li>Dans le DHCP du labo, déclare le sous-réseau <code>10.0.0.0/24</code>, le pool <code>.2</code> à <code>.10</code>, le routeur <code>.254</code> et le DNS de l’exercice. Connecte le client et relève son adresse, masque et route. Vérifie d’abord le ping vers Linux.</li>
     <li>Si un poste de la salle ne peut pas répondre, inspecte la route de retour et le pare-feu. Pour l’accès sortant seulement, le masquage simplifie le retour. Pour joindre le téléphone depuis la salle comme au DS, il faut un trajet approprié vers son réseau et une règle de filtrage adaptée.</li>
     <li>Capture sur les deux interfaces en filtrant l’IP du client côté LAN. Pour le journal, ajoute un préfixe distinct et une limite de débit avant la décision de filtrage, puis rapproche l’IP du bail, l’heure et le compte de test.</li></ol>
   </div></details>
   <details class="acc"><summary>TP2 · Faire authentifier le Wi-Fi par FreeRADIUS</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Vérifier un mauvais et un bon mot de passe avec <code>radtest</code>, puis faire authentifier un client via la borne.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Vérifier un mauvais et un bon mot de passe avec <code>radtest</code>, puis faire authentifier un client via la borne.</p>
     <ol><li>Installe FreeRADIUS sur Linux. Dans la définition des clients, déclare l’adresse de la borne (NAS) et le secret de la maquette. Dans la base de comptes utilisée par le TP, prépare un utilisateur de test avec son propre mot de passe.</li>
     <li>Lance le mode diagnostic <code>freeradius -X</code> après avoir arrêté l’instance qui occupe déjà le port. Pour un essai local, utilise <code>radtest compte motdepasse localhost 0 secret-local</code>. Le quatrième argument est le numéro du port NAS, pas le port UDP du serveur. Le secret utilisé est celui du client local déclaré.</li>
     <li>Attends <code>Access-Reject</code> avec le mot de passe incorrect, puis <code>Access-Accept</code> avec le bon. Configure ensuite l’adresse et le port RADIUS sur la borne avec son propre secret. Refais le test depuis le terminal et corrèle le compte, la borne et les événements du journal, sans mettre les secrets dans les captures.</li></ol>
   </div></details>
   <details class="acc"><summary>TP3 · Rediriger une connexion HTTP et laisser passer le client autorisé</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Envoyer le client non authentifié vers le portail, puis laisser passer ses nouvelles connexions après accord de RADIUS.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Envoyer le client non authentifié vers le portail, puis laisser passer ses nouvelles connexions après accord de RADIUS.</p>
     <pre class="c-code"><code>iptables -t mangle -N internet
 iptables -t mangle -A PREROUTING -i LAN -p tcp --dport 80 -j internet
 iptables -t mangle -A internet -j MARK --set-mark 80
@@ -166,7 +174,7 @@ iptables -t nat -A PREROUTING -i LAN -p tcp --dport 80 \
     <li>Après succès d’authentification, ajoute une exception <code>RETURN</code> en tête de la chaîne pour le client de test identifié par la MAC. Teste sur une nouvelle connexion. Après suppression de l’exception, la redirection doit revenir. Le Web ne doit pas exécuter des commandes construites directement à partir de saisies de l’utilisateur. Pour l’intégration, valide l’IP/MAC et isole l’actualisation de la règle dans la maquette.</li></ol>
   </div></details>
   <details class="acc"><summary>DS pratique · Valider SSID, bail, trajet, authentification et log</summary><div class="acc-body">
-    <p><strong>Question du sujet.</strong> Montrer un SSID visible, l’accès Internet depuis le téléphone, le ping depuis la salle, l’authentification RADIUS et un journal qui identifie le trafic du téléphone.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Montrer un SSID visible, l’accès Internet depuis le téléphone, le ping depuis la salle, l’authentification RADIUS et un journal qui identifie le trafic du téléphone.</p>
     <ol><li>Montre le SSID puis l’adresse du téléphone. Teste l’accès Web et conserve la capture qui montre la translation sortante.</li>
     <li>Depuis la salle, vérifie le ping de l’IP du téléphone. Coupe son Wi-Fi et relance pour confirmer qu’il s’agissait de ce chemin. Si la requête arrive sans réponse, inspecte le filtre ICMP et la route inverse.</li>
     <li>Relève l’accord de RADIUS et montre un extrait de journal lié au bail et à l’heure du téléphone. Masque les mots de passe et réduis la capture aux échanges nécessaires au test.</li></ol>
@@ -176,7 +184,7 @@ iptables -t nat -A PREROUTING -i LAN -p tcp --dport 80 \
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/campus/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/campus/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/campus/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/campus/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -189,7 +197,7 @@ iptables -t nat -A PREROUTING -i LAN -p tcp --dport 80 \
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="180.417">3:00 · NAT, PAT et adresses visibles</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="229.292">3:49 · RADIUS et portail captif</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés TD et TP · 4:41</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:41</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="281.417">4:41 · TP1 · Mettre en place la passerelle</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="308.375">5:08 · TP1 · Distinguer REJECT et DROP</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="332.875">5:32 · TP1 · Tester les deux traductions</button></li>

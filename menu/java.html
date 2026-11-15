@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -158,6 +158,7 @@ for (int valeur : mesures) {
 
   <div class="c-block">
     <h3>5. Un capteur, plusieurs comportements</h3>
+    <figure><img src="../assets/revisions/java/schemas/objets.png" alt="Référence Capteur, implémentation d’un sous-type et boucle de lecture des lignes du TP SmartBuilding" loading="lazy"><figcaption>Le type de la référence détermine les méthodes accessibles. L’objet réel détermine laquelle s’exécute quand elle a été redéfinie.</figcaption></figure>
     <ol>
       <li>Dans <code>Capteur</code>, place ce que tous partagent : identifiant, pièce, état. <strong>Hériter</strong>, c’est définir une sous-classe comme <code>CapteurTemperature extends Capteur</code>. Avec <code>super(identifiant, piece)</code>, le constructeur transmet au parent la partie commune.</li>
       <li>Définis une opération <code>analyser()</code> commune. L’attribut température et son contrôle appartiennent à la sous-classe. <code>@Override</code> signale que tu redéfinis une méthode héritée avec la même signature. Une <strong>surcharge</strong> donne au même nom une autre liste de paramètres.</li>
@@ -183,11 +184,11 @@ for (int valeur : mesures) {
   </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Teste chaque méthode avec une entrée simple, puis avec la situation qui doit échouer. Les sorties ci-dessous sont les contrôles à obtenir avec les valeurs indiquées.</p>
   <h3 class="c-h3">TD1 · Consolidation de programmation</h3>
   <details class="acc" open><summary>1 · Afficher le triangle d’étoiles</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Afficher un triangle isocèle de hauteur saisie, avec la dernière ligne au bord gauche.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Afficher un triangle isocèle de hauteur saisie, avec la dernière ligne au bord gauche.</p>
     <ol>
       <li>Lis un entier <code>hauteur</code> et décide quoi afficher si cette hauteur n’est pas positive. Numérote les lignes à partir de 1.</li>
       <li>Sur la ligne <code>i</code>, écris <code>hauteur - i</code> espaces puis <code>2 * i - 1</code> étoiles, sans retour à la ligne entre les deux. Utilise deux boucles internes ou <code>String.repeat</code>.</li>
@@ -198,7 +199,7 @@ for (int valeur : mesures) {
 }</code></pre>
   </div></details>
   <details class="acc"><summary>2 · Manipuler un segment à partir de deux points</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Définir les deux constructeurs de <code>Segment</code>, calculer sa longueur, déplacer chaque extrémité et afficher les coordonnées.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Définir les deux constructeurs de <code>Segment</code>, calculer sa longueur, déplacer chaque extrémité et afficher les coordonnées.</p>
     <ol>
       <li>Dans <code>Point</code>, ajoute <code>getX()</code> et <code>getY()</code> pour lire les coordonnées privées. Dans <code>Segment</code>, déclare les deux champs privés de type <code>Point</code>.</li>
       <li>Le constructeur à deux points les affecte à l’origine et à l’extrémité. Si chaque segment doit avoir ses propres points, crée une copie des coordonnées à ce moment. Le constructeur à quatre nombres délègue avec <code>this(new Point(xOr, yOr), new Point(xExt, yExt))</code>.</li>
@@ -207,7 +208,7 @@ for (int valeur : mesures) {
     <div class="c-callout"><p><strong>Vérifie.</strong> De (0,0) à (3,4), la longueur vaut 5. Après avoir déplacé l’origine de (3,0), elle vaut 4. L’extrémité n’a pas bougé.</p></div>
   </div></details>
   <details class="acc"><summary>3 · Imposer trois opérations à chaque figure</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Écrire une classe abstraite <code>Figure</code> qui impose l’affichage, l’homothétie et la rotation.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Écrire une classe abstraite <code>Figure</code> qui impose l’affichage, l’homothétie et la rotation.</p>
     <pre class="c-code"><code>abstract class Figure {
     public abstract void affiche();
     public abstract void homothetie(double coeff);
@@ -216,7 +217,7 @@ for (int valeur : mesures) {
     <p>Place seulement la signature dans la base, sans accolades de méthode. Dans une sous-classe concrète, implémente les trois signatures avec <code>@Override</code>. Retire l’une des méthodes pour voir le compilateur signaler le contrat incomplet, puis remets-la.</p>
   </div></details>
   <details class="acc"><summary>4 · Donner un numéro unique à chaque nouvel objet</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Attribuer 1 au premier objet et incrémenter sans réutiliser les identifiants. Renvoyer le numéro de l’objet et le dernier numéro attribué.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Attribuer 1 au premier objet et incrémenter sans réutiliser les identifiants. Renvoyer le numéro de l’objet et le dernier numéro attribué.</p>
     <pre class="c-code"><code>class ObjetNumerote {
     private static int dernierIdent;
     private final int ident;
@@ -230,7 +231,7 @@ for (int valeur : mesures) {
 
   <h3 class="c-h3">TP1 · Messagerie instantanée</h3>
   <details class="acc"><summary>Concevoir les classes, les conteneurs et l’inscription</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Proposer les classes, les méthodes, leur ordre d’implémentation et les structures utilisées.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Proposer les classes, les méthodes, leur ordre d’implémentation et les structures utilisées.</p>
     <ol>
       <li>Commence par <code>Utilisateur</code> (id, nom, prénom, courriel) et <code>Message</code> (id, expéditeur, destinataire, texte). Rends les champs privés. Un id sert à retrouver un objet même si l’affichage est filtré.</li>
       <li>Dans le service, stocke les utilisateurs par identifiant avec une <code>LinkedHashMap&lt;Integer, Utilisateur&gt;</code> si tu veux retrouver directement un id et garder l’ordre d’inscription. Prévois par destinataire une <code>ArrayList&lt;Message&gt;</code> à laquelle on ajoute les messages en fin de liste.</li>
@@ -239,7 +240,7 @@ for (int valeur : mesures) {
     </ol>
   </div></details>
   <details class="acc"><summary>Envoyer, chercher, paginer et supprimer après lecture</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Gérer la sélection du destinataire au-delà de 20 inscrits, afficher les messages par pages de 20 et supprimer celui qui est lu.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Gérer la sélection du destinataire au-delà de 20 inscrits, afficher les messages par pages de 20 et supprimer celui qui est lu.</p>
     <ol>
       <li>Vérifie que l’expéditeur et le destinataire existent et sont distincts. Au-delà de 20 utilisateurs, filtre les candidats par nom ou par couple nom-prénom, puis affiche leurs vrais identifiants. Lors de la sélection, vérifie que l’id choisi correspond à un destinataire autorisé.</li>
       <li>Ajoute un message valide à la fin de la boîte du destinataire. Un ajout à la fin, suivi d’une lecture de gauche à droite, donne l’ordre d’arrivée. Donne un identifiant au message lui-même pour distinguer deux messages du même expéditeur.</li>
@@ -252,7 +253,7 @@ for (int valeur : mesures) {
   <h3 class="c-h3">SmartBuilding · Héritage et polymorphisme</h3>
   <p>Cette partie s’appuie sur le déroulé de ton compte rendu de TP2. Le sujet original n’a pas été retrouvé dans les fichiers disponibles.</p>
   <details class="acc"><summary>Construire les capteurs, puis les traiter dans la même boucle</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Faire une première classe <code>Capteur</code>, puis spécialiser température, luminosité et présence.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Faire une première classe <code>Capteur</code>, puis spécialiser température, luminosité et présence.</p>
     <ol>
       <li>Commence avec <code>identifiant</code>, <code>piece</code> et <code>actif</code>. Dans le constructeur de base, affecte l’identité et la pièce, et initialise <code>actif</code> à <code>true</code>. Vérifie avec C01 dans « Salle A », puis désactive et relis l’état.</li>
       <li>Pour chaque type de mesure, appelle <code>super(identifiant, piece)</code> dans le constructeur et ajoute son champ. La température et la luminosité sont numériques. La présence est un booléen. Ajoute les accesseurs et redéfinis l’affichage quand la mesure doit être incluse.</li>
@@ -263,7 +264,7 @@ for (int valeur : mesures) {
 
   <h3 class="c-h3">TP3 · Exceptions, fichiers et menu SmartBuilding</h3>
   <details class="acc"><summary>1 à 3 · Intercepter une mauvaise saisie ou un numéro absent</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Tester la saisie d’une température, puis distinguer une mauvaise conversion et un indice hors limites.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Tester la saisie d’une température, puis distinguer une mauvaise conversion et un indice hors limites.</p>
     <ol>
       <li>Lis une ligne avec <code>nextLine()</code> puis appelle <code>Double.parseDouble(texte.trim())</code>. « 23.5 », « 18 » et « -4.5 » se convertissent. « bonjour », « abc » et « 25,3 » échouent avec ce parseur, qui attend un point décimal.</li>
       <li>Entoure la conversion et l’action qui en dépend d’un <code>try</code>, puis affiche « veuillez saisir un nombre valide » dans le <code>catch (NumberFormatException e)</code>. L’objet ne doit être modifié qu’après une conversion réussie.</li>
@@ -271,7 +272,7 @@ for (int valeur : mesures) {
     </ol>
   </div></details>
   <details class="acc"><summary>4 à 8 · Règles de mesure, propagation et hiérarchie</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Refuser les valeurs incohérentes, empêcher l’analyse d’un capteur inactif et transmettre les détails de l’erreur à l’appelant.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Refuser les valeurs incohérentes, empêcher l’analyse d’un capteur inactif et transmettre les détails de l’erreur à l’appelant.</p>
     <ol>
       <li>Une température est valide entre −50 et 80 inclus. La luminosité doit être positive ou nulle. Teste 22.5, −70, 150, puis 600, 0 et −50. Contrôle avant d’affecter le champ. Écarte aussi <code>NaN</code> et les infinis si tu acceptes des saisies <code>double</code>.</li>
       <li>Définis <code>CapteurException extends Exception</code>, puis <code>CapteurInactifException</code> et <code>ValeurCapteurInvalideException</code> qui en héritent. Dans <code>analyserCapteur</code>, teste l’état et lance la première si nécessaire. Déclare <code>throws CapteurInactifException</code> si la méthode laisse l’erreur remonter.</li>
@@ -280,7 +281,7 @@ for (int valeur : mesures) {
     </ol>
   </div></details>
   <details class="acc"><summary>9 à 12 · Sauvegarder et recharger les capteurs</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Sauvegarder dans <code>capteurs.txt</code>, garantir la fermeture, puis recréer les capteurs et traiter le fichier absent.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Sauvegarder dans <code>capteurs.txt</code>, garantir la fermeture, puis recréer les capteurs et traiter le fichier absent.</p>
     <pre class="c-code"><code>TEMPERATURE;T01;Salle A;true;21.5
 LUMINOSITE;L01;Hall;true;640.0
 PRESENCE;P01;Salle B;true;true</code></pre>
@@ -291,7 +292,7 @@ PRESENCE;P01;Salle B;true;true</code></pre>
     </ol>
   </div></details>
   <details class="acc"><summary>13 à 17 · Garder les lignes valides et relancer le menu</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Distinguer ligne mal formée, cause d’origine et erreur de fichier, puis réunir les opérations dans le menu final.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Distinguer ligne mal formée, cause d’origine et erreur de fichier, puis réunir les opérations dans le menu final.</p>
     <ol>
       <li>Compte les vraies lignes dès <code>readLine()</code>. Fais <code>ligne.split(";", -1)</code>, exige cinq champs, vérifie l’état textuel <code>true</code> ou <code>false</code> puis sélectionne le type de capteur. Convertis la mesure avec le bon parseur et passe par les mêmes validations que pour une modification au clavier.</li>
       <li>Crée <code>FormatCapteurException</code> avec le numéro, la ligne et la cause. Si la conversion lance <code>NumberFormatException</code>, passe-la au constructeur parent avec <code>super(message, cause)</code>. <code>getCause()</code> permet ensuite de savoir pourquoi le format a échoué.</li>
@@ -301,6 +302,7 @@ PRESENCE;P01;Salle B;true;true</code></pre>
   </div></details>
 
   <details class="acc"><summary>SmartParking · Mobiliser les mêmes notions dans un autre projet</summary><div class="acc-body">
+    <p class="c-question"><strong>Consigne reconstituée à partir du compte rendu.</strong> Modélise les voitures et motos avec un tarif propre à chacune, puis traite un ajout quand le parking a atteint sa capacité.</p>
     <p>Le déroulé ci-dessous est repris de ton compte rendu SmartParking. Le sujet original n’a pas été retrouvé dans les fichiers disponibles.</p>
     <ol>
       <li>Dans la classe abstraite <code>Vehicule</code>, mets l’immatriculation, la marque et la durée. Vérifie que la durée est strictement positive avant de l’enregistrer. Les classes <code>Voiture</code> et <code>Moto</code> implémentent leur propre <code>calculerPrix()</code>.</li>
@@ -313,7 +315,7 @@ PRESENCE;P01;Salle B;true;true</code></pre>
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/java/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/java/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/java/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/java/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -329,7 +331,7 @@ PRESENCE;P01;Salle B;true;true</code></pre>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="226.917">3:46 · Déclencher, propager, traiter</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="252.125">4:12 · Fermer les fichiers même en cas d’erreur</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés TD et TP · 4:34</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:34</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="274.750">4:34 · TD1 · Afficher un triangle</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="295.667">4:55 · TD1 · Construire un segment</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="318.875">5:18 · TD1 · Figure et identifiant unique</button></li>

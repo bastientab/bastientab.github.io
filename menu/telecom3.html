@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=schemas-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -75,7 +75,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
-        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
       </ol>
     </nav></aside>
@@ -91,6 +91,7 @@
     <p>Pour une onde plane, E et H sont perpendiculaires à la direction de propagation. La <strong>polarisation</strong> décrit l’orientation du champ électrique. Deux antennes mal alignées peuvent créer une perte même si le niveau à l’émission n’a pas changé.</p>
   </div>
   <div class="c-block"><h3>2. Faire un bilan sans mélanger dB, dBm et watts</h3>
+    <figure><img src="../assets/revisions/telecom3/schemas/optique.png" alt="Bilan d’une liaison en dBm et aller-retour de l’impulsion OTDR" loading="lazy"><figcaption>Le premier tracé suit le niveau du signal. Le second explique le facteur deux lorsqu’on déduit une distance du délai d’un écho.</figcaption></figure>
     <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Grandeur</th><th>Calcul</th><th>Lecture</th></tr></thead><tbody>
     <tr><td>Puissance en dBm</td><td>10 log₁₀(P / 1 mW)</td><td>5 mW vaut environ 7 dBm.</td></tr>
     <tr><td>Perte en dB</td><td>10 log₁₀(Pentrée / Psortie)</td><td>Une perte positive se soustrait.</td></tr>
@@ -100,6 +101,7 @@
     <p>Enchaîne les éléments dans l’ordre, en ajoutant les gains et en retirant les pertes. L’<strong>hypsogramme</strong> trace cette puissance le long de la liaison. Une pente représente la perte répartie du support, une marche peut représenter un connecteur ou un amplificateur.</p>
   </div>
   <div class="c-block"><h3>3. Pourquoi une fibre guide et déforme le signal</h3>
+    <figure><a href="../assets/revisions/telecom3/schemas/reflexion-poly.png"><img src="../assets/revisions/telecom3/schemas/reflexion-poly.png" alt="Deux schémas du poly montrant l’angle critique puis la réflexion totale à l’interface" loading="lazy"></a><figcaption>Poly Télécom 3, p. 9. Observe le rayon rouge du côté de la gaine. À l’angle critique il longe l’interface. Au-delà de cet angle, seul le trajet réfléchi dans le cœur est dessiné.</figcaption></figure>
     <p>La loi de Snell-Descartes relie les angles par n₁sinθ₁ = n₂sinθ₂, avec les angles mesurés depuis la normale à l’interface. Au passage du cœur à la gaine, n₁&gt;n₂. Au-delà de l’angle critique sinθc=n₂/n₁, la réflexion devient totale. L’<strong>ouverture numérique</strong> décrit l’angle d’entrée accepté depuis l’air.</p>
     <p>Une fibre <strong>multimode</strong> permet plusieurs trajets ou modes. Des arrivées à des instants différents élargissent une impulsion. Une fibre <strong>monomode</strong> réduit la dispersion intermodale, mais la vitesse peut encore varier avec la longueur d’onde. Vérifie séparément la puissance disponible et l’étalement temporel.</p>
   </div>
@@ -113,56 +115,57 @@
   </div>
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
-  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <details class="acc" open><summary>TD1 · Puissance, ouverture numérique et retard</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Calculer la puissance de sortie pour deux longueurs et deux longueurs d’onde, puis retrouver l’angle d’entrée d’une fibre.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Calculer la puissance de sortie pour deux longueurs et deux longueurs d’onde, puis retrouver l’angle d’entrée d’une fibre.</p>
     <ol><li>Lis α à 1310 et 1550 nm dans le tableau du sujet. Multiplie chaque valeur par 0,2 km puis par 1,35 km. Pour une puissance d’entrée de 25 µW, calcule <code>25 × 10⁻⁶ × 10^(−perte/10)</code> en W dans chacun des quatre cas.</li>
     <li>Pour n₁=1,50 et n₂=1,48, ON=√(1,50²−1,48²)≈0,244. Dans l’air, θentrée max≈arcsin(0,244)=14,1°. Distingue cet angle d’entrée de l’angle critique mesuré par rapport à la normale cœur–gaine.</li>
     <li>Sur 100 m, le rayon axial met L n₁/c≈500 ns. Pour le rayon limite, la longueur parcourue est L/cosθaxe avec cosθaxe=n₂/n₁ dans le modèle du TD. On obtient environ 506,76 ns et un étalement d’environ 6,76 ns. En ne tenant compte que de cet étalement, il faut espacer les impulsions d’environ 6,76 ns ou plus, soit une limite de l’ordre de 148 millions d’impulsions par seconde.</li></ol>
   </div></details>
   <details class="acc"><summary>TD1, exercice 7 · Mesurer la perte d’une fibre de 500 m</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé.</strong> Une fibre G.657 de 500 m fait passer le niveau de −8,83 à −9,34 dBm. Décris l’insertion et calcule l’atténuation puis le dB par kilomètre.</p>
     <ol><li>Mesure d’abord le niveau de référence avec les cordons du banc, puis insère la fibre en gardant les autres réglages. Le niveau passe de −8,83 dBm à −9,34 dBm.</li>
     <li>La perte d’insertion vaut <strong>−8,83 − (−9,34) = 0,51 dB</strong>. Le signe est positif puisque le niveau diminue. La différence de deux niveaux en dBm est un rapport exprimé en dB.</li>
     <li>Rapporte 0,51 dB à 0,500 km pour trouver <strong>1,02 dB/km</strong>. Cette mesure représente la liaison insérée. Si les raccordements ont changé, leur perte peut contribuer au résultat.</li></ol>
   </div></details>
   <details class="acc"><summary>TD2 · Répartir, multiplexer et comparer les puissances</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Expliquer ce qui arrive à la puissance lors du passage dans un répartiteur, un multiplexeur ou un amplificateur.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Expliquer ce qui arrive à la puissance lors du passage dans un répartiteur, un multiplexeur ou un amplificateur.</p>
     <ol><li>Le répartiteur 10/90 du TD envoie 0,1 × P vers le port 2 et 0,9 × P vers le port 3. En dB, retire respectivement 10 dB et environ 0,46 dB au niveau d’entrée. Retranche aussi la perte excédentaire si l’énoncé en donne une.</li>
     <li>Pour WDM, suis chaque longueur d’onde vers son port, avec la perte indiquée pour cette voie. Additionne uniquement les puissances linéaires si le sujet demande une puissance totale.</li>
     <li>Sur l’amplificateur, applique le gain en dB et vérifie la plage de puissance autorisée à l’entrée et à la sortie.</li></ol>
   </div></details>
   <details class="acc"><summary>TD3 · Fermer le bilan optique de 220 km</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Vérifier si la sensibilité et la marge sont respectées, puis placer les amplificateurs de 5 dB.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Vérifier si la sensibilité et la marge sont respectées, puis placer les amplificateurs de 5 dB.</p>
     <ol><li>5 mW → 6,99 dBm. Perte sur 220 km → 0,4×220=88 dB. Sans amplificateur, la réception vaut −81,01 dBm. Il faut au moins −33 dBm pour avoir 3 dB de marge au-dessus de −36 dBm.</li>
     <li>Le déficit vaut 48,01 dB. Arrondis (48,01/5) à l’entier supérieur : 10. Avec dix gains de 5 dB, l’arrivée vaut −31,01 dBm dans ce modèle.</li>
     <li>Le premier amplificateur reçoit −35 dBm après environ (6,99+35)/0,4≈105 km. Ensuite, 5/0,4=12,5 km ramènent à −35 dBm. Le dixième se place vers 217,5 km. Sur le dessin, chaque amplification fait monter la courbe de 5 dB.</li></ol>
   </div></details>
   <details class="acc"><summary>TD · Champs autour d’une charge et d’un fil</summary><div class="acc-body">
-    <p><strong>Question du TD.</strong> Déterminer la direction du champ électrique, puis celle du champ magnétique près d’un conducteur.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Déterminer la direction du champ électrique, puis celle du champ magnétique près d’un conducteur.</p>
     <ol><li>Trace le vecteur qui va de la charge source vers le point d’observation. Pour une charge positive, E suit ce sens. Pour une charge négative, E pointe vers la charge. Si plusieurs charges contribuent, ajoute les vecteurs par composantes.</li>
     <li>Pour un fil rectiligne idéal, le champ magnétique est tangent aux cercles centrés sur le fil. Oriente le pouce dans le sens du courant pour obtenir le sens avec les doigts. Une inversion du courant inverse le champ.</li>
     <li>Pour deux conducteurs parallèles, trace séparément les deux champs au point demandé. Additionne s’ils sont dans le même sens ou soustrais les composantes opposées.</li></ol>
   </div></details>
   <details class="acc"><summary>TP1 à TP3 · QPSK, codage et modulation</summary><div class="acc-body">
-    <p><strong>Questions des TP.</strong> Mesurer la constellation IQ, reconnaître les symboles du codage bande de base et comparer ASK, FSK et PSK.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Mesurer la constellation IQ, reconnaître les symboles du codage bande de base et comparer ASK, FSK et PSK.</p>
     <ol><li>Au TP1, branche les voies I et Q sur les deux entrées et passe en XY. Relève les coordonnées utiles et associe les dibits avec la table du banc. Contrôle le signe des deux voies et relève le niveau demandé en tension efficace.</li>
     <li>Au TP2, utilise un déclenchement stable. Repère deux frontières consécutives et mesure la durée d’un symbole. Rappelle la relation inverse entre durée et rapidité, puis lis les transitions du codage demandé.</li>
     <li>Au TP3, observe le signal modulant puis le résultat du multiplieur. En ASK, compare les amplitudes de l’enveloppe. En FSK, mesure la fréquence sur chaque état. En PSK, compare la phase avec une référence commune.</li></ol>
   </div></details>
   <details class="acc"><summary>TP4 · Mesurer la réception télévision et satellite</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Régler le mesureur SEFRAM et relier le niveau, la qualité et la réception au choix des paramètres.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Régler le mesureur SEFRAM et relier le niveau, la qualité et la réception au choix des paramètres.</p>
     <ol><li>Sélectionne le mode et l’entrée prévus pour le montage. En satellite, utilise la fiche de l’annexe et règle fréquence, polarisation et débit symbole du transpondeur demandé.</li>
     <li>Vérifie le verrouillage, puis note les indications de niveau et de qualité au même point de mesure. Une puissance affichée avec aucun verrouillage demande de reprendre les paramètres.</li>
     <li>Compare les points et les montages du sujet, en notant le port mesureur et la chaîne utilisée. Garde les valeurs que tu as réellement lues.</li></ol>
   </div></details>
   <details class="acc"><summary>TP5 · Mesurer une liaison fibre à l’OTDR</summary><div class="acc-body">
-    <p><strong>Question du TP.</strong> Relever les événements, longueurs et pertes avec les réglages de mesure correctement identifiés.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Relever les événements, longueurs et pertes avec les réglages de mesure correctement identifiés.</p>
     <ol><li>Connecte la fibre et les amorces prévues. Identifie longueur d’onde, indice, portée et largeur d’impulsion. Lance une première trace et repère les portions utiles.</li>
     <li>Place les curseurs de part et d’autre du tronçon pour estimer longueur et perte. Pour un connecteur, utilise les portions stables autour de l’événement. Divise la perte du tronçon par sa longueur en km pour obtenir le dB/km.</li>
     <li>Compare deux largeurs d’impulsion. Une impulsion plus large permet généralement de voir plus loin, mais peut fusionner des événements proches. Pour un temps aller-retour, divise vΔt par deux.</li></ol>
   </div></details>
   <details class="acc"><summary>TP6 et TP7 · Câble RG58 et antenne</summary><div class="acc-body">
-    <p><strong>Questions des TP.</strong> Comparer pertes et réflexion du coaxial, puis tracer le diagramme de réception.</p>
+    <p class="c-question"><strong>Énoncé.</strong> Comparer pertes et réflexion du coaxial, puis tracer le diagramme de réception.</p>
     <ol><li>Pour le câble, règle la plage de fréquence du sujet et utilise la référence ou calibration du banc. Relève la transmission et la réflexion en conservant la même fréquence et les mêmes conditions lors des comparaisons.</li>
     <li>Pour l’antenne, maintiens distance et polarisation. Change l’angle sans déplacer le reste du montage, relève les niveaux et normalise-les au maximum si demandé. Lis le lobe principal et son ouverture au seuil utilisé dans le TP.</li>
     <li>Compare mesure et simulation dans le même plan. Les réflexions de la salle, les câbles et l’alignement peuvent déplacer les creux ou changer le niveau.</li></ol>
@@ -172,7 +175,7 @@
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
         <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/telecom3/video-affiche.jpg"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/telecom3/cours-video.mp4" type="video/mp4">
+          <source src="../assets/revisions/telecom3/cours-video.mp4?v=schemas-1" type="video/mp4">
           <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/telecom3/sous-titres.vtt">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
@@ -186,7 +189,7 @@
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="176.625">2:56 · Composants d’une liaison optique</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="202.917">3:22 · Lire un OTDR et une ligne coaxiale</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Corrigés du TD et du TP · 4:12</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:12</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="252.125">4:12 · TD1 · Convertir une ouverture numérique en angle</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="280.708">4:40 · TD3 · Le bilan sur 220 kilomètres</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="330.708">5:30 · TP1 à TP3 · Lire les signaux au banc</button></li>
