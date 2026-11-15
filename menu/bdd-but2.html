@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administration des bases de données — BUT2 R&amp;T</title>
+  <meta name="description" content="Administrer MySQL et construire les requêtes, routines et déclencheurs de la médiathèque du TD.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/bdd-but2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">SQL</span></div>
+      <h1 class="page-title" id="page-title">Administration des bases de données</h1>
+      <p class="page-lead">Administrer MySQL et construire les requêtes, routines et déclencheurs de la médiathèque du TD.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S3</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/bdd-but2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <p>On utilise les tables de la médiathèque pour suivre un prêt, puis pour empêcher un prêt incohérent.</p>
+  <div class="c-block">
+    <h3>1. Qui exécute la requête ?</h3>
+    <ol>
+      <li>Ton <strong>client</strong>, par exemple phpMyAdmin ou le programme <code>mysql</code>, ouvre une session et envoie du SQL.</li>
+      <li>Le <strong>serveur</strong> vérifie le compte, les droits, les objets cités et la syntaxe. Son optimiseur décide dans quel ordre lire les tables et quels index utiliser.</li>
+      <li>Le <strong>moteur de stockage</strong>, par exemple InnoDB, lit les pages de données, gère ses caches et coordonne les écritures concurrentes. Le client reçoit des lignes, un message de succès ou une erreur.</li>
+    </ol>
+    <p>Utilise <code>SELECT VERSION(), DATABASE(), CURRENT_USER();</code> pour savoir sur quel serveur, quelle base et quel compte tu travailles. <code>SHOW PROCESSLIST</code> permet de voir les connexions que ton compte a le droit d’observer. Fermer le client peut interrompre une transaction encore ouverte.</p>
+  </div>
+  <div class="c-block">
+    <h3>2. Comment les tables se relient-elles ?</h3>
+    <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th>Table</th><th>Ce qu’une ligne représente</th><th>Identifiant ou lien</th></tr></thead>
+    <tbody><tr><td>Etudiant</td><td>Une personne.</td><td><code>id</code></td></tr>
+    <tr><td>PC</td><td>Une machine.</td><td><code>ref</code></td></tr>
+    <tr><td>Emprunter</td><td>Un prêt avec ses dates.</td><td><code>etd_id</code> et <code>ref</code> pointent vers les deux tables.</td></tr>
+    <tr><td>Maintenance</td><td>Une intervention.</td><td><code>maint_id</code> et référence du PC.</td></tr></tbody>
+    </table></div>
+    <p>Une <strong>clé primaire</strong> identifie la ligne avec une valeur unique et non nulle. Une <strong>clé étrangère</strong> contraint un champ à pointer sur une ligne existante. Même si le code du TD indique <code>#ref</code>, contrôle les contraintes réellement créées avec <code>SHOW CREATE TABLE Emprunter</code>. Les données d’exemple du TP peuvent être importées avec un schéma plus minimal.</p>
+    <p><code>CREATE</code> et <code>ALTER</code> changent le schéma. <code>INSERT</code>, <code>UPDATE</code> et <code>DELETE</code> changent son contenu. Un champ numérique, un montant exact (<code>DECIMAL</code>), une date et du texte n’ont pas le même type ni les mêmes comparaisons.</p>
+  </div>
+  <div class="c-block">
+    <h3>3. Lire une jointure et repérer les lignes perdues</h3>
+    <pre class="c-code"><code>SELECT s.id, s.nom, COUNT(e.ref) AS nb_emprunts
+FROM Etudiant AS s
+LEFT JOIN Emprunter AS e ON e.etd_id = s.id
+  AND e.date_emp &gt;= '2024-07-01'
+  AND e.date_emp &lt; '2024-08-01'
+GROUP BY s.id, s.nom;</code></pre>
+    <p><code>JOIN</code> ne garde que les paires trouvées. <code>LEFT JOIN</code> conserve tous les étudiants et ajoute des valeurs <code>NULL</code> pour ceux qui n’ont pas de prêt correspondant. Les filtres sur la date restent dans <code>ON</code> pour garder ces étudiants. Compter <code>e.ref</code> donne bien 0 pour eux.</p>
+    <p><code>WHERE</code> filtre avant le calcul des groupes, <code>HAVING</code> filtre après. <code>COUNT(DISTINCT ref)</code> compte des machines différentes, alors que <code>COUNT(*)</code> compte les lignes sélectionnées. Trie explicitement avec <code>ORDER BY</code> si l’ordre a de l’importance.</p>
+  </div>
+  <div class="c-block">
+    <h3>4. Donner juste les droits nécessaires</h3>
+    <p><code>'john'@'localhost'</code> est un compte dont l’origine fait partie du nom. <code>CREATE USER</code> crée le compte, <code>ALTER USER</code> change ses paramètres, <code>GRANT</code> attribue et <code>REVOKE</code> retire. La portée peut être l’ensemble du serveur, une base, une table ou certaines colonnes. <code>WITH GRANT OPTION</code> permet de redonner les privilèges concernés.</p>
+    <p>Une vue propose une requête nommée pour n’exposer que les champs ou lignes utiles. Une simple vue filtrée peut servir à séparer les données lues, tandis que l’application ou une routine doit relier l’identité du client à ses commandes. Un privilège <code>SELECT</code> sur la table complète permettrait de contourner ce filtrage.</p>
+  </div>
+  <div class="c-block">
+    <h3>5. Garder une base cohérente et récupérable</h3>
+    <ul>
+      <li>Un <strong>index</strong> donne un chemin vers les lignes. Teste la même requête avec <code>EXPLAIN</code> et repère l’index effectivement utilisé. Un index composite sur <code>(etd_id,date_emp)</code> peut accompagner une recherche commençant par l’identifiant étudiant.</li>
+      <li>Une <strong>transaction</strong> regroupe les modifications. <code>COMMIT</code> valide, <code>ROLLBACK</code> annule les changements transactionnels non validés. Avec InnoDB, des verrous évitent des écritures contradictoires. Une opération comme <code>ALTER TABLE</code> peut provoquer une validation implicite.</li>
+      <li>Une <strong>sauvegarde</strong> se vérifie en restaurant ailleurs. Contrôle le schéma, les lignes, les routines et les déclencheurs. L’export logique d’une base ne reproduit pas à lui seul tous les comptes et droits du serveur.</li>
+    </ul>
+  </div>
+  <div class="c-block">
+    <h3>6. Quand utiliser une fonction, une procédure ou un déclencheur ?</h3>
+    <div class="c-table-wrap"><table class="c-table">
+    <thead><tr><th>Outil</th><th>Comment il se lance</th><th>Exemple du TP</th></tr></thead>
+    <tbody><tr><td>Fonction</td><td>Dans une expression, avec une valeur de retour.</td><td>Compter les PC disponibles.</td></tr>
+    <tr><td>Procédure</td><td>Sur demande, avec <code>CALL</code>.</td><td>Parcourir les emprunts puis ajouter des restrictions.</td></tr>
+    <tr><td>Déclencheur</td><td>Automatiquement sur un <code>INSERT</code>, <code>UPDATE</code> ou <code>DELETE</code>.</td><td>Refuser un nouvel emprunt pour un PC déjà prêté.</td></tr></tbody>
+    </table></div>
+    <p>Dans le client <code>mysql</code>, <code>DELIMITER</code> permet de garder les points-virgules internes d’un bloc <code>BEGIN…END</code>. Une fonction qui interroge les tables peut déclarer <code>READS SQL DATA</code>. Seule une fonction qui produit réellement le même résultat pour les mêmes paramètres doit se dire <code>DETERMINISTIC</code>.</p>
+    <details class="acc"><summary>Dérouler un curseur et repérer la fin</summary><div class="acc-body"><p>Déclare variables, curseur, puis gestionnaire <code>NOT FOUND</code>. Fais <code>OPEN</code>, lis avec <code>FETCH</code>, teste le drapeau de fin puis traite les variables. Termine par <code>CLOSE</code>. Le curseur sert ici à pratiquer le parcours ligne à ligne. Un résultat groupé ou une modification en bloc peut être plus simple à écrire en une requête.</p></div></details>
+    <p>Dans un déclencheur, <code>NEW</code> correspond à la ligne proposée et <code>OLD</code> à l’ancienne quand elle existe. Utilise <code>SIGNAL SQLSTATE '45000'</code> pour remonter une erreur métier. Pour une règle simple d’unicité, <code>UNIQUE</code> protège aussi lors d’écritures simultanées.</p>
+  </div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <p>Les exemples utilisent le schéma de la médiathèque. On prend <code>etat_reparation=1</code> pour « en cours » comme dans les travaux du cours. Pour les exercices qui portent sur un prêt courant, le TP retient une date de retour future. Si tu importes des données historiques, crée des cas de test datés autour d’aujourd’hui.</p>
+  <details class="acc" open><summary>TD1 · Créer la base et faire évoluer le schéma</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Créer <code>entrepot</code> avec <code>client</code>, <code>produit</code>, <code>ventes</code>, ajouter le mail et retirer la remise.</p>
+    <ol><li>Crée la base puis sélectionne-la avec <code>USE entrepot</code>. Crée <code>client</code> avec <code>IDC INT PRIMARY KEY</code> et <code>produit</code> avec <code>IDPRODUIT VARCHAR(15) PRIMARY KEY</code>. Reprends les autres colonnes du schéma de l’énoncé.</li>
+    <li>Crée ensuite <code>ventes</code>, dont la clé est <code>IDLigne</code>. <code>IDC</code> et <code>IDProduit</code> reprennent les mêmes types que les colonnes référencées, puis reçoivent les deux clés étrangères.</li>
+    <li>Ajoute une colonne puis retire celle que le sujet abandonne. Avant une suppression sur des données réelles, recense les requêtes qui utilisent la colonne et sauvegarde les données nécessaires.</li></ol>
+    <details class="acc"><summary>Afficher les commandes de création</summary><div class="acc-body"><pre class="c-code"><code>CREATE DATABASE entrepot;
+USE entrepot;
+CREATE TABLE produit (
+    IDPRODUIT VARCHAR(15) PRIMARY KEY, NOMPRODUIT VARCHAR(56),
+    SOUSCATEGORIE VARCHAR(20), CATEGORIE VARCHAR(23)
+);
+CREATE TABLE client (
+    IDC INT PRIMARY KEY, IDClient VARCHAR(8), NOMCLIENT VARCHAR(25),
+    SEGMENT VARCHAR(30), VILLE VARCHAR(30), REGION VARCHAR(45),
+    PAYS VARCHAR(28), ZONEGEOGRAPHIQUE VARCHAR(35)
+);
+CREATE TABLE ventes (
+    IDLigne INT PRIMARY KEY, IDProduit VARCHAR(15) NOT NULL, IDC INT NOT NULL,
+    DateDeCommande VARCHAR(10), DateExpedition VARCHAR(10), IDCommande VARCHAR(15),
+    ModeExpedition VARCHAR(12), MontantVente VARCHAR(9), Quantite INT,
+    Remise VARCHAR(4), Profit VARCHAR(9),
+    FOREIGN KEY (IDProduit) REFERENCES produit(IDPRODUIT),
+    FOREIGN KEY (IDC) REFERENCES client(IDC)
+);</code></pre><p>Ce SQL reprend les types du diagramme de départ, y compris les champs de date et de montant stockés en texte. Pour concevoir une base neuve, préfère des types adaptés aux dates et aux montants.</p></div></details>
+    <pre class="c-code"><code>ALTER TABLE client ADD COLUMN email VARCHAR(254);
+ALTER TABLE ventes DROP COLUMN Remise;
+SHOW CREATE TABLE client;
+SHOW CREATE TABLE ventes;</code></pre>
+  </div></details>
+  <details class="acc"><summary>TD1 et TP1 · Créer les comptes, tester les droits</summary><div class="acc-body">
+    <p><strong>Question du TD et du TP.</strong> Préparer MySQL, puis attribuer à John les droits sur la table et seulement trois colonnes modifiables.</p>
+    <pre class="c-code"><code>CREATE USER 'john'@'localhost' IDENTIFIED BY '&lt;mot-de-passe-du-labo&gt;';
+GRANT SELECT, INSERT, DELETE ON mabase.Matable TO 'john'@'localhost';
+GRANT UPDATE (nom, sexe, commentaires) ON mabase.Matable TO 'john'@'localhost';
+REVOKE DELETE ON mabase.Matable FROM 'john'@'localhost';
+SHOW GRANTS FOR 'john'@'localhost';</code></pre>
+    <ol><li>Sur le serveur du TP, vérifie le service et connecte-toi comme administrateur de la VM. Dans phpMyAdmin, ouvre l’onglet SQL pour exécuter les requêtes, puis utilise une nouvelle session John pour tester.</li>
+    <li>Utilise <code>ALTER USER … IDENTIFIED BY …</code> pour le mot de passe. Pour Joseph le sujet demande <code>GRANT SELECT, UPDATE, INSERT, DELETE ON mabase.* … WITH GRANT OPTION</code>. Pour Aline, <code>GRANT ALL PRIVILEGES ON mabase.*</code> reste limité à cette base. Fixe les quotas de la consigne avec <code>ALTER USER … WITH MAX_UPDATES_PER_HOUR …</code>, et remets cette valeur à 0 pour lever le quota de mises à jour de John.</li>
+    <li>Répète le <code>GRANT</code> sur chacun des périmètres nécessaires pour <code>mabase</code> et <code>entrepot</code>. Depuis John, vérifie que <code>UPDATE</code> sur une colonne autorisée passe et qu’un <code>DELETE</code> est refusé.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD1 bis · Construire la matrice des droits du portail</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Identifier les profils, leurs actions autorisées et écrire le SQL pour un profil.</p>
+    <ol><li>Client : créer des commandes et lire les siennes. Secrétaire : lire et ajouter les clients, les supprimer quand la demande est validée. Commerciaux : gérer les produits. Responsable : modifier ou supprimer les commandes.</li>
+    <li>Pour la secrétaire, teste <code>GRANT SELECT, INSERT, DELETE ON entrepot.client TO 'secretaire'@'localhost'</code> après création du compte. Vérifie qu’aucun privilège plus large, accordé directement ou via un rôle, ne donne accès aux commandes.</li>
+    <li>Pour le client, contrôle le propriétaire via l’application ou une routine qui relie la session à son identifiant. Accorder <code>SELECT</code> sur toute la table donnerait aussi les commandes des autres.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD2 · Écrire les cinq requêtes de la médiathèque</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Afficher les étudiants, les PC en réparation, les étudiants restreints et les emprunts de juillet 2024, puis compter ces emprunts par personne.</p>
+    <ol><li>Liste les étudiants avec <code>SELECT * FROM Etudiant</code>. Pour les PC, sélectionne <code>PC p</code> avec <code>EXISTS (SELECT 1 FROM Maintenance m WHERE m.ref=p.ref AND m.etat_reparation=1)</code>. Même si plusieurs interventions correspondent, <code>EXISTS</code> ne répète pas le PC.</li>
+    <li>Pour les personnes restreintes, pars d'<code>Etudiant s</code>, garde les lignes dont l’id apparaît dans <code>EtudiantRestreint</code>, puis sélectionne le nom et le courriel.</li>
+    <li>Pour le détail de juillet, joins <code>Etudiant.id</code> à <code>Emprunter.etd_id</code> et filtre les dates sur l’intervalle <code>['2024-07-01', '2024-08-01'[</code>. Affiche nom et ref. Pour les totaux y compris 0, utilise la jointure gauche du cours et vérifie un étudiant sans emprunt et deux homonymes.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD2 et TP2 · Construire les fonctions de calcul</summary><div class="acc-body">
+    <p><strong>Question du TD et du TP.</strong> Retourner le nombre d’emprunts, savoir si un PC est en réparation, compter les disponibilités et obtenir les courriels.</p>
+    <pre class="c-code"><code>DELIMITER //
+CREATE FUNCTION nb_emprunts(p_id INT)
+RETURNS INT READS SQL DATA
+BEGIN
+    DECLARE total INT;
+    SELECT COUNT(*) INTO total
+    FROM Emprunter WHERE etd_id = p_id;
+    RETURN total;
+END//
+DELIMITER ;</code></pre>
+    <ol><li>Pour <code>enMaintenance(p_ref)</code>, retourne <code>EXISTS (SELECT 1 FROM Maintenance WHERE ref = p_ref AND etat_reparation = 1)</code>. Vérifie une référence connue en cours de réparation et une sans intervention active.</li>
+    <li><code>EmpEnCours(email)</code> joint l’étudiant et ses emprunts puis compte les lignes avec <code>date_ret &gt; CURDATE()</code>. <code>ChargeMaintenance()</code> compte les références distinctes en réparation. <code>NbPcDispo()</code> part de <code>PC</code> et utilise deux <code>NOT EXISTS</code>, un pour les prêts courants et un pour la maintenance.</li>
+    <li><code>EmailEnCours()</code> agrège avec <code>GROUP_CONCAT(DISTINCT s.email ORDER BY s.email)</code>. Teste un étudiant qui a deux prêts et un autre qui n’en a aucun. Deux prêts ne doivent produire qu’un seul courriel dans la chaîne.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD2 et TP3 · Procédures, curseur et ancien parc</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Détecter les déclarations de durée inférieures d’au moins trois jours et préparer le retrait des machines anciennes.</p>
+    <ol><li>Écris une procédure <code>inserer_etudiant(p_id,p_raison)</code> qui ajoute id, <code>CURDATE()</code> et motif. Pour la liste d’invitation, le curseur lit les courriels des étudiants restreints, et chaque tour ajoute un courriel au résultat.</li>
+    <li>Pour le contrôle de durée, le curseur lit <code>etd_id</code>, les deux dates et <code>nb_jours</code>. Si les dates sont renseignées, calcule <code>DATEDIFF(date_ret,date_emp) - nb_jours</code>. À partir de 3, insère une restriction ou ajoute le motif « Une fausse déclaration. » à celle qui existe. Le test 2 → 9 avec 4 jours déclarés déclenche la règle.</li>
+    <li>Pour la question de préparation, sélectionne les <code>modele &lt; 2015</code> et exclue tout emprunt actif. Pour les lignes restantes, crée une intervention en cours si elle n’existe pas. Pour la procédure de suppression de ce lot, vérifie d’abord les références dans les tables d’emprunts et de maintenance. La clé étrangère peut imposer l’archivage ou le retrait ordonné des dépendances.</li>
+    <li>Pour <code>MajPC</code>, liste d’abord les références concernées par <code>memoire &lt; 4 OR modele &lt; 2015</code> et calcule le motif. Puis retire ces références dans la base de test en gérant leurs dépendances. Vérifie qu’un modèle 2015 à 4 Go reste présent.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD2 et TP4 · Refuser une modification ou une réservation</summary><div class="acc-body">
+    <p><strong>Question du TD et du TP.</strong> Interdire le changement de courriel, identifier les emprunts invalides et refuser une inscription en double.</p>
+    <pre class="c-code"><code>DELIMITER //
+CREATE TRIGGER interdit_email BEFORE UPDATE ON Etudiant
+FOR EACH ROW
+BEGIN
+    IF NOT (NEW.email &lt;=&gt; OLD.email) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Courriel non modifiable';
+    END IF;
+END//
+DELIMITER ;</code></pre>
+    <ol><li>Teste une modification du nom qui doit passer et une modification du courriel qui doit échouer. <code>&lt;=&gt;</code> compare aussi correctement si une valeur est <code>NULL</code>.</li>
+    <li>Dans un <code>BEFORE INSERT ON Emprunter</code>, contrôle <code>NEW.ref</code> et <code>NEW.nb_jours</code>. Refuse un PC en réparation ou déjà prêté. Refuse aussi un modèle antérieur à 2012 si la durée dépasse 7 jours, un étudiant restreint au-delà de 3 jours et un PC sous le seuil de mémoire (4 dans les données de l’exercice) au-delà de 4 jours. Répète le contrôle sur <code>UPDATE</code> si les prêts peuvent être modifiés.</li>
+    <li>Pour le double courriel, utilise un <code>BEFORE INSERT ON Etudiant</code> avec <code>EXISTS</code> et <code>SIGNAL</code>. Ajoute aussi une contrainte <code>UNIQUE</code> si tu contrôles le schéma et que les données existantes la respectent. Vérifie les deux insertions, même adresse puis adresse différente.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/bdd-but2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/bdd-but2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/bdd-but2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Ce que MySQL fait d’une requête</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="52.458">0:52 · Clés, relations et intégrité</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="79.958">1:19 · Index et transactions</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="137.958">2:17 · Comptes et privilèges</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="164.708">2:44 · Jointures et résultats à zéro</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="188.083">3:08 · Fonction ou procédure</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="214.625">3:34 · Parcourir avec un curseur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="261.042">4:21 · Quand un déclencheur intervient</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="288.208">4:48 · Changer le schéma ou son contenu</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="317.083">5:17 · Comprendre l’ordre des opérations</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Corrigés TD et TP · 5:46</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="346.042">5:46 · TD1 · Créer un compte et limiter ses droits</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="400.417">6:40 · TD2 · Les emprunts de juillet 2024</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="425.583">7:05 · TP2 · Compter les PC disponibles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="455.000">7:35 · TP3 · Détecter une durée sous-déclarée</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="482.458">8:02 · TD2 · Retourner une valeur depuis une fonction</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="506.500">8:26 · TP4 · Refuser un emprunt incohérent</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="532.750">8:52 · Administration · Contrôler une sauvegarde</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
