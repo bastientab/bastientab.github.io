@@ -1,0 +1,708 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.309
+Quand tu crées un compte directement sur un PC, ce
+compte
+
+00:00:03.309 --> 00:00:04.768
+est connu de ce PC.
+
+00:00:04.768 --> 00:00:08.120
+Dans le scénario Cass Auto, on veut gérer les comptes
+des
+
+00:00:08.120 --> 00:00:09.339
+salariés au même endroit.
+
+00:00:09.339 --> 00:00:13.614
+Active Directory Domain Services fournit un annuaire
+de comptes, de machines
+
+00:00:13.614 --> 00:00:14.780
+et de groupes.
+
+00:00:14.780 --> 00:00:19.560
+Un contrôleur de domaine héberge cet annuaire et
+participe à l’authentification.
+
+00:00:19.560 --> 00:00:22.551
+Un utilisateur peut s’identifier avec son compte de
+domaine sur un
+
+00:00:22.551 --> 00:00:25.543
+poste qui a rejoint le domaine et où il est autorisé
+
+00:00:25.543 --> 00:00:26.631
+à ouvrir une session.
+
+00:00:26.975 --> 00:00:30.500
+Dans le petit réseau du TD, une forêt avec un seul
+
+00:00:30.500 --> 00:00:31.141
+domaine suffit.
+
+00:00:31.141 --> 00:00:34.376
+Une unité d’organisation, ou O U, ressemble à un
+dossier dans
+
+00:00:34.376 --> 00:00:37.611
+l’annuaire : tu y ranges les objets et tu peux y
+
+00:00:37.611 --> 00:00:38.494
+lier une stratégie.
+
+00:00:38.494 --> 00:00:41.962
+Un utilisateur est placé dans une O U à la fois.
+
+00:00:41.962 --> 00:00:45.545
+Un groupe se comporte comme une liste de personnes ou
+d’autres
+
+00:00:45.545 --> 00:00:45.871
+groupes.
+
+00:00:45.871 --> 00:00:49.290
+Le même utilisateur peut être dans plusieurs groupes.
+
+00:00:49.290 --> 00:00:53.344
+Les droits du partage se donnent aux groupes de
+sécurité, plutôt
+
+00:00:53.344 --> 00:00:54.450
+qu’à l’unité d’organisation.
+
+00:00:54.808 --> 00:00:58.116
+Imagine Alice, technicienne au démontage.
+
+00:00:58.116 --> 00:01:01.177
+Tu ranges sa fiche dans l’unité Démontage et tu
+l’ajoutes à
+
+00:01:01.177 --> 00:01:04.239
+deux groupes : son équipe et les personnes autorisées
+à modifier
+
+00:01:04.239 --> 00:01:04.795
+les photos.
+
+00:01:04.795 --> 00:01:07.834
+Si la salariée change de bureau mais conserve le droit
+sur
+
+00:01:07.834 --> 00:01:10.874
+les photos, le parcours du dossier passe toujours par
+le groupe.
+
+00:01:10.874 --> 00:01:14.791
+Cette séparation permet aussi de relire une
+autorisation sans inspecter toutes
+
+00:01:14.791 --> 00:01:16.572
+les personnes une par une.
+
+00:01:16.933 --> 00:01:20.489
+Quand un PC rejoint le domaine, il doit savoir où
+trouver
+
+00:01:20.489 --> 00:01:21.136
+un contrôleur.
+
+00:01:21.136 --> 00:01:24.619
+Il pose des questions D N S sur le domaine, notamment
+
+00:01:24.619 --> 00:01:27.153
+pour trouver les enregistrements qui annoncent ses
+services.
+
+00:01:27.153 --> 00:01:30.750
+S’il utilise un résolveur public à la place du D N
+
+00:01:30.750 --> 00:01:33.366
+S du labo, ces enregistrements privés peuvent manquer.
+
+00:01:33.366 --> 00:01:37.741
+D H C P, lui, attribue une configuration réseau.
+
+00:01:37.741 --> 00:01:40.795
+Distribuer la bonne I P ne suffit donc pas : vérifie
+
+00:01:40.795 --> 00:01:43.848
+aussi que l’option D N S pointe vers le serveur de
+
+00:01:43.848 --> 00:01:44.126
+l’annuaire.
+
+00:01:44.475 --> 00:01:47.611
+Un partage donne un chemin réseau vers un dossier.
+
+00:01:47.611 --> 00:01:51.441
+Pour accéder par ce chemin, Windows regarde les
+autorisations du partage
+
+00:01:51.441 --> 00:01:53.530
+puis celles du système de fichiers.
+
+00:01:53.530 --> 00:01:57.120
+Ouvrir un dossier avec ton compte d’administration ne
+prouve donc pas
+
+00:01:57.120 --> 00:01:58.751
+qu’un employé peut y accéder.
+
+00:01:58.751 --> 00:02:00.932
+Essaie avec son compte.
+
+00:02:00.932 --> 00:02:04.731
+Un droit placé sur Atelier peut être hérité par les
+sous-dossiers.
+
+00:02:04.731 --> 00:02:08.759
+Pour limiter Démontage à une équipe, regarde d’abord
+les permissions héritées
+
+00:02:08.759 --> 00:02:10.589
+avant d’ajouter une nouvelle ligne.
+
+00:02:10.975 --> 00:02:13.584
+Une G P O contient des règles.
+
+00:02:13.584 --> 00:02:17.587
+Le lien indique le domaine ou l’unité d’organisation
+où Windows va
+
+00:02:17.587 --> 00:02:18.315
+les appliquer.
+
+00:02:18.315 --> 00:02:22.457
+Les réglages utilisateur suivent en général
+l’emplacement du compte.
+
+00:02:22.457 --> 00:02:25.484
+Les réglages ordinateur suivent le poste.
+
+00:02:25.484 --> 00:02:28.621
+Une règle héritée peut aussi venir d’un parent.
+
+00:02:28.621 --> 00:02:31.910
+Si le réglage ne s’applique pas, commence par vérifier
+l’emplacement de
+
+00:02:31.910 --> 00:02:35.200
+l’objet et le lien, puis regarde le filtrage dans le
+rapport
+
+00:02:35.200 --> 00:02:36.097
+G P Result.
+
+00:02:36.097 --> 00:02:40.309
+Demander une actualisation ne corrige pas une
+stratégie liée au mauvais
+
+00:02:40.309 --> 00:02:40.692
+endroit.
+
+00:02:41.017 --> 00:02:45.543
+La déduplication réduit l’espace occupé quand
+plusieurs fichiers contiennent les mêmes
+
+00:02:45.543 --> 00:02:45.954
+blocs.
+
+00:02:45.954 --> 00:02:49.837
+Le gestionnaire de ressources du serveur de fichiers
+applique, lui, un
+
+00:02:49.837 --> 00:02:51.249
+quota ou un filtrage.
+
+00:02:51.249 --> 00:02:54.944
+Un quota dur peut refuser un nouveau fichier s’il
+dépasse la
+
+00:02:54.944 --> 00:02:55.280
+limite.
+
+00:02:55.280 --> 00:02:58.779
+La continuité demande une autre approche : un second
+contrôleur peut
+
+00:02:58.779 --> 00:03:02.278
+servir l’annuaire, mais il ne rend pas ton partage
+disponible tout
+
+00:03:02.278 --> 00:03:02.597
+seul.
+
+00:03:02.597 --> 00:03:06.003
+Le service de fichiers, le D N S et le D
+
+00:03:06.003 --> 00:03:09.410
+H C P nécessitent chacun leur propre configuration et
+leur test.
+
+00:03:09.767 --> 00:03:13.552
+Le TD demande une proposition pour une entreprise sur
+un seul
+
+00:03:13.552 --> 00:03:13.896
+site.
+
+00:03:13.896 --> 00:03:17.636
+Commence par dessiner le domaine, puis les unités qui
+permettent de
+
+00:03:17.636 --> 00:03:19.337
+ranger les comptes par activité.
+
+00:03:19.337 --> 00:03:23.197
+Démontage et Magasin peuvent figurer sous Atelier pour
+la gestion.
+
+00:03:23.197 --> 00:03:27.217
+Crée également des groupes de sécurité qui
+représentent les équipes.
+
+00:03:27.217 --> 00:03:31.104
+Imbrique les groupes d’équipe dans Atelier si l’accès
+commun doit être
+
+00:03:31.104 --> 00:03:31.457
+hérité.
+
+00:03:31.457 --> 00:03:35.594
+Vérifie le raisonnement avec un membre de chaque
+groupe et un
+
+00:03:35.594 --> 00:03:36.347
+utilisateur extérieur.
+
+00:03:36.347 --> 00:03:40.400
+Un second contrôleur peut être ajouté pour la
+disponibilité, tout en
+
+00:03:40.400 --> 00:03:41.874
+gardant un seul domaine.
+
+00:03:42.225 --> 00:03:45.226
+Dans le sujet, le serveur a deux cartes.
+
+00:03:45.226 --> 00:03:48.857
+Règle la carte du réseau de T P sans changer celle
+
+00:03:48.857 --> 00:03:49.847
+réservée à Internet.
+
+00:03:49.847 --> 00:03:54.234
+Dans le gestionnaire, ajoute les services de domaine
+Active Directory.
+
+00:03:54.234 --> 00:03:57.987
+Ensuite utilise la notification de promotion, choisis
+ajouter une nouvelle forêt
+
+00:03:57.987 --> 00:04:01.740
+avec le nom prévu au T D, installe D N S
+
+00:04:01.740 --> 00:04:02.763
+et laisse redémarrer.
+
+00:04:02.763 --> 00:04:06.465
+Sur le poste Windows onze, pointe le D N S vers
+
+00:04:06.465 --> 00:04:07.138
+le serveur.
+
+00:04:07.138 --> 00:04:10.652
+Vérifie la résolution du nom du domaine avant de
+joindre le
+
+00:04:10.652 --> 00:04:11.930
+poste et de redémarrer.
+
+00:04:12.267 --> 00:04:16.026
+Ajoute le rôle D H C P. Après installation, termine la
+
+00:04:16.026 --> 00:04:18.761
+configuration et autorise le serveur dans le domaine.
+
+00:04:18.761 --> 00:04:22.718
+Dans outils, D H C P, ouvre I P version quatre,
+
+00:04:22.718 --> 00:04:23.798
+puis nouvelle étendue.
+
+00:04:23.798 --> 00:04:27.628
+Sur le réseau du sujet, de point cent à point cent
+
+00:04:27.628 --> 00:04:29.717
+quatre-vingt-dix-neuf fait cent adresses, bornes
+comprises.
+
+00:04:29.717 --> 00:04:32.778
+Utilise les paramètres du sujet pour le routeur et le
+D
+
+00:04:32.778 --> 00:04:35.839
+N S, et garde l’I P fixe du serveur hors de
+
+00:04:35.839 --> 00:04:36.396
+la plage.
+
+00:04:36.396 --> 00:04:40.503
+Active l’étendue, passe le client en automatique, puis
+vérifie le bail
+
+00:04:40.503 --> 00:04:41.996
+avec I P config.
+
+00:04:41.996 --> 00:04:45.717
+Pour une réservation, pars du bail obtenu et utilise
+l’identifiant de
+
+00:04:45.717 --> 00:04:47.070
+carte de ce client.
+
+00:04:47.433 --> 00:04:50.918
+Dans la sortie de I P config, cherche la carte du
+
+00:04:50.918 --> 00:04:51.869
+réseau du labo.
+
+00:04:51.869 --> 00:04:55.374
+La ligne I P version quatre doit contenir une adresse
+de
+
+00:04:55.374 --> 00:04:57.604
+cent à cent quatre-vingt-dix-neuf dans notre exemple.
+
+00:04:57.604 --> 00:05:01.254
+La ligne serveur D H C P identifie qui t’a donné
+
+00:05:01.254 --> 00:05:01.918
+le bail.
+
+00:05:01.918 --> 00:05:05.077
+La ligne D N S te dit à qui seront posées
+
+00:05:05.077 --> 00:05:06.513
+les questions sur le domaine.
+
+00:05:06.513 --> 00:05:09.446
+Si le client utilise une adresse automatique qui ne
+vient pas
+
+00:05:09.446 --> 00:05:12.379
+de l’étendue, vérifie d’abord que le serveur est
+autorisé, que l’étendue
+
+00:05:12.379 --> 00:05:15.312
+est active et que la carte est dans le bon réseau.
+
+00:05:15.683 --> 00:05:19.457
+Dans la zone directe, repère l’enregistrement
+d’adresse du poste et vérifie
+
+00:05:19.457 --> 00:05:21.516
+son vrai nom depuis une console.
+
+00:05:21.516 --> 00:05:24.984
+Ajoute un alias en le faisant pointer vers le nom
+complet.
+
+00:05:24.984 --> 00:05:28.961
+Dans Utilisateurs et ordinateurs Active Directory,
+crée les comptes tests dans
+
+00:05:28.961 --> 00:05:31.491
+leurs unités et attribue les groupes prévus.
+
+00:05:31.491 --> 00:05:35.450
+Pour monter un lecteur réseau, utilise le chemin du
+partage.
+
+00:05:35.450 --> 00:05:38.850
+Si le dossier s’ouvre en direct mais que le lecteur
+n’apparaît
+
+00:05:38.850 --> 00:05:41.013
+pas, inspecte le script ou la stratégie.
+
+00:05:41.013 --> 00:05:44.947
+Si le dossier lui-même refuse, regarde les droits du
+compte.
+
+00:05:45.308 --> 00:05:49.159
+Dans la console de gestion des stratégies, crée un
+lien pour
+
+00:05:49.159 --> 00:05:50.209
+les utilisateurs Atelier.
+
+00:05:50.209 --> 00:05:54.717
+Édite la configuration utilisateur, ouvre les
+préférences, puis les mappages de
+
+00:05:54.717 --> 00:05:56.766
+lecteurs dans les paramètres Windows.
+
+00:05:56.766 --> 00:06:00.495
+Mets le chemin réseau du partage Pourtous, attribue la
+lettre K
+
+00:06:00.495 --> 00:06:01.851
+et le libellé Partage.
+
+00:06:01.851 --> 00:06:06.736
+Essaie avec un compte Atelier après actualisation,
+puis déconnexion et reconnexion
+
+00:06:06.736 --> 00:06:07.624
+si nécessaire.
+
+00:06:07.624 --> 00:06:10.823
+Teste aussi un compte Direction : la stratégie
+d’Atelier ne doit
+
+00:06:10.823 --> 00:06:13.150
+pas être la raison d’un lecteur chez lui.
+
+00:06:13.475 --> 00:06:17.567
+Pour le fond d’écran, vérifie que l’utilisateur peut
+lire le fichier.
+
+00:06:17.567 --> 00:06:21.176
+Si la copie de l’image se fait par réglage ordinateur,
+place
+
+00:06:21.176 --> 00:06:24.784
+le poste dans l’unité qui reçoit ce réglage, puis
+configure l’utilisateur
+
+00:06:24.784 --> 00:06:26.097
+pour utiliser la copie.
+
+00:06:26.097 --> 00:06:29.760
+Pour un logiciel, mets le paquet sur un partage
+lisible par
+
+00:06:29.760 --> 00:06:31.758
+les ordinateurs et teste après redémarrage.
+
+00:06:31.758 --> 00:06:34.564
+Pour la politique du domaine, configure le seuil de
+trois tentatives
+
+00:06:34.564 --> 00:06:37.369
+et la durée de dix minutes demandés dans le T P.
+
+00:06:37.369 --> 00:06:40.174
+Contrôle avec G P Result et la commande de lecture de
+
+00:06:40.174 --> 00:06:41.195
+la politique du domaine.
+
+00:06:41.558 --> 00:06:44.413
+Commence par l’accès commun à Atelier.
+
+00:06:44.413 --> 00:06:49.014
+Sur chaque sous-dossier, ouvre propriétés, sécurité,
+puis avancé et contrôle ce
+
+00:06:49.014 --> 00:06:50.687
+qui vient du parent.
+
+00:06:50.687 --> 00:06:54.540
+Évite de laisser le groupe large Atelier donner accès
+au dossier
+
+00:06:54.540 --> 00:06:54.891
+privé.
+
+00:06:54.891 --> 00:06:58.959
+Garde les entrées nécessaires aux administrateurs et
+au système.
+
+00:06:58.959 --> 00:07:02.452
+Donne le droit modifier au groupe de l’équipe
+concernée.
+
+00:07:02.452 --> 00:07:06.103
+Depuis le client, teste un membre de Démontage sur les
+deux
+
+00:07:06.103 --> 00:07:06.435
+chemins.
+
+00:07:06.435 --> 00:07:10.283
+Il doit pouvoir écrire dans Démontage et être bloqué
+dans Magasin.
+
+00:07:10.283 --> 00:07:12.771
+Fais aussi le contrôle inverse.
+
+00:07:13.142 --> 00:07:16.457
+Pour que le test soit utile, ouvre une vraie session
+avec
+
+00:07:16.457 --> 00:07:17.663
+le compte de l’équipe.
+
+00:07:17.663 --> 00:07:21.266
+Essaie de créer un fichier dans son espace et de
+l’éditer.
+
+00:07:21.266 --> 00:07:24.354
+Essaie ensuite d’ouvrir le sous-dossier voisin.
+
+00:07:24.354 --> 00:07:27.943
+Si les deux passent, recherche une permission héritée
+ou un autre
+
+00:07:27.943 --> 00:07:29.575
+groupe auquel le compte appartient.
+
+00:07:29.575 --> 00:07:32.978
+Si les deux sont refusés, vérifie aussi la permission
+du partage
+
+00:07:32.978 --> 00:07:36.382
+parent : elle peut bloquer la connexion avant même le
+contrôle
+
+00:07:36.382 --> 00:07:37.001
+du sous-dossier.
+
+00:07:37.350 --> 00:07:41.736
+Dans le sujet, place quelques fichiers identiques sur
+le volume partagé.
+
+00:07:41.736 --> 00:07:45.768
+Active la déduplication pour ce volume et lance
+l’optimisation.
+
+00:07:45.768 --> 00:07:50.199
+Lis ensuite le rapport, par exemple avec Get Dedup
+Status, pour
+
+00:07:50.199 --> 00:07:51.810
+voir la quantité économisée.
+
+00:07:51.810 --> 00:07:55.820
+Pour le quota, ouvre le gestionnaire de ressources,
+crée un modèle
+
+00:07:55.820 --> 00:07:59.101
+dur de cent mégaoctets, puis applique-le
+automatiquement aux sous-dossiers.
+
+00:07:59.101 --> 00:08:01.356
+Teste avec un gros fichier.
+
+00:08:01.356 --> 00:08:05.367
+Vérifie aussi la racine : un quota appliqué aux sous-
+dossiers ne
+
+00:08:05.367 --> 00:08:07.190
+limite pas forcément Atelier lui-même.
+
+00:08:07.558 --> 00:08:11.301
+Pour le deuxième serveur, pointe d’abord le D N S vers
+
+00:08:11.301 --> 00:08:11.981
+le premier.
+
+00:08:11.981 --> 00:08:15.606
+Rejoins le domaine et promeus un contrôleur
+supplémentaire, puis vérifie qu’un
+
+00:08:15.606 --> 00:08:17.913
+objet de test apparaît sur les deux.
+
+00:08:17.913 --> 00:08:21.624
+Pour le D H C P, installe et autorise le rôle
+
+00:08:21.624 --> 00:08:22.974
+partenaire sans recréer l’étendue.
+
+00:08:22.974 --> 00:08:27.165
+Sur le premier, configure le basculement en mode
+secours demandé.
+
+00:08:27.165 --> 00:08:30.947
+Enfin délègue la réinitialisation des mots de passe au
+groupe des
+
+00:08:30.947 --> 00:08:33.354
+responsables Atelier sur la seule unité Atelier.
+
+00:08:33.354 --> 00:08:36.589
+Vérifie depuis R S A T que ça marche dedans et
+
+00:08:36.589 --> 00:08:37.766
+que ça échoue ailleurs.
+
+00:08:38.142 --> 00:08:41.462
+Les trois vérifications ne prouvent pas la même chose.
+
+00:08:41.462 --> 00:08:45.249
+Avec l’annuaire, tu cherches si les deux copies se
+parlent.
+
+00:08:45.249 --> 00:08:48.590
+Avec les fichiers, tu veux savoir si le chemin de
+partage
+
+00:08:48.590 --> 00:08:51.021
+reste accessible et si le contenu s’est répliqué.
+
+00:08:51.021 --> 00:08:54.668
+Avec le D H C P, tu veux obtenir une configuration
+
+00:08:54.668 --> 00:08:56.658
+réseau quand le partenaire doit répondre.
+
+00:08:56.658 --> 00:08:59.961
+Teste une seule panne à la fois et relève à quel
+
+00:08:59.961 --> 00:09:01.462
+moment le service redevient disponible.
+
+00:09:01.808 --> 00:09:05.470
+Pour Maison Paille, le sujet donne deux sites avec des
+services
+
+00:09:05.470 --> 00:09:05.802
+distincts.
+
+00:09:05.802 --> 00:09:09.554
+Choisis deux sous-réseaux qui ne se chevauchent pas et
+qui peuvent
+
+00:09:09.554 --> 00:09:09.896
+communiquer.
+
+00:09:09.896 --> 00:09:13.948
+Dans Sites et services Active Directory, déclare les
+sites, puis associe
+
+00:09:13.948 --> 00:09:15.790
+chaque sous-réseau à son site.
+
+00:09:15.790 --> 00:09:19.295
+Cela aide un poste à découvrir un contrôleur proche.
+
+00:09:19.295 --> 00:09:21.918
+Prévois une étendue par sous-réseau.
+
+00:09:21.918 --> 00:09:25.602
+Si les paquets D H C P doivent passer un routeur,
+
+00:09:25.602 --> 00:09:26.942
+configure un relais adapté.
+
+00:09:26.942 --> 00:09:30.599
+Sur chaque site, vérifie l’adresse obtenue et teste
+les droits avec
+
+00:09:30.599 --> 00:09:32.261
+un compte de chaque équipe.
