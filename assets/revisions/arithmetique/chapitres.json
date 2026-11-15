@@ -1,75 +1,125 @@
 {
-  "duration": 3346.5839999999994,
+  "duration": 1061.375,
   "chapters": [
     {
-      "index": 0,
-      "title": "Comprendre le langage du cours",
-      "start": 0
+      "title": "Pourquoi les maths servent à chiffrer",
+      "part": "Cours",
+      "time": 0.0
     },
     {
-      "index": 1,
-      "title": "Complexité et difficulté des problèmes",
-      "start": 271.32
+      "title": "Grand O et taille de l’entrée",
+      "part": "Cours",
+      "time": 45.25
     },
     {
-      "index": 2,
-      "title": "Divisibilité, nombres premiers et factorisation",
-      "start": 552.648
+      "title": "Divisibilité, nombres premiers et crible",
+      "part": "Cours",
+      "time": 98.25
     },
     {
-      "index": 3,
       "title": "PGCD, PPCM, Euclide et Bézout",
-      "start": 824.4
+      "part": "Cours",
+      "time": 150.70833333333334
     },
     {
-      "index": 4,
       "title": "Équations entières et théorème de Gauss",
-      "start": 1079.496
+      "part": "Cours",
+      "time": 198.75
     },
     {
-      "index": 5,
-      "title": "Congruences, classes et inverses modulaires",
-      "start": 1245.4800000000005
+      "title": "L’horloge des congruences",
+      "part": "Cours",
+      "time": 244.41666666666666
     },
     {
-      "index": 6,
-      "title": "César, affine et Hill : retrouver le message",
-      "start": 1522.5840000000005
+      "title": "César, affine et Hill",
+      "part": "Cours",
+      "time": 295.9166666666667
     },
     {
-      "index": 7,
-      "title": "Combiner plusieurs congruences",
-      "start": 1730.7120000000002
+      "title": "Restes chinois",
+      "part": "Cours",
+      "time": 342.875
     },
     {
-      "index": 8,
-      "title": "Indicatrice d’Euler, petit théorème de Fermat et théorème d’Euler",
-      "start": 1908.6240000000003
+      "title": "Indicatrice d’Euler et petit théorème de Fermat",
+      "part": "Cours",
+      "time": 390.4166666666667
     },
     {
-      "index": 9,
-      "title": "Puissances rapides, ordre et logarithme discret",
-      "start": 2089.248
+      "title": "Carrés successifs et logarithme discret",
+      "part": "Cours",
+      "time": 433.4166666666667
     },
     {
-      "index": 10,
       "title": "Diffie–Hellman et ElGamal",
-      "start": 2372.0879999999997
+      "part": "Cours",
+      "time": 468.1666666666667
     },
     {
-      "index": 11,
-      "title": "RSA, de la génération des clés à l’attaque par diffusion",
-      "start": 2557.9679999999994
+      "title": "RSA, les deux modulos et la diffusion",
+      "part": "Cours",
+      "time": 514.375
     },
     {
-      "index": 12,
-      "title": "Fermat, Carmichael, Miller–Rabin et génération de premiers",
-      "start": 2841.0719999999997
+      "title": "Fermat, Miller–Rabin et génération",
+      "part": "Cours",
+      "time": 564.1666666666666
     },
     {
-      "index": 13,
-      "title": "Sac à dos, suites supercroissantes et Merkle–Hellman",
-      "start": 3129.8399999999997
+      "title": "Sac à dos et Merkle–Hellman",
+      "part": "Cours",
+      "time": 609.5416666666666
+    },
+    {
+      "title": "TD · Compter les tours",
+      "part": "Corrigés TD et TP",
+      "time": 640.0
+    },
+    {
+      "title": "TD · Retrouver le diviseur",
+      "part": "Corrigés TD et TP",
+      "time": 673.9583333333334
+    },
+    {
+      "title": "TD · Bézout et le problème d’auberge",
+      "part": "Corrigés TD et TP",
+      "time": 700.625
+    },
+    {
+      "title": "TD · Inverse, affine et restes chinois",
+      "part": "Corrigés TD et TP",
+      "time": 741.3333333333334
+    },
+    {
+      "title": "TD · Euler et exponentiation",
+      "part": "Corrigés TD et TP",
+      "time": 787.8333333333334
+    },
+    {
+      "title": "TP · Crible, primalité et calcul modulaire",
+      "part": "Corrigés TD et TP",
+      "time": 817.2916666666666
+    },
+    {
+      "title": "TP · César, affine et matrice de Hill",
+      "part": "Corrigés TD et TP",
+      "time": 886.5833333333334
+    },
+    {
+      "title": "TP · Diffie–Hellman et ElGamal",
+      "part": "Corrigés TD et TP",
+      "time": 940.0416666666666
+    },
+    {
+      "title": "TP · RSA, test de primalité et blocs",
+      "part": "Corrigés TD et TP",
+      "time": 978.9583333333334
+    },
+    {
+      "title": "TP · Déchiffrer Merkle–Hellman",
+      "part": "Corrigés TD et TP",
+      "time": 1032.5833333333333
     }
   ]
 }
