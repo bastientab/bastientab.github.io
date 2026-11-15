@@ -149,11 +149,20 @@ a.c-card:is(:hover, :focus-visible) .c-card-foot > span:first-child { text-decor
   background: var(--c-ico-tint);
 }
 .c-ico--image img { display: block; width: 100%; height: 100%; object-fit: contain; }
-.c-ico--maths.c-ico--image { padding: 0; background: var(--bg-soft); }
-.c-ico--maths img { object-fit: cover; object-position: center 42%; }
+.c-ico--maths.c-ico--image,
+.c-ico--photo.c-ico--image { padding: 0; background: var(--bg-soft); }
+.c-ico--maths img,
+.c-ico--photo img { object-fit: cover; }
+.c-ico--maths img { object-position: center 42%; }
 .c-ico--python { --c-ico-tint: #eef6fd; }
 .c-ico--c { --c-ico-tint: #eaf1fb; }
 .c-ico--java { --c-ico-tint: #fdf0ed; }
+.c-ico--windows { --c-ico-tint: #ebf5ff; }
+.c-ico--topology { --c-ico-tint: #fff; }
+.c-ico--web.c-ico--image {
+  grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; padding: 5px;
+  --c-ico-tint: #f4f2ff;
+}
 .c-visual-credits { margin: 0 auto; padding: 0 0 16px; font-size: .82rem; color: var(--ink-2); }
 .c-visual-credits summary { cursor: pointer; width: fit-content; }
 .c-visual-credits p { margin: 8px 0 0; }
