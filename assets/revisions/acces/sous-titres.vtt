@@ -1,0 +1,567 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.583
+La box termine la liaison ou parle à un équipement qui
+
+00:00:03.583 --> 00:00:04.217
+la termine.
+
+00:00:04.217 --> 00:00:07.789
+La boucle locale est la partie qui relie l’abonné au
+premier
+
+00:00:07.789 --> 00:00:08.763
+équipement du réseau.
+
+00:00:08.763 --> 00:00:11.864
+Le DSL utilise une paire de cuivre.
+
+00:00:11.864 --> 00:00:15.246
+Le FTTH amène une fibre jusqu’au logement.
+
+00:00:15.246 --> 00:00:18.751
+Dans les deux cas, il faut ensuite transporter
+beaucoup d’accès vers
+
+00:00:18.751 --> 00:00:20.025
+un réseau de collecte.
+
+00:00:20.025 --> 00:00:23.737
+Pour étudier une panne, sépare le support physique, le
+transport des
+
+00:00:23.737 --> 00:00:25.761
+trames et la configuration I P.
+
+00:00:26.142 --> 00:00:30.299
+Sur le cuivre, le DSL utilise des fréquences au-delà
+de la
+
+00:00:30.299 --> 00:00:31.055
+voix traditionnelle.
+
+00:00:31.055 --> 00:00:34.790
+Selon la longueur et l’état de la paire, certaines
+fréquences portent
+
+00:00:34.790 --> 00:00:36.827
+moins de bits ou deviennent inutilisables.
+
+00:00:36.827 --> 00:00:40.454
+Du côté opérateur, le DSLAM regroupe les lignes.
+
+00:00:40.454 --> 00:00:44.727
+Les architectures historiques peuvent transporter les
+données sur A T M
+
+00:00:44.727 --> 00:00:45.503
+ou Ethernet.
+
+00:00:45.503 --> 00:00:49.194
+Le B R A S, ou B N G selon le
+
+00:00:49.194 --> 00:00:50.871
+contexte, est une passerelle d’abonnés.
+
+00:00:50.871 --> 00:00:54.304
+Le schéma du T D permet de distinguer ces fonctions
+avant
+
+00:00:54.304 --> 00:00:55.552
+de suivre les échanges.
+
+00:00:55.892 --> 00:00:59.282
+P P P O E transporte une liaison P P P
+
+00:00:59.282 --> 00:00:59.898
+sur Ethernet.
+
+00:00:59.898 --> 00:01:03.740
+La découverte commence par une recherche, puis une
+offre, une demande
+
+00:01:03.740 --> 00:01:05.486
+et une confirmation de session.
+
+00:01:05.486 --> 00:01:09.200
+Ensuite L C P négocie des paramètres de la liaison.
+
+00:01:09.200 --> 00:01:13.268
+Selon le montage, un protocole comme CHAP vérifie le
+compte.
+
+00:01:13.268 --> 00:01:17.231
+Pour une configuration I P version quatre, I P C P
+
+00:01:17.231 --> 00:01:18.673
+négocie notamment les adresses.
+
+00:01:18.673 --> 00:01:22.312
+Dans une capture, note à quel moment apparaît
+l’identifiant de session,
+
+00:01:22.312 --> 00:01:24.628
+puis où l’adresse I P est négociée.
+
+00:01:24.975 --> 00:01:28.258
+La chronologie te sert aussi à trouver la panne.
+
+00:01:28.258 --> 00:01:31.816
+Si tu vois seulement les découvertes, vérifie le
+trajet Ethernet et
+
+00:01:31.816 --> 00:01:34.079
+le V L A N jusqu’au serveur.
+
+00:01:34.079 --> 00:01:37.706
+Si la session a bien été créée mais ferme avant qu’une
+
+00:01:37.706 --> 00:01:40.673
+adresse apparaisse, sépare les échanges de liaison et
+l’authentification.
+
+00:01:40.673 --> 00:01:45.048
+Une session ouverte ne prouve pas une configuration I
+P réussie.
+
+00:01:45.048 --> 00:01:48.511
+Repère le moment où elle arrive, puis teste un paquet
+vers
+
+00:01:48.511 --> 00:01:49.141
+le serveur.
+
+00:01:49.475 --> 00:01:52.559
+Dans I P O E, les paquets I P sont transportés
+
+00:01:52.559 --> 00:01:55.643
+sur Ethernet sans devoir ouvrir une session P P P. Le
+
+00:01:55.643 --> 00:01:58.728
+client peut obtenir sa configuration par D H C P. Au
+
+00:01:58.728 --> 00:02:01.251
+départ, sa requête de découverte est une diffusion
+locale.
+
+00:02:01.251 --> 00:02:04.756
+Pour joindre un serveur dans un autre réseau, un
+relais doit
+
+00:02:04.756 --> 00:02:05.393
+la transmettre.
+
+00:02:05.393 --> 00:02:09.161
+L’opérateur peut identifier l’accès avec des
+informations sur la ligne et
+
+00:02:09.161 --> 00:02:11.900
+le port, éventuellement via les options du relais.
+
+00:02:11.900 --> 00:02:14.976
+Regarde quel équipement fait chaque opération.
+
+00:02:15.350 --> 00:02:19.601
+Dans un réseau optique passif, le coupleur répartit la
+lumière vers
+
+00:02:19.601 --> 00:02:20.374
+plusieurs abonnés.
+
+00:02:20.374 --> 00:02:23.351
+L’O L T est le côté opérateur.
+
+00:02:23.351 --> 00:02:27.446
+L’O N T termine la liaison chez le client et présente
+
+00:02:27.446 --> 00:02:29.307
+une interface utilisable, souvent Ethernet.
+
+00:02:29.307 --> 00:02:32.268
+Parce que plusieurs clients partagent la même partie
+de fibre, l’O
+
+00:02:32.268 --> 00:02:35.228
+L T doit organiser le sens montant pour éviter que
+tous
+
+00:02:35.228 --> 00:02:36.305
+émettent en même temps.
+
+00:02:36.305 --> 00:02:39.773
+Le coupleur ne choisit pas quelles trames donner à un
+abonné.
+
+00:02:40.142 --> 00:02:43.584
+Les deux sens utilisent des longueurs d’onde qui
+diffèrent.
+
+00:02:43.584 --> 00:02:47.028
+En descendant, le signal est distribué aux branches.
+
+00:02:47.028 --> 00:02:50.398
+En montant, les O N T transmettent dans les créneaux
+que
+
+00:02:50.398 --> 00:02:51.930
+l’O L T leur attribue.
+
+00:02:51.930 --> 00:02:55.456
+Le ranging sert à tenir compte du temps de propagation
+de
+
+00:02:55.456 --> 00:02:56.097
+chaque liaison.
+
+00:02:56.097 --> 00:02:59.508
+Le D B A adapte les allocations selon les profils et
+
+00:02:59.508 --> 00:03:00.128
+les besoins.
+
+00:03:00.128 --> 00:03:03.425
+Le conteneur de trafic organise ces allocations.
+
+00:03:03.425 --> 00:03:07.025
+G E M sert à encapsuler les flux, avec un identifiant
+
+00:03:07.025 --> 00:03:08.989
+qui aide à distinguer les services.
+
+00:03:09.350 --> 00:03:12.960
+Imagine deux enfants qui parlent au même microphone,
+mais dont l’un
+
+00:03:12.960 --> 00:03:13.945
+est plus éloigné.
+
+00:03:13.945 --> 00:03:17.267
+Même s’ils commencent aux heures décidées, la voix la
+plus éloignée
+
+00:03:17.267 --> 00:03:19.079
+met davantage de temps à arriver.
+
+00:03:19.079 --> 00:03:22.753
+Le principe du ranging est de connaître et de
+compenser cet
+
+00:03:22.753 --> 00:03:23.087
+écart.
+
+00:03:23.087 --> 00:03:26.923
+L’O L T peut alors attribuer un créneau d’arrivée à
+chacun.
+
+00:03:26.923 --> 00:03:30.905
+Le D B A joue sur la capacité réservée ou disponible.
+
+00:03:30.905 --> 00:03:34.604
+Ce sont deux réglages différents : l’un aide à se
+synchroniser,
+
+00:03:34.604 --> 00:03:36.285
+l’autre à partager la capacité.
+
+00:03:36.642 --> 00:03:39.766
+VLAN et G E M n’ont pas le même rôle.
+
+00:03:39.766 --> 00:03:43.528
+Le V L A N identifie un service Ethernet.
+
+00:03:43.528 --> 00:03:47.218
+Le port G E M identifie le flux encapsulé dans la
+
+00:03:47.218 --> 00:03:48.896
+partie G P O N.
+
+00:03:48.896 --> 00:03:51.861
+Dans le T P, un profil décrit comment le trafic reçu
+
+00:03:51.861 --> 00:03:54.827
+d’un O N T est associé à un service, puis l’O
+
+00:03:54.827 --> 00:03:56.445
+L T le remet côté réseau.
+
+00:03:56.445 --> 00:03:59.999
+Lis le résultat en deux points de capture : côté
+abonné,
+
+00:03:59.999 --> 00:04:02.584
+et côté réseau où l’étiquette peut être présente.
+
+00:04:02.933 --> 00:04:06.123
+Pour la question du T D, commence par attribuer un
+rôle
+
+00:04:06.123 --> 00:04:07.283
+aux blocs du schéma.
+
+00:04:07.283 --> 00:04:11.633
+Identifie la box, le concentrateur de lignes et la
+passerelle abonnés.
+
+00:04:11.633 --> 00:04:14.624
+Ensuite marque l’origine des échanges.
+
+00:04:14.624 --> 00:04:19.047
+En P P P O E, isole la découverte, la liaison,
+
+00:04:19.047 --> 00:04:21.057
+l’authentification et la négociation réseau.
+
+00:04:21.057 --> 00:04:24.758
+En I P O E, explique comment la diffusion initiale
+atteint
+
+00:04:24.758 --> 00:04:28.459
+le serveur et quelles informations d’accès permettent
+d’appliquer le bon service.
+
+00:04:28.459 --> 00:04:31.462
+Compare la notion de session et de bail.
+
+00:04:31.808 --> 00:04:35.810
+Dans la deuxième fiche de TD, trois services peuvent
+partager la
+
+00:04:35.810 --> 00:04:36.538
+liaison physique.
+
+00:04:36.538 --> 00:04:40.229
+Pour la télévision, le sujet place le décodeur sur L A
+
+00:04:40.229 --> 00:04:40.900
+N quatre.
+
+00:04:40.900 --> 00:04:44.519
+Il faut donc associer ce port au profil qui transporte
+le
+
+00:04:44.519 --> 00:04:45.177
+bon service.
+
+00:04:45.177 --> 00:04:49.170
+Pour Internet, regarde si la box doit router ou juste
+relayer
+
+00:04:49.170 --> 00:04:49.896
+les trames.
+
+00:04:49.896 --> 00:04:53.572
+Pour la voix, repère les réglages du service
+téléphonique.
+
+00:04:53.572 --> 00:04:56.879
+Dans tes réponses, explique à quoi sert chaque champ
+avant de
+
+00:04:56.879 --> 00:04:58.682
+choisir les valeurs de la maquette.
+
+00:04:59.017 --> 00:05:02.332
+Dans le T P sur l’O L T, commence par vérifier
+
+00:05:02.332 --> 00:05:05.045
+le montage physique et les paramètres fournis par
+l’enseignant.
+
+00:05:05.045 --> 00:05:08.739
+Cherche l’O N T détecté et compare son numéro de série
+
+00:05:08.739 --> 00:05:10.082
+à celui de l’équipement.
+
+00:05:10.082 --> 00:05:13.832
+Associe-le ensuite au port GPON et aux profils du
+scénario.
+
+00:05:13.832 --> 00:05:17.888
+Le profil de ligne porte notamment les associations de
+trafic.
+
+00:05:17.888 --> 00:05:21.981
+Le profil de service décrit les possibilités côté
+abonné.
+
+00:05:21.981 --> 00:05:25.522
+Si l’équipement ne passe pas en ligne, vérifie le
+signal et
+
+00:05:25.522 --> 00:05:28.097
+l’inscription avant de regarder les adresses des
+machines.
+
+00:05:28.433 --> 00:05:32.501
+Dans le premier montage, retiens les trois
+identifiants séparément.
+
+00:05:32.501 --> 00:05:36.398
+Le conteneur six reçoit le profil qui définit son
+débit.
+
+00:05:36.398 --> 00:05:40.209
+Le port G E M quinze transporte le flux de l’abonné.
+
+00:05:40.209 --> 00:05:43.415
+La règle de service relie ensuite le V L A N
+
+00:05:43.415 --> 00:05:46.621
+mille deux côté abonné au V L A N cent côté
+
+00:05:46.621 --> 00:05:46.913
+opérateur.
+
+00:05:46.913 --> 00:05:50.639
+Lis ces associations dans la configuration avant de
+brancher le P
+
+00:05:50.639 --> 00:05:51.655
+C de test.
+
+00:05:51.655 --> 00:05:55.149
+N’utilise pas la valeur mille un de l’autre sujet dans
+ce
+
+00:05:55.149 --> 00:05:55.467
+montage.
+
+00:05:55.808 --> 00:05:59.707
+Après inscription de l’O N T, l’objectif est de
+retrouver le
+
+00:05:59.707 --> 00:06:00.771
+trajet du trafic.
+
+00:06:00.771 --> 00:06:04.545
+Suis d’abord ce que tu injectes sur le port Ethernet
+abonné.
+
+00:06:04.545 --> 00:06:08.330
+Associe ce trafic au bon service, en suivant le profil
+de
+
+00:06:08.330 --> 00:06:09.018
+la maquette.
+
+00:06:09.018 --> 00:06:12.478
+Sur l’uplink de l’O L T, vérifie avec une capture si
+
+00:06:12.478 --> 00:06:14.680
+le V L A N attendu apparaît.
+
+00:06:14.680 --> 00:06:18.320
+Une lumière reçue correcte ne confirme pas cette
+étape.
+
+00:06:18.320 --> 00:06:21.233
+Une erreur dans le choix du port ou du V L
+
+00:06:21.233 --> 00:06:24.145
+A N peut laisser le lien optique actif tout en
+empêchant
+
+00:06:24.145 --> 00:06:24.410
+l’échange.
+
+00:06:24.767 --> 00:06:28.017
+Dans le premier scénario, le terminal de la liaison P
+P
+
+00:06:28.017 --> 00:06:29.790
+P O E est la box.
+
+00:06:29.790 --> 00:06:33.118
+Associe le profil Route W A N au port LAN un
+
+00:06:33.118 --> 00:06:35.538
+et au V L A N du sujet.
+
+00:06:35.538 --> 00:06:38.859
+Lance la capture côté serveur avant d’appliquer.
+
+00:06:38.859 --> 00:06:42.424
+Sur le serveur, relève les quatre échanges de
+découverte, puis les
+
+00:06:42.424 --> 00:06:45.342
+étapes P P P jusqu’à la négociation de l’adresse.
+
+00:06:45.342 --> 00:06:48.630
+Dans l’état de la box, identifie cette adresse W A N.
+
+00:06:48.630 --> 00:06:51.918
+Compare-la à celle du P C côté LAN : elles
+appartiennent
+
+00:06:51.918 --> 00:06:53.712
+à des côtés différents du routeur.
+
+00:06:54.058 --> 00:06:56.909
+Dans le second scénario, la box laisse passer les
+trames et
+
+00:06:56.909 --> 00:06:59.760
+le P C lance P P P O E. Branche le
+
+00:06:59.760 --> 00:07:02.611
+P C sur le port associé au profil bridge du sujet.
+
+00:07:02.611 --> 00:07:06.692
+Vérifie d’abord le V L A N, puis répète la capture.
+
+00:07:06.692 --> 00:07:10.349
+Pour la variante I P O E, le P C utilise
+
+00:07:10.349 --> 00:07:14.007
+D H C P et tu observes discover, offer, request puis
+
+00:07:14.007 --> 00:07:14.339
+ack.
+
+00:07:14.339 --> 00:07:16.974
+Compare où est attribuée l’adresse.
+
+00:07:16.974 --> 00:07:21.018
+En cas d’échec, remonte dans l’ordre : lumière,
+enregistrement de l’O
+
+00:07:21.018 --> 00:07:25.062
+N T, profil du port, V L A N, puis négociation.
+
+00:07:25.433 --> 00:07:28.889
+Le sujet te demande de lire les informations optiques
+de ton
+
+00:07:28.889 --> 00:07:29.832
+O N T.
+
+00:07:29.832 --> 00:07:33.827
+Relève la puissance réellement affichée et garde son
+unité.
+
+00:07:33.827 --> 00:07:37.562
+Une valeur en dé B m exprime une puissance, alors
+qu’un
+
+00:07:37.562 --> 00:07:39.599
+écart en décibels représente un rapport.
+
+00:07:39.599 --> 00:07:43.239
+Compare tes lectures à la plage du matériel de ta
+paillasse.
+
+00:07:43.239 --> 00:07:46.940
+Ensuite, teste un paquet qui traverse la chaîne
+entière.
+
+00:07:46.940 --> 00:07:49.814
+Fais une capture des deux côtés, car une capture
+uniquement sur
+
+00:07:49.814 --> 00:07:52.688
+le serveur ne te dit pas si le terminal a bien
+
+00:07:52.688 --> 00:07:53.472
+reçu sa réponse.

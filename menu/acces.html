@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Réseaux d’accès — BUT2 R&amp;T</title>
+  <meta name="description" content="Dérouler l’accès d’un abonné sur cuivre ou fibre, puis comparer les profils GPON, PPPoE et IPoE de tes exercices.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/acces.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">PON</span></div>
+      <h1 class="page-title" id="page-title">Réseaux d’accès</h1>
+      <p class="page-lead">Dérouler l’accès d’un abonné sur cuivre ou fibre, puis comparer les profils GPON, PPPoE et IPoE de tes exercices.</p>
+      <div class="c-meta"><span class="c-tag">BUT2 R&amp;T · S3</span></div>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#corriges">Corrigés du TD et du TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/acces/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+  <div class="c-block"><h3>1. Suivre le trajet de l’abonné</h3>
+    <p>La <strong>boucle locale</strong> relie la box ou le terminal au réseau. En xDSL, elle utilise le cuivre. Selon le type de DSL, on répartit fréquences et débit entre les deux sens. La longueur, l’atténuation et le bruit de la paire influencent la vitesse réalisable. Le <strong>DSLAM</strong> ou <strong>MSAN</strong> rassemble plusieurs lignes.</p>
+    <p>En fibre, <strong>FTTH</strong> désigne la fibre jusqu’au logement, <strong>FTTB</strong> jusqu’au bâtiment et <strong>FTTC</strong> jusqu’à un point proche des abonnés. Il peut rester un autre support sur la fin du trajet. En radio, le terminal et la station partagent un milieu radio. La couverture et les ressources disponibles influencent les performances.</p>
+    <p>Le réseau de <strong>collecte</strong> agrège les accès. À la frontière du service, la passerelle abonnés (BRAS ou BNG selon l’architecture) applique la politique d’accès et peut terminer les sessions. Sépare la couche physique, le transport Ethernet ou ATM des architectures du cours et l’attribution de l’adresse IP.</p>
+  </div>
+  <div class="c-block"><h3>2. Comparer PPPoE et IPoE</h3>
+    <ol><li><strong>PPPoE</strong> transporte PPP sur Ethernet. La découverte suit PADI, PADO, PADR, PADS. Après celle-ci, LCP règle les paramètres de la liaison, un protocole comme CHAP authentifie si demandé, et IPCP négocie les paramètres IPv4.</li>
+    <li><strong>IPoE</strong> utilise IP sur Ethernet. L’adresse peut venir de DHCP. La découverte DHCP est locale à l’origine, et un relais peut l’acheminer jusqu’au serveur d’un autre réseau.</li>
+    <li>Pour l’accès et les options comme l’IPTV, l’opérateur peut identifier l’abonné grâce au compte PPP, à la ligne, au port ou à des informations remontées par le relais DHCP. Le bail donne une durée et son renouvellement constitue un indice d’activité, tandis que PPP peut tester la liaison avec les messages LCP.</li></ol>
+  </div>
+  <div class="c-block"><h3>3. Comprendre le partage du support GPON</h3>
+    <p>Dans un PON, l’<strong>OLT</strong> est l’équipement de l’opérateur et l’<strong>ONT</strong> termine la fibre chez l’abonné. Un <strong>coupleur passif</strong> répartit le signal sans alimenter un commutateur. Les directions sont séparées optiquement. En descendant, la lumière est distribuée aux branches. En montant, l’OLT attribue des créneaux de transmission aux ONT.</p>
+    <div class="c-table-wrap"><table class="c-table"><thead><tr><th>Notion</th><th>Ce qu’elle règle</th></tr></thead><tbody>
+    <tr><td>Ranging</td><td>Compense les écarts de temps de propagation.</td></tr>
+    <tr><td>DBA et T-CONT</td><td>Gèrent l’allocation de capacité montante avec un profil.</td></tr>
+    <tr><td>GEM</td><td>Encapsule les flux clients dans GPON et les repère par identifiant.</td></tr>
+    <tr><td>FEC</td><td>Permet de corriger certaines erreurs de transmission.</td></tr>
+    </tbody></table></div>
+    <p>Le partage du signal explique l’utilité de la protection du trafic descendant. Un profil de ligne peut associer ports GEM, T-CONT et VLAN. Le profil de service décrit les ports et capacités côté abonné. À l’OLT, la règle de service fait le lien entre les identifiants opérateur et abonné.</p>
+  </div>
+  <div class="c-block"><h3>4. Savoir où se termine le WAN</h3>
+    <p>En <strong>Route WAN</strong>, l’ONT peut terminer la session, disposer d’une adresse WAN et router depuis son réseau local. En <strong>Bridge WAN</strong>, l’ONT transporte les trames entre le réseau et le port LAN associé. C’est alors le PC ou le routeur du client qui récupère son adresse, avec PPPoE ou DHCP selon le scénario.</p>
+    <p>Un VLAN peut séparer plusieurs services sur une même fibre. Associe à chaque profil la bonne liaison physique et le bon port. Une adresse locale de gestion n’est pas l’adresse WAN négociée par le service.</p>
+  </div>
+</section>
+      <section class="c-section" id="corriges" aria-labelledby="corriges-title">
+  <h2 class="c-h2" id="corriges-title">Corrigés guidés du TD et du TP</h2>
+  <p>Les versions téléchargeables des deux TP GPON masquent les identifiants des équipements. Utilise les sujets de ton dossier de cours pour la connexion au labo.</p>
+  <details class="acc" open><summary>TD · Expliquer les phases de l’accès abonné</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Identifier chaque équipement, comparer les phases PPPoE et IPoE, et expliquer comment le réseau attribue et maintient l’adresse.</p>
+    <ol><li>Sur la figure DSL, identifie la box côté abonné, le MSAN ou DSLAM qui agrège les lignes et le BRAS côté réseau. Place ensuite RADIUS pour les informations d’identité et le serveur DHCP pour l’attribution quand elle est utilisée.</li>
+    <li>En PPPoE, trace les quatre étapes : découverte de la session, réglage de la liaison PPP, authentification, négociation réseau. Dans une capture, distingue PADS, qui fixe la session, du message IPCP qui négocie l’adresse IPv4.</li>
+    <li>En IPoE, trace <code>DISCOVER → OFFER → REQUEST → ACK</code>. Le premier message est une diffusion locale, donc dessine le relais si le serveur n’est pas sur ce réseau. Indique l’identifiant de ligne ou du port si l’opérateur s’appuie dessus pour donner un service distinct.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TD Huawei · Choisir les paramètres WAN par service</summary><div class="acc-body">
+    <p><strong>Question du TD.</strong> Préparer des interfaces séparées pour Internet, IPTV sur LAN4 et ToIP.</p>
+    <ol><li>Pour chaque interface, relève type de service, mode route ou bridge, VLAN, priorité et liaison aux ports. En IPoE, l’adresse peut être dynamique (DHCP) ou fixe. Avec une IP fixe, prépare adresse, masque, passerelle et DNS si nécessaire. En PPPoE, la session utilise les paramètres d’authentification fournis.</li>
+    <li>Internet peut être routé pour les postes du réseau local. Pour une IPTV qui attend un accès direct, la variante bridge associe son VLAN au port LAN4 côté décodeur. Pour la téléphonie prise en charge par la box, associe le service voix aux paramètres opérateur et à la fonction de téléphonie. Les identifiants de VLAN et priorités sont ceux du scénario, à vérifier dans l’énoncé ou la maquette.</li>
+    <li>Vérifie dans l’état WAN quel profil est actif et quel port a le service. Teste un flux de chaque type plutôt que déduire le fonctionnement de tous les services d’un ping Internet.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP GPON côté OLT · Préparer les profils et confirmer l’ONT</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Relier le DBA, le T-CONT, le GEM et l’ONT détecté sur l’OLT.</p>
+    <pre class="c-code"><code>dba-profile add profile-name ftth_dba_2 type4 max 20480
+ont-lineprofile gpon profile-name ftth2
+ tcont 6 dba-profile-name ftth_dba_2
+ gem add 15 eth tcont 6
+ gem mapping 15 1 vlan 1002
+ commit</code></pre>
+    <ol><li>Relève la position de la carte, le port de fibre, puis l’état optique. À la fin de la création du profil, vérifie le DBA dans <code>display dba-profile</code>. Le profil de type 4 est une allocation en meilleur effort, bornée ici par le maximum configuré.</li>
+    <li>Le T-CONT 6 utilise le DBA créé. Le GEM 15 lui est associé et le VLAN abonné 1002 est envoyé dans ce GEM. Prépare aussi le profil de service du sujet et valide chacun avec <code>commit</code>.</li>
+    <li>Dans <code>interface gpon 0/0</code>, utilise <code>display ont autofind 0</code>. Identifie ton numéro de série sur le matériel et confirme l’ONT avec les deux profils, sur l’identifiant 2 demandé. Vérifie avec <code>display ont info 0 all</code> : <code>active</code>, <code>online</code>, <code>normal</code> et <code>match</code> sont les états recherchés.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP GPON côté OLT · Vérifier la traduction de VLAN</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Transporter le VLAN abonné 1002 via le port GEM 15 et le remettre sur le VLAN opérateur 100.</p>
+    <ol><li>Prépare la table de trafic du sujet. Vérifie le débit d’information engagé (CIR) et la priorité dans <code>display traffic table ip</code>.</li>
+    <li>Dans le <code>service-port</code>, vérifie ensemble : VLAN de sortie 100, port GPON <code>0/0/0</code>, ONT 2, GEM 15, VLAN utilisateur 1002 et mode <code>tag-transform translate</code>. Utilise le profil de trafic dans les directions demandées.</li>
+    <li>Génère un trafic de test depuis l’ONT. Vérifie le VLAN sur le point de capture autorisé côté réseau. Une liaison optique en ligne confirme la connectivité GPON. Le test Ethernet confirme le chemin du service.</li></ol>
+  </div></details>
+  <details class="acc"><summary>TP GPON côté ONT · Comparer les trois profils WAN</summary><div class="acc-body">
+    <p><strong>Question du TP.</strong> Observer PPPoE Route WAN, PPPoE Bridge WAN et IPoE Bridge WAN avec la préconfiguration VLAN 1001 de l’ONT 1.</p>
+    <ol><li>Après préparation de la maquette, relève dans <strong>Status → Optical Information</strong> la puissance réellement affichée et son unité. Vérifie l’état de liaison avant de lancer des essais réseau.</li>
+    <li>Prépare le serveur PPPoE Linux sur l’interface du labo et la configuration CHAP avec le compte de test. Fixe l’IP du serveur et le début de plage selon le plan du groupe. Lance Wireshark avant d’appliquer le profil WAN.</li>
+    <li>En <strong>Route WAN</strong>, active PPPoE sur la box et associe LAN1, avec l’étiquette 1001. Vérifie l’adresse WAN de la box et compare à l’adresse LAN du PC. Repère la liaison PPP et le ping dans la capture côté serveur.</li>
+    <li>En <strong>Bridge WAN PPPoE</strong>, lie le profil au port LAN2 et fais ouvrir PPPoE par le PC. Vérifie que le PC devient le point de terminaison. En <strong>Bridge WAN IPoE</strong>, passe le PC sur DHCP et lis les quatre échanges d’attribution au lieu du chronogramme PPP.</li>
+    <li>Pour chaque essai, note qui reçoit l’adresse, le VLAN visible côté réseau et l’état final du ping. Si rien n’apparaît, remonte du signal à l’enregistrement ONT, puis au profil du port et au VLAN, avant de corriger l’authentification ou DHCP.</li></ol>
+  </div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/acces/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/acces/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/acces/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · De la box au réseau de collecte</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="26.042">0:26 · DSL, Ethernet et les équipements</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="55.792">0:55 · PPPoE et les quatre phases</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="109.375">1:49 · IPoE et le relais DHCP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="135.250">2:15 · OLT, coupleur et ONT</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="160.042">2:40 · GPON : directions, temps et capacité</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="216.542">3:36 · du service Ethernet à la fibre</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Corrigés TD et TP · 4:02</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="242.833">4:02 · TD · Comparer PPPoE et IPoE</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="298.917">4:58 · TP OLT · Faire apparaître l’ONT</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="355.708">5:55 · TP OLT · Vérifier le chemin d’un VLAN</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="384.667">6:24 · TP ONT · PPPoE en mode Route WAN</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="413.958">6:53 · TP ONT · Passer en Bridge WAN</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="445.333">7:25 · TP · Lire l’état optique avant de conclure</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,585 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.385
+Quand deux sites d’une même entreprise échangent des
+données, les paquets
+
+00:00:03.385 --> 00:00:06.671
+quittent souvent le réseau local de l’un pour utiliser
+les équipements
+
+00:00:06.671 --> 00:00:07.268
+d’un opérateur.
+
+00:00:07.268 --> 00:00:09.976
+L’accès est la jonction avec le client.
+
+00:00:09.976 --> 00:00:14.290
+La collecte le rapproche d’un point où l’opérateur
+agrège plusieurs accès.
+
+00:00:14.290 --> 00:00:17.881
+Le cœur transporte ensuite de gros volumes entre ses
+nœuds.
+
+00:00:17.881 --> 00:00:20.595
+Le TD demande de distinguer ce qui est loué au client
+
+00:00:20.595 --> 00:00:23.310
+et ce que le réseau met réellement en place en
+dessous.
+
+00:00:23.642 --> 00:00:26.851
+Imagine une fibre comme la route disponible.
+
+00:00:26.851 --> 00:00:30.214
+Louer de la fibre noire, c’est disposer de la fibre
+elle-même
+
+00:00:30.214 --> 00:00:32.354
+et apporter de quoi l’éclairer aux extrémités.
+
+00:00:32.354 --> 00:00:36.730
+Avec le multiplexage optique, plusieurs longueurs
+d’onde passent ensemble dans la
+
+00:00:36.730 --> 00:00:37.525
+même fibre.
+
+00:00:37.525 --> 00:00:41.064
+Louer une longueur d’onde revient à disposer de l’un
+de ces
+
+00:00:41.064 --> 00:00:41.386
+canaux.
+
+00:00:41.386 --> 00:00:45.055
+Un service transporté peut aller plus loin : le client
+remet
+
+00:00:45.055 --> 00:00:48.724
+une interface, par exemple Ethernet, et l’opérateur
+s’occupe de transporter le
+
+00:00:48.724 --> 00:00:49.057
+flux.
+
+00:00:49.057 --> 00:00:52.525
+Relis le niveau de service annoncé avant de choisir.
+
+00:00:52.892 --> 00:00:57.180
+W D M signifie multiplexage par longueur d’onde.
+
+00:00:57.180 --> 00:01:00.599
+Un multiplexeur regroupe les signaux dans la fibre.
+
+00:01:00.599 --> 00:01:04.643
+À l’arrivée, l’opération inverse permet de séparer les
+canaux.
+
+00:01:04.643 --> 00:01:08.148
+D W D M utilise un espacement dense.
+
+00:01:08.148 --> 00:01:11.420
+Un amplificateur agit sur une bande de signaux.
+
+00:01:11.420 --> 00:01:15.262
+Un ROADM peut laisser une longueur d’onde continuer ou
+l’extraire vers
+
+00:01:15.262 --> 00:01:16.310
+un équipement local.
+
+00:01:16.310 --> 00:01:19.030
+Il commute le canal optique entier.
+
+00:01:19.030 --> 00:01:23.209
+Choisis ses ports sans confondre longueur d’onde,
+numéro d’interface et adresse
+
+00:01:23.209 --> 00:01:23.969
+I P.
+
+00:01:24.308 --> 00:01:27.616
+Prends un nœud où arrivent deux couleurs sur la même
+fibre.
+
+00:01:27.616 --> 00:01:30.692
+Le client de la ville veut seulement la première.
+
+00:01:30.692 --> 00:01:34.224
+Le nœud peut extraire cette couleur vers son port
+local et
+
+00:01:34.224 --> 00:01:35.508
+laisser la seconde continuer.
+
+00:01:35.508 --> 00:01:38.561
+Pour répondre au TD, écris une ligne pour le premier
+canal
+
+00:01:38.561 --> 00:01:40.226
+et une ligne pour le second.
+
+00:01:40.226 --> 00:01:43.748
+C’est la différence entre commuter une fibre entière
+et commuter une
+
+00:01:43.748 --> 00:01:45.349
+longueur d’onde dans la fibre.
+
+00:01:45.683 --> 00:01:48.722
+On vient de voir plusieurs couleurs dans une fibre.
+
+00:01:48.722 --> 00:01:52.288
+Maintenant, regarde ce qu’une couleur peut
+transporter.
+
+00:01:52.288 --> 00:01:56.332
+Une structure O T N peut organiser la capacité
+disponible et
+
+00:01:56.332 --> 00:01:57.802
+porter plusieurs flux clients.
+
+00:01:57.802 --> 00:02:01.408
+Dans le T D, on leur réserve des créneaux, qu’on
+appelle
+
+00:02:01.408 --> 00:02:01.736
+slots.
+
+00:02:01.736 --> 00:02:05.068
+La table indique l’interface et les créneaux à
+l’entrée puis ceux
+
+00:02:05.068 --> 00:02:05.976
+à la sortie.
+
+00:02:05.976 --> 00:02:09.057
+Un canal peut donc transporter un flux de dix slots et
+
+00:02:09.057 --> 00:02:11.577
+un second de cinq s’il reste de la capacité.
+
+00:02:11.577 --> 00:02:14.929
+Le ROADM laisse passer la même longueur d’onde et ne
+voit
+
+00:02:14.929 --> 00:02:16.148
+pas ce découpage interne.
+
+00:02:16.517 --> 00:02:20.597
+Le multiplexage temporel répartit des données dans la
+trame.
+
+00:02:20.597 --> 00:02:24.135
+Un canal de transport peut être réservé pour une
+longueur d’onde,
+
+00:02:24.135 --> 00:02:27.030
+et cette longueur d’onde peut traverser plusieurs
+nœuds optiques.
+
+00:02:27.030 --> 00:02:30.033
+Les deux décisions ont des échelles différentes.
+
+00:02:30.033 --> 00:02:32.807
+Dans une table O T N, un créneau ne dit pas
+
+00:02:32.807 --> 00:02:34.825
+à lui seul de quelle fibre il s’agit.
+
+00:02:34.825 --> 00:02:37.374
+Il faut aussi le port concerné.
+
+00:02:37.374 --> 00:02:40.592
+Dans la table optique, la longueur d’onde seule ne dit
+pas
+
+00:02:40.592 --> 00:02:42.055
+quels flux clients elle transporte.
+
+00:02:42.392 --> 00:02:45.896
+Un routeur ne choisit pas directement une longueur
+d’onde.
+
+00:02:45.896 --> 00:02:49.486
+Pour chaque paquet, il sélectionne en général la route
+dont le
+
+00:02:49.486 --> 00:02:52.097
+préfixe correspond le plus précisément à la
+destination.
+
+00:02:52.097 --> 00:02:55.396
+Le commutateur O T N suit une autre table, qui associe
+
+00:02:55.396 --> 00:02:57.795
+des ports et des créneaux de la trame.
+
+00:02:57.795 --> 00:03:01.497
+Le nœud optique associe enfin une longueur d’onde
+entrante à un
+
+00:03:01.497 --> 00:03:02.170
+chemin sortant.
+
+00:03:02.170 --> 00:03:05.995
+Séparer ces trois tableaux t’évite d’inscrire une
+adresse de réseau dans
+
+00:03:05.995 --> 00:03:07.734
+une table de commutation optique.
+
+00:03:08.100 --> 00:03:11.837
+O S P F est un protocole de routage dynamique.
+
+00:03:11.837 --> 00:03:15.274
+Les routeurs voisins échangent des informations sur
+leurs liens, puis construisent
+
+00:03:15.274 --> 00:03:17.462
+une vue de la topologie dans l’aire.
+
+00:03:17.462 --> 00:03:21.410
+Une aire est un périmètre logique qui limite certains
+échanges et
+
+00:03:21.410 --> 00:03:22.486
+structure le calcul.
+
+00:03:22.486 --> 00:03:25.121
+Le coût s’additionne le long du chemin.
+
+00:03:25.121 --> 00:03:28.750
+Le chemin de coût minimal peut avoir davantage de
+sauts qu’un
+
+00:03:28.750 --> 00:03:29.079
+autre.
+
+00:03:29.079 --> 00:03:32.306
+Dans le T P, une seule aire zéro suffit pour comparer
+
+00:03:32.306 --> 00:03:33.773
+les trajets sur la maquette.
+
+00:03:34.142 --> 00:03:36.898
+Trois liens peuvent coûter moins cher que deux.
+
+00:03:36.898 --> 00:03:40.758
+Dans l’exemple à l’écran, un plus un plus deux égale
+quatre.
+
+00:03:40.758 --> 00:03:43.197
+Trois plus trois égale six.
+
+00:03:43.197 --> 00:03:46.200
+O S P F choisit le premier chemin.
+
+00:03:46.200 --> 00:03:48.712
+Ce sont des valeurs d’illustration.
+
+00:03:48.712 --> 00:03:52.188
+Dans ton TP, relève les coûts propres aux interfaces
+de R
+
+00:03:52.188 --> 00:03:54.717
+un, R deux, R trois et R cinq.
+
+00:03:54.717 --> 00:03:58.154
+Additionne-les dans le sens de la route que tu
+cherches à
+
+00:03:58.154 --> 00:03:58.467
+expliquer.
+
+00:03:58.467 --> 00:04:01.947
+Utilise ensuite la table de routage pour confirmer.
+
+00:04:02.308 --> 00:04:05.305
+Dans un domaine M P L S, le bord d’entrée classe
+
+00:04:05.305 --> 00:04:08.301
+le paquet dans un groupe de destinations ou de trafic
+et
+
+00:04:08.301 --> 00:04:09.391
+lui ajoute un label.
+
+00:04:09.391 --> 00:04:12.302
+Dans le cœur, le routeur cherche ce label dans sa
+table
+
+00:04:12.302 --> 00:04:15.214
+de transfert et peut le remplacer par une autre valeur
+pour
+
+00:04:15.214 --> 00:04:16.008
+le prochain lien.
+
+00:04:16.008 --> 00:04:19.844
+Le même paquet ne garde donc pas forcément le même
+label.
+
+00:04:19.844 --> 00:04:23.312
+L D P annonce les associations de labels aux voisins.
+
+00:04:23.312 --> 00:04:26.889
+La L F I B décrit ce qui sera réellement utilisé
+
+00:04:26.889 --> 00:04:28.190
+pour transférer les paquets.
+
+00:04:28.558 --> 00:04:32.320
+Le premier TD part d’un réseau de fibres entre
+plusieurs villes.
+
+00:04:32.320 --> 00:04:35.458
+Si l’opérateur A ne veut rien éclairer, il peut louer
+une
+
+00:04:35.458 --> 00:04:37.454
+fibre noire là où il en dispose.
+
+00:04:37.454 --> 00:04:40.660
+Pour louer une longueur d’onde, il faut au contraire
+des équipements
+
+00:04:40.660 --> 00:04:43.866
+optiques, et selon le trajet de quoi diriger ou
+amplifier les
+
+00:04:43.866 --> 00:04:44.158
+canaux.
+
+00:04:44.158 --> 00:04:47.520
+Pour comparer les fiches du sujet, repère ce que le
+client
+
+00:04:47.520 --> 00:04:49.354
+branche et ce que l’opérateur livre.
+
+00:04:49.354 --> 00:04:53.301
+Utilise la couverture et les valeurs indiquées dans
+les fiches de
+
+00:04:53.301 --> 00:04:55.812
+l’exercice, sans déduire une offre commerciale
+actuelle.
+
+00:04:56.183 --> 00:04:59.736
+Le sujet suppose des faisceaux monodirectionnels.
+
+00:04:59.736 --> 00:05:03.241
+Commence par dessiner deux trajets, un par sens.
+
+00:05:03.241 --> 00:05:06.207
+Pour chaque direction, note au R O A D M le
+
+00:05:06.207 --> 00:05:09.173
+port en entrée, la longueur d’onde et le port en
+sortie.
+
+00:05:09.173 --> 00:05:12.082
+Dans l’O T N, active les dix créneaux demandés pour le
+
+00:05:12.082 --> 00:05:14.991
+flux I P. À l’autre bout, retrouve ces mêmes créneaux
+sur
+
+00:05:14.991 --> 00:05:17.371
+le canal reçus et remets le trafic au routeur.
+
+00:05:17.371 --> 00:05:21.342
+Les symboles lambda aller et lambda retour distinguent
+les trajets.
+
+00:05:21.342 --> 00:05:25.396
+Sur des fibres distinctes, cela ne t’oblige pas à
+choisir deux
+
+00:05:25.396 --> 00:05:26.133
+fréquences différentes.
+
+00:05:26.475 --> 00:05:29.536
+Dans le cas où le trafic I P passe par Clermont,
+
+00:05:29.536 --> 00:05:32.320
+Aubière envoie vers Clermont les paquets à destination
+de Gerzat.
+
+00:05:32.320 --> 00:05:36.486
+Le lien physique direct peut exister sans que ces
+routes l’utilisent.
+
+00:05:36.486 --> 00:05:39.954
+Si Clermont n’est plus joignable, une alternative ne
+prend le relais
+
+00:05:39.954 --> 00:05:42.160
+que si elle est définie ou calculée.
+
+00:05:42.160 --> 00:05:46.384
+Pour le nouveau client Ethernet, vérifie s’il reste
+cinq créneaux par
+
+00:05:46.384 --> 00:05:46.768
+sens.
+
+00:05:46.768 --> 00:05:50.999
+Si oui, ajoute une correspondance O T N et conserve le
+
+00:05:50.999 --> 00:05:51.768
+trajet optique.
+
+00:05:51.768 --> 00:05:55.212
+Sinon, prévois de la capacité supplémentaire.
+
+00:05:55.558 --> 00:05:59.209
+Dans la topologie du sujet, adresse d’abord chaque
+lien.
+
+00:05:59.209 --> 00:06:02.825
+Pour une instruction Cisco network, choisis le réseau
+de l’interface et
+
+00:06:02.825 --> 00:06:06.440
+le masque générique, qui s’obtient en inversant les
+bits du masque.
+
+00:06:06.440 --> 00:06:09.882
+Sur un slash trente, il vaut zéro point zéro point
+zéro
+
+00:06:09.882 --> 00:06:10.508
+point trois.
+
+00:06:10.508 --> 00:06:14.021
+Vérifie les voisins, les routes, puis le ping de R
+zéro
+
+00:06:14.021 --> 00:06:15.937
+vers les interfaces de R quatre.
+
+00:06:15.937 --> 00:06:19.195
+Sur la capture entre R un et R deux, repère les
+
+00:06:19.195 --> 00:06:22.453
+messages de découverte, de description de la base et
+de diffusion
+
+00:06:22.453 --> 00:06:23.045
+des annonces.
+
+00:06:23.392 --> 00:06:26.632
+Active M P L S uniquement sur les liens qui doivent
+
+00:06:26.632 --> 00:06:29.872
+porter des labels et vérifie la table avec show M P
+
+00:06:29.872 --> 00:06:31.050
+L S forwarding table.
+
+00:06:31.050 --> 00:06:34.028
+Capture le même ping sur les liens demandés.
+
+00:06:34.028 --> 00:06:37.415
+Avant l’entrée, l’entête Ethernet annonce I P. Au
+cœur, compare les
+
+00:06:37.415 --> 00:06:40.802
+labels et le T T L M P L S avec
+
+00:06:40.802 --> 00:06:41.418
+les tables.
+
+00:06:41.418 --> 00:06:44.864
+À la sortie, cherche si le dernier label a déjà été
+
+00:06:44.864 --> 00:06:46.430
+retiré par le routeur précédent.
+
+00:06:46.430 --> 00:06:49.616
+Les valeurs exactes dépendent de ta maquette.
+
+00:06:49.616 --> 00:06:53.306
+Un retrait en avant-dernière étape se confirme en
+regardant l’action pop
+
+00:06:53.306 --> 00:06:54.984
+label et la trame obtenue.
+
+00:06:55.350 --> 00:06:59.309
+Pour éviter de comparer des paquets différents,
+regarde l’identifiant et le
+
+00:06:59.309 --> 00:07:01.109
+numéro de séquence du ping.
+
+00:07:01.109 --> 00:07:04.422
+Dans le domaine, un label différent sur deux captures
+ne signifie
+
+00:07:04.422 --> 00:07:06.832
+pas que le paquet a changé de destination.
+
+00:07:06.832 --> 00:07:09.369
+C’est l’opération de commutation.
+
+00:07:09.369 --> 00:07:12.517
+Mets côte à côte les champs visibles et la ligne de
+
+00:07:12.517 --> 00:07:13.376
+table du routeur.
+
+00:07:13.376 --> 00:07:17.106
+Si le paquet sort sans label, vérifie où il a été
+
+00:07:17.106 --> 00:07:17.445
+retiré.
+
+00:07:17.445 --> 00:07:21.312
+Reproduis les résultats mesurés chez toi, car les
+numéros de label
+
+00:07:21.312 --> 00:07:22.016
+sont locaux.
+
+00:07:22.350 --> 00:07:25.927
+Le sujet te demande d’observer la construction des
+tables.
+
+00:07:25.927 --> 00:07:29.702
+Enregistre d’abord la L F I B de chaque routeur sans
+
+00:07:29.702 --> 00:07:30.388
+R quatre.
+
+00:07:30.388 --> 00:07:33.562
+Lance les captures puis réintroduis le routeur.
+
+00:07:33.562 --> 00:07:36.442
+Attends que le routage soit stabilisé.
+
+00:07:36.442 --> 00:07:40.073
+Repère les messages label mapping et le préfixe qui
+correspond à
+
+00:07:40.073 --> 00:07:41.724
+la sortie de R quatre.
+
+00:07:41.724 --> 00:07:45.306
+Compare le label reçu du bon prochain saut avec la
+nouvelle
+
+00:07:45.306 --> 00:07:46.283
+ligne de transfert.
+
+00:07:46.283 --> 00:07:49.837
+La L I B peut connaître plusieurs correspondances.
+
+00:07:49.837 --> 00:07:53.807
+La table de transfert retient celle qu’utilise le
+chemin choisi.
