@@ -1,0 +1,343 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.849
+Quand tu compiles, la machine transforme le texte du
+programme en
+
+00:00:03.849 --> 00:00:05.552
+quelque chose qu'elle peut exécuter.
+
+00:00:05.552 --> 00:00:09.348
+Une compilation réussie te dit que le compilateur a pu
+traduire
+
+00:00:09.348 --> 00:00:10.038
+ton code.
+
+00:00:10.038 --> 00:00:12.673
+Il faut encore tester le résultat.
+
+00:00:12.673 --> 00:00:15.730
+Compare cinq divisé par deux quand les deux valeurs
+sont des
+
+00:00:15.730 --> 00:00:17.954
+entiers, puis quand la première est un flottant.
+
+00:00:17.954 --> 00:00:21.251
+Dans le premier cas, la division entière donne deux.
+
+00:00:21.251 --> 00:00:24.768
+Dans le deuxième, elle conserve la partie décimale.
+
+00:00:24.768 --> 00:00:27.440
+Le type change donc le calcul.
+
+00:00:27.767 --> 00:00:31.217
+Pour demander à scanf de ranger un entier, passe-lui
+l'adresse de
+
+00:00:31.217 --> 00:00:32.472
+la case où l'écrire.
+
+00:00:32.472 --> 00:00:35.633
+Le signe et commercial construit cette adresse.
+
+00:00:35.633 --> 00:00:39.329
+La fonction renvoie le nombre de valeurs qu'elle a
+réussi à
+
+00:00:39.329 --> 00:00:39.665
+convertir.
+
+00:00:39.665 --> 00:00:42.986
+Quand tu en attends une, vérifie que le retour vaut
+un.
+
+00:00:42.986 --> 00:00:46.810
+Avec du texte au lieu d'un entier, la conversion peut
+échouer.
+
+00:00:46.810 --> 00:00:50.165
+Dans ce cas, le reste du programme ne doit pas
+supposer
+
+00:00:50.165 --> 00:00:52.300
+que la variable contient une saisie valide.
+
+00:00:52.683 --> 00:00:56.035
+Passer un entier à une fonction crée une valeur locale
+que
+
+00:00:56.035 --> 00:00:57.253
+la fonction peut modifier.
+
+00:00:57.253 --> 00:01:00.268
+La variable de départ reste dans l'appelant.
+
+00:01:00.268 --> 00:01:03.394
+Pour un tableau, on passe très souvent une adresse
+vers le
+
+00:01:03.394 --> 00:01:04.815
+premier élément et une taille.
+
+00:01:04.815 --> 00:01:08.503
+Sur un tableau de quatre cases, le dernier indice est
+trois.
+
+00:01:08.503 --> 00:01:12.423
+Tester un indice strictement inférieur à quatre suffit
+lorsque tu pars
+
+00:01:12.423 --> 00:01:13.136
+de zéro.
+
+00:01:13.136 --> 00:01:15.949
+Le pointeur à lui seul ne te dit pas combien de
+
+00:01:15.949 --> 00:01:16.972
+cases tu peux lire.
+
+00:01:17.308 --> 00:01:20.846
+En C, la fin d'une chaîne n'est pas déduite de
+l'espace
+
+00:01:20.846 --> 00:01:21.168
+alloué.
+
+00:01:21.168 --> 00:01:23.864
+Elle est marquée par un caractère nul.
+
+00:01:23.864 --> 00:01:26.903
+Pour ranger chat, il faut donc cinq places.
+
+00:01:26.903 --> 00:01:31.940
+Lorsque tu compares deux chaînes, cherche l'ordre du
+texte avec strcmp.
+
+00:01:31.940 --> 00:01:34.415
+Le signe du résultat compte.
+
+00:01:34.415 --> 00:01:37.295
+Zéro veut dire qu'elles ont le même contenu.
+
+00:01:37.295 --> 00:01:40.786
+Pour la saisie, protège la longueur et vérifie le
+terminateur ou
+
+00:01:40.786 --> 00:01:43.325
+le saut de ligne selon la fonction utilisée.
+
+00:01:43.683 --> 00:01:47.396
+Une structure de produit groupe sa référence et sa
+quantité.
+
+00:01:47.396 --> 00:01:50.606
+Pour lire un champ sur l'objet, tu utilises un point.
+
+00:01:50.606 --> 00:01:53.934
+Si tu as l'adresse de l'objet, la flèche te permet
+d'atteindre
+
+00:01:53.934 --> 00:01:55.447
+le champ de l'objet pointé.
+
+00:01:55.447 --> 00:01:58.768
+La valeur passée à la fonction est toujours une copie.
+
+00:01:58.768 --> 00:02:01.636
+Ici, ce qui est copié est l'adresse.
+
+00:02:01.636 --> 00:02:05.555
+Modifier une valeur à cette adresse change réellement
+la structure qui
+
+00:02:05.555 --> 00:02:06.624
+appartient à l'appelant.
+
+00:02:06.975 --> 00:02:10.503
+Dans un tableau dynamique, la taille arrive à
+l'exécution.
+
+00:02:10.503 --> 00:02:13.702
+Il faut donc calculer combien d'octets réserver.
+
+00:02:13.702 --> 00:02:16.988
+Multiplie le nombre de cases par la taille d'une case,
+en
+
+00:02:16.988 --> 00:02:18.481
+vérifiant que le calcul tient.
+
+00:02:18.481 --> 00:02:22.182
+Si l'allocation échoue, tu reçois un pointeur nul.
+
+00:02:22.182 --> 00:02:25.743
+En cas de réussite, remplis les cases avant de lire
+leur
+
+00:02:25.743 --> 00:02:26.067
+contenu.
+
+00:02:26.067 --> 00:02:29.351
+Et quand le tableau ne sert plus, libère la zone.
+
+00:02:29.725 --> 00:02:32.469
+Une liste ressemble à un jeu de pistes.
+
+00:02:32.469 --> 00:02:35.459
+Chaque maillon te dit où se trouve le suivant.
+
+00:02:35.459 --> 00:02:38.715
+Si tu perds la première adresse, tu ne peux plus
+remonter
+
+00:02:38.715 --> 00:02:39.307
+le chemin.
+
+00:02:39.307 --> 00:02:42.720
+Pour ajouter en tête, donne d'abord à la nouvelle case
+l'adresse
+
+00:02:42.720 --> 00:02:44.271
+de l'ancienne tête comme suivant.
+
+00:02:44.271 --> 00:02:47.187
+Tu peux ensuite changer le pointeur de tête.
+
+00:02:47.187 --> 00:02:50.165
+Cet ordre protège les maillons déjà présents.
+
+00:02:50.517 --> 00:02:52.231
+Compare les noms.
+
+00:02:52.231 --> 00:02:55.540
+S'ils diffèrent, le signe du résultat suffit.
+
+00:02:55.540 --> 00:02:58.898
+S'ils sont égaux, fais le même test sur les prénoms.
+
+00:02:58.898 --> 00:03:02.109
+Dans l'exemple, les deux personnes s'appellent Durand.
+
+00:03:02.109 --> 00:03:05.111
+Le premier test ne peut donc pas décider.
+
+00:03:05.111 --> 00:03:07.280
+Alice arrive avant Zoé.
+
+00:03:07.280 --> 00:03:10.363
+Essaie un cas où les noms diffèrent et où les prénoms
+
+00:03:10.363 --> 00:03:11.484
+seraient dans l'ordre opposé.
+
+00:03:11.484 --> 00:03:13.984
+Le résultat doit suivre les noms.
+
+00:03:14.350 --> 00:03:17.842
+Pour quatre cases, réserve la taille de quatre
+entiers.
+
+00:03:17.842 --> 00:03:22.106
+Si l'allocation échoue, arrête la partie qui
+utiliserait le tableau.
+
+00:03:22.106 --> 00:03:25.991
+Si elle réussit, le premier indice vaut zéro et reçoit
+trois.
+
+00:03:25.991 --> 00:03:29.741
+L'indice un reçoit cinq, puis sept, puis neuf.
+
+00:03:29.741 --> 00:03:32.597
+La boucle s'arrête avant l'indice quatre.
+
+00:03:32.597 --> 00:03:36.016
+À l'affichage, compte exactement quatre valeurs.
+
+00:03:36.016 --> 00:03:38.601
+Ensuite, libère le tableau.
+
+00:03:38.601 --> 00:03:42.230
+Vérifie aussi ce que fait le programme si la taille
+est
+
+00:03:42.230 --> 00:03:42.560
+invalide.
+
+00:03:42.933 --> 00:03:46.952
+L'exercice veut garder le même produit et augmenter sa
+quantité.
+
+00:03:46.952 --> 00:03:49.820
+Envoie à la fonction l'adresse du produit.
+
+00:03:49.820 --> 00:03:53.594
+Elle suit le pointeur jusqu'au champ quantité, lit
+quatre, ajoute trois,
+
+00:03:53.594 --> 00:03:55.653
+puis écrit sept au même endroit.
+
+00:03:55.653 --> 00:03:58.067
+La référence n'est pas touchée.
+
+00:03:58.067 --> 00:04:01.768
+Relis les deux champs après l'appel pour contrôler le
+résultat.
+
+00:04:02.100 --> 00:04:06.042
+Sur le schéma, à gauche se trouve le paramètre qui
+détient
+
+00:04:06.042 --> 00:04:06.400
+l'adresse.
+
+00:04:06.400 --> 00:04:09.697
+À droite se trouve la structure du programme appelant.
+
+00:04:09.697 --> 00:04:13.427
+Quand tu changes le champ après la flèche, suis cette
+flèche
+
+00:04:13.427 --> 00:04:14.783
+jusqu'à la structure d'origine.
+
+00:04:14.783 --> 00:04:17.957
+Tu peux maintenant expliquer pourquoi ajouter trois à
+un entier ordinaire
+
+00:04:17.957 --> 00:04:20.555
+passé par valeur ne fait pas la même chose.
+
+00:04:20.892 --> 00:04:23.342
+Commence avec la liste vide.
+
+00:04:23.342 --> 00:04:27.127
+Lorsque quatre arrive, son adresse devient la tête et
+son suivant
+
+00:04:27.127 --> 00:04:27.815
+vaut nul.
+
+00:04:27.815 --> 00:04:31.577
+Pour sept, commence par faire pointer son suivant vers
+quatre.
+
+00:04:31.577 --> 00:04:34.089
+Fais ensuite de sept la tête.
+
+00:04:34.089 --> 00:04:37.208
+En partant de la tête et en suivant les flèches, on
+
+00:04:37.208 --> 00:04:38.342
+obtient sept puis quatre.
+
+00:04:38.342 --> 00:04:42.925
+Pour supprimer les deux maillons, mémorise l'adresse
+suivante avant chaque libération.
+
+00:04:42.925 --> 00:04:46.013
+Tu évites de lire une zone que tu viens de rendre.

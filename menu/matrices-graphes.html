@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matrices et graphes — BUT1 R&amp;T</title>
+  <meta name="description" content="Produits matriciels, pivot de Gauss, chemins et chaînes de Markov.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/matrices-graphes.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Matrices et graphes</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/matrices-graphes/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Lire et multiplier des matrices</h3>
+<p>Une matrice de taille <code>m×n</code> contient <code>m</code> lignes et <code>n</code> colonnes. <code>aᵢⱼ</code> désigne la valeur de la ligne <code>i</code> et de la colonne <code>j</code>. La <strong>transposée</strong> échange les lignes et les colonnes. Dans une matrice triangulaire supérieure, les termes strictement sous la diagonale sont nuls.</p>
+<p>Deux matrices de même taille s’additionnent case par case. Pour multiplier <code>A</code> de taille <code>m×n</code> par <code>B</code> de taille <code>n×p</code>, prends une ligne de A, une colonne de B, multiplie les termes correspondants et additionne. Le résultat a taille <code>m×p</code>. L’ordre des facteurs change le calcul et peut aussi rendre l’autre produit impossible.</p></div>
+<div class="c-block"><h3>2. Résoudre un système avec un pivot</h3>
+<p>Écris chaque équation sur une ligne, dans le même ordre de variables. Mets la partie droite après une barre. Tu peux échanger des lignes, multiplier une ligne par un coefficient non nul ou ajouter un multiple d’une autre ligne. Ces opérations donnent un système équivalent.</p>
+<p>Choisis un <strong>pivot</strong> non nul, puis annule les termes sous ce pivot. Passe à la colonne suivante sur les lignes restantes. Une ligne <code>0=5</code> rend le système impossible. Si une variable est libre, exprime les variables liées à partir d’elle. En fin de calcul, remplace les valeurs dans les équations initiales.</p>
+<p>Le <strong>déterminant</strong> détecte l’inversibilité d’une matrice carrée. Pour <code>[[a,b],[c,d]]</code>, il vaut <code>ad−bc</code>. En dimension 3, développer par une ligne riche en zéros peut accélérer le calcul. Pour calculer l’inverse par Gauss-Jordan, transforme <code>[A | I]</code> en <code>[I | A⁻¹]</code> en appliquant les mêmes opérations aux deux blocs.</p></div>
+<div class="c-block"><h3>3. Passer d’un graphe à des chemins</h3>
+<p>Un <strong>graphe</strong> relie des sommets. Une arête non orientée se parcourt dans les deux sens et un arc orienté indique un sens. La <strong>matrice d’adjacence</strong> note les liaisons entre paires de sommets dans un ordre fixé. Pour une matrice d’adjacence numérique d’un graphe simple, l’entrée <code>(i,j)</code> de sa puissance <code>k</code> compte les parcours de longueur <code>k</code> de <code>i</code> à <code>j</code>, avec les répétitions permises.</p>
+<p>Avec des poids tous non négatifs, <strong>Dijkstra</strong> fige le sommet de distance provisoire minimale et essaie d’améliorer les distances vers ses voisins. Garde aussi les prédécesseurs pour reconstruire le chemin. <strong>Bellman-Ford</strong> répète l’amélioration des arcs et permet des poids négatifs. Un cycle négatif atteignable peut rendre certaines distances sans minimum fini.</p></div>
+<div class="c-block"><h3>4. Calculer l’évolution d’une chaîne de Markov</h3>
+<p>Une chaîne de Markov décrit une évolution par étapes. Les probabilités du prochain état dépendent de l’état courant dans le modèle. Avec une distribution écrite en ligne <code>Pₙ</code>, mets dans la ligne <code>i</code> de la matrice les probabilités de départ de l’état <code>i</code>. On applique <code>Pₙ₊₁=PₙT</code>.</p>
+<figure><img loading="lazy" src="../assets/revisions/matrices-graphes/schemas/transitions.png" alt="Chaque mois, 28 pour cent des données passent de A à B et 12 pour cent de B à A."><figcaption>Dans le TD des NAS, les pourcentages sont appliqués au stock du site de départ.</figcaption></figure>
+<p>Une distribution <strong>stationnaire</strong> respecte <code>PT=P</code> et ses composantes somment à 1. Cela signifie que la répartition ne change plus si on démarre avec cette distribution. Pour démontrer que la répartition du sujet converge, on peut en plus trouver une récurrence et suivre l’écart à cet état.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#mg-gauss">TD2 · Calculer les pivots et remonter les lignes</a></li>
+<li><a href="#mg-det">TD3 · Développer un déterminant avec un paramètre</a></li>
+<li><a href="#mg-dijkstra">TD5 · Choisir une méthode de plus court chemin</a></li>
+<li><a href="#mg-markov">TD6 · Suivre les transferts de données entre deux NAS</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="mg-gauss"><summary>TD2, ex. 3 · Résoudre le premier système par Gauss</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Résoudre par pivot de Gauss le système dont les lignes sont données ci-dessous.</p>
+<pre class="c-code"><code>x + y + z  = 4
+2x + y + 3z = 9
+x − y + 2z = 3</code></pre>
+<ol><li>Garde la première ligne. Fais <code>L₂−2L₁</code> et <code>L₃−L₁</code>. Les deux dernières équations deviennent <code>−y+z=1</code> et <code>−2y+z=−1</code>.</li>
+<li>Soustrais la deuxième équation réduite de la troisième. Tu obtiens <code>−y=−2</code>, donc <code>y=2</code>. Remonte ensuite à <code>z=3</code> et <code>x=−1</code>.</li>
+<li>Le contrôle dans la deuxième ligne donne <code>−2+2+9=9</code>. Vérifie aussi les deux autres lignes.</li></ol></div></details>
+<details class="acc" id="mg-det"><summary>TD3, ex. 3 · Pour quelles valeurs la matrice est-elle inversible ?</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Calculer le déterminant de la matrice <code>[[1,0,a],[0,a,1],[a,1,0]]</code> et déterminer les paramètres qui permettent l’inversion.</p>
+<ol><li>Développe selon la première ligne avec les signes <code>+ − +</code>. Le terme du milieu s’annule.</li><li>Le mineur du 1 vaut <code>a×0−1×1=−1</code>. Le mineur de la troisième colonne vaut <code>0×1−a×a=−a²</code>. Donc le déterminant vaut <code>−1−a³</code>.</li><li>Sur les réels, il s’annule pour <code>a=−1</code> seulement. À cette valeur, chaque ligne somme à zéro. La matrice envoie donc le vecteur non nul <code>(1,1,1)</code> sur zéro et ne peut pas avoir d’inverse.</li></ol></div></details>
+<details class="acc" id="mg-dijkstra"><summary>TD5, ex. 9 · Organiser les étapes de Dijkstra et Bellman-Ford</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Sur les graphes dessinés dans le TD, chercher un plus court chemin de S à T avec les méthodes demandées.</p>
+<ol><li>Tabule une distance et un prédécesseur par sommet. Initialise S à zéro et les autres à l’infini.</li><li>Si les poids sont non négatifs, fige la plus petite distance provisoire. Pour chaque voisin, compare sa valeur actuelle à la distance figée plus le poids de l’arc. Modifie distance et prédécesseur si elle baisse.</li><li>Pour Bellman-Ford, refais ce test sur tous les arcs jusqu’à stabilisation ou après <code>n−1</code> tours pour <code>n</code> sommets. Un tour supplémentaire qui améliore une distance signale un cycle négatif atteignable. S’il peut mener à T, on peut réduire le coût d’un trajet vers T sans limite.</li></ol></div></details>
+<details class="acc" id="mg-markov"><summary>TD6, ex. 2 · Prédire la répartition des données entre A et B</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> A transfère chaque mois 28 % de ses données vers B, B en transfère 12 % vers A, et le stock initial est réparti à 60 % en A. Calculer deux mois et déterminer l’état stable.</p>
+<ol><li>La ligne de A contient <code>(0,72 ; 0,28)</code>. Celle de B contient <code>(0,12 ; 0,88)</code>. Les deux lignes somment à 1.</li><li>Partant de <code>(0,6 ; 0,4)</code>, la nouvelle part de A vaut <code>0,6×0,72+0,4×0,12=0,48</code>. Après deux mois on obtient <code>(0,408 ; 0,592)</code>.</li><li>Avec <code>b=1−a</code>, la relation devient <code>aₙ₊₁=0,60aₙ+0,12</code>. L’état fixe de A vaut 0,30. L’écart à 0,30 est multiplié par 0,60 chaque mois, donc la limite est <code>(0,30 ; 0,70)</code>. B dépasse deux tiers pour la première fois au cinquième mois.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/matrices-graphes/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/matrices-graphes/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/matrices-graphes/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Dimensions d’un produit</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="22.958">0:22 · Pivot, déterminant et inverse</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="72.208">1:12 · Graphes et chemins</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="97.458">1:37 · Chaînes de Markov</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="120.958">2:00 · TD2 · Résoudre le premier système</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="148.792">2:28 · TD3 · Trouver quand la matrice est inversible</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="175.333">2:55 · TD6 · Les deux NAS</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

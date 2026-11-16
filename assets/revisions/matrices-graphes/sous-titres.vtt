@@ -1,0 +1,306 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:02.391
+Une matrice est un tableau.
+
+00:00:02.391 --> 00:00:05.246
+Écris toujours les lignes avant les colonnes.
+
+00:00:05.246 --> 00:00:08.818
+Pour un produit, les deux dimensions du milieu doivent
+être les
+
+00:00:08.818 --> 00:00:09.143
+mêmes.
+
+00:00:09.143 --> 00:00:12.537
+Pour calculer une case du résultat, lis la ligne du
+premier
+
+00:00:12.537 --> 00:00:14.388
+tableau et la colonne du deuxième.
+
+00:00:14.388 --> 00:00:17.893
+Multiplie les valeurs alignées et ajoute les
+résultats.
+
+00:00:17.893 --> 00:00:21.204
+Si tu inverses l'ordre de deux matrices, la taille ou
+la
+
+00:00:21.204 --> 00:00:22.709
+valeur du produit peuvent changer.
+
+00:00:23.058 --> 00:00:26.479
+Choisis une ligne qui contient un coefficient non nul
+à la
+
+00:00:26.479 --> 00:00:27.101
+bonne place.
+
+00:00:27.101 --> 00:00:30.999
+Avec un multiple de cette ligne, fabrique un zéro en
+dessous.
+
+00:00:30.999 --> 00:00:34.577
+Applique la même opération au côté droit du système.
+
+00:00:34.577 --> 00:00:38.673
+Quand la dernière équation n'a plus qu'une inconnue,
+remonte pour connaître
+
+00:00:38.673 --> 00:00:39.418
+les précédentes.
+
+00:00:39.418 --> 00:00:43.695
+Pour inverser une matrice, applique aussi les
+opérations à l'identité.
+
+00:00:43.695 --> 00:00:47.158
+Si tu arrives à l'identité à gauche, tu peux lire
+l'inverse
+
+00:00:47.158 --> 00:00:47.788
+à droite.
+
+00:00:48.142 --> 00:00:51.553
+Le déterminant d'une matrice deux par deux vaut le
+produit d'une
+
+00:00:51.553 --> 00:00:53.104
+diagonale moins celui de l'autre.
+
+00:00:53.104 --> 00:00:56.609
+Pour trois lignes, tu peux développer suivant une
+ligne.
+
+00:00:56.609 --> 00:01:00.284
+Chaque terme associe le coefficient de la ligne et le
+déterminant
+
+00:01:00.284 --> 00:01:01.621
+plus petit qui reste.
+
+00:01:01.621 --> 00:01:04.611
+Regarde les signes avant de multiplier.
+
+00:01:04.611 --> 00:01:07.687
+Une ligne avec beaucoup de zéros est pratique.
+
+00:01:07.687 --> 00:01:11.619
+Un déterminant qui vaut zéro indique que la matrice
+n'est pas
+
+00:01:11.619 --> 00:01:11.976
+inversible.
+
+00:01:12.308 --> 00:01:15.615
+Pour un graphe avec des coûts, commence par vérifier
+le signe
+
+00:01:15.615 --> 00:01:16.217
+des poids.
+
+00:01:16.217 --> 00:01:20.181
+Dijkstra choisit le sommet provisoirement le moins
+coûteux, fixe sa distance
+
+00:01:20.181 --> 00:01:22.344
+puis essaie d'améliorer celles des voisins.
+
+00:01:22.344 --> 00:01:25.714
+Avec des poids négatifs, ce choix n'est pas garanti.
+
+00:01:25.714 --> 00:01:28.741
+Bellman-Ford repasse sur tous les arcs.
+
+00:01:28.741 --> 00:01:32.749
+Garde à chaque fois le prédécesseur quand tu améliores
+une distance.
+
+00:01:32.749 --> 00:01:36.234
+Il te permet de reconstruire le chemin jusqu'au départ
+et de
+
+00:01:36.234 --> 00:01:37.185
+contrôler son coût.
+
+00:01:37.558 --> 00:01:41.724
+Une chaîne de Markov modélise l'évolution à partir de
+l'état présent.
+
+00:01:41.724 --> 00:01:45.081
+Pour l'histoire des deux serveurs, celui qui contient
+la donnée aujourd'hui
+
+00:01:45.081 --> 00:01:47.827
+suffit à donner les probabilités pour le mois suivant.
+
+00:01:47.827 --> 00:01:51.082
+En choisissant un vecteur ligne, place les départs sur
+les lignes
+
+00:01:51.082 --> 00:01:53.746
+de la matrice et les destinations dans les colonnes.
+
+00:01:53.746 --> 00:01:56.160
+Chaque ligne doit totaliser un.
+
+00:01:56.160 --> 00:01:59.494
+Le produit additionne ce qui arrive d'un côté et ce
+qui
+
+00:01:59.494 --> 00:02:00.707
+reste déjà sur place.
+
+00:02:01.058 --> 00:02:04.440
+Garde la première équation comme pivot pour x.
+Soustrais deux fois
+
+00:02:04.440 --> 00:02:07.822
+cette équation à la deuxième, puis une fois à la
+troisième.
+
+00:02:07.822 --> 00:02:10.898
+Les deux x disparaissent de ces lignes.
+
+00:02:10.898 --> 00:02:14.133
+Il reste deux équations sur y et z.
+
+00:02:14.133 --> 00:02:17.067
+En retirant la première des deux à la seconde, il
+reste
+
+00:02:17.067 --> 00:02:18.668
+moins y égal à moins deux.
+
+00:02:18.668 --> 00:02:22.173
+Donc y vaut deux et, en remontant, z vaut trois.
+
+00:02:22.173 --> 00:02:24.415
+Enfin x vaut moins un.
+
+00:02:24.415 --> 00:02:28.545
+Remplace ces valeurs dans les trois équations pour
+contrôler le calcul.
+
+00:02:28.892 --> 00:02:32.593
+En développant sur la première ligne du TD, repère le
+zéro
+
+00:02:32.593 --> 00:02:33.266
+au milieu.
+
+00:02:33.266 --> 00:02:36.587
+Il n'y aura que deux petits déterminants à calculer.
+
+00:02:36.587 --> 00:02:39.209
+Celui du premier terme vaut moins un.
+
+00:02:39.209 --> 00:02:42.579
+Celui du troisième terme vaut moins a carré, et il est
+
+00:02:42.579 --> 00:02:43.499
+multiplié par a.
+
+00:02:43.499 --> 00:02:46.293
+La somme donne moins un moins a au cube.
+
+00:02:46.293 --> 00:02:49.148
+Elle s'annule seulement pour a égal à moins un.
+
+00:02:49.148 --> 00:02:52.582
+À cette valeur, vérifie que le vecteur un, un, un
+donne
+
+00:02:52.582 --> 00:02:55.079
+zéro quand tu le multiplies par la matrice.
+
+00:02:55.433 --> 00:02:57.442
+Suis les deux flèches.
+
+00:02:57.442 --> 00:03:00.711
+Les vingt-huit pour cent concernent les données qui se
+trouvent sur
+
+00:03:00.711 --> 00:03:01.008
+A.
+
+00:03:01.008 --> 00:03:04.060
+Les douze pour cent concernent les données de B.
+
+00:03:04.060 --> 00:03:06.863
+Il reste donc soixante-douze pour cent du stock de A
+sur
+
+00:03:06.863 --> 00:03:09.666
+A et quatre-vingt-huit pour cent du stock de B sur B.
+
+00:03:09.666 --> 00:03:11.450
+Écris ces valeurs sur les bonnes lignes.
+
+00:03:11.450 --> 00:03:14.637
+Chaque ligne représente le devenir de son propre
+stock, et sa
+
+00:03:14.637 --> 00:03:16.376
+somme doit être égale à un.
+
+00:03:16.725 --> 00:03:19.923
+Regarde les données qui sont en A au bout d'un mois.
+
+00:03:19.923 --> 00:03:22.872
+Tu dois compter ce qui reste du stock initial de A,
+
+00:03:22.872 --> 00:03:24.481
+puis ce qui vient de B.
+
+00:03:24.481 --> 00:03:27.423
+La somme vaut zéro virgule quarante-huit.
+
+00:03:27.423 --> 00:03:31.069
+Les données restantes sont sur B. Remplace les
+proportions initiales par
+
+00:03:31.069 --> 00:03:34.383
+celles du premier mois et rejoue exactement la même
+opération.
+
+00:03:34.383 --> 00:03:38.195
+Après deux mois, A tombe à zéro virgule quatre cent
+huit.
+
+00:03:38.195 --> 00:03:40.891
+Vérifie que les deux parts font toujours un.
+
+00:03:41.225 --> 00:03:44.084
+Pour prévoir la suite, remplace la part de B par un
+
+00:03:44.084 --> 00:03:46.163
+moins la part de A. Regroupe les termes.
+
+00:03:46.163 --> 00:03:49.422
+Cherche le point qui ne change pas lorsqu'on applique
+la formule
+
+00:03:49.422 --> 00:03:51.200
+: A vaut zéro virgule trente.
+
+00:03:51.200 --> 00:03:54.996
+L'écart à ce point est multiplié par zéro virgule six
+chaque
+
+00:03:54.996 --> 00:03:55.342
+mois.
+
+00:03:55.342 --> 00:03:58.087
+Il devient donc presque nul avec le temps.
+
+00:03:58.087 --> 00:04:01.295
+À l'aide de la récurrence, trouve le premier mois où B
+
+00:04:01.295 --> 00:04:02.462
+dépasse les deux tiers.
+
+00:04:02.462 --> 00:04:05.097
+On vérifie que c'est le cinquième.

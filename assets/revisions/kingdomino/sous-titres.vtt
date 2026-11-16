@@ -1,0 +1,350 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.886
+Imagine une feuille quadrillée sur laquelle tu poses
+des dominos.
+
+00:00:03.886 --> 00:00:06.862
+Pour travailler en Python, garde les lignes et
+colonnes du plateau,
+
+00:00:06.862 --> 00:00:09.838
+puis décris chaque case par sa couleur et ses
+couronnes quand
+
+00:00:09.838 --> 00:00:10.920
+elle contient un terrain.
+
+00:00:10.920 --> 00:00:14.743
+Le domino comporte deux cases et un identifiant, utile
+pour trier
+
+00:00:14.743 --> 00:00:15.785
+avant le choix.
+
+00:00:15.785 --> 00:00:19.719
+La liste des places libres doit rester cohérente avec
+la grille.
+
+00:00:19.719 --> 00:00:23.031
+Si tu occupes deux cases en jouant, enlève ces deux
+coordonnées
+
+00:00:23.031 --> 00:00:23.935
+de la liste.
+
+00:00:24.308 --> 00:00:27.909
+À partir de la direction, calcule où se trouve la
+deuxième
+
+00:00:27.909 --> 00:00:28.891
+partie du domino.
+
+00:00:28.891 --> 00:00:32.322
+Vérifie les deux coordonnées avant d'ouvrir le
+tableau.
+
+00:00:32.322 --> 00:00:35.723
+Un appel près d'un bord peut produire une coordonnée
+hors de
+
+00:00:35.723 --> 00:00:36.342
+la grille.
+
+00:00:36.342 --> 00:00:39.970
+Si les deux cases sont libres, regarde les voisins par
+les
+
+00:00:39.970 --> 00:00:40.300
+côtés.
+
+00:00:40.300 --> 00:00:42.972
+Un contact avec le château convient.
+
+00:00:42.972 --> 00:00:45.851
+Un terrain de même couleur convient aussi.
+
+00:00:45.851 --> 00:00:48.204
+Une diagonale ne suffit pas.
+
+00:00:48.558 --> 00:00:51.762
+Dans un tour, tu ne joues pas la prochaine tuile tout
+
+00:00:51.762 --> 00:00:52.344
+de suite.
+
+00:00:52.344 --> 00:00:54.962
+Il y a des tuiles que les joueurs ont déjà réservées
+
+00:00:54.962 --> 00:00:56.866
+et celles qu'ils vont choisir pour plus tard.
+
+00:00:56.866 --> 00:01:00.200
+Stocke ces rôles séparément pour savoir où mettre le
+pion et
+
+00:01:00.200 --> 00:01:01.413
+quelle tuile jouer maintenant.
+
+00:01:01.413 --> 00:01:05.042
+Avant de commencer un tour, fais passer le bloc
+réservé du
+
+00:01:05.042 --> 00:01:05.702
+bon côté.
+
+00:01:05.702 --> 00:01:08.043
+Puis prépare un nouveau bloc.
+
+00:01:08.043 --> 00:01:11.921
+Pour vérifier, fixe la pioche dans un petit exemple et
+suis
+
+00:01:11.921 --> 00:01:12.626
+les identifiants.
+
+00:01:12.975 --> 00:01:15.989
+Une zone peut avoir une forme irrégulière.
+
+00:01:15.989 --> 00:01:19.445
+Tu n'as pas besoin d'en dessiner le contour pour la
+calculer.
+
+00:01:19.445 --> 00:01:23.039
+Depuis la case de départ, visite les cases de même
+couleur
+
+00:01:23.039 --> 00:01:24.347
+accessibles par les côtés.
+
+00:01:24.347 --> 00:01:27.263
+Marque chaque case dès que tu y arrives.
+
+00:01:27.263 --> 00:01:30.914
+Sinon, une voisine peut vouloir explorer en retour
+celle dont tu
+
+00:01:30.914 --> 00:01:31.246
+viens.
+
+00:01:31.246 --> 00:01:35.145
+Additionne les couronnes pendant le parcours, puis
+multiplie par le nombre
+
+00:01:35.145 --> 00:01:35.854
+de cases.
+
+00:01:36.225 --> 00:01:39.602
+Dans cet exemple, les quatre cases vertes se touchent
+bien par
+
+00:01:39.602 --> 00:01:42.057
+les côtés et contiennent trois couronnes au total.
+
+00:01:42.057 --> 00:01:44.214
+Elles valent donc douze points.
+
+00:01:44.214 --> 00:01:47.172
+La forêt du bas a la même couleur, mais aucun passage
+
+00:01:47.172 --> 00:01:49.055
+par les côtés vers la zone verte.
+
+00:01:49.055 --> 00:01:51.481
+Elle compte seule, pour un point.
+
+00:01:51.481 --> 00:01:53.589
+Le total est treize.
+
+00:01:53.589 --> 00:01:57.441
+C'est un test pratique pour repérer un programme qui
+accepte par
+
+00:01:57.441 --> 00:01:58.491
+erreur les diagonales.
+
+00:01:58.850 --> 00:02:02.722
+Cette fonction sert uniquement à demander si le coup
+est possible.
+
+00:02:02.722 --> 00:02:05.099
+Elle n'écrit dans aucune case.
+
+00:02:05.099 --> 00:02:08.506
+Repars d'une coordonnée et calcule la deuxième.
+
+00:02:08.506 --> 00:02:11.717
+Dans les tests, change une condition à la fois.
+
+00:02:11.717 --> 00:02:14.976
+Mets la deuxième case hors du plateau, puis reprends
+avec deux
+
+00:02:14.976 --> 00:02:16.753
+cases valides dont une est occupée.
+
+00:02:16.753 --> 00:02:20.204
+Vérifie ensuite un vrai contact par le côté avec le
+château
+
+00:02:20.204 --> 00:02:21.459
+ou la bonne couleur.
+
+00:02:21.459 --> 00:02:24.658
+Le sujet fournit cinq cas, dont deux succès.
+
+00:02:25.017 --> 00:02:28.950
+Pour extraire quatre tuiles, commence par faire une
+nouvelle liste.
+
+00:02:28.950 --> 00:02:31.621
+Utilise ensuite ton propre tri.
+
+00:02:31.621 --> 00:02:35.748
+Ici, cherche le plus petit identifiant et échange sa
+tuile avec
+
+00:02:35.748 --> 00:02:36.499
+la première.
+
+00:02:36.499 --> 00:02:40.040
+Puis cherche le plus petit parmi les trois encore à
+traiter.
+
+00:02:40.040 --> 00:02:43.128
+Répète jusqu'à ce que tout soit dans l'ordre.
+
+00:02:43.128 --> 00:02:46.633
+À la fin, compare la pioche à son état initial.
+
+00:02:46.633 --> 00:02:50.180
+Le bloc peut être trié sans que l'ordre des tuiles
+originales
+
+00:02:50.180 --> 00:02:50.825
+ait changé.
+
+00:02:51.183 --> 00:02:54.577
+Dans le test officiel, commence en zéro zéro.
+
+00:02:54.577 --> 00:02:57.726
+Marque la première case et prends ses couronnes.
+
+00:02:57.726 --> 00:03:01.512
+Pour chaque voisine de même couleur, vérifie si tu
+l'as déjà
+
+00:03:01.512 --> 00:03:01.856
+visitée.
+
+00:03:01.856 --> 00:03:05.361
+Si elle est nouvelle, poursuis le parcours et récupère
+le cumul
+
+00:03:05.361 --> 00:03:06.317
+mis à jour.
+
+00:03:06.317 --> 00:03:09.885
+Une fois revenu à l'appel de départ, tu dois avoir
+neuf
+
+00:03:09.885 --> 00:03:11.182
+coordonnées et trois couronnes.
+
+00:03:11.182 --> 00:03:14.909
+Si tu obtiens une mauvaise valeur, regarde d'abord les
+coordonnées parcourues,
+
+00:03:14.909 --> 00:03:16.942
+puis les couronnes de ces cases.
+
+00:03:17.308 --> 00:03:20.762
+Pour le total, un deuxième ensemble de visites te dit
+quelles
+
+00:03:20.762 --> 00:03:22.332
+régions ont déjà été ajoutées.
+
+00:03:22.332 --> 00:03:24.856
+Pars de la première case utile.
+
+00:03:24.856 --> 00:03:28.496
+Récupère le score de cette zone et toutes ses
+coordonnées.
+
+00:03:28.496 --> 00:03:31.646
+Marque-les dans l'ensemble du parcours global.
+
+00:03:31.646 --> 00:03:34.797
+Quand tu arrives à une autre case de la même zone,
+
+00:03:34.797 --> 00:03:36.229
+passe directement à la suivante.
+
+00:03:36.229 --> 00:03:39.768
+Refais les deux tests du sujet et vérifie aussi que le
+
+00:03:39.768 --> 00:03:42.663
+royaume après le calcul correspond exactement au
+royaume d'avant.
+
+00:03:43.017 --> 00:03:46.344
+Pour tester le premier tour, ne laisse pas le hasard
+décider
+
+00:03:46.344 --> 00:03:46.950
+chaque fois.
+
+00:03:46.950 --> 00:03:49.829
+Demande au test de faire commencer A.
+
+00:03:49.829 --> 00:03:53.149
+La première réservation est pour A, les deux suivantes
+pour B,
+
+00:03:53.149 --> 00:03:54.658
+puis la dernière pour A.
+
+00:03:54.658 --> 00:03:57.855
+Compte les pions et vérifie que chaque tuile a bien
+été
+
+00:03:57.855 --> 00:03:58.726
+réservée une fois.
+
+00:03:58.726 --> 00:04:01.778
+À ce stade, les plateaux n'ont pas à changer.
+
+00:04:01.778 --> 00:04:05.467
+Les pions servent à préparer les poses du premier tour
+normal.
+
+00:04:05.808 --> 00:04:09.214
+Au tour suivant, l'ordre vient des pions sur le dépôt.
+
+00:04:09.214 --> 00:04:11.947
+S'il y a B sur les deux premières tuiles, B joue
+
+00:04:11.947 --> 00:04:14.680
+deux fois avant A même si A avait commencé la partie.
+
+00:04:14.680 --> 00:04:18.578
+Pour chaque action, joue la tuile ancienne, puis
+réserve une des
+
+00:04:18.578 --> 00:04:18.932
+nouvelles.
+
+00:04:18.932 --> 00:04:22.399
+Une fois les quatre actions réalisées, transfère le
+bloc de choix
+
+00:04:22.399 --> 00:04:23.344
+vers le dépôt.
+
+00:04:23.344 --> 00:04:26.984
+Compare les identifiants et les pions pour repérer un
+oubli dans
+
+00:04:26.984 --> 00:04:27.646
+le transfert.

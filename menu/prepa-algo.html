@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Algorithmique 1 — Prépa ISIMA</title>
+  <meta name="description" content="Invariants, complexité, récursivité, piles, files et arbres.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-algo.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/algorithme.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Algorithmique 1</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-algo/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Décrire précisément ce que fait l’algorithme</h3>
+<p>Une <strong>spécification</strong> indique quelles entrées sont acceptées et ce que le résultat doit satisfaire. Une <strong>précondition</strong> s’applique avant l’exécution. Une <strong>postcondition</strong> s’applique à la sortie. Pour le produit du tableau dans ton exercice, on suppose que le tableau est non vide et on veut retrouver le produit sans modifier le tableau.</p>
+<p>Pour expliquer une boucle, écris l’état des variables juste avant ou après chaque passage, en gardant le même emplacement pendant toute la preuve. Un <strong>invariant</strong> est une propriété vraie à cet endroit à chaque passage. Montre qu’elle est vraie la première fois, qu’un passage la conserve et qu’elle implique la réponse à la fin.</p></div>
+<div class="c-block"><h3>2. Compter les opérations utiles</h3>
+<p>Choisis ce que tu comptes avant de donner une formule. Pour une somme ou un produit de tableau, tu peux d’abord compter les additions ou les multiplications. Le TD peut demander un modèle plus détaillé avec lectures, tests et affectations. Une opération répétée un nombre fixe de fois sur chaque élément donne un coût linéaire. Des boucles imbriquées demandent de lire soigneusement leurs bornes.</p>
+<p><code>O(g(n))</code> donne une borne supérieure à un facteur constant près pour les tailles assez grandes. <code>Θ(g(n))</code> compare la croissance par le haut et par le bas. Si le programme peut sortir tôt, indique si tu comptes le meilleur cas, le pire cas ou un autre cas précisément défini.</p></div>
+<div class="c-block"><h3>3. Faire un appel récursif qui termine</h3>
+<p>Une fonction est <strong>récursive</strong> si elle s’appelle sur une instance du problème. Il faut un cas d’arrêt et une mesure qui diminue vers ce cas. Pour une fonction qui rappelle <code>suite(n−2)</code>, les cas de base <code>n=0</code> et <code>n=1</code> arrêtent les deux parités. En preuve, suppose que l’appel plus petit renvoie sa bonne valeur, puis explique le calcul du retour courant.</p>
+<p>Pour la complexité, compte le travail fait à un niveau et le nombre d’appels. Un seul appel de taille <code>n−2</code> avec travail constant mène à un coût linéaire. Deux appels de taille environ <code>n/2</code> avec un coût linéaire à chaque niveau conduisent, dans la récurrence du TD, à un ordre <code>Θ(n log n)</code>.</p></div>
+<div class="c-block"><h3>4. Choisir pile, file ou arbre</h3>
+<p>Une <strong>pile</strong> retire le dernier ajouté. Une <strong>file</strong> retire le premier en attente. Pour déboguer, dessine toujours le côté où tu ajoutes et celui où tu retires. La consultation du sommet ou du début ne retire pas d’élément.</p>
+<p>Un <strong>arbre</strong> a une racine, des nœuds et des feuilles qui n’ont pas d’enfant. Un sous-arbre contient un nœud et ses descendants. En parcours préfixe d’un arbre binaire, traite le nœud, puis le sous-arbre gauche, puis le droit. Ignore un enfant absent. En largeur, une file garde les nœuds découverts dont les enfants n’ont pas encore été visités.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#algo-prod">Révisions 2024, ex. 1 · Écrire l’invariant d’un produit</a></li>
+<li><a href="#algo-suite">Révisions 2024, ex. 2 · Justifier la récursivité et son coût</a></li>
+<li><a href="#algo-4">Révisions 2024, ex. 4 · Remplacer deux boucles par une</a></li>
+<li><a href="#algo-pile">Révisions, ex. 2 et 3 · Suivre une pile, une file et un arbre</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="algo-prod"><summary>Révisions 2024, ex. 1 · Calculer le produit avec un invariant</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Calculer le produit des éléments d’un tableau non vide, annoncer un invariant de boucle et déterminer l’ordre de croissance.</p>
+<ol><li>Initialise <code>p=1</code>, car multiplier par 1 conserve un produit. Parcours les indices de 0 à <code>n−1</code> en exécutant <code>p=p×tab[i]</code>.</li>
+<li>Juste avant le passage d’indice <code>i</code>, <code>p</code> vaut le produit des <code>i</code> premières cases. Au départ il n’y a aucune case traitée. Un passage multiplie par la case suivante et conserve la propriété pour l’indice suivant.</li>
+<li>Avec <code>[2,4,1,3]</code>, les valeurs successives sont <code>1 → 2 → 8 → 8 → 24</code>. Avec une multiplication par case, il y en a exactement <code>n</code>. Dans un modèle qui compte aussi lectures et affectations, le coût total reste <code>Θ(n)</code>.</li></ol></div></details>
+<details class="acc" id="algo-suite"><summary>Révisions 2024, ex. 2 · Calculer les termes de la suite</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Écrire une fonction récursive pour <code>u₀=3</code>, <code>u₁=4</code>, et <code>uₙ₊₂=uₙ+5</code>. Donner une récurrence de coût et son ordre.</p>
+<ol><li>Pour 0 et 1, renvoie la donnée du sujet. Sinon, calcule <code>suite(n−2)+5</code>. Pour n=4, la chaîne des appels est <code>4 → 2 → 0</code> et la chaîne des retours <code>3 → 8 → 13</code>.</li>
+<li>Si <code>a</code> représente le travail fixe de chaque appel non terminal, pose <code>C(n)=C(n−2)+a</code>. Sur les entrées paires, <code>C(2k)=C(0)+ka</code>, par dépliage. Pour les impaires, le point d’arrêt devient 1. Dans les deux cas, le coût est linéaire.</li></ol></div></details>
+<details class="acc" id="algo-4"><summary>Révisions 2024, ex. 4 · Tester les suffixes en temps linéaire</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Vérifier que, pour chaque indice <code>i</code>, <code>4×tab[i]</code> est au moins la somme des valeurs d’indice <code>i</code> à la fin. Étudier le pire cas du double parcours puis proposer une version linéaire.</p>
+<ol><li>Le programme donné additionne <code>n</code> cases pour <code>i=0</code>, puis <code>n−1</code>, jusqu’à 1. Dans le pire cas, il fait <code>n(n+1)/2</code> additions du calcul des sommes. C’est quadratique.</li>
+<li>Lis maintenant le tableau en sens inverse. Maintiens la somme cumulée des éléments déjà parcourus, ajoute <code>tab[i]</code>, puis compare avec <code>4×tab[i]</code>. Tu calcules chaque suffixe avec une seule nouvelle addition.</li>
+<li>Sur le tableau du sujet <code>[10,7,3,2]</code>, les sommes associées sont <code>[22,12,5,2]</code>. Sur <code>[8,2,4,4,1]</code>, la somme à l’indice 1 vaut 11, alors que <code>4×2=8</code>. Le test doit retourner faux.</li></ol>
+<figure><img loading="lazy" src="../assets/revisions/prepa-algo/schemas/suffixes.png" alt="En partant de la droite, les sommes successives du tableau 10, 7, 3, 2 valent 2, 5, 12 et 22."></figure></div></details>
+<details class="acc" id="algo-pile"><summary>Révisions, ex. 2 et 3 · Lire les états et le parcours d’un arbre</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Donner l’état final des deux algorithmes de pile et file. Pour l’arbre dessiné dans le sujet, donner l’ordre du parcours préfixe.</p>
+<ol><li>Pour la pile, simule chaque opération. Après avoir empilé <code>14,52,11,4</code>, tu retires 4. Le sommet lu vaut 11. Puis 9 est ajouté et retiré. État final, de la base au sommet, <code>14,52,11</code>.</li>
+<li>Pour la file, après avoir enfilé les mêmes nombres, retire 14. La valeur de début lue vaut 52. Ajoute 9, puis retire 52. État final du premier au dernier, <code>11,4,9</code>.</li>
+<li>Sur l’arbre de la page 2, écris la racine 87, puis complète tout le sous-arbre gauche en recommençant la règle à chaque nœud. Tu obtiens <code>87,−5,2,22,4,52,43,23,−6,24,12,7,95,88,46,9,−4,103</code>. Une vérification consiste à barrer chaque nœud au moment de l’afficher sur le dessin.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-algo/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-algo/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-algo/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Spécifier le résultat</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.292">0:23 · Expliquer une boucle avec un invariant</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="47.458">0:47 · Compter avant de simplifier</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="73.833">1:13 · Récursivité et coût des appels</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="97.542">1:37 · Pile, file et arbre</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="123.500">2:03 · Révisions · Produit et invariant</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="151.667">2:31 · Révisions · Calculer un terme de la suite</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="178.167">2:58 · Révisions · Tester les tableaux successivement bornés</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="230.167">3:50 · Révisions · Simuler une pile et une file</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

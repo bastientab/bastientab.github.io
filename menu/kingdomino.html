@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projet informatique — KingDomino — Prépa ISIMA</title>
+  <meta name="description" content="Plateau, placement, pile de tuiles, déroulement du tour et calcul du score.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/kingdomino.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">→</span></div>
+      <h1 class="page-title" id="page-title">Projet informatique — KingDomino</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/kingdomino/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Décider ce que chaque structure représente</h3>
+<p>Le royaume est une grille de cases. Une coordonnée <code>(ligne, colonne)</code> permet d’identifier une case. Distingue les cases vides, le château et les terrains. Dans le fichier de tuiles, un domino tient dans un triplet avec un identifiant et deux terrains. La couleur décrit le terrain et le nombre de couronnes sert au score.</p>
+<p>Dans le projet, une liste de cases libres accompagne le royaume. Après une pose autorisée, tu dois modifier les deux structures ensemble. Si tu changes le plateau mais oublies de retirer une case de la liste, un futur parcours risque de proposer une position déjà prise. Vérifie cette propriété après chaque pose.</p></div>
+<div class="c-block"><h3>2. Valider une pose avant de changer le plateau</h3>
+<p>Une position de départ et une direction déterminent les deux cases d’un domino. Commence par calculer ces coordonnées. Vérifie ensuite que les deux cases sont dans le royaume et vides. La règle de connexion se vérifie sur les voisins orthogonaux. Au moins un côté doit toucher au château ou à un terrain de la couleur correspondante.</p>
+<p><code>domino_valide</code> répond par un booléen sans effet de bord. <code>ajoutDomino</code> effectue la pose lorsque l’appelant a validé le coup. Pour chercher une pose possible, parcours les cases disponibles et les directions. Tu peux t’arrêter dès la première possibilité.</p></div>
+<div class="c-block"><h3>3. Manipuler la pioche et l’ordre du tour</h3>
+<p>Travaille d’abord sur les tuiles lues depuis le CSV. Vérifie leur représentation et la taille attendue de la liste. La pioche et le bloc de choix ont des rôles différents. Dans <code>extraire_premier_bloc</code>, on crée une nouvelle liste avec les quatre premières tuiles, triées par identifiant. L’état initial doit rester intact. La phase qui retire les éléments de la pioche se teste séparément.</p>
+<p>Au tour normal, le <strong>dépôt</strong> contient les tuiles déjà réservées et le <strong>choix</strong> contient les nouvelles. Parcours le dépôt dans l’ordre de ses tuiles. Pour chaque tuile, son joueur l’utilise puis réserve dans le choix. Seulement après les quatre actions, remplace le dépôt par le bloc de choix. Au premier tour, on réserve seulement. Lorsque A commence, l’ordre des réservations est A, B, B, A.</p></div>
+<div class="c-block"><h3>4. Compter une zone connectée une seule fois</h3>
+<p>Une <strong>zone</strong> est un groupe de cases de même couleur où on peut se déplacer par les côtés. Une diagonale seule ne relie pas deux cases. Démarre depuis une case, marque-la visitée, ajoute ses couronnes puis regarde les voisins de même couleur. Chaque appel récursif doit repartir avec la liste de visites à jour.</p>
+<figure><img loading="lazy" src="../assets/revisions/kingdomino/schemas/zones.png" alt="Une zone de quatre cases de forêt rapporte douze points. Une forêt isolée par la diagonale rapporte un point."><figcaption>Exemple d’application. La case de même couleur en bas à droite est une zone distincte.</figcaption></figure>
+<p>Le score d’une zone est <strong>nombre de cases × nombre de couronnes</strong>. Pour le total, parcours le plateau. Si une case appartient déjà à une zone comptée, passe à la suivante. Garde les marques de visite dans une structure auxiliaire pour préserver le royaume.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#kd-pose">Sujet §4.2 · Vérifier une pose légale sans la jouer</a></li>
+<li><a href="#kd-pioche">Sujet §4.3 · Extraire et trier les quatre premières tuiles</a></li>
+<li><a href="#kd-tour">Sujet §4.5 · Simuler le premier tour et l’ordre d’un tour normal</a></li>
+<li><a href="#kd-zone">Sujet §4.6 · Retrouver la zone de forêt à 27 points</a></li>
+<li><a href="#kd-total">Sujet §4.6 · Vérifier les totaux 28 et 54</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="kd-pose"><summary>Sujet §4.2.5 · Écrire domino_valide</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Déterminer si le domino est autorisé à la position et dans la direction données, sans modifier le royaume.</p>
+<ol><li>Calcule la deuxième coordonnée à partir de la première et de la direction. Si une case sort ou est occupée, renvoie faux avant de parcourir les voisins.</li><li>Pour chaque partie du domino, inspecte ses voisines existantes. Si l’une est le château, ou si une voisine occupée porte la même couleur, renvoie vrai.</li><li>Teste le bord, une collision, le contact avec le château, le contact avec la bonne couleur et la diagonale seule. Le squelette attend deux vrais puis trois faux pour ses cinq cas.</li></ol></div></details>
+<details class="acc" id="kd-pioche"><summary>Sujet §4.3.2 · Extraire un bloc sans changer la pioche</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Obtenir les quatre premières tuiles sous la forme d’une nouvelle liste triée par identifiant, avec un tri écrit à la main.</p>
+<ol><li>Copie les quatre premières tuiles dans un bloc. Pour un tri par sélection, cherche dans la partie encore non triée l’identifiant minimal et échange sa tuile avec celle de la première position libre.</li><li>Répète pour les positions suivantes. Exemple avec les identifiants <code>31, 7, 16, 4</code>. Le premier échange met 4 devant, puis les deux suivants conservent 7 et 16 avant 31.</li><li>Compare la pioche à une copie réalisée avant l’appel. Le bloc retourné est trié et la pioche d’origine conserve ses éléments dans le même ordre.</li></ol></div></details>
+<details class="acc" id="kd-tour"><summary>Sujet §4.5.4 et §4.5.5 · Vérifier l’ordre du tour</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Programmer le premier tour et un tour normal en respectant l’ordre des pions.</p>
+<ol><li>Pour le premier tour, fixe le tirage dans un test de façon qu’A commence. Lance les réservations dans l’ordre A, B, B, A. Les quatre tuiles doivent être réservées et aucun plateau ne change encore.</li>
+<li>Pour le tour normal, utilise un dépôt de test dont les pions appartiennent dans l’ordre à B, B, A et A. Prépare le nouveau choix. Les actions doivent donc suivre B, B, A et A, même si A avait commencé la partie.</li>
+<li>Après chaque action, vérifie le plateau du joueur et le retrait de son pion du dépôt. Après les quatre actions, compare le nouveau dépôt avec les quatre tuiles réservées dans le choix.</li></ol></div></details>
+<details class="acc" id="kd-zone"><summary>Sujet §4.6.2 et §4.6.3 · Retrouver les 27 points de la forêt</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Sur le royaume de test fourni, retrouver les couronnes et le score de la forêt qui contient <code>(0,0)</code>.</p>
+<ol><li>Si une coordonnée a déjà été visitée, renvoie le cumul existant. Sinon, marque-la avant de descendre vers les voisines. Ainsi deux cases adjacentes ne s’explorent pas l’une l’autre sans fin.</li><li>Ajoute les couronnes de la case. Pour chaque voisin de la même couleur encore libre de visite, transmets le cumul à l’appel récursif et reprends la valeur qu’il retourne.</li><li>Dans ce test, la région contient 9 cases et 3 couronnes. Le score vaut <code>9×3=27</code>. Un score différent invite à comparer les coordonnées collectées avec le plateau avant de toucher à la multiplication.</li></ol></div></details>
+<details class="acc" id="kd-total"><summary>Sujet §4.6.4 · Obtenir les totaux 28 et 54</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Retourner le score total d’un royaume partiellement ou totalement rempli, sans changer son contenu.</p>
+<ol><li>Parcours toutes les coordonnées. Pour une case de terrain encore non comptée, récupère son score de zone et ses coordonnées. Ajoute le score au total, puis toutes ces coordonnées à l’ensemble des cases comptées.</li><li>Refais les deux tests qui doivent donner 28 et 54. Si une région compte deux fois, dessine les cases prises à chaque appel pour trouver où le marquage global est oublié.</li><li>Vérifie un royaume avec deux zones diagonales de même couleur et compare l’état du plateau avant et après la fonction. La diagonale donne deux scores distincts et le royaume ne change pas.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/kingdomino/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/kingdomino/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/kingdomino/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Représenter le royaume</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="24.208">0:24 · Calculer ce qu’une pose touche</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="48.458">0:48 · Distinguer le bloc de la pioche</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="72.875">1:12 · Reconnaître et compter les zones</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="118.750">1:58 · Sujet · Écrire domino_valide</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="144.917">2:24 · Sujet · Extraire le premier bloc avec un tri à la main</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="171.083">2:51 · Sujet · Retrouver les 27 points de la forêt</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="197.208">3:17 · Sujet · Retrouver les scores totaux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="222.917">3:42 · Sujet · Contrôler le premier tour et le tour normal</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

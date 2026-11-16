@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programmation en C — Prépa ISIMA</title>
+  <meta name="description" content="Variables, fonctions, chaînes, pointeurs, allocations et listes.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-c.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--c" aria-hidden="true"><img src="../assets/revisions/visuels/c.svg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Programmation en C</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-c/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Compiler un programme et typer les données</h3>
+<p>Un programme C est constitué de fonctions. L’exécution commence dans <code>main</code>. Le compilateur transforme le code source, vérifie notamment la syntaxe et les types et produit les éléments qui seront assemblés en exécutable. Une erreur de calcul peut subsister après compilation. Commence par lire les avertissements et exécuter un petit cas dont tu connais le résultat.</p>
+<p>Choisis un type selon la valeur à représenter. <code>int</code> représente un entier, <code>double</code> un nombre à virgule et <code>char</code> une petite valeur entière utilisée notamment pour les caractères. Avec des entiers, <code>5/2</code> donne 2. Avec <code>5.0/2</code>, le calcul se fait en virgule flottante et donne 2,5.</p>
+<p><code>printf</code> affiche des valeurs dont le format correspond aux arguments. <code>scanf</code> peut écrire dans des variables si tu lui transmets leurs adresses. Vérifie combien de conversions ont réussi avant d’utiliser la saisie. Par exemple, <code>scanf("%d", &amp;n) == 1</code> confirme la lecture d’un entier.</p></div>
+<div class="c-block"><h3>2. Décomposer avec des fonctions et des boucles</h3>
+<p>Un prototype annonce le type du résultat et les types des paramètres. Une fonction reçoit les arguments par valeur. Modifier une copie d’un entier ne modifie pas l’original. Si le paramètre est un pointeur, la fonction reçoit une copie de l’adresse et peut agir sur l’objet qu’elle désigne.</p>
+<p>Un <code>if</code> choisit une branche. Une boucle <code>for</code> convient pour des indices connus. Un tableau de <code>n</code> éléments utilise les indices 0 à <code>n−1</code>. Transmets la taille avec le tableau. Dans beaucoup d’expressions, le nom du tableau est converti en pointeur vers son premier élément. Dans la fonction appelée, ce pointeur ne contient pas le nombre d’éléments.</p></div>
+<div class="c-block"><h3>3. Lire et comparer des chaînes</h3>
+<p>Une chaîne C est une suite de caractères terminée par <code>'\0'</code>. Il faut réserver une case pour ce caractère. Pour la chaîne <code>"chat"</code>, il en faut au moins 5. <code>strlen</code> compte les 4 caractères qui précèdent le terminateur. L’absence de terminateur fait sortir toute fonction de lecture de chaîne de son usage normal.</p>
+<p><code>strcmp(a,b)</code> indique l’ordre lexicographique par le signe de son résultat. Zéro signifie que les textes sont égaux. <code>a == b</code> compare les pointeurs dans ce contexte. Pour saisir une chaîne, borne la longueur d’entrée et vérifie la capacité. Avec <code>fgets</code>, regarde aussi si le saut de ligne a été conservé.</p></div>
+<div class="c-block"><h3>4. Relier structures, pointeurs et mémoire</h3>
+<p>Une <strong>structure</strong> regroupe plusieurs champs sous un même type. Accède par <code>objet.champ</code> si tu tiens l’objet, par <code>p-&gt;champ</code> si tu tiens un pointeur. <code>&amp;objet</code> donne une adresse et <code>*p</code> désigne l’objet pointé. Avant de déréférencer un pointeur, il faut qu’il pointe vers un objet valide.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-c/schemas/pointeur.png" alt="Le paramètre prod reçoit l’adresse du produit d’origine. En ajoutant trois à la quantité pointée, la quantité d’origine passe de quatre à sept."><figcaption>Le paramètre est une copie de l’adresse. La modification vise la structure d’origine.</figcaption></figure>
+<p><code>malloc</code> réserve des octets et renvoie une adresse ou <code>NULL</code>. Pour <code>n</code> entiers, calcule la taille avec <code>n * sizeof *tableau</code> après avoir validé la valeur de <code>n</code> et la multiplication. Initialise les cases avant de les lire. Libère la mémoire avec <code>free</code> quand elle n’est plus utilisée.</p></div>
+<div class="c-block"><h3>5. Parcourir puis modifier une liste chaînée</h3>
+<p>Un <strong>maillon</strong> contient une valeur et un pointeur vers le suivant. Le pointeur de tête permet de retrouver le premier. Dans une liste simple, le dernier maillon pointe vers <code>NULL</code>. Pour insérer en tête, affecte l’ancienne tête au champ <code>suivant</code> du nouveau maillon, puis déplace la tête.</p>
+<p>Pour libérer une liste, mémorise le suivant avant de libérer le maillon courant. En liste circulaire, la fin se repère par le retour au point de départ. En liste doublement chaînée, mets aussi à jour le lien précédent du voisin. Une modification doit préserver tous les liens qui seront utilisés par le prochain parcours.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Les éléments des TP ont été reconstitués à partir des corrigés retrouvés. Les supports de cours originaux sont dans le téléchargement.</p>
+<ul><li><a href="#c-noms">TP04, ex. 5 · Comparer des noms et garder le premier</a></li>
+<li><a href="#c-malloc">TP05, ex. 2 · Allouer un tableau et le remplir de deux en deux</a></li>
+<li><a href="#c-prod">TP05, ex. 3 · Mettre à jour la quantité d’un produit par adresse</a></li>
+<li><a href="#c-liste">TD06 · Parcourir une liste et insérer un maillon</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="c-noms"><summary>TP04, ex. 5 · Choisir le premier couple nom-prénom</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé reconstitué.</strong> Comparer deux personnes par leur nom. Si les noms sont identiques, départager avec les prénoms.</p>
+<ol><li>Appelle <code>strcmp(nom1, nom2)</code>. Si le résultat est négatif, sélectionne la première personne. S’il est positif, sélectionne la seconde.</li><li>En cas d’égalité, appelle <code>strcmp(prenom1, prenom2)</code>. Avec <code>Durand, Alice</code> et <code>Durand, Zoé</code>, le nom ne départage pas et Alice arrive d’abord.</li><li>Pour construire l’affichage, écris dans un tampon dimensionné, par exemple avec <code>snprintf</code>. Vérifie la valeur renvoyée pour détecter une ligne tronquée.</li></ol></div></details>
+<details class="acc" id="c-malloc"><summary>TP05, ex. 2 · Remplir un tableau de taille donnée</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé reconstitué.</strong> Lire la taille et une valeur initiale, allouer un tableau et l’initialiser avec la valeur de départ puis les valeurs espacées de 2.</p>
+<ol><li>Vérifie que la saisie fournit une taille positive raisonnable. Vérifie que le produit de la taille par <code>sizeof *tableau</code> tient dans <code>size_t</code>. Après <code>malloc</code>, traite un éventuel <code>NULL</code>.</li><li>Pour une taille de 4 et un départ à 3, remplis les indices 0, 1, 2 et 3 avec <code>3, 5, 7, 9</code>. Garde la taille pour contrôler le parcours. Avec une plage plus large, vérifie que les valeurs calculées tiennent aussi dans <code>int</code>.</li><li>Affiche chaque valeur une fois, puis libère le tableau. Teste une seule case, plusieurs cases et une saisie invalide.</li></ol></div></details>
+<details class="acc" id="c-prod"><summary>TP05, ex. 3 · Modifier la quantité en place</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé reconstitué.</strong> Définir un produit par sa référence et sa quantité, puis ajouter une quantité à un produit existant.</p>
+<pre class="c-code"><code>struct produit {
+    int reference;
+    int quantite;
+};
+
+void ajoute(struct produit *prod, int qte) {
+    prod-&gt;quantite += qte;
+}</code></pre>
+<p>Déclare <code>struct produit stock = {42, 4};</code>. Appelle <code>ajoute(&amp;stock, 3)</code>. Relis la structure après l’appel. La référence est toujours 42 et la quantité vaut 7. La fonction suppose une adresse valide et une addition qui tient dans un entier.</p>
+</div></details>
+<details class="acc" id="c-liste"><summary>TD06 · Ajouter en tête et vérifier le parcours</summary><div class="acc-body">
+<p class="c-question"><strong>Démarche issue du corrigé.</strong> Construire la liste vide, ajouter des valeurs et afficher les maillons dans l’ordre où ils sont parcourus.</p>
+<ol><li>Sur une liste vide, la tête vaut <code>NULL</code>. Crée un maillon de valeur 4. Son suivant prend la tête actuelle, puis la tête devient ce maillon.</li><li>Insère ensuite 7 de la même manière. Le parcours lit <code>7 → 4 → NULL</code>. Vérifie que les deux valeurs restent joignables depuis la tête.</li><li>Au moment de détruire la liste, garde l’adresse du suivant, libère le maillon puis avance. Remets la tête à <code>NULL</code> si elle reste accessible.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-c/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-c/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-c/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Compiler et suivre une valeur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="52.583">0:52 · Fonctions et tableaux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="77.208">1:17 · Chaînes de caractères</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="103.583">1:43 · Structures, pointeurs et allocation</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="149.625">2:29 · Listes chaînées</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="170.417">2:50 · TP04 · Comparer le nom puis le prénom</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="194.250">3:14 · TP05 · Allouer et remplir de deux en deux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="222.833">3:42 · TP05 · Ajouter trois à la quantité du produit</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="260.792">4:20 · TD06 · Insérer puis parcourir</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>
