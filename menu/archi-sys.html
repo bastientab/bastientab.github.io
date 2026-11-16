@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Architecture des systèmes numériques — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Architecture des systèmes numériques : contenu à préparer.">
+  <title>Architecture des systèmes numériques — BUT1 R&amp;T</title>
+  <meta name="description" content="Portes logiques, circuits combinatoires, ALU et identification des composants.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,119 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">01</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Architecture des systèmes numériques</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">01</span></div>
+      <h1 class="page-title" id="page-title">Architecture des systèmes numériques</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/archi-sys/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Passer des bits aux portes</h3>
+<p>Un mot binaire est une suite de bits. En non signé, les cases valent 1, 2, 4, 8 et ainsi de suite en allant de droite à gauche. Un <strong>bus</strong> transporte plusieurs bits en parallèle. Une porte ET calcule 1 si ses entrées valent 1. Une porte OU calcule 1 si au moins l’une vaut 1. NON inverse une valeur. NAND et NOR inversent respectivement ET et OU. XOR vaut 1 quand ses deux entrées diffèrent. XNOR vaut 1 quand elles coïncident.</p>
+<p>Un circuit <strong>combinatoire</strong> calcule sa sortie à partir des entrées présentes. Écris les combinaisons en tableau avant de câbler. Pour trois entrées, il faut huit lignes. L’ordre des lignes aide à repérer les cas oubliés.</p></div>
+<div class="c-block"><h3>2. Additionner et lire la retenue</h3>
+<p>Un demi-additionneur prend deux bits. Sa somme vaut <code>A XOR B</code> et sa retenue vaut <code>A AND B</code>. Quand A et B valent 1, le résultat exact est 2, qui s’écrit <code>10</code> en binaire. La sortie de somme vaut zéro et la retenue vaut un. Un additionneur complet reçoit aussi la retenue du rang précédent.</p>
+<p>Une <strong>ALU</strong> combine plusieurs opérations et un sélecteur décide laquelle produit la sortie. Les indicateurs servent à interpréter le mot obtenu. Zero indique un résultat nul. Carry peut indiquer qu’un bit sort de la largeur du mot. Overflow concerne le dépassement dans l’interprétation signée. Exemple sur 4 bits : <code>0111+0001=1000</code> crée un dépassement signé, sans retenue extérieure.</p></div>
+<div class="c-block"><h3>3. Exploiter un masque de bits</h3>
+<p>Faire un ET avec un masque conserve les bits aux positions où ce masque vaut 1. En réseau, le masque IPv4 marque les bits du préfixe. Son inverse marque les positions de la partie hôte. Le test de la maquette de Logisim calcule <code>IP AND NON(MASK)</code> et vérifie si tous les bits hôte sont nuls. C’est un test d’alignement sur l’adresse du réseau, selon le masque fourni.</p>
+<figure><img loading="lazy" src="../assets/revisions/archi-sys/schemas/bits-hote.png" alt="Le ET de l’adresse 130 et du masque inversé conserve la valeur binaire 00000010."><figcaption>Une valeur non nulle après le ET indique qu’un bit hôte est à 1.</figcaption></figure></div>
+<div class="c-block"><h3>4. Retrouver les composants dans un ordinateur réel</h3>
+<p>Le processeur enchaîne les instructions et l’ALU réalise certains calculs. Les <strong>registres</strong> gardent les valeurs proches du calcul. Les <strong>caches</strong> réduisent certains accès à la mémoire principale. La RAM conserve les données des programmes en cours. Le stockage garde les fichiers indépendamment de l’exécution. Une interface matérielle et un pilote relient les périphériques au système.</p>
+<p>Pour comparer deux configurations, pars d’un besoin, puis vérifie les compatibilités de connecteur, de format, de génération mémoire et d’alimentation. Le nombre de barrettes ne suffit pas à lui seul à déterminer les canaux actifs. Sous Linux, compare ce que le noyau expose et ce que les outils d’inventaire décrivent.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#as-alarm">TP1 Logisim · Construire une alarme à deux capteurs actifs sur trois</a></li>
+<li><a href="#as-add">TP1 Logisim · Vérifier un demi-additionneur et les flags de l’ALU</a></li>
+<li><a href="#as-mask">TP1 Logisim · Tester les bits hôte d’un octet</a></li>
+<li><a href="#as-mat">TP3 · Vérifier ce que le système reconnaît</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="as-alarm"><summary>TP1, partie B · Câbler l’alarme 2-sur-3</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Allumer l’alarme si au moins deux capteurs X, Y et Z sont actifs.</p>
+<ol><li>Note 1 pour <code>011</code>, <code>101</code>, <code>110</code> et <code>111</code>. Les autres combinaisons donnent 0.</li><li>Construis <code>(X ET Y) OU (X ET Z) OU (Y ET Z)</code> avec trois ET et un OU à trois entrées, puis relie la sortie à la LED.</li><li>Teste les huit cas. Si un seul capteur suffit à allumer la LED, vérifie que chaque branche avant le OU exige bien deux capteurs.</li></ol></div></details>
+<details class="acc" id="as-add"><summary>TP1, parties C et E · Lire résultat et retenue</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Construire le demi-additionneur puis tester les opérations et indicateurs des ALU de 4 et 8 bits du TP.</p>
+<ol><li>Relie les deux entrées à une porte XOR pour la somme et à un ET pour la retenue. Avec <code>1+1</code>, lis somme 0 et retenue 1.</li><li>Sur l’ALU, vérifie la légende du sélecteur propre au fichier ouvert. Choisis ADD et prépare un exemple dont tu connais le résultat signé et non signé.</li><li>Sur 4 bits, avec <code>1111+0001</code>, le mot devient zéro et le calcul non signé produit une retenue. Avec <code>0111+0001</code>, le mot n’est pas nul et la somme signée dépasse la plage. Observe séparément les sorties déclarées par le circuit.</li></ol></div></details>
+<details class="acc" id="as-mask"><summary>TP1, partie D · Tester une adresse contre un masque</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Dans Logisim, réaliser le détecteur <code>IP AND NON(MASK) == 0</code> sur deux entrées de huit bits, puis vérifier les cas du tableau.</p>
+<ol><li>Règle les pins, le NOT, le AND et le comparateur sur huit bits. Relie d’abord la valeur intermédiaire à un affichage pour la lire.</li><li>Avec <code>IP=130</code> et <code>MASK=240</code>, l’inverse du masque vaut <code>00001111</code>. Le ET donne <code>00000010</code>, donc la LED OK reste éteinte.</li><li>Avec <code>IP=224</code> et <code>MASK=224</code>, le résultat vaut zéro et la LED s’allume. Si les deux cas donnent pareil, vérifie le masque inversé avant le comparateur.</li></ol></div></details>
+<details class="acc" id="as-mat"><summary>TP3 · Comparer les composants reconnus et lire des octets</summary><div class="acc-body">
+<p class="c-question"><strong>Démarche reconstituée du TP.</strong> Identifier le processeur et le stockage sur les deux systèmes, puis expliquer la lecture des vingt premiers octets de <code>/dev/random</code>.</p>
+<ol><li>Relève le modèle de CPU et l’identifiant du lecteur dans les outils d’inventaire du TP. Compare les références plutôt que les noms d’interface, qui peuvent changer d’un système à l’autre.</li><li>Dans le tube du sujet, <code>head -c 20</code> limite la lecture à vingt octets. <code>od</code> transforme les octets pour les afficher. Une notation hexadécimale octet par octet s’obtient par exemple avec <code>od -An -tx1</code>.</li><li>Vérifie le rôle de chaque processus du tube. Les octets changent entre deux lectures, alors que le nombre demandé reste vingt.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/archi-sys/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/archi-sys/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/archi-sys/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Lire un mot et une porte logique</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="24.375">0:24 · Contrôler une addition</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="71.333">1:11 · Processeur, mémoire et périphériques</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="96.792">1:36 · TP1 · Faire une alarme deux sur trois</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="122.000">2:02 · TP1 · Tester l’adresse et son masque</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="148.333">2:28 · TP1 · Distinguer Carry et Overflow</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="174.708">2:54 · TP3 · Lire vingt octets du système</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

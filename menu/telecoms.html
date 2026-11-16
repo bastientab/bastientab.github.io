@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Télécoms — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Télécoms : contenu à préparer.">
+  <title>Électronique et télécommunications 1 — BUT1 R&amp;T</title>
+  <meta name="description" content="Mesures électriques, décibels, circuit RC et transmission physique.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-2">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,121 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/oscilloscope.webp" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Télécoms</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/oscilloscope.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Électronique et télécommunications 1</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/telecoms/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Mesurer une tension, un courant et une puissance</h3>
+<p>La tension se mesure entre deux points avec un appareil branché en parallèle. Le courant traversant une branche se mesure en série. Avant de brancher un multimètre, vérifie le mode, les bornes et le calibre. Pour une résistance, <code>U=RI</code>. Pour une tension efficace aux bornes d’une charge résistive, la puissance moyenne vaut <code>Ueff²/R</code>.</p>
+<p>Sur un oscilloscope, lis les volts par division puis les secondes par division. La tension crête à crête est l’écart entre maximum et minimum. Pour une sinusoïde centrée, la valeur efficace vaut la crête divisée par <code>√2</code>. Indique la grandeur choisie pour éviter les comparaisons incohérentes entre appareils.</p></div>
+<div class="c-block"><h3>2. Convertir les niveaux en décibels</h3>
+<p>Le décibel exprime un rapport. Pour une puissance, le rapport de sortie à entrée se lit <code>10 log₁₀(Psortie/Pentrée)</code>. Une perte, annoncée positive quand la puissance baisse, utilise le rapport inverse. Le <strong>dBm</strong> utilise la référence 1 mW. Le <strong>dBµV</strong> utilise la référence 1 µV et un logarithme multiplié par 20.</p>
+<p>Pour rapprocher un niveau de tension d’un niveau de puissance, convertis la tension en volts efficaces et utilise l’impédance de la charge. La réception TV du TP s’analyse avec la puissance utile, le bruit et les unités adaptées à la mesure de 75 Ω.</p></div>
+<div class="c-block"><h3>3. Suivre une charge RC</h3>
+<p>Dans un circuit RC, le condensateur ne change pas instantanément de tension lorsque la source applique un échelon. La constante de temps vaut <code>τ=RC</code>. Pour une charge qui part de <code>U₀</code> et tend vers <code>Uf</code>, la tension vaut <code>Uf+(U₀−Uf)e<sup>−t/τ</sup></code>. Au bout d’une constante, elle a effectué environ 63 % du changement total.</p>
+<figure><img loading="lazy" src="../assets/revisions/telecoms/schemas/charge.png" alt="La tension du condensateur atteint environ 63 pour cent de sa valeur finale après une constante de temps."></figure>
+<p>Pour une décharge vers zéro, il reste environ 37 % de la valeur de départ au bout de <code>τ</code>. Mesure depuis le début réel de l’échelon, vérifie le niveau initial et le niveau final, puis compare à la valeur calculée.</p></div>
+<div class="c-block"><h3>4. Comparer fibre, coaxial, radio et paire torsadée</h3>
+<p>En fibre, une mesure de puissance en entrée et en sortie donne la perte d’insertion en dB. Une mesure sur plusieurs longueurs permet de distinguer la perte liée à la distance de celle des connexions. Pour un coaxial, vérifie l’impédance des éléments. Une désadaptation réfléchit une partie de l’onde. La mesure de transmission compare les niveaux en entrée et sortie pour une fréquence donnée.</p>
+<p>En transmission hertzienne, la distance, l’orientation et la polarisation des antennes changent la puissance reçue. Lors du relevé, modifie un seul réglage pour pouvoir expliquer sa contribution. Pour un câble Ethernet, contrôle le câblage des paires et compare les paramètres de transmission aux critères de la certification du TP. Un lien qui s’allume ne garantit pas que toutes les mesures sont dans les limites attendues.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#t1-tv">TP3 · Convertir le niveau de réception TNT en puissance</a></li>
+<li><a href="#t1-rc">TP4 · Calculer τ et le lire sur la trace</a></li>
+<li><a href="#t1-fo">TP5 · Mesurer la perte d’un dispositif optique</a></li>
+<li><a href="#t1-liens">TP6, TP7 et TP9 · Isoler la cause d’une perte</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="t1-tv"><summary>TP3 · Convertir 65 dBµV sur 75 Ω</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Une antenne reçoit 65 dBµV sur 75 Ω. Calculer la tension puis la puissance reçue en watts et en dBm.</p>
+<ol><li>Calcule <code>10^(65/20) µV≈1778 µV</code>, soit <code>1,778 mV</code> efficaces.</li><li>La puissance vaut <code>(1,778×10⁻³)²/75≈4,22×10⁻⁸ W</code>.</li><li>Convertis avec <code>10 log₁₀(P/0,001)</code>. Tu obtiens environ <code>−43,75 dBm</code>. Un niveau positif en dBµV et négatif en dBm peuvent décrire la même mesure sur cette charge.</li></ol></div></details>
+<details class="acc" id="t1-rc"><summary>TP4 · Prévoir le temps de charge</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Pour <code>R=500 Ω</code> et <code>C=1 nF</code>, calculer la constante de temps et comparer à une mesure sur la courbe.</p>
+<ol><li><code>τ=500×10⁻⁹ s=0,50 µs</code>. Repère le début du front. Calcule la différence entre la valeur finale et la valeur initiale.</li><li>Place un curseur au niveau initial plus 63,2 % de cette différence. Lis la durée depuis le front. Pour une décharge vers zéro, prends plutôt 36,8 % de la valeur de départ.</li><li>Compare mesure et théorie. En cas d’écart, vérifie la lecture, les valeurs réelles des composants et l’influence des éléments reliés au circuit.</li></ol></div></details>
+<details class="acc" id="t1-fo"><summary>TP5 · Convertir les puissances d’entrée et de sortie en perte</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Un dispositif reçoit 100 µW et transmet 95 µW. Donner le rapport et la perte en dB.</p>
+<ol><li>Le rapport entrée sur sortie vaut <code>100/95≈1,053</code> et la perte vaut <code>10 log₁₀(100/95)≈0,223 dB</code>.</li><li>Le gain entrée-sortie exprimé par le rapport sortie sur entrée vaut <code>−0,223 dB</code>. Avec l’instrument, relève d’abord les deux niveaux et indique la convention de signe du résultat.</li></ol></div></details>
+<details class="acc" id="t1-liens"><summary>TP6, TP7 et TP9 · Construire une preuve de mesure</summary><div class="acc-body">
+<p class="c-question"><strong>Démarches des TP.</strong> Relever l’atténuation d’un coaxial, la variation de puissance entre antennes et les résultats de certification d’un lien Ethernet.</p>
+<ol><li>Pour le coaxial, fais une mesure de référence avec les raccords et le montage prescrits, puis insère le câble. Compare au même réglage de fréquence et de niveau.</li><li>Pour les antennes, garde l’émission fixe et fais varier seulement l’orientation ou la distance selon la série demandée. Note chaque réglage avec la puissance calculée à partir de la tension efficace.</li><li>Pour la paire torsadée, lis la carte de câblage puis les marges par rapport au profil testé. Un test de continuité identifie les connexions. L’analyse de transmission permet ensuite de juger la qualité du lien.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/telecoms/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/telecoms/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/telecoms/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Tension, courant, puissance</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="25.417">0:25 · Transformer les niveaux logarithmiques</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="53.250">0:53 · Condensateur et temps de charge</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="75.625">1:15 · Fibre, coaxial, radio et câble Ethernet</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="102.667">1:42 · TP3 · Convertir le niveau de réception TV</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="130.417">2:10 · TP4 · Lire la constante RC</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="158.750">2:38 · TP5 · Calculer une perte optique</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="184.333">3:04 · TP6 à TP9 · Relier mesure et montages</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

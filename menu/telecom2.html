@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Télécommunications 2 et numération — BUT1 R&amp;T</title>
+  <meta name="description" content="Spectre, analyse radio, échantillonnage, CAN, filtres et modulation.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/telecom2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/constellation.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Télécommunications 2 et numération</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/telecom2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Lire une mesure dans le temps et en fréquence</h3>
+<p>Le <strong>chronogramme</strong> montre l’évolution de la tension. Le spectre montre quelles fréquences participent au signal. Pour un sinus parfait, on retrouve sa fréquence fondamentale. Un signal périodique non sinusoïdal peut aussi comporter des harmoniques, multiples entiers de la fondamentale, et une composante continue.</p>
+<p>Un oscilloscope calcule une FFT sur une trace finie. Plus la durée d’acquisition augmente, plus les points fréquentiels peuvent être rapprochés. Dans une FFT sur <code>N</code> points à fréquence d’acquisition <code>fe</code>, l’espacement vaut <code>fe/N</code>. Une fréquence mal alignée sur les points peut s’étaler. Observe l’effet de la fenêtre avant d’interpréter les pics autour du signal.</p></div>
+<div class="c-block"><h3>2. Choisir les réglages de l’analyseur de spectre</h3>
+<p>Choisis les fréquences de début et de fin, ou la fréquence centrale et l’étendue affichée. La <strong>RBW</strong> fixe la largeur du filtre de résolution. Une RBW plus étroite aide à séparer des composantes proches. Le niveau de référence règle l’échelle haute de l’affichage et aide à éviter une entrée saturée.</p>
+<p>Le niveau en <code>dBm</code> correspond à une puissance et se rapporte à 1 mW. Une densité spectrale indique une puissance par unité de fréquence. Pour estimer une puissance à partir de plusieurs points, vérifie la grandeur que l’instrument exporte et la largeur associée avant d’intégrer ou de sommer.</p></div>
+<div class="c-block"><h3>3. Comprendre l’échantillonnage et le repliement</h3>
+<p>Échantillonner revient à prendre une mesure toutes les <code>Te=1/fe</code> secondes. Dans le modèle idéal, les composantes se répètent autour des multiples de <code>fe</code>. Pour un signal de base limité à <code>fmax</code>, choisir <code>fe&gt;2fmax</code> sépare ces copies dans le cadre idéal. En pratique, garde une marge pour le filtre d’entrée.</p>
+<figure><img loading="lazy" src="../assets/revisions/telecom2/schemas/copies.png" alt="Pour un sinus à un kilohertz échantillonné à huit kilohertz, les premières copies autour de plus et moins huit produisent des raies à sept et neuf kilohertz."></figure>
+<p>Le <strong>repliement</strong> arrive lorsque des composantes distinctes se retrouvent impossibles à distinguer après échantillonnage. Un filtre anti-repliement agit avant la prise d’échantillons. Le filtrage après coup peut éliminer des fréquences visibles, mais deux composantes déjà repliées sur la même fréquence ne peuvent plus être séparées simplement.</p></div>
+<div class="c-block"><h3>4. Numériser une amplitude et la reconstituer</h3>
+<p>Un CAN mesure l’amplitude puis la ramène à un niveau quantifié et à un mot binaire. Avec <code>n</code> bits, il y a <code>2ⁿ</code> codes. Le pas dépend de l’étendue et de la convention de l’énoncé. La quantification par arrondi prend le niveau le plus proche dans la plage. Hors plage, on peut saturer sur un niveau extrême.</p>
+<p>Le code peut être en signe et grandeur, en complément à 2 ou en binaire décalé. Garde la convention au moment de décoder. Un CNA applique l’opération inverse au mot reçu et fournit la tension du niveau associé.</p></div>
+<div class="c-block"><h3>5. Filtrer et déplacer un signal en fréquence</h3>
+<p>Un filtre a une réponse en amplitude et souvent une réponse en phase. Le diagramme de Bode trace le gain en fonction de la fréquence. Pour mesurer la bande d’un passe-bande à −3 dB, repère la référence choisie, cherche la fréquence basse et haute à ce niveau relatif et soustrais-les.</p>
+<p>En modulation d’amplitude sinusoïdale, le message déplace une partie du spectre autour de la porteuse. Pour un seul ton modulant, les raies latérales apparaissent à <code>fc−fm</code> et <code>fc+fm</code>. La démodulation vise à retrouver le message. Dans le TP radio, pars d’une trace de référence et vérifie le niveau dans l’unité attendue.</p></div>
+<div class="c-block"><h3>6. Mesurer un canal radio et une chaîne TNT</h3>
+<p>Un sinus concentre sa puissance à une fréquence. Un canal radio ou TNT occupe une plage et distribue sa puissance sur la bande. La densité spectrale en W/Hz mesure la puissance par hertz. Son intégrale sur les limites du canal donne des watts. Pour une densité constante, multiplie la hauteur par la largeur. Convertis en dBm à la fin.</p>
+<p>Sur la distribution TNT, relève d’abord le canal reçu à l’antenne. Compare ensuite le même canal avant et après l’étage sélectif à réglages comparables. Regarde aussi les canaux voisins. Une augmentation de niveau n’indique pas à elle seule que la réception est meilleure.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#t2-fft">TP1 et TP2 · Lire l’échantillonnage, la FFT et l’analyseur</a></li>
+<li><a href="#t2-radio">TD3, TP3 et TP6 · Calculer une puissance et lire un canal</a></li>
+<li><a href="#t2-ech">TP4 · Calculer les fenêtres temporelles et les copies</a></li>
+<li><a href="#t2-can">TP5 · Quantifier et comparer les codes</a></li>
+<li><a href="#t2-bode">TP7 et TP8 · Lire bande passante et raies de modulation</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="t2-fft"><summary>TP1 et TP2 · Comparer les caractéristiques vues dans le temps et en fréquence</summary><div class="acc-body">
+<p class="c-question"><strong>Démarche des TP.</strong> Mesurer période et valeur efficace sur un signal, puis utiliser l’instrument de spectre pour retrouver ses composantes.</p>
+<ol><li>Sur la trace, mesure une période entre deux points équivalents. Pour un sinus centré, estime la crête et calcule la valeur efficace avec <code>Ucrête/√2</code>.</li><li>Sur la FFT, mesure la fréquence du pic et compare à <code>1/T</code>. S’il y a plusieurs pics, cherche leurs fréquences par rapport au fondamental et vérifie la composante continue.</li><li>Sur l’analyseur, réduis l’étendue autour du signal et vérifie le réglage de résolution. Compare avec la FFT en tenant compte de l’unité et de la normalisation utilisées.</li></ol></div></details>
+<details class="acc" id="t2-radio"><summary>TD3 et TP3 · Passer de la tension au niveau en dBm</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncés.</strong> Dans le TD3, un sinus de crête 3 V à 2 GHz est appliqué à 50 Ω. Tracer trois périodes puis calculer la tension efficace et la puissance. Dans le TP3, recommencer pour un signal de 500 mV crête à crête à 27 MHz, avec un affichage centré sur 27 MHz et une étendue de 100 kHz.</p>
+<ol><li>Au TD, la période est de <code>0,5 ns</code>. Trace donc de 0 à 1,5 ns. La tension efficace vaut <code>3/√2 ≈ 2,12 V</code>. La puissance vaut <code>2,12²/50 ≈ 90 mW</code>, soit <code>19,54 dBm</code>.</li><li>Au TP, commence par diviser les 500 mV crête à crête par deux pour trouver 250 mV de crête. Puis divise par √2. En élevant au carré et en divisant par 50 Ω, on obtient <code>625 µW</code>, soit <code>−2,04 dBm</code>. Place la raie à 27 MHz, entre les limites 26,95 et 27,05 MHz.</li><li>Au TP6, la question porte sur le lien entre densité spectrale et puissance du canal. Délimite l’intervalle du canal, puis calcule l’aire sous la densité spectrale dans les unités linéaires. La hauteur d’un point sur la trace ne suffit pas à donner la puissance totale.</li></ol></div></details>
+<details class="acc" id="t2-ech"><summary>TP4 · Échantillonner un sinus de 1 kHz à 8 kHz</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Calculer les périodes du signal à 1 kHz et de l’échantillonnage à 8 kHz, puis représenter l’allure des spectres.</p>
+<ol><li>Le signal de départ a <code>T₀=1 ms</code>. La commande d’échantillonnage a <code>Te=125 µs</code>. Dans une période du sinus, on a huit intervalles d’échantillonnage.</li><li>Dans le modèle idéal, place les raies originales à <code>±1 kHz</code>. Les deux premières copies autour de 8 kHz donnent <code>7 et 9 kHz</code>. En prenant 5 kHz comme fréquence d’échantillonnage, les raies proches de son premier multiple se trouvent à <code>4 et 6 kHz</code>.</li><li>Sur la maquette, mesure ces positions et précise l’effet de la largeur des impulsions sur leurs amplitudes. Compare le constat au modèle avant d’expliquer les écarts.</li></ol></div></details>
+<details class="acc" id="t2-can"><summary>TP5 · Quantifier 2,04 V et −3 V avec huit bits</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Pour la gamme de −10 à +10 V, donner le pas et coder les deux valeurs par arrondi au niveau le plus proche.</p>
+<ol><li>Avec l’étendue de 20 V divisée en 256 pas, <code>q=0,078125 V</code>. La valeur positive donne <code>2,04/q≈26,11</code>, arrondie à 26. En signe et grandeur et en complément à 2, 26 vaut <code>00011010</code>. Avec biais 128, le code vaut <code>10011010</code>.</li><li>Pour −3 V, on obtient <code>−38,4</code>, soit −38. En signe et grandeur, le code vaut <code>10100110</code>. En complément à 2, on calcule <code>256−38=218</code>, soit <code>11011010</code>. Avec biais 128, le code vaut <code>01011010</code>.</li><li>Vérifie en repartant du code, puis multiplie l’entier quantifié par le pas. La tension de niveau associée diffère un peu de la tension d’entrée.</li></ol></div></details>
+<details class="acc" id="t2-bode"><summary>TP7 et TP8 · Lire des seuils sur la courbe et des raies sur le spectre</summary><div class="acc-body">
+<p class="c-question"><strong>Démarches des TP.</strong> Mesurer les deux bornes à −3 dB d’un filtre et reconnaître les raies attendues autour d’une porteuse modulée.</p>
+<ol><li>Mesure le gain de référence au voisinage de <code>f₀</code>. Soustrais 3 dB à ce niveau, puis relève les deux fréquences correspondantes et calcule <code>fhaut−fbas</code>.</li><li>Sur le spectre modulé, repère la porteuse et les deux raies présentes de part et d’autre. Vérifie que leur écart à la porteuse correspond à la fréquence du signal modulant.</li><li>Compare les niveaux dans les mêmes unités. Si la trace paraît tronquée ou confond plusieurs raies, regarde d’abord l’étendue de fréquence, la RBW et le niveau de référence.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/telecom2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/telecom2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/telecom2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Temps et fréquence</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="26.208">0:26 · Analyseur de spectre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="48.917">0:48 · Échantillonnage et filtrage</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="73.167">1:13 · Conversion et modulation</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="96.083">1:36 · TP4 — Les copies d’un signal de 1 kHz</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="121.292">2:01 · TP5 — Les mots binaires du CAN</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="148.875">2:28 · TP7 et TP8 — Le seuil et les raies</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="172.333">2:52 · TD3 et TP3 — Puissance du sinus</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

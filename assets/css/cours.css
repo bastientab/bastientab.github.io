@@ -519,6 +519,8 @@ details.acc > summary:focus-visible { outline: 2px solid var(--accent); outline-
 .sl:fullscreen .sl-stage { flex: 1; aspect-ratio: auto; }
 .c-video { aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: #000; }
 .c-video iframe, .c-video video { display: block; width: 100%; height: 100%; border: 0; }
+.c-hero .page-title { overflow-wrap: anywhere; }
+#video [data-course-time] { max-width: 100%; white-space: normal; text-align: left; }
 
 @media (max-width: 640px) {
   .c-tab { padding: 0 12px; font-size: .88rem; }

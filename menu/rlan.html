@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RLAN — Cours · Bastien TABORDET</title>
-  <meta name="description" content="RLAN : contenu à préparer.">
+  <title>Réseaux locaux sans fil — RLAN — BUT1 R&amp;T</title>
+  <meta name="description" content="Wi-Fi, association 802.11, pontage, captures et protection.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-2">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,113 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/wifi.webp" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">RLAN</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/wifi.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Réseaux locaux sans fil — RLAN</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Relier une station à un réseau Wi-Fi</h3>
+<p>Une <strong>station</strong> est un appareil équipé d’une interface Wi-Fi. Un <strong>point d’accès</strong> relie couramment les stations à un réseau de distribution, souvent Ethernet. Le <strong>SSID</strong> est le nom du réseau publié. Le <strong>BSSID</strong> identifie une cellule radio en particulier. On peut trouver le même SSID sur plusieurs points d’accès, avec des BSSID différents.</p>
+<p>Pour rejoindre un réseau, la station découvre des points d’accès par les balises ou en interrogeant les réseaux disponibles. Elle suit ensuite les échanges de gestion adaptés à la sécurité et s’associe. L’association radio et l’obtention d’une adresse IP sont deux vérifications différentes.</p></div>
+<div class="c-block"><h3>2. Comprendre pourquoi le canal compte</h3>
+<p>Le médium radio est partagé. Avec <strong>CSMA/CA</strong>, les stations observent le canal et attendent selon les règles d’accès avant d’émettre. Les acquittements aident à vérifier si des trames unicast sont arrivées. Des stations éloignées peuvent entendre le point d’accès sans s’entendre entre elles, ce qui peut causer des collisions au récepteur.</p>
+<p>Un canal définit une partie de spectre. Pour déployer un point d’accès, vérifie les canaux voisins, la largeur et la qualité reçue. Observe séparément un problème de portée, d’interférences et de charge. Une mesure proche du point d’accès sert de référence avant de te déplacer.</p></div>
+<div class="c-block"><h3>3. Lire les trames et leurs adresses</h3>
+<p>Les trames de <strong>gestion</strong> servent à organiser le réseau, comme les balises et l’association. Les trames de <strong>contrôle</strong> accompagnent l’accès au support, comme un ACK. Les trames de <strong>données</strong> peuvent transporter le trafic utile. Un en-tête Radiotap visible dans une capture décrit des métadonnées de réception selon le matériel et le pilote.</p>
+<figure><img loading="lazy" src="../assets/revisions/rlan/schemas/adresses.png" alt="Quand une station transmet au réseau de distribution, les trois adresses représentent le récepteur radio, l’émetteur radio et la destination finale."></figure>
+<p>Lis <code>To DS</code> et <code>From DS</code> avant d’interpréter chaque case. Pour des données envoyées par un client vers le réseau de distribution, l’adresse 1 désigne le point d’accès récepteur, l’adresse 2 la station émettrice et l’adresse 3 la destination du trafic. Dans le sens inverse, l’adresse 2 devient le point d’accès émetteur et l’adresse 3 porte la source initiale.</p></div>
+<div class="c-block"><h3>4. Comprendre le pontage et la protection</h3>
+<p>Un <strong>bridge</strong> Linux transmet des trames de couche 2 entre interfaces. Le routage transmet des paquets entre réseaux IP. En test, vérifie d’abord si tu observes une trame sur le pont et une réponse du voisin. Si la destination doit être routée, vérifie le masque et le prochain saut.</p>
+<p>La sécurité radio protège l’authentification et les échanges de données. La protection des trames de gestion peut aussi empêcher la falsification de certaines trames, notamment les désauthentifications quand cette protection a été négociée. En TP de capture, distingue une perte de liaison, une désassociation et un problème de service IP.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Les questions sont retrouvées dans les comptes rendus TP8 et TP9. Les fichiers disponibles contiennent les réponses et détails des binômes. La page reprend les énoncés utiles et propose les contrôles à refaire en maquette.</p>
+<ul><li><a href="#rlan-ap">TP8 · Configurer le sous-réseau et le point d’accès</a></li>
+<li><a href="#rlan-bridge">TP8 · Lire les trames sur le pont</a></li>
+<li><a href="#rlan-capture">TP9 · Identifier les trames et les adresses radio</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="rlan-ap"><summary>TP8 · Identifier le réseau associé et vérifier le ping</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Configurer le sous-réseau <code>192.168.x.0/24</code> et le SSID <code>TP-RT1-x</code> du sujet, puis tester le point d’accès.</p>
+<ol><li>Prends la valeur de <code>x</code> attribuée au groupe. Fixe des adresses distinctes dans le sous-réseau du TP. Rentre le SSID demandé dans la maquette et connecte le poste à ce réseau.</li><li>Vérifie le SSID et le BSSID du lien établi avec les informations de la carte. Contrôle ensuite adresse et masque. Si le client est connecté au bon SSID sans IPv4 correcte, traite d’abord l’adressage.</li><li>Fais le ping de l’adresse de gestion du point d’accès. Compare une capture d’ARP et une capture d’ICMP pour expliquer l’ordre des messages.</li></ol></div></details>
+<details class="acc" id="rlan-bridge"><summary>TP8 · Suivre une trame à travers un bridge Linux</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Configurer les deux interfaces prévues en pont et identifier les adresses qui apparaissent dans la capture du pont.</p>
+<ol><li>Dans la maquette dédiée, relève les interfaces et vérifie leur état. Une fois la configuration faite, <code>bridge link</code> doit montrer les interfaces membres du pont.</li><li>Lance le ping demandé et filtre ARP puis ICMP. Note la MAC de destination de la demande ARP et celle de la trame qui transporte le ping.</li><li>Pour ce chemin de niveau 2, explique pourquoi le pont fait circuler la trame vers le bon côté. Compare ensuite avec l’échange qui devrait passer par une passerelle pour joindre un autre sous-réseau.</li></ol></div></details>
+<details class="acc" id="rlan-capture"><summary>TP9 · Classer les trames et décoder les champs d’adresses</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Relever des trames de gestion, de contrôle et de données, puis expliquer les adresses <code>addr1</code>, <code>addr2</code> et <code>addr3</code>.</p>
+<ol><li>Utilise la capture du réseau de test. Repère une balise, un ACK et une trame de données. Pour chacune, note le type et le sous-type affichés.</li><li>Sur les données envoyées vers le point d’accès, lis les bits DS. Associe chaque adresse à un rôle du schéma. Ouvre ensuite une réponse et regarde les rôles qui ont changé.</li><li>Pour une trame de désauthentification observée dans le TP, vérifie son type, sa direction et la protection négociée. Compare ce que la capture montre à ce qui est arrivé à la station.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/rlan/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/rlan/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/rlan/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Le réseau affiché et le point d’accès</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="26.833">0:26 · Partager le canal</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="51.125">0:51 · Lire les types et les adresses</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="104.833">1:44 · Relier radio et réseau IP</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="131.583">2:11 · TP8 · Configurer le réseau de groupe</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="158.417">2:38 · TP8 · Vérifier les interfaces du pont</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="184.542">3:04 · TP9 · Classer puis lire la capture Wi-Fi</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

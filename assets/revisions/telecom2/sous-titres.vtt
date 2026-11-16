@@ -1,0 +1,245 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.507
+Sur un oscilloscope, tu peux décrire un signal dans le
+temps,
+
+00:00:03.507 --> 00:00:05.675
+ou chercher les fréquences qui le composent.
+
+00:00:05.675 --> 00:00:09.235
+Si tu mesures une période de une milliseconde, attends
+toi à
+
+00:00:09.235 --> 00:00:11.177
+voir une fondamentale de un kilohertz.
+
+00:00:11.177 --> 00:00:14.854
+Des pics aux multiples entiers peuvent signaler des
+harmoniques.
+
+00:00:14.854 --> 00:00:17.611
+La FFT découpe l’axe en points.
+
+00:00:17.611 --> 00:00:21.240
+Si la trace observée est plus longue, ces points sont
+plus
+
+00:00:21.240 --> 00:00:21.570
+rapprochés.
+
+00:00:21.570 --> 00:00:25.969
+Une fenêtre d’observation trop courte peut étaler
+l’énergie d’un seul pic.
+
+00:00:26.308 --> 00:00:30.372
+Pour examiner deux raies proches, commence par centrer
+l’affichage sur la
+
+00:00:30.372 --> 00:00:31.111
+zone utile.
+
+00:00:31.111 --> 00:00:33.954
+Ensuite resserre la bande de résolution.
+
+00:00:33.954 --> 00:00:37.177
+Imagine deux traits imprimés très près l’un de
+l’autre.
+
+00:00:37.177 --> 00:00:40.910
+Si l’instrument les observe au travers d’un filtre
+très large, ils
+
+00:00:40.910 --> 00:00:41.589
+se mélangent.
+
+00:00:41.589 --> 00:00:45.485
+Vérifie aussi le niveau de référence, car un signal
+trop fort
+
+00:00:45.485 --> 00:00:48.673
+peut saturer l’entrée et faire apparaître des
+composantes supplémentaires.
+
+00:00:49.017 --> 00:00:53.195
+Échantillonner consiste à mesurer le signal à
+intervalles réguliers.
+
+00:00:53.195 --> 00:00:57.412
+Dans un spectre idéal, le résultat ressemble à des
+copies translatées
+
+00:00:57.412 --> 00:00:58.562
+du spectre initial.
+
+00:00:58.562 --> 00:01:02.615
+Si deux copies se recouvrent, la même suite de mesures
+peut
+
+00:01:02.615 --> 00:01:04.089
+représenter des oscillations différentes.
+
+00:01:04.089 --> 00:01:07.325
+Pour un signal limité à une fréquence maximale,
+choisis une cadence
+
+00:01:07.325 --> 00:01:10.560
+supérieure au double de cette fréquence et laisse une
+marge pour
+
+00:01:10.560 --> 00:01:12.913
+que le filtre d’entrée atténue les composantes
+gênantes.
+
+00:01:13.267 --> 00:01:17.478
+Un convertisseur analogique numérique ne peut produire
+qu’un nombre fini de
+
+00:01:17.478 --> 00:01:17.861
+mots.
+
+00:01:17.861 --> 00:01:21.525
+Il associe la tension mesurée à un niveau de sa
+grille.
+
+00:01:21.525 --> 00:01:24.871
+Le codage précise comment représenter le niveau.
+
+00:01:24.871 --> 00:01:29.089
+Une modulation d’amplitude prend le message et
+l’utilise pour faire varier
+
+00:01:29.089 --> 00:01:30.239
+l’amplitude d’une porteuse.
+
+00:01:30.239 --> 00:01:33.654
+Avec une seule fréquence modulante, les deux raies
+latérales sont à
+
+00:01:33.654 --> 00:01:35.827
+la même distance de la raie centrale.
+
+00:01:36.183 --> 00:01:40.092
+Le sujet propose un sinus de un kilohertz et un
+échantillonnage
+
+00:01:40.092 --> 00:01:41.158
+à huit kilohertz.
+
+00:01:41.158 --> 00:01:44.626
+Inverse chaque fréquence pour obtenir la période.
+
+00:01:44.626 --> 00:01:48.108
+Puis place une première paire à moins un et plus un
+
+00:01:48.108 --> 00:01:48.425
+kilohertz.
+
+00:01:48.425 --> 00:01:52.187
+Déplace maintenant la paire de huit kilohertz vers la
+droite.
+
+00:01:52.187 --> 00:01:54.908
+Elle tombe à sept et neuf kilohertz.
+
+00:01:54.908 --> 00:01:58.660
+Si tu passes à cinq kilohertz de fréquence
+d’échantillonnage, la paire
+
+00:01:58.660 --> 00:02:01.048
+équivalente arrive à quatre et six kilohertz.
+
+00:02:01.392 --> 00:02:04.884
+L’étendue va de moins dix à plus dix volts, soit vingt
+
+00:02:04.884 --> 00:02:05.202
+volts.
+
+00:02:05.202 --> 00:02:09.235
+Divise par deux cent cinquante-six, puis divise chaque
+tension par ce
+
+00:02:09.235 --> 00:02:09.601
+pas.
+
+00:02:09.601 --> 00:02:14.466
+Deux virgule zéro quatre volts donnent environ vingt-
+six virgule onze, donc
+
+00:02:14.466 --> 00:02:14.908
+vingt-six.
+
+00:02:14.908 --> 00:02:19.356
+Moins trois volts donnent moins trente-huit virgule
+quatre, donc moins trente-huit.
+
+00:02:19.356 --> 00:02:22.883
+En complément à deux sur huit bits, soustrais trente-
+huit de deux
+
+00:02:22.883 --> 00:02:25.447
+cent cinquante-six puis écris le résultat en binaire.
+
+00:02:25.447 --> 00:02:28.621
+En binaire décalé, ajoute cent vingt-huit.
+
+00:02:28.975 --> 00:02:32.430
+Sur un tracé de Bode, pars du gain de référence.
+
+00:02:32.430 --> 00:02:35.910
+Repère trois décibels en dessous, puis lis les deux
+fréquences où
+
+00:02:35.910 --> 00:02:37.491
+la courbe traverse le seuil.
+
+00:02:37.491 --> 00:02:40.506
+Leur différence donne la largeur de bande.
+
+00:02:40.506 --> 00:02:44.098
+Dans le TP de modulation, repère d’abord la porteuse
+et relève
+
+00:02:44.098 --> 00:02:46.057
+la fréquence des deux autres pics.
+
+00:02:46.057 --> 00:02:49.367
+Si l’écart à la porteuse correspond au ton modulant
+des deux
+
+00:02:49.367 --> 00:02:52.075
+côtés, tu as un critère pour identifier ces raies.
+
+00:02:52.433 --> 00:02:55.079
+Le piège est dans le mot amplitude.
+
+00:02:55.079 --> 00:02:58.483
+Dans le TD trois, les trois volts sont une valeur de
+
+00:02:58.483 --> 00:02:58.793
+crête.
+
+00:02:58.793 --> 00:03:02.592
+Divise par racine de deux pour obtenir la valeur
+efficace.
+
+00:03:02.592 --> 00:03:07.101
+Son carré, divisé par cinquante ohms, donne quatre-
+vingt-dix milliwatts.
+
+00:03:07.101 --> 00:03:10.345
+Dans le TP trois, cinq cents millivolts sont mesurés
+de la
+
+00:03:10.345 --> 00:03:12.114
+crête basse à la crête haute.
+
+00:03:12.114 --> 00:03:15.619
+Divise d'abord par deux, puis fais le même calcul.
+
+00:03:15.619 --> 00:03:19.171
+Pour un canal étalé comme en télévision, additionne la
+puissance sur
+
+00:03:19.171 --> 00:03:22.077
+toute sa largeur à partir de la densité spectrale.

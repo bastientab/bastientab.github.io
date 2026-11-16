@@ -1,0 +1,234 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:02.231
+Un bit a deux valeurs.
+
+00:00:02.231 --> 00:00:05.871
+Si tu en alignes plusieurs, chaque position prend un
+poids.
+
+00:00:05.871 --> 00:00:09.976
+Dans un circuit, une porte transforme des entrées en
+une sortie.
+
+00:00:09.976 --> 00:00:13.114
+Pour ET, il faut que tous les signaux arrivent à un.
+
+00:00:13.114 --> 00:00:15.503
+Pour OU, un seul suffit.
+
+00:00:15.503 --> 00:00:18.739
+XOR signifie que les deux entrées diffèrent.
+
+00:00:18.739 --> 00:00:21.853
+Une table de vérité te protège des oublis : avec deux
+
+00:00:21.853 --> 00:00:24.119
+entrées, il y a quatre cas à tester.
+
+00:00:24.475 --> 00:00:28.089
+L'addition de un et un donne deux, qui prend deux
+bits.
+
+00:00:28.089 --> 00:00:31.167
+Le bit de droite est zéro et celui de gauche vaut
+
+00:00:31.167 --> 00:00:31.447
+un.
+
+00:00:31.447 --> 00:00:34.750
+Le demi-additionneur sort donc à la fois le bit de
+somme
+
+00:00:34.750 --> 00:00:35.650
+et la retenue.
+
+00:00:35.650 --> 00:00:38.347
+Regarde les deux LED séparément.
+
+00:00:38.347 --> 00:00:41.688
+Sur une addition de plusieurs bits, la retenue peut
+entrer dans
+
+00:00:41.688 --> 00:00:42.599
+le rang suivant.
+
+00:00:42.599 --> 00:00:46.925
+Une ALU ajoute un sélecteur pour décider quelle
+opération on observe.
+
+00:00:47.267 --> 00:00:51.739
+Pour analyser une ALU, fixe d'abord le nombre de bits
+disponibles.
+
+00:00:51.739 --> 00:00:55.844
+Avec quatre bits, certains résultats ne tiennent pas
+dans cette taille.
+
+00:00:55.844 --> 00:00:58.724
+En non signé, tu peux voir une retenue.
+
+00:00:58.724 --> 00:01:02.416
+En signé, tu peux dépasser la borne même si aucune
+retenue
+
+00:01:02.416 --> 00:01:03.087
+ne sort.
+
+00:01:03.087 --> 00:01:05.869
+Regarde aussi l'indicateur Zero.
+
+00:01:05.869 --> 00:01:09.255
+Il indique que le mot affiché vaut zéro, ce qui
+n'implique
+
+00:01:09.255 --> 00:01:11.101
+pas que l'addition exacte valait zéro.
+
+00:01:11.433 --> 00:01:15.587
+Quand le processeur calcule, il accède à plusieurs
+niveaux de mémoire.
+
+00:01:15.587 --> 00:01:19.275
+Les registres contiennent les valeurs immédiates d'une
+instruction.
+
+00:01:19.275 --> 00:01:22.584
+Les caches évitent certains accès plus lents à la RAM.
+
+00:01:22.584 --> 00:01:26.543
+Le stockage sert à conserver les fichiers au-delà de
+l'exécution.
+
+00:01:26.543 --> 00:01:30.357
+Dans le TP de matériel, relève des références
+observables comme le
+
+00:01:30.357 --> 00:01:32.437
+modèle du processeur et du lecteur.
+
+00:01:32.437 --> 00:01:36.518
+Des systèmes différents peuvent donner des noms
+différents au même composant.
+
+00:01:36.892 --> 00:01:39.366
+Écris les huit possibilités.
+
+00:01:39.366 --> 00:01:42.975
+Tu gardes les trois cas avec exactement deux uns, puis
+celui
+
+00:01:42.975 --> 00:01:43.631
+avec trois.
+
+00:01:43.631 --> 00:01:46.339
+Pour câbler, crée trois portes ET.
+
+00:01:46.339 --> 00:01:49.746
+Chacune vérifie une paire différente de capteurs.
+
+00:01:49.746 --> 00:01:52.871
+Regroupe les trois sorties avec une porte OU.
+
+00:01:52.871 --> 00:01:56.893
+Lorsque deux capteurs sont actifs, une branche suffit
+à allumer la
+
+00:01:56.893 --> 00:01:57.258
+LED.
+
+00:01:57.258 --> 00:02:00.792
+Lorsque les trois sont actifs, plusieurs branches sont
+vraies et la
+
+00:02:00.792 --> 00:02:01.756
+sortie reste un.
+
+00:02:02.100 --> 00:02:05.980
+Dans l'exercice Logisim, on veut vérifier si la partie
+hôte de
+
+00:02:05.980 --> 00:02:07.038
+l'adresse vaut zéro.
+
+00:02:07.038 --> 00:02:10.077
+Le masque initial vaut deux cent quarante.
+
+00:02:10.077 --> 00:02:13.423
+Inverse ses bits pour mettre un à chaque place hôte.
+
+00:02:13.423 --> 00:02:16.878
+Ensuite, fais un ET avec l'adresse cent trente.
+
+00:02:16.878 --> 00:02:19.709
+Les quatre premiers bits disparaissent.
+
+00:02:19.709 --> 00:02:22.969
+À droite, le bit de poids deux reste actif.
+
+00:02:22.969 --> 00:02:26.491
+Le résultat n'est donc pas zéro, et la LED de
+conformité
+
+00:02:26.491 --> 00:02:28.092
+reste éteinte pour cet exemple.
+
+00:02:28.433 --> 00:02:31.717
+Dans le premier essai, quinze plus un donne seize.
+
+00:02:31.717 --> 00:02:35.356
+Cela produit un cinquième bit, donc il y a une
+retenue.
+
+00:02:35.356 --> 00:02:38.236
+Les quatre bits affichés valent zéro.
+
+00:02:38.236 --> 00:02:41.321
+Dans le deuxième essai, sept plus un donne huit, qui
+tient
+
+00:02:41.321 --> 00:02:44.405
+en non signé, mais dépasse la borne du complément à
+deux
+
+00:02:44.405 --> 00:02:45.246
+sur quatre bits.
+
+00:02:45.246 --> 00:02:49.070
+Regarde les deux indicateurs séparément sur la
+maquette.
+
+00:02:49.070 --> 00:02:52.760
+Vérifie aussi quelle position du sélecteur correspond
+à l'addition dans le
+
+00:02:52.760 --> 00:02:54.437
+fichier que tu as ouvert.
+
+00:02:54.808 --> 00:02:58.361
+Dans le TP matériel, lis le tube de gauche à droite.
+
+00:02:58.361 --> 00:03:01.033
+Le premier outil prend vingt octets.
+
+00:03:01.033 --> 00:03:04.599
+Le deuxième les présente dans une notation que tu peux
+lire.
+
+00:03:04.599 --> 00:03:08.962
+Avec l'option choisie ici, chaque octet s'écrit en
+hexadécimal.
+
+00:03:08.962 --> 00:03:12.539
+Refais le test : les valeurs peuvent changer, mais tu
+dois
+
+00:03:12.539 --> 00:03:13.839
+toujours compter vingt octets.
+
+00:03:13.839 --> 00:03:17.224
+Cela montre le rôle de chaque commande sans confondre
+le nombre
+
+00:03:17.224 --> 00:03:19.685
+de caractères affichés et le nombre d'octets lus.

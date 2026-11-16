@@ -1,0 +1,269 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:02.820
+La tension se mesure entre deux points.
+
+00:00:02.820 --> 00:00:05.981
+Le courant, lui, traverse une branche.
+
+00:00:05.981 --> 00:00:09.459
+Le multimètre ne se branche donc pas de la même
+manière
+
+00:00:09.459 --> 00:00:10.724
+selon la grandeur choisie.
+
+00:00:10.724 --> 00:00:14.431
+Avec un oscilloscope, commence par les échelles en
+volts par division
+
+00:00:14.431 --> 00:00:16.116
+et en secondes par division.
+
+00:00:16.116 --> 00:00:20.305
+Pour calculer la puissance moyenne dans une
+résistance, il faut la
+
+00:00:20.305 --> 00:00:21.067
+tension efficace.
+
+00:00:21.067 --> 00:00:24.531
+Pour un sinus centré, elle vaut la crête divisée par
+racine
+
+00:00:24.531 --> 00:00:25.160
+de deux.
+
+00:00:25.517 --> 00:00:28.224
+Un décibel exprime un rapport.
+
+00:00:28.224 --> 00:00:31.846
+Le d B m permet de parler d'une puissance à partir
+
+00:00:31.846 --> 00:00:33.163
+d'un milliwatt de référence.
+
+00:00:33.163 --> 00:00:37.219
+Le décibel microvolt compare une tension à un
+microvolt.
+
+00:00:37.219 --> 00:00:40.627
+Pour passer d'une tension à une puissance, on a besoin
+de
+
+00:00:40.627 --> 00:00:42.795
+la résistance sur laquelle cette tension existe.
+
+00:00:42.795 --> 00:00:46.406
+Fais donc les conversions par étapes, et garde l'unité
+à côté
+
+00:00:46.406 --> 00:00:47.391
+de chaque valeur.
+
+00:00:47.391 --> 00:00:51.007
+Un nombre en décibel microvolt et un nombre en décibel
+milliwatt
+
+00:00:51.007 --> 00:00:52.979
+ne peuvent pas être comparés directement.
+
+00:00:53.350 --> 00:00:56.741
+Quand tu appliques un échelon à un circuit RC, le
+condensateur
+
+00:00:56.741 --> 00:00:59.207
+ne saute pas brusquement à sa tension finale.
+
+00:00:59.207 --> 00:01:02.352
+Il se charge vite au début puis de plus en plus
+
+00:01:02.352 --> 00:01:02.638
+lentement.
+
+00:01:02.638 --> 00:01:05.646
+Après une constante de temps, il a couvert un peu
+moins
+
+00:01:05.646 --> 00:01:07.013
+de deux tiers du changement.
+
+00:01:07.013 --> 00:01:09.780
+Pour une décharge qui tend vers zéro, il reste un peu
+
+00:01:09.780 --> 00:01:11.793
+plus d'un tiers de la valeur de départ.
+
+00:01:11.793 --> 00:01:15.073
+Ce sont deux façons de lire la même constante sur une
+
+00:01:15.073 --> 00:01:15.371
+trace.
+
+00:01:15.725 --> 00:01:19.253
+Selon le support, les pertes ont des causes
+différentes.
+
+00:01:19.253 --> 00:01:23.107
+En fibre, une mesure d'entrée et de sortie donne une
+perte
+
+00:01:23.107 --> 00:01:23.457
+d'insertion.
+
+00:01:23.457 --> 00:01:27.771
+Pour un coaxial, une mauvaise adaptation peut renvoyer
+une partie du
+
+00:01:27.771 --> 00:01:28.163
+signal.
+
+00:01:28.163 --> 00:01:31.813
+Sur un banc radio, tourne l'antenne sans changer en
+même temps
+
+00:01:31.813 --> 00:01:32.476
+sa distance.
+
+00:01:32.476 --> 00:01:35.749
+Tu pourras alors attribuer l'écart à l'orientation.
+
+00:01:35.749 --> 00:01:39.601
+Pour un câble réseau, lis aussi la continuité et les
+paramètres
+
+00:01:39.601 --> 00:01:42.403
+de certification, qui répondent à deux questions
+différentes.
+
+00:01:42.767 --> 00:01:45.413
+Commence par la référence du niveau.
+
+00:01:45.413 --> 00:01:49.637
+Soixante-cinq vaut vingt fois le logarithme de la
+tension exprimée en
+
+00:01:49.637 --> 00:01:50.021
+microvolts.
+
+00:01:50.021 --> 00:01:52.361
+Inverse le logarithme.
+
+00:01:52.361 --> 00:01:56.038
+Tu trouves environ mille sept cent soixante-dix-huit
+microvolts.
+
+00:01:56.038 --> 00:01:58.746
+Passe en volts avant de la mettre au carré.
+
+00:01:58.746 --> 00:02:02.545
+Divise par soixante-quinze ohms, puis compare au
+milliwatt.
+
+00:02:02.545 --> 00:02:07.361
+Tu obtiens un niveau d'environ moins quarante-trois
+virgule soixante-quinze décibels milliwatts.
+
+00:02:07.361 --> 00:02:10.143
+Les deux niveaux décrivent la même mesure.
+
+00:02:10.517 --> 00:02:14.618
+Dans le TP, la résistance vaut cinq cents ohms et le
+
+00:02:14.618 --> 00:02:15.736
+condensateur un nanofarad.
+
+00:02:15.736 --> 00:02:18.751
+Multiplie : une demi-microseconde.
+
+00:02:18.751 --> 00:02:22.329
+Pour la lecture sur le graphe, place-toi au début de
+l'échelon.
+
+00:02:22.329 --> 00:02:26.019
+Repère la variation complète et prends environ
+soixante-trois pour cent de
+
+00:02:26.019 --> 00:02:28.702
+cette variation à partir de la tension initiale.
+
+00:02:28.702 --> 00:02:31.177
+Lis la durée jusqu'à ce niveau.
+
+00:02:31.177 --> 00:02:34.021
+Compare-la à une demi-microseconde.
+
+00:02:34.021 --> 00:02:37.525
+Si ça ne coïncide pas, vérifie les échelles et les
+valeurs
+
+00:02:37.525 --> 00:02:38.481
+des vrais composants.
+
+00:02:38.850 --> 00:02:41.643
+La puissance est plus faible à la sortie.
+
+00:02:41.643 --> 00:02:45.871
+Si tu annonces une perte positive, divise l'entrée par
+la sortie.
+
+00:02:45.871 --> 00:02:49.143
+Les micro-watts se simplifient dans le rapport.
+
+00:02:49.143 --> 00:02:52.810
+Applique dix fois le logarithme pour obtenir un peu
+plus de
+
+00:02:52.810 --> 00:02:54.143
+zéro virgule deux décibel.
+
+00:02:54.143 --> 00:02:57.855
+Si tu annonces un gain de sortie sur entrée, le signe
+
+00:02:57.855 --> 00:02:58.530
+devient négatif.
+
+00:02:58.530 --> 00:03:01.908
+Pour retrouver le bon sens, imagine une perte plus
+forte et
+
+00:03:01.908 --> 00:03:04.057
+vérifie que la valeur de perte augmenterait.
+
+00:03:04.433 --> 00:03:08.081
+Pour expliquer une perte, compare avant et après en
+gardant le
+
+00:03:08.081 --> 00:03:09.408
+reste du banc identique.
+
+00:03:09.408 --> 00:03:12.913
+Sur le coaxial, conserve la même fréquence.
+
+00:03:12.913 --> 00:03:16.867
+Avec les antennes, prends une mesure de référence puis
+change un
+
+00:03:16.867 --> 00:03:17.226
+réglage.
+
+00:03:17.226 --> 00:03:20.897
+Pour le câble Ethernet, vérifie d'abord que les paires
+arrivent aux
+
+00:03:20.897 --> 00:03:21.565
+bonnes positions.
+
+00:03:21.565 --> 00:03:24.987
+Passe ensuite à la mesure de qualité demandée par le
+profil
+
+00:03:24.987 --> 00:03:25.609
+du TP.
+
+00:03:25.609 --> 00:03:29.249
+Garde les conditions de mesure dans le tableau à côté
+du
+
+00:03:29.249 --> 00:03:29.579
+résultat.
