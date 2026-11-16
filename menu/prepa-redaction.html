@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rédaction mathématique et informatique — Prépa ISIMA</title>
+  <meta name="description" content="Démonstrations, récurrence, quantificateurs, LaTeX et Git.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-redaction.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Rédaction mathématique et informatique</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-redaction/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Lire une affirmation avant de la prouver</h3>
+<p>Le symbole <code>∀</code> signifie « pour tout » et <code>∃</code> « il existe ». Dans <code>∀x ∃y</code>, le choix de <code>y</code> peut dépendre de <code>x</code>. Dans <code>∃y ∀x</code>, un même choix de <code>y</code> doit fonctionner partout. Pour nier une assertion, inverse les quantificateurs l’un après l’autre et nie la condition finale, sans changer les ensembles considérés.</p>
+<p>Une implication <code>P ⇒ Q</code> affirme que Q doit être vraie quand P est vraie. Sa contraposée <code>non Q ⇒ non P</code> est équivalente. Sa réciproque <code>Q ⇒ P</code> est une autre affirmation à démontrer séparément. Un contre-exemple à l’implication doit satisfaire P et contredire Q.</p></div>
+<div class="c-block"><h3>2. Choisir une forme de démonstration</h3>
+<p>Une preuve directe utilise les hypothèses pour obtenir la conclusion. Par l’absurde, suppose la négation de ce que tu veux prouver et cherche une contradiction. Pour utiliser une contraposée, repère d’abord quel sens devient plus simple à démontrer.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-redaction/schemas/recurrence.png" alt="La preuve de la somme des premiers entiers initialise à zéro, suppose la formule au rang n et ajoute n pour atteindre le rang suivant."><figcaption>Une récurrence doit démontrer un départ et un passage valable pour chaque rang.</figcaption></figure>
+<p>En récurrence, écris clairement la propriété <code>P(n)</code>. L’<strong>initialisation</strong> la vérifie au premier rang. L’<strong>hérédité</strong> suppose <code>P(n)</code> et démontre <code>P(n+1)</code> pour un rang quelconque. Dans une récurrence forte, tu peux utiliser toutes les propriétés précédentes si tu prouves le passage avec cette hypothèse.</p></div>
+<div class="c-block"><h3>3. Rédiger avec LaTeX</h3>
+<p>Le fichier <code>.tex</code> décrit la structure et le contenu. Le préambule déclare la classe du document et les extensions. Le corps s’écrit dans l’environnement <code>document</code>. Pour une formule courte utilise <code>\( … \)</code> et pour une formule séparée <code>\[ … \]</code>. Les sections, listes et références produisent une structure exploitable dans le PDF.</p>
+<p>Pour nommer une équation, une section ou une figure, place une étiquette avec <code>\label</code>, puis appelle-la avec <code>\ref</code> ou <code>\eqref</code> selon le contexte. Si une référence apparaît sous forme de points d’interrogation, vérifie son nom et recompile après la première passe. Le mode <code>verbatim</code> aide à montrer une commande telle qu’elle a été écrite.</p></div>
+<div class="c-block"><h3>4. Partager et fusionner des versions Git</h3>
+<p>Un commit enregistre une version des fichiers sélectionnés. <code>git status</code> montre ce qui est modifié ou prêt à enregistrer. <code>git diff</code> permet de relire les changements avant de les ajouter. Le dépôt distant permet à chacun d’échanger ses versions avec les autres clones.</p>
+<p>Si les deux copies ont modifié le même passage pour obtenir des résultats incompatibles, Git signale un conflit. Lis les deux variantes, écris le texte final dans le fichier, retire les marqueurs et recompile. Enregistre ensuite la résolution. Le fichier <code>.gitignore</code> aide à laisser de côté les fichiers auxiliaires générés qui ne sont pas déjà suivis.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#rim-sommes">TD R1 · Récurrence sur une somme</a></li>
+<li><a href="#rim-quant">TD R2 · Nier une proposition quantifiée</a></li>
+<li><a href="#rim-tiroirs">TD R2 · Démontrer le principe des tiroirs</a></li>
+<li><a href="#rim-tex">TP1 · Compiler le premier document</a></li>
+<li><a href="#rim-git">TP5 · Synchroniser et vérifier deux clones</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="rim-sommes"><summary>TD R1, ex. 1 · Prouver la formule de la somme</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Prouver que la somme des entiers de 0 à <code>n−1</code> vaut <code>n(n−1)/2</code>.</p>
+<ol><li>Pour n=0, la somme vide vaut zéro et la formule aussi.</li><li>Suppose la formule vraie au rang n. Pour passer à la somme de 0 à n, ajoute n. On obtient <code>n(n−1)/2+n=n(n+1)/2</code>.</li><li>C’est la formule prévue au rang n+1. Le principe de récurrence donne donc le résultat à tous les rangs. Attention au terme ajouté. L’intervalle initial s’arrête à n−1.</li></ol></div></details>
+<details class="acc" id="rim-quant"><summary>TD R2, ex. 3 · Nier « tout entier est un carré augmenté de 1 »</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Nier <code>∀n∈ℕ, ∃k∈ℕ, n=k²+1</code> et déterminer l’affirmation vraie.</p>
+<ol><li>Transforme le premier « pour tout » en « il existe ». Transforme le second « il existe » en « pour tout ».</li><li>Nie l’égalité. Tu obtiens <code>∃n∈ℕ, ∀k∈ℕ, n≠k²+1</code>.</li><li>Prends <code>n=0</code>. Quel que soit k, <code>k²+1≥1</code>. C’est donc la négation qui est vraie.</li></ol></div></details>
+<details class="acc" id="rim-tiroirs"><summary>TD R2, ex. 4 · Rédiger la preuve par l’absurde</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Montrer que ranger <code>n+1</code> paires de chaussettes dans <code>n</code> tiroirs force un tiroir à en contenir au moins deux.</p>
+<ol><li>Suppose que chaque tiroir contient au plus une paire.</li><li>Les n tiroirs contiennent alors au plus n paires, alors qu’on en a rangé n+1. Cette contradiction rejette l’hypothèse. Il existe donc un tiroir contenant au moins deux paires.</li></ol></div></details>
+<details class="acc" id="rim-tex"><summary>TP1 · Construire un document et lire la compilation</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Écrire le premier document « Hello World », le compiler et retrouver le PDF.</p>
+<ol><li>Dans un fichier <code>premier.tex</code>, écris une classe <code>article</code>, puis un environnement <code>document</code> contenant la phrase.</li><li>Compile depuis l’éditeur du TP ou avec le moteur choisi. Vérifie le nom et le dossier du PDF. Pour voir l’effet d’une erreur, omets volontairement la fermeture de l’environnement dans une copie, lis le premier message du journal et corrige-la.</li><li>Dans le TP « Oh la belle réf », mets une étiquette après le titre numéroté et crée un appel vers elle. Recompile jusqu’à la résolution correcte du numéro.</li></ol></div></details>
+<details class="acc" id="rim-git"><summary>TP5 · Relire une fusion dans les deux clones</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Travailler avec les deux clones du TP, ajouter <code>correction.tex</code> et contrôler la synchronisation puis la fusion.</p>
+<ol><li>Dans repoB, compile le document avant de committer. Ajoute le fichier <code>.gitignore</code> prévu et vérifie le statut. Pousse la version et récupère-la dans repoC.</li><li>Dans repoC, prépare la nouvelle section, ajoute les commandes en <code>verbatim</code>, puis valide le PDF. Lorsque les deux copies divergent, récupère les nouveaux commits avant de résoudre la fusion.</li><li>En cas de conflit, garde le contenu final voulu, supprime tous les marqueurs et recompile. Enregistre la résolution et vérifie que les deux clones retrouvent le document attendu.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-redaction/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-redaction/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-redaction/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Lire l’ordre des quantificateurs</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.708">0:23 · Direct, contraposée ou absurde</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="49.458">0:49 · Récurrence</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="72.083">1:12 · LaTeX et Git</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="98.792">1:38 · R1 · Prouver la somme des premiers entiers</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="125.792">2:05 · R2 · Nier une assertion</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="148.500">2:28 · TP1 · Compiler et revoir une référence</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="174.375">2:54 · TP5 · Suivre la fusion sur deux clones</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

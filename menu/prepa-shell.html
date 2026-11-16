@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shell et environnement Linux — Prépa ISIMA</title>
+  <meta name="description" content="Chemins, commandes Bash, permissions, tubes et processus.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-shell.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">&gt;_</span></div>
+      <h1 class="page-title" id="page-title">Shell et environnement Linux</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-shell/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Se repérer et assembler une commande</h3>
+<p>Le shell interprète une commande, ses options et ses arguments. <code>pwd</code> affiche l’endroit depuis lequel un chemin relatif est interprété. <code>cd ..</code> remonte au répertoire parent. Un chemin absolu commence à la racine <code>/</code>. Protège les noms contenant des espaces par des guillemets.</p>
+<p><code>type commande</code> indique notamment si le nom désigne une commande intégrée au shell. <code>help</code> documente les commandes intégrées de Bash, tandis que <code>man</code> ouvre les pages de manuel. <code>ls -la</code> inclut les entrées cachées et affiche les propriétés. Entre guillemets, <code>"*.txt"</code> est transmis tel quel. Sans guillemets, le shell peut le remplacer par les noms correspondants.</p></div>
+<div class="c-block"><h3>2. Créer, déplacer et vérifier les fichiers</h3>
+<p><code>mkdir</code> crée un répertoire, <code>touch</code> crée un fichier vide s’il n’existe pas, <code>cp</code> copie et <code>mv</code> déplace ou renomme. Dans <code>mv source destination</code>, si la destination est un dossier existant, le fichier entre dans ce dossier avec son nom actuel. Si la destination désigne un fichier existant, il peut être remplacé. Vérifie le résultat avec <code>ls</code>, <code>tree</code> ou <code>cat</code>.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-shell/schemas/arborescence.png" alt="L’exercice du TP3 transforme cinq fichiers et quatre sous-dossiers en deux dossiers conservant chacun un fichier."><figcaption>L’arborescence attendue donne un contrôle immédiat après les commandes.</figcaption></figure></div>
+<div class="c-block"><h3>3. Lire les permissions et démarrer un processus</h3>
+<p>Lis <code>rwx</code> pour le propriétaire, le groupe et les autres. Sur un fichier, <code>r</code> lit, <code>w</code> écrit et <code>x</code> exécute. Sur un dossier, <code>x</code> autorise la traversée. <code>chmod g=rx document</code> fixe les droits du groupe sans changer les autres catégories. Le <code>umask</code> enlève des droits à la création.</p>
+<p><code>ps</code> montre des processus, selon les options choisies. Avec <code>&amp;</code>, le shell démarre une commande en arrière-plan. <code>$!</code> donne son PID et <code>wait</code> attend sa terminaison. Les variables du shell deviennent disponibles pour les programmes lancés lorsque tu les exportes.</p></div>
+<div class="c-block"><h3>4. Fabriquer un résultat avec des commandes de texte</h3>
+<p>L’entrée standard reçoit les données, la sortie standard reçoit le résultat et la sortie d’erreur reçoit les diagnostics. <code>&gt;</code> remplace un fichier de sortie, <code>&gt;&gt;</code> lui ajoute du contenu et <code>|</code> transmet la sortie normale à la commande suivante.</p>
+<p><code>head</code> et <code>tail</code> sélectionnent le début ou la fin. <code>grep</code> filtre, <code>cut</code> choisit des colonnes et <code>sort</code> ordonne. <code>uniq</code> travaille sur les lignes adjacentes. Pour compter toutes les répétitions d’un même texte, trie avant <code>uniq -c</code>. <code>find</code> explore des chemins selon des critères de nom, type ou permissions.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#ps-tree">TP3 de rédaction · Reproduire puis transformer l’arborescence</a></li>
+<li><a href="#ps-tools">Mémo Bash · Vérifier un pipeline et les permissions</a></li>
+<li><a href="#ps-process">Application des notes · Observer un processus d’arrière-plan</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="ps-tree"><summary>TP3, ex. 1 · Construire puis transformer l’arborescence</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Créer le répertoire de TP et les fichiers indiqués. À la fin, <code>exo1/fichier4</code> contient « Hello World! » et <code>exo2/fichier2</code> est vide. Les autres objets de l’exercice ont été retirés.</p>
+<ol><li>Crée un dossier de travail dédié et place-toi dedans. Fais <code>mkdir exo1 exo2 exo3 tmp</code> puis <code>touch exo1/fichier{1,2,3,4} tmp/fichier0</code>. La notation avec accolades est développée par Bash.</li><li>Déplace <code>exo1/fichier2</code> dans <code>exo2/</code>. Renomme <code>exo1/fichier1</code> en <code>exo1/fichier0</code>. Écris la ligne de texte avec <code>printf '%s\n' 'Hello World!' &gt; exo1/fichier3</code>, puis renomme le fichier vers <code>exo1/fichier4</code> comme demandé.</li><li>Dans ce dossier d’exercice, retire <code>exo1/fichier0</code> et <code>tmp/fichier0</code>, puis enlève les dossiers vides <code>exo3</code> et <code>tmp</code> avec <code>rmdir</code>. Vérifie l’arborescence et lis <code>exo1/fichier4</code> avec <code>cat</code>.</li></ol></div></details>
+<details class="acc" id="ps-tools"><summary>Application du mémo · Compter les répétitions d’un journal</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Compter le nombre d’occurrences de chaque ligne contenant <code>ERREUR</code>.</p>
+<ol><li>Essaie <code>grep 'ERREUR' journal.txt | sort | uniq -c</code>. Lis les résultats à chaque étape pour vérifier quelle commande enlève ou réordonne les lignes.</li><li>Insère deux mêmes lignes d’erreur séparées par une autre. Sans tri, elles ne sont pas voisines et le compteur peut les traiter à part. Après tri, elles se retrouvent ensemble.</li><li>Pour garder un rapport, redirige la sortie vers un fichier distinct. Vérifie avec <code>ls -l</code> que les droits du fichier correspondent au partage prévu.</li></ol></div></details>
+<details class="acc" id="ps-process"><summary>Application des notes · Afficher le PID puis attendre la fin</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Démarrer <code>sleep</code> en arrière-plan, repérer son PID et attendre sa sortie.</p>
+<ol><li>Lance <code>sleep 10 &amp;</code> puis sauvegarde <code>pid=$!</code>. Vérifie avec <code>ps -p "$pid"</code> pendant ces dix secondes.</li><li>Exécute <code>wait "$pid"</code> et lis immédiatement <code>echo "$?"</code>. Une fin ordinaire du test donne 0.</li><li>Refais <code>sleep 10</code> au premier plan. Tu ne récupères la main qu’après sa fin. Cette différence permet de vérifier le rôle de l’arrière-plan.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-shell/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-shell/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-shell/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Comprendre ce que lit Bash</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="24.375">0:24 · Fabriquer puis vérifier une arborescence</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="48.750">0:48 · Droits, flux et processus</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="97.458">1:37 · TP3 · Créer les fichiers dans les bons dossiers</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="124.083">2:04 · TP3 · Vérifier la transformation complète</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="150.750">2:30 · Application · Compter les lignes identiques</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

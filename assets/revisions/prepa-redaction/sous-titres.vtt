@@ -1,0 +1,251 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:02.795
+Chaque élève de la classe a une place.
+
+00:00:02.795 --> 00:00:05.864
+Ça ne dit pas qu'il existe une seule place pour toute
+
+00:00:05.864 --> 00:00:06.423
+la classe.
+
+00:00:06.423 --> 00:00:09.168
+C'est la différence entre les deux ordres.
+
+00:00:09.168 --> 00:00:12.304
+Dans le premier, tu prends un élève puis tu peux
+chercher
+
+00:00:12.304 --> 00:00:13.445
+une place pour lui.
+
+00:00:13.445 --> 00:00:17.072
+Dans le second, tu fixes une place avant de voir
+l'élève.
+
+00:00:17.072 --> 00:00:20.570
+Pour nier l'assertion, avance depuis la gauche :
+remplace chaque quantificateur
+
+00:00:20.570 --> 00:00:23.432
+par l'autre, puis nie la relation à la fin.
+
+00:00:23.808 --> 00:00:27.802
+Avant de choisir une preuve, sépare l'hypothèse de la
+conclusion.
+
+00:00:27.802 --> 00:00:30.633
+Une preuve directe part de l'hypothèse.
+
+00:00:30.633 --> 00:00:34.309
+La contraposée suppose que la conclusion est fausse et
+en déduit
+
+00:00:34.309 --> 00:00:35.646
+que l'hypothèse l'est aussi.
+
+00:00:35.646 --> 00:00:39.613
+Dans une preuve par l'absurde, suppose le contraire de
+l'assertion puis
+
+00:00:39.613 --> 00:00:40.695
+trouve une contradiction.
+
+00:00:40.695 --> 00:00:44.280
+Si tu veux réfuter une implication, un exemple où
+l'hypothèse est
+
+00:00:44.280 --> 00:00:45.584
+fausse ne suffit pas.
+
+00:00:45.584 --> 00:00:49.224
+Il faut que l'hypothèse soit vraie et que la
+conclusion échoue.
+
+00:00:49.558 --> 00:00:52.768
+Une récurrence ressemble à une ligne de dominos.
+
+00:00:52.768 --> 00:00:56.321
+Tu dois démarrer la chaîne et démontrer que chaque
+domino entraine
+
+00:00:56.321 --> 00:00:57.290
+bien le suivant.
+
+00:00:57.290 --> 00:01:00.991
+L'initialisation vérifie la propriété au premier rang.
+
+00:01:00.991 --> 00:01:04.563
+Pour le passage, suppose-la à un rang quelconque, puis
+utilise cette
+
+00:01:04.563 --> 00:01:06.837
+hypothèse pour la prouver au rang suivant.
+
+00:01:06.837 --> 00:01:10.072
+Si le départ manque, tu n'as pas prouvé que le système
+
+00:01:10.072 --> 00:01:11.837
+avance réellement depuis le premier cas.
+
+00:01:12.183 --> 00:01:15.810
+Un fichier LaTeX contient la structure de ton
+document.
+
+00:01:15.810 --> 00:01:19.462
+Dans le préambule, tu choisis la classe et les
+extensions.
+
+00:01:19.462 --> 00:01:22.244
+Puis tu écris dans l'environnement document.
+
+00:01:22.244 --> 00:01:25.671
+Une étiquette relie une partie que tu numérote à un
+endroit
+
+00:01:25.671 --> 00:01:26.606
+où tu l'appelles.
+
+00:01:26.606 --> 00:01:29.785
+Git aide à retrouver ce que tu as modifié entre deux
+
+00:01:29.785 --> 00:01:30.075
+versions.
+
+00:01:30.075 --> 00:01:34.143
+Examine le statut et les différences avant
+d'enregistrer un commit.
+
+00:01:34.143 --> 00:01:38.154
+Pour échanger deux versions, utilise le dépôt distant
+prévu dans le
+
+00:01:38.154 --> 00:01:38.518
+TP.
+
+00:01:38.892 --> 00:01:41.869
+Au rang zéro, il n'y a aucun terme.
+
+00:01:41.869 --> 00:01:44.908
+La somme vide vaut zéro et la formule aussi.
+
+00:01:44.908 --> 00:01:47.359
+Supposons-la au rang n.
+
+00:01:47.359 --> 00:01:50.530
+Pour aller au rang suivant, le nouveau terme est n,
+car
+
+00:01:50.530 --> 00:01:52.837
+la somme précédente s'arrête à n moins un.
+
+00:01:52.837 --> 00:01:55.447
+Ajoute donc n à la formule.
+
+00:01:55.447 --> 00:01:58.971
+En mettant au même dénominateur, tu obtiens n fois n
+plus
+
+00:01:58.971 --> 00:01:59.932
+un sur deux.
+
+00:01:59.932 --> 00:02:03.143
+C'est exactement la formule au rang n plus un.
+
+00:02:03.143 --> 00:02:05.545
+Tu peux conclure pour tous les rangs.
+
+00:02:05.892 --> 00:02:09.064
+On nous dit que tout entier naturel est un carré
+augmenté
+
+00:02:09.064 --> 00:02:09.641
+de un.
+
+00:02:09.641 --> 00:02:12.688
+Pour le nier, cherche un entier qui échappe à tous les
+
+00:02:12.688 --> 00:02:15.736
+choix de k. Change le premier pour tout, puis le
+deuxième
+
+00:02:15.736 --> 00:02:16.013
+quantificateur.
+
+00:02:16.013 --> 00:02:18.525
+À la fin, nie l'égalité.
+
+00:02:18.525 --> 00:02:21.283
+Il suffit de trouver un témoin : zéro ne peut pas
+
+00:02:21.283 --> 00:02:24.041
+être un carré plus un puisque cette expression vaut
+toujours au
+
+00:02:24.041 --> 00:02:24.543
+moins un.
+
+00:02:24.543 --> 00:02:28.231
+Cela permet de conclure que l'assertion de départ est
+fausse.
+
+00:02:28.600 --> 00:02:32.104
+Crée un fichier du TP et choisis la classe article.
+
+00:02:32.104 --> 00:02:35.646
+Ouvre l'environnement document et écris une phrase
+simple.
+
+00:02:35.646 --> 00:02:38.476
+Ferme-le, puis lance la compilation.
+
+00:02:38.476 --> 00:02:42.170
+Si aucun PDF n'apparaît, lis le premier message du
+journal avant
+
+00:02:42.170 --> 00:02:43.513
+de corriger le reste.
+
+00:02:43.513 --> 00:02:47.256
+Quand le document utilise une référence, vérifie que
+l'étiquette et son
+
+00:02:47.256 --> 00:02:49.298
+appel portent exactement le même nom.
+
+00:02:49.298 --> 00:02:54.126
+Une compilation supplémentaire peut être nécessaire
+pour que le numéro apparaisse.
+
+00:02:54.475 --> 00:02:58.677
+Dans le premier clone, prépare ton document et vérifie
+le PDF.
+
+00:02:58.677 --> 00:03:01.692
+Regarde le statut avant d'enregistrer.
+
+00:03:01.692 --> 00:03:05.197
+Envoie la version et récupère-la dans le deuxième
+clone.
+
+00:03:05.197 --> 00:03:09.450
+Les modifications qui touchent le même passage peuvent
+générer un conflit.
+
+00:03:09.450 --> 00:03:13.067
+Lis les deux versions dans le fichier et compose le
+texte
+
+00:03:13.067 --> 00:03:13.396
+final.
+
+00:03:13.396 --> 00:03:17.403
+Puis enlève les marqueurs, recompile et enregistre la
+résolution.
+
+00:03:17.403 --> 00:03:20.964
+Le résultat doit se voir dans le document construit
+après la
+
+00:03:20.964 --> 00:03:21.288
+fusion.

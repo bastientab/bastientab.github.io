@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bases de données et SQL — Prépa ISIMA</title>
+  <meta name="description" content="Modèle relationnel, jointures, quantificateurs, agrégats et SQLite.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-bdd.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/base-de-donnees.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Bases de données et SQL</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-bdd/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Organiser les données en relations</h3>
+<p>Le <strong>schéma</strong> décrit les tables, les colonnes et leurs propriétés. L’<strong>instance</strong> est le contenu des tables à un moment donné. Une <strong>clé primaire</strong> identifie une ligne. Une <strong>clé étrangère</strong> relie une colonne ou un groupe de colonnes à une clé d’une autre table. Dans le TD des trains, plusieurs départs peuvent emprunter une même ligne et plusieurs arrêts appartiennent à cette ligne.</p>
+<p>Évite de recopier partout la même information. Si le nom d’une entreprise apparaît avec sa ville dans chaque emploi, la ville peut devenir incohérente d’une ligne à l’autre. Une table des entreprises permet de stocker le fait au bon endroit et de joindre lorsque le résultat demande la ville.</p></div>
+<div class="c-block"><h3>2. Sélectionner, projeter et joindre</h3>
+<p>En SQL, <code>FROM</code> désigne la source, <code>WHERE</code> filtre les lignes et <code>SELECT</code> choisit les colonnes du résultat. <code>DISTINCT</code> retire les doublons du résultat projeté. Une <strong>jointure</strong> assemble deux lignes quand leur condition concorde. Vérifie que l’association exprime la bonne relation métier avant de t’occuper des colonnes à afficher.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-bdd/schemas/jointure.png" alt="Le départ de la ligne 3 à 15 h est relié à l’arrêt de Clermont à quatre heures du départ, ce qui donne un passage à 19 h."><figcaption>Une ligne peut apparaître à plusieurs départs. L’heure de passage est donc calculée pour chaque train qui l’emprunte.</figcaption></figure></div>
+<div class="c-block"><h3>3. Demander une existence ou une absence</h3>
+<p><code>EXISTS</code> teste si une sous-requête produit au moins une ligne. Avec <code>NOT EXISTS</code>, on cherche une condition qui ne trouve aucune correspondance. Pour sélectionner les lignes ferroviaires qui ne passent jamais à Lyon, élimine toute ligne qui possède un arrêt à Lyon. Filtrer des arrêts différents de Lyon laisse passer des lignes qui possèdent aussi un arrêt dans cette ville.</p>
+<p>Une question « pour toutes les pièces » se reformule en « il n’existe aucune pièce qui manque ». Une sous-requête imbriquée associe alors chaque fournisseur à chaque pièce qui contredirait la condition.</p></div>
+<div class="c-block"><h3>4. Regrouper et conserver les lignes sans correspondance</h3>
+<p><code>GROUP BY</code> forme les groupes. Un agrégat comme <code>COUNT</code>, <code>SUM</code> ou <code>AVG</code> résume les lignes de chaque groupe. <code>WHERE</code> filtre les lignes avant regroupement. <code>HAVING</code> filtre les groupes après calcul.</p>
+<p>Une <code>LEFT JOIN</code> garde les lignes de gauche sans correspondance et complète la partie droite avec <code>NULL</code>. <code>COUNT(*)</code> compte cette ligne. <code>COUNT(colonne_droite)</code> ignore ses <code>NULL</code> et donne zéro correspondance. Pour comparer explicitement à l’absence de valeur, utilise <code>IS NULL</code>.</p></div>
+<div class="c-block"><h3>5. Relire une requête avec l’algèbre relationnelle</h3>
+<p>La <strong>sélection</strong> σ garde les lignes qui respectent une condition. La <strong>projection</strong> π garde les attributs demandés et déduplique dans le modèle ensembliste. Le <strong>renommage</strong> ρ aide quand deux attributs porteraient le même nom. L’union et la différence demandent des relations compatibles. Le produit cartésien forme toutes les paires. Une jointure n’en garde que celles qui respectent un lien.</p>
+<p>Pour le TP, SQLite garde la base dans un fichier. <code>.tables</code> liste les tables dans le client SQLite. <code>.read</code> lit les instructions SQL d’un fichier. Ces commandes commençant par un point appartiennent au client SQLite. Une instruction <code>SELECT</code> appartient au langage SQL.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#pdb-train">TD2 · Joindre trajets et arrêts pour calculer une heure</a></li>
+<li><a href="#pdb-neg">TD2 · Écrire une condition d’absence correcte</a></li>
+<li><a href="#pdb-count">TD4 · Inclure les managers avec zéro employé</a></li>
+<li><a href="#pdb-ra">TD5 et TD6 · Traduire union et quantification</a></li>
+<li><a href="#pdb-sqlite">TP1 · Charger la base Cinéma et écrire les premières requêtes</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="pdb-train"><summary>TD2, ex. 1 question 4 · Donner les heures de passage à Clermont-Fd</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Afficher les trains et heures de passage à Clermont-Fd, départs inclus.</p>
+<pre class="c-code"><code>SELECT d.NoTrain, d.Heure + a.Chrono AS Passage
+FROM DEPART AS d
+JOIN ARRET AS a ON a.NoLigne = d.NoLigne
+WHERE a.Ville = 'Clermont-Fd'
+ORDER BY Passage, d.NoTrain;</code></pre>
+<p>Sur les lignes 0 et 1, Clermont est un départ et <code>Chrono=0</code>. Tu obtiens <code>9634 à 9 h</code> et <code>3472 à 9 h</code>. Sur la ligne 3, le départ est à 15 h et le trajet jusqu’à Clermont dure 4 h. Le train 9634 passe donc à 19 h. La présence du même train à deux horaires est cohérente.</p></div></details>
+<details class="acc" id="pdb-neg"><summary>TD2, ex. 3 · Trouver les lignes qui ne passent pas par Lyon</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Donner les lignes sans arrêt à Lyon et expliquer pourquoi le filtre <code>Ville != 'Lyon'</code> donne un autre résultat.</p>
+<pre class="c-code"><code>SELECT DISTINCT a.NoLigne
+FROM ARRET AS a
+WHERE NOT EXISTS (
+  SELECT 1 FROM ARRET AS b
+  WHERE b.NoLigne = a.NoLigne AND b.Ville = 'Lyon'
+);</code></pre>
+<p>Le test intérieur concerne toute la ligne candidate. Dans l’instance, les lignes 0 et 3 sont les seules sans Lyon. La ligne 1 possède Clermont-Fd et Lyon : elle peut donc passer le mauvais filtre sur sa ligne Clermont-Fd.</p></div></details>
+<details class="acc" id="pdb-count"><summary>TD4, questions 6 et 18 · Agréger et garder les valeurs zéro</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Trouver les effectifs par ville du tableau des entreprises et donner, pour chaque employé, le nombre de personnes qu’il dirige.</p>
+<ol><li>Pour le tableau fourni, <code>GROUP BY city</code> avec <code>COUNT(*)</code> donne Paris 3, Clermont-Fd 2 et Rennes 1.</li><li>Pour les managers, commence par tous les employés. Rattache leurs lignes de management avec <code>LEFT JOIN</code> sur <code>manager_name=employee_name</code>, groupe par employé et compte <code>manages.employee_name</code>.</li><li>Dans un contre-exemple avec une personne sans collaborateur, la jointure gauche produit une ligne avec la partie droite vide. <code>COUNT(*)</code> donnerait un. La colonne droite donne zéro.</li></ol></div></details>
+<details class="acc" id="pdb-ra"><summary>TD5 et TD6 · Réunir deux ensembles puis exprimer « toutes les pièces »</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Combiner les villes des relations P et V, puis donner les fournisseurs qui vendent toutes les pièces du catalogue.</p>
+<ol><li>Projette la colonne ville séparément dans P et V. Les schémas deviennent compatibles. Fais l’union. On obtient Lyon, Paris et Clermont-Fd, avec Paris une seule fois.</li><li>Pour les fournisseurs, construis tous les couples <code>(fid,pid)</code> possibles. Soustrais les couples présents dans la projection de Catalogue. Les couples restants indiquent les pièces manquantes.</li><li>Projette les fournisseurs qui figurent parmi les couples manquants et retire-les de l’ensemble des fournisseurs. Vérifie que ton raisonnement garde un fournisseur qui ne manque d’aucune pièce.</li></ol></div></details>
+<details class="acc" id="pdb-sqlite"><summary>TP1 · Initialiser SQLite et sélectionner les drames</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Charger le script fourni dans la base locale <code>films.db</code>, afficher les tables, puis donner les titres des drames.</p>
+<ol><li>Dans le dossier du TP, lance <code>sqlite3 films.db</code>. Dans l’invite SQLite, exécute <code>.read films.sql</code> avec le script fourni dans le sujet, puis <code>.tables</code>. Vérifie l’absence d’erreur à l’import.</li><li>La requête est <code>SELECT titre FROM Film WHERE genre='drame';</code> si le jeu de données écrit le genre ainsi. Observe d’abord les libellés réels avec <code>SELECT DISTINCT genre FROM Film;</code>.</li><li>Ferme et rouvre la même base. Les tables doivent encore être là. Si la base est vide, vérifie le chemin du fichier utilisé avant de recréer les tables.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-bdd/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-bdd/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-bdd/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Schéma, données et clés</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="24.917">0:24 · Construire une jointure</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="47.792">0:47 · Dire qu’une correspondance manque</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="72.917">1:12 · Regrouper les résultats et garder le zéro</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="96.250">1:36 · Lire l’algèbre et le client SQLite</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="119.042">1:59 · TD2 · À quelle heure le train passe-t-il ?</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="167.292">2:47 · TD2 · Rejeter toute ligne qui passe par Lyon</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="189.708">3:09 · TD4 · Un collaborateur, plusieurs collaborateurs ou zéro</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="215.625">3:35 · TD6 · Vendre toutes les pièces</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="241.958">4:01 · TP SQLite · Charger puis vérifier la base Cinéma</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

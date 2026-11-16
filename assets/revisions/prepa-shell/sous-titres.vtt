@@ -1,0 +1,211 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.750
+Quand tu tapes une commande, le shell commence par
+découper la
+
+00:00:03.750 --> 00:00:04.082
+ligne.
+
+00:00:04.082 --> 00:00:07.088
+Si ton fichier a un espace dans son nom, entoure le
+
+00:00:07.088 --> 00:00:09.548
+chemin de guillemets pour qu'il reste un seul
+argument.
+
+00:00:09.548 --> 00:00:12.697
+Tape pwd pour savoir où tu te trouves.
+
+00:00:12.697 --> 00:00:15.712
+Les chemins relatifs commencent à cet endroit.
+
+00:00:15.712 --> 00:00:19.419
+Pour lire de l'aide, demande à type comment la
+commande est
+
+00:00:19.419 --> 00:00:19.756
+implémentée.
+
+00:00:19.756 --> 00:00:23.447
+Pour une primitive de Bash, l'aide intégrée peut te
+donner la
+
+00:00:23.447 --> 00:00:24.119
+bonne syntaxe.
+
+00:00:24.475 --> 00:00:28.481
+Créer un dossier et écrire un fichier sont deux
+actions différentes.
+
+00:00:28.481 --> 00:00:32.054
+Une fois que tu as les deux, regarde la destination de
+
+00:00:32.054 --> 00:00:32.378
+mv.
+
+00:00:32.378 --> 00:00:36.092
+Si c'est un dossier qui existe, le fichier prend place
+dedans.
+
+00:00:36.092 --> 00:00:39.743
+Si c'est un autre nom de fichier, tu peux renommer ou
+
+00:00:39.743 --> 00:00:40.075
+remplacer.
+
+00:00:40.075 --> 00:00:43.874
+Pour comprendre ce que tu viens de faire, relis le
+répertoire.
+
+00:00:43.874 --> 00:00:48.506
+Vérifie aussi le contenu quand l'exercice demande le
+remplacement d'un fichier.
+
+00:00:48.850 --> 00:00:52.976
+Sur un fichier, chaque triade de droits s'applique à
+un groupe
+
+00:00:52.976 --> 00:00:53.726
+différent d'utilisateurs.
+
+00:00:53.726 --> 00:00:57.385
+Si tu veux fixer seulement les droits du groupe,
+indique cette
+
+00:00:57.385 --> 00:00:58.383
+catégorie à chmod.
+
+00:00:58.383 --> 00:01:01.851
+Ensuite, regarde où va le résultat d'une commande.
+
+00:01:01.851 --> 00:01:04.744
+Une redirection écrit dans un fichier.
+
+00:01:04.744 --> 00:01:07.967
+Un tube envoie le résultat à une autre commande.
+
+00:01:07.967 --> 00:01:12.094
+Tu peux appliquer plusieurs traitements au même texte
+sans créer de
+
+00:01:12.094 --> 00:01:12.844
+fichier intermédiaire.
+
+00:01:13.183 --> 00:01:16.801
+Un processus en arrière-plan continue alors que le
+shell t'a rendu
+
+00:01:16.801 --> 00:01:17.459
+la main.
+
+00:01:17.459 --> 00:01:21.981
+Récupère son identifiant si tu veux le surveiller ou
+l'attendre précisément.
+
+00:01:21.981 --> 00:01:25.266
+Utilise la commande ps pendant qu'il tourne.
+
+00:01:25.266 --> 00:01:28.832
+Si tu attends avec wait, le shell bloque jusqu'à sa
+fin.
+
+00:01:28.832 --> 00:01:32.741
+Après une exécution normale de sleep, le statut est
+zéro.
+
+00:01:32.741 --> 00:01:35.635
+Refais l'essai sans le signe et commercial pour voir
+que la
+
+00:01:35.635 --> 00:01:37.214
+main n'est rendue qu'à la fin.
+
+00:01:37.558 --> 00:01:41.050
+Le premier exercice du TP se fait au terminal.
+
+00:01:41.050 --> 00:01:44.052
+Crée le dossier de travail puis place-toi dedans.
+
+00:01:44.052 --> 00:01:46.356
+Crée les quatre sous-dossiers.
+
+00:01:46.356 --> 00:01:50.190
+Une fois exo un créé, les accolades permettent de
+demander quatre
+
+00:01:50.190 --> 00:01:51.932
+chemins avec une seule expression.
+
+00:01:51.932 --> 00:01:54.837
+Bash les construit avant de lancer touch.
+
+00:01:54.837 --> 00:01:57.802
+Vérifie les cinq fichiers dans leur dossier.
+
+00:01:57.802 --> 00:02:01.293
+Si un chemin ne fonctionne pas, commence par relire
+pwd et
+
+00:02:01.293 --> 00:02:03.832
+les noms de dossier, puis refais la commande.
+
+00:02:04.183 --> 00:02:07.696
+Dans l'état final, exo un garde le fichier quatre,
+mais avec
+
+00:02:07.696 --> 00:02:09.293
+le texte du fichier trois.
+
+00:02:09.293 --> 00:02:12.332
+Exo deux garde le fichier deux déplacé.
+
+00:02:12.332 --> 00:02:15.642
+Commence par le déplacement et le renommage du fichier
+un, puis
+
+00:02:15.642 --> 00:02:17.749
+écris Hello World dans le fichier trois.
+
+00:02:17.749 --> 00:02:21.082
+Renomme-le vers le fichier quatre, comme demandé.
+
+00:02:21.082 --> 00:02:24.758
+Retire les fichiers de test restants dans ce dossier
+dédié.
+
+00:02:24.758 --> 00:02:28.263
+Compare la structure obtenue au dessin et ouvre le
+fichier quatre
+
+00:02:28.263 --> 00:02:30.494
+pour vérifier qu'il contient bien le texte.
+
+00:02:30.850 --> 00:02:34.393
+Si deux mêmes lignes sont séparées par une autre, uniq
+peut
+
+00:02:34.393 --> 00:02:35.359
+les compter séparément.
+
+00:02:35.359 --> 00:02:38.165
+Le tri les réunit avant le comptage.
+
+00:02:38.165 --> 00:02:41.266
+Teste donc le pipeline étape par étape.
+
+00:02:41.266 --> 00:02:44.182
+Avec grep, ne garde que les erreurs.
+
+00:02:44.182 --> 00:02:46.915
+Avec sort, regarde leur ordre.
+
+00:02:46.915 --> 00:02:49.464
+Enfin, compte avec uniq.
+
+00:02:49.464 --> 00:02:52.760
+Quand tu rediriges la sortie pour garder le rapport,
+choisis un
+
+00:02:52.760 --> 00:02:55.457
+nom différent de la source pour éviter de l'écraser.
