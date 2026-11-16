@@ -1,0 +1,522 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.721
+Avant de faire une dérivée ou un tableau de
+variations, regarde
+
+00:00:03.721 --> 00:00:05.038
+où la formule existe.
+
+00:00:05.038 --> 00:00:08.802
+Dans un sur un plus x, le dénominateur ne doit jamais
+
+00:00:08.802 --> 00:00:09.486
+être zéro.
+
+00:00:09.486 --> 00:00:11.557
+On enlève donc moins un.
+
+00:00:11.557 --> 00:00:15.516
+Pour une fonction définie par morceaux, il faut
+vérifier les jonctions.
+
+00:00:15.516 --> 00:00:19.339
+Approche-toi du même point depuis la gauche, puis
+depuis la droite.
+
+00:00:19.339 --> 00:00:22.163
+Les deux limites et la valeur au point doivent se
+rejoindre
+
+00:00:22.163 --> 00:00:24.474
+pour que la fonction soit continue à cette jonction.
+
+00:00:24.850 --> 00:00:28.391
+Imagine un trajet où tu changes d'altitude sans saut.
+
+00:00:28.391 --> 00:00:31.761
+Si tu pars en dessous d'une altitude donnée et
+termines au-dessus,
+
+00:00:31.761 --> 00:00:33.905
+tu passes par cette altitude en route.
+
+00:00:33.905 --> 00:00:37.092
+C'est l'idée du théorème des valeurs intermédiaires.
+
+00:00:37.092 --> 00:00:39.984
+Tu peux cependant l'atteindre plusieurs fois.
+
+00:00:39.984 --> 00:00:43.278
+Si le trajet ne fait que monter, sans plateau, il ne
+
+00:00:43.278 --> 00:00:44.775
+repasse pas au même niveau.
+
+00:00:44.775 --> 00:00:48.244
+La monotonie stricte t'apporte alors l'unicité.
+
+00:00:48.244 --> 00:00:50.793
+Ce sont deux morceaux de preuve distincts.
+
+00:00:51.142 --> 00:00:54.842
+Pour construire une tangente, garde le point et sa
+pente.
+
+00:00:54.842 --> 00:00:57.815
+Tu as la valeur de la fonction à l'endroit choisi,
+puis
+
+00:00:57.815 --> 00:00:59.437
+la pente grâce à la dérivée.
+
+00:00:59.437 --> 00:01:02.923
+Une asymptote oblique est une droite qu'on approche
+très loin sur
+
+00:01:02.923 --> 00:01:03.874
+l'axe des x.
+
+00:01:03.874 --> 00:01:07.084
+Pour la vérifier, soustrais la droite à la fonction.
+
+00:01:07.084 --> 00:01:10.283
+Si l'écart tend vers zéro, la droite convient.
+
+00:01:10.283 --> 00:01:13.630
+Le signe de l'écart indique si la courbe est dessus ou
+
+00:01:13.630 --> 00:01:13.935
+dessous.
+
+00:01:14.308 --> 00:01:18.388
+Un logarithme composé contient une autre expression à
+l'intérieur.
+
+00:01:18.388 --> 00:01:22.052
+Commence par contrôler que cette expression est
+positive.
+
+00:01:22.052 --> 00:01:26.528
+Ensuite, la dérivée d'un logarithme apporte un sur
+l'expression, multiplié par
+
+00:01:26.528 --> 00:01:28.155
+la dérivée de l'intérieur.
+
+00:01:28.155 --> 00:01:31.975
+Pour x carré plus un, la dérivée de l'intérieur vaut
+deux
+
+00:01:31.975 --> 00:01:32.322
+x.
+
+00:01:32.322 --> 00:01:35.055
+C'est le facteur qui manque le plus souvent.
+
+00:01:35.055 --> 00:01:39.638
+Le même principe de composition s'applique avec la
+fonction exponentielle, avec
+
+00:01:39.638 --> 00:01:41.305
+une règle extérieure différente.
+
+00:01:41.642 --> 00:01:45.452
+Pour inverser sinus, il faut savoir quel angle
+choisir.
+
+00:01:45.452 --> 00:01:48.561
+On garde une branche où sinus ne revient jamais deux
+fois
+
+00:01:48.561 --> 00:01:49.692
+à la même valeur.
+
+00:01:49.692 --> 00:01:52.302
+Arcsinus renvoie cet angle-là.
+
+00:01:52.302 --> 00:01:55.905
+Autre idée du cours : approcher une fonction près d'un
+point.
+
+00:01:55.905 --> 00:01:59.938
+Tout près de zéro, exponentielle de x ressemble à un
+plus
+
+00:01:59.938 --> 00:02:00.305
+x.
+
+00:02:00.305 --> 00:02:02.927
+Le reste est petit devant x.
+
+00:02:02.927 --> 00:02:06.462
+Cette approximation concerne le voisinage du point,
+donc garde en tête
+
+00:02:06.462 --> 00:02:08.712
+l'endroit où on a fait le développement.
+
+00:02:09.058 --> 00:02:12.846
+Dans le plan complexe, la partie réelle dit combien tu
+avances
+
+00:02:12.846 --> 00:02:15.945
+horizontalement et la partie imaginaire combien tu
+avances verticalement.
+
+00:02:15.945 --> 00:02:18.690
+Le module est la longueur de la flèche.
+
+00:02:18.690 --> 00:02:21.729
+L'argument dit dans quelle direction elle pointe.
+
+00:02:21.729 --> 00:02:24.952
+Pour additionner, les coordonnées sont pratiques.
+
+00:02:24.952 --> 00:02:28.701
+Pour multiplier, lis les modules et angles : les
+modules se
+
+00:02:28.701 --> 00:02:30.405
+multiplient, et les angles s'ajoutent.
+
+00:02:30.405 --> 00:02:34.128
+Pour une puissance, tu peux donc traiter la longueur
+et la
+
+00:02:34.128 --> 00:02:34.805
+direction séparément.
+
+00:02:35.142 --> 00:02:39.817
+En télécoms, une sinusoïde s'écrit avec une amplitude,
+une pulsation et
+
+00:02:39.817 --> 00:02:40.668
+une phase.
+
+00:02:40.668 --> 00:02:44.096
+La représentation complexe permet de se concentrer sur
+l'amplitude et sur
+
+00:02:44.096 --> 00:02:47.525
+l'angle quand la pulsation est la même pour tous les
+signaux
+
+00:02:47.525 --> 00:02:47.837
+étudiés.
+
+00:02:47.837 --> 00:02:51.979
+Dériver la représentation complète multiplie par i
+fois oméga.
+
+00:02:51.979 --> 00:02:55.708
+Pour un condensateur, le courant vaut la capacité
+multipliée par la
+
+00:02:55.708 --> 00:02:57.065
+dérivée de la tension.
+
+00:02:57.065 --> 00:03:00.453
+C'est ce qui donne une impédance qui dépend de la
+pulsation
+
+00:03:00.453 --> 00:03:01.685
+et apporte un déphasage.
+
+00:03:02.017 --> 00:03:05.190
+Une racine du polynôme rend sa valeur nulle.
+
+00:03:05.190 --> 00:03:08.670
+Elle correspond au facteur x moins cette racine.
+
+00:03:08.670 --> 00:03:12.714
+Dans une fraction, commence par factoriser et regarde
+quels facteurs restent
+
+00:03:12.714 --> 00:03:13.450
+en bas.
+
+00:03:13.450 --> 00:03:17.583
+S'il y a une partie entière, récupère-la avec la
+division de
+
+00:03:17.583 --> 00:03:17.959
+polynômes.
+
+00:03:17.959 --> 00:03:22.252
+Ensuite, écris une somme dont chaque terme correspond
+à un facteur
+
+00:03:22.252 --> 00:03:23.033
+du dénominateur.
+
+00:03:23.033 --> 00:03:26.457
+Si un facteur apparaît deux fois, prévois le terme
+simple et
+
+00:03:26.457 --> 00:03:27.702
+le terme au carré.
+
+00:03:28.058 --> 00:03:31.550
+Une primitive fait le chemin inverse de la dérivée.
+
+00:03:31.550 --> 00:03:35.104
+Pour contrôler un calcul, reprends la dérivée à la
+fin.
+
+00:03:35.104 --> 00:03:38.923
+Sur un intervalle, la différence des valeurs de la
+primitive aux
+
+00:03:38.923 --> 00:03:40.312
+deux bornes donne l'intégrale.
+
+00:03:40.312 --> 00:03:43.772
+Avant de calculer, lis la forme de ce que tu veux
+
+00:03:43.772 --> 00:03:44.087
+intégrer.
+
+00:03:44.087 --> 00:03:48.032
+Si tu vois une composée et la dérivée de son
+intérieur,
+
+00:03:48.032 --> 00:03:49.467
+une substitution peut simplifier.
+
+00:03:49.467 --> 00:03:52.773
+Si tu vois un produit dont l'un des facteurs se
+simplifie
+
+00:03:52.773 --> 00:03:55.177
+en le dérivant, tente une intégration par parties.
+
+00:03:55.517 --> 00:03:59.119
+Le TD pose une question d'existence et d'unicité.
+
+00:03:59.119 --> 00:04:01.741
+Une partie commence par les bornes.
+
+00:04:01.741 --> 00:04:05.173
+À gauche, huit moins douze plus deux donne moins deux.
+
+00:04:05.173 --> 00:04:08.959
+À droite, vingt-sept moins vingt-sept plus deux donne
+deux.
+
+00:04:08.959 --> 00:04:12.182
+On cherche zéro, qui est bien entre ces valeurs.
+
+00:04:12.182 --> 00:04:15.945
+Le polynôme est continu, donc le théorème s'applique.
+
+00:04:15.945 --> 00:04:20.185
+Si tu t'arrêtes là, ton raisonnement autorise encore
+plusieurs racines.
+
+00:04:20.517 --> 00:04:23.604
+Pour l'unicité, dérive terme à terme.
+
+00:04:23.604 --> 00:04:26.974
+La dérivée de x cube est trois x carré.
+
+00:04:26.974 --> 00:04:30.254
+Celle de moins trois x carré donne moins six x.
+Factorise
+
+00:04:30.254 --> 00:04:32.342
+: trois x fois x moins deux.
+
+00:04:32.342 --> 00:04:36.557
+À droite de deux, les deux facteurs sont positifs sur
+l'intervalle.
+
+00:04:36.557 --> 00:04:39.437
+La fonction est strictement croissante.
+
+00:04:39.437 --> 00:04:42.133
+Elle passe donc par zéro une seule fois.
+
+00:04:42.133 --> 00:04:46.004
+C'est aussi un endroit où notre résultat corrige la
+dérivée imprimée
+
+00:04:46.004 --> 00:04:47.060
+dans le corrigé.
+
+00:04:47.392 --> 00:04:50.038
+Mets les deux côtés en forme polaire.
+
+00:04:50.038 --> 00:04:53.618
+Trente-deux i se trouve dans la direction de l'axe
+vertical positif,
+
+00:04:53.618 --> 00:04:55.896
+donc son argument est pi sur deux.
+
+00:04:55.896 --> 00:04:59.076
+Lorsque tu élèves z à la puissance cinq, la longueur
+est
+
+00:04:59.076 --> 00:05:02.256
+élevée à la puissance cinq et l'angle est multiplié
+par cinq.
+
+00:05:02.256 --> 00:05:05.185
+Seuls les angles modulo deux pi comptent.
+
+00:05:05.185 --> 00:05:08.796
+Pour ne perdre aucune solution, ajoute deux k pi avant
+de
+
+00:05:08.796 --> 00:05:09.780
+diviser par cinq.
+
+00:05:10.142 --> 00:05:13.548
+Chaque racine est à distance deux de l'origine.
+
+00:05:13.548 --> 00:05:16.133
+La première est à pi sur dix.
+
+00:05:16.133 --> 00:05:19.405
+Ensuite on tourne à chaque fois de deux pi sur cinq.
+
+00:05:19.405 --> 00:05:23.335
+Après cinq déplacements on retombe sur la première,
+donc on garde
+
+00:05:23.335 --> 00:05:24.050
+cinq points.
+
+00:05:24.050 --> 00:05:27.628
+Vérifie celle qui est directement en haut : c'est deux
+i.
+
+00:05:27.628 --> 00:05:31.455
+Sa cinquième puissance vaut trente-deux fois i, car i
+puissance quatre
+
+00:05:31.455 --> 00:05:32.150
+vaut un.
+
+00:05:32.517 --> 00:05:36.041
+On veut remplacer une fraction à deux facteurs par
+deux termes
+
+00:05:36.041 --> 00:05:36.682
+plus simples.
+
+00:05:36.682 --> 00:05:39.844
+Écris une constante au-dessus de chaque facteur.
+
+00:05:39.844 --> 00:05:43.913
+Ensuite, multiplie chaque terme par le dénominateur
+commun.
+
+00:05:43.913 --> 00:05:46.964
+On obtient une identité entre polynômes.
+
+00:05:46.964 --> 00:05:49.801
+C'est elle qu'on va utiliser dans le prochain calcul,
+et elle
+
+00:05:49.801 --> 00:05:52.638
+est définie aux endroits où la fraction de départ ne
+l'était
+
+00:05:52.638 --> 00:05:52.896
+pas.
+
+00:05:53.267 --> 00:05:57.020
+Pour faire disparaître B, donne à x la valeur moins un
+
+00:05:57.020 --> 00:05:57.702
+dans l'identité.
+
+00:05:57.702 --> 00:06:00.533
+Il reste A tout seul, donc A vaut un.
+
+00:06:00.533 --> 00:06:04.124
+Pour faire disparaître A, donne à x la valeur moins
+deux.
+
+00:06:04.124 --> 00:06:07.307
+Le facteur de B vaut alors moins un, donc B vaut
+
+00:06:07.307 --> 00:06:07.886
+moins un.
+
+00:06:07.886 --> 00:06:11.109
+Remets les deux fractions au même dénominateur.
+
+00:06:11.109 --> 00:06:13.976
+Tu dois récupérer un au numérateur.
+
+00:06:13.976 --> 00:06:17.751
+Plus tard, si on te demande une primitive, chaque
+terme donne
+
+00:06:17.751 --> 00:06:19.467
+un logarithme de valeur absolue.
+
+00:06:19.808 --> 00:06:22.650
+Pourquoi l'intégration par parties ici ?
+
+00:06:22.650 --> 00:06:25.935
+Le premier facteur est un polynôme de degré un.
+
+00:06:25.935 --> 00:06:28.570
+En le dérivant, on le réduit à un.
+
+00:06:28.570 --> 00:06:31.719
+L'autre facteur a une primitive immédiate.
+
+00:06:31.719 --> 00:06:35.422
+Il faut diviser par trois, car en dérivant
+exponentielle de trois
+
+00:06:35.422 --> 00:06:36.768
+t, le trois revient.
+
+00:06:36.768 --> 00:06:40.989
+Note séparément u, sa dérivée, v prime et v avant
+d'appliquer
+
+00:06:40.989 --> 00:06:41.756
+la formule.
+
+00:06:41.756 --> 00:06:45.212
+Cela évite de dériver les deux facteurs par erreur.
+
+00:06:45.558 --> 00:06:47.653
+Applique la formule.
+
+00:06:47.653 --> 00:06:51.356
+Le premier terme est t moins cinq, multiplié par
+exponentielle de
+
+00:06:51.356 --> 00:06:52.702
+trois t sur trois.
+
+00:06:52.702 --> 00:06:56.923
+Du résultat, retire la primitive de l'exponentielle
+sur trois, soit exponentielle
+
+00:06:56.923 --> 00:06:58.842
+de trois t sur neuf.
+
+00:06:58.842 --> 00:07:01.060
+Regroupe les deux termes.
+
+00:07:01.060 --> 00:07:04.344
+Remplace t par un, puis par zéro et soustrais.
+
+00:07:04.344 --> 00:07:06.881
+Le résultat est négatif.
+
+00:07:06.881 --> 00:07:11.069
+C'est cohérent car t moins cinq est négatif sur tout
+l'intervalle
+
+00:07:11.069 --> 00:07:12.592
+et l'exponentielle reste positive.

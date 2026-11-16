@@ -1,0 +1,328 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.469
+Une courbe peut représenter la tension d'un capteur.
+
+00:00:03.469 --> 00:00:06.871
+Pour trouver l'image de deux secondes, pars de deux
+secondes sur
+
+00:00:06.871 --> 00:00:08.726
+l'axe horizontal et lis la hauteur.
+
+00:00:08.726 --> 00:00:11.792
+Pour trouver un antécédent, fais le trajet inverse :
+pars de
+
+00:00:11.792 --> 00:00:14.857
+la hauteur choisie et relève les instants où la courbe
+la
+
+00:00:14.857 --> 00:00:15.136
+rencontre.
+
+00:00:15.136 --> 00:00:18.347
+Il peut y avoir zéro, un ou plusieurs instants.
+
+00:00:18.347 --> 00:00:20.540
+Lis aussi le domaine.
+
+00:00:20.540 --> 00:00:23.837
+Il te dit quels temps sont utilisés dans le problème.
+
+00:00:24.183 --> 00:00:27.594
+Une fonction paire reproduit la même hauteur de part
+et d'autre
+
+00:00:27.594 --> 00:00:28.214
+de zéro.
+
+00:00:28.214 --> 00:00:31.548
+Une fonction impaire reproduit la hauteur opposée.
+
+00:00:31.548 --> 00:00:35.126
+Dans les deux cas, il faut pouvoir tester les temps
+opposés.
+
+00:00:35.126 --> 00:00:39.006
+Quand une courbe est écrite par morceaux, chaque
+formule vaut seulement
+
+00:00:39.006 --> 00:00:40.065
+sur son intervalle.
+
+00:00:40.065 --> 00:00:43.554
+Si deux intervalles se touchent, lis les signes
+d'inégalité avant de
+
+00:00:43.554 --> 00:00:45.457
+calculer la valeur à la jonction.
+
+00:00:45.808 --> 00:00:49.226
+La pente est un changement de hauteur par unité de
+temps.
+
+00:00:49.226 --> 00:00:53.307
+Avec deux relevés, soustrais les hauteurs et divise
+par la durée.
+
+00:00:53.307 --> 00:00:56.588
+Ça donne la droite qu'on peut employer pour estimer
+une valeur
+
+00:00:56.588 --> 00:00:57.780
+entre les deux mesures.
+
+00:00:57.780 --> 00:01:01.600
+À la moitié de l'intervalle, prends simplement la
+moyenne des deux
+
+00:01:01.600 --> 00:01:01.947
+hauteurs.
+
+00:01:01.947 --> 00:01:05.452
+À un quart, applique un quart du changement total.
+
+00:01:05.452 --> 00:01:08.491
+C'est le calcul que tu vas refaire dans le TD.
+
+00:01:08.850 --> 00:01:13.261
+Une décroissance exponentielle suit une baisse
+proportionnelle à ce qui reste.
+
+00:01:13.261 --> 00:01:16.393
+La constante de temps donne un repère : à une
+constante
+
+00:01:16.393 --> 00:01:19.241
+de temps, il reste la valeur initiale divisée par e.
+
+00:01:19.241 --> 00:01:23.043
+Si le problème donne la tension et demande quand on
+l'atteint,
+
+00:01:23.043 --> 00:01:24.425
+divise d'abord par l'amplitude.
+
+00:01:24.425 --> 00:01:27.317
+Puis applique le logarithme des deux côtés.
+
+00:01:27.317 --> 00:01:30.148
+Il permet de faire ressortir l'exposant.
+
+00:01:30.517 --> 00:01:34.684
+Dans la parenthèse, la pulsation indique combien de
+radians s'ajoutent en
+
+00:01:34.684 --> 00:01:35.442
+une seconde.
+
+00:01:35.442 --> 00:01:38.874
+Au bout d'une période, l'angle doit avoir gagné deux
+pi.
+
+00:01:38.874 --> 00:01:42.244
+Divise deux pi par la pulsation pour trouver combien
+de temps
+
+00:01:42.244 --> 00:01:42.856
+cela prend.
+
+00:01:42.856 --> 00:01:46.619
+La fréquence compte le nombre de répétitions par
+seconde.
+
+00:01:46.619 --> 00:01:49.351
+Garde les unités à chaque étape.
+
+00:01:49.351 --> 00:01:52.722
+C'est ce qui empêche de confondre la fréquence en
+hertz et
+
+00:01:52.722 --> 00:01:54.560
+la pulsation en radians par seconde.
+
+00:01:54.892 --> 00:01:58.766
+Sur la courbe, pars du premier sommet et avance
+jusqu'au sommet
+
+00:01:58.766 --> 00:01:59.119
+suivant.
+
+00:01:59.119 --> 00:02:02.476
+La différence sur l'axe du temps donne la période.
+
+00:02:02.476 --> 00:02:05.626
+Les hauteurs extrêmes valent cinq et moins cinq.
+
+00:02:05.626 --> 00:02:09.625
+L'amplitude vaut cinq, et l'écart complet entre les
+deux hauteurs vaut
+
+00:02:09.625 --> 00:02:09.989
+dix.
+
+00:02:09.989 --> 00:02:14.033
+Pour une courbe retardée, la forme et la période
+restent identiques.
+
+00:02:14.033 --> 00:02:17.722
+C'est la position des sommets sur l'axe du temps qui
+change.
+
+00:02:18.100 --> 00:02:21.972
+Imagine une porte qui vaut un pendant l'ouverture et
+zéro dehors.
+
+00:02:21.972 --> 00:02:25.746
+En décalant son argument, tu déplaces l'ouverture dans
+le temps.
+
+00:02:25.746 --> 00:02:29.680
+En la répétant à intervalles réguliers, tu peux créer
+un créneau.
+
+00:02:29.680 --> 00:02:33.329
+Un Dirac est un modèle différent, pensé pour une
+action concentrée
+
+00:02:33.329 --> 00:02:34.325
+à un instant.
+
+00:02:34.325 --> 00:02:36.910
+Son peigne répète les impulsions.
+
+00:02:36.910 --> 00:02:40.550
+Le sinus cardinal est un autre motif à reconnaître.
+
+00:02:40.550 --> 00:02:44.064
+Avec sinus de x divisé par x, on prolonge la valeur
+
+00:02:44.064 --> 00:02:45.342
+en zéro à un.
+
+00:02:45.683 --> 00:02:49.628
+Calcule d'abord l'image en remplaçant x par un virgule
+cinq.
+
+00:02:49.628 --> 00:02:52.472
+Le carré donne deux virgule vingt-cinq.
+
+00:02:52.472 --> 00:02:56.594
+En ajoutant un virgule cinq et un, on trouve quatre
+virgule
+
+00:02:56.594 --> 00:02:56.969
+soixante-quinze.
+
+00:02:56.969 --> 00:03:00.144
+Pour les antécédents, place deux du côté de la sortie
+et
+
+00:03:00.144 --> 00:03:02.165
+ramène tous les termes du même côté.
+
+00:03:02.165 --> 00:03:04.604
+Le discriminant vaut cinq.
+
+00:03:04.604 --> 00:03:08.824
+Les deux racines sont environ moins un virgule
+soixante-deux et zéro
+
+00:03:08.824 --> 00:03:09.592
+virgule soixante-deux.
+
+00:03:09.592 --> 00:03:12.239
+Les deux sont dans le domaine demandé.
+
+00:03:12.600 --> 00:03:16.104
+Pour un facteur quatre, sépare l'écart de temps en
+quatre morceaux
+
+00:03:16.104 --> 00:03:17.060
+de même durée.
+
+00:03:17.060 --> 00:03:20.326
+Les trois nouveaux points tombent après un, deux et
+trois de
+
+00:03:20.326 --> 00:03:20.920
+ces morceaux.
+
+00:03:20.920 --> 00:03:24.341
+Même chose avec la hauteur : utilise un quart, la
+moitié
+
+00:03:24.341 --> 00:03:25.896
+et trois quarts de l'écart.
+
+00:03:25.896 --> 00:03:28.920
+Dans l'exemple, on avance à chaque fois d'une unité en
+temps
+
+00:03:28.920 --> 00:03:30.295
+et de deux en hauteur.
+
+00:03:30.295 --> 00:03:32.587
+Les points restent alignés.
+
+00:03:32.587 --> 00:03:35.843
+Vérifie que tu arrives bien à B si tu fais un
+
+00:03:35.843 --> 00:03:36.435
+quatrième pas.
+
+00:03:36.767 --> 00:03:39.168
+Lis cent dans la parenthèse.
+
+00:03:39.168 --> 00:03:41.128
+C'est la pulsation.
+
+00:03:41.128 --> 00:03:44.646
+Pour faire un tour entier, tu dois accumuler deux pi
+radians.
+
+00:03:44.646 --> 00:03:49.253
+La durée vaut pi sur cinquante secondes, autour de
+soixante-trois millisecondes.
+
+00:03:49.253 --> 00:03:52.048
+L'inverse vaut autour de seize hertz.
+
+00:03:52.048 --> 00:03:55.215
+Pour tracer, place le premier maximum à l'origine,
+puis zéro au
+
+00:03:55.215 --> 00:03:58.383
+quart de période, moins un à la moitié et de nouveau
+
+00:03:58.383 --> 00:03:59.535
+un à une période.
+
+00:03:59.892 --> 00:04:02.955
+Pour retarder une courbe, tu veux que ce qui arrivait
+à
+
+00:04:02.955 --> 00:04:04.070
+zéro arrive plus tard.
+
+00:04:04.070 --> 00:04:08.249
+Donc, dans la formule, utilise le temps courant moins
+le retard.
+
+00:04:08.249 --> 00:04:11.275
+Ici le quart de période est pi sur six.
+
+00:04:11.275 --> 00:04:15.025
+Le facteur trois multiplie cette durée dans la
+parenthèse.
+
+00:04:15.025 --> 00:04:17.856
+Il reste moins pi sur deux comme phase.
+
+00:04:17.856 --> 00:04:21.415
+Vérifie le résultat en cherchant quand la courbe
+retardée atteint son
+
+00:04:21.415 --> 00:04:24.327
+premier sommet : précisément au temps pi sur six.

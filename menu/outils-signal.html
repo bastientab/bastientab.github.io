@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outils mathématiques pour le signal — BUT1 R&amp;T</title>
+  <meta name="description" content="Fonctions, interpolation, trigonométrie et représentation des signaux.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/outils-signal.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Outils mathématiques pour le signal</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/outils-signal/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Décrire un signal par une fonction</h3>
+<p>Un signal décrit l’évolution d’une grandeur, comme une tension, selon une variable, souvent le temps. Dans <code>y=f(t)</code>, la valeur en sortie s’appelle <strong>image</strong> du temps <code>t</code>. Les temps qui donnent une valeur fixée sont ses <strong>antécédents</strong>. Une fonction <strong>paire</strong> vérifie <code>f(−t)=f(t)</code>. Une fonction <strong>impaire</strong> vérifie <code>f(−t)=−f(t)</code>. Dans ces deux cas, le domaine doit être symétrique par rapport à zéro.</p>
+<p>Une fonction définie par morceaux peut suivre plusieurs règles selon l’intervalle. Pour lire sa valeur en un point de jonction, regarde quel intervalle contient ce point. Dans <code>f(g(t))</code>, calcule d’abord <code>g(t)</code>, puis vérifie que ce nombre est accepté par <code>f</code>.</p></div>
+<div class="c-block"><h3>2. Utiliser une droite et interpoler</h3>
+<p>Une fonction affine a la forme <code>mt+b</code>. Le coefficient <code>m</code> mesure le changement de valeur par unité de temps. Entre deux points <code>A(t₁,y₁)</code> et <code>B(t₂,y₂)</code>, il vaut <code>(y₂−y₁)/(t₂−t₁)</code>. Pour retrouver <code>b</code>, remplace <code>t</code> et <code>y</code> par les coordonnées d’un point.</p>
+<p>L’<strong>interpolation linéaire</strong> estime les valeurs intermédiaires avec le segment entre deux mesures. À une fraction <code>λ</code> du trajet, on a <code>t=t₁+λ(t₂−t₁)</code> et <code>y=y₁+λ(y₂−y₁)</code>. Elle suppose une évolution linéaire entre les mesures. Les valeurs ajoutées dépendent du modèle choisi.</p></div>
+<div class="c-block"><h3>3. Reconnaître les formes du cours</h3>
+<p>La valeur absolue <code>|t|</code> donne la distance à zéro et s’écrit <code>t</code> pour <code>t≥0</code>, <code>−t</code> pour <code>t&lt;0</code>. La racine carrée est définie pour une entrée non négative. Pour un second degré, le signe du discriminant indique le nombre de racines réelles distinctes. Quand tu étudies un signal par morceaux, identifie chaque forme avant de tracer.</p>
+<p>Une décroissance exponentielle peut s’écrire <code>A e<sup>−t/τ</sup></code>, avec <code>τ&gt;0</code>. Au temps <code>τ</code>, la valeur vaut <code>A/e</code>. Le logarithme renverse l’exponentielle. Pour déterminer le temps d’atteinte d’une valeur positive sur cette courbe, isole d’abord l’exponentielle et applique <code>ln</code>.</p></div>
+<div class="c-block"><h3>4. Lire une sinusoïde et un déphasage</h3>
+<p>Dans <code>s(t)=A cos(ωt+φ)</code> avec <code>A&gt;0</code> et <code>ω&gt;0</code>, <code>A</code> est l’amplitude, <code>ω</code> la pulsation en radians par seconde et <code>φ</code> la phase en radians. Une période correspond à un angle supplémentaire de <code>2π</code>. Donc <code>T=2π/ω</code> et <code>f=1/T=ω/(2π)</code>. Pour une sinusoïde centrée, l’amplitude crête à crête vaut <code>2A</code>.</p>
+<figure><img loading="lazy" src="../assets/revisions/outils-signal/schemas/periode.png" alt="Cosinus d’amplitude 5, minimum moins 5 et période deux pi sur trois secondes."><figcaption>Mesure la période entre deux points qui reviennent dans le même état, par exemple deux sommets successifs.</figcaption></figure>
+<p>Retarder une courbe de <code>t₀</code> remplace <code>t</code> par <code>t−t₀</code>. Le déphasage correspondant est <code>−ωt₀</code>. Pour retrouver un angle à partir d’un sinus, d’un cosinus ou d’une tangente, la fonction réciproque renvoie une branche précise. Utilise le cercle trigonométrique et la périodicité pour obtenir les autres solutions.</p></div>
+<div class="c-block"><h3>5. Construire des signaux à partir de motifs</h3>
+<p>Une <strong>porte</strong> est active sur un intervalle et inactive en dehors. Pour centrer une porte de largeur <code>L</code> au temps <code>t₀</code>, transforme l’argument en <code>(t−t₀)/L</code> si la porte de référence a une largeur 1 et un centre à zéro. Pour un créneau périodique, répète le motif à intervalles réguliers. Le rapport cyclique est la fraction de la période passée à l’état haut.</p>
+<p>Le cours utilise aussi l’impulsion de <strong>Dirac</strong>, un modèle idéal concentré à un instant, et le peigne obtenu en répétant des impulsions tous les <code>T</code>. Il distingue le sinus cardinal. Avec la convention <code>sinc(x)=sin(x)/x</code>, la valeur en 0 est prolongée à 1 par continuité. Compare la formule de la convention utilisée avant de lire les zéros.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#signal-image">Poly · Calculer une image et retrouver un antécédent</a></li>
+<li><a href="#signal-interp">TD1 · Dérouler les trois points d’une interpolation ×4</a></li>
+<li><a href="#signal-ln">Poly · Retrouver le temps dans une équation exponentielle</a></li>
+<li><a href="#signal-periode">Poly · Trouver pulsation, période et fréquence</a></li>
+<li><a href="#signal-retard">Poly · Lire le signe du déphasage et vérifier un cosinus retardé</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="signal-image"><summary>Poly · Calculer une image, puis des antécédents</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Soit <code>f(x)=x²+x+1</code> sur <code>[−2,2]</code>. Donner l’image de 1,5 et les antécédents de 2.</p>
+<ol><li>Pour une image, remplace <code>x</code> par la valeur donnée. On obtient <code>2,25+1,5+1=4,75</code>.</li><li>Pour les antécédents, résous <code>x²+x−1=0</code>. Le discriminant vaut 5, d’où <code>(−1−√5)/2</code> et <code>(−1+√5)/2</code>.</li><li>Les deux valeurs se trouvent dans le domaine. Le contrôle du domaine fait partie de la réponse car une solution trouvée par le calcul peut être hors de l’intervalle.</li></ol></div></details>
+<details class="acc" id="signal-interp"><summary>TD1 · Interpoler trois échantillons intermédiaires</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé du TD.</strong> Entre deux échantillons consécutifs, déterminer les trois échantillons à ajouter pour un sur-échantillonnage ×4 en supposant une variation linéaire.</p>
+<ol><li>Note les points <code>(t₁,y₁)</code> et <code>(t₂,y₂)</code>. Divise leur écart de temps en quatre intervalles égaux. Les instants ajoutés sont à un quart, la moitié et trois quarts de cet écart.</li><li>Applique ces mêmes fractions au changement en ordonnée. Exemple de vérification avec <code>A(2,4)</code> et <code>B(6,12)</code> : les nouveaux points sont <code>(3,6)</code>, <code>(4,8)</code> et <code>(5,10)</code>.</li><li>Pour un facteur <code>n</code>, remplace les trois fractions par <code>k/n</code> pour <code>k=1,…,n−1</code>.</li></ol></div></details>
+<details class="acc" id="signal-ln"><summary>Poly, p. 22 · Résoudre 5(1−e<sup>−t/4</sup>)=2</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Retrouver le temps <code>t</code> auquel une grandeur décrite par <code>5(1−e<sup>−t/4</sup>)</code> atteint 2.</p>
+<ol><li>Divise par 5. Il reste <code>1−e<sup>−t/4</sup>=0,4</code>, donc <code>e<sup>−t/4</sup>=0,6</code>.</li><li>Applique <code>ln</code> à 0,6, une valeur strictement positive, puis multiplie par −4. Le temps vaut <code>−4 ln(0,6)≈2,04</code>.</li><li>Vérifie que le résultat est positif et que l’expression rejoint bien 2 en remplaçant <code>t</code>. Si le temps était négatif, la quantité <code>1−e<sup>−t/4</sup></code> serait négative aussi.</li></ol></div></details>
+<details class="acc" id="signal-periode"><summary>Poly · Lire une période à partir de cos(100t)</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Déterminer la pulsation, la période et la fréquence de <code>e(t)=cos(100t)</code>, puis représenter son allure.</p>
+<ol><li>Compare l’argument à <code>ωt</code>. On a <code>ω=100 rad/s</code>. Le coefficient 100 représente la pulsation.</li><li>La période vaut <code>2π/100=π/50 s≈62,8 ms</code>. La fréquence vaut <code>50/π Hz≈15,9 Hz</code>.</li><li>Pars de 1 à <code>t=0</code>. À un quart de période, le signal vaut 0. À une demi-période il vaut −1, puis il revient à 0 et à 1. Vérifie que les abscisses restent exprimées dans la même unité.</li></ol></div></details>
+<details class="acc" id="signal-retard"><summary>Application du poly · Transformer un retard en phase</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Pour <code>e(t)=5cos(3t)</code>, écrire le signal qui arrive avec un retard d’un quart de période.</p>
+<ol><li>Calcule <code>T=2π/3</code>, donc <code>T/4=π/6</code>.</li><li>Dans <code>e(t−π/6)</code>, développe l’argument <code>3(t−π/6)=3t−π/2</code>. La phase vaut donc <code>−π/2</code>.</li><li>Le nouveau premier maximum est à <code>t=π/6</code>, au moment où l’ancien argument retrouve zéro. Ce déplacement vers la droite confirme le signe.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/outils-signal/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/outils-signal/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/outils-signal/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Un signal représente une grandeur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="24.083">0:24 · Lire les symétries et les fonctions par morceaux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="45.708">0:45 · Mesurer une pente et lire un temps caractéristique</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="90.417">1:30 · Pulsation, fréquence et phase</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="138.000">2:18 · Porte, créneau et impulsion</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="165.583">2:45 · Poly · Image et antécédents</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="192.500">3:12 · TD1 · Interpoler avec un facteur quatre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="216.667">3:36 · Poly · Calculer la période de cos(100t)</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="239.792">3:59 · Application · Du retard au déphasage</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

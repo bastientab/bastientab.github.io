@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maths — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Maths : contenu à préparer.">
+  <title>Mathématiques S2 — BUT1 R&amp;T</title>
+  <meta name="description" content="Fonctions, nombres complexes, fractions rationnelles et intégration.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -58,69 +58,136 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Maths</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Mathématiques S2</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/maths/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Étudier une fonction réelle</h3>
+<p>Une fonction associe une valeur à chaque entrée de son <strong>domaine</strong>. Commence par chercher les entrées interdites, par exemple un dénominateur nul ou un logarithme d’un nombre négatif ou nul. Pour vérifier la <strong>continuité</strong> en un point intérieur, compare les limites venant de gauche et de droite à la valeur au point. Une fonction donnée par morceaux demande souvent un contrôle à la jonction.</p>
+<p>Le <strong>théorème des valeurs intermédiaires</strong> assure l’existence d’un antécédent si la fonction est continue sur l’intervalle et que la valeur recherchée est entre les images des bornes. Pour assurer l’<strong>unicité</strong>, on peut prouver que la fonction est strictement monotone. Elle est alors bijective de l’intervalle de départ sur son image. Une bijection donne exactement un antécédent pour chaque valeur de l’ensemble d’arrivée choisi.</p>
+<p>La dérivée donne la pente locale. Au point d’abscisse <em>a</em>, la tangente a pour équation <code>y=f(a)+f′(a)(x−a)</code>. Sur un intervalle, le signe de la dérivée sert à établir le sens de variation. Pour une asymptote oblique, cherche une droite <code>ax+b</code> telle que <code>f(x)−(ax+b)</code> tende vers zéro. Le signe de cette différence indique de quel côté de la droite se trouve la courbe.</p></div>
+<div class="c-block"><h3>2. Manipuler les fonctions usuelles</h3>
+<p>L’exponentielle est positive, sa dérivée est elle-même et le logarithme naturel en est la réciproque sur les réels positifs. Pour <code>ln(u(x))</code>, commence par imposer <code>u(x)&gt;0</code>. La règle de dérivation d’une composée donne <code>u′(x)/u(x)</code>. Pour <code>e<sup>u(x)</sup></code>, la dérivée vaut <code>u′(x)e<sup>u(x)</sup></code>.</p>
+<p>Sinus et cosinus sont périodiques. Pour définir <code>arcsin</code> ou <code>arccos</code>, on choisit une branche sur laquelle la fonction initiale est bijective. Par exemple <code>arcsin</code> renvoie un angle dans <code>[−π/2,π/2]</code>. Un <strong>développement limité</strong> conserve les premiers termes au voisinage d’un point. À l’ordre 1 en 0, <code>e<sup>x</sup>=1+x+o(x)</code>. Le reste <code>o(x)</code>, divisé par <code>x</code>, tend vers zéro au voisinage de zéro.</p></div>
+<div class="c-block"><h3>3. Représenter un nombre complexe et un signal</h3>
+<p>Avec <code>i²=−1</code>, l’écriture <code>a+ib</code> repère un point du plan. Le <strong>module</strong> est sa distance à l’origine <code>√(a²+b²)</code>. Un <strong>argument</strong> est un angle avec l’axe réel positif. Vérifie son quadrant. La forme polaire <code>r e<sup>iθ</sup></code> est pratique pour multiplier et élever à une puissance. Les modules se multiplient et les angles s’additionnent.</p>
+<p>Le conjugué de <code>a+ib</code> est <code>a−ib</code>. Pour diviser par <code>a+ib</code>, multiplie numérateur et dénominateur par le conjugué. Pour résoudre <code>zⁿ=w</code> avec <code>w≠0</code>, sépare le module et l’angle et prends les <em>n</em> arguments distincts modulo <code>2π</code>.</p>
+<p>En régime sinusoïdal, le complexe associé à <code>A cos(ωt+φ)</code> décrit l’amplitude et la phase. En gardant la convention du cours et la même pulsation, dériver le signal correspond à multiplier sa représentation complexe par <code>iω</code>. Pour un condensateur, l’impédance <code>1/(iωC)</code> vient de la relation <code>i(t)=C du/dt</code>. Le module du gain et son argument ont alors des rôles différents, l’un sur l’amplitude et l’autre sur le déphasage.</p></div>
+<div class="c-block"><h3>4. Factoriser un polynôme et fractionner une expression</h3>
+<p>Si <code>P(a)=0</code>, alors <code>x−a</code> est un facteur. Un <strong>pôle</strong> est ici un zéro du dénominateur réduit qui fait diverger ou singularise l’expression. Simplifie les facteurs communs tout en gardant les restrictions du domaine d’origine. Si le degré du numérateur atteint celui du dénominateur, fais d’abord la division euclidienne pour isoler la partie polynomiale.</p>
+<p>Pour un facteur simple <code>x−a</code>, on essaie un terme <code>A/(x−a)</code>. Pour une répétition de degré 2, on prévoit aussi <code>B/(x−a)²</code>. Pour un facteur du second degré irréductible sur les réels, le numérateur associé peut être affine. Choisis la forme complète, multiplie par le dénominateur commun et retrouve les coefficients en évaluant ou en identifiant les puissances.</p>
+<p>Le TD relie aussi la division de polynômes au <strong>CRC</strong>. Dans ce cadre, les coefficients sont des bits et l’addition comme la soustraction se font par XOR. On effectue la division jusqu’à obtenir un reste de degré inférieur au polynôme générateur.</p></div>
+<div class="c-block"><h3>5. Choisir une méthode d’intégration</h3>
+<p>Une primitive <code>F</code> de <code>f</code> vérifie <code>F′=f</code>. Sur un intervalle, les primitives diffèrent d’une constante. L’intégrale entre deux bornes vaut <code>F(b)−F(a)</code> quand le théorème s’applique. Elle représente une aire signée. Pour contrôler une primitive, dérive-la.</p>
+<p>Quand la fonction contient une composée et la dérivée de son argument, essaye un <strong>changement de variable</strong>. Pour une intégrale définie, transforme les bornes en même temps que la variable ou reviens à la variable d’origine avant d’appliquer les bornes. Pour un produit, essaye une <strong>intégration par parties</strong> si dériver un facteur le simplifie et que l’autre possède une primitive connue.</p>
+<p>Pour une fraction rationnelle, regarde si tu peux décomposer en éléments simples. Un terme <code>1/(x−a)</code> conduit à <code>ln|x−a|</code> sur chaque intervalle où le terme existe. Pour des puissances trigonométriques, les formules d’angle double et la linéarisation permettent souvent de revenir à des intégrales de sinus et cosinus simples.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#m2-tvi">TD1 · Prouver l’existence puis l’unicité d’une racine</a></li>
+<li><a href="#m2-ln">TD Fonctions usuelles · Dériver un logarithme composé</a></li>
+<li><a href="#m2-racines">TD Complexes · Résoudre une équation de degré 5 avec les angles</a></li>
+<li><a href="#m2-fraction">TD Fractions rationnelles · Décomposer et vérifier le résultat</a></li>
+<li><a href="#m2-ipp">TD Intégration · Poser une intégration par parties et calculer les bornes</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="m2-tvi"><summary>TD1, ex. 4 · Montrer qu’une équation a exactement une solution</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Montrer que <code>x³−3x²+2=0</code> admet une seule solution sur <code>[2,3]</code>.</p>
+<ol><li>Le polynôme est continu. Calcule <code>f(2)=8−12+2=−2</code> et <code>f(3)=27−27+2=2</code>. Zéro est entre les deux, donc le TVI garantit une solution.</li><li>Dérive le polynôme terme par terme. <code>f′(x)=3x²−6x=3x(x−2)</code>. Ce produit vaut zéro en 2 et est strictement positif entre 2 et 3, donc la fonction y est strictement croissante.</li><li>Il y a au plus une solution puisque la fonction ne reprend jamais une même valeur sur cet intervalle. La dérivée imprimée dans le corrigé du TD contient une erreur pour cet énoncé. La dérivation terme par terme permet de la repérer.</li></ol>
+</div></details>
+<details class="acc" id="m2-ln"><summary>TD Fonctions usuelles, ex. 3 · Dériver ln|x−1|</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Déterminer la dérivée de <code>h(x)=ln|x−1|</code>.</p>
+<ol><li>Le logarithme exige une entrée non nulle après la valeur absolue. Exclue donc <code>x=1</code>.</li><li>Si <code>x&gt;1</code>, la valeur absolue vaut <code>x−1</code>. La dérivée est <code>1/(x−1)</code>. Si <code>x&lt;1</code>, la valeur absolue vaut <code>1−x</code>. La dérivée est <code>−1/(1−x)</code>, ce qui donne la même expression.</li><li>Conclusion <code>h′(x)=1/(x−1)</code> sur le domaine. Vérifie de part et d’autre de 1 que le signe de la dérivée correspond au comportement de la courbe.</li></ol>
+</div></details>
+<details class="acc" id="m2-racines"><summary>TD Complexes, ex. 5 · Résoudre z⁵ = 32i</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Déterminer les racines cinquièmes de <code>32i</code> et les placer dans le plan.</p>
+<ol><li>Écris <code>32i=32 e<sup>iπ/2</sup></code>. Si <code>z=ρ e<sup>iθ</sup></code>, la puissance cinquième a pour module <code>ρ⁵</code> et pour argument <code>5θ</code> modulo <code>2π</code>.</li><li>Résous <code>ρ⁵=32</code>, donc <code>ρ=2</code>. Puis <code>5θ=π/2+2kπ</code>, donc <code>θ=π/10+2kπ/5</code>. Prends <code>k=0,1,2,3,4</code>.</li><li>Vérifie une racine directement. Par exemple <code>z=2i</code> correspond à <code>k=1</code> et <code>(2i)⁵=32i</code>. Sur le cercle de rayon 2, les racines sont régulièrement espacées.</li></ol>
+<figure><img loading="lazy" src="../assets/revisions/maths/schemas/racines.png" alt="Cinq racines sur un cercle de rayon 2, espacées de deux pi sur cinq."></figure>
+</div></details>
+<details class="acc" id="m2-fraction"><summary>TD Fractions rationnelles, ex. 2 · Décomposer les pôles simples</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Décomposer <code>1/((x+1)(x+2))</code> en éléments simples.</p>
+<ol><li>Avec deux facteurs simples, pose <code>A/(x+1)+B/(x+2)</code>. Multiplie l’égalité par <code>(x+1)(x+2)</code>. Il reste l’identité <code>1=A(x+2)+B(x+1)</code>.</li><li>Évalue cette identité polynomiale en <code>x=−1</code> et trouve <code>A=1</code>. En <code>x=−2</code>, tu obtiens <code>B=−1</code>. Ces nombres servent dans l’identité polynomiale, alors que la fraction initiale n’est pas définie en ces points.</li><li>Le résultat vaut <code>1/(x+1)−1/(x+2)</code>. Mets les termes au même dénominateur pour vérifier. Une primitive sur chaque intervalle autorisé vaut <code>ln|x+1|−ln|x+2|+C</code>.</li></ol></div></details>
+<details class="acc" id="m2-ipp"><summary>TD Intégration par parties, ex. 1 A · Intégrer (t−5)e³ᵗ</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Calculer l’intégrale de <code>(t−5)e<sup>3t</sup></code> entre 0 et 1.</p>
+<ol><li>Pose <code>u=t−5</code> car sa dérivée vaut 1. Prends <code>v=e<sup>3t</sup>/3</code> comme primitive de l’exponentielle.</li><li>Applique <code>∫uv′=[uv]−∫u′v</code>. Une primitive complète est <code>(t−5)e<sup>3t</sup>/3−e<sup>3t</sup>/9 = (3t−16)e<sup>3t</sup>/9</code>.</li><li>Évalue en 1 puis en 0. Le résultat est <code>(16−13e³)/9</code>. Il est négatif, comme la fonction intégrée sur tout l’intervalle, ce qui donne un contrôle de cohérence.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/maths/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/maths/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/maths/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Domaine, continuité et racines</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="74.208">1:14 · Fonctions usuelles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="128.958">2:08 · Lire un nombre complexe</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="181.917">3:01 · Polynômes et éléments simples</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="207.958">3:27 · Trouver une primitive</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="235.417">3:55 · TD1 · Prouver qu’il y a une seule racine</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="287.292">4:47 · TD Complexes · Résoudre z puissance cinq égal à 32i</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="332.417">5:32 · TD Fractions rationnelles · Retrouver A et B</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="379.708">6:19 · TD Intégration · Poser l’intégration par parties</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>
