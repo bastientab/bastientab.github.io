@@ -1,0 +1,396 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:04.180
+Pour envoyer un paquet, le routeur lit l'adresse IP de
+destination.
+
+00:00:04.180 --> 00:00:07.758
+Il cherche dans sa table une route qui couvre cette
+adresse.
+
+00:00:07.758 --> 00:00:11.288
+Ici, la route qui commence par dix est assez large.
+
+00:00:11.288 --> 00:00:14.679
+Celle qui cible le réseau dix point zéro point deux
+est
+
+00:00:14.679 --> 00:00:15.295
+plus précise.
+
+00:00:15.295 --> 00:00:17.587
+C'est elle qui doit l'emporter.
+
+00:00:17.587 --> 00:00:20.650
+Regarde ensuite la colonne du prochain saut.
+
+00:00:20.650 --> 00:00:24.011
+C'est l'adresse du voisin auquel le routeur va
+remettre la trame
+
+00:00:24.011 --> 00:00:24.927
+sur cette liaison.
+
+00:00:25.267 --> 00:00:29.665
+Sous Linux, demande quelle route serait utilisée pour
+une adresse concrète.
+
+00:00:29.665 --> 00:00:33.054
+Dans notre maquette, la réponse peut afficher
+l'adresse de R deux
+
+00:00:33.054 --> 00:00:36.442
+après via, et le nom de l'interface de transit après
+dev.
+
+00:00:36.442 --> 00:00:39.776
+Ne lis pas seulement la première adresse de la ligne,
+qui
+
+00:00:39.776 --> 00:00:40.989
+est la destination demandée.
+
+00:00:40.989 --> 00:00:43.464
+Compare le voisin à ton schéma.
+
+00:00:43.464 --> 00:00:46.749
+Si la commande pointe vers ton interface locale alors
+que le
+
+00:00:46.749 --> 00:00:50.035
+destinataire est distant, inspecte d'abord la
+précision de la route et
+
+00:00:50.035 --> 00:00:51.528
+le masque de tes interfaces.
+
+00:00:51.892 --> 00:00:54.562
+Suis l'exemple de gauche à droite.
+
+00:00:54.562 --> 00:00:57.730
+Le PC A voit une adresse extérieure à son réseau, donc
+
+00:00:57.730 --> 00:00:59.746
+il envoie le paquet vers son routeur.
+
+00:00:59.746 --> 00:01:03.999
+Sur le réseau de transit, le premier routeur transmet
+au deuxième.
+
+00:01:03.999 --> 00:01:06.854
+Le deuxième rejoint son réseau local.
+
+00:01:06.854 --> 00:01:09.979
+Maintenant, retourne le dessin mentalement.
+
+00:01:09.979 --> 00:01:13.529
+Le PC B doit pouvoir répondre et le second routeur
+doit
+
+00:01:13.529 --> 00:01:14.820
+connaître le premier réseau.
+
+00:01:14.820 --> 00:01:17.930
+Une bonne route à l'aller seule ne suffit pas à faire
+
+00:01:17.930 --> 00:01:18.778
+répondre un ping.
+
+00:01:19.142 --> 00:01:22.021
+Écris les routes sur deux lignes distinctes.
+
+00:01:22.021 --> 00:01:25.391
+Sur R un, la destination est le réseau qui se trouve
+
+00:01:25.391 --> 00:01:26.310
+après R deux.
+
+00:01:26.310 --> 00:01:29.638
+La prochaine adresse est celle de R deux sur le lien
+
+00:01:29.638 --> 00:01:30.244
+de transit.
+
+00:01:30.244 --> 00:01:33.025
+Sur R deux, les rôles s'inversent.
+
+00:01:33.025 --> 00:01:36.980
+Vérifie que chaque voisin de transit répond avant de
+modifier les
+
+00:01:36.980 --> 00:01:37.339
+routes.
+
+00:01:37.339 --> 00:01:41.087
+Si le voisin ne répond pas, commence par l'adresse, le
+masque
+
+00:01:41.087 --> 00:01:42.450
+et l'état de l'interface.
+
+00:01:42.808 --> 00:01:46.088
+Imagine que le premier routeur a bien été configuré,
+mais que
+
+00:01:46.088 --> 00:01:48.175
+le deuxième n'a pas la route inverse.
+
+00:01:48.175 --> 00:01:51.275
+Tu risques de conclure trop vite que le premier
+routeur ne
+
+00:01:51.275 --> 00:01:53.530
+transmet rien parce que la commande ping échoue.
+
+00:01:53.530 --> 00:01:57.195
+Dans la capture côté B, cherche d'abord la requête.
+
+00:01:57.195 --> 00:02:00.283
+Si elle arrive, tu viens de confirmer l'aller.
+
+00:02:00.283 --> 00:02:04.106
+Ensuite, cherche la réponse et suis-la de proche en
+proche.
+
+00:02:04.106 --> 00:02:07.544
+Tu peux maintenant inspecter exactement le routeur qui
+a besoin d'une
+
+00:02:07.544 --> 00:02:09.106
+route vers le premier réseau.
+
+00:02:09.475 --> 00:02:12.562
+En statique, tu saisis le prochain saut.
+
+00:02:12.562 --> 00:02:16.752
+Pour un protocole dynamique, les routeurs échangent
+des informations sur les
+
+00:02:16.752 --> 00:02:17.133
+réseaux.
+
+00:02:17.133 --> 00:02:21.099
+RIP compte les sauts : la valeur seize annonce un
+réseau
+
+00:02:21.099 --> 00:02:21.459
+inaccessible.
+
+00:02:21.459 --> 00:02:25.663
+EIGRP établit des relations avec ses voisins et
+calcule une métrique.
+
+00:02:25.663 --> 00:02:28.886
+Quand une route manque, lis deux niveaux séparément.
+
+00:02:28.886 --> 00:02:32.804
+La relation avec le voisin fonctionne-t-elle, et le
+préfixe distant apparaît-il
+
+00:02:32.804 --> 00:02:34.584
+ensuite dans la table ?
+
+00:02:34.933 --> 00:02:39.075
+En lisant la table, commence par le préfixe du LAN
+distant.
+
+00:02:39.075 --> 00:02:42.008
+La lettre C veut dire que le réseau est directement
+connecté,
+
+00:02:42.008 --> 00:02:44.941
+S que la route est statique, et R qu'elle a été
+
+00:02:44.941 --> 00:02:45.741
+apprise par RIP.
+
+00:02:45.741 --> 00:02:49.136
+Pour une route interne EIGRP, on voit normalement D.
+
+00:02:49.136 --> 00:02:52.015
+Si tu as configuré à la fois une route statique et
+
+00:02:52.015 --> 00:02:54.894
+un protocole de routage, la provenance dans la table
+te dit
+
+00:02:54.894 --> 00:02:56.464
+quelle route a finalement été choisie.
+
+00:02:56.464 --> 00:02:59.773
+Ce n'est pas forcément celle que tu viens de
+configurer.
+
+00:03:00.100 --> 00:03:02.881
+Un VLAN délimite un réseau de niveau deux.
+
+00:03:02.881 --> 00:03:06.135
+Le switch doit envoyer les trames de ce VLAN au
+routeur
+
+00:03:06.135 --> 00:03:07.023
+sur un trunk.
+
+00:03:07.023 --> 00:03:11.190
+Selon le montage, le routeur utilise une sous-
+interface par VLAN.
+
+00:03:11.190 --> 00:03:14.854
+La passerelle du poste correspond à cette sous-
+interface.
+
+00:03:14.854 --> 00:03:18.249
+Commence par vérifier le poste vers sa passerelle.
+
+00:03:18.249 --> 00:03:21.521
+Si ce premier test échoue, un changement dans RIP
+n'arrangera pas
+
+00:03:21.521 --> 00:03:23.604
+une erreur de tag sur le trunk.
+
+00:03:23.975 --> 00:03:27.687
+Le TP commence par un PC Linux qui sert de routeur.
+
+00:03:27.687 --> 00:03:31.282
+Configure ses deux interfaces avec les adresses du
+sujet et vérifie
+
+00:03:31.282 --> 00:03:32.589
+la passerelle du client.
+
+00:03:32.589 --> 00:03:36.045
+Sur le client, lance un ping vers le routeur local.
+
+00:03:36.045 --> 00:03:39.685
+Si ça marche, lance le ping vers la cible extérieure.
+
+00:03:39.685 --> 00:03:42.994
+Observe la même requête sur les deux interfaces.
+
+00:03:42.994 --> 00:03:46.797
+Avant activation du transfert, tu peux la voir à
+l'entrée sans
+
+00:03:46.797 --> 00:03:47.834
+la voir ressortir.
+
+00:03:47.834 --> 00:03:50.788
+C'est cette comparaison que demande le TP.
+
+00:03:51.142 --> 00:03:55.197
+Dans le routeur de la maquette, active le transfert
+IPv4.
+
+00:03:55.197 --> 00:03:57.329
+Rejoue le même ping.
+
+00:03:57.329 --> 00:04:00.910
+Si une requête sort, examine la couche Ethernet : elle
+utilise
+
+00:04:00.910 --> 00:04:02.538
+les adresses du nouveau lien.
+
+00:04:02.538 --> 00:04:04.780
+Le compteur de sauts baisse.
+
+00:04:04.780 --> 00:04:08.971
+Si aucune réponse ne revient, vérifie le chemin
+inverse et le
+
+00:04:08.971 --> 00:04:09.351
+filtrage.
+
+00:04:09.351 --> 00:04:13.406
+Garde les deux traces pour pouvoir expliquer
+précisément où le comportement
+
+00:04:13.406 --> 00:04:14.143
+a changé.
+
+00:04:14.517 --> 00:04:18.175
+Dans le TP, tu ajoutes un routeur Cisco et tu
+travailles
+
+00:04:18.175 --> 00:04:19.173
+depuis sa console.
+
+00:04:19.173 --> 00:04:23.116
+Une fois les interfaces configurées et actives, écris
+le préfixe distant
+
+00:04:23.116 --> 00:04:24.908
+et le voisin de transit.
+
+00:04:24.908 --> 00:04:27.775
+Fais la même opération dans l'autre sens.
+
+00:04:27.775 --> 00:04:32.052
+Puis teste ton routeur local, l'interface distante et
+le PC distant.
+
+00:04:32.052 --> 00:04:35.227
+Si seuls les routeurs arrivent à se joindre, vérifie
+si leur
+
+00:04:35.227 --> 00:04:37.825
+ping utilise une autre adresse source que les postes.
+
+00:04:38.183 --> 00:04:41.222
+Voici les commandes avec les adresses du dessin.
+
+00:04:41.222 --> 00:04:44.433
+En lisant chaque ligne, dis à voix haute le réseau de
+
+00:04:44.433 --> 00:04:46.185
+destination, son masque et le voisin.
+
+00:04:46.185 --> 00:04:49.456
+Les deux lignes ne sont pas identiques : chaque
+routeur voit
+
+00:04:49.456 --> 00:04:51.834
+un réseau distant différent et un voisin différent.
+
+00:04:51.834 --> 00:04:55.036
+Compare ce que tu as tapé à ce que show ip
+
+00:04:55.036 --> 00:04:56.491
+route montre après la configuration.
+
+00:04:56.491 --> 00:05:00.276
+Le jour du TP, remplace les valeurs par celles du
+sujet
+
+00:05:00.276 --> 00:05:00.964
+avant d'essayer.
+
+00:05:01.350 --> 00:05:04.926
+Si ton voisinage EIGRP manque, reviens à la liaison et
+aux
+
+00:05:04.926 --> 00:05:06.876
+paramètres partagés par les deux routeurs.
+
+00:05:06.876 --> 00:05:11.177
+Si le voisin apparaît, cherche le préfixe distant dans
+la table.
+
+00:05:11.177 --> 00:05:15.307
+Pour RIP, regarde quels réseaux sont configurés dans
+le protocole.
+
+00:05:15.307 --> 00:05:18.376
+Et si la panne dépend d'un VLAN, teste d'abord la
+passerelle
+
+00:05:18.376 --> 00:05:20.050
+de ce VLAN depuis un poste.
+
+00:05:20.050 --> 00:05:23.656
+Tu distingues ainsi une panne locale, une panne de
+relation entre
+
+00:05:23.656 --> 00:05:25.295
+routeurs et un préfixe manquant.

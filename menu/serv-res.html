@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Services réseaux — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Services réseaux : contenu à préparer.">
+  <title>Bases des services réseaux — BUT1 R&amp;T</title>
+  <meta name="description" content="Transport, HTTP, DHCP, SSH, DNS, transfert de fichiers et messagerie.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-2">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,136 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/dnssec.webp" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Services réseaux</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/dnssec.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Bases des services réseaux</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/serv-res/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Trouver le service derrière une adresse</h3>
+<p>Une adresse IP identifie l’extrémité réseau. Un <strong>port</strong> aide le système à remettre les données au service qui les attend. Sur une connexion TCP, on distingue une source et une destination, avec une IP et un port de chaque côté. Le client prend souvent un port temporaire. Le serveur écoute sur le port configuré pour le service.</p>
+<p><strong>UDP</strong> envoie des datagrammes indépendants. Il ne fournit pas lui-même les garanties de remise et d’ordre de TCP. <strong>TCP</strong> ouvre une connexion et fournit un flux ordonné. Les numéros de séquence, les acquittements et la retransmission permettent de retrouver des données perdues. Une application au-dessus de TCP doit définir comment délimiter ses propres messages.</p>
+<p>L’ouverture TCP se lit <code>SYN → SYN,ACK → ACK</code>. Chaque côté convient de son numéro initial. À la fermeture, <code>FIN</code> indique qu’une extrémité a fini d’envoyer. Une connexion interrompue peut être réinitialisée par <code>RST</code>. Un ping réussi prouve que la cible a répondu à ICMP. Pour vérifier l’application, il faut aussi tester son port et son protocole.</p></div>
+<div class="c-block"><h3>2. Lire une requête HTTP</h3>
+<p>Le client demande une ressource par une méthode et un chemin, par exemple <code>GET /index.html</code>. Les en-têtes donnent le contexte, notamment <code>Host</code>. Le serveur renvoie un statut, des en-têtes et éventuellement un corps. <code>200</code> indique un succès, <code>404</code> une ressource introuvable dans ce contexte et <code>500</code> un problème interne côté serveur.</p>
+<p>Essaie <code>curl -i http://serveur-du-tp/</code> dans la maquette. Lis la première ligne et le type de contenu, puis le HTML reçu. HTTPS utilise TLS pour protéger l’échange. Pour un service moderne, le navigateur peut aussi négocier d’autres versions de HTTP. Le TP de lecture porte sur les champs HTTP visibles de la version testée.</p></div>
+<div class="c-block"><h3>3. Distribuer les réglages réseau avec DHCP</h3>
+<p>Le serveur DHCP gère un <strong>pool</strong>, l’ensemble des adresses qu’il peut attribuer. Le <strong>bail</strong> fixe la durée de l’attribution. Le client peut aussi recevoir le masque, le routeur par défaut et le DNS. Pour une première attribution, suis <code>Discover → Offer → Request → Ack</code>. Un renouvellement peut commencer directement par un Request.</p>
+<p>Les ports UDP usuels sont 67 côté serveur et 68 côté client. Une diffusion du client reste dans son réseau local. Si le serveur est derrière un routeur, un <strong>relais DHCP</strong> peut transmettre la demande au serveur et lui fournir le contexte pour choisir le bon réseau. Un serveur qui répond mais envoie la mauvaise option DNS produit une panne différente d’un serveur qui ne répond pas.</p></div>
+<div class="c-block"><h3>4. SSH, transfert de fichiers et confiance</h3>
+<p><strong>SSH</strong> donne accès à une session distante chiffrée. À la première connexion, compare l’empreinte de la clé d’hôte à une valeur fiable du labo. Cette clé identifie le serveur. La clé de l’utilisateur sert à prouver son identité au serveur. Pour une authentification par clé, le client conserve sa clé privée. La partie publique va sur le compte serveur autorisé.</p>
+<p><strong>SFTP</strong> utilise SSH. FTP ouvre une connexion de contrôle puis une connexion de données. En mode actif, le serveur initie la connexion de données. En mode passif, le client se connecte au port de données annoncé par le serveur. Cela permet d’expliquer certains cas où la connexion FTP fonctionne alors que le listage ou le transfert échoue.</p></div>
+<div class="c-block"><h3>5. Répondre à une question DNS</h3>
+<p>Le <strong>résolveur</strong> reçoit la question du poste. Il peut réutiliser une réponse en cache ou interroger d’autres serveurs jusqu’à l’autorité de la zone demandée. Une <strong>zone</strong> rassemble les données dont un serveur a la responsabilité. Le TTL exprime la durée pendant laquelle un résultat peut être conservé.</p>
+<table><thead><tr><th>Type</th><th>Question à laquelle il répond</th></tr></thead><tbody>
+<tr><th scope="row">A, AAAA</th><td>Quelle adresse IPv4 ou IPv6 correspond à ce nom ?</td></tr>
+<tr><th scope="row">CNAME</th><td>Quel autre nom ce libellé désigne-t-il ?</td></tr>
+<tr><th scope="row">MX</th><td>Vers quel serveur envoyer le courrier de ce domaine ?</td></tr>
+<tr><th scope="row">NS, SOA</th><td>Quels serveurs décrivent la zone et quels sont ses paramètres d’autorité ?</td></tr>
+<tr><th scope="row">PTR</th><td>Quel nom est associé dans la zone inverse ?</td></tr>
+</tbody></table>
+<p>Pose la question au serveur voulu. <code>nslookup srv-msg.iut.loc 192.168.1.253</code> vérifie la résolution prévue dans le TP. Si ce test réussit et que le nom échoue dans l’application, vérifie quel résolveur le poste utilise par défaut.</p></div>
+<div class="c-block"><h3>6. Suivre un mail de l’envoi à la lecture</h3>
+<p><strong>SMTP</strong> transporte le mail vers un serveur. <strong>POP</strong> et <strong>IMAP</strong> servent à consulter la boîte. POP permet de récupérer les messages. IMAP permet de garder dossiers et état synchronisés côté serveur. Le TP utilise deux clients avec POP et SMTP. Il faut que la configuration IP et la résolution DNS fonctionnent avant le test du mail.</p>
+<figure><img loading="lazy" src="../assets/revisions/serv-res/schemas/messagerie.png" alt="Dans le TP4, DHCP fournit les réglages, DNS résout le serveur, SMTP envoie les messages et POP les récupère."><figcaption>Vérifie chaque service dans cet ordre lorsque l’envoi ou la lecture échouent.</figcaption></figure></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#srv-dhcp">TD1 · Refaire le contrôle du bail DHCP</a></li>
+<li><a href="#srv-dns">TD DNS et TP4 · Vérifier le type de réponse et les alias</a></li>
+<li><a href="#srv-mail">TP4 · Configurer les clients et échanger deux messages</a></li>
+<li><a href="#srv-tcp">TP4 · Isoler l’ouverture TCP sur le port SMTP</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="srv-dhcp"><summary>TD1 · Valider que le client reçoit l’adresse, le masque et le DNS</summary><div class="acc-body">
+<p class="c-question"><strong>Démarche reconstituée à partir du compte rendu.</strong> Vérifier la configuration du serveur DHCP de la maquette et prouver qu’un client obtient un bail.</p>
+<ol><li>Sur la VM serveur, fixe l’IPv4 de l’interface du TP hors du pool. Dans la configuration utilisée par le sujet, vérifie la déclaration du sous-réseau, la plage et l’option DNS.</li><li>Vérifie que l’interface est montée et que le service du TD a bien redémarré. Dans la VM qui utilise <code>isc-dhcp-server</code>, consulte <code>systemctl status isc-dhcp-server</code> pour identifier une erreur de configuration.</li><li>Redemande un bail depuis le client. Relève son IP, son masque et son DNS, puis compare les valeurs au pool. Si le Discover part sans Offer, inspecte le service et la liaison locale. Si l’Ack contient un mauvais DNS, reviens aux options du pool.</li></ol></div></details>
+<details class="acc" id="srv-dns"><summary>TD DNS et TP4 · Créer et vérifier les alias du serveur de messagerie</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé du TP4.</strong> Résoudre <code>srv-msg.iut.loc</code>, puis créer les noms <code>pop.iut.loc</code> et <code>smtp.iut.loc</code> qui désignent le même serveur dans la simulation.</p>
+<ol><li>Dans la configuration DNS du serveur de la maquette, ajoute l’enregistrement A du serveur de messagerie, <code>srv-msg.iut.loc → 192.168.1.254</code>. Crée ensuite les alias demandés vers le nom canonique.</li><li>Depuis un client, teste le serveur DNS <code>192.168.1.253</code> explicitement. Cherche le nom canonique, puis les deux alias. Dans ta réponse, associe le CNAME à un nom et l’enregistrement A à une IPv4.</li><li>Reteste avec le DNS par défaut du client. Si le premier test réussit et que le second échoue, regarde ce que le poste a réellement reçu comme option DNS.</li></ol></div></details>
+<details class="acc" id="srv-mail"><summary>TP4 · Déposer un message puis le récupérer depuis l’autre poste</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Configurer POP et SMTP pour deux clients en DHCP et tester les envois entre <code>user1</code> et <code>user2</code>.</p>
+<ol><li>Avant de créer les comptes, vérifie depuis les deux postes l’adresse DHCP, l’adresse DNS et l’accès au serveur de messagerie. Teste la résolution de son nom avec <code>nslookup</code>.</li><li>Dans Packet Tracer, ouvre le service Email sur le serveur, active SMTP et POP3, fixe le domaine à <code>iut.loc</code> et crée les deux comptes de test. Sur chaque poste, ouvre <strong>Desktop → Email</strong> et saisis le nom de serveur entrant, sortant et le nom de compte.</li><li>Envoie de <code>user1@iut.loc</code> vers <code>user2@iut.loc</code>. Demande la réception sur le second client. Si l’envoi réussit et que la réception échoue, vérifie le serveur entrant et les identifiants POP avant de retoucher à la configuration SMTP.</li></ol></div></details>
+<details class="acc" id="srv-tcp"><summary>TP4 · Repérer SYN, SYN-ACK et ACK sur le port 25</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Dans Packet Tracer, depuis <code>clt-msg1</code>, tester la connexion TCP vers le port 25 de <code>192.168.1.254</code> et relever les trois drapeaux d’ouverture.</p>
+<ol><li>Passe en mode simulation, sélectionne le filtre TCP puis lance <code>telnet 192.168.1.254 25</code> dans cette maquette dédiée.</li><li>Ouvre les trois segments. Le premier porte SYN et va vers 25, le deuxième revient depuis 25 avec SYN et ACK et le troisième confirme avec ACK. Relève le port temporaire du client.</li><li>Cette ouverture indique que le port répond. Pour vérifier le service complet, rejoue l’envoi depuis le client mail et contrôle la récupération par POP.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/serv-res/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/serv-res/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/serv-res/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Un service écoute sur un port</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="25.708">0:25 · TCP ou UDP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="82.292">1:22 · HTTP donne une réponse lisible</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="111.458">1:51 · DHCP distribue une configuration</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="166.125">2:46 · SSH et transferts</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="219.958">3:39 · DNS traduit différents types d’informations</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="271.458">4:31 · Messagerie du client au destinataire</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="302.083">5:02 · TD1 · Lire le bail du poste</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="331.083">5:31 · TP4 · Ajouter les noms du serveur de messagerie</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="382.958">6:22 · TP4 · Voir la connexion et échanger un message</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

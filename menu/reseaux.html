@@ -125,7 +125,7 @@
     <li><a href="#td-ethernet">R102 TD1 · Comparer hub et commutateur avec un ping</a></li>
     <li><a href="#td-trame">R102 TD1 · Lire une trame et distinguer ARP d’IPv4</a></li>
     <li><a href="#td-dhcp">R102 TD1 · Configurer un pool DHCP, puis analyser le bail</a></li>
-    <li><a href="#tp-routage">TP1 · Tester le transfert IPv4 d’un routeur Linux</a></li>
+    <li><a href="#tp-routage">Application d’Internet 2 · Tester le transfert IPv4 d’un routeur Linux</a></li>
     <li><a href="#tp-ftp">TP Réseaux locaux · Lire une connexion TCP pendant un échange FTP</a></li>
   </ul>
 </section>
@@ -145,7 +145,8 @@
     <ol><li>Dans <strong>Server0 → Desktop → IP Configuration</strong>, fixe par exemple <code>192.168.10.2/24</code>. Dans <strong>Services → DHCP</strong>, active le service, saisis le début de plage <code>192.168.10.11</code>, le masque <code>255.255.255.0</code> et cinq utilisateurs au maximum. Renseigne la passerelle et le DNS seulement selon les services configurés dans la maquette.</li><li>En mode Simulation, garde les événements DHCP et ARP. Sur un poste sans bail, passe <strong>Desktop → IP Configuration</strong> en DHCP. Sur un client déjà configuré, <code>ipconfig</code> affiche les réglages et <code>ipconfig /renew</code> demande le renouvellement.</li><li>Inspecte le Discover d’une première attribution. Vérifie <code>0.0.0.0 → 255.255.255.255</code> en IPv4, et <code>68 → 67</code> dans UDP. À la couche Ethernet, la destination est la diffusion. Ouvre ensuite l’Offer pour voir l’adresse proposée, le Request pour identifier l’offre retenue et l’Ack pour confirmer le bail.</li></ol>
     <p><strong>Vérification.</strong> Sur le client, l’IP est comprise entre .11 et .15 et le masque est /24. Si aucune offre ne revient, commence par le câblage, l’activation du service, le pool et le réseau local du serveur. Si le TD ajoute un sixième client au même pool, cinq adresses permettent seulement cinq baux simultanés.</p>
   </div></details>
-  <details class="acc" id="tp-routage"><summary>TP1 · Faire passer un ping à travers le routeur Linux</summary><div class="acc-body">
+  <details class="acc" id="tp-routage"><summary>Application d’Internet 2 · Faire passer un ping à travers le routeur Linux</summary><div class="acc-body">
+    <p>Cette question vient du <a href="internet2.html#i2-tp1">TP1 d’Internet 2</a>. Elle prolonge l’exercice d’adressage et de passerelle.</p>
     <p class="c-question"><strong>Énoncé.</strong> Configurer les deux interfaces du routeur Linux et la passerelle du poste client, puis comparer le ping vers <code>172.25.255.254</code> avant et après activation du transfert IPv4.</p>
     <ol><li>Sur la maquette du TP, vérifie avec <code>ip -br addr</code> les deux interfaces du routeur. L’une reçoit <code>10.0.X.1/24</code>, l’autre <code>172.25.0.X/16</code>. Donne au client <code>10.0.X.2/24</code> et une route par défaut via <code>10.0.X.1</code>, en reprenant le numéro de groupe du TP.</li><li>Ping d’abord l’interface locale du routeur. Puis lance le ping vers le réseau extérieur. Compare la capture côté client et côté routeur. Active le transfert avec <code>sudo sysctl -w net.ipv4.ip_forward=1</code> dans la VM dédiée et rejoue le même test.</li><li>Si la requête apparaît sur les deux interfaces du routeur, le transfert aller se fait. Si aucune réponse ne revient, contrôle le chemin retour et le filtrage. Quand le paquet traverse le routeur, les MAC correspondent à la nouvelle liaison et le TTL du paquet est décrémenté.</li></ol>
   </div></details>

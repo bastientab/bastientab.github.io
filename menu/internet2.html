@@ -1,14 +1,179 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <title>Page déplacée — Bastien TABORDET</title>
-  <meta name="robots" content="noindex">
-  <link rel="canonical" href="https://bastientabordet.fr/menu/web.html">
-  <meta http-equiv="refresh" content="0; url=web.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Internet 2 — BUT1 R&amp;T</title>
+  <meta name="description" content="Interconnexion de réseaux, routage statique, RIP, EIGRP et VLAN.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/internet2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
 </head>
-<body>
-  <!-- Ancienne URL gardee pour ne pas casser les vieux liens. Supprimable plus tard. -->
-  <p>Cette fiche a déménagé : <a href="web.html">Web</a>.</p>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/fibre.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Internet 2</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/internet2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Lire une table de routage</h3>
+<p>Un routeur décide quoi faire d’un <strong>paquet</strong> à partir de son IP de destination. Une route comprend un <strong>préfixe</strong>, c’est-à-dire un ensemble d’adresses, et un moyen de les joindre. Une route directement connectée mène à une interface sur laquelle le destinataire peut se trouver. Une route distante indique généralement un <strong>prochain saut</strong>, le routeur voisin auquel remettre la trame.</p>
+<p>Si plusieurs préfixes couvrent l’adresse, prends le plus précis. Pour <code>10.0.2.14</code>, une route <code>10.0.2.0/24</code> est plus précise qu’une route <code>10.0.0.0/8</code>. La route par défaut est le dernier recours. Sur Linux, interroge la décision avec <code>ip route get 10.0.2.14</code>. Sur Cisco, lis <code>show ip route</code> et l’entrée correspondant à la destination.</p></div>
+<div class="c-block"><h3>2. Garder l’aller et le retour cohérents</h3>
+<figure><img src="../assets/revisions/internet2/schemas/routes.png" alt="Deux LAN 10.0.1.0 et 10.0.2.0 sont reliés via R1 et R2. Chaque routeur doit apprendre le LAN situé derrière l’autre." loading="lazy"><figcaption>Dans l’exemple, les LAN sont distincts et les deux routeurs partagent un réseau de transit.</figcaption></figure>
+<p>Sur PC A, la passerelle doit appartenir à son LAN. R1 doit connaître le LAN éloigné via R2 et R2 doit connaître le LAN de PC A via R1. PC B a lui aussi besoin de sa passerelle. Un ping fonctionnel suppose une requête et une réponse. Sur Linux, le noyau doit aussi avoir le transfert IPv4 activé pour relayer un paquet vers une autre interface.</p>
+<p>Entre deux routeurs, vérifie le voisin du transit avant tout ajout. Ensuite, configure un préfixe distant. Sur Cisco, <code>ip route 10.0.2.0 255.255.255.0 172.16.0.2</code> indique la destination, le masque et le voisin. Sur Linux, <code>sudo ip route add 10.0.2.0/24 via 172.16.0.2</code> exprime le même choix dans cette maquette.</p></div>
+<div class="c-block"><h3>3. Apprendre des routes avec RIP et EIGRP</h3>
+<p>Une route <strong>statique</strong> provient d’une commande. Une route <strong>dynamique</strong> est apprise via un protocole de routage. RIPv2 fournit la longueur des préfixes et utilise le nombre de sauts comme métrique. Un coût de 16 représente un réseau inaccessible. Vérifie les interfaces qui participent au protocole et la présence des routes apprises, signalées par <code>R</code> dans une table Cisco.</p>
+<p>EIGRP met en place des voisinages et choisit ses routes avec une métrique dont les paramètres par défaut s’appuient sur la bande passante et le délai. Sur une maquette classique en IPv4, valide les paramètres communs de l’instance avant de conclure. Avec <code>show ip eigrp neighbors</code>, confirme d’abord le voisin. Ensuite, vérifie la route apprise dans <code>show ip route</code>. Sur Cisco, une route EIGRP interne est généralement marquée <code>D</code>.</p></div>
+<div class="c-block"><h3>4. Ajouter des VLAN au routage</h3>
+<p>Les VLAN séparent les diffusions de niveau 2. Sur un montage avec un seul lien physique entre switch et routeur, un trunk transporte plusieurs VLAN. Le routeur peut disposer d’une sous-interface et d’une adresse de passerelle par VLAN. Pour joindre un réseau distant, il peut ensuite annoncer les préfixes via RIP ou EIGRP dans la maquette.</p>
+<p>Vérifie dans cet ordre le VLAN du port de poste, le VLAN autorisé sur le trunk, le tag de la sous-interface et son adresse, puis les routes. Un poste peut joindre sa passerelle et échouer plus loin. Ce premier résultat localise déjà la panne au-delà de son VLAN.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#i2-tp1">TP1 · Tester le transfert IP et observer les deux interfaces</a></li>
+<li><a href="#i2-tp2">TP2 · Construire des routes statiques entre deux réseaux</a></li>
+<li><a href="#i2-dynamique">TP3 et TP VLAN/RIP · Vérifier le voisinage et les routes apprises</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="i2-tp1"><summary>TP1 · Comparer deux captures avant et après activation du transfert</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Configurer le PC routeur et le PC client selon la topologie fournie, tester les pings, puis activer le transfert et analyser ce qui change sur les deux interfaces du routeur.</p>
+<ol><li>Sur la maquette du TP, relève les deux interfaces du routeur. Configure les IP données puis vérifie avec <code>ip -br address</code>. Sur le client, confirme la route vers la passerelle locale et teste un ping vers elle.</li>
+<li>Lance la capture sur les deux interfaces. Avec le transfert désactivé, la requête destinée à l’autre réseau peut être visible à l’entrée sans sortir du routeur. Active <code>sudo sysctl -w net.ipv4.ip_forward=1</code> dans la machine dédiée, puis refais le même ping.</li>
+<li>Filtre ICMP dans les deux captures. Si la requête ressort, compare les adresses de couche 2 et le TTL. Si la réponse manque, regarde le routage du retour et le filtrage avant de changer l’adresse du client.</li></ol></div></details>
+<details class="acc" id="i2-tp2"><summary>TP2 · Joindre le LAN d’un autre binôme avec des routes statiques</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Configurer les routeurs Cisco pour que les postes de deux LAN communiquent. Montrer les commandes et contrôler les tables. Le schéma du cours prend deux LAN de démonstration. Utilise les adresses attribuées à ton binôme dans la salle.</p>
+<ol><li>Accède à la console. <code>enable</code> passe en mode privilégié et <code>configure terminal</code> en configuration. Configure les interfaces de la topologie et utilise <code>no shutdown</code> sur celles qui doivent être actives. Teste la liaison entre les deux routeurs.</li>
+<li>Sur R1, ajoute la route vers le LAN de R2 avec l’adresse de R2 dans le réseau de transit. Sur R2, ajoute la route symétrique vers le LAN de R1. Sur chaque client, renseigne la passerelle locale.</li>
+<li>Vérifie les routes avec <code>show ip route</code>. Ping d’abord le routeur local, puis l’interface opposée, puis le PC distant. Si le dernier test échoue, vérifie que les paquets venant des clients ont un chemin retour. Un ping lancé directement depuis un routeur peut emprunter un trajet retour différent.</li></ol></div></details>
+<details class="acc" id="i2-dynamique"><summary>TP3 et TP VLAN/RIP · Retrouver la cause lorsqu’un préfixe manque</summary><div class="acc-body">
+<p class="c-question"><strong>Démarche des TP.</strong> Faire apprendre les préfixes par le protocole demandé, puis vérifier la communication entre les postes. Le sujet TP3 et le TP VLAN/RIP sont repérés via les comptes rendus disponibles.</p>
+<ol><li>Avant le protocole, confirme les adresses des interfaces de transit et le fonctionnement de la liaison. En EIGRP, vérifie le voisinage. En RIP, vérifie le protocole et les réseaux configurés avec <code>show ip protocols</code>.</li>
+<li>Consulte la table. Tu dois retrouver le préfixe distant, son prochain saut et le protocole attendu. Si le voisin fonctionne sans que la route apparaisse, vérifie que le bon LAN est annoncé et que la route n’est pas remplacée par une autre source.</li>
+<li>Pour un poste dans un VLAN, teste la passerelle avant la destination finale. Si la passerelle ne répond pas, vérifie le port access, le trunk et le tag avant de modifier le protocole de routage.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/internet2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/internet2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/internet2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Lire une route et choisir le prochain saut</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="51.792">0:51 · Relier les deux LAN dans les deux sens</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="129.375">2:09 · Statique, RIP et EIGRP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="180.000">3:00 · Faire arriver les VLAN au routeur</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="203.875">3:23 · TP1 · Vérifier le transfert Linux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="254.417">4:14 · TP2 · Vérifier le routage statique Cisco</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="301.250">5:01 · TP3 et TP VLAN/RIP · Localiser une panne</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>
