@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Méthodologie du travail universitaire et outils bureautiques — Prépa ISIMA</title>
+  <meta name="description" content="Document structuré, références de cellules, tableur et contrôle des formules.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-mtu.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">→</span></div>
+      <h1 class="page-title" id="page-title">Méthodologie du travail universitaire et outils bureautiques</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-mtu/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Structurer un document que l’on pourra modifier</h3>
+<p>Un <strong>style</strong> donne le même rôle et la même mise en forme à plusieurs éléments. Pour un rapport, applique des styles de titres selon le niveau. Le sommaire automatique peut ensuite repérer les sections et leurs pages. Après une modification, actualise le sommaire et vérifie la version exportée.</p>
+<p>Une <strong>tabulation</strong> définit un point d’alignement et son mode, par exemple à gauche ou à droite. Fixe les taquets dans la règle de l’éditeur. Utilise un tableau quand tu veux structurer plusieurs colonnes contenant des données régulières. Pour une liste de réponses, la mise en forme doit rester alignée quand un libellé s’allonge.</p></div>
+<div class="c-block"><h3>2. Construire une feuille autour des données d’entrée</h3>
+<p>Un tableur relie des cellules. Saisis une donnée une seule fois et réutilise-la dans les formules. Une cellule formatée en euros reste un nombre. Sépare le calcul, les unités et la présentation. Une référence relative comme <code>B10</code> se déplace avec la copie. Avec <code>$B$3</code>, rien ne bouge. Dans <code>B$12</code>, seule la ligne est fixée ou, avec <code>$B4</code>, seule la colonne.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-mtu/schemas/cellules.png" alt="La valeur absolue B3 reste stable. Les références mixtes permettent de fixer soit la ligne, soit la colonne."></figure></div>
+<div class="c-block"><h3>3. Résumer ou décider avec une formule</h3>
+<p><code>SOMME</code> additionne. <code>MOYENNE</code> calcule une moyenne. <code>MIN</code> et <code>MAX</code> retrouvent les extrêmes. Pour rendre une note de patinage sans le résultat le plus haut et le plus bas, pars de la somme de toutes les notes, puis retire ces deux valeurs. Vérifie la ligne des notes avant la recopie.</p>
+<p>Une formule <code>SI</code> choisit entre deux résultats. Écris d’abord la condition en français, par exemple « stock final strictement inférieur au seuil ». Pour un tableau de suivi, garde le seuil dans une seule cellule et teste un cas de chaque côté, plus le cas égal au seuil.</p></div>
+<div class="c-block"><h3>4. Vérifier une présentation et ses sources</h3>
+<p>Un graphique doit indiquer ce qu’il mesure et dans quelles unités. Pour comparer des quantités vendues par titre, utilise une représentation qui conserve les noms et dont les hauteurs sont comparables. Avant de partager un document collaboratif, vérifie quelle version est visible et qui peut l’éditer. Pour un rapport, associe une référence à chaque affirmation tirée d’un document et sépare la citation exacte de ta reformulation.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#mtu-scolaire">Exercice Scolaire · Recopier prix et règlements avec les bons ancrages</a></li>
+<li><a href="#mtu-librairie">Exercice Librairie · Calculer le TTC et déclencher la commande</a></li>
+<li><a href="#mtu-texte">Exercice Tabulation · Préparer un questionnaire lisible</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="mtu-scolaire"><summary>Tableur 1 · Calculer le transport scolaire d’un trimestre</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> À partir du prix d’un trajet, du nombre de trajets hebdomadaires et des semaines par mois, calculer le coût de chacun.</p>
+<ol><li>Dans le fichier fourni, saisis <code>=B10*$B$3</code> dans B12, puis recopie vers la droite. L’élève de la colonne B fait cinq trajets par semaine à 3,50 €, donc la semaine vaut 17,50 €.</li><li>Dans le classeur retrouvé, septembre est en ligne 14. En B14, écris <code>=B$12*$B4</code>. Recopie vers la droite et vers les trois mois. Tu obtiens 70 €, 52,50 € et 70 € pour la première colonne.</li><li>En ligne 18, somme les trois mois. Le premier total vaut 192,50 €. Modifie temporairement le prix du trajet dans une copie et vérifie que toute la feuille se recalcule.</li></ol></div></details>
+<details class="acc" id="mtu-librairie"><summary>Tableur 5 · Vérifier stock, prix TTC et seuil</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Calculer le nombre de BD vendues, le montant TTC et le déclenchement de la commande.</p>
+<ol><li>Pour Spirou en ligne 3, saisis <code>=B3-C3</code> en E3. Cela donne <code>125−26=99</code>. En F3, écris <code>=E3*D3*(1+$B$9)</code>, où B9 contient la TVA. Résultat 594 €.</li><li>Ajoute un paramètre de seuil de 30 dans une cellule dédiée, par exemple B10. En G3, une formule possible est <code>=SI(C3&lt;$B$10;"À commander";"OK")</code>. Recopie ensuite vers les autres lignes.</li><li>Spirou et Astérix passent sous le seuil. Tintin et Gaston restent au-dessus. Pour vérifier la règle, modifie une quantité finale à 30. Avec l’opérateur strict, la cellule indique OK.</li></ol></div></details>
+<details class="acc" id="mtu-texte"><summary>Texteur · Aligner le questionnaire avec des tabulations</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Reproduire la mise en page du questionnaire « ABC caractères » du support.</p>
+<ol><li>Repère l’alignement demandé pour les libellés et les réponses. Pose les taquets depuis la règle avec le mode d’alignement correspondant.</li><li>Entre les lignes dans des paragraphes portant ces réglages. Utilise la touche de tabulation pour passer de repère en repère.</li><li>Exporte en PDF, puis vérifie que les alignements restent corrects lorsque tu agrandis un libellé dans le fichier modifiable.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-mtu/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-mtu/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-mtu/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Structurer un document</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.083">0:23 · Recopier une formule</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="45.125">0:45 · Résumer et choisir</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="67.833">1:07 · Transport scolaire · Utiliser le bon ancrage</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="115.958">1:55 · Librairie · Calculer le TTC et la commande</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

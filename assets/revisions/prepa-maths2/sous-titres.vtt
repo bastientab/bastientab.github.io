@@ -1,0 +1,266 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.531
+Dire que deux formules se ressemblent n'a de sens qu'à
+un
+
+00:00:03.531 --> 00:00:04.155
+endroit donné.
+
+00:00:04.155 --> 00:00:07.329
+Pour un équivalent, leur quotient s'approche de un.
+
+00:00:07.329 --> 00:00:10.998
+Pour dire qu'une expression est négligeable devant une
+autre, le quotient
+
+00:00:10.998 --> 00:00:11.999
+tend vers zéro.
+
+00:00:11.999 --> 00:00:16.030
+Le même duo peut changer de comportement entre zéro et
+l'infini.
+
+00:00:16.030 --> 00:00:20.099
+Pour une somme, vérifie s'il y a annulation des termes
+principaux.
+
+00:00:20.099 --> 00:00:22.991
+C'est là qu'un développement limité aide.
+
+00:00:23.350 --> 00:00:26.646
+Une suite est comme un tableau avec un nombre par
+année.
+
+00:00:26.646 --> 00:00:30.586
+Dans une récurrence, la ligne suivante se calcule à
+partir de
+
+00:00:30.586 --> 00:00:31.302
+la précédente.
+
+00:00:31.302 --> 00:00:34.545
+Si on garde une fraction puis ajoute un nombre fixe,
+cherche
+
+00:00:34.545 --> 00:00:36.903
+l'état qui ne change pas sous cette opération.
+
+00:00:36.903 --> 00:00:39.673
+Soustrais cet état à chaque terme.
+
+00:00:39.673 --> 00:00:43.118
+Tu peux souvent montrer que l'écart est simplement
+multiplié par le
+
+00:00:43.118 --> 00:00:44.685
+même facteur à chaque étape.
+
+00:00:45.017 --> 00:00:48.374
+Pour tester un sous-espace, commence par zéro.
+
+00:00:48.374 --> 00:00:50.677
+C'est un contrôle rapide.
+
+00:00:50.677 --> 00:00:54.317
+Puis choisis deux éléments de l'ensemble et vérifie
+que toute combinaison
+
+00:00:54.317 --> 00:00:56.302
+de leurs valeurs reste dans l'ensemble.
+
+00:00:56.302 --> 00:00:59.609
+Une famille libre ne contient aucune redondance : il
+n'y a
+
+00:00:59.609 --> 00:01:02.013
+pas de combinaison non triviale qui donne zéro.
+
+00:01:02.013 --> 00:01:06.046
+Si cette famille permet aussi d'obtenir tout l'espace,
+elle forme une
+
+00:01:06.046 --> 00:01:06.413
+base.
+
+00:01:06.767 --> 00:01:09.964
+Une application linéaire peut perdre une direction.
+
+00:01:09.964 --> 00:01:14.266
+Le noyau indique les directions effacées, celles
+envoyées sur zéro.
+
+00:01:14.266 --> 00:01:18.175
+L'image décrit ce que l'application peut effectivement
+produire.
+
+00:01:18.175 --> 00:01:21.824
+Pour trouver une matrice, évalue l'application sur les
+vecteurs de la
+
+00:01:21.824 --> 00:01:22.820
+base de départ.
+
+00:01:22.820 --> 00:01:25.307
+Écris leurs images en colonnes.
+
+00:01:25.307 --> 00:01:28.915
+En étudiant ces colonnes, tu peux expliquer le rang et
+ce
+
+00:01:28.915 --> 00:01:30.883
+qui manque éventuellement dans l'espace d'arrivée.
+
+00:01:31.225 --> 00:01:34.668
+Écris séparément les deux développements de référence.
+
+00:01:34.668 --> 00:01:37.829
+Le terme de degré un vient de un fois x.
+
+00:01:37.829 --> 00:01:41.050
+Au degré deux, il y a moins x carré sur deux
+
+00:01:41.050 --> 00:01:43.099
+venant du logarithme, puis x fois x.
+
+00:01:43.099 --> 00:01:45.942
+La somme donne plus x carré sur deux.
+
+00:01:45.942 --> 00:01:48.945
+Les autres produits sont d'ordre plus élevé.
+
+00:01:48.945 --> 00:01:52.327
+À zéro, la valeur de la fonction est bien nulle.
+
+00:01:52.327 --> 00:01:56.450
+Ce premier contrôle cohérent aide à repérer une
+constante ajoutée par
+
+00:01:56.450 --> 00:01:56.825
+erreur.
+
+00:01:57.183 --> 00:02:00.614
+Le club conserve quatre-vingts pour cent de ses
+abonnés.
+
+00:02:00.614 --> 00:02:03.445
+Ensuite, il en ajoute quatre mille.
+
+00:02:03.445 --> 00:02:06.876
+La récurrence raconte exactement ces deux étapes.
+
+00:02:06.876 --> 00:02:09.437
+Cherche le nombre qui ne change pas.
+
+00:02:09.437 --> 00:02:11.386
+Il vaut vingt mille.
+
+00:02:11.386 --> 00:02:14.627
+En soustrayant vingt mille de chaque côté, tu obtiens
+que l'écart
+
+00:02:14.627 --> 00:02:17.869
+à cet état est multiplié par zéro virgule huit chaque
+année.
+
+00:02:17.869 --> 00:02:20.896
+Au départ, l'écart vaut moins treize mille.
+
+00:02:21.225 --> 00:02:23.798
+Le stade a dix-neuf mille places.
+
+00:02:23.798 --> 00:02:26.997
+La suite tend vers vingt mille, donc il faut trouver
+quand
+
+00:02:26.997 --> 00:02:28.160
+elle traverse le seuil.
+
+00:02:28.160 --> 00:02:31.694
+La formule donne vingt mille moins treize mille fois
+zéro virgule
+
+00:02:31.694 --> 00:02:32.658
+huit puissance n.
+
+00:02:32.658 --> 00:02:36.261
+Au pas onze le résultat est encore sous la capacité.
+
+00:02:36.261 --> 00:02:38.761
+Au pas douze, il est au-dessus.
+
+00:02:38.761 --> 00:02:41.451
+Comme le premier pas correspond à la fin de deux mille
+
+00:02:41.451 --> 00:02:44.142
+vingt et un, le douzième correspond à la fin de deux
+
+00:02:44.142 --> 00:02:44.631
+mille trente-deux.
+
+00:02:44.975 --> 00:02:47.842
+La première équation est homogène.
+
+00:02:47.842 --> 00:02:51.608
+Si tu multiplies ses deux variables par le même nombre
+ou
+
+00:02:51.608 --> 00:02:53.663
+additionnes deux solutions, l'équation reste vraie.
+
+00:02:53.663 --> 00:02:57.965
+Dans la deuxième, zéro ne donne jamais un, donc
+l'ensemble échoue
+
+00:02:57.965 --> 00:02:58.356
+immédiatement.
+
+00:02:58.356 --> 00:03:01.518
+La dernière contient zéro mais ce n'est pas suffisant.
+
+00:03:01.518 --> 00:03:03.626
+Prends le point un moins deux.
+
+00:03:03.626 --> 00:03:06.200
+Son double serait deux moins quatre.
+
+00:03:06.200 --> 00:03:09.900
+Or pour x égal deux, l'équation demande moins huit.
+
+00:03:09.900 --> 00:03:12.695
+Le double n'appartient pas à la courbe.
+
+00:03:13.058 --> 00:03:17.068
+Pour la première application, teste en multipliant une
+entrée simple par
+
+00:03:17.068 --> 00:03:17.432
+deux.
+
+00:03:17.432 --> 00:03:21.937
+L'image contient un carré, donc elle multiplie cette
+première composante par
+
+00:03:21.937 --> 00:03:22.347
+quatre.
+
+00:03:22.347 --> 00:03:24.871
+L'application n'est pas linéaire.
+
+00:03:24.871 --> 00:03:28.112
+Dans la deuxième, chaque composante est une
+combinaison linéaire de x
+
+00:03:28.112 --> 00:03:31.353
+et y. Mets les images de un zéro et zéro un
+
+00:03:31.353 --> 00:03:31.942
+en colonnes.
+
+00:03:31.942 --> 00:03:35.692
+Elles sont indépendantes et leur troisième coordonnée
+vaut zéro.
+
+00:03:35.692 --> 00:03:39.516
+Elles engendrent donc tout le plan de troisième
+coordonnée nulle.

@@ -1,0 +1,226 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.261
+Une même formule peut imposer plusieurs règles.
+
+00:00:03.261 --> 00:00:06.778
+Liste-les séparément avant de donner un intervalle.
+
+00:00:06.778 --> 00:00:10.384
+Si tu composes des fonctions, pense à deux machines
+l'une après
+
+00:00:10.384 --> 00:00:10.712
+l'autre.
+
+00:00:10.712 --> 00:00:13.420
+La première doit accepter x.
+
+00:00:13.420 --> 00:00:16.839
+La seconde doit accepter ce que la première produit.
+
+00:00:16.839 --> 00:00:20.025
+L'ordre de composition change le résultat.
+
+00:00:20.025 --> 00:00:23.658
+Pour inverser une fonction, assure-toi aussi que
+chaque valeur de sortie
+
+00:00:23.658 --> 00:00:25.969
+n'a qu'un antécédent dans le domaine retenu.
+
+00:00:26.308 --> 00:00:28.869
+Un vecteur décrit un déplacement.
+
+00:00:28.869 --> 00:00:32.095
+Pour aller de A à B, soustrais les coordonnées de A
+
+00:00:32.095 --> 00:00:33.268
+à celles de B.
+
+00:00:33.268 --> 00:00:36.552
+Deux points donnent la direction de la droite qui les
+relie.
+
+00:00:36.552 --> 00:00:40.908
+Pour écrire une équation avec une pente, compare le
+déplacement vertical
+
+00:00:40.908 --> 00:00:41.700
+à l'horizontal.
+
+00:00:41.700 --> 00:00:45.302
+Si l'horizontal vaut zéro, la droite est verticale.
+
+00:00:45.302 --> 00:00:48.991
+Son équation fixe x, sans diviser par zéro.
+
+00:00:49.350 --> 00:00:54.239
+Pour vérifier que deux directions sont
+perpendiculaires, calcule leur produit scalaire.
+
+00:00:54.239 --> 00:00:57.291
+Si elles sont non nulles et que le résultat vaut zéro,
+
+00:00:57.291 --> 00:00:58.124
+l'angle est droit.
+
+00:00:58.124 --> 00:01:02.131
+Le produit vectoriel s'utilise avec deux vecteurs de
+l'espace.
+
+00:01:02.131 --> 00:01:05.636
+Il fabrique une direction qui est perpendiculaire aux
+deux.
+
+00:01:05.636 --> 00:01:09.056
+Pour un plan, une telle normale est pratique : un
+déplacement
+
+00:01:09.056 --> 00:01:11.543
+du plan doit rester perpendiculaire à cette normale.
+
+00:01:11.892 --> 00:01:16.119
+Une primitive peut s'obtenir en reconnaissant la forme
+d'une dérivée.
+
+00:01:16.119 --> 00:01:20.196
+Regarde si une expression est accompagnée de la
+dérivée de son
+
+00:01:20.196 --> 00:01:20.567
+intérieur.
+
+00:01:20.567 --> 00:01:23.907
+Si tu vois un produit sans forme évidente, vérifie si
+dériver
+
+00:01:23.907 --> 00:01:26.033
+l'un des facteurs le rend plus simple.
+
+00:01:26.033 --> 00:01:29.378
+Pour contrôler le résultat, reprends sa dérivée.
+
+00:01:29.378 --> 00:01:32.479
+Dans une intégrale définie, n'oublie pas de soustraire
+la valeur au
+
+00:01:32.479 --> 00:01:34.452
+début à la valeur à la fin.
+
+00:01:34.808 --> 00:01:37.185
+Commence par le logarithme.
+
+00:01:37.185 --> 00:01:40.690
+Trois moins x doit être strictement positif.
+
+00:01:40.690 --> 00:01:44.280
+Ensuite, le contenu de la racine vaut x moins un.
+
+00:01:44.280 --> 00:01:46.903
+Il doit être positif ou nul.
+
+00:01:46.903 --> 00:01:49.722
+Enfin, la division exclut deux.
+
+00:01:49.722 --> 00:01:51.940
+Combine les trois conditions.
+
+00:01:51.940 --> 00:01:55.530
+Un est autorisé car une racine carrée peut valoir
+zéro.
+
+00:01:55.530 --> 00:01:58.533
+Deux est interdit par le dénominateur.
+
+00:01:58.533 --> 00:02:02.479
+Trois est interdit car le logarithme ne peut pas
+recevoir zéro.
+
+00:02:02.808 --> 00:02:04.658
+Pars de B vers A.
+
+00:02:04.658 --> 00:02:08.739
+On avance de un horizontalement et on monte de quatre
+verticalement.
+
+00:02:08.739 --> 00:02:10.798
+La pente vaut quatre.
+
+00:02:10.798 --> 00:02:14.225
+Pour trouver l'ordonnée à l'origine, prends la forme y
+égal quatre
+
+00:02:14.225 --> 00:02:15.160
+x plus b.
+
+00:02:15.160 --> 00:02:18.003
+En A, x vaut deux et y vaut un.
+
+00:02:18.003 --> 00:02:21.055
+B vaut donc un moins huit, soit moins sept.
+
+00:02:21.055 --> 00:02:24.903
+Remplace maintenant dans la même formule avec
+l'abscisse du point B.
+
+00:02:24.903 --> 00:02:28.163
+Tu retrouves moins trois, ce qui valide ton équation.
+
+00:02:28.517 --> 00:02:31.751
+Calcule chaque coordonnée à partir des deux autres.
+
+00:02:31.751 --> 00:02:35.006
+La première vaut moins trois fois zéro moins un fois
+moins
+
+00:02:35.006 --> 00:02:35.893
+deux, donc deux.
+
+00:02:35.893 --> 00:02:39.173
+La deuxième vaut un fois un moins deux fois zéro, donc
+
+00:02:39.173 --> 00:02:39.472
+un.
+
+00:02:39.472 --> 00:02:42.617
+La troisième vaut deux fois moins deux moins moins
+trois fois
+
+00:02:42.617 --> 00:02:43.761
+un, donc moins un.
+
+00:02:43.761 --> 00:02:47.375
+Pour détecter une erreur de signe, teste le produit
+scalaire avec
+
+00:02:47.375 --> 00:02:49.018
+chacun des vecteurs de départ.
+
+00:02:49.018 --> 00:02:51.359
+Les deux doivent valoir zéro.
+
+00:02:51.725 --> 00:02:54.959
+Le facteur x devient un quand tu le dérives.
+
+00:02:54.959 --> 00:02:58.709
+C'est pour ça qu'il est intéressant pour l'intégration
+par parties.
+
+00:02:58.709 --> 00:03:02.900
+L'exponentielle garde la même forme quand on en prend
+une primitive.
+
+00:03:02.900 --> 00:03:06.589
+Le premier terme donne x fois exponentielle de x.
+
+00:03:06.589 --> 00:03:10.499
+Ensuite, on retire une primitive de un fois
+exponentielle de x,
+
+00:03:10.499 --> 00:03:14.408
+donc exponentielle de x. Vérifie en dérivant
+l'expression finale et en
+
+00:03:14.408 --> 00:03:14.763
+regroupant.

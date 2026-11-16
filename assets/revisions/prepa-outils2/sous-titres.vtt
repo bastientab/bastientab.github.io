@@ -1,0 +1,248 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.514
+Tu peux choisir trois personnes pour former un groupe,
+ou leur
+
+00:00:03.514 --> 00:00:04.756
+donner trois rôles différents.
+
+00:00:04.756 --> 00:00:08.721
+Les mêmes personnes donnent un groupe unique, mais
+plusieurs attributions de
+
+00:00:08.721 --> 00:00:09.082
+rôles.
+
+00:00:09.082 --> 00:00:12.562
+Détermine donc l'objet compté avant de multiplier.
+
+00:00:12.562 --> 00:00:16.679
+Pour des choix successifs sans répétition, le nombre
+disponible baisse à
+
+00:00:16.679 --> 00:00:17.427
+chaque choix.
+
+00:00:17.427 --> 00:00:21.244
+Si le résultat recherché oublie l'ordre, divise par le
+nombre de
+
+00:00:21.244 --> 00:00:22.979
+façons de réordonner chaque groupe.
+
+00:00:23.350 --> 00:00:26.474
+L'inconnue est la fonction y, et l'équation parle à la
+fois
+
+00:00:26.474 --> 00:00:28.177
+de y et de sa dérivée.
+
+00:00:28.177 --> 00:00:30.861
+Commence par enlever le second membre.
+
+00:00:30.861 --> 00:00:33.729
+Tu obtiens une famille facile à résoudre.
+
+00:00:33.729 --> 00:00:37.601
+Puis trouve une seule solution qui remet l'équation au
+bon niveau.
+
+00:00:37.601 --> 00:00:41.702
+Si le second membre est une constante, essaie d'abord
+une solution
+
+00:00:41.702 --> 00:00:42.075
+constante.
+
+00:00:42.075 --> 00:00:46.067
+Additionne ensuite les deux morceaux et utilise la
+condition initiale pour
+
+00:00:46.067 --> 00:00:46.793
+fixer K.
+
+00:00:47.142 --> 00:00:51.702
+Pour une équation linéaire homogène du deuxième ordre,
+écris le polynôme
+
+00:00:51.702 --> 00:00:52.116
+associé.
+
+00:00:52.116 --> 00:00:55.278
+Le discriminant te dit quelles formes attendre.
+
+00:00:55.278 --> 00:00:59.138
+Deux racines réelles distinctes donnent deux
+exponentielles.
+
+00:00:59.138 --> 00:01:03.650
+Une racine double demande un facteur supplémentaire
+qui contient x, pour
+
+00:01:03.650 --> 00:01:05.290
+garder deux constantes indépendantes.
+
+00:01:05.290 --> 00:01:09.226
+Pour des racines complexes conjuguées, on peut écrire
+une forme réelle
+
+00:01:09.226 --> 00:01:10.658
+avec sinus et cosinus.
+
+00:01:10.658 --> 00:01:14.690
+À la fin, vérifie l'équation et les conditions
+initiales.
+
+00:01:15.058 --> 00:01:17.557
+Pense à une surface en relief.
+
+00:01:17.557 --> 00:01:20.750
+Si tu avances seulement selon x, tu suis une coupe et
+
+00:01:20.750 --> 00:01:23.072
+tu peux mesurer sa pente dans cette direction.
+
+00:01:23.072 --> 00:01:25.143
+Fais pareil selon y.
+
+00:01:25.143 --> 00:01:27.888
+Le gradient rassemble ces deux pentes.
+
+00:01:27.888 --> 00:01:31.007
+Sur une ligne de hauteur constante, la pente le long
+de
+
+00:01:31.007 --> 00:01:32.141
+la ligne est nulle.
+
+00:01:32.141 --> 00:01:35.453
+Au point où le gradient n'est pas nul, il est
+perpendiculaire
+
+00:01:35.453 --> 00:01:36.356
+à cette ligne.
+
+00:01:36.356 --> 00:01:40.131
+On peut donc s'en servir pour écrire l'équation de la
+tangente.
+
+00:01:40.475 --> 00:01:43.550
+Donne le premier rôle à l'une des huit personnes.
+
+00:01:43.550 --> 00:01:47.235
+Pour le deuxième, il en reste sept, puis six pour le
+
+00:01:47.235 --> 00:01:47.570
+dernier.
+
+00:01:47.570 --> 00:01:50.486
+Cela donne trois cent trente-six attributions.
+
+00:01:50.486 --> 00:01:53.452
+Si tu veux un groupe sans rôle, un même trio a
+
+00:01:53.452 --> 00:01:54.530
+été compté six fois.
+
+00:01:54.530 --> 00:01:57.521
+Divise trois cent trente-six par six.
+
+00:01:57.521 --> 00:02:00.057
+Tu retrouves cinquante-six groupes.
+
+00:02:00.057 --> 00:02:04.133
+Pour vérifier la logique, prends trois personnes
+précises et écris leurs
+
+00:02:04.133 --> 00:02:04.874
+six permutations.
+
+00:02:05.225 --> 00:02:08.141
+La dérivée d'une constante vaut zéro.
+
+00:02:08.141 --> 00:02:11.790
+Avec y égal trois, deux fois y vaut six, donc on
+
+00:02:11.790 --> 00:02:12.785
+tient une particulière.
+
+00:02:12.785 --> 00:02:15.506
+Ajoute-la à la famille homogène.
+
+00:02:15.506 --> 00:02:19.562
+À zéro, l'exponentielle vaut un et y vaut K plus
+trois.
+
+00:02:19.562 --> 00:02:22.516
+La condition impose K égal moins deux.
+
+00:02:22.516 --> 00:02:26.166
+Reprends la dérivée de la solution finale et ajoute
+deux fois
+
+00:02:26.166 --> 00:02:26.829
+la solution.
+
+00:02:26.829 --> 00:02:30.285
+Les exponentielles s'annulent et il reste bien six.
+
+00:02:30.642 --> 00:02:33.018
+La racine deux est double.
+
+00:02:33.018 --> 00:02:36.995
+Choisis donc la forme A plus B x multipliée par
+exponentielle
+
+00:02:36.995 --> 00:02:38.079
+de deux x.
+
+00:02:38.079 --> 00:02:40.935
+La valeur au départ donne A égal deux.
+
+00:02:40.935 --> 00:02:44.170
+Pour dériver, utilise la règle du produit.
+
+00:02:44.170 --> 00:02:47.307
+En zéro, la dérivée vaut B plus deux A.
+
+00:02:47.307 --> 00:02:50.347
+Comme elle vaut sept, on trouve B égal trois.
+
+00:02:50.347 --> 00:02:54.746
+Vérifie chaque constante séparément pour éviter
+d'inverser les deux conditions.
+
+00:02:55.100 --> 00:02:58.353
+Pour x carré plus y carré, les deux dérivées sont deux
+
+00:02:58.353 --> 00:02:59.535
+x et deux y.
+
+00:02:59.535 --> 00:03:02.881
+Au point un zéro, le gradient pointe vers la droite.
+
+00:03:02.881 --> 00:03:06.230
+La tangente au cercle est donc verticale et passe par
+x
+
+00:03:06.230 --> 00:03:06.839
+égal un.
+
+00:03:06.839 --> 00:03:10.209
+Pour la surface z égal f, le point est à hauteur
+
+00:03:10.209 --> 00:03:10.516
+un.
+
+00:03:10.516 --> 00:03:13.608
+Le plan tangent prend une pente de deux selon x et
+
+00:03:13.608 --> 00:03:15.013
+une pente nulle selon y.
+
+00:03:15.013 --> 00:03:18.347
+Son équation est z égal deux x moins un.
+
+00:03:18.347 --> 00:03:21.655
+Vérifie qu'en x égal un on retrouve hauteur un.

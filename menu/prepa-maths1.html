@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mathématiques 1 — Prépa ISIMA</title>
+  <meta name="description" content="Matrices, systèmes, limites, continuité, trigonométrie, complexes et polynômes.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-maths1.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Mathématiques 1</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-maths1/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Écrire les matrices et résoudre les systèmes</h3>
+<p>Pour une matrice <code>m×n</code>, lis d’abord <em>m</em> lignes et <em>n</em> colonnes. Le coefficient <code>aᵢⱼ</code> est à l’intersection de la ligne <em>i</em> et de la colonne <em>j</em>. La transposée échange les deux indices. On additionne deux matrices de même taille case par case. Un produit prend une ligne du premier facteur et une colonne du second. Leur longueur doit coïncider.</p>
+<p>Un système devient une matrice de coefficients accompagnée des constantes. Le pivot de Gauss élimine une inconnue d’une ligne en ajoutant un multiple d’une autre ligne. Un système homogène a un second membre nul et accepte toujours la solution nulle. L’élimination indique si d’autres solutions existent.</p></div>
+<div class="c-block"><h3>2. Regarder ce qu’une fonction approche</h3>
+<p>Une <strong>limite</strong> décrit le comportement de la fonction quand <code>x</code> s’approche d’une valeur ou devient très grand. La valeur au point peut être différente ou même absente. Pour un quotient de polynômes à l’infini, factorise par les plus grandes puissances avant de simplifier. À un point où le dénominateur s’annule, lis le signe des facteurs à gauche puis à droite.</p>
+<p>Une fonction est <strong>continue</strong> au raccord si la limite gauche, la limite droite et la valeur coïncident. Le théorème des valeurs intermédiaires permet de trouver l’existence d’un antécédent entre les bornes d’un intervalle de continuité. Une monotonie stricte aide ensuite à prouver l’unicité.</p></div>
+<div class="c-block"><h3>3. Mesurer la variation et calculer l’aire</h3>
+<p>La dérivée représente une pente. Dans le cas d’une composition, le facteur donné par la dérivée intérieure doit rester dans le calcul. Si le signe de la dérivée est positif sur un intervalle, la fonction y croît. Un signe négatif indique une décroissance. La tangente en <code>a</code> combine le point <code>(a,f(a))</code> et la pente <code>f′(a)</code>.</p>
+<p>Une primitive vérifie <code>F′=f</code>. Une intégrale définie se calcule par différence entre deux valeurs de primitive quand le théorème s’applique. Pour une composée avec la dérivée de son argument, un changement de variable peut rendre le calcul immédiat. Pour un produit, vérifie si l’intégration par parties réduit la difficulté.</p></div>
+<div class="c-block"><h3>4. Lire les angles et utiliser les complexes</h3>
+<p>Sur le cercle unité, le cosinus est l’abscisse et le sinus l’ordonnée. Les solutions d’une équation trigonométrique se cherchent sur un tour, puis se répètent suivant la période. Avec <code>tan(x)</code>, exclue les angles où le cosinus vaut zéro.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-maths1/schemas/sinus.png" alt="La hauteur un demi coupe le cercle en deux points qui correspondent à pi sur six et cinq pi sur six."><figcaption>Une seule valeur de sinus correspond ici à deux angles différents sur un tour.</figcaption></figure>
+<p>Une écriture <code>a+ib</code> donne les coordonnées du complexe, tandis que <code>r e<sup>iθ</sup></code> donne sa distance à l’origine et sa direction. Pour élever un complexe à une puissance, la forme polaire sépare le calcul du module et celui de l’argument. Pour retrouver les racines, réintroduis les angles qui diffèrent de <code>2π</code> avant de diviser par la puissance.</p></div>
+<div class="c-block"><h3>5. Factoriser un polynôme et vérifier le résultat</h3>
+<p>Le degré est la plus grande puissance qui conserve un coefficient non nul après réduction. Une racine <code>a</code> correspond au facteur <code>X−a</code>. Le degré baisse quand on divise par ce facteur. Les coefficients du binôme de Newton organisent le développement d’une puissance d’une somme.</p>
+<p>Pour vérifier une factorisation, redéveloppe ou compare suffisamment de coefficients. Un test avec une valeur particulière peut détecter une erreur mais ne prouve pas seul qu’une identité vaut pour tout <code>X</code>.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#pm1-matrice">Feuilles 1 et 2 · Construire une matrice et résoudre un système</a></li>
+<li><a href="#pm1-lim">Feuille 3 · Calculer les limites des deux côtés d’une valeur interdite</a></li>
+<li><a href="#pm1-cont">Feuille 4 · Raccorder deux morceaux en choisissant un paramètre</a></li>
+<li><a href="#pm1-trigo">Feuille 5 · Résoudre sin(x)=1/2</a></li>
+<li><a href="#pm1-poly">Feuille 6 · Factoriser un entier grâce à un polynôme</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="pm1-matrice"><summary>Feuilles 1 et 2 · Écrire les coefficients et résoudre H1</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Construire la matrice <code>3×2</code> telle que <code>aᵢⱼ=i+j</code>. Dans H1, résoudre <code>x+y−z=0</code>, <code>x−y=0</code> et <code>x+4y+z=0</code>.</p>
+<ol><li>Les indices du sujet commencent à 1. Les lignes sont <code>[2,3]</code>, <code>[3,4]</code> et <code>[4,5]</code>.</li><li>La deuxième équation de H1 donne <code>y=x</code>. Dans la première, on trouve alors <code>z=2x</code>. La dernière donne <code>x+4x+2x=0</code>, donc <code>x=0</code>.</li><li>Il reste <code>(0,0,0)</code>. Vérifie ce triplet dans chaque ligne.</li></ol></div></details>
+<details class="acc" id="pm1-lim"><summary>Feuille 3, ex. 1 · Étudier les deux côtés de 5</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Étudier, à droite et à gauche de 5, <code>(x²−11x+28)/(x²−25)</code>, puis remplacer le dénominateur par <code>(x−5)²</code>.</p>
+<ol><li>Le numérateur tend vers <code>25−55+28=−2</code>. Il reste donc négatif au voisinage de 5. Factorise le premier dénominateur en <code>(x−5)(x+5)</code>.</li><li>À gauche de 5, le dénominateur tend vers zéro par valeurs négatives, donc le quotient tend vers <code>+∞</code>. À droite, le dénominateur est positif et la limite vaut <code>−∞</code>.</li><li>Avec le carré <code>(x−5)²</code>, le dénominateur est positif des deux côtés et les deux limites valent <code>−∞</code>.</li></ol></div></details>
+<details class="acc" id="pm1-cont"><summary>Feuille 4, ex. 1 · Rendre la fonction continue en 1</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Pour <code>x≤1</code>, prendre <code>f(x)=(ax)²</code>. Pour <code>x&gt;1</code>, prendre <code>f(x)=a sin(πx/2)</code>. Déterminer les valeurs de a donnant une fonction continue.</p>
+<ol><li>Chaque formule est continue de son côté. Au raccord, la limite gauche et la valeur valent <code>a²</code>. À droite, la limite vaut <code>a sin(π/2)=a</code>.</li><li>Impose <code>a²=a</code>, soit <code>a(a−1)=0</code>. On obtient <code>a=0</code> ou <code>a=1</code>. Vérifie chacun dans les formules d’origine.</li></ol></div></details>
+<details class="acc" id="pm1-trigo"><summary>Feuille 5, ex. 1 · Trouver les deux familles d’angles</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Résoudre <code>sin(x)=1/2</code> dans les réels.</p>
+<ol><li>Sur le cercle unité, coupe à la hauteur <code>1/2</code>. Le premier angle est <code>π/6</code>. L’autre a le même sinus et vaut <code>5π/6</code>.</li><li>La période vaut <code>2π</code>. Les deux familles sont <code>π/6+2kπ</code> et <code>5π/6+2kπ</code> pour <code>k∈ℤ</code>. Vérifie que tu ne perds pas la branche du second quadrant.</li></ol></div></details>
+<details class="acc" id="pm1-poly"><summary>Feuille 6, ex. 2 · Expliquer pourquoi 100009 est composé</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Développer <code>(X³+X²−1)(X²−X+1)</code> et utiliser le résultat pour prouver que 100009 n’est pas premier.</p>
+<ol><li>Multiplie chaque terme du premier facteur par le second. Après addition, les termes de degré 4, 3 et 2 s’annulent. Il reste <code>X⁵+X−1</code>.</li><li>Pour <code>X=10</code>, la forme développée vaut 100009. La forme factorisée donne <code>1099×91</code>. Les deux facteurs sont entiers et strictement supérieurs à 1, ce qui suffit.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-maths1/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-maths1/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-maths1/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Matrices et systèmes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.750">0:23 · Distinguer limite et valeur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="49.292">0:49 · Dérivée et primitive</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="72.250">1:12 · Sur le cercle et dans les complexes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="97.000">1:37 · Polynômes</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="120.833">2:00 · Feuille 2 · Résoudre H1</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="148.000">2:28 · Feuille 3 · Regarder autour de 5</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="176.500">2:56 · Feuille 4 · Raccorder les deux morceaux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="200.375">3:20 · Feuille 5 · Résoudre sin(x)=1/2</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="225.958">3:45 · Feuille 6 · Factoriser un entier</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

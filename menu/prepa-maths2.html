@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mathématiques 2 — Prépa ISIMA</title>
+  <meta name="description" content="Équivalents, développements limités, suites, espaces et applications linéaires.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-maths2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Mathématiques 2</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-maths2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Comparer des expressions près d’un point</h3>
+<p><code>f∼g</code> signifie que <code>f/g</code> tend vers 1 dans le voisinage considéré. <code>f=o(g)</code> signifie que ce rapport tend vers zéro. Écris toujours où tu te places. Par exemple <code>x∼1+x</code> à l’infini, tandis qu’en zéro <code>x=o(1+x)</code>. Deux expressions ne se comparent donc pas sans préciser le lieu.</p>
+<p>Les équivalents se combinent bien par produit et quotient lorsque les expressions conviennent. Pour une somme ou une différence, surveille les annulations. Un <strong>développement limité</strong> écrit les premiers termes avec un contrôle du reste. Quand les termes principaux disparaissent, il permet de trouver le premier terme qui reste.</p></div>
+<div class="c-block"><h3>2. Lire une suite et établir sa limite</h3>
+<p>Une suite <code>uₙ</code> associe un nombre à chaque indice entier. Une suite arithmétique ajoute toujours une même différence et une suite géométrique applique toujours un même facteur. Une récurrence affine <code>uₙ₊₁=q uₙ+b</code> se simplifie en cherchant une valeur fixe <code>L=qL+b</code>. L’écart <code>uₙ−L</code> suit alors une suite géométrique.</p>
+<p>Une suite croissante et majorée converge. Une suite seulement bornée peut osciller. Pour établir une limite à partir d’une relation de récurrence, prouve la convergence ou trouve une expression explicite avant de promettre que la limite existe.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-maths2/schemas/abonnes.png" alt="Les abonnements partent de 7000 en 2020 et dépassent pour la première fois la capacité de 19000 en 2032."><figcaption>On dépasse le seuil avant d’atteindre la limite de 20 000 inscrits.</figcaption></figure></div>
+<div class="c-block"><h3>3. Reconnaître un espace, une famille libre et une base</h3>
+<p>Un sous-espace vectoriel contient zéro et reste stable par combinaison linéaire. Les solutions d’une équation linéaire homogène forment par exemple un sous-espace. Remplacer le membre droit par 1 peut exclure le vecteur nul.</p>
+<p>Une famille est <strong>génératrice</strong> si ses combinaisons atteignent tout l’espace considéré. Elle est <strong>libre</strong> si la seule combinaison donnant zéro utilise des coefficients tous nuls. Une <strong>base</strong> satisfait les deux conditions. Le nombre de vecteurs d’une base donne la dimension.</p></div>
+<div class="c-block"><h3>4. Comprendre noyau et image d’une application linéaire</h3>
+<p>Une application linéaire préserve les combinaisons, donc <code>f(αu+βv)=αf(u)+βf(v)</code>. Pour exhiber une application non linéaire, un seul échec avec des vecteurs et des coefficients suffit.</p>
+<p>Le <strong>noyau</strong> rassemble les entrées envoyées sur zéro. L’<strong>image</strong> rassemble les valeurs atteintes. Les colonnes d’une matrice d’application sont les images des vecteurs de la base de départ, écrites dans la base d’arrivée. Le rang est la dimension de l’image. Une application est injective si son noyau est réduit à zéro, et surjective si son image couvre tout l’espace d’arrivée.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#pm2-asym">Feuille 1 · Calculer un développement limité produit</a></li>
+<li><a href="#pm2-suite">Feuille 2 · Prévoir le dépassement des places du stade</a></li>
+<li><a href="#pm2-espace">Feuille 3 · Tester trois candidats au statut de sous-espace</a></li>
+<li><a href="#pm2-app">Feuille 4 · Comparer deux applications, puis lire noyau et image</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="pm2-asym"><summary>Feuille 1, ex. 5 · Développer eˣ ln(1+x) à l’ordre 2</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Déterminer le développement limité en zéro à l’ordre 2 de <code>eˣ ln(1+x)</code>.</p>
+<ol><li>Écris <code>eˣ=1+x+x²/2+o(x²)</code> et <code>ln(1+x)=x−x²/2+o(x²)</code>.</li><li>Multiplie en gardant jusqu’au degré 2. Le premier terme vaut <code>x</code>. Au degré 2, <code>−x²/2+x²=x²/2</code>.</li><li>On obtient <code>x+x²/2+o(x²)</code>. Vérifie que le produit initial vaut zéro en x=0, comme l’expression approchée.</li></ol></div></details>
+<details class="acc" id="pm2-suite"><summary>Feuille 2, ex. 7 · Quand le stade manquera-t-il de places ?</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Le club part de 7000 abonnés en 2020. Chaque année il garde 80 % des abonnés et en gagne 4000. Il dispose de 19 000 places.</p>
+<ol><li>Pose <code>a₀=7000</code> et <code>aₙ₊₁=0,8aₙ+4000</code>. L’état fixe vaut <code>20000</code>.</li><li>L’écart suit <code>aₙ−20000=−13000×0,8ⁿ</code>. Comme <code>0,8ⁿ</code> tend vers zéro, la limite vaut 20 000.</li><li>Il faut <code>0,8ⁿ&lt;1/13</code> pour dépasser 19 000. Au 11ᵉ pas, le nombre reste inférieur. Au 12ᵉ, il est supérieur. Le dépassement est prévu à la fin de 2032 dans ce modèle.</li></ol></div></details>
+<details class="acc" id="pm2-espace"><summary>Feuille 3, ex. 1 · Tester x+y=0, x+y=1 et y=−2x²</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Parmi ces trois ensembles du plan, déterminer ceux qui forment un espace vectoriel.</p>
+<ol><li>Pour <code>x+y=0</code>, zéro appartient à l’ensemble et toute combinaison de deux solutions satisfait encore l’équation. C’est une droite vectorielle.</li><li>Pour <code>x+y=1</code>, zéro échoue immédiatement. Pour <code>y=−2x²</code>, le vecteur <code>(1,−2)</code> convient, tandis que son double <code>(2,−4)</code> échoue. Les deux ensembles ne satisfont pas la définition.</li></ol></div></details>
+<details class="acc" id="pm2-app"><summary>Feuille 4, ex. 1 · Repérer ce qui rend une application linéaire</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Tester <code>f(x,y)=(x²,3y)</code> et <code>g(x,y)=(x+y,x−2y,0)</code>.</p>
+<ol><li><code>f(1,0)=(1,0)</code>, donc le double de son image est <code>(2,0)</code>. Or <code>f(2,0)=(4,0)</code>. L’homogénéité échoue.</li><li>Les composantes de <code>g</code> sont des formes linéaires en x et y. La matrice a pour colonnes <code>(1,1,0)</code> et <code>(1,−2,0)</code>. Pour <code>g(x,y)=0</code>, soustrais les deux premières équations et trouve <code>y=0</code> puis <code>x=0</code>.</li><li>Les deux colonnes indépendantes engendrent le plan <code>z=0</code>. Ainsi <code>g</code> est injective et atteint ce plan dans <code>ℝ³</code>.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-maths2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-maths2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-maths2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Comparer deux expressions</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.250">0:23 · Suites et points fixes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="44.917">0:44 · De l’espace à la base</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="66.667">1:06 · Noyau et image</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="91.125">1:31 · Feuille 1 · Développer eˣ ln(1+x)</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="117.083">1:57 · Feuille 2 · Prévoir les abonnés du club</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="164.875">2:44 · Feuille 3 · Sous-espace ou courbe du plan</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="192.958">3:12 · Feuille 4 · Tester la linéarité</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

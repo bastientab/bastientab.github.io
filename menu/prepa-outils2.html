@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outils mathématiques 2 — Prépa ISIMA</title>
+  <meta name="description" content="Dénombrement, équations différentielles et fonctions de plusieurs variables.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-outils2.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Outils mathématiques 2</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-outils2/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Choisir ce que l’on compte</h3>
+<p>Une union rassemble les éléments de deux ensembles. Si les ensembles se recoupent, soustrais leur intersection quand tu ajoutes leurs effectifs. Un produit cartésien forme les couples possibles et garde l’ordre des composantes. Une injection donne des images distinctes à des entrées distinctes. Une surjection atteint chaque élément de l’ensemble d’arrivée. Une bijection réunit les deux propriétés.</p>
+<p>Avant de dénombrer, demande si les répétitions sont autorisées et si l’ordre compte. Pour sélectionner <code>p</code> éléments parmi <code>n</code> sans répétition, les arrangements ordonnés valent <code>n!/(n−p)!</code>. Les combinaisons valent ce résultat divisé par <code>p!</code>, car chaque groupe de <code>p</code> éléments peut s’ordonner de <code>p!</code> façons.</p></div>
+<div class="c-block"><h3>2. Résoudre une équation différentielle du premier ordre</h3>
+<p>Dans <code>y′+ay=f(x)</code>, l’inconnue est une fonction. L’équation homogène a <code>f=0</code> et ses solutions sont <code>Ke<sup>−ax</sup></code>. Pour le cas avec un second membre, trouve une solution particulière. Si le second membre est constant et <code>a≠0</code>, essaie une solution constante. La solution générale est la somme des deux familles.</p>
+<p>Pour appliquer la variation de la constante, remplace <code>K</code> par une fonction <code>g(x)</code> dans la solution homogène. En substituant dans l’équation, il reste <code>g′(x)=f(x)e<sup>ax</sup></code>. Intègre cette expression et utilise une condition initiale pour fixer la constante.</p></div>
+<div class="c-block"><h3>3. Classer les équations homogènes du second ordre</h3>
+<p>Pour <code>ay″+by′+cy=0</code> avec <code>a≠0</code>, associe le polynôme <code>ar²+br+c</code>. Deux racines réelles distinctes donnent deux exponentielles. Une racine réelle double donne une exponentielle multipliée par <code>K₁+K₂x</code>. Deux racines complexes conjuguées donnent une exponentielle réelle multipliée par une combinaison d’un sinus et d’un cosinus.</p>
+<p>Deux conditions initiales permettent le plus souvent de fixer les deux constantes. Vérifie la solution à la fois dans l’équation et dans chaque condition initiale.</p></div>
+<div class="c-block"><h3>4. Dériver selon une seule direction</h3>
+<p>Pour dériver <code>f(x,y)</code> par rapport à <code>x</code>, tiens <code>y</code> fixe. Le <strong>gradient</strong> rassemble les deux dérivées partielles. Dans les conditions de différentiabilité du cours, si le gradient ne s’annule pas sur une ligne de niveau, il y est perpendiculaire à la tangente.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-outils2/schemas/gradient.png" alt="Le gradient horizontal au point 1,0 est perpendiculaire à la tangente verticale du cercle de niveau 1."></figure>
+<p>Le plan tangent à la surface <code>z=f(x,y)</code> en <code>(x₀,y₀,z₀)</code> s’écrit <code>z=z₀+fₓ(x₀,y₀)(x−x₀)+fᵧ(x₀,y₀)(y−y₀)</code>. Pour une trajectoire <code>t↦(x(t),y(t))</code>, dérive les coordonnées et utilise la règle de chaîne si la question porte sur une valeur de <code>f</code> le long de ce trajet.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Les supports retrouvés sont les trois fiches de référence. Les cas ci-dessous sont des applications de leurs méthodes, avec des données choisies pour permettre de refaire chaque calcul.</p>
+<ul><li><a href="#po2-comptes">Fiche I · Distinguer un groupe d’une liste ordonnée</a></li>
+<li><a href="#po2-ode">Fiche II · Résoudre une équation avec une condition initiale</a></li>
+<li><a href="#po2-ode2">Fiche II · Traiter une racine double</a></li>
+<li><a href="#po2-grad">Fiche III · Calculer une tangente et un plan tangent</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="po2-comptes"><summary>Application de la fiche I · Choisir trois étudiants parmi huit</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Choisir trois personnes parmi huit, puis attribuer à trois personnes distinctes les rôles de président, secrétaire et trésorier.</p>
+<ol><li>Les rôles sont distincts, donc il y a <code>8×7×6=336</code> possibilités.</li><li>Pour un groupe sans rôle, chaque groupe a été compté <code>3!=6</code> fois dans ce total. Il reste <code>336/6=56</code> groupes.</li></ol></div></details>
+<details class="acc" id="po2-ode"><summary>Application de la fiche II · Résoudre y′+2y=6 avec y(0)=1</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Trouver la solution du premier ordre puis contrôler l’équation et la valeur initiale.</p>
+<ol><li>L’homogène donne <code>Ke<sup>−2x</sup></code>. La constante <code>3</code> donne une solution particulière, car <code>0+2×3=6</code>.</li><li>À zéro, la solution complète vaut <code>K+3=1</code>, donc <code>K=−2</code>. On trouve <code>y=3−2e<sup>−2x</sup></code>.</li><li>Sa dérivée vaut <code>4e<sup>−2x</sup></code>. En ajoutant deux fois y, les exponentielles s’annulent et il reste 6.</li></ol></div></details>
+<details class="acc" id="po2-ode2"><summary>Application de la fiche II · Traiter le cas d’une racine double</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Résoudre <code>y″−4y′+4y=0</code> avec <code>y(0)=2</code> et <code>y′(0)=7</code>.</p>
+<ol><li>Le polynôme caractéristique est <code>(r−2)²</code>. La solution prend la forme <code>(A+Bx)e<sup>2x</sup></code>.</li><li>La valeur initiale donne <code>A=2</code>. Après dérivation, à zéro il reste <code>B+2A=7</code>. On obtient <code>B=3</code>.</li></ol></div></details>
+<details class="acc" id="po2-grad"><summary>Application de la fiche III · Lire le gradient et les tangentes</summary><div class="acc-body">
+<p class="c-question"><strong>Exemple d’application.</strong> Pour <code>f(x,y)=x²+y²</code>, trouver le gradient en <code>(1,0)</code>, la tangente à la ligne de niveau 1 et le plan tangent à la surface.</p>
+<ol><li>Les dérivées partielles valent <code>2x</code> et <code>2y</code>. En <code>(1,0)</code>, le gradient est <code>(2,0)</code>.</li><li>La tangente est perpendiculaire au gradient, donc verticale. Elle passe par <code>(1,0)</code> et a pour équation <code>x=1</code>.</li><li>La hauteur au point vaut 1. Le plan tangent vaut <code>z=1+2(x−1)=2x−1</code>. Vérifie qu’il passe par le point <code>(1,0,1)</code>.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-outils2/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-outils2/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-outils2/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Compter les choix dans le bon ordre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="23.250">0:23 · Premier ordre : séparer deux morceaux</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="47.042">0:47 · Second ordre : lire les racines</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="74.958">1:14 · Dérivées partielles</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="100.375">1:40 · Application · Choisir un groupe ou distribuer des rôles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="125.125">2:05 · Application · Résoudre y′+2y=6</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="150.542">2:30 · Application · Une racine double</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="175.000">2:55 · Application · Gradient et tangente</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

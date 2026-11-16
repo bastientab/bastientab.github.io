@@ -1,0 +1,297 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.975
+Pour écrire un système sous forme matricielle, fixe
+l'ordre des inconnues
+
+00:00:03.975 --> 00:00:05.736
+avant de regarder les nombres.
+
+00:00:05.736 --> 00:00:08.432
+Chaque équation devient une ligne.
+
+00:00:08.432 --> 00:00:12.575
+La première colonne garde tous les coefficients de la
+première inconnue.
+
+00:00:12.575 --> 00:00:16.043
+Quand tu fais un pivot, tu combines des lignes
+entières.
+
+00:00:16.043 --> 00:00:19.958
+Les opérations autorisées préservent les solutions,
+donc tu peux résoudre le
+
+00:00:19.958 --> 00:00:23.518
+système réduit puis contrôler le résultat sur les
+lignes originales.
+
+00:00:23.850 --> 00:00:27.305
+Une limite raconte le comportement quand tu
+t'approches.
+
+00:00:27.305 --> 00:00:30.908
+La fonction peut avoir une valeur au point, ou aucune.
+
+00:00:30.908 --> 00:00:34.356
+Quand un quotient a un dénominateur qui tend vers
+zéro, regarde
+
+00:00:34.356 --> 00:00:36.864
+les signes de droite et de gauche séparément.
+
+00:00:36.864 --> 00:00:39.866
+Ils peuvent conduire à deux infinis opposés.
+
+00:00:39.866 --> 00:00:43.228
+Pour une fonction par morceaux, compare la valeur
+présente au point
+
+00:00:43.228 --> 00:00:45.062
+et les limites des deux formules.
+
+00:00:45.062 --> 00:00:49.021
+La continuité exige que ces trois informations
+concordent.
+
+00:00:49.392 --> 00:00:52.617
+La dérivée dit dans quel sens la courbe monte ou
+descend
+
+00:00:52.617 --> 00:00:53.496
+autour du point.
+
+00:00:53.496 --> 00:00:56.731
+Pour une tangente, combine le point et sa pente.
+
+00:00:56.731 --> 00:00:59.685
+Une primitive fait le chemin inverse.
+
+00:00:59.685 --> 00:01:03.261
+Si l'intégrale demande la différence entre deux
+bornes, calcule une primitive
+
+00:01:03.261 --> 00:01:05.861
+et évalue-la à la fin puis au début.
+
+00:01:05.861 --> 00:01:09.606
+Après un changement de variable, vérifie que les
+bornes correspondent toujours
+
+00:01:09.606 --> 00:01:11.989
+à la variable avec laquelle tu termines.
+
+00:01:12.350 --> 00:01:15.947
+Sur le cercle unité, lis le cosinus sous le point sur
+
+00:01:15.947 --> 00:01:18.562
+l'axe horizontal et le sinus sur l'axe vertical.
+
+00:01:18.562 --> 00:01:22.766
+Pour retrouver un angle, un même niveau peut donner
+plusieurs intersections.
+
+00:01:22.766 --> 00:01:26.638
+Tu peux ensuite ajouter la période pour retrouver les
+autres tours.
+
+00:01:26.638 --> 00:01:30.337
+Un complexe s'interprète de la même manière, avec une
+longueur qui
+
+00:01:30.337 --> 00:01:32.018
+peut être différente de un.
+
+00:01:32.018 --> 00:01:36.010
+Les puissances multiplient les angles et élèvent les
+modules à la
+
+00:01:36.010 --> 00:01:36.736
+puissance correspondante.
+
+00:01:37.100 --> 00:01:41.278
+Dans un polynôme, rassemble les mêmes puissances avant
+de décider du
+
+00:01:41.278 --> 00:01:41.658
+degré.
+
+00:01:41.658 --> 00:01:45.383
+Des termes qui semblaient importants peuvent s'annuler
+au développement.
+
+00:01:45.383 --> 00:01:48.821
+Si un nombre annule le polynôme, alors tu peux
+extraire un
+
+00:01:48.821 --> 00:01:50.383
+facteur X moins ce nombre.
+
+00:01:50.383 --> 00:01:53.907
+Pour contrôler une identité, évaluer en une seule
+valeur peut détecter
+
+00:01:53.907 --> 00:01:57.111
+une erreur, mais ne suffit pas à prouver l'égalité
+partout.
+
+00:01:57.111 --> 00:02:00.555
+Il faut aussi vérifier ce qui arrive à chaque
+coefficient.
+
+00:02:00.933 --> 00:02:05.393
+C'est un système homogène, donc zéro est déjà une
+solution possible.
+
+00:02:05.393 --> 00:02:08.114
+Il faut prouver qu'il n'y en a pas une autre.
+
+00:02:08.114 --> 00:02:11.275
+Avec la deuxième équation, y vaut x.
+
+00:02:11.275 --> 00:02:15.177
+En remplaçant dans la première, z vaut deux x.
+Remplace ensuite
+
+00:02:15.177 --> 00:02:17.305
+les deux résultats dans la troisième.
+
+00:02:17.305 --> 00:02:21.118
+Tu obtiens x plus quatre x plus deux x, donc sept
+
+00:02:21.118 --> 00:02:22.158
+x égal zéro.
+
+00:02:22.158 --> 00:02:25.442
+X vaut zéro, donc y et z valent zéro.
+
+00:02:25.442 --> 00:02:27.746
+Contrôle les trois équations.
+
+00:02:28.100 --> 00:02:30.660
+Le numérateur tend vers moins deux.
+
+00:02:30.660 --> 00:02:33.833
+Il est donc négatif des deux côtés si on reste près
+
+00:02:33.833 --> 00:02:34.410
+de cinq.
+
+00:02:34.410 --> 00:02:36.690
+En bas, factorise.
+
+00:02:36.690 --> 00:02:40.097
+X plus cinq est positif dans ce voisinage.
+
+00:02:40.097 --> 00:02:43.933
+Quand x est légèrement plus petit que cinq, x moins
+cinq
+
+00:02:43.933 --> 00:02:44.631
+est négatif.
+
+00:02:44.631 --> 00:02:48.486
+Un négatif sur un nombre négatif qui s'approche de
+zéro donne
+
+00:02:48.486 --> 00:02:49.888
+un grand résultat positif.
+
+00:02:49.888 --> 00:02:53.320
+À droite, le dénominateur change de signe.
+
+00:02:53.320 --> 00:02:56.236
+La limite devient négative infinie.
+
+00:02:56.600 --> 00:03:00.153
+À gauche, remplace x par un dans la formule.
+
+00:03:00.153 --> 00:03:03.512
+La valeur de la fonction et la limite gauche valent a
+
+00:03:03.512 --> 00:03:03.817
+carré.
+
+00:03:03.817 --> 00:03:07.069
+À droite, le sinus de pi sur deux vaut un, donc
+
+00:03:07.069 --> 00:03:08.548
+la limite droite vaut a.
+
+00:03:08.548 --> 00:03:11.605
+Pour que les morceaux se raccordent, impose a carré
+égal a.
+
+00:03:11.605 --> 00:03:13.829
+Ramène tout à gauche et factorise par a.
+
+00:03:13.829 --> 00:03:16.907
+Le produit vaut zéro pour a égal zéro ou a égal
+
+00:03:16.907 --> 00:03:17.187
+un.
+
+00:03:17.187 --> 00:03:20.104
+Vérifie que les deux raccords fonctionnent.
+
+00:03:20.475 --> 00:03:23.881
+Regarde la droite horizontale à la hauteur un demi.
+
+00:03:23.881 --> 00:03:26.675
+Elle coupe le cercle à droite et à gauche.
+
+00:03:26.675 --> 00:03:29.739
+Le premier point correspond à pi sur six.
+
+00:03:29.739 --> 00:03:32.900
+Le second correspond à cinq pi sur six.
+
+00:03:32.900 --> 00:03:36.356
+Tous les tours suivants et précédents répètent ces
+deux solutions.
+
+00:03:36.356 --> 00:03:39.706
+Écris donc les deux familles en ajoutant deux k pi à
+
+00:03:39.706 --> 00:03:40.315
+chaque angle.
+
+00:03:40.315 --> 00:03:44.030
+Si tu utilises seulement arcsinus, tu risques de
+conserver le premier
+
+00:03:44.030 --> 00:03:45.719
+angle et d'oublier le second.
+
+00:03:46.058 --> 00:03:49.452
+Développe les deux facteurs puis regroupe les
+puissances.
+
+00:03:49.452 --> 00:03:53.462
+Beaucoup s'annulent et il reste x puissance cinq plus
+x moins
+
+00:03:53.462 --> 00:03:53.827
+un.
+
+00:03:53.827 --> 00:03:57.712
+Pour x égal dix, cette expression donne cent mille
+neuf.
+
+00:03:57.712 --> 00:04:01.369
+Reviens à la forme factorisée et remplace x par dix
+dans
+
+00:04:01.369 --> 00:04:02.700
+chacun des deux facteurs.
+
+00:04:02.700 --> 00:04:06.045
+Tu obtiens mille quatre-vingt-dix-neuf fois quatre-
+vingt-onze.
+
+00:04:06.045 --> 00:04:09.673
+Comme aucun des facteurs ne vaut un, l'entier n'est
+pas premier.
+
+00:04:09.673 --> 00:04:13.472
+Ici, le polynôme explique d'où vient la factorisation.
