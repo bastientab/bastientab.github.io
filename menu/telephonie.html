@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Téléphonie — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Téléphonie : contenu à préparer.">
+  <title>Téléphonie — BUT1 R&amp;T</title>
+  <meta name="description" content="Téléphones IP, XiVO et Asterisk, signalisation SIP, médias RTP, trunks et services d’appel.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-2">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,109 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/telephonie.webp" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Téléphonie</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/telephonie.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Téléphonie</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Reconnaître la signalisation et le transport de la voix</h3>
+<p>Un IPBX est un central téléphonique sur IP. Un compte SIP et un numéro d’extension peuvent avoir des valeurs différentes. L’extension sert au plan de numérotation, tandis que l’identifiant sert notamment à l’authentification.</p>
+<p>Un échange SIP peut comporter <code>INVITE → 100 Trying → 180 Ringing → 200 OK → ACK</code>. <code>BYE</code> termine le dialogue ouvert. SDP annonce notamment les codecs et les ports attendus.</p>
+<figure><img loading="lazy" src="../assets/revisions/telephonie/schemas/demarche.png" alt="Téléphone A, REGISTER puis INVITE, Envoie une offre SDP → Serveur XiVO, Identifie le compte, Applique le plan d’appel → Téléphone B, Accepte et répond 200 OK, Audio transporté en RTP"><figcaption>La signalisation et l’audio empruntent des flux distincts. Le trajet RTP dépend de la configuration.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Lire un défi d’authentification et négocier le codec</h3>
+<p>Avec l’authentification Digest, le champ Authorization contient une réponse calculée au défi. La capture ne montre pas un simple envoi du mot de passe chiffré. Une succession de défis sans succès demande de vérifier l’identifiant, le secret, le domaine et la correspondance au compte.</p>
+<p>G.711 encode la voix à 64 kbit/s hors en-têtes. Affiche l’offre et la réponse SDP et vérifie la variante utilisée. Avec le profil RTP/AVP, PT 0 correspond à PCMU et PT 8 à PCMA.</p>
+<figure><img loading="lazy" src="../assets/revisions/telephonie/schemas/appel.png" alt="La signalisation de l’appel précède les échanges RTP."><figcaption>La signalisation de l’appel précède les échanges RTP.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Acheminer des numéros par un trunk et un plan d’appel</h3>
+<p>Pour un scénario avec numéros internes à quatre chiffres et numéros sortants à dix chiffres, place les règles dans le contexte utilisé par les lignes. Associe la règle sortante au trunk et configure la destination entrante dans le contexte attendu.</p>
+<p>Un groupe de sonnerie distribue un appel à plusieurs postes selon une stratégie. Une messagerie prend le relais sur non-réponse si la redirection est configurée. Un test doit distinguer l’appel direct, la sonnerie du groupe et le dépôt du message.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Les questions proviennent du TP XiVO conservé dans le compte rendu. Les identifiants et configurations du laboratoire ont été remplacés par des exemples. Le sujet séparé n’a pas été retrouvé.</p>
+<ul>
+<li><a href="#question-1">TP XiVO · Créer les lignes et vérifier l’enregistrement</a></li>
+<li><a href="#question-2">TP XiVO · Expliquer le 401 et retrouver le codec de l’appel</a></li>
+<li><a href="#question-3">TP XiVO · Faire passer les appels par le trunk et tester la messagerie</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>TP XiVO · Créer les lignes et vérifier l’enregistrement</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Créer deux lignes locales, configurer les téléphones et montrer qu’ils sont joignables.</p><ol><li>Dans la configuration IPBX, crée deux utilisateurs, associe une ligne SIP à chacun, puis affecte deux extensions non utilisées dans le bon contexte.</li><li>Renseigne l’adresse du serveur, l’identifiant de la ligne et le secret dans chaque téléphone. Dans Asterisk, consulte <code>pjsip show endpoints</code> puis <code>pjsip show contacts</code> pour vérifier la présence des contacts.</li><li>Teste dans les deux sens. Si un poste ne s’enregistre pas, vérifie d’abord son accès réseau et sa configuration SIP avant de modifier le plan d’appel.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>TP XiVO · Expliquer le 401 et retrouver le codec de l’appel</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Lire les messages qui établissent l’appel et identifier le codec du flux média.</p><ol><li>Filtre avec <code>sip || rtp</code>. Sélectionne une conversation et retrouve <code>INVITE</code>, le 401, éventuellement l’ACK et la nouvelle invitation authentifiée.</li><li>Dans SDP, compare <code>m=audio</code> et <code>a=rtpmap</code>, puis relève le type de charge utile et les adresses observées. Si Wireshark ne reconnaît pas RTP automatiquement, vérifie la négociation avant d’utiliser « Décoder comme » sur le flux UDP.</li><li>Note si RTP est visible dans les deux sens. Le codec G.711 observé dans le compte rendu se vérifie sur ta propre capture.</li></ol></div></details>
+<details class="acc" id="question-3"><summary>TP XiVO · Faire passer les appels par le trunk et tester la messagerie</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Relier deux systèmes via un trunk, définir les destinations, puis tester un groupe et la messagerie sur non-réponse.</p><ol><li>Dans « Gestion des interconnexions », crée le trunk SIP. S’il utilise un enregistrement sortant, vérifie son état avec <code>pjsip show registrations</code>. Un trunk configuré par adresses peut fonctionner sans cet enregistrement.</li><li>Dans les contextes et routes d’appel, associe le motif de sortie au trunk et dirige les appels entrants vers leur destination. Teste chaque sens et relève la règle utilisée avant de modifier plusieurs paramètres.</li><li>Crée un groupe avec plusieurs extensions, configure sa stratégie et le délai de non-réponse, puis affecte la boîte vocale. Dépose un message et vérifie sa récupération avec le code configuré dans la maquette.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/telephonie/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/telephonie/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/telephonie/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Comprendre SIP et RTP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="27.333">0:27 · Lire les trames</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="84.625">1:24 · Acheminer un numéro</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="114.333">1:54 · Créer deux postes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="141.792">2:21 · Lire une capture</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="197.333">3:17 · Tester le plan d’appel</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

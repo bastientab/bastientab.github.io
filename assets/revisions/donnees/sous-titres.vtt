@@ -1,0 +1,280 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.543
+Un CSV est un tableau enregistré en texte.
+
+00:00:03.543 --> 00:00:06.930
+Une colonne peut contenir le même signe que le
+séparateur si
+
+00:00:06.930 --> 00:00:08.469
+la valeur est entre guillemets.
+
+00:00:08.469 --> 00:00:12.060
+Couper chaque ligne sur le point virgule casserait
+alors le champ.
+
+00:00:12.060 --> 00:00:16.254
+Utilise un lecteur CSV qui sait interpréter les
+guillemets, renseigne le
+
+00:00:16.254 --> 00:00:18.923
+séparateur, puis vérifie les noms de colonnes.
+
+00:00:18.923 --> 00:00:21.741
+Les valeurs lues sont souvent des chaînes.
+
+00:00:21.741 --> 00:00:24.849
+Convertis les nombres et les dates seulement après
+avoir prévu quoi
+
+00:00:24.849 --> 00:00:27.109
+faire quand une cellule est vide ou invalide.
+
+00:00:27.475 --> 00:00:31.186
+Imagine un champ de commentaire qui contient une
+phrase avec un
+
+00:00:31.186 --> 00:00:31.861
+point virgule.
+
+00:00:31.861 --> 00:00:35.245
+Dans un CSV séparé par des points virgules, le
+programme qui
+
+00:00:35.245 --> 00:00:38.013
+a généré le fichier entoure ce commentaire de
+guillemets.
+
+00:00:38.013 --> 00:00:41.077
+Un simple split couperait quand même au milieu.
+
+00:00:41.077 --> 00:00:45.432
+Un lecteur CSV connaît la différence entre un
+séparateur et un
+
+00:00:45.432 --> 00:00:46.224
+caractère protégé.
+
+00:00:46.224 --> 00:00:49.606
+Pour tester le traitement, écris une ligne avec ce
+cas.
+
+00:00:49.606 --> 00:00:53.369
+Elle doit produire le même nombre de colonnes qu’une
+ligne ordinaire.
+
+00:00:53.369 --> 00:00:56.952
+Si ce n’est pas le cas, inspecte aussi l’encodage et
+les
+
+00:00:56.952 --> 00:00:57.278
+guillemets.
+
+00:00:57.642 --> 00:01:01.440
+JSON peut contenir un tableau, dont chaque élément est
+un objet.
+
+00:01:01.440 --> 00:01:04.889
+Pour récupérer un nom dans chaque objet, il faut donc
+parcourir
+
+00:01:04.889 --> 00:01:06.771
+le tableau puis lire la propriété.
+
+00:01:06.771 --> 00:01:10.251
+XML représente les données comme un arbre d’éléments.
+
+00:01:10.251 --> 00:01:14.075
+L’identifiant peut être un attribut et le nom un sous
+élément.
+
+00:01:14.075 --> 00:01:17.579
+La structure décide comment accéder à chaque valeur.
+
+00:01:17.579 --> 00:01:21.066
+Pars d’un exemple de deux entrées et imprime les
+valeurs lues
+
+00:01:21.066 --> 00:01:22.334
+avant d’écrire ton calcul.
+
+00:01:22.683 --> 00:01:25.839
+La meilleure façon de retrouver une erreur est de la
+détecter
+
+00:01:25.839 --> 00:01:27.560
+au moment où elle est introduite.
+
+00:01:27.560 --> 00:01:31.101
+Compte les lignes lues, les lignes valides et les
+lignes rejetées.
+
+00:01:31.101 --> 00:01:35.030
+Garde une raison de rejet, par exemple colonne
+manquante ou heure
+
+00:01:35.030 --> 00:01:36.101
+de fin incohérente.
+
+00:01:36.101 --> 00:01:40.797
+Pour vérifier qu’un identifiant respecte une forme,
+une expression régulière peut
+
+00:01:40.797 --> 00:01:41.224
+suffire.
+
+00:01:41.224 --> 00:01:44.513
+Pour savoir si le trente et un février existe, demande
+à
+
+00:01:44.513 --> 00:01:45.709
+un parseur de dates.
+
+00:01:45.709 --> 00:01:49.708
+Termine en relisant l’export avec le même type d’outil
+que son
+
+00:01:49.708 --> 00:01:50.072
+destinataire.
+
+00:01:50.433 --> 00:01:53.970
+Un export vide peut être correct si aucun événement ne
+correspond,
+
+00:01:53.970 --> 00:01:57.185
+ou provenir d’un mauvais en-tête ou d’un format non
+reconnu.
+
+00:01:57.185 --> 00:02:00.353
+Affiche un résumé qui distingue toutes les lignes
+lues, les lignes
+
+00:02:00.353 --> 00:02:03.521
+ignorées pour cause de salle différente et les lignes
+mal formées.
+
+00:02:03.521 --> 00:02:06.859
+Sur dix lignes, sept peuvent être valides pour la
+salle, deux
+
+00:02:06.859 --> 00:02:09.893
+appartenir à d’autres salles et une avoir une heure
+impossible.
+
+00:02:09.893 --> 00:02:13.312
+Tu peux vérifier que les compteurs expliquent tout le
+fichier.
+
+00:02:13.312 --> 00:02:16.454
+Cela aide à revenir à la ligne qui a fait échouer
+
+00:02:16.454 --> 00:02:17.025
+la conversion.
+
+00:02:17.392 --> 00:02:19.976
+Reprends le calendrier du projet.
+
+00:02:19.976 --> 00:02:23.786
+Lis le point virgule, repère les colonnes Salle, Date,
+HeureDebut et
+
+00:02:23.786 --> 00:02:27.596
+HeureFin, puis isole la valeur demandée après avoir
+retiré les espaces
+
+00:02:27.596 --> 00:02:27.942
+autour.
+
+00:02:27.942 --> 00:02:30.667
+Combine la date et l’heure de début, puis la date et
+
+00:02:30.667 --> 00:02:31.410
+l’heure de fin.
+
+00:02:31.410 --> 00:02:34.933
+Pour ces entrées sur une même journée, une fin
+antérieure au
+
+00:02:34.933 --> 00:02:36.214
+début doit être signalée.
+
+00:02:36.214 --> 00:02:39.563
+Termine avec un enregistrement pour une autre salle,
+un avec un
+
+00:02:39.563 --> 00:02:41.999
+espace final et un avec une heure invalide.
+
+00:02:42.350 --> 00:02:46.624
+On veut transformer deux éléments XML, chacun
+représentant une salle, en
+
+00:02:46.624 --> 00:02:47.790
+un inventaire JSON.
+
+00:02:47.790 --> 00:02:51.596
+Lis l’identifiant dans l’attribut et la capacité dans
+le texte du
+
+00:02:51.596 --> 00:02:52.288
+sous élément.
+
+00:02:52.288 --> 00:02:55.033
+Convertis la capacité en entier.
+
+00:02:55.033 --> 00:02:59.052
+Pour vérifier que la transformation fonctionne, relis
+le fichier JSON.
+
+00:02:59.052 --> 00:03:02.548
+Compare le nombre de salles et teste que la capacité
+est
+
+00:03:02.548 --> 00:03:03.501
+devenue un nombre.
+
+00:03:03.501 --> 00:03:07.149
+Si la capacité manque sur une salle, traite ce cas
+explicitement
+
+00:03:07.149 --> 00:03:09.138
+plutôt que de fabriquer une valeur.
+
+00:03:09.475 --> 00:03:12.731
+Quand tu lis du texte dans un élément XML, douze est
+
+00:03:12.731 --> 00:03:15.099
+représenté par les deux caractères un et deux.
+
+00:03:15.099 --> 00:03:18.546
+Pour que le JSON contienne un nombre et non une
+chaîne,
+
+00:03:18.546 --> 00:03:19.486
+convertis-le avant d’écrire.
+
+00:03:19.486 --> 00:03:23.647
+C’est surtout utile si l’application suivante doit
+comparer les capacités ou
+
+00:03:23.647 --> 00:03:25.160
+en calculer la moyenne.
+
+00:03:25.160 --> 00:03:28.665
+Sur une valeur absente, décide si tu renvoies null ou
+si
+
+00:03:28.665 --> 00:03:29.940
+tu rejettes cette entrée.
+
+00:03:29.940 --> 00:03:33.677
+Sur une valeur comme quatre écrit en lettres, explique
+l’erreur.
+
+00:03:33.677 --> 00:03:37.340
+Relire le fichier exporté permet de vérifier le type
+et les
+
+00:03:37.340 --> 00:03:37.673
+accents.

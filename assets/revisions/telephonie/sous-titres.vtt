@@ -1,0 +1,313 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.763
+Quand le téléphone s’enregistre, il indique où il peut
+être joint.
+
+00:00:03.763 --> 00:00:06.802
+Pendant un appel, il envoie une invitation.
+
+00:00:06.802 --> 00:00:10.829
+Une partie du message, appelée SDP, décrit les formats
+audio et
+
+00:00:10.829 --> 00:00:12.293
+les paramètres du média.
+
+00:00:12.293 --> 00:00:15.565
+RTP transporte ensuite la voix numérisée.
+
+00:00:15.565 --> 00:00:19.144
+Si ton téléphone sonne mais que tu n’entends rien, la
+signalisation
+
+00:00:19.144 --> 00:00:21.423
+a déjà réalisé une partie du travail.
+
+00:00:21.423 --> 00:00:25.086
+Le diagnostic doit alors regarder les adresses et
+ports proposés pour
+
+00:00:25.086 --> 00:00:27.084
+les médias, puis les paquets échangés.
+
+00:00:27.433 --> 00:00:31.060
+Un premier message peut recevoir une réponse quatre
+cent un.
+
+00:00:31.060 --> 00:00:34.820
+Le serveur fournit un défi et le client renvoie une
+requête
+
+00:00:34.820 --> 00:00:37.555
+avec une preuve calculée selon le mécanisme
+d’authentification.
+
+00:00:37.555 --> 00:00:41.041
+Le code quatre cent un initial ne suffit donc pas à
+
+00:00:41.041 --> 00:00:41.991
+expliquer un échec.
+
+00:00:41.991 --> 00:00:45.263
+Regarde la réponse à la tentative suivante.
+
+00:00:45.263 --> 00:00:48.698
+Pour identifier le format audio, compare le type de
+charge utile
+
+00:00:48.698 --> 00:00:51.820
+RTP avec ce que l’offre et la réponse SDP annoncent.
+
+00:00:52.183 --> 00:00:55.949
+Dans la capture, le premier défi et l’accusé de
+réception qui
+
+00:00:55.949 --> 00:00:57.660
+suit terminent la première transaction.
+
+00:00:57.660 --> 00:01:02.300
+Ensuite un nouvel invite avec une preuve
+d’authentification démarre la tentative
+
+00:01:02.300 --> 00:01:02.722
+suivante.
+
+00:01:02.722 --> 00:01:06.756
+Ne confonds pas l’accusé de réception du rejet avec
+celui qui
+
+00:01:06.756 --> 00:01:07.856
+clôt l’établissement réussi.
+
+00:01:07.856 --> 00:01:12.305
+Le même échange peut aussi commencer avec
+l’enregistrement du téléphone, qui
+
+00:01:12.305 --> 00:01:13.923
+utilise la méthode register.
+
+00:01:13.923 --> 00:01:17.748
+Pour les différencier, regarde le nom de méthode, la
+séquence et
+
+00:01:17.748 --> 00:01:19.486
+le contexte de la transaction.
+
+00:01:19.486 --> 00:01:24.351
+L’enregistrement peut être réussi alors qu’une
+destination est encore introuvable.
+
+00:01:24.725 --> 00:01:29.111
+Le trunk permet à deux systèmes téléphoniques de
+s’échanger des appels.
+
+00:01:29.111 --> 00:01:32.871
+Le plan d’appel décide si le numéro composé vise une
+extension
+
+00:01:32.871 --> 00:01:35.263
+locale ou doit sortir par cette interconnexion.
+
+00:01:35.263 --> 00:01:39.128
+Une règle trop large peut attraper un numéro qui
+devait rester
+
+00:01:39.128 --> 00:01:39.479
+local.
+
+00:01:39.479 --> 00:01:42.481
+Commence avec des plages sans ambiguïté.
+
+00:01:42.481 --> 00:01:46.268
+Vérifie le sens sortant et le sens entrant séparément.
+
+00:01:46.268 --> 00:01:49.908
+Un trunk qui apparaît disponible n’est que la première
+étape.
+
+00:01:49.908 --> 00:01:53.201
+Il faut encore que la règle du numéro envoie l’appel
+vers
+
+00:01:53.201 --> 00:01:54.099
+le bon contexte.
+
+00:01:54.433 --> 00:01:58.599
+Le TP commence par deux téléphones, réels ou
+logiciels.
+
+00:01:58.599 --> 00:02:03.172
+Crée deux utilisateurs, associe à chacun une ligne SIP
+puis une
+
+00:02:03.172 --> 00:02:04.003
+extension distincte.
+
+00:02:04.003 --> 00:02:08.089
+Dans le terminal, renseigne l’adresse de XiVO et les
+paramètres de
+
+00:02:08.089 --> 00:02:08.832
+la ligne.
+
+00:02:08.832 --> 00:02:12.493
+Si tu peux joindre le serveur mais que le poste ne
+
+00:02:12.493 --> 00:02:15.155
+s’enregistre pas, relis le contact SIP côté Asterisk.
+
+00:02:15.155 --> 00:02:18.500
+Une fois les deux postes enregistrés, compose le
+numéro du second
+
+00:02:18.500 --> 00:02:21.540
+depuis le premier et vérifie l’audio dans les deux
+sens.
+
+00:02:21.892 --> 00:02:25.616
+Démarre la capture puis compose un numéro du
+laboratoire.
+
+00:02:25.616 --> 00:02:28.778
+Sélectionne l’invitation qui reçoit un défi.
+
+00:02:28.778 --> 00:02:33.024
+Le client accuse réception de la réponse finale puis
+renvoie une
+
+00:02:33.024 --> 00:02:34.182
+invitation avec l’authentification.
+
+00:02:34.182 --> 00:02:37.654
+S’il reçoit ensuite une réponse de progression et un
+succès, le
+
+00:02:37.654 --> 00:02:40.494
+premier quatre cent un était bien un défi normal.
+
+00:02:40.494 --> 00:02:43.864
+Pour l’audio, ouvre l’offre et la réponse SDP.
+
+00:02:43.864 --> 00:02:47.557
+Repère le port et le type de charge utile, puis
+compare-le
+
+00:02:47.557 --> 00:02:48.900
+aux paquets RTP capturés.
+
+00:02:49.267 --> 00:02:52.906
+Pour vérifier un problème d’audio, ouvre le corps SDP
+du message
+
+00:02:52.906 --> 00:02:54.229
+qui offre le média.
+
+00:02:54.229 --> 00:02:58.016
+Cherche l’adresse et le port où le terminal veut le
+recevoir.
+
+00:02:58.016 --> 00:03:00.650
+Fais la même chose pour la réponse.
+
+00:03:00.650 --> 00:03:04.456
+Observe ensuite les paquets UDP autour de ces ports,
+dans les
+
+00:03:04.456 --> 00:03:05.148
+deux sens.
+
+00:03:05.148 --> 00:03:08.664
+Si les messages SIP aboutissent et que seul un sens
+RTP
+
+00:03:08.664 --> 00:03:12.180
+manque, vérifie le chemin, le pare-feu et l’adresse
+annoncée par le
+
+00:03:12.180 --> 00:03:12.820
+terminal distant.
+
+00:03:12.820 --> 00:03:15.938
+Le code du type de charge utile t’aide à relier le
+
+00:03:15.938 --> 00:03:17.072
+média à la négociation.
+
+00:03:17.433 --> 00:03:21.405
+Dans XiVO, ouvre la gestion des interconnexions et
+crée le trunk
+
+00:03:21.405 --> 00:03:23.572
+SIP avec les données du laboratoire.
+
+00:03:23.572 --> 00:03:27.336
+Crée ensuite une règle sortante qui associe la plage
+attendue à
+
+00:03:27.336 --> 00:03:28.021
+ce trunk.
+
+00:03:28.021 --> 00:03:31.060
+Configure aussi le traitement de l’appel entrant.
+
+00:03:31.060 --> 00:03:35.430
+Teste d’abord une extension locale, puis un numéro
+routé vers l’autre
+
+00:03:35.430 --> 00:03:35.827
+système.
+
+00:03:35.827 --> 00:03:39.563
+Pour le groupe de sonnerie et la boîte vocale, laisse
+volontairement
+
+00:03:39.563 --> 00:03:40.582
+l’appel sans réponse.
+
+00:03:40.582 --> 00:03:44.132
+Note qui sonne, pendant combien de temps, et sur
+quelle boîte
+
+00:03:44.132 --> 00:03:45.423
+le message se retrouve.
+
+00:03:45.808 --> 00:03:48.818
+Quand tu vérifies un trunk, compose des numéros qui ne
+se
+
+00:03:48.818 --> 00:03:51.555
+ressemblent pas dans leur taille, si le plan le
+permet.
+
+00:03:51.555 --> 00:03:55.412
+Le numéro interne te confirme que le poste et le
+serveur
+
+00:03:55.412 --> 00:03:56.114
+local fonctionnent.
+
+00:03:56.114 --> 00:03:59.974
+Le numéro sortant teste ensuite la règle et
+l’interconnexion.
+
+00:03:59.974 --> 00:04:03.614
+Pour l’entrant, choisis un numéro que l’autre serveur
+peut joindre, puis
+
+00:04:03.614 --> 00:04:06.261
+contrôle vers quel contexte local il est envoyé.
+
+00:04:06.261 --> 00:04:09.934
+Si quelqu’un arrive sur la mauvaise ligne, lis le
+numéro transmis
+
+00:04:09.934 --> 00:04:11.604
+avant de changer la configuration.
+
+00:04:11.604 --> 00:04:15.070
+Il peut manquer un préfixe, ou le motif peut accepter
+des
+
+00:04:15.070 --> 00:04:16.016
+chiffres de trop.

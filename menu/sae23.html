@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SAÉ 2.03 — Cours · Bastien TABORDET</title>
-  <meta name="description" content="SAÉ 2.03 : contenu à préparer.">
+  <title>SAÉ 2.03 — Solution informatique pour une entreprise — BUT1 R&amp;T</title>
+  <meta name="description" content="Construire une plateforme de formation en PHP et MySQL, sécuriser les accès et vérifier les règles métier.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,124 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.03</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">SAÉ 2.03</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.03</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 2.03 — Solution informatique pour une entreprise</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae23/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Partir du besoin et traduire les règles</h3>
+<p>Écris les acteurs, leurs droits, les besoins et les contraintes. Le cahier des charges du projet impose PHP, MySQL, HTML/CSS et PDO avec des requêtes préparées.</p>
+<p>Fais une matrice action par rôle. Écris ensuite l’état attendu après chaque action, par exemple dépôt « en attente » puis « validé » ou « refusé » avec une décision traçable.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae23/schemas/demarche.png" alt="Navigateur, Envoie les réponses, Le score n’est pas fourni → Traitement PHP, Contrôle identité et délai, Calcule le score → Base MySQL, Enregistre la tentative, Date, score, compétence"><figcaption>Le délai de 30 jours doit être contrôlé côté serveur au moment de l’enregistrement.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Concevoir les relations et les contraintes</h3>
+<p>Sépare utilisateurs, compétences, formations, QCM, questions, propositions, tentatives et dépôts. Les tables d’association évitent de stocker plusieurs identifiants en texte dans une seule colonne.</p>
+<p>Une clé primaire identifie une ligne. Une contrainte unique sur la paire formation-compétence évite de lier deux fois les mêmes éléments. Ajoute des données de test qui exercent chaque cardinalité.</p>
+</div>
+<div class="c-block"><h3>Séparer le traitement PHP, l’accès PDO et l’affichage</h3>
+<p>Centralise la connexion PDO, stocke les paramètres de connexion hors de la partie publique et active la gestion des erreurs par exceptions. Présente une erreur lisible à l’utilisateur et conserve le détail côté serveur.</p>
+<p>Pour la vue, utilise <code>htmlspecialchars($texte, ENT_QUOTES, &#x27;UTF-8&#x27;)</code> en contexte de texte HTML. Pour les formulaires sensibles, vérifie également un jeton anti-CSRF côté serveur.</p>
+</div>
+<div class="c-block"><h3>Authentifier un utilisateur et contrôler ses actions</h3>
+<p>Crée le hachage avec <code>password_hash()</code> et contrôle avec <code>password_verify()</code>. Lors d’une connexion réussie, régénère l’identifiant avec <code>session_regenerate_id(true)</code>. Les comptes en attente restent bloqués.</p>
+<p>Vérifie les droits pour chaque requête. Dans le tableau de bord, filtrer les liens améliore la navigation. Sur l’URL de traitement, vérifier le rôle et la ressource protège l’action, y compris si l’URL est saisie directement.</p>
+</div>
+<div class="c-block"><h3>Gérer les tentatives, les fichiers et les tableaux de bord</h3>
+<p>Pour les volets formations et questions, lie chaque création à son auteur. Filtre les formations par compétence via l’association et limite les réponses au formateur destinataire. Pour compter les vues, décide si tu comptes les ouvertures ou les visiteurs distincts et affiche la période.</p>
+<p>Pour un dépôt, détecte le type côté serveur, impose une taille maximale, génère un nom et stocke hors du dossier servi si possible. Autorise le téléchargement par un traitement qui vérifie l’accès.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Le document original des vingt volets est téléchargeable. Les questions reprennent les livrables du projet, avec des exemples de tests sur des comptes fictifs.</p>
+<ul>
+<li><a href="#question-1">Volets 1 à 3 · Modéliser les liens et éprouver la base</a></li>
+<li><a href="#question-2">Volets 4 à 7 et 17 · Tester connexion, validation et accès par rôle</a></li>
+<li><a href="#question-3">Volets 8 à 10 · Corriger un QCM et appliquer le délai de trente jours</a></li>
+<li><a href="#question-4">Volets 11 à 20 · Déposer un projet, filtrer une formation et vérifier la recette</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>Volets 1 à 3 · Modéliser les liens et éprouver la base</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Produire le modèle conceptuel, le modèle logique et le jeu de test de la base MySQL.</p><ol><li>Décris les relations avec des cardinalités, puis crée les tables référencées avant les tables qui les référencent. Pour l’association, utilise une paire de clés et une contrainte unique ou une clé primaire composée.</li><li>Ajoute deux formations et deux compétences. Insère trois liens, dont deux pour la même formation. Vérifie la lecture par jointure.</li><li>Essaie un identifiant inexistant et un doublon. Présente les erreurs attendues, puis ajoute des comptes fictifs avec des états et rôles différents pour tester le reste du projet.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>Volets 4 à 7 et 17 · Tester connexion, validation et accès par rôle</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Vérifier la connexion après validation du compte, les accès par rôle et la réinitialisation du mot de passe.</p><ol><li>Insère des comptes fictifs avec des hachages. Teste secret erroné, compte en attente et compte actif. Valide le compte avec le rôle administrateur.</li><li>En étudiant, tente une route formateur via son URL et une requête visant un dépôt d’un autre utilisateur. Vérifie le refus et l’absence de modification en base.</li><li>Pour la réinitialisation, autorise seulement l’action admin, impose un secret temporaire ou un jeton à durée limitée selon l’implémentation, et prévois un changement au premier accès. Ne journalise aucun secret.</li></ol></div></details>
+<details class="acc" id="question-3"><summary>Volets 8 à 10 · Corriger un QCM et appliquer le délai de trente jours</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Corriger le QCM, enregistrer date et score et refuser une tentative pour la même compétence avant trente jours.</p><ol><li>Recherche la tentative la plus récente par étudiant et compétence, triée par date décroissante. Choisis une convention de fuseau horaire stable.</li><li>Au POST, relis l’état, filtre les propositions réellement liées aux questions et recalcule le score. Si plusieurs requêtes peuvent arriver, sérialise le contrôle et l’insertion avec une transaction et un verrou sur une ligne stable pour ce couple.</li><li>Teste premier passage, tentative anticipée, date limite et autre compétence. Vérifie que la page Compétences et le tableau de bord reflètent la tentative enregistrée.</li></ol></div></details>
+<details class="acc" id="question-4"><summary>Volets 11 à 20 · Déposer un projet, filtrer une formation et vérifier la recette</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Vérifier la chaîne dépôt-validation, les formations et questions, puis préparer le tableau de recette.</p><ol><li>Crée un dépôt fictif et teste ensuite une extension trompeuse, un fichier trop gros et un téléchargement demandé par un utilisateur non autorisé. Confirme le changement d’état et le retour vers l’étudiant.</li><li>Crée une formation PDF avec deux compétences. Vérifie le filtre, le compteur de vues selon la convention choisie et l’acheminement d’une question vers le formateur. Teste le passage d’une question ouverte à une question traitée.</li><li>Prépare un tableau attendu/obtenu avec inscription, validation, connexion, rôles, QCM à la limite, fichier refusé, dépôt validé, formation et réponse. Ajoute au moins un test d’injection, d’échappement et d’accès direct à la route.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae23/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae23/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae23/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Le cahier des charges</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="62.083">1:02 · Modéliser la base</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="120.208">2:00 · Découper l’application</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="181.792">3:01 · Vérifier la session</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="241.750">4:01 · Traiter les fonctionnalités</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="269.042">4:29 · Tester les cardinalités</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="298.667">4:58 · Tester les droits</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="329.292">5:29 · Tester la règle des 30 jours</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="388.292">6:28 · Vérifier le projet complet</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

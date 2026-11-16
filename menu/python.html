@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Programmation Python — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Programmation Python : contenu à préparer.">
+  <title>Fondamentaux de la programmation — Python — BUT1 R&amp;T</title>
+  <meta name="description" content="Types, conditions, boucles, chaînes, collections, fonctions et modules à partir des exercices du BUT1.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,119 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--python" aria-hidden="true"><img src="../assets/revisions/visuels/python.svg" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Programmation Python</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--python" aria-hidden="true"><img src="../assets/revisions/visuels/python.svg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Fondamentaux de la programmation — Python</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Entrées, types et conditions</h3>
+<p><code>input()</code> produit une chaîne. Convertis avec <code>int()</code> avant une addition ou une comparaison numérique. Une entrée comme « demain » provoque un <code>ValueError</code>. Tu peux l’intercepter et redemander une valeur.</p>
+<p><code>==</code> compare deux valeurs, tandis que <code>=</code> affecte une valeur à une variable. Dans <code>if / elif / else</code>, seule la première branche vraie s’exécute. Place les exceptions avant le cas général. Pour tester plusieurs mois, écris <code>mois in (1, 3, 5, 7, 8, 10, 12)</code>.</p>
+<figure><img loading="lazy" src="../assets/revisions/python/schemas/demarche.png" alt="Entrée, Saisie « 1900 », int(&quot;1900&quot;) → 1900 → Cas prioritaire, 1900 % 400 ≠ 0, 1900 % 100 = 0 → Décision, Année de siècle, 1900 : non bissextile"><figcaption>Comparer avec 2000, divisible par 400, et 2024, divisible par 4 et non par 100.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Boucler et parcourir des chaînes</h3>
+<p><code>&quot;réseau&quot;[0]</code> vaut <code>&quot;r&quot;</code> et <code>&quot;réseau&quot;[0:3]</code> donne <code>&quot;rés&quot;</code>. Une chaîne est immuable. Pour changer une lettre, construis une nouvelle chaîne.</p>
+<p>Initialise un compteur avant la boucle, puis augmente-le seulement quand la condition est vraie. Pour collecter plusieurs valeurs, crée plutôt une liste vide et ajoute chaque résultat avec <code>append()</code>.</p>
+</div>
+<div class="c-block"><h3>Listes, tuples, ensembles et dictionnaires</h3>
+<p>Une liste peut être modifiée et parcourue dans son ordre. Un tuple regroupe des valeurs et n’autorise pas le remplacement d’un élément. Un ensemble permet de dédupliquer et de vérifier qu’une valeur est présente.</p>
+<p>Dans un dictionnaire, <code>stats.get(adresse, 0)</code> récupère le compteur ou zéro. Incrémente-le avec <code>stats[adresse] = stats.get(adresse, 0) + 1</code>. Cette structure conserve plus d’information qu’un ensemble.</p>
+</div>
+<div class="c-block"><h3>Fonctions, fichiers et modules</h3>
+<p>Écris par exemple <code>def double(n): return 2 * n</code>, puis vérifie <code>double(4) == 8</code>. Pour un fichier, <code>with open(&quot;index.html&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as fichier:</code> ouvre en écriture et remplace le contenu précédent. Utilise un chemin relatif pour que l’exercice soit reproductible.</p>
+<p>Un module peut être chargé avec <code>import math</code>. Appelle ensuite la fonction qualifiée, par exemple <code>math.sqrt(9)</code>. Choisis un nom de fichier qui ne masque pas un module standard.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Les questions de cette page sont reconstruites à partir des exercices et des solutions locales. Les scripts d’origine restent dans le dossier de travail.</p>
+<ul>
+<li><a href="#question-1">Conditions · Déterminer si une année est bissextile</a></li>
+<li><a href="#question-2">Tuples et dictionnaires · Détecter des adresses en double</a></li>
+<li><a href="#question-3">Modules · Générer une page HTML par écriture de fichier</a></li>
+<li><a href="#question-4">Chaînes et listes · Trier des saisies et calculer la moyenne des notes</a></li>
+<li><a href="#question-5">Modules · Générer une table de multiplication HTML à deux boucles</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>Conditions · Déterminer si une année est bissextile</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> À partir d’une année saisie, dire si elle est bissextile.</p><ol><li>Convertis la saisie en entier. Utilise <code>annee % 400 == 0 or (annee % 4 == 0 and annee % 100 != 0)</code> pour calculer un booléen.</li><li>Teste 1900, 2000, 2024 et 2023. Les résultats attendus sont faux, vrai, vrai et faux.</li><li>Pour l’exercice du lendemain, détermine d’abord le nombre de jours du mois, puis teste le dernier jour. En décembre, le passage au mois suivant augmente l’année et fixe le mois à janvier.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>Tuples et dictionnaires · Détecter des adresses en double</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Lire cinq adresses puis déterminer si elles sont toutes distinctes.</p><ol><li>Boucle cinq fois et ajoute une valeur à la liste à chaque passage. Utilise <code>strip()</code> pour retirer les espaces accidentels en bordure.</li><li>Compare <code>len(adresses)</code> et <code>len(set(adresses))</code>. Si les tailles diffèrent, au moins une valeur se répète.</li><li>Pour lister les doublons, incrémente un compteur par valeur et conserve les clés dont le compteur dépasse 1.</li></ol></div></details>
+<details class="acc" id="question-3"><summary>Modules · Générer une page HTML par écriture de fichier</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Créer un fichier index.html depuis une fonction et y afficher un titre.</p><ol><li>Prépare un document contenant <code>&lt;!doctype html&gt;</code>, <code>&lt;html lang=&quot;fr&quot;&gt;</code>, un en-tête avec encodage et un corps contenant un <code>&lt;h1&gt;</code>.</li><li>Ouvre <code>index.html</code> en mode <code>&quot;w&quot;</code> avec UTF-8, puis appelle <code>fichier.write(contenu)</code>. Ferme le fichier en quittant le bloc.</li><li>Ouvre le fichier généré. Vérifie que le titre principal s’affiche et que les accents sont lisibles.</li></ol></div></details>
+<details class="acc" id="question-4"><summary>Chaînes et listes · Trier des saisies et calculer la moyenne des notes</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Saisir les fruits puis les afficher triés. Dans les exercices suivants, générer des notes et calculer la moyenne d’un élève ou de plusieurs élèves.</p><ol><li>Vérifie que le nombre de fruits est positif ou nul. Répète la saisie avec <code>range(nombre)</code> et ajoute chaque nom à la liste. Trie après la boucle.</li><li>Pour les notes, utilise <code>randint(0, 20)</code> si l’exercice demande une simulation. Utilise <code>enumerate(notes, start=1)</code> pour afficher le numéro et la note.</li><li>Avec plusieurs élèves et quatre notes chacun, initialise la liste de notes dans la boucle de chaque élève. Calcule la moyenne avec <code>sum(notes) / len(notes)</code>. Si la liste peut être vide, traite ce cas avant la division.</li></ol></div></details>
+<details class="acc" id="question-5"><summary>Modules · Générer une table de multiplication HTML à deux boucles</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Générer le tableau de 0 à la borne donnée et vérifier les lignes, colonnes et résultats.</p><ol><li>Crée l’en-tête de colonnes avec <code>range(maximum + 1)</code> afin d’inclure la borne. Utilise <code>&lt;th scope=&quot;col&quot;&gt;</code>.</li><li>Pour chaque ligne, écris son en-tête avec <code>&lt;th scope=&quot;row&quot;&gt;</code>. Dans la boucle interne, écris une cellule <code>&lt;td&gt;</code> contenant le produit.</li><li>Pour la borne 8 du travail local, compte 9 lignes de valeurs et vérifie la cellule ligne 7, colonne 8, qui doit valoir 56.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/python/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/python/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/python/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Lire et décider</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="60.042">1:00 · Parcourir les valeurs</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="117.292">1:57 · Choisir une collection</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="175.500">2:55 · Découper un programme</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="231.417">3:51 · Conditions calendaires</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="287.292">4:47 · Détecter les doublons</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="312.667">5:12 · Générer du HTML</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="340.750">5:40 · Construire une liste</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="371.500">6:11 · Fabriquer la table</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

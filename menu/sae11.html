@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SAÉ 1.01 — Cours · Bastien TABORDET</title>
-  <meta name="description" content="SAÉ 1.01 : contenu à préparer.">
+  <title>SAÉ 1.01 — Hygiène informatique et cybersécurité — BUT1 R&amp;T</title>
+  <meta name="description" content="Mots de passe, KeePassXC, phishing, Wireshark, découverte réseau et sécurité en déplacement.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,116 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">1.01</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">SAÉ 1.01</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">1.01</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 1.01 — Hygiène informatique et cybersécurité</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae11/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Identifiants, fuites et coffre de mots de passe</h3>
+<p>Choisis une phrase maître longue, unique et mémorisable. Le générateur peut produire des mots de passe aléatoires propres à chaque site. Garde une sauvegarde testée du coffre et configure la double authentification sur tes comptes quand le service le permet.</p>
+<p>Une base KeePassXC utilise le format KDBX. Le fichier-clé peut compléter le mot de passe maître. Conserve une copie récupérable selon ta configuration et évite d’afficher des secrets dans le compte rendu.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae11/schemas/demarche.png" alt="Client de test, Saisie volontairement fictive, Capture côté poste → Telnet, TCP port 23 par défaut, Contenu en clair → SSH, TCP port 22 par défaut, Contenu chiffré après échange"><figcaption>Les adresses et horaires restent observables lors d’une session SSH.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Reconnaître un message de phishing</h3>
+<p>Vérifie la cohérence avec une demande attendue, survole le lien pour voir l’adresse et ouvre le service par ton favori pour confirmer. Un document inattendu ou une demande de code à usage unique mérite une vérification indépendante.</p>
+<p>Après une saisie accidentelle, change le secret depuis le service légitime, révoque les sessions pertinentes et contacte le support concerné.</p>
+</div>
+<div class="c-block"><h3>Observer le réseau avec Wireshark et Nmap</h3>
+<p><code>ip -br addr</code> et <code>ip route</code> servent à vérifier l’adresse, le préfixe et les routes du poste Linux. Dans Wireshark, applique un filtre comme <code>arp || icmp</code> pour sélectionner des paquets déjà capturés.</p>
+<p>Pour la découverte d’hôtes en maquette, <code>nmap -sn 192.0.2.0/28</code> montre les hôtes détectés sans scanner leurs ports. Pour tester une machine voisine autorisée, choisis quelques ports, par exemple <code>nmap -p 22,80 192.0.2.10</code>, puis interprète le résultat depuis ce point d’observation.</p>
+</div>
+<div class="c-block"><h3>Protéger un poste en déplacement</h3>
+<p>Évite la reconnexion automatique à des réseaux inconnus et utilise le VPN prévu par ton organisation si son accès le demande. Sauvegarde avant le déplacement et teste la récupération.</p>
+<p>En cas de perte, préviens rapidement le support. Applique sa procédure de révocation des sessions ou certificats et d’effacement à distance quand cette gestion a été prévue.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Le TP est disponible dans le téléchargement. Les exemples réseau de la page utilisent des valeurs de maquette. Les résultats de capture et de scan se vérifient dans ton environnement de TP.</p>
+<ul>
+<li><a href="#question-1">TP · Créer et utiliser un coffre KeePassXC</a></li>
+<li><a href="#question-2">TP · Comparer le contenu d’une capture Telnet et SSH</a></li>
+<li><a href="#question-3">TP · Justifier un diagnostic de phishing et lire les états d’un scan</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>TP · Créer et utiliser un coffre KeePassXC</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Créer une base chiffrée, ajouter deux entrées et expliquer comment tester l’intégration au navigateur.</p><ol><li>Crée et enregistre un fichier KDBX. Configure le secret maître et explique la fonction d’un éventuel fichier-clé. KeePassXC propose notamment AES ou ChaCha20 pour le chiffrement de la base.</li><li>Crée une entrée de démonstration, puis une seconde utilisant le générateur. Note la longueur et les jeux de caractères choisis, puis verrouille et rouvre le coffre.</li><li>Active l’intégration navigateur dans les préférences, installe KeePassXC-Browser depuis la boutique de Firefox, connecte l’extension et autorise seulement le coffre de test. Utilise un site de maquette et masque les secrets dans les preuves.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>TP · Comparer le contenu d’une capture Telnet et SSH</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Observer les trames d’une session Telnet puis d’une session SSH et expliquer la différence de confidentialité.</p><ol><li>Démarre Wireshark sur l’interface de TP, ouvre deux sessions de laboratoire et saisis une commande inoffensive comme <code>whoami</code>.</li><li>Filtre avec <code>tcp.port == 23</code> puis utilise « Suivre le flux TCP ». Répète sur le port 22 et compare les données visibles une fois les clés de session en place.</li><li>Pour la partie découverte, calcule d’abord la diffusion du sous-réseau. Avec <code>192.0.2.64/26</code>, le dernier octet va de 64 à 127 et l’adresse de diffusion est <code>192.0.2.127</code>. Une absence de réponse à un ping de diffusion ne prouve pas que le réseau est vide.</li></ol></div></details>
+<details class="acc" id="question-3"><summary>TP · Justifier un diagnostic de phishing et lire les états d’un scan</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Décrire les indices d’un mail trompeur et relever les états des ports d’une machine de laboratoire, puis expliquer ce qu’ils signifient.</p><ol><li>Lis l’adresse complète de l’expéditeur et le domaine de chaque lien. Si la demande est inattendue, vérifie directement sur le portail habituel ou avec le support.</li><li>Dans l’environnement du TP, utilise une cible et des ports autorisés. Lance la commande depuis le poste désigné et relève la date et l’interface.</li><li>Pour chaque résultat, note <code>open</code>, <code>closed</code> ou <code>filtered</code> et rédige une conclusion limitée à ce que la sonde a montré. Termine par le numéro de port et le service confirmé séparément si nécessaire.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae11/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae11/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae11/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Un secret par service</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="53.417">0:53 · Vérifier la demande</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="80.083">1:20 · Observer le trafic</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="141.083">2:21 · Réduire les risques</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="165.833">2:45 · Créer le coffre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="193.958">3:13 · Comparer deux sessions</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="249.583">4:09 · Interpréter deux indices</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

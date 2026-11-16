@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bases de données — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Bases de données : contenu à préparer.">
+  <title>Sources de données — SQL et NoSQL — BUT1 R&amp;T</title>
+  <meta name="description" content="Modèle relationnel, requêtes SQL sur BikeStores et Sakila, documents et requêtes MongoDB.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-2">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,122 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/base-de-donnees.webp" alt="" width="64" height="64" decoding="async"></span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Bases de données</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--photo" aria-hidden="true"><img src="../assets/revisions/visuels/base-de-donnees.webp" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Sources de données — SQL et NoSQL</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/bdd/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Comprendre ce que garantit un modèle relationnel</h3>
+<p>Une clé primaire identifie chaque ligne. Une clé étrangère doit correspondre à une valeur autorisée dans la table référencée, sauf absence permise. Indique les cardinalités, c’est-à-dire le nombre de liens autorisés de chaque côté.</p>
+<p>En normalisant le modèle, range chaque fait au bon endroit. Sépare par exemple les données qui décrivent la catégorie des données propres au produit. Une transaction regroupe les changements pour les valider ensemble.</p>
+<figure><img loading="lazy" src="../assets/revisions/bdd/schemas/demarche.png" alt="categories, category_id, category_name, Identifie une catégorie → products, product_id, category_id, Fait référence à categories → Résultat, GROUP BY category_id, COUNT(product_id) par groupe"><figcaption>LEFT JOIN conserve aussi les catégories auxquelles aucun produit n’est rattaché.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Filtrer, joindre et agréger une requête</h3>
+<p><code>WHERE</code> s’applique aux lignes avant le regroupement. <code>HAVING COUNT(*) &gt; 1</code> s’applique aux groupes. <code>DISTINCT</code> élimine les doublons du résultat. <code>IS NULL</code> teste une valeur absente.</p>
+<p>Après un <code>LEFT JOIN</code>, compte la clé non nulle du côté droit avec <code>COUNT(p.product_id)</code>. <code>COUNT(*)</code> compterait aussi la ligne de catégorie conservée même quand aucun produit ne correspond.</p>
+</div>
+<div class="c-block"><h3>Ajouter des données sans casser les relations</h3>
+<p>Liste les colonnes de la commande <code>INSERT</code> pour éviter de dépendre de leur ordre dans la table. Vérifie les valeurs requises, les clés étrangères et les types. Pour une date, utilise le format attendu par le moteur.</p>
+<p>Pour une suppression ou une mise à jour, teste d’abord la condition avec un <code>SELECT</code> et utilise une transaction si ton environnement le permet.</p>
+</div>
+<div class="c-block"><h3>Comprendre les documents MongoDB</h3>
+<p>MongoDB organise les documents BSON en collections. Le champ <code>_id</code> identifie le document. Les champs peuvent varier, et une validation de schéma peut imposer des règles. Compare cette approche aux tables et relations séparées.</p>
+<p><code>db.films.find({ duree: { $gte: 90 } }, { titre: 1, _id: 0 })</code> sélectionne des documents puis limite le résultat. <code>updateOne</code> avec <code>$set</code> modifie des champs. Un pipeline <code>aggregate</code> applique des étapes comme <code>$match</code> puis <code>$group</code>.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Les deux parties du cours original sont téléchargeables. Les questions SQL reprennent les travaux BikeStores et Sakila disponibles sous forme de solutions. L’exemple MongoDB est un complément du cours.</p>
+<ul>
+<li><a href="#question-1">TP BikeStores · Compter les produits par catégorie</a></li>
+<li><a href="#question-2">TP Sakila · Calculer la durée moyenne des films par catégorie</a></li>
+<li><a href="#question-3">MongoDB · Filtrer des documents et choisir les champs</a></li>
+<li><a href="#question-4">TP3 · Créer le catalogue de bus et protéger ses références</a></li>
+<li><a href="#question-5">TP4 · Trier et filtrer les données du personnel</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>TP BikeStores · Compter les produits par catégorie</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Afficher le nombre de produits pour chaque catégorie BikeStores.</p><ol><li>Pars de <code>categories c</code>. Relie <code>products p</code> avec <code>p.category_id = c.category_id</code>. Choisis <code>LEFT JOIN</code> si les catégories vides doivent apparaître.</li><li>Sélectionne <code>c.category_name, COUNT(p.product_id) AS nb_produits</code>. Termine par <code>GROUP BY c.category_id, c.category_name</code>.</li><li>Pour la question du prix moyen par marque, relie <code>brands</code> à <code>products</code> par <code>brand_id</code>, puis calcule <code>AVG(list_price)</code> pour chaque marque.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>TP Sakila · Calculer la durée moyenne des films par catégorie</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Donner la durée moyenne des films dans chaque catégorie et retrouver les acteurs qui jouent dans le plus de films.</p><ol><li>Relie <code>film f JOIN film_category fc ON f.film_id = fc.film_id</code> puis <code>JOIN category c ON c.category_id = fc.category_id</code>.</li><li>Calcule <code>AVG(f.length)</code> et regroupe sur <code>c.category_id, c.name</code>. Le résultat est en minutes.</li><li>Pour les acteurs, relie <code>actor</code> à <code>film_actor</code> par <code>actor_id</code>, puis compte les films par acteur. Un tri décroissant suivi de <code>LIMIT 1</code> donne un acteur au maximum, et une comparaison au maximum des compteurs conserve tous les ex æquo.</li></ol></div></details>
+<details class="acc" id="question-3"><summary>MongoDB · Filtrer des documents et choisir les champs</summary><div class="acc-body"><p class="c-question"><strong>Exemple d’entraînement.</strong> Dans une collection films, retrouver uniquement les titres des films de 90 minutes ou plus.</p><ol><li>Crée trois documents de test avec des durées numériques de 89, 90 et 91. Exécute <code>db.films.find({ duree: { $gte: 90 } }, { titre: 1, _id: 0 })</code>.</li><li>Vérifie que les titres à 90 et 91 apparaissent. Une durée stockée comme texte doit être repérée à l’import.</li><li>Pour compter les films par catégorie, commence par un étage <code>$group</code> qui fixe <code>_id: &quot;$categorie&quot;</code> et accumule <code>total: { $sum: 1 }</code>.</li></ol></div></details>
+<details class="acc" id="question-4"><summary>TP3 · Créer le catalogue de bus et protéger ses références</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Créer les tables MODELE_BUS et BUS, puis vérifier le lien entre un véhicule et son modèle.</p><ol><li>Définis <code>id_modele INT PRIMARY KEY</code> dans MODELE_BUS et <code>numero_immat</code> comme clé primaire dans BUS.</li><li>Déclare <code>FOREIGN KEY (id_modele) REFERENCES MODELE_BUS(id_modele)</code> avec des types compatibles. Ajoute <code>NOT NULL</code> si chaque bus doit avoir un modèle.</li><li>Insère un modèle puis deux bus qui y font référence. Fais la jointure sur <code>id_modele</code> et vérifie qu’un insert qui pointe vers un modèle absent échoue.</li></ol></div></details>
+<details class="acc" id="question-5"><summary>TP4 · Trier et filtrer les données du personnel</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Lister quinze employés, trier par embauche et retrouver les employés dont le prénom commence par A. Compter ensuite les embauches après 2000.</p><ol><li>Sélectionne <code>emp_no, first_name, last_name, hire_date</code>. Pour les 15 plus récents, termine par <code>ORDER BY hire_date DESC, emp_no ASC LIMIT 15</code>.</li><li>Utilise <code>WHERE first_name LIKE &#x27;A%&#x27;</code>. La sensibilité à la casse dépend de la collation de la base.</li><li>Utilise <code>SELECT COUNT(*) FROM employees WHERE hire_date &gt; &#x27;2000-12-31&#x27;</code> pour un champ DATE. Compare avec une sélection sans agrégat pour contrôler l’ensemble compté.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/bdd/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/bdd/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/bdd/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Du besoin aux tables</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="56.292">0:56 · Construire une requête</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="114.417">1:54 · Modifier les données</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="169.375">2:49 · Du SQL aux documents</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="229.000">3:49 · Compter par catégorie</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="257.167">4:17 · Joindre Sakila</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="317.083">5:17 · Interroger une collection</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="343.417">5:43 · Créer les tables</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="375.208">6:15 · Interroger Employees</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

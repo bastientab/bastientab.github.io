@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SAÉ 1.03 — Cours · Bastien TABORDET</title>
-  <meta name="description" content="SAÉ 1.03 : contenu à préparer.">
+  <title>SAÉ 1.03 — Dispositif de transmission — BUT1 R&amp;T</title>
+  <meta name="description" content="Propagation dans le coaxial, atténuation optique et analyse de sinusoïdes avec GeoGebra.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,112 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">1.03</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">SAÉ 1.03</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">1.03</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 1.03 — Dispositif de transmission</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae13/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Mesurer une propagation dans un câble coaxial</h3>
+<p>Pour un délai d’aller simple <code>Δt</code>, utilise <code>L = vΔt</code>. Pour le retour d’un écho, utilise <code>L = vΔt/2</code>. Exprime <code>v</code> en m/s et <code>Δt</code> en secondes.</p>
+<p>Une différence d’impédance crée généralement une réflexion. Compare une extrémité ouverte à une charge adaptée à l’impédance du câble. Garde le même réglage de mesure pour comparer.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae13/schemas/demarche.png" alt="Référence, Source + cordon de référence, P réf = −8,0 dBm → Montage, Même réglage avec la fibre, P sortie = −8,8 dBm → Calcul, −8,0 − (−8,8) = 0,8 dB, 0,8 / 1,6 = 0,50 dB/km"><figcaption>Les puissances sont des valeurs d’illustration. La longueur 1,6 km vient du sujet.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Mesurer l’atténuation en coaxial et en fibre</h3>
+<p>Le dBm exprime une puissance référencée à 1 mW. Le dB exprime un rapport. Une perte positive est l’opposé du gain en dB. Les pertes de connexion du montage peuvent s’ajouter à celle de la fibre.</p>
+<p>Référence le photomètre avec la source et le cordon avant d’insérer la fibre. Choisis la même longueur d’onde pour la référence et la mesure. La quantité calculée en dB/km est une estimation si des pertes de connecteurs restent incluses.</p>
+</div>
+<div class="c-block"><h3>Lire amplitude, fréquence, phase et offset</h3>
+<p>Pour une sinusoïde centrée, la valeur efficace est <code>|A|/√2</code>. Elle correspond à la tension continue qui dissiperait la même puissance dans une résistance. Avec un offset, elle devient <code>√(C² + A²/2)</code> puisque la moyenne du terme croisé est nulle sur une période entière.</p>
+<p>Pour <code>g(t)=e(t−τ)</code>, développe l’argument en <code>ωt−ωτ</code>. On identifie <code>φ=−ωτ</code>, à un tour près. Le déphasage seul ne distingue pas des retards séparés d’un multiple de la période.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae13/schemas/sinus.png" alt="Deux cosinus à 10 Hz séparés de 12,5 ms."><figcaption>Deux cosinus à 10 Hz séparés de 12,5 ms.</figcaption></figure>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Le diaporama original de la séance NE1 est disponible. Les questions GeoGebra sont reconstituées depuis le compte rendu NE2. Les mesures illustratives sont indiquées comme telles.</p>
+<ul>
+<li><a href="#question-1">NE1 · Déduire la longueur d’un coaxial à partir du retard</a></li>
+<li><a href="#question-2">NE1 · Déterminer l’atténuation de la fibre de 1,6 km</a></li>
+<li><a href="#question-3">NE2 · Calculer la période, le retard et la valeur efficace</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>NE1 · Déduire la longueur d’un coaxial à partir du retard</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Dans la simulation, relever les deux instants, puis déduire le temps de propagation et la longueur de ligne.</p><ol><li>Calcule <code>Δt = 3,00 − 0,25 = 2,75 µs</code>. Transforme en <code>2,75 × 10⁻⁶ s</code>.</li><li>Utilise <code>v ≈ 2 × 10⁸ m/s</code>, soit environ 200 000 km/s. Le résultat est <code>2 × 10⁸ × 2,75 × 10⁻⁶ = 550 m</code>. Cette conversion corrige une coquille du support.</li><li>Sur la mesure expérimentale, applique les mêmes étapes à tes propres curseurs. Vérifie si tu mesures un aller ou un écho.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>NE1 · Déterminer l’atténuation de la fibre de 1,6 km</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Calculer l’atténuation de la fibre G657 de 1,6 km et l’atténuation par kilomètre, puis répéter à une deuxième longueur d’onde.</p><ol><li>Relève la longueur d’onde affichée et établis la référence. Insère la fibre avec les mêmes réglages et relève la puissance reçue.</li><li>Soustrais la lecture de sortie à la lecture de référence. Divise le résultat par 1,6 km. Garde les unités à chaque étape.</li><li>Établis une nouvelle référence pour l’autre longueur d’onde. Compare les pertes obtenues en indiquant l’incertitude et les connexions incluses dans le trajet.</li></ol></div></details>
+<details class="acc" id="question-3"><summary>NE2 · Calculer la période, le retard et la valeur efficace</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> À partir de <code>5 cos(4t)</code>, trouver la période. Pour une sinusoïde à 10 Hz et de phase <code>−π/4</code>, trouver le retard et vérifier la moyenne et la valeur efficace.</p><ol><li>Affiche <code>5 cos(4t)</code> et mesure l’écart entre deux maxima. On attend <code>π/2 s</code> et une fréquence de <code>2/π ≈ 0,637 Hz</code>.</li><li>Trace <code>5 cos(20πt)</code> et <code>5 cos(20πt−π/4)</code>. Le retard vaut <code>(π/4)/(20π)=0,0125 s</code>. Une phase positive dans cette convention aurait avancé le signal.</li><li>Sur une période, vérifie une moyenne de 0 et une valeur efficace de <code>5/√2 ≈ 3,54</code>. Ajoute un offset pour vérifier qu’il devient la nouvelle moyenne.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae13/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae13/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae13/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Le retard de propagation</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="55.042">0:55 · Des dBm aux dB</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="81.667">1:21 · Décomposer une sinusoïde</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="111.958">1:51 · Calculer la longueur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="139.458">2:19 · Mesurer la fibre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="168.083">2:48 · Lire le signal</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

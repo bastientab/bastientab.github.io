@@ -1,0 +1,272 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.816
+Quand tu ouvres une adresse web, le navigateur demande
+d’abord une
+
+00:00:03.816 --> 00:00:04.829
+ressource au serveur.
+
+00:00:04.829 --> 00:00:08.273
+La réponse a un statut et peut contenir le fichier.
+
+00:00:08.273 --> 00:00:11.263
+Deux cents veut dire que la demande a réussi.
+
+00:00:11.263 --> 00:00:14.741
+Quatre cent quatre veut dire que l’adresse demandée ne
+correspond pas
+
+00:00:14.741 --> 00:00:16.006
+à une ressource trouvée.
+
+00:00:16.006 --> 00:00:19.511
+En lisant le HTML, le navigateur rencontre ensuite les
+références à
+
+00:00:19.511 --> 00:00:23.016
+la feuille de style et aux images, qu’il va chercher
+séparément.
+
+00:00:23.016 --> 00:00:26.423
+Une page peut donc s’ouvrir avec une image manquante.
+
+00:00:26.767 --> 00:00:29.792
+Supposons que le document se charge mais que la photo
+du
+
+00:00:29.792 --> 00:00:32.818
+routeur ne s’affiche pas. Ouvre l’onglet réseau,
+recharge la page et
+
+00:00:32.818 --> 00:00:34.744
+clique sur la ligne correspondant à l’image.
+
+00:00:34.744 --> 00:00:36.876
+Lis l’adresse demandée.
+
+00:00:36.876 --> 00:00:40.358
+Si tu as écrit routeur point png mais que le fichier
+
+00:00:40.358 --> 00:00:43.841
+s’appelle Routeur avec une majuscule, certains
+environnements locaux ouvriront quand même
+
+00:00:43.841 --> 00:00:44.474
+le fichier.
+
+00:00:44.474 --> 00:00:48.077
+Une fois publié, le nom devra correspondre exactement.
+
+00:00:48.077 --> 00:00:51.318
+Corrige le chemin, recharge puis vérifie que le
+navigateur obtient un
+
+00:00:51.318 --> 00:00:54.559
+succès et que le type de réponse est bien celui d’une
+
+00:00:54.559 --> 00:00:54.854
+image.
+
+00:00:55.225 --> 00:00:58.067
+Le HTML donne leur rôle aux éléments.
+
+00:00:58.067 --> 00:01:01.425
+Un titre de niveau un annonce le sujet de la page.
+
+00:01:01.425 --> 00:01:04.158
+Un titre de niveau deux ouvre une section.
+
+00:01:04.158 --> 00:01:07.520
+Place dans l’en-tête technique le titre de l’onglet,
+l’encodage et le
+
+00:01:07.520 --> 00:01:09.354
+lien vers la feuille de style.
+
+00:01:09.354 --> 00:01:13.545
+Dans le corps, sépare la navigation et le contenu
+principal.
+
+00:01:13.545 --> 00:01:16.082
+Un lien mène vers une page ou une ancre.
+
+00:01:16.082 --> 00:01:19.170
+Le texte du lien doit décrire où il conduit.
+
+00:01:19.517 --> 00:01:24.075
+Le CSS choisit quels éléments styliser et leur
+applique des propriétés.
+
+00:01:24.075 --> 00:01:27.451
+Quand plusieurs règles ciblent la même chose, la
+cascade tranche en
+
+00:01:27.451 --> 00:01:30.521
+tenant compte notamment du poids du sélecteur et de
+l’ordre.
+
+00:01:30.521 --> 00:01:33.033
+Un élément est aussi une boîte.
+
+00:01:33.033 --> 00:01:37.285
+L’espace intérieur s’appelle padding et l’espace
+extérieur s’appelle margin.
+
+00:01:37.285 --> 00:01:41.156
+Si la page déborde sur téléphone, vérifie d’abord les
+largeurs fixes
+
+00:01:41.156 --> 00:01:42.212
+et les images.
+
+00:01:42.212 --> 00:01:46.195
+Réduis progressivement la fenêtre pour reproduire le
+problème.
+
+00:01:46.558 --> 00:01:50.007
+Essaie de placer un élément de trois cent soixante
+pixels dans
+
+00:01:50.007 --> 00:01:51.888
+une page de trois cent quatre-vingt-dix.
+
+00:01:51.888 --> 00:01:55.528
+Avec vingt pixels de remplissage de chaque côté, sa
+boîte dépasse
+
+00:01:55.528 --> 00:01:59.168
+déjà quatre cents pixels si la largeur définit
+uniquement le contenu.
+
+00:01:59.168 --> 00:02:03.347
+Border box inclut le remplissage dans les trois cent
+soixante pixels.
+
+00:02:03.347 --> 00:02:07.266
+Une largeur maximum fluide permet aussi de tenir dans
+un parent
+
+00:02:07.266 --> 00:02:07.979
+plus étroit.
+
+00:02:07.979 --> 00:02:11.989
+Dans l’inspecteur, compare la largeur du contenu et
+celle de la
+
+00:02:11.989 --> 00:02:12.354
+boîte.
+
+00:02:12.354 --> 00:02:16.242
+Ensuite redimensionne plus petit que la valeur que tu
+as utilisée
+
+00:02:16.242 --> 00:02:16.950
+dans l’exemple.
+
+00:02:17.308 --> 00:02:21.009
+Construis deux documents côte à côte et ajoute la même
+navigation
+
+00:02:21.009 --> 00:02:21.682
+dans chacun.
+
+00:02:21.682 --> 00:02:25.923
+Depuis l’accueil, le lien Expériences doit ouvrir le
+second fichier.
+
+00:02:25.923 --> 00:02:29.550
+Dans les deux en-têtes, référence la même feuille de
+style.
+
+00:02:29.550 --> 00:02:33.437
+Essaie de changer la couleur du titre dans un seul
+fichier
+
+00:02:33.437 --> 00:02:33.790
+CSS.
+
+00:02:33.790 --> 00:02:36.878
+Le changement doit apparaître dans les deux pages.
+
+00:02:36.878 --> 00:02:41.175
+Ensuite déplace temporairement une image et recherche
+dans l’inspecteur l’adresse exacte
+
+00:02:41.175 --> 00:02:43.128
+que le navigateur a tentée.
+
+00:02:43.475 --> 00:02:47.030
+Si seule la première page reçoit le style, inspecte la
+balise
+
+00:02:47.030 --> 00:02:48.646
+de lien dans la seconde.
+
+00:02:48.646 --> 00:02:52.195
+Quand les deux pages sont au même niveau, les chemins
+sont
+
+00:02:52.195 --> 00:02:52.518
+identiques.
+
+00:02:52.518 --> 00:02:55.562
+Si tu ranges les expériences dans un sous dossier, le
+chemin
+
+00:02:55.562 --> 00:02:58.607
+change et peut commencer par deux points puis une
+barre oblique
+
+00:02:58.607 --> 00:02:59.160
+pour remonter.
+
+00:02:59.160 --> 00:03:01.844
+Vérifie enfin le lien Retour.
+
+00:03:01.844 --> 00:03:05.825
+Quand tu ouvres directement une adresse profonde, la
+page doit encore
+
+00:03:05.825 --> 00:03:07.273
+permettre de retrouver l’accueil.
+
+00:03:07.273 --> 00:03:10.300
+C’est un bon test de la structure des chemins.
+
+00:03:10.642 --> 00:03:14.338
+Passe la page en affichage mobile et cherche si tu
+peux
+
+00:03:14.338 --> 00:03:15.347
+faire défiler horizontalement.
+
+00:03:15.347 --> 00:03:19.362
+Si une photo de huit cents pixels dépasse, trouve sa
+largeur
+
+00:03:19.362 --> 00:03:20.457
+calculée dans l’inspecteur.
+
+00:03:20.457 --> 00:03:23.788
+Une largeur maximale de cent pour cent lui permet de
+tenir
+
+00:03:23.788 --> 00:03:24.697
+dans son parent.
+
+00:03:24.697 --> 00:03:27.708
+Mets le réglage à l’épreuve avec un titre très long et
+
+00:03:27.708 --> 00:03:28.802
+une seconde taille d’écran.
+
+00:03:28.802 --> 00:03:30.763
+Termine au clavier.
+
+00:03:30.763 --> 00:03:34.621
+L’ordre des liens et la visibilité du focus font aussi
+partie
+
+00:03:34.621 --> 00:03:35.322
+du résultat.

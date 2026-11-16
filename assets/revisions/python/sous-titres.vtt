@@ -1,0 +1,524 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.708
+Quand Python lit une réponse au clavier, elle arrive
+sous forme
+
+00:00:03.708 --> 00:00:04.364
+de texte.
+
+00:00:04.364 --> 00:00:07.606
+Le texte deux mille vingt-quatre ressemble à un
+nombre, mais pour
+
+00:00:07.606 --> 00:00:10.258
+calculer un reste il faut le convertir en entier.
+
+00:00:10.258 --> 00:00:13.408
+Le signe pour cent donne le reste de la division.
+
+00:00:13.408 --> 00:00:16.958
+Si le reste de la division par quatre vaut zéro,
+l’année
+
+00:00:16.958 --> 00:00:18.249
+est divisible par quatre.
+
+00:00:18.249 --> 00:00:22.231
+Dans le calendrier grégorien, les siècles ont leur
+propre règle.
+
+00:00:22.231 --> 00:00:25.919
+On vérifie donc d’abord si l’année est divisible par
+quatre cents,
+
+00:00:25.919 --> 00:00:27.930
+puis par cent, puis par quatre.
+
+00:00:28.267 --> 00:00:31.587
+Suivons la donnée depuis le clavier jusqu’à la
+branche.
+
+00:00:31.587 --> 00:00:34.442
+La saisie contient quatre caractères.
+
+00:00:34.442 --> 00:00:37.849
+La conversion construit le nombre deux mille vingt-
+quatre.
+
+00:00:37.849 --> 00:00:41.101
+Si on saute cette étape, on ne peut pas utiliser le
+
+00:00:41.101 --> 00:00:42.579
+reste de la division numérique.
+
+00:00:42.579 --> 00:00:45.239
+Maintenant compare le reste à zéro.
+
+00:00:45.239 --> 00:00:47.555
+La comparaison donne vrai.
+
+00:00:47.555 --> 00:00:51.772
+Ce résultat peut être stocké dans une variable,
+affiché ou combiné
+
+00:00:51.772 --> 00:00:52.923
+avec d’autres tests.
+
+00:00:52.923 --> 00:00:56.511
+Par exemple, la règle du siècle associe deux
+conditions avec et,
+
+00:00:56.511 --> 00:00:59.773
+alors que deux façons d’être bissextile se combinent
+avec ou.
+
+00:01:00.142 --> 00:01:03.915
+Une boucle permet de répéter une action sans recopier
+la même
+
+00:01:03.915 --> 00:01:04.258
+ligne.
+
+00:01:04.258 --> 00:01:07.653
+Avec for, tu parcours directement les éléments.
+
+00:01:07.653 --> 00:01:11.440
+La fonction range s’arrête juste avant sa borne
+supérieure.
+
+00:01:11.440 --> 00:01:15.386
+Avec while, tu vérifies une condition avant chaque
+passage.
+
+00:01:15.386 --> 00:01:19.233
+Pense à faire avancer l’état, sinon la condition peut
+rester vraie
+
+00:01:19.233 --> 00:01:19.932
+pour toujours.
+
+00:01:19.932 --> 00:01:23.229
+Une chaîne se parcourt caractère par caractère.
+
+00:01:23.229 --> 00:01:26.630
+Ses indices commencent à zéro et une tranche s’arrête
+avant l’indice
+
+00:01:26.630 --> 00:01:27.249
+de fin.
+
+00:01:27.600 --> 00:01:29.670
+Lis la chaîne réseau.
+
+00:01:29.670 --> 00:01:32.366
+L’indice zéro porte la lettre r.
+
+00:01:32.366 --> 00:01:35.716
+Une découpe de zéro à trois prend les indices zéro, un
+
+00:01:35.716 --> 00:01:36.325
+et deux.
+
+00:01:36.325 --> 00:01:39.768
+C’est cohérent avec la borne finale exclue de range.
+
+00:01:39.768 --> 00:01:43.779
+Pour construire un résultat en boucle, crée la
+collection avant le
+
+00:01:43.779 --> 00:01:44.143
+parcours.
+
+00:01:44.143 --> 00:01:47.996
+Si tu la recrées à chaque passage, elle perdra les
+valeurs
+
+00:01:47.996 --> 00:01:48.347
+précédentes.
+
+00:01:48.347 --> 00:01:52.683
+Avec une chaîne, concaténer ou produire des morceaux
+construit une nouvelle
+
+00:01:52.683 --> 00:01:53.077
+valeur.
+
+00:01:53.077 --> 00:01:57.048
+Avec une liste, la méthode append modifie la liste
+elle-même.
+
+00:01:57.392 --> 00:02:00.075
+Imagine cinq adresses saisies.
+
+00:02:00.075 --> 00:02:04.040
+La liste garde les cinq saisies, y compris si deux
+sont
+
+00:02:04.040 --> 00:02:04.400
+identiques.
+
+00:02:04.400 --> 00:02:08.226
+Un ensemble contient une seule occurrence par valeur,
+donc sa taille
+
+00:02:08.226 --> 00:02:09.964
+diminue si un doublon existe.
+
+00:02:09.964 --> 00:02:13.469
+Un tuple est pratique pour ranger les deux coordonnées
+d’un point.
+
+00:02:13.469 --> 00:02:16.668
+Un dictionnaire sert à retrouver une donnée par son
+nom.
+
+00:02:16.668 --> 00:02:19.855
+Pour compter des occurrences, lis le compteur de la
+clé avec
+
+00:02:19.855 --> 00:02:21.594
+zéro par défaut et ajoute un.
+
+00:02:21.975 --> 00:02:24.609
+En entrée, A apparaît deux fois.
+
+00:02:24.609 --> 00:02:28.089
+L’ensemble répond à la question est ce que A est
+présent.
+
+00:02:28.089 --> 00:02:30.761
+Il ne donne plus le nombre d’occurrences.
+
+00:02:30.761 --> 00:02:34.082
+Pour construire le dictionnaire, parcours la liste.
+
+00:02:34.082 --> 00:02:37.576
+Au premier A, le compteur vaut zéro par défaut, donc
+passe
+
+00:02:37.576 --> 00:02:38.212
+à un.
+
+00:02:38.212 --> 00:02:40.945
+Sur B, une autre clé passe à un.
+
+00:02:40.945 --> 00:02:44.976
+Au deuxième A, reprends son compteur déjà enregistré
+et ajoute un.
+
+00:02:44.976 --> 00:02:48.322
+Le résultat garde la fréquence de chaque valeur.
+
+00:02:48.322 --> 00:02:52.130
+L’égalité des objets décide quelles entrées sont
+regroupées, donc décide aussi
+
+00:02:52.130 --> 00:02:55.246
+si tu souhaites normaliser les espaces ou la casse.
+
+00:02:55.600 --> 00:02:58.356
+Sépare le calcul de l’affichage.
+
+00:02:58.356 --> 00:03:02.320
+Une fonction qui retourne une valeur peut être testée
+avec plusieurs
+
+00:03:02.320 --> 00:03:03.761
+entrées et réutilisée ensuite.
+
+00:03:03.761 --> 00:03:07.608
+Si elle se contente de l’afficher, l’appelant ne peut
+pas récupérer
+
+00:03:07.608 --> 00:03:08.307
+le résultat.
+
+00:03:08.307 --> 00:03:11.935
+Pour créer un fichier texte, ouvre-le dans un bloc
+with.
+
+00:03:11.935 --> 00:03:14.815
+Le fichier se ferme en quittant le bloc.
+
+00:03:14.815 --> 00:03:18.844
+Utiliser un module, c’est importer des fonctions déjà
+regroupées, standard ou
+
+00:03:18.844 --> 00:03:21.408
+définies dans un autre fichier du projet.
+
+00:03:21.767 --> 00:03:25.700
+On peut vérifier une fonction de calcul sans demander
+de saisie.
+
+00:03:25.700 --> 00:03:29.070
+Appelle-la avec quatre et compare sa sortie à huit.
+
+00:03:29.070 --> 00:03:32.244
+Essaie ensuite zéro et une valeur négative.
+
+00:03:32.244 --> 00:03:35.600
+Si tu remplaces le retour par un affichage à l’écran,
+l’appel
+
+00:03:35.600 --> 00:03:38.040
+renvoie une valeur vide et la comparaison échoue.
+
+00:03:38.040 --> 00:03:41.545
+Dans un projet de fichiers, applique le même principe.
+
+00:03:41.545 --> 00:03:44.923
+Une fonction fabrique le texte, une autre l’écrit et
+la dernière
+
+00:03:44.923 --> 00:03:47.072
+peut afficher l’endroit où il se trouve.
+
+00:03:47.072 --> 00:03:51.153
+Quand un résultat est mauvais, tu identifies l’étape
+qui l’a produit.
+
+00:03:51.517 --> 00:03:55.695
+L’exercice demande de déterminer si une année est
+bissextile.
+
+00:03:55.695 --> 00:03:59.016
+Pour éviter d’oublier un cas, essayons trois dates.
+
+00:03:59.016 --> 00:04:02.806
+Mille neuf cents est divisible par cent, mais pas par
+quatre
+
+00:04:02.806 --> 00:04:04.874
+cents, donc février garde vingt-huit jours.
+
+00:04:04.874 --> 00:04:08.637
+Deux mille est divisible par quatre cents et février
+en a
+
+00:04:08.637 --> 00:04:08.979
+vingt-neuf.
+
+00:04:08.979 --> 00:04:12.543
+Deux mille vingt-quatre ne termine pas un siècle et
+passe le
+
+00:04:12.543 --> 00:04:14.163
+test de divisibilité par quatre.
+
+00:04:14.163 --> 00:04:17.927
+Termine par une année ordinaire pour vérifier le
+dernier chemin dans
+
+00:04:17.927 --> 00:04:18.611
+ton programme.
+
+00:04:18.975 --> 00:04:22.577
+Passons du test de février à l’exercice du lendemain.
+
+00:04:22.577 --> 00:04:26.208
+Pour le vingt-huit février mille neuf cents, la règle
+du siècle
+
+00:04:26.208 --> 00:04:27.528
+exclut un vingt-neuvième jour.
+
+00:04:27.528 --> 00:04:30.096
+Tu es au dernier jour du mois, donc tu mets le
+
+00:04:30.096 --> 00:04:31.964
+jour à un et tu avances à mars.
+
+00:04:31.964 --> 00:04:35.494
+Pour le vingt-huit février deux mille, la limite est
+vingt-neuf et
+
+00:04:35.494 --> 00:04:37.099
+tu incrémentes simplement le jour.
+
+00:04:37.099 --> 00:04:40.469
+Le trente et un décembre demande une autre transition.
+
+00:04:40.469 --> 00:04:43.839
+Tu réinitialises le jour et le mois et avances
+l’année.
+
+00:04:43.839 --> 00:04:47.038
+Construis ces tests avant de terminer ton script.
+
+00:04:47.392 --> 00:04:50.779
+Le programme du TD reçoit cinq adresses et doit dire
+si
+
+00:04:50.779 --> 00:04:52.011
+elles sont toutes distinctes.
+
+00:04:52.011 --> 00:04:55.824
+Avec les valeurs A, B, C, A et D, la liste
+
+00:04:55.824 --> 00:04:56.864
+a cinq éléments.
+
+00:04:56.864 --> 00:05:00.614
+L’ensemble n’a que quatre valeurs puisque A n’y figure
+qu’une fois.
+
+00:05:00.614 --> 00:05:03.849
+Comparer les tailles répond immédiatement à la
+question.
+
+00:05:03.849 --> 00:05:07.864
+Si tu veux également afficher les adresses répétées,
+il faut conserver
+
+00:05:07.864 --> 00:05:08.959
+le nombre d’occurrences.
+
+00:05:08.959 --> 00:05:12.427
+Un dictionnaire donne ici un compteur égal à deux pour
+A.
+
+00:05:12.767 --> 00:05:17.023
+Dans un exercice de modules, le programme doit
+produire un fichier
+
+00:05:17.023 --> 00:05:17.410
+HTML.
+
+00:05:17.410 --> 00:05:20.410
+Commence par créer un document simple avec un titre
+dans l’onglet
+
+00:05:20.410 --> 00:05:22.864
+et un titre de premier niveau dans le corps.
+
+00:05:22.864 --> 00:05:26.160
+Écris la chaîne dans le fichier en UTF huit.
+
+00:05:26.160 --> 00:05:30.400
+Ensuite ouvre le document dans le navigateur pour
+vérifier le résultat.
+
+00:05:30.400 --> 00:05:34.032
+Le mode écriture recrée le contenu, ce qui évite
+d’empiler des
+
+00:05:34.032 --> 00:05:36.013
+pages si tu relances ton programme.
+
+00:05:36.013 --> 00:05:39.798
+Si tu dois réutiliser la fonction, isole son appel
+dans le
+
+00:05:39.798 --> 00:05:40.486
+point d’entrée.
+
+00:05:40.850 --> 00:05:45.197
+Dans le premier exercice, l’utilisateur annonce
+combien de fruits il va
+
+00:05:45.197 --> 00:05:45.592
+saisir.
+
+00:05:45.592 --> 00:05:48.384
+Crée une liste vide avant la boucle et ajoute les noms
+
+00:05:48.384 --> 00:05:49.146
+un par un.
+
+00:05:49.146 --> 00:05:51.878
+Quand tout est saisi, trie la liste.
+
+00:05:51.878 --> 00:05:55.653
+La méthode sort change directement la liste, tandis
+que sorted en
+
+00:05:55.653 --> 00:05:56.682
+renvoie une autre.
+
+00:05:56.682 --> 00:06:00.903
+Dans l’exercice suivant, génère dix notes entre zéro
+et vingt, bornes
+
+00:06:00.903 --> 00:06:02.822
+incluses, puis calcule la moyenne.
+
+00:06:02.822 --> 00:06:06.942
+Pour tester le calcul, remplace les notes aléatoires
+par trois notes
+
+00:06:06.942 --> 00:06:08.815
+connues, dix, douze et quatorze.
+
+00:06:08.815 --> 00:06:11.253
+La moyenne doit être douze.
+
+00:06:11.600 --> 00:06:15.980
+Le deuxième exercice de génération de page demande une
+table de
+
+00:06:15.980 --> 00:06:16.378
+multiplication.
+
+00:06:16.378 --> 00:06:19.920
+D’abord, crée la ligne avec les en-têtes de colonnes.
+
+00:06:19.920 --> 00:06:23.878
+Ensuite une boucle produit une ligne pour chaque
+multiplicateur.
+
+00:06:23.878 --> 00:06:27.126
+Une autre boucle produit les cases de cette ligne.
+
+00:06:27.126 --> 00:06:29.749
+Imagine que tu es à la ligne trois.
+
+00:06:29.749 --> 00:06:34.381
+L’indice des colonnes passe par zéro, un, deux, trois
+et continue.
+
+00:06:34.381 --> 00:06:37.751
+Tu affiches zéro, trois, six puis neuf.
+
+00:06:37.751 --> 00:06:41.031
+Quand toutes les colonnes sont écrites, ferme la ligne
+avant de
+
+00:06:41.031 --> 00:06:42.224
+passer à la suivante.
+
+00:06:42.558 --> 00:06:46.246
+Avant d’écrire la table complète, prends une borne de
+deux.
+
+00:06:46.246 --> 00:06:49.605
+Tu dois voir trois lignes de résultats et trois
+colonnes de
+
+00:06:49.605 --> 00:06:49.910
+nombres.
+
+00:06:49.910 --> 00:06:53.121
+La ligne d’en-tête montre zéro, un et deux.
+
+00:06:53.121 --> 00:06:56.234
+Dans les lignes, le premier nombre décrit la ligne, et
+le
+
+00:06:56.234 --> 00:06:59.065
+produit de sa valeur par la colonne remplit la
+cellule.
+
+00:06:59.065 --> 00:07:02.055
+À deux fois deux, tu dois obtenir quatre.
+
+00:07:02.055 --> 00:07:05.013
+Si tu obtiens plusieurs tables au lieu d’une, regarde
+où tu
+
+00:07:05.013 --> 00:07:06.626
+écris le début et la fin.
+
+00:07:06.626 --> 00:07:09.077
+Ils doivent entourer les deux boucles.

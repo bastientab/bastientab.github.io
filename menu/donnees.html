@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Données structurées — Cours · Bastien TABORDET</title>
-  <meta name="description" content="Données structurées : contenu à préparer.">
+  <title>Analyse et traitement de données structurées — BUT1 R&amp;T</title>
+  <meta name="description" content="Lire et vérifier du CSV, JSON et XML, normaliser les types et exporter un résultat exploitable.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,105 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">{ }</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">Données structurées</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">{}</span></div>
+      <h1 class="page-title" id="page-title">Analyse et traitement de données structurées</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Lire un CSV sans casser les lignes</h3>
+<p>En Python, <code>csv.DictReader(f, delimiter=&quot;;&quot;)</code> donne une correspondance entre les en-têtes et les valeurs de la ligne. Ouvre le fichier texte avec le bon encodage et <code>newline=&quot;&quot;</code>. Avec pandas, précise par exemple <code>pd.read_csv(f, sep=&quot;;&quot;)</code>.</p>
+<p>Vérifie les champs attendus avant de parcourir les lignes. Un identifiant ou un code postal peut nécessiter un type chaîne pour garder les zéros initiaux. Un champ manquant mérite un traitement explicite.</p>
+<figure><img loading="lazy" src="../assets/revisions/donnees/schemas/demarche.png" alt="Lecture CSV, Salle;Date;HeureDebut, Le séparateur est ; → Normalisation, Nettoyer le champ Salle, Date + heure → date-heure → Sortie, Filtrer et trier, Écrire un CSV ou un JSON"><figcaption>On décide des types et des règles de validation avant de calculer.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Lire des structures imbriquées en JSON et XML</h3>
+<p><code>json.load(f)</code> lit un document JSON. Si le résultat est un dictionnaire avec la clé <code>&quot;salles&quot;</code>, parcourir ce dictionnaire directement donne les clés. Pour obtenir les salles, parcours <code>document[&quot;salles&quot;]</code>.</p>
+<p>Pour un document XML local de TP, <code>ElementTree.parse(f).getroot()</code> donne la racine. Sélectionne les éléments par chemin, récupère les attributs avec <code>element.get(&quot;id&quot;)</code> et le texte d’un sous-élément avec <code>findtext()</code>. Un espace de noms doit être déclaré dans les chemins de recherche.</p>
+</div>
+<div class="c-block"><h3>Nettoyer, valider et contrôler une transformation</h3>
+<p>Nettoie les espaces avec <code>strip()</code> avant une comparaison d’identifiants. Verrouille le format d’une date connue avec <code>datetime.strptime(s, &quot;%d/%m/%Y %H:%M&quot;)</code> pour éviter les ambiguïtés de jour et de mois.</p>
+<p>Pour un identifiant de salle de la forme une majuscule puis un ou deux chiffres, teste <code>re.fullmatch(r&quot;[A-Z][0-9]{1,2}&quot;, code)</code>. Cette règle d’exemple doit évoluer si le fichier accepte des noms composés.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Le cas CSV vient du projet de calendrier retrouvé dans le dossier de programmation. Les exemples JSON et XML sont des compléments. Le sujet original séparé n’a pas été retrouvé.</p>
+<ul>
+<li><a href="#question-1">Projet CSV · Filtrer les événements d’une salle et valider les heures</a></li>
+<li><a href="#question-2">Convertir un petit inventaire XML en JSON</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>Projet CSV · Filtrer les événements d’une salle et valider les heures</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Lire le CSV du projet, garder les événements de la salle demandée et fournir une liste de couples début et fin pour la recherche de disponibilités.</p><ol><li>Contrôle l’en-tête et charge avec le séparateur <code>;</code>. Applique <code>strip()</code> à la saisie et à la colonne Salle avant la comparaison.</li><li>Compose les heures complètes avec Date, HeureDebut et HeureFin. Convertis les chaînes à l’aide du format réellement observé. Rejette les heures illisibles et les fins inférieures ou égales aux débuts pour des événements censés rester dans la journée.</li><li>Teste sur quelques lignes fictives. Trie par début, compare le nombre d’événements retenus puis vérifie que les mêmes entrées alimentent le test de recouvrement de la SAÉ 1.05.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>Convertir un petit inventaire XML en JSON</summary><div class="acc-body"><p class="c-question"><strong>Exemple d’entraînement.</strong> Un fichier XML contient des éléments salle, chacun muni d’un identifiant et d’un élément capacite. Produire un JSON avec un objet par salle.</p><ol><li>Parcours les éléments <code>salle</code> et lis l’identifiant avec <code>get(&quot;id&quot;)</code>. Lis <code>findtext(&quot;capacite&quot;)</code> et convertis uniquement les nombres valides.</li><li>Construis une liste de dictionnaires avec <code>id</code> et <code>capacite</code>. Écris-la en UTF-8 avec <code>json.dump(resultat, f, ensure_ascii=False, indent=2)</code>.</li><li>Relis le fichier, contrôle le nombre de salles et le type entier de la capacité. Essaie ensuite un document avec un champ absent pour vérifier ton traitement des erreurs.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/donnees/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/donnees/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/donnees/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Importer un CSV</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="57.542">0:57 · Lire la structure</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="82.583">1:22 · Vérifier les données</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="137.292">2:17 · Lire le calendrier</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="162.250">2:42 · Convertir un inventaire</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

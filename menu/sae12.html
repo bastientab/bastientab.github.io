@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SAÉ 1.02 — Cours · Bastien TABORDET</title>
-  <meta name="description" content="SAÉ 1.02 : contenu à préparer.">
+  <title>SAÉ 1.02 — Initiation aux réseaux informatiques — BUT1 R&amp;T</title>
+  <meta name="description" content="Inventaire Nmap, adresses MAC, baie de brassage et conception d’un réseau d’entreprise.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,105 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">1.02</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">SAÉ 1.02</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">1.02</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 1.02 — Initiation aux réseaux informatiques</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Séparer l’inventaire, la liaison et l’adressage</h3>
+<p>Lance une découverte sur le périmètre du TP, par exemple <code>nmap -sn 192.0.2.0/28</code> en maquette. Distingue les résultats observés des informations fournies par le plan. Note la date et le point d’observation.</p>
+<p>Indique le type et la localisation de chaque appareil. Sur le dessin logique, montre les réseaux et les interfaces des routeurs. Sur le plan physique, montre les baies, prises, câbles et salles.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae12/schemas/demarche.png" alt="Poste source, IP de destination distante, MAC de la passerelle → Routeur, Retire la trame reçue, Choisit la route → Dernier lien, Nouvelle trame locale, MAC du destinataire final"><figcaption>La résolution ARP reste sur le lien local. Elle ne traverse pas le routeur.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Comprendre la frontière du réseau local</h3>
+<p>Le masque participe à déterminer si un voisin se trouve sur le même réseau. Avec <code>192.0.2.10/24</code> et un voisin <code>192.0.2.20</code>, le réseau est <code>192.0.2.0/24</code>. Pour une destination <code>198.51.100.20</code>, utilise une passerelle ou une route spécifique.</p>
+<p>Vérifie les entrées avec <code>ip neigh</code>. Dans Wireshark, compare la destination Ethernet et la destination IPv4 du même paquet.</p>
+</div>
+<div class="c-block"><h3>Distinguer brassage, commutation et routage</h3>
+<p>Compte deux prises par poste quand le cahier des charges demande une prise PC et une prise téléphone. Compte aussi les bornes, vidéoprojecteurs et équipements de réunion. Vérifie le nombre de ports PoE et le budget de puissance.</p>
+<p>Sépare par usage si le besoin le justifie. Par exemple, un réseau visiteurs atteint Internet via le routeur, tandis que l’accès aux équipements internes dépend de règles explicites.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Les questions sont tirées des énoncés conservés dans les comptes rendus TP1 et TP2. Les adresses du campus et les relevés des participants ont été remplacés par des exemples de maquette.</p>
+<ul>
+<li><a href="#question-1">TP1 · Pourquoi Nmap ne donne-t-il pas toutes les adresses MAC ?</a></li>
+<li><a href="#question-2">TP1 et TP2 · Monter une baie et concevoir le réseau d’un bâtiment</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>TP1 · Pourquoi Nmap ne donne-t-il pas toutes les adresses MAC ?</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Inventorier les équipements puis expliquer pourquoi les MAC des postes de certaines salles ne remontent pas.</p><ol><li>Vérifie ton préfixe avec <code>ip -br addr</code> et la route avec <code>ip route get &lt;destination&gt;</code>. Lance la découverte sur la plage du TP.</li><li>Fais un test local puis un test routé. Relève dans la capture les adresses IPv4 et Ethernet. Compare avec <code>ip neigh</code>.</li><li>Dans le tableau d’inventaire, indique « non observable depuis ce poste » pour une MAC distante tant qu’une source autorisée ne l’a pas confirmée.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>TP1 et TP2 · Monter une baie et concevoir le réseau d’un bâtiment</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Dans Packet Tracer, réaliser le câblage physique. Puis placer la baie et les prises du bâtiment, choisir l’adressage et les équipements du TP2.</p><ol><li>Dans la vue Physique, place la baie dans le local, ajoute les équipements compatibles et garde le PC ou le modem sur la table quand demandé. Câble en vérifiant chaque port et étiquette les liaisons.</li><li>Sur le plan d’entreprise, place la baie selon les cheminements et compte les prises nécessaires par pièce. Réserve des ports PoE pour les téléphones et bornes, puis note quelles liaisons sont de niveau deux ou routées.</li><li>Pour un exemple de maquette, choisis employés <code>192.0.2.0/26</code> avec passerelle <code>192.0.2.1</code> et visiteurs <code>192.0.2.64/26</code> avec passerelle <code>192.0.2.65</code>. Vérifie le lien, l’adresse, le ping de la passerelle puis les accès prévus. Teste aussi un accès qui doit être bloqué.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae12/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae12/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae12/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Inventorier le réseau</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="48.958">0:48 · Le rôle de la passerelle</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="76.708">1:16 · Du bureau à la baie</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="132.333">2:12 · Inventaire et ARP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="158.917">2:38 · Concevoir le réseau</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

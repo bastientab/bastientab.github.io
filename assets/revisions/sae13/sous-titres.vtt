@@ -1,0 +1,270 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:02.979
+Un signal se propage à vitesse finie.
+
+00:00:02.979 --> 00:00:06.108
+Regarde la même impulsion sur deux voies de
+l’oscilloscope et place
+
+00:00:06.108 --> 00:00:08.383
+un curseur au même point des deux fronts.
+
+00:00:08.383 --> 00:00:11.771
+Si tu mesures entre l’entrée et la sortie, le temps
+correspond
+
+00:00:11.771 --> 00:00:13.003
+à un aller simple.
+
+00:00:13.003 --> 00:00:16.121
+Si tu mesures à l’entrée le retour d’un écho, le temps
+
+00:00:16.121 --> 00:00:17.538
+inclut l’aller et le retour.
+
+00:00:17.538 --> 00:00:21.472
+Cette distinction change la longueur calculée d’un
+facteur deux.
+
+00:00:21.472 --> 00:00:23.959
+La vitesse dépend du câble.
+
+00:00:23.959 --> 00:00:27.035
+Dans le modèle du sujet, on prend environ deux tiers
+de
+
+00:00:27.035 --> 00:00:28.432
+la vitesse de la lumière.
+
+00:00:28.808 --> 00:00:32.043
+Comparons deux montages qui affichent le même délai.
+
+00:00:32.043 --> 00:00:35.143
+Dans le premier, une sonde mesure le signal au départ
+et
+
+00:00:35.143 --> 00:00:37.398
+l’autre le mesure à la sortie du câble.
+
+00:00:37.398 --> 00:00:40.119
+La différence indique le temps d’aller.
+
+00:00:40.119 --> 00:00:44.046
+Dans le deuxième, on ne mesure qu’à l’entrée, avec une
+impulsion
+
+00:00:44.046 --> 00:00:45.474
+qui revient depuis l’extrémité.
+
+00:00:45.474 --> 00:00:49.052
+Un retard identique peut alors correspondre à un câble
+deux fois
+
+00:00:49.052 --> 00:00:49.702
+plus court.
+
+00:00:49.702 --> 00:00:52.795
+Avant de calculer, repère ce que voient les sondes et
+choisis
+
+00:00:52.795 --> 00:00:54.763
+la même position sur les deux fronts.
+
+00:00:55.142 --> 00:00:58.486
+Un câble peut diminuer l’amplitude du signal.
+
+00:00:58.486 --> 00:01:01.930
+Si tu compares deux tensions efficaces sur la même
+impédance, le
+
+00:01:01.930 --> 00:01:05.374
+gain en décibels s’obtient avec vingt fois le
+logarithme du rapport.
+
+00:01:05.374 --> 00:01:09.373
+Pour une mesure optique en dBm, utilise la puissance
+de référence
+
+00:01:09.373 --> 00:01:10.827
+moins la puissance reçue.
+
+00:01:10.827 --> 00:01:14.035
+En partant de moins huit et en arrivant à moins huit
+
+00:01:14.035 --> 00:01:16.660
+virgule huit, la perte vaut zéro virgule huit décibel.
+
+00:01:16.660 --> 00:01:20.387
+Garde les mêmes conditions et repère la longueur
+d’onde avant de
+
+00:01:20.387 --> 00:01:21.403
+comparer deux résultats.
+
+00:01:21.767 --> 00:01:25.246
+L’offset fait monter ou descendre la ligne moyenne.
+
+00:01:25.246 --> 00:01:28.775
+L’amplitude mesure l’écart de la ligne moyenne au pic.
+
+00:01:28.775 --> 00:01:32.023
+La période est le temps qu’il faut pour refaire un
+tour.
+
+00:01:32.023 --> 00:01:35.822
+La pulsation exprime l’angle parcouru chaque seconde.
+
+00:01:35.822 --> 00:01:39.453
+Enfin une phase positive, avec un plus devant la
+phase, avance
+
+00:01:39.453 --> 00:01:41.104
+la courbe vers la gauche.
+
+00:01:41.104 --> 00:01:44.302
+Pour t’en souvenir, cherche où l’angle vaut zéro.
+
+00:01:44.302 --> 00:01:47.709
+Avec une phase positive, cela arrive plus tôt.
+
+00:01:47.709 --> 00:01:51.717
+Sur une période entière, la moyenne du cosinus vaut
+zéro.
+
+00:01:52.058 --> 00:01:56.088
+Dans la simulation du diaporama, l’entrée est relevée
+à zéro virgule
+
+00:01:56.088 --> 00:01:59.018
+vingt-cinq microseconde et la sortie à trois
+microsecondes.
+
+00:01:59.018 --> 00:02:03.798
+Soustrais, puis convertis deux virgule soixante-quinze
+microsecondes en secondes.
+
+00:02:03.798 --> 00:02:06.661
+Deux tiers de la vitesse de la lumière donnent environ
+deux
+
+00:02:06.661 --> 00:02:09.524
+cents millions de mètres par seconde, ce qui mène à
+cinq
+
+00:02:09.524 --> 00:02:10.305
+cent cinquante mètres.
+
+00:02:10.305 --> 00:02:14.043
+Une coquille sur les puissances de dix apparaît dans
+le support.
+
+00:02:14.043 --> 00:02:18.429
+La vérification des unités permet de la repérer et
+d’éviter un
+
+00:02:18.429 --> 00:02:19.226
+résultat impossible.
+
+00:02:19.558 --> 00:02:23.638
+Dans la séance optique, la fibre fait un virgule six
+kilomètre.
+
+00:02:23.638 --> 00:02:26.925
+Commence par relever la longueur d’onde, puis la
+puissance de référence
+
+00:02:26.925 --> 00:02:29.913
+sans la ligne testée et la puissance avec la fibre.
+
+00:02:29.913 --> 00:02:32.548
+Prends la différence en décibels.
+
+00:02:32.548 --> 00:02:36.248
+Si tes mesures donnent un écart de zéro virgule huit
+décibel,
+
+00:02:36.248 --> 00:02:39.275
+la perte par kilomètre est zéro virgule cinquante
+décibel.
+
+00:02:39.275 --> 00:02:41.800
+Ce nombre illustre la méthode.
+
+00:02:41.800 --> 00:02:45.109
+Pour conclure sur le TP, tu dois lire les valeurs de
+
+00:02:45.109 --> 00:02:47.817
+l’appareil et répéter l’opération à la deuxième
+longueur d’onde.
+
+00:02:48.183 --> 00:02:51.908
+GeoGebra permet de confronter les formules à la
+courbe.
+
+00:02:51.908 --> 00:02:55.805
+Pour cinq cosinus de quatre t, le quatre est une
+pulsation.
+
+00:02:55.805 --> 00:02:58.170
+Divise deux pi par quatre.
+
+00:02:58.170 --> 00:03:01.356
+À dix hertz, la pulsation vaut vingt pi.
+
+00:03:01.356 --> 00:03:04.733
+Avec la phase moins pi sur quatre, le maximum se
+trouve
+
+00:03:04.733 --> 00:03:07.496
+décalé de douze virgule cinq millisecondes vers la
+droite.
+
+00:03:07.496 --> 00:03:10.323
+Ensuite, remarque que la moyenne est nulle quand il
+n’y a
+
+00:03:10.323 --> 00:03:13.150
+pas d’offset, mais la valeur efficace est cinq sur
+racine de
+
+00:03:13.150 --> 00:03:15.976
+deux, car on moyenne le carré avant de prendre sa
+racine.
+
+00:03:16.308 --> 00:03:19.089
+Regarde les deux maxima du schéma.
+
+00:03:19.089 --> 00:03:22.606
+La courbe de référence atteint son maximum à zéro.
+
+00:03:22.606 --> 00:03:26.754
+La courbe retardée atteint le même maximum douze
+virgule cinq millisecondes
+
+00:03:26.754 --> 00:03:27.508
+plus tard.
+
+00:03:27.508 --> 00:03:31.173
+Divise ce retard par la période de cent millisecondes.
+
+00:03:31.173 --> 00:03:34.610
+C’est un huitième de tour, donc un angle de pi sur
+
+00:03:34.610 --> 00:03:34.923
+quatre.
+
+00:03:34.923 --> 00:03:38.472
+Comme le maximum arrive après celui de la référence,
+cet angle
+
+00:03:38.472 --> 00:03:41.700
+apparaît avec un signe négatif dans la formule du
+cosinus.
+
+00:03:41.700 --> 00:03:45.651
+Ajoute ensuite une constante pour déplacer les deux
+maxima en hauteur
+
+00:03:45.651 --> 00:03:47.447
+sans changer leur écart horizontal.

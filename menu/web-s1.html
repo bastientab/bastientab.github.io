@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction aux technologies Web — S1 — BUT1 R&amp;T</title>
+  <meta name="description" content="HTML, CSS, mise en page et requêtes HTTP sur une première page Web.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/web-s1.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--web" aria-hidden="true"><img src="../assets/revisions/visuels/html5.svg" alt="" width="64" height="64" decoding="async"><img src="../assets/revisions/visuels/css3.svg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Introduction aux technologies Web — S1</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Ce qui se passe quand tu ouvres une page</h3>
+<p>Le navigateur envoie une requête HTTP avec une méthode, une cible et des en-têtes. Un document local ouvert directement sur le disque peut servir pour tester le rendu sans passer par un serveur.</p>
+<p>Les chemins <code>images/photo.jpg</code> et <code>../images/photo.jpg</code> partent respectivement du dossier du document et de son dossier parent. En production, la casse des noms compte souvent.</p>
+<figure><img loading="lazy" src="../assets/revisions/web-s1/schemas/demarche.png" alt="Navigateur, GET /index.html, Interprète le HTML → Serveur, Renvoie le HTML, Puis les ressources → Rendu, Structure + styles, L’image et le CSS"><figcaption>Un chemin relatif part de l’emplacement du fichier qui le référence.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Construire un document HTML lisible</h3>
+<p>Déclare <code>&lt;!doctype html&gt;</code> puis <code>&lt;html lang=&quot;fr&quot;&gt;</code>. Dans <code>&lt;head&gt;</code>, ajoute <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code>, une balise viewport et <code>&lt;title&gt;</code>. Dans <code>&lt;body&gt;</code>, utilise <code>&lt;nav&gt;</code> pour les liens, <code>&lt;main&gt;</code> pour le contenu et des titres cohérents.</p>
+<p>Une image informative mérite un texte alternatif utile. Si le texte voisin présente déjà la même information et que l’image est décorative, le texte alternatif peut être vide. Pour un champ de formulaire, relie <code>&lt;label for=&quot;email&quot;&gt;</code> à l’élément qui porte <code>id=&quot;email&quot;</code>.</p>
+</div>
+<div class="c-block"><h3>Sélecteurs, boîte CSS et lecture sur mobile</h3>
+<p>Une règle <code>.carte { padding: 1rem; }</code> s’applique aux éléments avec <code>class=&quot;carte&quot;</code>. En cas de conflit entre deux règles de même origine et même priorité, compare leur spécificité puis leur ordre. L’inspecteur du navigateur montre quelles déclarations sont barrées.</p>
+<p><code>box-sizing: border-box</code> fait entrer la bordure et le padding dans la largeur déclarée. Pour aligner des éléments, Flexbox est utile sur un axe et Grid sur deux. Prévois un retour à la ligne avec <code>flex-wrap: wrap</code> et vérifie la taille des images.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Le sujet retrouvé dans le dossier Web S1 est un travail PHP déjà couvert en Développement Web S2. Les exercices HTML/CSS ci-dessous sont des compléments. Le mini-site local de la SAÉ 1.04 donne un exemple de navigation et de feuille de style partagée.</p>
+<ul>
+<li><a href="#question-1">Relier deux pages et réutiliser la même feuille CSS</a></li>
+<li><a href="#question-2">Diagnostiquer une page trop large sur téléphone</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>Relier deux pages et réutiliser la même feuille CSS</summary><div class="acc-body"><p class="c-question"><strong>Exemple d’entraînement.</strong> Créer deux pages et une feuille de style commune. Vérifier que la navigation fonctionne à partir de chaque page.</p><ol><li>Place <code>index.html</code>, <code>experiences.html</code> et <code>main.css</code> dans le même dossier. Dans les en-têtes, ajoute <code>&lt;link rel=&quot;stylesheet&quot; href=&quot;main.css&quot;&gt;</code>.</li><li>Ajoute des liens relatifs entre les deux pages. Ouvre le site et navigue dans les deux sens.</li><li>Applique une règle par classe et change une propriété dans la feuille commune pour vérifier l’effet sur les deux documents.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>Diagnostiquer une page trop large sur téléphone</summary><div class="acc-body"><p class="c-question"><strong>Exemple d’entraînement.</strong> Une image de 800 px et plusieurs cartes débordent dans une fenêtre de 390 px. Trouver la cause et corriger la mise en page.</p><ol><li>Vérifie la déclaration viewport. Inspecte les largeurs calculées et repère la première boîte qui dépasse.</li><li>Donne à l’image <code>max-width: 100%; height: auto</code> et retire la largeur fixe inutile de son conteneur. Fais revenir les cartes à la ligne avec Flexbox ou une grille adaptée.</li><li>Refais le test à 390 px puis sur un grand écran. Vérifie aussi que Tab permet d’atteindre les liens dans un ordre logique.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/web-s1/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/web-s1/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/web-s1/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · La requête HTTP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="55.125">0:55 · Structurer la page</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="79.417">1:19 · Appliquer le CSS</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="137.208">2:17 · Deux pages, une feuille</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="190.542">3:10 · Tester sur mobile</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.009
+Un lecteur qui ouvre ton portfolio cherche qui tu es,
+ce
+
+00:00:03.009 --> 00:00:05.918
+que tu sais faire et sur quoi il peut s’appuyer pour
+
+00:00:05.918 --> 00:00:06.447
+le vérifier.
+
+00:00:06.447 --> 00:00:09.327
+L’accueil donne le contexte en une phrase.
+
+00:00:09.327 --> 00:00:12.904
+Chaque projet mérite ensuite une page ou une carte
+avec son
+
+00:00:12.904 --> 00:00:14.204
+objectif et ta contribution.
+
+00:00:14.204 --> 00:00:17.585
+Une liste de logiciels ne raconte pas comment tu as
+pris
+
+00:00:17.585 --> 00:00:18.200
+une décision.
+
+00:00:18.200 --> 00:00:20.935
+Une preuve gagne en valeur si tu expliques ce qu’elle
+montre
+
+00:00:20.935 --> 00:00:22.427
+et ce que tu as testé.
+
+00:00:22.808 --> 00:00:26.762
+Dans un projet collectif, commence par dire ce que
+l’équipe devait
+
+00:00:26.762 --> 00:00:27.121
+livrer.
+
+00:00:27.121 --> 00:00:30.785
+Ensuite isole une action dont tu peux expliquer les
+étapes.
+
+00:00:30.785 --> 00:00:33.886
+Pour une maquette réseau, tu peux montrer les deux
+VLAN que
+
+00:00:33.886 --> 00:00:36.423
+tu as configurés et une capture d’un test autorisé.
+
+00:00:36.423 --> 00:00:39.937
+Un deuxième test bloqué est une preuve utile si le
+besoin
+
+00:00:39.937 --> 00:00:40.896
+était de cloisonner.
+
+00:00:40.896 --> 00:00:44.468
+Termine en précisant les limites, par exemple le fait
+que la
+
+00:00:44.468 --> 00:00:46.741
+démonstration a été réalisée sur une maquette.
+
+00:00:47.100 --> 00:00:50.101
+Voilà un exemple concret de formulation.
+
+00:00:50.101 --> 00:00:52.810
+Deux groupes utilisent le même switch.
+
+00:00:52.810 --> 00:00:56.387
+J’ai configuré un VLAN pour chacun et affecté les
+ports selon
+
+00:00:56.387 --> 00:00:57.038
+les postes.
+
+00:00:57.038 --> 00:00:59.934
+J’ai ensuite testé un échange entre deux ports du même
+VLAN
+
+00:00:59.934 --> 00:01:02.829
+et vérifié que les postes des deux groupes ne se
+joignaient
+
+00:01:02.829 --> 00:01:04.146
+pas directement dans cette maquette.
+
+00:01:04.146 --> 00:01:08.472
+Ce court récit est compréhensible sans connaître le
+matériel exact.
+
+00:01:08.472 --> 00:01:11.893
+La capture accompagnée de l’adresse de test et du
+résultat attendu
+
+00:01:11.893 --> 00:01:15.003
+permet de retrouver le lien entre l’action et la
+compétence.
+
+00:01:15.350 --> 00:01:19.295
+À l’oral, prépare des explications assez courtes pour
+laisser le lecteur
+
+00:01:19.295 --> 00:01:20.729
+revenir sur une étape.
+
+00:01:20.729 --> 00:01:23.721
+Sur la page, teste les liens dès la version locale,
+puis
+
+00:01:23.721 --> 00:01:26.712
+sur la version publiée car la casse des noms ou
+l’emplacement
+
+00:01:26.712 --> 00:01:27.800
+des dossiers peut changer.
+
+00:01:27.800 --> 00:01:31.869
+Redimensionne la fenêtre et vérifie que les preuves
+restent lisibles.
+
+00:01:31.869 --> 00:01:34.356
+Teste enfin l’ordre du clavier.
+
+00:01:34.356 --> 00:01:37.765
+Un lien visible à la souris doit rester repérable
+quand tu
+
+00:01:37.765 --> 00:01:38.695
+navigues au clavier.
+
+00:01:39.058 --> 00:01:42.121
+Choisis un projet effectivement réalisé.
+
+00:01:42.121 --> 00:01:45.703
+Résume le besoin en une phrase, puis explique ton rôle
+avec
+
+00:01:45.703 --> 00:01:46.680
+un verbe précis.
+
+00:01:46.680 --> 00:01:50.379
+Si tu as configuré une adresse, précise sur quel type
+d’interface
+
+00:01:50.379 --> 00:01:52.060
+et comment tu l’as vérifiée.
+
+00:01:52.060 --> 00:01:55.234
+Joins une preuve anonymisée avec une légende.
+
+00:01:55.234 --> 00:01:57.562
+Relis la carte à voix haute.
+
+00:01:57.562 --> 00:02:00.897
+Si quelqu’un pouvait te demander ce que toi tu as
+fait,
+
+00:02:00.897 --> 00:02:03.322
+précise la distinction entre l’équipe et ta
+contribution.
+
+00:02:03.683 --> 00:02:06.970
+Pour passer de la carte au discours, garde une seule
+preuve
+
+00:02:06.970 --> 00:02:07.567
+à l’écran.
+
+00:02:07.567 --> 00:02:11.038
+Dis ce que tu essayais d’obtenir, quel réglage tu as
+réalisé
+
+00:02:11.038 --> 00:02:12.616
+et comment tu as validé.
+
+00:02:12.616 --> 00:02:15.830
+Si on te demande pourquoi tu as séparé les postes,
+explique
+
+00:02:15.830 --> 00:02:18.168
+l’usage de chaque groupe et la frontière créée.
+
+00:02:18.168 --> 00:02:21.660
+Si le projet comporte des limites, indique lesquelles.
+
+00:02:21.660 --> 00:02:25.536
+Tu peux par exemple avoir testé le cloisonnement sur
+simulateur avant
+
+00:02:25.536 --> 00:02:27.298
+de disposer des équipements réels.
+
+00:02:27.298 --> 00:02:31.050
+La personne qui écoute sait alors exactement sur quoi
+la preuve
+
+00:02:31.050 --> 00:02:31.391
+porte.
+
+00:02:31.767 --> 00:02:35.414
+Imagine qu’une personne ouvre ton portfolio sur
+téléphone et veuille trouver
+
+00:02:35.414 --> 00:02:37.403
+un projet sans te demander d’aide.
+
+00:02:37.403 --> 00:02:39.646
+Donne-lui une tâche simple.
+
+00:02:39.646 --> 00:02:43.195
+En partant de l’accueil, elle doit pouvoir ouvrir un
+projet et
+
+00:02:43.195 --> 00:02:44.486
+retrouver la page précédente.
+
+00:02:44.486 --> 00:02:47.048
+Observe si les liens sont clairs.
+
+00:02:47.048 --> 00:02:50.148
+Refais ce test avec la touche Tab et Entrée.
+
+00:02:50.148 --> 00:02:53.293
+Sur le site publié, contrôle aussi que le fichier de
+preuve
+
+00:02:53.293 --> 00:02:56.439
+s’ouvre et que ses informations sont bien celles que
+tu souhaites
+
+00:02:56.439 --> 00:02:57.011
+rendre visibles.
+
+00:02:57.350 --> 00:03:00.535
+Fais relire l’accueil avec un objectif précis.
+
+00:03:00.535 --> 00:03:04.351
+Demande à quelqu’un de retrouver un projet de réseau
+et un
+
+00:03:04.351 --> 00:03:05.045
+résultat vérifiable.
+
+00:03:05.045 --> 00:03:08.640
+Observe où il clique d’abord et s’il arrive à revenir
+à
+
+00:03:08.640 --> 00:03:08.967
+l’accueil.
+
+00:03:08.967 --> 00:03:12.651
+Sur une petite fenêtre, vérifie aussi qu’une légende
+ne se détache
+
+00:03:12.651 --> 00:03:13.991
+pas de sa capture.
+
+00:03:13.991 --> 00:03:17.381
+Après la publication, ouvre la page dans une session
+privée pour
+
+00:03:17.381 --> 00:03:20.155
+enlever les effets du cache ou d’une session locale.
+
+00:03:20.155 --> 00:03:23.624
+Si tu modifies le nom d’un fichier, contrôle que les
+liens
+
+00:03:23.624 --> 00:03:24.886
+publics suivent le changement.

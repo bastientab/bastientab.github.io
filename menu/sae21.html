@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SAÉ 2.01 — Cours · Bastien TABORDET</title>
-  <meta name="description" content="SAÉ 2.01 : contenu à préparer.">
+  <title>SAÉ 2.01 — Construction d’un réseau — BUT1 R&amp;T</title>
+  <meta name="description" content="IPv6 et NDP, établissement TCP, translation d’adresses, ACL Cisco et DHCP relayé.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=chapitres-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,120 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.01</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">SAÉ 2.01</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.01</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 2.01 — Construction d’un réseau</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae21/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>Lire l’adressage IPv6 et les découvertes de voisins</h3>
+<p>Avec <code>ip -6 addr</code> distingue les adresses <code>fe80::</code> des adresses configurées avec un autre préfixe. Une adresse link-local n’est pas routée vers un autre lien.</p>
+<p>NDP comporte notamment RS/RA pour les routeurs et NS/NA pour les voisins. Un hôte peut fabriquer une adresse avec SLAAC si l’annonce fournit un préfixe et le drapeau d’autoconfiguration attendu. Il vérifie aussi l’absence de doublon avec DAD.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae21/schemas/demarche.png" alt="Client VLAN 200, Diffuse DHCPDISCOVER, N’a pas encore d’adresse → Passerelle .200, Relaye vers le serveur, Indique le réseau du client → Serveur DHCP, Choisit le pool VLAN 200, Renvoie l’offre via le relais"><figcaption>Le pool doit correspondre au VLAN du client, même si le serveur est dans un autre VLAN.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Suivre un établissement TCP</h3>
+<p>Une réponse SYN-ACK indique que le port TCP accepte cette tentative. Un RST peut indiquer un port fermé. Une absence de réponse peut avoir plusieurs causes, dont un filtrage ou une perte.</p>
+<p>UDP n’établit pas de connexion avec cet échange. Un datagramme peut partir sans acquittement au niveau UDP. Pour interpréter l’absence de réponse, il faut aussi connaître le protocole applicatif.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae21/schemas/tcp.png" alt="Le SYN consomme un numéro de séquence dans les deux sens."><figcaption>Le SYN consomme un numéro de séquence dans les deux sens.</figcaption></figure>
+</div>
+<div class="c-block"><h3>Séparer le routage, le filtrage et la translation</h3>
+<p>Dans iptables, la table choisit une famille de traitements et la chaîne correspond à un point de passage. Consulte <code>iptables -S</code> pour filter et <code>iptables -t nat -S</code> pour nat. <code>iptables -L -n -v</code> affiche politiques et compteurs.</p>
+<p>Le routage IPv4 doit être activé et les deux côtés doivent avoir un chemin de retour. Avec MASQUERADE, l’adresse de sortie de l’interface sert à la translation de source. Le suivi de connexion applique le traitement correspondant au retour.</p>
+</div>
+<div class="c-block"><h3>Séparer les VLAN et relayer DHCP</h3>
+<p>Sur une ACL, la première règle correspondante décide et un refus implicite s’applique à la fin. Dans Packet Tracer, vérifie l’interface et le sens de la liste ainsi que la wildcard. Pour un <code>/24</code>, elle vaut <code>0.0.0.255</code>.</p>
+<p>Le relais annonce au serveur le réseau d’origine du client, typiquement avec <code>giaddr</code>. Si le routeur sert lui-même DHCP sur ses interfaces de VLAN, configure ses pools locaux sans ajouter un relais vers lui-même.</p>
+</div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<p>Le TD3 original sur iptables est téléchargeable. Les questions des TP1 à TP5 sont reformulées depuis les sujets intégrés aux comptes rendus. Les adresses de démonstration sont distinctes des relevés du laboratoire.</p>
+<ul>
+<li><a href="#question-1">TP1 · Tester les adresses link-local et lire NDP</a></li>
+<li><a href="#question-2">TP2 · Relever les séquences TCP et comparer les réponses Scapy</a></li>
+<li><a href="#question-3">TD3 et TP3 · Faire passer un paquet par le NAT Linux</a></li>
+<li><a href="#question-4">TP4 et TP5 · Isoler les accès et vérifier le DHCP des deux VLAN</a></li>
+</ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="question-1"><summary>TP1 · Tester les adresses link-local et lire NDP</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Relever les types d’adresses IPv6 des deux postes, tester la connectivité et expliquer les messages découverts.</p><ol><li>Sous Linux, lance <code>ip -6 addr</code>, puis <code>ping -6 fe80::abcd%eth0</code> en remplaçant l’adresse et l’interface par celles du TP. Sous Windows, identifie l’index d’interface et précise-le après <code>%</code> selon le contexte.</li><li>Dans Wireshark, filtre <code>icmpv6</code> et distingue NS, NA et Echo. Vérifie la règle locale autorisant le test de connectivité si la réponse manque.</li><li>Une fois le routeur ajouté, relève RS, RA, le préfixe et la route par défaut. Documente l’adresse obtenue et sa portée.</li></ol></div></details>
+<details class="acc" id="question-2"><summary>TP2 · Relever les séquences TCP et comparer les réponses Scapy</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Installer le service FTP du TP, identifier les trois messages TCP et comparer les réponses à des SYN de test dans le laboratoire.</p><ol><li>Vérifie que <code>vsftpd</code> tourne avec <code>systemctl status vsftpd</code>. Lance la capture avant d’ouvrir une connexion de test. Filtre <code>tcp.port == 21</code> si c’est le port configuré.</li><li>Relève les ports, les drapeaux et les séquences. Sur le SYN-ACK, l’acquittement ajoute 1 à la séquence du SYN. Sur l’ACK suivant, le client accuse réception du SYN serveur.</li><li>Pour les sondes, utilise <code>sr1(IP(dst=cible)/TCP(dport=port, flags=&quot;S&quot;), timeout=2)</code> dans la maquette. Distingue réponse SYN-ACK, RST et absence de réponse.</li></ol></div></details>
+<details class="acc" id="question-3"><summary>TD3 et TP3 · Faire passer un paquet par le NAT Linux</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Expliquer NAT et PAT, puis mettre en place une translation et valider les adresses observées.</p><ol><li>Active le routage IPv4 dans la maquette et vérifie l’adresse de passerelle du client. Contrôle la politique FORWARD et prévois les règles autorisant le test et son retour.</li><li>Pour une interface de sortie <code>eth1</code>, ajoute en maquette <code>iptables -t nat -A POSTROUTING -s 192.0.2.0/24 -o eth1 -j MASQUERADE</code>. Remplace interface et réseau par ceux du TP.</li><li>Lis <code>iptables -t nat -L -v -n</code> et capture sur les deux interfaces. Compare adresses et ports. Une règle NAT ne remplace pas la politique de filtrage.</li></ol></div></details>
+<details class="acc" id="question-4"><summary>TP4 et TP5 · Isoler les accès et vérifier le DHCP des deux VLAN</summary><div class="acc-body"><p class="c-question"><strong>Énoncé reformulé.</strong> Créer les VLAN, protéger les accès demandés par ACL, puis faire attribuer une adresse aux clients des VLAN 100 et 200 par un service DHCP unique.</p><ol><li>Attribue un sous-réseau différent à chaque VLAN. Déclare les interfaces de niveau trois et teste chaque passerelle depuis le VLAN correspondant.</li><li>Dans le TP4, construis la liste selon les flux que l’énoncé autorise. Applique-la à l’interface et au sens appropriés. Contrôle les compteurs avec <code>show access-lists</code> et compare un flux autorisé et un flux refusé.</li><li>Dans le TP5, place les ports 1 à 10 dans le VLAN 100, les ports 11 à 20 dans le 200 et crée le trunk sur le port 24. Prépare un pool par réseau. Si le service est sur un autre équipement, configure <code>ip helper-address &lt;IP_du_serveur&gt;</code> côté client. Renouvelle les baux et lis le résultat sur les deux postes.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae21/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae21/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae21/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Comprendre IPv6</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="64.292">1:04 · Lire SYN et ACK</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="121.375">2:01 · Router et filtrer</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="181.125">3:01 · VLAN et relais</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="239.750">3:59 · Tester deux voisins</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="268.333">4:28 · Mesurer les réponses TCP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="295.125">4:55 · Vérifier NAT et PAT</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="356.625">5:56 · Tester VLAN et DHCP</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>
