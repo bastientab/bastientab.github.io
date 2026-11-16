@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculus informatique et mathématiques — Prépa ISIMA</title>
+  <meta name="description" content="Équations, inéquations, fonctions rationnelles, dérivées et binôme.">
+  <meta name="author" content="Bastien TABORDET">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f5f5f7">
+  <link rel="canonical" href="https://bastientabordet.fr/menu/prepa-calculus.html">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'dark' && t !== 'light') { t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css?v=5">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
+</head>
+<body id="top">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../">Bastien TABORDET</a>
+      <nav class="nav" id="site-nav" aria-label="Navigation principale">
+        <ul class="nav-list" id="nav-list">
+          <li><a href="../#a-propos">À propos</a></li>
+          <li><a href="../#formation">Formation</a></li>
+          <li><a href="../#competences">Compétences</a></li>
+          <li><a href="../#projets">Projets</a></li>
+          <li><a href="../#divers">Divers</a></li>
+          <li><a href="../#cv">CV</a></li>
+          <li><a href="../#contact">Contact</a></li>
+          <li><a href="./" class="is-active">Cours</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm header-cv" href="../CV_Bastien_TABORDET.pdf" target="_blank" rel="noopener">CV</a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Activer le thème sombre">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+        <button class="icon-btn burger" id="burger" type="button" aria-controls="nav-list" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico c-ico--image c-ico--maths" aria-hidden="true"><img src="../assets/revisions/visuels/yvan-monka.jpg" alt="" width="64" height="64" decoding="async"></span></div>
+      <h1 class="page-title" id="page-title">Calculus informatique et mathématiques</h1>
+    </div>
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/prepa-calculus/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Rendre une équation plus simple</h3>
+<p>Résoudre une équation revient à trouver toutes les valeurs qui rendent ses deux membres égaux. Ajouter la même quantité aux deux membres, ou les multiplier par un coefficient non nul, conserve les solutions. Avant de diviser par une expression qui contient l’inconnue, traite séparément le cas où cette expression vaut zéro.</p>
+<p>Pour un produit nul, au moins un facteur doit être nul. Pour un second degré, commence par chercher une factorisation ou une identité remarquable. À défaut, utilise le discriminant <code>b²−4ac</code>. Si le coefficient de <code>x²</code> dépend d’un paramètre, traite le cas où il devient nul avant de choisir la méthode.</p></div>
+<div class="c-block"><h3>2. Comparer sans perdre le sens de l’inégalité</h3>
+<p>Multiplier ou diviser une inégalité par un nombre négatif inverse son sens. Pour une expression factorisée, repère les valeurs où un facteur s’annule ou n’existe pas. Découpe la droite en intervalles, détermine le signe de chaque facteur puis celui du produit. Un zéro du dénominateur reste exclu.</p>
+<p>Pour encadrer <code>sin(x)</code>, pars de <code>−1≤sin(x)≤1</code>. Une multiplication négative échange les deux bornes. Pour encadrer son carré, remarque que le carré est positif et que <code>|sin(x)|≤1</code>.</p></div>
+<div class="c-block"><h3>3. Garder les conditions d’une racine ou d’une fraction</h3>
+<p>Une racine carrée réelle demande un contenu positif ou nul et son résultat est positif ou nul. Pour une équation <code>√u=v</code>, impose <code>u≥0</code> et <code>v≥0</code> avant d’élever au carré. Substitue toujours les candidats dans l’équation de départ.</p>
+<figure><img loading="lazy" src="../assets/revisions/prepa-calculus/schemas/domaine.png" alt="Le dénominateur s’annule en moins un et en deux. Ces deux valeurs restent exclues après simplification."><figcaption>On peut simplifier un facteur commun sur le domaine où il est non nul. La fonction d’origine garde son domaine.</figcaption></figure>
+</div>
+<div class="c-block"><h3>4. Dériver puis lire les variations</h3>
+<p>La pente locale se lit avec la dérivée. Pour une composée, dérive la fonction extérieure puis multiplie par la dérivée de l’intérieur. Pour un quotient <code>u/v</code>, la dérivée vaut <code>(u′v−uv′)/v²</code> là où le quotient est dérivable. Vérifie le domaine avant de simplifier.</p>
+<p>Pour les variations, utilise le signe de <code>f′</code> sur chaque intervalle du domaine. Un changement de signe qui va de positif à négatif donne un maximum local dans les conditions usuelles. Si la fonction n’existe pas à une frontière, sépare les deux intervalles.</p></div>
+<div class="c-block"><h3>5. Manipuler les coefficients binomiaux</h3>
+<p><code>n!</code> multiplie les entiers de 1 à <code>n</code>, avec <code>0!=1</code>. Le coefficient <code>C(n,k)</code> compte les sélections de <code>k</code> éléments parmi <code>n</code> et vaut <code>n!/(k!(n−k)!)</code>. On peut regrouper deux coefficients successifs par la relation de Pascal.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#calc-eq">TD, ex. 1 à 3 · Résoudre selon les conditions</a></li>
+<li><a href="#calc-frac">TD, ex. 4 et 5 · Simplifier et analyser les valeurs interdites</a></li>
+<li><a href="#calc-var">TD, ex. 7 · Dériver un quotient et lire ses variations</a></li>
+<li><a href="#calc-bin">TD, ex. 8 · Retrouver la relation de Pascal</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="calc-eq"><summary>TD, ex. 1 à 3 · Étudier un paramètre, un signe et une racine</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Étudier <code>(a+1)x+b−2=0</code> selon les paramètres, résoudre <code>(4x+1)(−x+3)≥0</code>, puis résoudre <code>√(x+1)+1=2x</code>.</p>
+<ol><li>Si <code>a≠−1</code>, divise par <code>a+1</code> et trouve <code>x=(2−b)/(a+1)</code>. Si <code>a=−1</code>, il reste <code>b−2=0</code>. Tout réel convient si <code>b=2</code>. Sinon il n’y a pas de solution.</li><li>Pour l’inégalité, les facteurs s’annulent en −1/4 et 3. Les deux sont positifs à 0, donc l’intervalle central satisfait l’inégalité. Hors de cet intervalle, les signes sont opposés. Les deux bornes ont un produit nul et sont incluses.</li><li>Dans l’équation avec racine, le domaine commence à −1. Isole la racine. <code>2x−1</code> doit être positif ou nul, donc <code>x≥1/2</code>. En élevant au carré, on obtient <code>4x²−5x=0</code>. Zéro est à rejeter. <code>x=5/4</code> satisfait l’équation de départ.</li></ol></div></details>
+<details class="acc" id="calc-frac"><summary>TD, ex. 4 et 5 · Calculer sur le bon domaine</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Simplifier <code>(x²+4x+3)/(x²−x−2)</code> en donnant son domaine. Résoudre ensuite <code>(5x+3)/(2x−7)=m</code> selon <code>m</code>.</p>
+<ol><li>Factorise le dénominateur initial en <code>(x+1)(x−2)</code>. Exclue −1 et 2. Le numérateur vaut <code>(x+1)(x+3)</code>. La fraction vaut <code>(x+3)/(x−2)</code> sur le domaine initial.</li><li>Pour la seconde équation, impose <code>x≠7/2</code>. Multiplie par <code>2x−7</code> et regroupe les termes. On obtient <code>(2m−5)x=7m+3</code>.</li><li>Si <code>m=5/2</code>, le membre de gauche vaut zéro et le membre de droite est non nul. Sinon, la solution est <code>(7m+3)/(2m−5)</code>. Elle ne peut valoir <code>7/2</code>, car l’égalité impliquerait <code>6=−35</code>.</li></ol></div></details>
+<details class="acc" id="calc-var"><summary>TD, ex. 7 · Étudier (2x+3)/(x²−4)</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Déterminer le domaine, les intersections avec les axes, la dérivée et les variations.</p>
+<ol><li>Exclue −2 et 2. L’intersection avec l’axe des abscisses est en <code>x=−3/2</code>. À <code>x=0</code>, l’ordonnée vaut <code>−3/4</code>.</li><li>La dérivée est <code>−2(x²+3x+4)/(x²−4)²</code>. Le trinôme possède un discriminant <code>9−16=−7</code> et son coefficient dominant est positif. Le signe de la dérivée est donc négatif partout où la fonction existe.</li><li>Elle décroît sur chacun des trois intervalles <code>(−∞,−2)</code>, <code>(−2,2)</code> et <code>(2,+∞)</code>. Il n’y a aucun extremum local sur son domaine.</li></ol></div></details>
+<details class="acc" id="calc-bin"><summary>TD, ex. 8 · Additionner deux coefficients binomiaux</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Pour <code>0≤k≤n−1</code>, simplifier <code>C(n,k)+C(n,k+1)</code> avec les factorielles.</p>
+<ol><li>Choisis le dénominateur commun <code>(k+1)!(n−k)!</code>. Le premier numérateur devient <code>n!(k+1)</code>. Le second devient <code>n!(n−k)</code>.</li><li>La somme donne <code>n!(n+1)=(n+1)!</code>. On retrouve donc <code>C(n+1,k+1)</code>. La restriction <code>k≤n−1</code> garantit que <code>k+1≤n</code> dans le calcul initial.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/prepa-calculus/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/prepa-calculus/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/prepa-calculus/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Garder les mêmes solutions</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="25.333">0:25 · Question de signe</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="51.250">0:51 · Racines et fonctions rationnelles</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="76.583">1:16 · Dériver et lire une courbe</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="101.417">1:41 · TD · Paramètre et signe</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="148.708">2:28 · TD · Une racine et un faux candidat</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="175.000">2:55 · TD · Réduire la fraction tout en gardant le domaine</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="203.708">3:23 · TD · Dériver le quotient</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="233.333">3:53 · TD · Vérifier la relation de Pascal</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
+      <a href="#top">Haut de page</a>
+    </div>
+  </footer>
+  <script defer src="../assets/js/main.js?v=5"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

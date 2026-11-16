@@ -1,0 +1,367 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.923
+Un oscilloscope ou un ordinateur voit une série de
+mesures.
+
+00:00:03.923 --> 00:00:07.268
+La fréquence d'échantillonnage donne leur cadence.
+
+00:00:07.268 --> 00:00:11.827
+Quarante mille mesures par seconde donnent un
+intervalle de vingt-cinq microsecondes.
+
+00:00:11.827 --> 00:00:15.205
+Si la première mesure est au temps zéro, le dernier
+instant
+
+00:00:15.205 --> 00:00:17.048
+est à N moins un intervalles.
+
+00:00:17.048 --> 00:00:20.481
+C'est une distinction fréquente : tu peux avoir cinq
+points et
+
+00:00:20.481 --> 00:00:22.354
+seulement quatre espaces entre les points.
+
+00:00:22.725 --> 00:00:26.035
+Pour calculer une aire à partir de valeurs séparées,
+il faut
+
+00:00:26.035 --> 00:00:28.141
+choisir ce qu'on suppose entre deux mesures.
+
+00:00:28.141 --> 00:00:31.155
+Un rectangle prolonge la hauteur de gauche.
+
+00:00:31.155 --> 00:00:34.329
+Un trapèze relie les deux mesures par un segment.
+
+00:00:34.329 --> 00:00:37.707
+Simpson peut prendre encore une autre forme en reliant
+trois points
+
+00:00:37.707 --> 00:00:39.550
+par un polynôme du second degré.
+
+00:00:39.550 --> 00:00:42.633
+Compare toujours ces méthodes sur les mêmes bornes et
+avec le
+
+00:00:42.633 --> 00:00:43.753
+même nombre de points.
+
+00:00:44.100 --> 00:00:46.991
+Regarde le dessin de gauche à droite.
+
+00:00:46.991 --> 00:00:49.957
+Les temps vont de zéro à un avec un pas d'un
+
+00:00:49.957 --> 00:00:50.226
+quart.
+
+00:00:50.226 --> 00:00:53.915
+Chaque trapèze commence à un point et se termine au
+suivant.
+
+00:00:53.915 --> 00:00:57.432
+Comme les hauteurs augmentent, le bord supérieur
+monte.
+
+00:00:57.432 --> 00:01:01.091
+Pour trouver l'aire complète, on calcule les quatre
+aires séparées puis
+
+00:01:01.091 --> 00:01:02.089
+on les additionne.
+
+00:01:02.089 --> 00:01:06.594
+L'exponentielle est convexe, donc les segments passent
+légèrement au-dessus de la
+
+00:01:06.594 --> 00:01:07.003
+courbe.
+
+00:01:07.350 --> 00:01:11.381
+Une trace temporelle permet de mesurer plusieurs
+choses différentes.
+
+00:01:11.381 --> 00:01:15.450
+Le maximum et le minimum donnent l'amplitude du sinus
+centré.
+
+00:01:15.450 --> 00:01:18.869
+La moyenne te dit à quelle hauteur le signal est
+centré.
+
+00:01:18.869 --> 00:01:22.553
+La valeur efficace fait la moyenne des carrés et prend
+sa
+
+00:01:22.553 --> 00:01:22.888
+racine.
+
+00:01:22.888 --> 00:01:26.675
+Tu peux la relier à la puissance dissipée dans une
+résistance.
+
+00:01:26.675 --> 00:01:29.927
+Un signal qui est parfois nul et parfois à cinq volts
+
+00:01:29.927 --> 00:01:31.405
+n'a pas cinq volts efficaces.
+
+00:01:31.767 --> 00:01:35.663
+Une FFT répartit le signal en composantes discrètes.
+
+00:01:35.663 --> 00:01:39.562
+Pour un signal réel, les deux côtés du spectre
+contiennent des
+
+00:01:39.562 --> 00:01:40.626
+informations en miroir.
+
+00:01:40.626 --> 00:01:44.195
+Si tu présentes les amplitudes du seul côté positif,
+il faut
+
+00:01:44.195 --> 00:01:47.440
+retrouver la contribution des deux côtés pour les
+fréquences intérieures.
+
+00:01:47.440 --> 00:01:51.704
+Le continu et la fréquence de Nyquist éventuelle se
+traitent séparément.
+
+00:01:51.704 --> 00:01:55.408
+Pour vérifier la puissance avec Parseval, pars du
+spectre complet et
+
+00:01:55.408 --> 00:01:58.101
+annonce ta normalisation avant de comparer au temps.
+
+00:01:58.475 --> 00:02:02.085
+Pour la bande du canal, commence par choisir le pic
+qui
+
+00:02:02.085 --> 00:02:03.070
+représente le signal.
+
+00:02:03.070 --> 00:02:06.699
+Une fois le maximum lu, descends de vingt décibels sur
+l'axe
+
+00:02:06.699 --> 00:02:07.359
+des niveaux.
+
+00:02:07.359 --> 00:02:10.333
+Cherche où la trace franchit ce seuil à gauche et à
+
+00:02:10.333 --> 00:02:11.415
+droite autour du pic.
+
+00:02:11.415 --> 00:02:15.538
+Pour la puissance totale, le niveau en décibels est
+une échelle
+
+00:02:15.538 --> 00:02:15.913
+logarithmique.
+
+00:02:15.913 --> 00:02:19.328
+Convertis les mesures en watts et utilise la largeur
+de référence
+
+00:02:19.328 --> 00:02:21.501
+de la mesure pour obtenir la densité.
+
+00:02:21.501 --> 00:02:25.104
+La somme finale se fait sur les contributions
+linéaires.
+
+00:02:25.475 --> 00:02:28.681
+Dans la première partie, t est le tableau des dates et
+
+00:02:28.681 --> 00:02:31.013
+x celui des tensions calculées à ces dates.
+
+00:02:31.013 --> 00:02:34.224
+Affiche leurs tailles pour t'assurer qu'ils
+coïncident.
+
+00:02:34.224 --> 00:02:38.415
+Cherche l'écart temporel entre le dernier échantillon
+et le premier.
+
+00:02:38.415 --> 00:02:42.751
+Multiplie cet écart, en secondes, par la fréquence du
+signal en
+
+00:02:42.751 --> 00:02:43.146
+hertz.
+
+00:02:43.146 --> 00:02:46.258
+Cela te donne le nombre de périodes couvertes.
+
+00:02:46.258 --> 00:02:49.886
+Compare ce calcul aux maxima que tu vois sur la
+figure.
+
+00:02:50.225 --> 00:02:54.875
+Dans le tableur, écris les dates zéro, zéro virgule
+vingt-cinq, zéro
+
+00:02:54.875 --> 00:02:57.834
+virgule cinquante, zéro virgule soixante-quinze, et
+un.
+
+00:02:57.834 --> 00:03:01.462
+À chaque date, calcule exponentielle de deux fois le
+temps.
+
+00:03:01.462 --> 00:03:05.101
+Pour les rectangles à gauche, additionne les quatre
+premières hauteurs et
+
+00:03:05.101 --> 00:03:06.425
+multiplie par un quart.
+
+00:03:06.425 --> 00:03:09.685
+Pour les trapèzes, regroupe les hauteurs deux par
+deux.
+
+00:03:09.685 --> 00:03:13.030
+Fais la moyenne de chaque paire puis multiplie par le
+pas.
+
+00:03:13.392 --> 00:03:17.058
+Fais maintenant le calcul exact avec la primitive
+exponentielle de deux
+
+00:03:17.058 --> 00:03:20.057
+temps divisée par deux, évaluée entre zéro et un.
+
+00:03:20.057 --> 00:03:23.550
+La valeur exacte est proche de trois virgule dix-neuf.
+
+00:03:23.550 --> 00:03:27.594
+Les rectangles sont en dessous parce qu'ils regardent
+la hauteur précédente
+
+00:03:27.594 --> 00:03:28.697
+d'une fonction croissante.
+
+00:03:28.697 --> 00:03:31.050
+Les trapèzes passent au-dessus.
+
+00:03:31.050 --> 00:03:35.015
+Reprends tes deux résultats dans MATLAB et mesure
+l'écart en valeur
+
+00:03:35.015 --> 00:03:35.376
+absolue.
+
+00:03:35.376 --> 00:03:38.697
+Avec plus de points, compare la baisse des erreurs.
+
+00:03:39.058 --> 00:03:43.224
+Après importation, affiche chaque signal puis vérifie
+son pas.
+
+00:03:43.224 --> 00:03:47.076
+Pour le sinus, le repère théorique vient de
+l'amplitude divisée par
+
+00:03:47.076 --> 00:03:48.126
+racine de deux.
+
+00:03:48.126 --> 00:03:51.641
+Dans le PWM, la tension vaut cinq volts pendant vingt
+pour
+
+00:03:51.641 --> 00:03:52.599
+cent du temps.
+
+00:03:52.599 --> 00:03:55.038
+La moyenne vaut donc un volt.
+
+00:03:55.038 --> 00:03:58.533
+La moyenne du carré vaut vingt pour cent de vingt-
+cinq, soit
+
+00:03:58.533 --> 00:03:59.486
+cinq volts carrés.
+
+00:03:59.486 --> 00:04:02.550
+La valeur efficace est la racine de cinq.
+
+00:04:02.550 --> 00:04:05.283
+Compare ces repères à tes vraies mesures.
+
+00:04:05.642 --> 00:04:09.758
+Commence par importer les deux colonnes et vérifier
+leur correspondance.
+
+00:04:09.758 --> 00:04:12.994
+Pour chaque case intérieure, le lissage du sujet
+moyenne le point
+
+00:04:12.994 --> 00:04:16.229
+courant, ses quatre voisins à gauche et ses quatre
+voisins à
+
+00:04:16.229 --> 00:04:16.523
+droite.
+
+00:04:16.523 --> 00:04:19.440
+Trace les deux courbes pour voir ce qui change.
+
+00:04:19.440 --> 00:04:23.121
+Repère le maximum, puis lis les deux traversées du
+seuil autour
+
+00:04:23.121 --> 00:04:23.790
+de lui.
+
+00:04:23.790 --> 00:04:26.756
+La différence de fréquence donne la bande.
+
+00:04:26.756 --> 00:04:30.203
+Si le seuil tombe entre deux valeurs, écris comment tu
+as
+
+00:04:30.203 --> 00:04:31.143
+choisi la borne.
+
+00:04:31.517 --> 00:04:34.996
+Pour finir, ne somme pas directement des décibels.
+
+00:04:34.996 --> 00:04:38.256
+Zéro décibel milliwatt vaut un milliwatt.
+
+00:04:38.256 --> 00:04:41.099
+Convertis donc chaque valeur en watts.
+
+00:04:41.099 --> 00:04:45.465
+Pour raisonner par densité, divise par la largeur
+fréquentielle correspondant à
+
+00:04:45.465 --> 00:04:46.258
+la mesure.
+
+00:04:46.258 --> 00:04:50.148
+Puis multiplie chaque densité par le pas d'intégration
+et additionne entre
+
+00:04:50.148 --> 00:04:51.209
+les deux bornes.
+
+00:04:51.209 --> 00:04:54.494
+Présente la puissance et la bande avec leurs unités.
+
+00:04:54.494 --> 00:04:58.701
+Si tu reconvertis la puissance totale en décibels
+milliwatts, fais-le seulement
+
+00:04:58.701 --> 00:04:59.849
+après la somme.

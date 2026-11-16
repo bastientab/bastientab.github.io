@@ -1,0 +1,324 @@
+WEBVTT
+
+00:00:00.100 --> 00:00:03.687
+Ton objectif est de garder les mêmes candidats à
+chaque ligne
+
+00:00:03.687 --> 00:00:04.339
+du calcul.
+
+00:00:04.339 --> 00:00:08.065
+Ajouter le même nombre aux deux côtés ne change pas
+l'égalité.
+
+00:00:08.065 --> 00:00:11.585
+Diviser peut être risqué si le nombre par lequel tu
+divises
+
+00:00:11.585 --> 00:00:13.506
+dépend de l'inconnue ou d'un paramètre.
+
+00:00:13.506 --> 00:00:16.141
+Demande d'abord quand il s'annule.
+
+00:00:16.141 --> 00:00:20.342
+Dans ce cas, reviens à l'équation avant la division et
+traite-la
+
+00:00:20.342 --> 00:00:20.724
+séparément.
+
+00:00:20.724 --> 00:00:24.405
+Tu éviteras de perdre une solution ou de proposer une
+formule
+
+00:00:24.405 --> 00:00:25.075
+sans sens.
+
+00:00:25.433 --> 00:00:29.673
+Pour une inégalité, la direction du signe fait partie
+du résultat.
+
+00:00:29.673 --> 00:00:32.899
+Si tu multiplies chaque côté par moins un, ce qui
+était
+
+00:00:32.899 --> 00:00:34.366
+plus grand devient plus petit.
+
+00:00:34.366 --> 00:00:38.244
+Pour un produit, repère les endroits où un facteur
+change éventuellement
+
+00:00:38.244 --> 00:00:38.950
+de signe.
+
+00:00:38.950 --> 00:00:43.128
+Dans chaque intervalle, vérifie le signe des facteurs
+puis du produit.
+
+00:00:43.128 --> 00:00:47.050
+Enfin, relis si l'inégalité accepte l'égalité.
+
+00:00:47.050 --> 00:00:50.399
+Ça décide si les bornes qui valent zéro font partie de
+
+00:00:50.399 --> 00:00:51.008
+la solution.
+
+00:00:51.350 --> 00:00:55.281
+Une racine réelle est définie si son contenu est
+positif ou
+
+00:00:55.281 --> 00:00:55.638
+nul.
+
+00:00:55.638 --> 00:00:58.910
+Elle donne toujours un résultat positif ou nul.
+
+00:00:58.910 --> 00:01:02.523
+Si une autre expression lui est égale, cette autre
+expression doit
+
+00:01:02.523 --> 00:01:03.837
+avoir le même signe.
+
+00:01:03.837 --> 00:01:07.734
+En élevant au carré, tu effaces une partie de cette
+information.
+
+00:01:07.734 --> 00:01:11.374
+C'est pour ça qu'il faut noter la condition avant le
+calcul.
+
+00:01:11.374 --> 00:01:15.912
+Dans une fraction, les zéros du dénominateur sont
+exclus avant toute
+
+00:01:15.912 --> 00:01:16.325
+simplification.
+
+00:01:16.683 --> 00:01:21.241
+Pour une fraction, dérive le numérateur et le
+dénominateur séparément.
+
+00:01:21.241 --> 00:01:25.195
+Le numérateur de la dérivée soustrait deux produits
+dans un ordre
+
+00:01:25.195 --> 00:01:25.555
+précis.
+
+00:01:25.555 --> 00:01:27.896
+Écris-les avant de réduire.
+
+00:01:27.896 --> 00:01:31.374
+Le dénominateur est un carré, et il est positif là où
+
+00:01:31.374 --> 00:01:32.638
+le quotient est défini.
+
+00:01:32.638 --> 00:01:36.089
+C'est donc le signe du numérateur de la dérivée qui
+décide
+
+00:01:36.089 --> 00:01:37.344
+du sens de variation.
+
+00:01:37.344 --> 00:01:41.168
+Ne relie pas deux intervalles séparés par une valeur
+interdite.
+
+00:01:41.517 --> 00:01:44.592
+Isole d'abord le terme qui contient x.
+
+00:01:44.592 --> 00:01:47.312
+Tu aurais envie de diviser par a plus un.
+
+00:01:47.312 --> 00:01:50.131
+Ce calcul marche si a n'est pas moins un.
+
+00:01:50.131 --> 00:01:53.905
+Pour cette valeur particulière, le terme en x
+disparaît.
+
+00:01:53.905 --> 00:01:56.761
+Il reste b moins deux égal à zéro.
+
+00:01:56.761 --> 00:01:59.702
+Quand c'est vrai, tous les x conviennent.
+
+00:01:59.702 --> 00:02:03.391
+Quand c'est faux, aucun x ne peut réparer l'égalité.
+
+00:02:03.391 --> 00:02:07.188
+On a donc trois situations, dont une famille avec un
+seul
+
+00:02:07.188 --> 00:02:07.533
+résultat.
+
+00:02:07.892 --> 00:02:11.450
+À gauche de moins un quart, le premier facteur est
+négatif
+
+00:02:11.450 --> 00:02:12.744
+et le deuxième positif.
+
+00:02:12.744 --> 00:02:15.952
+Au milieu, ils sont tous les deux positifs : essaie
+zéro
+
+00:02:15.952 --> 00:02:17.119
+pour le voir vite.
+
+00:02:17.119 --> 00:02:21.163
+À droite de trois, c'est le deuxième facteur qui
+devient négatif.
+
+00:02:21.163 --> 00:02:24.018
+Le produit est donc accepté au milieu.
+
+00:02:24.018 --> 00:02:27.060
+Il est nul aux deux bornes et le signe supérieur ou
+
+00:02:27.060 --> 00:02:28.442
+égal permet de les inclure.
+
+00:02:28.808 --> 00:02:30.903
+Isole la racine.
+
+00:02:30.903 --> 00:02:34.155
+Comme elle ne peut pas être négative, deux x moins un
+
+00:02:34.155 --> 00:02:35.633
+doit être positif ou nul.
+
+00:02:35.633 --> 00:02:38.489
+Mets au carré à partir de cet endroit.
+
+00:02:38.489 --> 00:02:41.814
+Le membre droit donne quatre x carré moins quatre x
+plus
+
+00:02:41.814 --> 00:02:42.116
+un.
+
+00:02:42.116 --> 00:02:46.149
+On simplifie et obtient x fois quatre x moins cinq
+égal
+
+00:02:46.149 --> 00:02:46.516
+zéro.
+
+00:02:46.516 --> 00:02:49.445
+Le candidat zéro échoue à la condition.
+
+00:02:49.445 --> 00:02:53.084
+Pour cinq quarts, la racine de neuf quarts vaut trois
+demis,
+
+00:02:53.084 --> 00:02:54.739
+et le calcul initial fonctionne.
+
+00:02:55.100 --> 00:02:58.432
+Commence au dénominateur de la fraction du TD.
+
+00:02:58.432 --> 00:03:02.048
+Il se factorise en x plus un et x moins deux.
+
+00:03:02.048 --> 00:03:05.222
+Les valeurs moins un et deux sont donc interdites.
+
+00:03:05.222 --> 00:03:08.212
+Au numérateur, on retrouve x plus un.
+
+00:03:08.212 --> 00:03:11.643
+On peut le simplifier sur le domaine qu'on vient de
+fixer.
+
+00:03:11.643 --> 00:03:15.069
+La formule plus courte est x plus trois sur x moins
+
+00:03:15.069 --> 00:03:15.381
+deux.
+
+00:03:15.381 --> 00:03:18.989
+Lorsqu'on la lie à la fonction d'origine, on continue
+à exclure
+
+00:03:18.989 --> 00:03:19.646
+moins un.
+
+00:03:19.646 --> 00:03:23.445
+C'est important quand tu traces la courbe ou cherches
+les antécédents.
+
+00:03:23.808 --> 00:03:27.675
+Le numérateur de la dérivée commence par deux fois x
+carré
+
+00:03:27.675 --> 00:03:28.378
+moins quatre.
+
+00:03:28.378 --> 00:03:32.116
+Retire ensuite deux x fois deux x plus trois.
+
+00:03:32.116 --> 00:03:34.714
+Regroupe et factorise moins deux.
+
+00:03:34.714 --> 00:03:38.816
+Il reste un trinôme qui a un discriminant négatif et
+un
+
+00:03:38.816 --> 00:03:39.935
+coefficient dominant positif.
+
+00:03:39.935 --> 00:03:42.680
+Il est donc positif pour tout x.
+
+00:03:42.680 --> 00:03:45.780
+Le carré en bas l'est aussi sur le domaine.
+
+00:03:45.780 --> 00:03:49.391
+La dérivée est négative sur les trois intervalles
+séparés par moins
+
+00:03:49.391 --> 00:03:50.376
+deux et deux.
+
+00:03:50.376 --> 00:03:53.072
+Il n'y a pas d'extrémum local.
+
+00:03:53.433 --> 00:03:56.386
+Écris les deux coefficients comme des fractions.
+
+00:03:56.386 --> 00:04:00.042
+Pour le premier, il faut ajouter un facteur k plus un
+
+00:04:00.042 --> 00:04:01.704
+au numérateur et au dénominateur.
+
+00:04:01.704 --> 00:04:04.952
+Pour le deuxième, il faut un facteur n moins k.
+
+00:04:04.952 --> 00:04:09.597
+Une fois au même dénominateur, ajoute les deux
+coefficients du numérateur.
+
+00:04:09.597 --> 00:04:12.611
+Le k disparaît : il reste n plus un.
+
+00:04:12.611 --> 00:04:16.768
+En le multipliant par n factorielle, tu obtiens n plus
+un
+
+00:04:16.768 --> 00:04:17.146
+factorielle.
+
+00:04:17.146 --> 00:04:21.280
+Reconnais maintenant le coefficient binomial n plus un
+parmi k plus
+
+00:04:21.280 --> 00:04:21.655
+un.

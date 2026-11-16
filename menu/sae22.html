@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SAÉ 2.02 — Cours · Bastien TABORDET</title>
-  <meta name="description" content="SAÉ 2.02 : contenu à préparer.">
+  <title>SAÉ 2.02 — Mesure et caractérisation des signaux — BUT1 R&amp;T</title>
+  <meta name="description" content="Échantillonnage, intégration numérique, analyse FFT et puissance radio.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,122 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.02</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">SAÉ 2.02</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.02</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 2.02 — Mesure et caractérisation des signaux</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae22/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Construire le temps et le signal dans MATLAB</h3>
+<p>Un signal échantillonné est une liste de valeurs enregistrées à des instants donnés. La fréquence d’échantillonnage <code>fe</code> donne le nombre de mesures par seconde. Le pas vaut <code>Te=1/fe</code>. À 40 kHz, le pas vaut 25 µs. Pour <code>N</code> points commençant à zéro, prends <code>t=(0:N-1)/fe</code>. Le dernier point est à <code>(N−1)/fe</code>.</p>
+<p>Calcule ensuite les valeurs de la sinusoïde sur tous ces temps. Regarde les unités et le nombre de périodes effectivement couvertes. MATLAB distingue un produit de matrices et une opération élément par élément. Pour élever chaque mesure au carré, emploie par exemple <code>x.^2</code>.</p></div>
+<div class="c-block"><h3>2. Approcher une intégrale par des morceaux</h3>
+<p>Sur <code>[a,b]</code> avec <code>N</code> points uniformes, il y a <code>N−1</code> intervalles de largeur <code>h=(b−a)/(N−1)</code>. Le rectangle gauche utilise la hauteur au début de l’intervalle. Le trapèze prend la moyenne des hauteurs aux deux extrémités. La méthode de Simpson intègre un polynôme quadratique sur des groupes de deux intervalles et demande donc un nombre pair d’intervalles pour sa forme composite usuelle.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae22/schemas/trapezes.png" alt="Cinq points entre zéro et un découpent la courbe exponentielle en quatre trapèzes de largeur 0,25."><figcaption>Dans l’exercice, on compare les approximations à l’intégrale exacte de <code>e<sup>2t</sup></code>.</figcaption></figure>
+<p>Pour étudier la précision, fais varier le nombre de points, mesure <code>|calcul−exact|</code>, puis compare aux majorations du sujet. Une courbe logarithmique permet de voir comment l’erreur diminue lorsque le pas se resserre. Garde le même intervalle et la même fonction à chaque calcul.</p></div>
+<div class="c-block"><h3>3. Passer de la trace temporelle au spectre</h3>
+<p>L’oscilloscope donne des temps et des tensions. Plot d’abord la trace et vérifie que les secondes et les volts sont corrects. Pour un sinus centré, l’amplitude vaut <code>(max(x)−min(x))/2</code>. La moyenne est la composante continue. La <strong>valeur efficace</strong> vaut <code>sqrt(mean(x.^2))</code>. Pour un sinus idéal d’amplitude A, elle vaut <code>A/√2</code>.</p>
+<p>La <strong>FFT</strong> fournit des coefficients à des fréquences discrètes. L’espacement des points du spectre vaut <code>fe/N</code>. Dans un spectre d’amplitude unilatéral de signal réel normalisé par <code>N</code>, les coefficients intérieurs sont doublés pour regrouper fréquences positives et négatives. La composante continue et, lorsqu’elle existe, la composante à Nyquist ne sont pas doublées.</p>
+<p>Avec une FFT directe MATLAB non normalisée et un spectre conservant tous ses coefficients, Parseval donne <code>sum(abs(fft(x)).^2)/N^2 = mean(abs(x).^2)</code>. Les deux côtés mesurent un carré moyen. Pour interpréter une puissance en watts sur une résistance <code>R</code>, divise le carré moyen de tension par <code>R</code>.</p></div>
+<div class="c-block"><h3>4. Délimiter et mesurer le canal radio</h3>
+<p>La largeur à −20 dB du sujet est mesurée par rapport au maximum du relevé autour de la porteuse. Sur la trace lissée, trouve le maximum puis cherche les deux franchissements correspondants autour de ce pic. La bande est la différence <code>fmax−fmin</code>. Garde le même repère en fréquence et précise comment tu choisis les bornes sur une trace discrète.</p>
+<p>Pour additionner des puissances, convertis en échelle linéaire. <code>P(W)=10^((PdBm−30)/10)</code>. Si le sujet traite chaque valeur comme la puissance par intervalle fréquentiel de largeur <code>df</code>, divise par <code>df</code> pour obtenir une densité en W/Hz. Dans le cas d’une mesure d’analyseur, vérifie aussi ce que l’instrument a exporté pour identifier la bonne largeur de référence. La puissance de bande vaut la somme <code>DSP×df</code> dans le modèle du TP.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#sae22-sinus">Partie 1 · Échantillonner à 40 kHz et vérifier les périodes</a></li>
+<li><a href="#sae22-int">Partie 2 · Calculer les rectangles et trapèzes pour cinq points</a></li>
+<li><a href="#sae22-oscillo">Partie 3 · Analyser les acquisitions sinus et PWM</a></li>
+<li><a href="#sae22-radio">Partie 4 · Estimer la largeur et la puissance de bande</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="sae22-sinus"><summary>Partie 1 · Vérifier le temps d’échantillonnage</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Générer le cosinus du sujet à 40 kHz, expliquer la nature de <code>t</code> et <code>x</code> et justifier combien de périodes sont représentées.</p>
+<ol><li>Calcule <code>Te=25 µs</code>. <code>t</code> est le vecteur des dates et <code>x</code> contient les tensions correspondantes, dans le même ordre. Affiche <code>numel(t)</code> et <code>numel(x)</code> pour vérifier les tailles.</li><li>Avec la fréquence du cosinus <code>f₀</code>, compte <code>f₀×(t(end)−t(1))</code> périodes entre les dates extrêmes. La différence entre temps couvert et nombre de points devient visible à la dernière case.</li><li>Trace avec <code>plot(t,x)</code> et contrôle la période en mesurant l’écart entre deux maxima. Si la phase ou l’échantillonnage décalent les maxima observés, considère la résolution de mesure.</li></ol></div></details>
+<details class="acc" id="sae22-int"><summary>Partie 2 · Étalonner le tableur avec l’intégrale exacte</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Approcher l’intégrale de <code>e<sup>2t</sup></code> sur <code>[0,1]</code> avec 5 points par rectangles et trapèzes et comparer.</p>
+<ol><li>Prends les temps 0, 0,25, 0,50, 0,75 et 1. Dans la colonne suivante, calcule <code>exp(2*t)</code>. Pour les rectangles à gauche, additionne les quatre premières hauteurs et multiplie par 0,25. On obtient environ <code>2,46217</code>.</li><li>Pour le premier trapèze, calcule <code>0,25×(1+e<sup>0,5</sup>)/2</code>. Fais la même opération sur les trois intervalles suivants et additionne. On obtient <code>3,26081</code>.</li><li>L’exact vaut <code>(e²−1)/2≈3,19453</code>. Les rectangles sous-estiment la fonction croissante. Les trapèzes sont légèrement au-dessus parce que l’exponentielle est convexe. Réutilise ces chiffres pour valider ton programme.</li></ol></div></details>
+<details class="acc" id="sae22-oscillo"><summary>Partie 3 · Comparer le sinus idéal à l’acquisition</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Importer le sinus de 1 kHz et le signal PWM 0–5 V à 100 kHz de rapport cyclique 0,2. Mesurer et interpréter les valeurs temporelles et les principales composantes.</p>
+<ol><li>Charge chaque fichier exporté depuis l’oscilloscope, identifie les grandeurs et vérifie par <code>diff(t)</code> que le pas est régulier. Lis les amplitudes, moyennes et valeurs efficaces à partir du tableau mesuré.</li><li>Pour un sinus idéal centré de 5 V crête, on attend environ <code>3,54 V</code> efficaces. Pour un PWM idéal de 0 à 5 V à 20 %, la moyenne vaut <code>1 V</code> et la valeur efficace vaut <code>√5≈2,24 V</code>. Compare les mesures réelles à ces repères.</li><li>Attends un fondamental proche de 1 kHz pour le sinus et de 100 kHz pour le PWM. Regarde les harmoniques et la composante continue. Compare le carré moyen et le calcul spectral avant de conclure sur la puissance.</li></ol></div></details>
+<details class="acc" id="sae22-radio"><summary>Partie 4 · Lire la largeur à −20 dB et intégrer les puissances</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé.</strong> Importer le relevé fréquentiel autour de 27 MHz, appliquer le lissage de la SAÉ, puis trouver la largeur et la puissance du canal.</p>
+<ol><li>Trie les deux vecteurs ensemble selon les fréquences. Contrôle leur longueur et leur espacement. Avec <code>K=4</code>, chaque moyenne de lissage interne utilise 9 points. Garde la trace originale pour voir l’effet du lissage sur les franchissements.</li><li>Repère le maximum de la trace choisie, puis les deux bords autour de ce maximum au niveau relatif −20 dB. Soustrais les fréquences. Consigne la convention si le seuil tombe entre deux points.</li><li>Convertis la mesure de puissance en watts, calcule la densité avec la largeur de référence de la maquette, et somme les contributions linéaires dans la bande. Étiquette clairement la largeur en Hz et la puissance en W ou en dBm après conversion finale.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae22/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae22/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae22/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Passer du temps continu aux échantillons</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="22.625">0:22 · Intégrer numériquement</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="67.250">1:07 · Mesurer la tension et lire son spectre</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="118.375">1:58 · Trouver la bande et convertir les unités</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="145.375">2:25 · Partie 1 · Vérifier les instants et périodes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="170.125">2:50 · Partie 2 · Calculer les deux intégrales du tableur</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="218.958">3:38 · Partie 3 · Analyser les acquisitions sinus et PWM</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="245.542">4:05 · Partie 4 · Mesurer la largeur et la puissance radio</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SAÉ 2.04 — Cours · Bastien TABORDET</title>
-  <meta name="description" content="SAÉ 2.04 : contenu à préparer.">
+  <title>SAÉ 2.04 — Projet intégratif — BUT1 R&amp;T</title>
+  <meta name="description" content="Infrastructure d’entreprise, cloisonnement, services et contre-mesures DHCP.">
   <meta name="author" content="Bastien TABORDET">
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#f5f5f7">
@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap">
   <link rel="stylesheet" href="../assets/css/main.css?v=5">
-  <link rel="stylesheet" href="../assets/css/cours.css?v=1">
+  <link rel="stylesheet" href="../assets/css/cours.css?v=visuels-1">
 </head>
 <body id="top">
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -58,69 +58,120 @@
     </div>
   </header>
 
-  <main id="contenu" tabindex="-1">
-    <section class="c-hero" aria-labelledby="page-title">
-      <div class="container">
-        <a class="back-link" href="./">← Tous les cours</a>
-        <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.04</span><span class="c-status is-todo">À préparer</span></div>
-        <h1 class="page-title" id="page-title">SAÉ 2.04</h1>
-      </div>
-    </section>
-    <div class="container c-layout">
-      <nav class="c-toc" aria-label="Sommaire de la fiche">
-        <p class="c-toc-title">Sommaire</p>
-        <ol>
-          <li><a href="#documents">Documents originaux</a></li>
-          <li><a href="#cours">Cours expliqué point par point</a></li>
-          <li><a href="#td-tp">Liens avec les TD et TP</a></li>
-          <li><a href="#video">Vidéo explicative approfondie</a></li>
-          <li><a href="#fiche">Fiche des notions essentielles</a></li>
-          <li><a href="#quiz">Quiz et mises en situation</a></li>
-        </ol>
-      </nav>
-      <article class="c-content">
-        <section class="c-section" id="documents" aria-labelledby="documents-title">
-          <h2 class="c-h2" id="documents-title"><span class="c-num">01</span>Documents originaux</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
 
-        <section class="c-section" id="cours" aria-labelledby="cours-title">
-          <h2 class="c-h2" id="cours-title"><span class="c-num">02</span>Cours expliqué point par point</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="td-tp" aria-labelledby="td-tp-title">
-          <h2 class="c-h2" id="td-tp-title"><span class="c-num">03</span>Liens avec les TD et TP</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="video" aria-labelledby="video-title">
-          <h2 class="c-h2" id="video-title"><span class="c-num">04</span>Vidéo explicative approfondie</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="fiche" aria-labelledby="fiche-title">
-          <h2 class="c-h2" id="fiche-title"><span class="c-num">05</span>Fiche des notions essentielles</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-
-        <section class="c-section" id="quiz" aria-labelledby="quiz-title">
-          <h2 class="c-h2" id="quiz-title"><span class="c-num">06</span>Quiz et mises en situation</h2>
-          <p class="c-empty">Contenu à préparer.</p>
-        </section>
-      </article>
+<main id="contenu" tabindex="-1">
+  <section class="c-hero" aria-labelledby="page-title">
+    <div class="container">
+      <a class="back-link" href="./">← Toutes les matières</a>
+      <div class="c-hero-top"><span class="c-ico" aria-hidden="true">2.04</span></div>
+      <h1 class="page-title" id="page-title">SAÉ 2.04 — Projet intégratif</h1>
     </div>
-  </main>
-
+  </section>
+  <div class="container c-layout">
+    <aside class="c-toc"><nav aria-label="Sommaire du cours">
+      <p class="c-toc-title">Sommaire</p>
+      <ol>
+        <li><a href="#documents">Télécharger le cours</a></li>
+        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#couverture">Du cours aux TD et TP</a></li>
+        <li><a href="#corriges">Questions TD &amp; TP</a></li>
+        <li><a href="#video">Vidéo explicative</a></li>
+      </ol>
+    </nav></aside>
+    <article class="c-content">
+      <section class="c-section" id="documents" aria-label="Documents du cours">
+        <a class="btn btn-primary" href="../assets/revisions/sae24/documents.zip" download>Télécharger le cours</a>
+      </section>
+      <section class="c-section" id="cours" aria-labelledby="cours-title">
+  <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
+<div class="c-block"><h3>1. Établir une architecture qui se vérifie par étapes</h3>
+<p>Le projet demande une petite entreprise avec plusieurs services. Commence par une table d’adressage. Pour chaque équipe, indique son VLAN, son sous-réseau, sa passerelle et la plage des clients. Ajoute les réseaux de serveurs, d’administration et de Wi-Fi si la maquette les sépare. Une <strong>matrice des flux</strong> indique qui doit atteindre quel service et par quel port.</p>
+<p>Valide d’abord une liaison entre deux postes du même VLAN, puis la passerelle de chaque VLAN, puis le routage autorisé et enfin la sortie Internet selon la maquette. Un test refusé de la matrice vaut autant qu’un succès attendu.</p></div>
+<div class="c-block"><h3>2. Relier infrastructure et services</h3>
+<p><strong>DHCP</strong> donne une adresse et des options au client. Si le serveur est dans un autre réseau, le relais ou l’équivalent dans la maquette doit lui transmettre la demande. <strong>DNS</strong> résout les noms, dont ceux utilisés pour localiser les services d’un domaine Windows. Active Directory centralise les identités. Le serveur de fichiers applique ensuite les permissions aux groupes appropriés.</p>
+<p>Dans le service téléphonique, distingue l’inscription du terminal, la signalisation d’appel et la circulation de la voix. Fais un essai local avant d’ajouter les règles entre réseaux. Pour le Web dynamique, distingue l’authentification et l’action demandée. Un utilisateur connecté ne doit déclencher que les opérations qui lui sont autorisées.</p></div>
+<div class="c-block"><h3>3. Bloquer de fausses offres DHCP</h3>
+<p>Un serveur DHCP non autorisé peut répondre au client et lui fournir une autre passerelle ou un mauvais DNS. Le <strong>DHCP snooping</strong> trie les messages sur le commutateur. Les ports de confiance sont ceux par lesquels peuvent légitimement arriver les réponses du serveur. Les ports vers les clients restent non fiables. Vérifie les VLAN concernés et le chemin exact de la réponse avant de déclarer un port de confiance.</p>
+<figure><img loading="lazy" src="../assets/revisions/sae24/schemas/dhcp-snooping.png" alt="Le commutateur transmet les offres du serveur légitime et bloque les offres provenant d’un port non fiable."><figcaption>Après la contre-mesure, un client ordinaire doit continuer à recevoir le bon bail.</figcaption></figure>
+<p>La <strong>starvation DHCP</strong> vise à épuiser la plage par de nombreuses demandes. Une limite de débit sur les ports d’accès peut réduire ce risque. Choisis les mécanismes que ton matériel permet, mesure une activité de référence et contrôle les compteurs après essai en laboratoire isolé. Une limite trop basse peut aussi bloquer des clients légitimes.</p></div>
+<div class="c-block"><h3>4. Détecter un comportement et le prouver</h3>
+<p>Pour détecter des mots de passe erronés à répétition, pars d’une trace de journal datée et d’un identifiant de compte. Décide quels événements sont des échecs et compte ceux du même compte dans une fenêtre glissante. Pour le test, veille à avoir un cas sous le seuil, un cas où le seuil est atteint et des échecs espacés.</p>
+<p>Une page Web de démonstration devrait afficher l’état et les résultats obtenus, avec des commandes prédéfinies côté serveur. Fais valider les données et échappe le texte rendu. Les comptes, noms internes et traces présentés dans le rapport peuvent être remplacés par des valeurs de maquette.</p></div>
+</section>
+<section class="c-section" id="couverture" aria-labelledby="couverture-title">
+<h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
+<ul><li><a href="#s24-reseau">Sujet · Construire un réseau multi-services et prévoir les tests</a></li>
+<li><a href="#s24-dhcp">Sujet · Vérifier les contre-mesures DHCP en laboratoire</a></li>
+<li><a href="#s24-logs">Sujet · Détecter les échecs de connexion rapprochés</a></li>
+<li><a href="#s24-web">Sujet · Montrer les résultats sur le Web dynamique</a></li></ul></section>
+<section class="c-section" id="corriges" aria-labelledby="corriges-title">
+<h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+<details class="acc" id="s24-reseau"><summary>Sujet · Prouver la communication autorisée entre les services</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé du projet.</strong> Mettre en place une infrastructure pour les services finance, RH et technique, avec des postes et des serveurs utilisables.</p>
+<ol><li>Pars du schéma physique. Pour chaque port, relève le rôle attendu, access ou trunk. Mets une passerelle dans chaque réseau à router.</li><li>Prépare un test autorisé, par exemple un poste RH vers un service de fichiers destiné aux RH, et un test refusé depuis finance si la politique le prévoit. Note les IP, le protocole et la réponse attendue.</li><li>Rejoue depuis les postes clients, puis vérifie les journaux et règles qui expliquent le résultat. Si l’accès échoue, confirme d’abord le bail, la gateway, le DNS et le chemin avant de changer les permissions.</li></ol></div></details>
+<details class="acc" id="s24-dhcp"><summary>Sujet · Tester les offres non autorisées et la limitation des demandes</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé du projet.</strong> Démontrer que la maquette empêche le DHCP non autorisé et limite les tentatives d’épuisement de la plage.</p>
+<ol><li>Dans le réseau de test isolé, capture une attribution de référence. Relève l’équipement qui envoie l’offre et les options données au client.</li><li>Active le filtrage DHCP dans le VLAN concerné. Vérifie que les ports clients ne sont pas fiables et que les offres légitimes entrent par l’interface prévue. Rejoue le test et vérifie le bail du client.</li><li>Lors de l’essai de validation prévu par le sujet, observe le traitement des offres sur les ports non fiables et les compteurs de limitation. Termine par une attribution normale pour confirmer que la protection n’a pas coupé le service utile.</li></ol></div></details>
+<details class="acc" id="s24-logs"><summary>Sujet · Signaler plusieurs erreurs sur le même compte</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé du projet.</strong> Détecter plusieurs mots de passe erronés pour la même personne dans un intervalle court.</p>
+<ol><li>Lis pour chaque échec la date et l’identifiant du compte. Trie les événements par temps. Garde une fenêtre de timestamps par compte et purge ceux qui sont trop anciens.</li><li>Exemple de test avec un seuil choisi de trois erreurs en une minute. Les échecs d’Alice à 10:00:00, 10:00:20 et 10:00:40 déclenchent l’alerte. Deux échecs d’Alice et un de Bob doivent rester séparés.</li><li>Ajoute un essai à la frontière d’une minute et annonce si elle est incluse. Affiche le compte, le nombre d’échecs et la plage horaire observés, sans afficher de mot de passe.</li></ol></div></details>
+<details class="acc" id="s24-web"><summary>Sujet · Présenter l’état de la maquette et ses contrôles</summary><div class="acc-body">
+<p class="c-question"><strong>Énoncé du projet.</strong> Produire une partie PHP authentifiée qui lance une opération de démonstration et affiche son résultat.</p>
+<ol><li>Donne à chaque action autorisée un nom et associe-le côté serveur à un script connu. Vérifie la session et la permission avant l’exécution.</li><li>Essaie avec un compte autorisé, sans connexion et avec une action inconnue. Dans les deux derniers cas, le script ne doit pas partir.</li><li>Affiche un résultat structuré, l’heure du contrôle et un état de succès ou d’échec. Pendant la démonstration, fais le lien entre l’écran affiché, la configuration et ce qui est observable sur le réseau.</li></ol></div></details>
+</section>
+      <section class="c-section" id="video" aria-labelledby="video-title">
+        <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/sae24/video-affiche.jpg"
+               style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
+          <source src="../assets/revisions/sae24/cours-video.mp4" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/sae24/sous-titres.vtt">
+          Ton navigateur ne peut pas lire cette vidéo.
+        </video>
+        <h3 class="c-h3">Chapitres</h3>
+<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Préparer le réseau par service</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="26.625">0:26 · Raccorder les services aux clients</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="54.667">0:54 · Protéger l’attribution DHCP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="103.167">1:43 · Distinguer une plage pleine d’une offre illégitime</button></li>
+</ul></div></details>
+<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="128.500">2:08 · Sujet · Prouver que le cloisonnement fonctionne</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="154.667">2:34 · Sujet · Trois échecs rapprochés sur un même compte</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="201.625">3:21 · Sujet · Montrer la démonstration sur le Web</button></li>
+</ul></div></details>
+      </section>
+    </article>
+  </div>
+</main>
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 - Portfolio de Bastien TABORDET - Tous droits réservés</span>
       <a href="#top">Haut de page</a>
-      <span class="konami-hint" aria-hidden="true">↑↑↓↓←→←→BA</span>
     </div>
   </footer>
-
   <script defer src="../assets/js/main.js?v=5"></script>
-  <script defer src="../assets/js/cours.js?v=2"></script>
+  <script defer src="../assets/js/cours.js?v=apercu-1"></script>
+  <script>
+    const player = document.getElementById("course-player");
+    let chapterTime = null;
+
+    player.addEventListener("loadedmetadata", () => {
+      if (chapterTime !== null) player.currentTime = chapterTime;
+    });
+
+    for (const button of document.querySelectorAll("[data-course-time]")) {
+      button.addEventListener("click", () => {
+        chapterTime = Number(button.dataset.courseTime);
+        if (player.readyState > 0) {
+          player.currentTime = chapterTime;
+        } else {
+          player.preload = "metadata";
+          player.load();
+        }
+        player.scrollIntoView({ block: "center" });
+        player.focus({ preventScroll: true });
+      });
+    }
+  </script>
 </body>
 </html>
