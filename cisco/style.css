@@ -101,6 +101,7 @@ p {
   font-size: 25px;
   letter-spacing: -1.3px;
   font-weight: 680;
+  white-space: nowrap;
 }
 .brand img {
   width: 33px;
@@ -1237,10 +1238,34 @@ dialog::backdrop {
     top: 47px;
   }
 }
-@media (max-width: 400px) {
-  .topbar {
-    gap: 5px;
+@media (max-width: 540px) {
+  :root {
+    --compact-header-height: 80px;
   }
+  .topbar {
+    height: var(--compact-header-height);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 42px 32px;
+    gap: 0 8px;
+  }
+  .brand {
+    font-size: 1.12rem;
+    letter-spacing: -0.6px;
+  }
+  .topbar nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .header-actions {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .palette {
+    top: var(--compact-header-height);
+  }
+}
+@media (max-width: 400px) {
   .help-btn {
     display: none;
   }

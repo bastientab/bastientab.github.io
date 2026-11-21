@@ -304,6 +304,14 @@ export function validateProject(raw) {
     ids = new Set();
   for (const [index, d] of devices.entries()) {
     deviceConfig(d, 'Équipement ' + (index + 1));
+    // Ancien message livré avec les quatre ateliers qui contiennent un serveur web.
+    const http = d.services?.http;
+    if (
+      http &&
+      /^Bienvenue sur le serveur SRV-(Campus|VLAN20|Site-B|DHCP) du laboratoire Netlab\.$/.test(http.body)
+    ) {
+      http.body = http.body.replace('du laboratoire Netlab.', 'du laboratoire Cisco Packhess Tracer.');
+    }
     unique(ids, d.id, 'Identifiant ' + d.id);
     byId.set(d.id, d);
     portsById.set(d.id, new Map(d.ports.map((p) => [p.name, p])));

@@ -63,7 +63,7 @@ export function makeLab(key = 'campus') {
     d.services.dns = { enabled: true, records: { [name]: ip } };
     d.services.http = {
       enabled: true,
-      body: 'Bienvenue sur le serveur ' + d.name + ' du laboratoire Netlab.',
+      body: 'Bienvenue sur le serveur ' + d.name + ' du laboratoire Cisco Packhess Tracer.',
     };
   };
   if (key === 'empty') return p;

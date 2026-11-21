@@ -6,7 +6,8 @@ import { labs, makeLab } from './labs.js';
 import { icon, fillIcons, deviceArt, deviceTypes } from './graphics.js';
 
 const $ = (id) => document.getElementById(id);
-const storeKey = 'netlab.project.v1';
+const storeKey = 'cisco-packhess-tracer.project.v1';
+const deviceDragType = 'application/x-cisco-packhess-tracer-device';
 const stage = $('stage'),
   scene = $('scene'),
   wireLayer = $('wires'),
@@ -43,7 +44,7 @@ let testTarget = '',
   saveOK = true,
   priorFocus;
 try {
-  const previous = localStorage.getItem(storeKey);
+  const previous = localStorage.getItem(storeKey) ?? localStorage.getItem('netlab.project.v1');
   if (previous) project = validateProject(JSON.parse(previous));
 } catch {
   toast('La sauvegarde locale est illisible. Un atelier de campus a été ouvert.');
@@ -192,7 +193,7 @@ function buttonStates() {
 }
 function updateCounts() {
   $('project-title').textContent = project.name;
-  document.title = project.name + ' · Netlab';
+  document.title = project.name + ' · Cisco Packhess Tracer';
   $('device-count').textContent =
     project.devices.length + ' équipement' + (project.devices.length === 1 ? '' : 's');
   $('link-count').textContent =
@@ -216,7 +217,7 @@ function fillPalette() {
       b.draggable = true;
       b.title = 'Ajouter · ' + meta.label;
       b.addEventListener('dragstart', (e) => {
-        e.dataTransfer.setData('application/x-netlab-device', type);
+        e.dataTransfer.setData(deviceDragType, type);
         e.dataTransfer.effectAllowed = 'copy';
       });
       const words = el('span');
@@ -581,10 +582,10 @@ stage.addEventListener(
   { passive: false },
 );
 stage.addEventListener('dragover', (e) => {
-  if (e.dataTransfer.types.includes('application/x-netlab-device')) e.preventDefault();
+  if (e.dataTransfer.types.includes(deviceDragType)) e.preventDefault();
 });
 stage.addEventListener('drop', (e) => {
-  const type = e.dataTransfer.getData('application/x-netlab-device');
+  const type = e.dataTransfer.getData(deviceDragType);
   if (type) {
     e.preventDefault();
     addDevice(type, viewPoint(e.clientX, e.clientY));
@@ -802,7 +803,7 @@ function exportProject() {
     (project.name
       .normalize('NFKD')
       .replace(/[^a-zA-Z0-9_-]+/g, '-')
-      .replace(/^-|-$/g, '') || 'reseau') + '.netlab.json';
+      .replace(/^-|-$/g, '') || 'reseau') + '.cisco-packhess-tracer.json';
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
   toast('Projet exporté au format JSON.');
@@ -868,7 +869,7 @@ function note(parent, text) {
   parent.append(el('p', '', text));
 }
 function showHelp() {
-  const b = modal('Prendre en main Netlab');
+  const b = modal('Prendre en main Cisco Packhess Tracer');
   note(
     b,
     'Le laboratoire fonctionne dans ton navigateur. Les appareils et le trafic sont simulés sur le plan.',
@@ -880,7 +881,7 @@ function showHelp() {
     'Dans le campus, lance un ping de PC-Étudiant vers 192.168.20.10. Essaie ensuite HTTP vers intranet.campus pour observer DNS, TCP et la requête web.',
     'Choisis Pas à pas avant le test pour parcourir les événements un par un. Clique sur le résultat pour revoir la trace complète.',
     'Dans la console d’un routeur, saisis enable puis show ip route. Le caractère ? affiche les commandes du mode courant.',
-    'Le menu Projet permet d’importer ou d’exporter un fichier Netlab JSON. Les maquettes sont enregistrées automatiquement dans ce navigateur.',
+    'Le menu Projet permet d’importer ou d’exporter une maquette Cisco Packhess Tracer au format JSON. Les maquettes sont enregistrées automatiquement dans ce navigateur.',
   ])
     list.append(el('li', '', item));
   b.append(list);
@@ -890,7 +891,7 @@ function showHelp() {
   );
   note(
     b,
-    'Netlab est un simulateur pédagogique indépendant. Les fichiers Cisco Packet Tracer .pkt et .pka, les images IOS et leurs commandes complètes ne sont pas pris en charge.',
+    'Cisco Packhess Tracer est un simulateur pédagogique indépendant. Les fichiers Cisco Packet Tracer .pkt et .pka, les images IOS et leurs commandes complètes ne sont pas pris en charge.',
   );
 }
 function showView(view, expand = true) {
