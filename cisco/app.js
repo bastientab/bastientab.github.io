@@ -1,8 +1,8 @@
 import { createDevice, createId, simulate, dhcp } from './engine.js';
 import { runCommand, cliPrompt } from './cli.js';
 import { renderInspector } from './inspector.js';
-import { validateProject } from './import.js';
-import { labs, makeLab } from './labs.js';
+import { validateProject } from './import.js?v=2';
+import { labs, makeLab } from './labs.js?v=2';
 import { icon, fillIcons, deviceArt, deviceTypes } from './graphics.js';
 
 const $ = (id) => document.getElementById(id);
