@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#152338" />
+    <meta
+      name="description"
+      content="Un laboratoire réseau en ligne pour câbler des équipements, configurer des protocoles et suivre les paquets."
+    />
+    <title>Netlab · Simulateur réseau</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="inspector.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Netlab, atelier réseau"
+        ><img src="favicon.svg" alt="" /><span>Netlab</span></a
+      >
+      <nav aria-label="Vues">
+        <button id="view-topology" class="nav-item active"><i data-icon="network"></i>Topologie</button
+        ><button id="view-labs" class="nav-item"><i data-icon="layers"></i>Laboratoires</button>
+      </nav>
+      <div class="header-actions">
+        <span id="save-state" role="status"><i data-icon="cloudCheck"></i><span>Enregistré</span></span
+        ><button id="project-menu" class="project-button" aria-haspopup="menu" aria-expanded="false">
+          <i data-icon="folder"></i>Projet<i data-icon="down"></i></button
+        ><button id="help" class="icon-btn help-btn" aria-label="Aide de l’atelier" title="Aide">
+          <i data-icon="help"></i>
+        </button>
+      </div>
+    </header>
+    <div class="workspace">
+      <aside class="palette" id="palette">
+        <div class="palette-head">
+          <h2>Équipements</h2>
+          <button id="palette-close" class="icon-btn mobile-only" aria-label="Fermer les équipements">
+            <i data-icon="x"></i>
+          </button>
+        </div>
+        <label class="search-box"
+          ><i data-icon="search"></i
+          ><input
+            id="device-search"
+            type="search"
+            placeholder="Rechercher…"
+            aria-label="Rechercher un équipement"
+        /></label>
+        <div class="palette-scroll">
+          <div id="device-list"></div>
+          <section class="cables">
+            <h3>Connexions</h3>
+            <button class="cable-btn" data-cable="ethernet">
+              <span class="cable-art"><i></i></span>Câble Ethernet</button
+            ><button class="cable-btn" data-cable="wifi">
+              <span class="cable-art wireless"><i></i></span>Association Wi-Fi
+            </button>
+          </section>
+        </div>
+        <div class="palette-footer">
+          <i data-icon="mouse"></i><span>Glisse un équipement<br />sur le plan de travail.</span>
+        </div>
+      </aside>
+      <main class="bench">
+        <div class="bench-heading">
+          <div class="heading-main">
+            <button id="palette-open" class="icon-btn mobile-only" aria-label="Ouvrir les équipements">
+              <i data-icon="boxes"></i>
+            </button>
+            <div>
+              <div class="overline"><span class="little-line"></span>Atelier réseau</div>
+              <button class="title-edit" id="rename" title="Renommer le projet">
+                <h1 id="project-title">Réseau de campus</h1>
+                <i data-icon="pencil"></i>
+              </button>
+            </div>
+          </div>
+          <div class="modes" role="group" aria-label="Mode de simulation">
+            <button id="realtime" aria-pressed="true"><i data-icon="activity"></i>Temps réel</button
+            ><button id="stepmode" aria-pressed="false"><i data-icon="steps"></i>Pas à pas</button>
+          </div>
+        </div>
+        <section class="stage" id="stage" aria-label="Plan de travail réseau">
+          <div class="scene" id="scene">
+            <svg id="wires" aria-label="Liaisons réseau"></svg>
+            <div id="nodes"></div>
+            <div id="packet" hidden><i data-icon="mail"></i></div>
+          </div>
+          <div class="canvas-tools" role="toolbar" aria-label="Outils du plan">
+            <button
+              class="icon-btn"
+              id="select-tool"
+              aria-label="Sélection"
+              title="Sélection (V)"
+              aria-pressed="true"
+            >
+              <i data-icon="pointer"></i></button
+            ><button
+              class="icon-btn"
+              id="hand-tool"
+              aria-label="Déplacer la vue"
+              title="Déplacer la vue (H)"
+              aria-pressed="false"
+            >
+              <i data-icon="hand"></i></button
+            ><button
+              class="icon-btn"
+              id="link-tool"
+              aria-label="Relier deux équipements"
+              title="Câble Ethernet (C)"
+              aria-pressed="false"
+            >
+              <i data-icon="cable"></i></button
+            ><span class="v-rule"></span
+            ><button class="icon-btn" id="undo" aria-label="Annuler" title="Annuler (Ctrl+Z)">
+              <i data-icon="undo"></i></button
+            ><button class="icon-btn" id="redo" aria-label="Rétablir" title="Rétablir (Ctrl+Maj+Z)">
+              <i data-icon="redo"></i>
+            </button>
+          </div>
+          <button class="test-btn" id="send-packet">
+            <i data-icon="send"></i><span>Tester le réseau</span>
+          </button>
+          <div id="empty-canvas" hidden>
+            <i data-icon="network"></i>
+            <h2>Ton atelier est prêt</h2>
+            <p>Ajoute un premier équipement pour construire ton réseau.</p>
+            <button class="primary" id="add-first">Ajouter un équipement</button>
+          </div>
+          <div class="zoom-tools">
+            <button class="icon-btn" id="zoom-out" aria-label="Réduire le zoom">
+              <i data-icon="minus"></i></button
+            ><span id="zoom-label">100 %</span
+            ><button class="icon-btn" id="zoom-in" aria-label="Augmenter le zoom">
+              <i data-icon="plus"></i></button
+            ><span class="v-rule"></span
+            ><button
+              class="icon-btn"
+              id="fit"
+              aria-label="Centrer la topologie"
+              title="Centrer la topologie"
+            >
+              <i data-icon="fit"></i>
+            </button>
+          </div>
+          <div id="instruction" hidden></div>
+          <aside id="inspector" hidden aria-label="Configuration de l’équipement"></aside>
+        </section>
+        <section class="dock" id="dock" aria-label="Diagnostics">
+          <div class="dock-head">
+            <div class="dock-tabs" role="group" aria-label="Panneau de diagnostic">
+              <button id="events-tab" aria-pressed="true">
+                <i data-icon="list"></i>Événements <span id="event-count">0</span></button
+              ><button id="terminal-tab" aria-pressed="false">
+                <i data-icon="terminal"></i>Console
+              </button>
+            </div>
+            <div class="dock-actions">
+              <button id="next-event" class="next-btn" hidden>
+                <i data-icon="next"></i>Étape suivante</button
+              ><button
+                id="clear-events"
+                class="icon-btn"
+                title="Effacer le journal"
+                aria-label="Effacer le journal"
+              >
+                <i data-icon="trash"></i></button
+              ><button
+                id="toggle-dock"
+                class="icon-btn"
+                title="Replier le panneau"
+                aria-label="Replier le panneau"
+                aria-expanded="true"
+              >
+                <i data-icon="down"></i>
+              </button>
+            </div>
+          </div>
+          <div class="dock-body" id="log-panel">
+            <table class="event-table">
+              <thead>
+                <tr>
+                  <th>Heure</th>
+                  <th>Protocole</th>
+                  <th>Événement</th>
+                </tr>
+              </thead>
+              <tbody id="event-rows"></tbody>
+            </table>
+            <div id="no-events">Le journal est vide.</div>
+          </div>
+          <div id="terminal-panel" hidden>
+            <div class="terminal-toolbar">
+              <label for="terminal-device">Équipement</label
+              ><select id="terminal-device"></select
+              ><button class="terminal-help" id="command-help">Commandes</button>
+            </div>
+            <pre id="terminal-output" tabindex="0" aria-label="Sortie de console"></pre>
+            <form id="terminal-form">
+              <label for="terminal-input" id="terminal-prompt"></label
+              ><input
+                id="terminal-input"
+                spellcheck="false"
+                autocomplete="off"
+                autocapitalize="off"
+                placeholder="Saisir une commande…"
+                aria-label="Commande"
+              /><button aria-label="Exécuter la commande"><i data-icon="enter"></i></button>
+            </form>
+          </div>
+        </section>
+        <footer class="statusbar">
+          <span><b class="status-dot"></b>Simulateur actif</span
+          ><span class="status-counts"
+            ><span id="device-count"></span><b>·</b><span id="link-count"></span
+          ></span>
+        </footer>
+      </main>
+    </div>
+    <div id="menu" class="menu" role="menu" hidden></div>
+    <dialog id="dialog">
+      <div class="dialog-head">
+        <h2 id="dialog-title"></h2>
+        <button id="close-dialog" class="icon-btn" aria-label="Fermer"><i data-icon="x"></i></button>
+      </div>
+      <div id="dialog-body"></div>
+    </dialog>
+    <input type="file" accept=".json,application/json" id="import-input" hidden />
+    <div id="toast" role="status" hidden></div>
+    <noscript>Active JavaScript pour ouvrir le simulateur réseau.</noscript>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
