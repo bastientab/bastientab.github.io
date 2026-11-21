@@ -1075,6 +1075,10 @@ dialog::backdrop {
   }
 }
 @media (max-width: 950px) {
+  .brand {
+    font-size: 1.35rem;
+    letter-spacing: -0.8px;
+  }
   .topbar {
     padding: 0 16px;
     gap: 16px;
