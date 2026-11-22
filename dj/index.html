@@ -6,50 +6,95 @@
 <meta name="robots" content="noindex">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Studio DJ</title>
-<link rel="stylesheet" href="style.css">
-<script type="module" src="app.js"></script>
+<link rel="stylesheet" href="style.css?v=console">
+<script type="module" src="app.js?v=console"></script>
 </head>
 <body>
 <main>
-  <header><a href="/">Bastien Tabordet</a><h1>Studio DJ</h1></header>
-  <section class="library" aria-label="Bibliothèque YouTube">
-    <form id="search">
-      <label for="query">Rechercher sur YouTube</label>
-      <div class="search-line"><input id="query" type="search" maxlength="240" required placeholder="Titre, artiste ou lien YouTube"><button>Rechercher</button></div>
-    </form>
-    <p id="search-status" role="status">Charge un résultat sur A ou B.</p>
-    <a id="youtube-search" target="_blank" rel="noopener noreferrer" hidden>Ouvrir la recherche sur YouTube</a>
+  <header><h1>Studio DJ</h1><a href="/">Retour au site</a></header>
+  <section id="readouts" aria-label="Écrans des platines"></section>
+  <section class="console" aria-label="Console de mixage">
+    <div id="decks">
+      <section class="mix-core" aria-label="Mixeur central">
+        <div class="browse-strip"><button id="load-a" disabled>Load A</button><div class="browse"><label for="browse">Browse</label><input id="browse" type="range" min="0" max="0" value="0" disabled><output id="selected-track">Recherche un titre</output></div><button id="load-b" disabled>Load B</button></div>
+        <div class="master"><label for="master">Master</label><input id="master" type="range" min="0" max="1" step=".01" value=".75"><button id="master-cue" aria-pressed="false">Cue Master</button></div>
+        <div id="channels"></div>
+        <div class="level-meters" role="img" aria-label="Niveau des canaux A et B"><i id="meter-a"></i><i id="meter-b"></i></div>
+        <div id="hardware-audio" aria-label="Réglages micro et casque"></div>
+        <div class="smart"><button id="smart-cfx" aria-pressed="false">Smart CFX</button><button id="smart-fader" aria-pressed="false">Smart Fader</button></div>
+        <div class="fader"><label for="fade">Crossfader</label><span>A</span><input id="fade" type="range" min="-1" max="1" step=".005" value="0"><span>B</span></div>
+        <div class="beat-fx"><h2>Beat FX</h2>
+          <label>Canal<select id="fx-channel"><option value="A">A</option><option value="B">B</option><option value="AB">A + B</option></select></label>
+          <label>Effet<select id="fx-kind"><option value="echo">Écho</option><option value="dub">Doublage</option><option value="slap">Slapback</option></select></label>
+          <div class="fx-time"><button id="fx-less" aria-label="Diviser la durée de l’effet par deux">−</button><output id="fx-beats">1 temps</output><button id="fx-more" aria-label="Doubler la durée de l’effet">+</button></div>
+          <label>Depth<input id="fx-depth" type="range" min="0" max="1" value=".45" step=".01"></label><button id="fx-on" aria-pressed="false">On / Off</button>
+        </div>
+        <details class="audio-settings"><summary>Casque et micro</summary>
+      <label>Mix casque <input id="monitor-mix" type="range" min="0" max="1" step=".01" value="0"></label>
+      <label>Volume casque <input id="monitor-level" type="range" min="0" max="1" step=".01" value=".65"></label>
+      <button id="monitor-output">Choisir la sortie casque</button>
+      <button id="mic" aria-pressed="false">Micro</button>
+      <label>Volume micro <input id="mic-level" type="range" min="0" max="1" step=".01" value="0"></label>
+      <label>Atténuation micro <select id="mic-att"><option value="1">0 dB</option><option value=".316">−10 dB</option><option value=".1">−20 dB</option></select></label>
+      <label>Sortie <select id="output-mode"><option value="stereo">Stéréo</option><option value="mono">Mono</option></select></label>
+      <p id="audio-status" role="status">Avec une seule sortie, Cue permet d’écouter au casque le signal de préécoute à la place du mix.</p>
+        </details>
+      </section>
+    </div>
+  </section>
+  <section class="extras" aria-label="Commandes supplémentaires">
+    <div id="extra-decks"></div>
+    <div class="mixer">
+      <button id="automix" disabled>Automix</button><label>Durée du fondu <select id="duration"><option value="4">4 s</option><option value="8" selected>8 s</option><option value="16">16 s</option></select></label>
+      <p id="mix-status" role="status">Charge deux titres pour préparer une transition.</p>
+    </div>
+  </section>
+  <section class="library">
+    <form id="search"><label for="query">Recherche YouTube</label><div><input id="query" type="search" placeholder="Titre, artiste, lien YouTube ou lien audio HTTPS" required minlength="2" maxlength="240"><button>Rechercher</button></div></form>
+    <p id="search-status" role="status">Recherche un titre ou importe un fichier audio sur A ou B.</p>
+    <a id="youtube-search" target="_blank" rel="noopener" hidden>Ouvrir la recherche sur YouTube</a>
+    <div class="imports"><label>Fichier audio A <input id="file-a" type="file" accept="audio/*,.flac,.m4a"></label><label>Fichier audio B <input id="file-b" type="file" accept="audio/*,.flac,.m4a"></label></div>
+    <p>Pour l’EQ, le filtre et les effets de la platine, utilise un fichier audio ou un lien audio direct.</p>
     <ul id="results"></ul>
   </section>
-  <section class="console" aria-label="Platines et mixeur">
-    <section class="mix" aria-label="Mixeur central">
-      <h2>Mixeur</h2>
-      <div class="channels">
-        <label>Volume A<input id="volume-A" type="range" min="0" max="100" value="100"></label>
-        <label>Volume B<input id="volume-B" type="range" min="0" max="100" value="100"></label>
-      </div>
-      <label>Master<input id="master" type="range" min="0" max="100" value="85"></label>
-      <label>Crossfader<span class="cross">A<input id="cross" type="range" min="-100" max="100" value="0">B</span></label>
-      <label>Durée du fondu <select id="duration"><option value="4">4 s</option><option value="8" selected>8 s</option><option value="16">16 s</option></select></label>
-      <button id="automix" class="auto" disabled>Automix</button>
-      <p id="mix-status" role="status">Charge deux titres pour préparer un fondu.</p>
-    </section>
-  </section>
 </main>
-<template id="deck-template">
+<template id="deck">
   <article class="deck">
-    <div class="deck-heading"><b class="letter"></b><div><h2>Aucun titre</h2><p class="artist"></p></div></div>
-    <div class="screen"><p class="placeholder">Choisis un titre dans la recherche.</p><div class="player"></div></div>
-    <p class="notice" role="status"></p>
-    <div class="position"><output class="time">0:00</output><input class="seek" type="range" min="0" max="1" step=".1" value="0" aria-label="Position" disabled><output class="total">0:00</output></div>
-    <div class="deck-controls">
-      <div class="jog" aria-hidden="true"><i></i></div>
-      <div class="transport">
-        <button data-command="play" disabled>Lecture</button><button data-command="cue" disabled>Cue</button><button data-command="mark" disabled>Poser cue</button><button data-command="back" disabled>−5 s</button><button data-command="forward" disabled>+5 s</button>
-        <label>Vitesse <select class="speed" disabled><option value="1">1×</option></select></label>
+    <div class="deck-head"><span class="badge"></span><div><h2>Aucun titre</h2><p class="artist"></p></div><label class="bpm">BPM <input class="bpm-value" aria-label="BPM manuel" type="number" min="30" max="300" step="any" placeholder="—" disabled></label></div>
+    <div class="youtube-player" hidden></div>
+    <div class="time"><output class="elapsed">0:00</output><input class="seek" aria-label="Position de lecture" type="range" min="0" max="1" step=".01" value="0" disabled><output class="length">0:00</output></div>
+    <div class="transport loop-strip"><button data-action="loop-in" disabled>In</button><button data-action="loop-out" aria-pressed="false" disabled>Out</button><button data-action="loop" aria-pressed="false" disabled>4 Beat / Exit</button><button data-action="back" aria-label="Cue / Loop précédent" disabled>◀</button><button data-action="forward" aria-label="Cue / Loop suivant" disabled>▶</button></div>
+    <div class="performance">
+      <div class="jog-area">
+        <button type="button" class="jog" aria-label="Jog, glisse pour faire défiler ou scratcher" disabled><span class="jog-face"><span class="jog-marker"></span><b>JOG</b></span></button>
+      </div>
+      <div class="tempo-strip"><button data-action="sync" aria-pressed="false" disabled>Beat Sync</button><label>Tempo<input class="rate" type="range" min=".84" max="1.16" value="1" step=".001" disabled><output class="speed">0 %</output></label></div>
+    </div>
+    <div class="deck-bottom">
+      <div class="transport round-transport"><button data-action="shift" aria-pressed="false" disabled>Shift</button><button data-action="cue" disabled>Cue</button><button data-action="play" disabled>▶ Play</button></div>
+      <div class="performance-controls">
+        <div class="pad-modes" aria-label="Mode des pads"><button data-mode="cue" aria-pressed="true" disabled>Hot Cue</button><button data-mode="fx" aria-pressed="false" disabled>Pad FX</button><button data-mode="jump" aria-pressed="false" disabled>Beat Jump</button><button data-mode="sampler" aria-pressed="false" disabled>Sampler</button></div>
+        <div class="pads" aria-label="Pads de performance"></div>
       </div>
     </div>
+    <p class="state" role="status">Charge un morceau depuis la recherche.</p>
   </article>
+  <div class="channel-strip">
+    <strong class="channel-name"></strong>
+    <label>Trim <input class="gain" type="range" min="0" max="1.6" value=".8" step=".01" disabled></label>
+    <label>Hi <input class="high" type="range" min="-24" max="8" value="0" step="1" disabled></label>
+    <label>Mid <input class="mid" type="range" min="-24" max="8" value="0" step="1" disabled></label>
+    <label>Low <input class="low" type="range" min="-24" max="8" value="0" step="1" disabled></label>
+    <label>CFX <input class="filter-control" aria-label="Filtre passe-bas ou passe-haut" type="range" min="-1" max="1" step=".01" value="0" disabled><output class="filter-value">Neutre</output></label>
+    <button class="monitor-cue" data-action="monitor" aria-pressed="false" disabled>Cue casque</button>
+    <label class="channel-fader"><span class="channel-volume-name"></span><input class="channel-level" type="range" min="0" max="1" value="1" step=".01"></label>
+  </div>
+  <div class="extra-deck">
+    <strong class="extra-name"></strong>
+    <div class="stems" aria-label="Commandes supplémentaires de la platine">
+      <button data-action="mark" disabled>Poser cue</button><button data-mode="loop" aria-pressed="false" disabled>Beat Loop</button>
+    </div>
+  </div>
 </template>
 </body>
 </html>
