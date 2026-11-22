@@ -1,16 +1,55 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <meta http-equiv="refresh" content="0;url=https://studio-dj-prive.onrender.com/">
-  <title>Studio DJ privé</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Studio DJ</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
 </head>
 <body>
-  <main>
-    <h1>Studio DJ privé</h1>
-    <p><a href="https://studio-dj-prive.onrender.com/">Ouvrir le studio DJ</a></p>
-  </main>
+<main>
+  <header><a href="/">Bastien Tabordet</a><h1>Studio DJ</h1></header>
+  <section class="library" aria-label="Bibliothèque YouTube">
+    <form id="search">
+      <label for="query">Rechercher sur YouTube</label>
+      <div class="search-line"><input id="query" type="search" maxlength="240" required placeholder="Titre, artiste ou lien YouTube"><button>Rechercher</button></div>
+    </form>
+    <p id="search-status" role="status">Charge un résultat sur A ou B.</p>
+    <a id="youtube-search" target="_blank" rel="noopener noreferrer" hidden>Ouvrir la recherche sur YouTube</a>
+    <ul id="results"></ul>
+  </section>
+  <section class="console" aria-label="Platines et mixeur">
+    <section class="mix" aria-label="Mixeur central">
+      <h2>Mixeur</h2>
+      <div class="channels">
+        <label>Volume A<input id="volume-A" type="range" min="0" max="100" value="100"></label>
+        <label>Volume B<input id="volume-B" type="range" min="0" max="100" value="100"></label>
+      </div>
+      <label>Master<input id="master" type="range" min="0" max="100" value="85"></label>
+      <label>Crossfader<span class="cross">A<input id="cross" type="range" min="-100" max="100" value="0">B</span></label>
+      <label>Durée du fondu <select id="duration"><option value="4">4 s</option><option value="8" selected>8 s</option><option value="16">16 s</option></select></label>
+      <button id="automix" class="auto" disabled>Automix</button>
+      <p id="mix-status" role="status">Charge deux titres pour préparer un fondu.</p>
+    </section>
+  </section>
+</main>
+<template id="deck-template">
+  <article class="deck">
+    <div class="deck-heading"><b class="letter"></b><div><h2>Aucun titre</h2><p class="artist"></p></div></div>
+    <div class="screen"><p class="placeholder">Choisis un titre dans la recherche.</p><div class="player"></div></div>
+    <p class="notice" role="status"></p>
+    <div class="position"><output class="time">0:00</output><input class="seek" type="range" min="0" max="1" step=".1" value="0" aria-label="Position" disabled><output class="total">0:00</output></div>
+    <div class="deck-controls">
+      <div class="jog" aria-hidden="true"><i></i></div>
+      <div class="transport">
+        <button data-command="play" disabled>Lecture</button><button data-command="cue" disabled>Cue</button><button data-command="mark" disabled>Poser cue</button><button data-command="back" disabled>−5 s</button><button data-command="forward" disabled>+5 s</button>
+        <label>Vitesse <select class="speed" disabled><option value="1">1×</option></select></label>
+      </div>
+    </div>
+  </article>
+</template>
 </body>
 </html>
