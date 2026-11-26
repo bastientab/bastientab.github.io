@@ -72,6 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -118,7 +119,7 @@
 </div>
 <div class="c-block" id="aires-ospf">
   <h3>Poly 2 · Aires, LSA et redistribution</h3>
-  <p>L’<strong>aire 0</strong> est la dorsale qui relie les autres aires. Un routeur interne n’a ses interfaces OSPF que dans une aire, y compris si c’est l’aire 0. Un <strong>ABR</strong> relie des aires et tient une LSDB pour chacune. Un <strong>ASBR</strong> injecte des routes externes dans OSPF, par exemple des routes statiques ou BGP. Un routeur peut cumuler des rôles. Un lien virtuel rend possible une jonction logique à la dorsale via une aire de transit compatible. Une aire stub ne sert pas de transit à ce lien.</p>
+  <p>L’<strong>aire 0</strong> est la dorsale qui relie les autres aires. Un routeur interne n’a ses interfaces OSPF que dans une aire, y compris si c’est l’aire 0. Un <strong>ABR</strong> relie des aires et tient une LSDB (base OSPF qui contient les annonces d’état de liens) pour chacune. Un <strong>ASBR</strong> injecte des routes externes dans OSPF, par exemple des routes statiques ou BGP. Un routeur peut cumuler des rôles. Un lien virtuel rend possible une jonction logique à la dorsale via une aire de transit compatible. Une aire stub ne sert pas de transit à ce lien.</p>
   <figure><img src="../assets/revisions/saecyber03-but2/schemas/aires-ospf.png" alt="Topologie TP1, avec les aires 50 et 40 reliées à l’aire 0 par les routeurs de bordure" loading="lazy"><figcaption>TP1. L’aire 0 relie les groupes 50 et 40. Un ABR garde une base pour chaque aire raccordée.</figcaption></figure>
   <p>Un <strong>LSA</strong> est une annonce contenue dans la LSDB. Son type et celui du paquet OSPF qui le transporte sont deux numéros distincts.</p>
   <div class="c-table-wrap"><table class="c-table">
@@ -132,7 +133,7 @@
       <tr><th scope="row">7 · NSSA External</th><td>Route externe injectée dans une NSSA. Un ABR traduit en type 5 les annonces éligibles vers le reste du domaine.</td></tr>
     </tbody>
   </table></div>
-  <p>Les routeurs internes d’une même aire préservent la cohérence de leur carte. L’agrégation se fait à une frontière, par exemple sur un ABR pour les préfixes inter-aires ou sur un ASBR pour des routes externes. Sur IOS, <code>O</code> signifie intra-aire, <code>O IA</code> inter-aire, <code>O E1/E2</code> externe et <code>O N1/N2</code> externe NSSA. E1/N1 additionnent coût interne et métrique externe. En E2/N2, la métrique externe prime et la distance interne peut départager des candidats de métrique externe égale. Dans <code>[110/20]</code>, 110 est la distance administrative et 20 est la métrique.</p>
+  <p>Les routeurs internes d’une même aire préservent la cohérence de leur carte. L’agrégation se fait à une frontière, par exemple sur un ABR pour les préfixes inter-aires ou sur un ASBR pour des routes externes. Sur IOS, <code>O</code> signifie intra-aire, <code>O IA</code> inter-aire, <code>O E1/E2</code> externe et <code>O N1/N2</code> externe NSSA (aire OSPF qui peut injecter des routes externes locales). E1/N1 additionnent coût interne et métrique externe. En E2/N2, la métrique externe prime et la distance interne peut départager des candidats de métrique externe égale. Dans <code>[110/20]</code>, 110 est la distance administrative et 20 est la métrique.</p>
   <h4>Comparer les types d’aires du TP3</h4>
   <figure id="schema-nssa"><img src="../assets/revisions/saecyber03-but2/schemas/tp3-nssa.png" alt="R4 injecte le LAN en type 7 dans l’aire 20. R3 peut traduire la route en type 5 vers l’aire 0." loading="lazy"><figcaption>Le même LAN se lit différemment de part et d’autre de l’ABR.</figcaption></figure>
   <div class="c-table-wrap"><table class="c-table">
@@ -170,6 +171,49 @@
   <p>Dans le TD et le TP, lis <code>show ip bgp summary</code> pour l’état de session, <code>show ip bgp</code> pour les chemins et <code>show ip route</code> pour ce qui est réellement installé. Quand une route passe d’un protocole à un autre, trace-la sur chaque routeur et vérifie le retour. Une annonce BGP peut être présente sans être utilisée si elle a un prochain saut inaccessible ou si une meilleure route existe déjà.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ABR</strong> · Area Border Router</dt><dd>Routeur de bordure entre aires OSPF. <br><strong>Exemple.</strong> Un routeur relié aux aires 0 et 20 annonce les réseaux de l’une à l’autre.</dd></div>
+    <div><dt><strong>AS</strong> · Autonomous System</dt><dd>Réseau ou ensemble de réseaux régi par une politique de routage commune. <br><strong>Exemple.</strong> Dans le TD3, les routeurs R2 et R4 appartiennent à l’AS200.</dd></div>
+    <div><dt><strong>AS_PATH</strong> · Autonomous System Path</dt><dd>Liste des AS du chemin annoncé par BGP. <br><strong>Exemple.</strong> Un chemin 200 300 indique que la route passe par l’AS200 pour atteindre l’AS300.</dd></div>
+    <div><dt><strong>ASBR</strong> · Autonomous System Boundary Router</dt><dd>Routeur qui injecte des routes externes dans OSPF. <br><strong>Exemple.</strong> Le routeur de l’aire verte annonce dans OSPF un réseau qu’il a appris via EIGRP.</dd></div>
+    <div><dt><strong>ASN</strong> · Autonomous System Number</dt><dd>Numéro qui identifie un système autonome. <br><strong>Exemple.</strong> Le numéro 200 identifie l’AS200 dans la maquette.</dd></div>
+    <div><dt><strong>BDR</strong> · Backup Designated Router</dt><dd>Routeur désigné de secours en OSPF. <br><strong>Exemple.</strong> Sur le réseau partagé, le BDR prend le relais si le DR disparaît.</dd></div>
+    <div><dt><strong>BGP</strong> · Border Gateway Protocol</dt><dd>Protocole qui échange les routes entre réseaux autonomes. <br><strong>Exemple.</strong> Un opérateur annonce à son voisin les préfixes dont il permet l’accès.</dd></div>
+    <div><dt><strong>DBD</strong> · Database Description</dt><dd>Paquet OSPF qui résume les annonces déjà connues. <br><strong>Exemple.</strong> À l’établissement d’une adjacence, un routeur voit quelles entrées il lui manque.</dd></div>
+    <div><dt><strong>DR</strong> · Designated Router</dt><dd>Routeur désigné par OSPF sur un segment partagé. <br><strong>Exemple.</strong> Sur un switch avec plusieurs routeurs, le DR centralise les adjacences du segment.</dd></div>
+    <div><dt><strong>eBGP</strong> · External Border Gateway Protocol</dt><dd>BGP entre routeurs d’AS différents. <br><strong>Exemple.</strong> R4 de l’AS200 établit une session eBGP avec R5 de l’AS300.</dd></div>
+    <div><dt><strong>EIGRP</strong> · Enhanced Interior Gateway Routing Protocol</dt><dd>Protocole de routage interne qui évalue les chemins annoncés par ses voisins. <br><strong>Exemple.</strong> Il compare notamment le débit minimal et le délai total de deux trajets.</dd></div>
+    <div><dt><strong>IAB</strong> · Internet Architecture Board</dt><dd>Organisme de suivi de l’architecture Internet. <br><strong>Exemple.</strong> Il travaille sur la cohérence générale de l’architecture des protocoles.</dd></div>
+    <div><dt><strong>IANA</strong> · Internet Assigned Numbers Authority</dt><dd>Fonction de gestion des registres d’identifiants Internet. <br><strong>Exemple.</strong> Le registre IANA indique quelles plages de numéros d’AS sont réservées.</dd></div>
+    <div><dt><strong>IAR</strong> · Intra-Area Router</dt><dd>Routeur dont toutes les interfaces OSPF sont dans une seule aire. <br><strong>Exemple.</strong> Un routeur relié uniquement à des réseaux de l’aire verte est interne à cette aire.</dd></div>
+    <div><dt><strong>iBGP</strong> · Internal Border Gateway Protocol</dt><dd>BGP entre routeurs du même AS. <br><strong>Exemple.</strong> Deux routeurs de bordure de l’AS200 peuvent s’échanger des annonces par iBGP.</dd></div>
+    <div><dt><strong>ICANN</strong> · Internet Corporation for Assigned Names and Numbers</dt><dd>Organisme qui coordonne les identifiants uniques d’Internet. <br><strong>Exemple.</strong> Il coordonne notamment le système mondial des noms de domaine.</dd></div>
+    <div><dt><strong>IETF</strong> · Internet Engineering Task Force</dt><dd>Communauté qui élabore des spécifications techniques d’Internet. <br><strong>Exemple.</strong> Les groupes de travail de l’IETF préparent et discutent des protocoles.</dd></div>
+    <div><dt><strong>IGP</strong> · Interior Gateway Protocol</dt><dd>Famille des protocoles de routage internes à un AS. <br><strong>Exemple.</strong> L’AS200 utilise OSPF pour trouver les trajets entre ses routeurs.</dd></div>
+    <div><dt><strong>IXP</strong> · Internet Exchange Point</dt><dd>Point d’échange de trafic entre réseaux. <br><strong>Exemple.</strong> Deux opérateurs utilisent le même point d’échange pour se remettre le trafic prévu par leur accord.</dd></div>
+    <div><dt><strong>LAN</strong> · Local Area Network</dt><dd>Réseau local. <br><strong>Exemple.</strong> Le réseau des PC de la salle est un LAN.</dd></div>
+    <div><dt><strong>LIR</strong> · Local Internet Registry</dt><dd>Registre local de ressources Internet. <br><strong>Exemple.</strong> Un opérateur membre d’un registre régional peut distribuer des ressources à ses clients.</dd></div>
+    <div><dt><strong>LOCAL_PREF</strong> · Local Preference</dt><dd>Préférence utilisée pour choisir une sortie de l’AS. <br><strong>Exemple.</strong> Si les critères précédents sont égaux, un LOCAL_PREF de 200 bat 100, même si son AS_PATH est plus long.</dd></div>
+    <div><dt><strong>LSA</strong> · Link-State Advertisement</dt><dd>Annonce qui décrit une information de routage OSPF. <br><strong>Exemple.</strong> Un LSA de type 1 décrit les liens et coûts d’un routeur dans son aire.</dd></div>
+    <div><dt><strong>LSAck</strong> · Link-State Acknowledgment</dt><dd>Paquet OSPF qui confirme une annonce reçue. <br><strong>Exemple.</strong> Le routeur acquitte le LSA qui vient de lui être transmis.</dd></div>
+    <div><dt><strong>LSDB</strong> · Link-State Database</dt><dd>Base OSPF qui contient les annonces d’état de liens. <br><strong>Exemple.</strong> Le routeur utilise la LSDB de son aire comme carte pour calculer ses chemins.</dd></div>
+    <div><dt><strong>LSR</strong> · Link-State Request</dt><dd>Paquet OSPF qui demande une annonce précise. <br><strong>Exemple.</strong> Un routeur réclame un LSA dont il vient de découvrir une version plus récente.</dd></div>
+    <div><dt><strong>LSU</strong> · Link-State Update</dt><dd>Paquet OSPF qui transporte une ou plusieurs annonces. <br><strong>Exemple.</strong> Dans le TD2, un LSU de type 4 transporte un Router-LSA de type 1.</dd></div>
+    <div><dt><strong>MED</strong> · Multi-Exit Discriminator</dt><dd>Indication BGP pour suggérer au voisin un point d’entrée. <br><strong>Exemple.</strong> Avec deux liens vers le même AS, un MED plus faible peut faire préférer l’un des liens.</dd></div>
+    <div><dt><strong>NBMA</strong> · Non-Broadcast Multi-Access</dt><dd>Réseau partagé dépourvu de diffusion native. <br><strong>Exemple.</strong> Les routeurs peuvent devoir envoyer individuellement leurs annonces aux voisins.</dd></div>
+    <div><dt><strong>NEXT_HOP</strong> · Next Hop</dt><dd>Adresse du prochain saut indiqué par BGP. <br><strong>Exemple.</strong> Sur R4 dans le TD3, 10.0.45.2 est l’interface de R5 à laquelle envoyer les paquets.</dd></div>
+    <div><dt><strong>NLRI</strong> · Network Layer Reachability Information</dt><dd>Préfixe annoncé dans un message BGP. <br><strong>Exemple.</strong> Dans le TD3, 192.168.30.0/24 désigne le LAN derrière R5.</dd></div>
+    <div><dt><strong>NSSA</strong> · Not-So-Stubby Area</dt><dd>Aire OSPF qui peut injecter des routes externes locales. <br><strong>Exemple.</strong> Le routeur de l’aire verte injecte en type 7 une route EIGRP.</dd></div>
+    <div><dt><strong>OSPF</strong> · Open Shortest Path First</dt><dd>Protocole de routage qui calcule les chemins à partir des coûts de liens. <br><strong>Exemple.</strong> Dans le TD1, A change de prochain saut quand son lien direct vers D tombe.</dd></div>
+    <div><dt><strong>RFC</strong> · Request for Comments</dt><dd>Document technique numéroté de la série Internet. <br><strong>Exemple.</strong> La RFC 2328 décrit OSPF version 2.</dd></div>
+    <div><dt><strong>RIR</strong> · Regional Internet Registry</dt><dd>Registre régional des ressources Internet. <br><strong>Exemple.</strong> RIPE NCC gère les ressources Internet de sa zone de service.</dd></div>
+    <div><dt><strong>SPF</strong> · Shortest Path First</dt><dd>Calcul des plus courts chemins à partir d’une carte de coûts. <br><strong>Exemple.</strong> Entre un lien de coût 100 et un détour de coût 20 + 30, il retient le détour à 50.</dd></div>
+    <div><dt><strong>TCP</strong> · Transmission Control Protocol</dt><dd>Transport des données avec suivi des échanges et retransmission. <br><strong>Exemple.</strong> Les routeurs BGP établissent une session TCP avant d’échanger leurs annonces.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="coverage-title">
   <h2 class="c-h2" id="coverage-title">Du cours aux TD et TP</h2>
   <p>Les trois polys structurent le cours. Les exercices des TD1 et TD2 sont reformulés à partir des feuilles annotées. Les questions du TP1 viennent de son sujet. Celles du TD3 et du TP3 sont reformulées à partir des comptes rendus. Les relevés et les résultats attendus sont distingués dans les démarches.</p>
@@ -305,27 +349,27 @@
 </section>
       <section class="c-section" id="video" aria-labelledby="video-title">
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
-        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/saecyber03-but2/video-affiche.jpg"
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/saecyber03-but2/video-affiche.jpg?v=sigles-1"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/saecyber03-but2/cours-video.mp4" type="video/mp4">
-          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/saecyber03-but2/sous-titres.vtt">
+          <source src="../assets/revisions/saecyber03-but2/cours-video.mp4?v=sigles-1" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/saecyber03-but2/sous-titres.vtt?v=sigles-1">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
         <h3 class="c-h3">Chapitres</h3>
         <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Suivre une route dans le réseau multisite</button></li>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="22.625">0:22 · Comprendre les voisins et les aires OSPF</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="73.833">1:13 · Lire les messages OSPF dans une capture</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="99.292">1:39 · DR et BDR sur un segment partagé</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="127.083">2:07 · Authentifier la relation OSPF</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="152.542">2:32 · Comprendre la frontière avec BGP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="94.125">1:34 · Lire les messages OSPF dans une capture</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="135.083">2:15 · DR et BDR sur un segment partagé</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="171.583">2:51 · Authentifier la relation OSPF</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="197.042">3:17 · Comprendre la frontière avec BGP</button></li>
 </ul></div></details>
-        <details class="acc"><summary>Questions TD &amp; TP · 3:00</summary><div class="acc-body"><ul>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="180.833">3:00 · TP1 · Configurer les deux routeurs et valider le LAN</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="232.000">3:52 · TP1 · Réunir les aires et observer les routes</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="283.417">4:43 · TP1 · Redistribuer les routes de la zone statique</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="311.000">5:11 · TD3 · Vérifier la première topologie BGP</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="366.250">6:06 · TD3 · Expliquer la redistribution dans l’AS de transit</button></li>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:25</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="265.792">4:25 · TP1 · Configurer les deux routeurs et valider le LAN</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="316.958">5:16 · TP1 · Réunir les aires et observer les routes</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="368.375">6:08 · TP1 · Redistribuer les routes de la zone statique</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="395.958">6:35 · TD3 · Vérifier la première topologie BGP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="451.208">7:31 · TD3 · Expliquer la redistribution dans l’AS de transit</button></li>
 </ul></div></details>
       </section>
     </article>

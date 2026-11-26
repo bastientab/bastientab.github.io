@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -85,9 +86,9 @@
       <section class="c-section" id="cours" aria-labelledby="cours-title">
   <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
   <div class="c-block"><h3>1. Suivre le trajet de l’abonné</h3>
-    <p>La <strong>boucle locale</strong> relie la box ou le terminal au réseau. En xDSL, elle utilise le cuivre. Selon le type de DSL, on répartit fréquences et débit entre les deux sens. La longueur, l’atténuation et le bruit de la paire influencent la vitesse réalisable. Le <strong>DSLAM</strong> ou <strong>MSAN</strong> rassemble plusieurs lignes.</p>
+    <p>La <strong>boucle locale</strong> relie la box ou le terminal au réseau. En xDSL, elle utilise le cuivre. Selon le type de DSL, on répartit fréquences et débit entre les deux sens. La longueur, l’atténuation et le bruit de la paire influencent la vitesse réalisable. Le <strong>DSLAM</strong> (équipement qui regroupe les lignes DSL des abonnés) ou <strong>MSAN</strong> rassemble plusieurs lignes.</p>
     <p>En fibre, <strong>FTTH</strong> désigne la fibre jusqu’au logement, <strong>FTTB</strong> jusqu’au bâtiment et <strong>FTTC</strong> jusqu’à un point proche des abonnés. Il peut rester un autre support sur la fin du trajet. En radio, le terminal et la station partagent un milieu radio. La couverture et les ressources disponibles influencent les performances.</p>
-    <p>Le réseau de <strong>collecte</strong> agrège les accès. À la frontière du service, la passerelle abonnés (BRAS ou BNG selon l’architecture) applique la politique d’accès et peut terminer les sessions. Sépare la couche physique, le transport Ethernet ou ATM des architectures du cours et l’attribution de l’adresse IP.</p>
+    <p>Le réseau de <strong>collecte</strong> agrège les accès. À la frontière du service, la passerelle abonnés (BRAS ou BNG (passerelle qui termine et gère les accès haut débit) selon l’architecture) applique la politique d’accès et peut terminer les sessions. Sépare la couche physique, le transport Ethernet ou ATM des architectures du cours et l’attribution de l’adresse IP.</p>
   </div>
   <div class="c-block"><h3>2. Comparer PPPoE et IPoE</h3>
     <ol><li><strong>PPPoE</strong> transporte PPP sur Ethernet. La découverte suit PADI, PADO, PADR, PADS. Après celle-ci, LCP règle les paramètres de la liaison, un protocole comme CHAP authentifie si demandé, et IPCP négocie les paramètres IPv4.</li>
@@ -103,7 +104,7 @@
     <tr><td>GEM</td><td>Encapsule les flux clients dans GPON et les repère par identifiant.</td></tr>
     <tr><td>FEC</td><td>Permet de corriger certaines erreurs de transmission.</td></tr>
     </tbody></table></div>
-    <p>Le partage du signal explique l’utilité de la protection du trafic descendant. Un profil de ligne peut associer ports GEM, T-CONT et VLAN. Le profil de service décrit les ports et capacités côté abonné. À l’OLT, la règle de service fait le lien entre les identifiants opérateur et abonné.</p>
+    <p>Le partage du signal explique l’utilité de la protection du trafic descendant. Un profil de ligne peut associer ports GEM (méthode qui encapsule les données sur GPON), T-CONT (conteneur logique qui organise le trafic montant GPON) et VLAN. Le profil de service décrit les ports et capacités côté abonné. À l’OLT, la règle de service fait le lien entre les identifiants opérateur et abonné.</p>
   </div>
   <div class="c-block"><h3>4. Savoir où se termine le WAN</h3>
     <figure><img src="../assets/revisions/acces/schemas/wan.png" alt="Comparaison des modes routeur et pont dans le TP GPON" loading="lazy"><figcaption>En mode route, l’ONT porte la session WAN et le poste voit le réseau local. En mode pont, l’équipement derrière l’ONT porte cette session.</figcaption></figure>
@@ -112,7 +113,7 @@
   </div>
   <div class="c-block"><h3>5. Comparer les accès et transporter plusieurs services</h3>
     <p>Dans <strong>FTTH</strong>, la fibre atteint le logement. Dans FTTB, elle atteint le bâtiment et une autre liaison peut continuer jusqu’à l’abonné. Dans FTTC, le dernier tronçon part d’un point plus loin du logement. Le cours compare aussi un accès xDSL sur paire téléphonique, un réseau coaxial et un accès hertzien. Pour expliquer une différence, commence par nommer le dernier support et l’équipement qui le termine, DSLAM pour le DSL ou OLT et ONT pour le PON.</p>
-    <p>Le <strong>ranging</strong> mesure le délai entre chaque ONT et l’OLT afin que, malgré des distances différentes, les salves montantes arrivent chacune dans le bon créneau. Le <strong>DBA</strong> distribue ensuite la capacité selon les profils et la demande. En descendant, les ONT partagent le support optique. Le cours traite le filtrage des flux par identifiant, le chiffrement pour la confidentialité et la <strong>FEC</strong> pour corriger des erreurs avec des octets supplémentaires. Ce sont trois mécanismes distincts.</p>
+    <p>Le <strong>ranging</strong> mesure le délai entre chaque ONT et l’OLT afin que, malgré des distances différentes, les salves montantes arrivent chacune dans le bon créneau. Le <strong>DBA</strong> (attribution dynamique du débit montant sur un réseau optique partagé) distribue ensuite la capacité selon les profils et la demande. En descendant, les ONT partagent le support optique. Le cours traite le filtrage des flux par identifiant, le chiffrement pour la confidentialité et la <strong>FEC</strong> pour corriger des erreurs avec des octets supplémentaires. Ce sont trois mécanismes distincts.</p>
     <p>Le <strong>triple play</strong> transporte Internet, télévision et voix. Associe les flux aux VLAN et aux politiques de priorité demandés. <strong>QinQ</strong> ajoute un tag opérateur autour du tag client pour transporter les VLAN d’un client sans renuméroter ses réseaux. Compare les tags avant et après le point d’entrée de l’opérateur. Dans le TP GPON, la traduction de VLAN est une autre action qui change l’identifiant associé au service.</p>
   </div>
 <div class="c-block">
@@ -130,6 +131,40 @@
   <p>Commence par vérifier la session PPPoE et l’adresse IP attribuée à l’ONT. Sur la machine BRAS du labo, repère le côté où arrivent les clients PPP et l’interface de sortie qui a une route vers le réseau de l’IUT. Active le transfert IP, autorise dans le pare-feu l’aller et les réponses, puis applique la traduction de source sur l’interface de sortie pour la plage privée attribuée. Vérifie d’abord un ping vers le BRAS, puis vers une adresse extérieure à la plage privée. Compare les adresses source observées des deux côtés. Une session ouverte avec un premier ping réussi mais sans sortie oriente le diagnostic vers le routage ou le NAT.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ADSL</strong> · Asymmetric Digital Subscriber Line</dt><dd>Accès DSL dont les débits montant et descendant sont différents. <br><strong>Exemple.</strong> La box reçoit plus vite qu’elle n’envoie sur cette ligne cuivre.</dd></div>
+    <div><dt><strong>ATM</strong> · Asynchronous Transfer Mode</dt><dd>Transport en cellules de taille fixe. <br><strong>Exemple.</strong> Un ancien équipement DSL peut transporter les données sous forme de cellules ATM.</dd></div>
+    <div><dt><strong>BNG</strong> · Broadband Network Gateway</dt><dd>Passerelle qui termine et gère les accès haut débit. <br><strong>Exemple.</strong> La box établit sa session côté opérateur et la passerelle applique les paramètres d’abonné.</dd></div>
+    <div><dt><strong>BRAS</strong> · Broadband Remote Access Server</dt><dd>Équipement qui agrège et termine des sessions d’accès haut débit. <br><strong>Exemple.</strong> Un réseau DSL peut y terminer les sessions PPP des box.</dd></div>
+    <div><dt><strong>CHAP</strong> · Challenge Handshake Authentication Protocol</dt><dd>Authentification PPP par défi-réponse. <br><strong>Exemple.</strong> La box répond à un défi pour prouver qu’elle connaît le secret.</dd></div>
+    <div><dt><strong>DBA</strong> · Dynamic Bandwidth Allocation</dt><dd>Attribution dynamique du débit montant sur un réseau optique partagé. <br><strong>Exemple.</strong> L’OLT répartit les créneaux montants selon les besoins des abonnés.</dd></div>
+    <div><dt><strong>DHCP</strong> · Dynamic Host Configuration Protocol</dt><dd>Distribution automatique de la configuration IP. <br><strong>Exemple.</strong> Un PC obtient une adresse, un masque, une passerelle et souvent un serveur DNS.</dd></div>
+    <div><dt><strong>DSL</strong> · Digital Subscriber Line</dt><dd>Accès haut débit par paire de cuivre. <br><strong>Exemple.</strong> Une ligne ADSL utilise la paire téléphonique pour le trafic Internet.</dd></div>
+    <div><dt><strong>DSLAM</strong> · Digital Subscriber Line Access Multiplexer</dt><dd>Équipement qui regroupe les lignes DSL des abonnés. <br><strong>Exemple.</strong> Plusieurs lignes en cuivre arrivent au DSLAM de l’opérateur.</dd></div>
+    <div><dt><strong>FEC</strong> · Forward Error Correction</dt><dd>Correction d’erreurs à partir de données redondantes. <br><strong>Exemple.</strong> Un récepteur optique peut corriger certaines erreurs grâce aux bits ajoutés.</dd></div>
+    <div><dt><strong>FTTB</strong> · Fiber To The Building</dt><dd>Fibre jusqu’au bâtiment. <br><strong>Exemple.</strong> La montée entre le local technique et le logement peut utiliser un autre support.</dd></div>
+    <div><dt><strong>FTTC</strong> · Fiber To The Cabinet</dt><dd>Fibre jusqu’à une armoire de rue. <br><strong>Exemple.</strong> Le dernier tronçon vers le logement reste en cuivre dans ce type d’accès.</dd></div>
+    <div><dt><strong>FTTH</strong> · Fiber To The Home</dt><dd>Fibre optique jusque chez l’abonné. <br><strong>Exemple.</strong> La fibre arrive jusqu’au boîtier optique du logement.</dd></div>
+    <div><dt><strong>GEM</strong> · GPON Encapsulation Method</dt><dd>Méthode qui encapsule les données sur GPON. <br><strong>Exemple.</strong> Une trame Ethernet est transportée dans des unités GEM.</dd></div>
+    <div><dt><strong>GPON</strong> · Gigabit-capable Passive Optical Network</dt><dd>Réseau d’accès optique passif partagé. <br><strong>Exemple.</strong> Un OLT dessert plusieurs logements via un coupleur passif.</dd></div>
+    <div><dt><strong>IPCP</strong> · IP Control Protocol</dt><dd>Négociation des paramètres IPv4 sur une session PPP. <br><strong>Exemple.</strong> La box négocie l’adresse IPv4 à utiliser sur la liaison.</dd></div>
+    <div><dt><strong>IPTV</strong> · Internet Protocol Television</dt><dd>Diffusion de télévision sur IP. <br><strong>Exemple.</strong> La box reçoit le flux vidéo via le réseau d’accès.</dd></div>
+    <div><dt><strong>LAN</strong> · Local Area Network</dt><dd>Réseau local. <br><strong>Exemple.</strong> Le réseau des PC de la salle est un LAN.</dd></div>
+    <div><dt><strong>LCP</strong> · Link Control Protocol</dt><dd>Ouverture et réglage d’une liaison PPP. <br><strong>Exemple.</strong> Les deux extrémités échangent des options avant de configurer IP.</dd></div>
+    <div><dt><strong>NRO</strong> · Nœud de raccordement optique</dt><dd>Site qui concentre les accès optiques d’une zone. <br><strong>Exemple.</strong> Les lignes fibre de plusieurs secteurs remontent vers un NRO.</dd></div>
+    <div><dt><strong>OLT</strong> · Optical Line Terminal</dt><dd>Équipement optique côté opérateur. <br><strong>Exemple.</strong> L’OLT coordonne les transmissions des différents abonnés du réseau.</dd></div>
+    <div><dt><strong>ONT</strong> · Optical Network Terminal</dt><dd>Terminal optique côté abonné. <br><strong>Exemple.</strong> Le boîtier chez toi termine la fibre et fournit une liaison Ethernet à la box.</dd></div>
+    <div><dt><strong>PON</strong> · Passive Optical Network</dt><dd>Réseau optique partagé avec des coupleurs passifs. <br><strong>Exemple.</strong> Une fibre venant du central est répartie vers plusieurs abonnés.</dd></div>
+    <div><dt><strong>PPP</strong> · Point-to-Point Protocol</dt><dd>Protocole de liaison entre deux équipements. <br><strong>Exemple.</strong> Chez un fournisseur d’accès, la box peut établir une session PPP.</dd></div>
+    <div><dt><strong>RADIUS</strong> · Remote Authentication Dial-In User Service</dt><dd>Protocole de contrôle d’accès réseau. <br><strong>Exemple.</strong> Une borne demande au serveur RADIUS si le compte peut rejoindre le Wi-Fi.</dd></div>
+    <div><dt><strong>T-CONT</strong> · Transmission Container</dt><dd>Conteneur logique qui organise le trafic montant GPON. <br><strong>Exemple.</strong> L’OLT attribue des créneaux à un conteneur associé au trafic de l’abonné.</dd></div>
+    <div><dt><strong>VLAN</strong> · Virtual Local Area Network</dt><dd>Réseau local logique séparé sur une infrastructure partagée. <br><strong>Exemple.</strong> Un switch sépare les postes du personnel et ceux des invités dans deux VLAN.</dd></div>
+    <div><dt><strong>WAN</strong> · Wide Area Network</dt><dd>Réseau étendu qui relie des sites ou fournit leur sortie. <br><strong>Exemple.</strong> Sur une box, le port WAN mène au réseau de l’opérateur.</dd></div>
+        </dl>
+      </section>
+
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
   <p>Support croisé · Poly Technologies d’accès, TD PPPoE/IPoE et Huawei, TP GPON parties OLT et ONT.</p>

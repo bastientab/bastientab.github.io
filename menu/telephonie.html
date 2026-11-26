@@ -72,6 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -81,8 +82,8 @@
       <section class="c-section" id="cours" aria-labelledby="cours-title">
   <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
 <div class="c-block"><h3>Reconnaître la signalisation et le transport de la voix</h3>
-<p>Un IPBX est un central téléphonique sur IP. Un compte SIP et un numéro d’extension peuvent avoir des valeurs différentes. L’extension sert au plan de numérotation, tandis que l’identifiant sert notamment à l’authentification.</p>
-<p>Un échange SIP peut comporter <code>INVITE → 100 Trying → 180 Ringing → 200 OK → ACK</code>. <code>BYE</code> termine le dialogue ouvert. SDP annonce notamment les codecs et les ports attendus.</p>
+<p>Un IPBX (central téléphonique sur IP) est un central téléphonique sur IP. Un compte SIP (signalisation qui établit, modifie ou termine un appel) et un numéro d’extension peuvent avoir des valeurs différentes. L’extension sert au plan de numérotation, tandis que l’identifiant sert notamment à l’authentification.</p>
+<p>Un échange SIP peut comporter <code>INVITE → 100 Trying → 180 Ringing → 200 OK → ACK</code>. <code>BYE</code> termine le dialogue ouvert. SDP (description des médias et paramètres d’une session) annonce notamment les codecs et les ports attendus.</p>
 <figure><img loading="lazy" src="../assets/revisions/telephonie/schemas/demarche.png" alt="Téléphone A, REGISTER puis INVITE, Envoie une offre SDP → Serveur XiVO, Identifie le compte, Applique le plan d’appel → Téléphone B, Accepte et répond 200 OK, Audio transporté en RTP"><figcaption>La signalisation et l’audio empruntent des flux distincts. Le trajet RTP dépend de la configuration.</figcaption></figure>
 </div>
 <div class="c-block"><h3>Lire un défi d’authentification et négocier le codec</h3>
@@ -95,6 +96,21 @@
 <p>Un groupe de sonnerie distribue un appel à plusieurs postes selon une stratégie. Une messagerie prend le relais sur non-réponse si la redirection est configurée. Un test doit distinguer l’appel direct, la sonnerie du groupe et le dépôt du message.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ACK</strong> · Acknowledgment</dt><dd>Accusé de réception. <br><strong>Exemple.</strong> Après un SYN-ACK, le client envoie un ACK pour confirmer l’établissement TCP.</dd></div>
+    <div><dt><strong>IP</strong> · Internet Protocol</dt><dd>Protocole d’adressage et d’acheminement des paquets. <br><strong>Exemple.</strong> Le routeur lit l’IP de destination pour choisir où envoyer le paquet.</dd></div>
+    <div><dt><strong>IPBX</strong> · Internet Protocol Private Branch Exchange</dt><dd>Central téléphonique sur IP. <br><strong>Exemple.</strong> Il associe le numéro 201 à un téléphone et dirige les appels vers lui.</dd></div>
+    <div><dt><strong>PCMA</strong> · Pulse Code Modulation A-law</dt><dd>Variante A-law de l’audio G.711. <br><strong>Exemple.</strong> Dans un flux RTP avec le profil AVP, le type de charge statique 8 correspond à PCMA.</dd></div>
+    <div><dt><strong>PCMU</strong> · Pulse Code Modulation μ-law</dt><dd>Variante μ-law de l’audio G.711. <br><strong>Exemple.</strong> Avec le profil RTP AVP, le type statique 0 correspond à PCMU.</dd></div>
+    <div><dt><strong>RTP</strong> · Real-time Transport Protocol</dt><dd>Transport des médias en temps réel. <br><strong>Exemple.</strong> Après la négociation SIP, les échantillons de voix circulent dans RTP.</dd></div>
+    <div><dt><strong>SDP</strong> · Session Description Protocol</dt><dd>Description des médias et paramètres d’une session. <br><strong>Exemple.</strong> L’offre SDP indique quels codecs audio et quels ports utiliser.</dd></div>
+    <div><dt><strong>SIP</strong> · Session Initiation Protocol</dt><dd>Signalisation qui établit, modifie ou termine un appel. <br><strong>Exemple.</strong> Un téléphone envoie INVITE pour proposer un appel.</dd></div>
+    <div><dt><strong>UDP</strong> · User Datagram Protocol</dt><dd>Transport par datagrammes sans établissement de connexion. <br><strong>Exemple.</strong> Un client peut envoyer une requête DNS classique dans un datagramme UDP.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <p>Les questions proviennent du TP XiVO conservé dans le compte rendu. Les identifiants et configurations du laboratoire ont été remplacés par des exemples. Le sujet séparé n’a pas été retrouvé.</p>

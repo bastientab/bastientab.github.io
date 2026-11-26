@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -144,6 +145,16 @@ GROUP BY s.id, s.nom;</code></pre>
     <p>Dans un déclencheur, <code>NEW</code> correspond à la ligne proposée et <code>OLD</code> à l’ancienne quand elle existe. Utilise <code>SIGNAL SQLSTATE '45000'</code> pour remonter une erreur métier. Pour une règle simple d’unicité, <code>UNIQUE</code> protège aussi lors d’écritures simultanées.</p>
   </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ACID</strong> · Atomicity, Consistency, Isolation, Durability</dt><dd>Quatre propriétés courantes d’une transaction de base de données. <br><strong>Exemple.</strong> Un virement est validé avec ses deux écritures ou annulé entièrement.</dd></div>
+    <div><dt><strong>DBA</strong> · Database Administrator</dt><dd>Administrateur de base de données. <br><strong>Exemple.</strong> Le DBA accorde un droit de lecture et vérifie les sauvegardes.</dd></div>
+    <div><dt><strong>DBMS</strong> · Database Management System</dt><dd>Logiciel qui gère le stockage et les requêtes d’une base. <br><strong>Exemple.</strong> MySQL reçoit une requête SQL et renvoie les lignes demandées.</dd></div>
+    <div><dt><strong>SQL</strong> · Structured Query Language</dt><dd>Langage de requête pour une base relationnelle. <br><strong>Exemple.</strong> SELECT permet de lire les titres des films d’une catégorie.</dd></div>
+        </dl>
+      </section>
+
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
   <p>Support croisé · Polys DBA, TD1/1 bis/2, TP MySQL 1 à 4 et sujet d’examen pratique disponible.</p>

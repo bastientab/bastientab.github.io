@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -86,17 +87,17 @@
   <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
 <div class="c-block"><h3>1. Lire une mesure dans le temps et en fréquence</h3>
 <p>Le <strong>chronogramme</strong> montre l’évolution de la tension. Le spectre montre quelles fréquences participent au signal. Pour un sinus parfait, on retrouve sa fréquence fondamentale. Un signal périodique non sinusoïdal peut aussi comporter des harmoniques, multiples entiers de la fondamentale, et une composante continue.</p>
-<p>Un oscilloscope calcule une FFT sur une trace finie. Plus la durée d’acquisition augmente, plus les points fréquentiels peuvent être rapprochés. Dans une FFT sur <code>N</code> points à fréquence d’acquisition <code>fe</code>, l’espacement vaut <code>fe/N</code>. Une fréquence mal alignée sur les points peut s’étaler. Observe l’effet de la fenêtre avant d’interpréter les pics autour du signal.</p></div>
+<p>Un oscilloscope calcule une FFT (calcul efficace de la représentation fréquentielle d’un signal) sur une trace finie. Plus la durée d’acquisition augmente, plus les points fréquentiels peuvent être rapprochés. Dans une FFT sur <code>N</code> points à fréquence d’acquisition <code>fe</code>, l’espacement vaut <code>fe/N</code>. Une fréquence mal alignée sur les points peut s’étaler. Observe l’effet de la fenêtre avant d’interpréter les pics autour du signal.</p></div>
 <div class="c-block"><h3>2. Choisir les réglages de l’analyseur de spectre</h3>
-<p>Choisis les fréquences de début et de fin, ou la fréquence centrale et l’étendue affichée. La <strong>RBW</strong> fixe la largeur du filtre de résolution. Une RBW plus étroite aide à séparer des composantes proches. Le niveau de référence règle l’échelle haute de l’affichage et aide à éviter une entrée saturée.</p>
+<p>Choisis les fréquences de début et de fin, ou la fréquence centrale et l’étendue affichée. La <strong>RBW</strong> (largeur de bande de résolution en analyse spectrale) fixe la largeur du filtre de résolution. Une RBW plus étroite aide à séparer des composantes proches. Le niveau de référence règle l’échelle haute de l’affichage et aide à éviter une entrée saturée.</p>
 <p>Le niveau en <code>dBm</code> correspond à une puissance et se rapporte à 1 mW. Une densité spectrale indique une puissance par unité de fréquence. Pour estimer une puissance à partir de plusieurs points, vérifie la grandeur que l’instrument exporte et la largeur associée avant d’intégrer ou de sommer.</p></div>
 <div class="c-block"><h3>3. Comprendre l’échantillonnage et le repliement</h3>
 <p>Échantillonner revient à prendre une mesure toutes les <code>Te=1/fe</code> secondes. Dans le modèle idéal, les composantes se répètent autour des multiples de <code>fe</code>. Pour un signal de base limité à <code>fmax</code>, choisir <code>fe&gt;2fmax</code> sépare ces copies dans le cadre idéal. En pratique, garde une marge pour le filtre d’entrée.</p>
 <figure><img loading="lazy" src="../assets/revisions/telecom2/schemas/copies.png" alt="Pour un sinus à un kilohertz échantillonné à huit kilohertz, les premières copies autour de plus et moins huit produisent des raies à sept et neuf kilohertz."></figure>
 <p>Le <strong>repliement</strong> arrive lorsque des composantes distinctes se retrouvent impossibles à distinguer après échantillonnage. Un filtre anti-repliement agit avant la prise d’échantillons. Le filtrage après coup peut éliminer des fréquences visibles, mais deux composantes déjà repliées sur la même fréquence ne peuvent plus être séparées simplement.</p></div>
 <div class="c-block"><h3>4. Numériser une amplitude et la reconstituer</h3>
-<p>Un CAN mesure l’amplitude puis la ramène à un niveau quantifié et à un mot binaire. Avec <code>n</code> bits, il y a <code>2ⁿ</code> codes. Le pas dépend de l’étendue et de la convention de l’énoncé. La quantification par arrondi prend le niveau le plus proche dans la plage. Hors plage, on peut saturer sur un niveau extrême.</p>
-<p>Le code peut être en signe et grandeur, en complément à 2 ou en binaire décalé. Garde la convention au moment de décoder. Un CNA applique l’opération inverse au mot reçu et fournit la tension du niveau associé.</p></div>
+<p>Un CAN (circuit qui transforme une mesure analogique en code numérique) mesure l’amplitude puis la ramène à un niveau quantifié et à un mot binaire. Avec <code>n</code> bits, il y a <code>2ⁿ</code> codes. Le pas dépend de l’étendue et de la convention de l’énoncé. La quantification par arrondi prend le niveau le plus proche dans la plage. Hors plage, on peut saturer sur un niveau extrême.</p>
+<p>Le code peut être en signe et grandeur, en complément à 2 ou en binaire décalé. Garde la convention au moment de décoder. Un CNA (circuit qui transforme un code numérique en niveau analogique) applique l’opération inverse au mot reçu et fournit la tension du niveau associé.</p></div>
 <div class="c-block"><h3>5. Filtrer et déplacer un signal en fréquence</h3>
 <p>Un filtre a une réponse en amplitude et souvent une réponse en phase. Le diagramme de Bode trace le gain en fonction de la fréquence. Pour mesurer la bande d’un passe-bande à −3 dB, repère la référence choisie, cherche la fréquence basse et haute à ce niveau relatif et soustrais-les.</p>
 <p>En modulation d’amplitude sinusoïdale, le message déplace une partie du spectre autour de la porteuse. Pour un seul ton modulant, les raies latérales apparaissent à <code>fc−fm</code> et <code>fc+fm</code>. La démodulation vise à retrouver le message. Dans le TP radio, pars d’une trace de référence et vérifie le niveau dans l’unité attendue.</p></div>
@@ -104,6 +105,19 @@
 <p>Un sinus concentre sa puissance à une fréquence. Un canal radio ou TNT occupe une plage et distribue sa puissance sur la bande. La densité spectrale en W/Hz mesure la puissance par hertz. Son intégrale sur les limites du canal donne des watts. Pour une densité constante, multiplie la hauteur par la largeur. Convertis en dBm à la fin.</p>
 <p>Sur la distribution TNT, relève d’abord le canal reçu à l’antenne. Compare ensuite le même canal avant et après l’étage sélectif à réglages comparables. Regarde aussi les canaux voisins. Une augmentation de niveau n’indique pas à elle seule que la réception est meilleure.</p></div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>CAN</strong> · Convertisseur analogique-numérique</dt><dd>Circuit qui transforme une mesure analogique en code numérique. <br><strong>Exemple.</strong> Un CAN sur 8 bits représente une mesure avec l’un de ses 256 codes.</dd></div>
+    <div><dt><strong>CNA</strong> · Convertisseur numérique-analogique</dt><dd>Circuit qui transforme un code numérique en niveau analogique. <br><strong>Exemple.</strong> Un CNA convertit un code en une tension de sortie.</dd></div>
+    <div><dt><strong>DSP</strong> · Densité spectrale de puissance</dt><dd>Puissance répartie par unité de fréquence. <br><strong>Exemple.</strong> Pour obtenir la puissance d’un canal, on intègre sa densité sur la bande.</dd></div>
+    <div><dt><strong>FFT</strong> · Fast Fourier Transform</dt><dd>Calcul efficace de la représentation fréquentielle d’un signal. <br><strong>Exemple.</strong> La FFT d’un sinus à 1 kHz permet de repérer la composante à 1 kHz.</dd></div>
+    <div><dt><strong>RBW</strong> · Resolution Bandwidth</dt><dd>Largeur de bande de résolution en analyse spectrale. <br><strong>Exemple.</strong> Diminuer la RBW aide à distinguer deux raies rapprochées.</dd></div>
+    <div><dt><strong>SNR</strong> · Signal-to-Noise Ratio</dt><dd>Rapport entre niveau de signal et bruit. <br><strong>Exemple.</strong> Un SNR en décibels permet de comparer le signal utile au bruit.</dd></div>
+    <div><dt><strong>TNT</strong> · Télévision numérique terrestre</dt><dd>Diffusion télévisée numérique par voie hertzienne. <br><strong>Exemple.</strong> Le mesureur de champ permet de repérer un canal TNT reçu par l’antenne.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <ul><li><a href="#t2-fft">TP1 et TP2 · Lire l’échantillonnage, la FFT et l’analyseur</a></li>

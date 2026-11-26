@@ -24,498 +24,602 @@ que la route aller et la route retour existent.
 Contrôle les deux et note quel protocole a fourni
 chaque préfixe.
 
-00:00:22.725 --> 00:00:26.481
-Les routeurs O S P F d’une même aire construisent une
+00:00:22.725 --> 00:00:26.854
+O S P F signifie Open Shortest Path First.
 
-00:00:26.481 --> 00:00:27.847
-carte comparable de celle-ci.
+00:00:26.854 --> 00:00:29.783
+C’est un protocole de routage interne.
 
-00:00:27.847 --> 00:00:31.805
+00:00:29.783 --> 00:00:33.232
+Les routeurs d’une même aire, c’est-à-dire d’un même
+groupe de liens,
+
+00:00:33.232 --> 00:00:35.114
+construisent une carte de leur réseau.
+
+00:00:35.114 --> 00:00:39.072
 Les messages Hello vérifient qu’un voisin est présent
 et compatible.
 
-00:00:31.805 --> 00:00:34.685
-La base d’état de liens décrit le réseau.
+00:00:39.072 --> 00:00:42.749
+Chaque annonce qui décrit un lien s’appelle un L S A.
 
-00:00:34.685 --> 00:00:38.472
-Chaque routeur calcule ensuite ses meilleures routes
-d’après les coûts.
+00:00:42.749 --> 00:00:45.885
+Les annonces sont stockées dans la L S D B, la
 
-00:00:38.472 --> 00:00:40.543
+00:00:45.885 --> 00:00:47.025
+base d’état des liens.
+
+00:00:47.025 --> 00:00:50.112
+À partir de cette carte, chaque routeur calcule le
+trajet dont
+
+00:00:50.112 --> 00:00:52.356
+la somme des coûts est la plus faible.
+
+00:00:52.356 --> 00:00:56.572
+Ce calcul s’appelle S P F, Shortest Path First.
+
+00:00:56.572 --> 00:00:58.655
 Une aire regroupe des liens.
 
-00:00:40.543 --> 00:00:43.991
+00:00:58.655 --> 00:01:02.096
 Avec plusieurs aires, l’aire zéro sert de dorsale et
 le routeur
 
-00:00:43.991 --> 00:00:46.499
+00:01:02.096 --> 00:01:04.599
 de bordure relie l’aire locale à cette dorsale.
 
-00:00:46.850 --> 00:00:49.984
+00:01:04.933 --> 00:01:08.067
 Sur le dessin du T P, suis l’aire cinquante à gauche
 
-00:00:49.984 --> 00:00:51.408
+00:01:08.067 --> 00:01:09.491
 et l’aire quarante à droite.
 
-00:00:51.408 --> 00:00:55.612
+00:01:09.491 --> 00:01:13.695
 Les routeurs de bordure appartiennent aussi à la
 dorsale lorsqu’ils utilisent
 
-00:00:55.612 --> 00:00:57.523
+00:01:13.695 --> 00:01:15.606
 le raccordement au commutateur central.
 
-00:00:57.523 --> 00:01:00.795
+00:01:15.606 --> 00:01:18.878
 Les autres interfaces gardent leur aire locale.
 
-00:01:00.795 --> 00:01:04.680
+00:01:18.878 --> 00:01:22.775
 Repère chaque port sur le dessin avant de saisir des
 commandes.
 
-00:01:04.680 --> 00:01:07.952
-Ensuite vérifie que les voisins sont dans la bonne
-aire.
+00:01:22.775 --> 00:01:25.962
+Le routeur qui relie l’aire locale à la dorsale est un
 
-00:01:07.952 --> 00:01:11.397
-Si la même interface rejoint la mauvaise aire, ses
-Hello ne
+00:01:25.962 --> 00:01:29.148
+A B R, Area Border Router, ou routeur de bordure
+d’aire.
 
-00:01:11.397 --> 00:01:13.589
-suffisent pas à établir le voisinage attendu.
+00:01:29.148 --> 00:01:32.392
+Pour former le voisinage, les deux extrémités d’un
+lien doivent se
 
-00:01:13.933 --> 00:01:17.891
+00:01:32.392 --> 00:01:33.866
+trouver dans la même aire.
+
+00:01:34.225 --> 00:01:38.182
 Dans la capture, commence par filtrer O S P F.
 
-00:01:17.891 --> 00:01:20.072
+00:01:38.182 --> 00:01:40.364
 Les Hello sont réguliers.
 
-00:01:20.072 --> 00:01:23.761
+00:01:40.364 --> 00:01:44.052
 Tu peux reconnaître l’aire, le Router I D et les
 voisins.
 
-00:01:23.761 --> 00:01:27.645
+00:01:44.052 --> 00:01:47.953
 Pour comprendre comment deux routeurs se
 synchronisent, observe le début de
 
-00:01:27.645 --> 00:01:29.410
+00:01:47.953 --> 00:01:49.726
 leur voisinage sur la maquette.
 
-00:01:29.410 --> 00:01:33.087
-Les descriptions de base annoncent ce que chacun
-possède.
+00:01:49.726 --> 00:01:53.158
+D B D signifie Database Description.
 
-00:01:33.087 --> 00:01:36.734
-Les requêtes demandent des informations, les mises à
-jour les transportent
+00:01:53.158 --> 00:01:56.565
+C’est l’inventaire qui indique ce que chacun possède.
 
-00:01:36.734 --> 00:01:39.055
-et les accusés de réception les confirment.
+00:01:56.565 --> 00:02:00.493
+Pour réclamer une annonce manquante, le voisin envoie
+un L S
 
-00:01:39.392 --> 00:01:43.094
-Sur un réseau Ethernet partagé, tous les routeurs
-n’ont pas besoin
+00:02:00.493 --> 00:02:01.565
+R, une demande.
 
-00:01:43.094 --> 00:01:45.114
-d’établir une adjacency complète entre eux.
+00:02:01.565 --> 00:02:05.315
+Le L S U transporte l’annonce, comme une enveloppe.
 
-00:01:45.114 --> 00:01:48.805
-Le routeur désigné centralise une partie de l’échange
-et un secours
+00:02:05.315 --> 00:02:08.575
+Le L S Ack confirme la réception.
 
-00:01:48.805 --> 00:01:49.476
-est élu.
+00:02:08.575 --> 00:02:11.325
+Un paquet L S U de type quatre peut donc transporter
 
-00:01:49.476 --> 00:01:53.394
+00:02:11.325 --> 00:02:14.075
+une annonce L S A de type un, comme dans le
+
+00:02:14.075 --> 00:02:14.825
+T D deux.
+
+00:02:15.183 --> 00:02:20.243
+Sur un réseau Ethernet partagé, un D R, Designated
+Router, centralise
+
+00:02:20.243 --> 00:02:21.163
+les échanges.
+
+00:02:21.163 --> 00:02:25.317
+Le B D R est son secours, Backup Designated Router.
+
+00:02:25.317 --> 00:02:29.069
+Par exemple, les autres routeurs se synchronisent avec
+le routeur désigné
+
+00:02:29.069 --> 00:02:31.457
+et son secours sur le switch partagé.
+
+00:02:31.457 --> 00:02:33.969
+C’est l’intérêt de ces deux rôles.
+
+00:02:33.969 --> 00:02:37.895
 Lis la priorité sur chacune des interfaces concernées,
 puis le Router
 
-00:01:53.394 --> 00:01:55.175
+00:02:37.895 --> 00:02:39.680
 I D en cas d’égalité.
 
-00:01:55.175 --> 00:01:58.753
+00:02:39.680 --> 00:02:43.234
 La priorité zéro retire le candidat de l’élection.
 
-00:01:58.753 --> 00:02:03.243
+00:02:43.234 --> 00:02:47.724
 Quand on ajoute un routeur plus prioritaire,
 l’élection existante ne change
 
-00:02:03.243 --> 00:02:04.060
+00:02:47.724 --> 00:02:48.540
 pas immédiatement.
 
-00:02:04.060 --> 00:02:06.842
+00:02:48.540 --> 00:02:51.322
 Observe l’état réellement affiché.
 
-00:02:07.183 --> 00:02:11.193
+00:02:51.683 --> 00:02:55.693
 Le T P demande une authentification cryptographique de
 type M D
 
-00:02:11.193 --> 00:02:13.016
+00:02:55.693 --> 00:02:57.516
 cinq dans sa maquette Cisco.
 
-00:02:13.016 --> 00:02:16.259
+00:02:57.516 --> 00:03:00.759
 Elle aide à s’assurer que des messages de routage
 viennent d’un
 
-00:02:16.259 --> 00:02:18.028
+00:03:00.759 --> 00:03:02.528
 voisin qui connaît la valeur partagée.
 
-00:02:18.028 --> 00:02:20.356
+00:03:02.528 --> 00:03:04.856
 Elle ne chiffre pas les routes.
 
-00:02:20.356 --> 00:02:23.972
+00:03:04.856 --> 00:03:08.472
 Mets des réglages correspondants côté gauche et côté
 droit.
 
-00:02:23.972 --> 00:02:27.624
+00:03:08.472 --> 00:03:12.124
 Dans la capture, relève le type et l’identifiant de
 clé.
 
-00:02:27.624 --> 00:02:31.292
+00:03:12.124 --> 00:03:15.792
 Dans le compte rendu, utilise une valeur d’exemple ou
 masque le
 
-00:02:31.292 --> 00:02:32.293
+00:03:15.792 --> 00:03:16.793
 secret du labo.
 
-00:02:32.642 --> 00:02:36.955
+00:03:17.142 --> 00:03:21.465
 Un système autonome est un ensemble de réseaux
 administré selon une
 
-00:02:36.955 --> 00:02:37.739
+00:03:21.465 --> 00:03:22.251
 politique commune.
 
-00:02:37.739 --> 00:02:41.555
+00:03:22.251 --> 00:03:26.067
 O S P F décide quels chemins suivre à l’intérieur,
 selon
 
-00:02:41.555 --> 00:02:42.249
+00:03:26.067 --> 00:03:26.761
 les coûts.
 
-00:02:42.249 --> 00:02:46.158
-B G P permet de savoir quels préfixes un autre système
+00:03:26.761 --> 00:03:30.450
+B G P signifie Border Gateway Protocol.
 
-00:02:46.158 --> 00:02:46.513
-annonce.
+00:03:30.450 --> 00:03:34.618
+Il permet de savoir quels préfixes, ou blocs
+d’adresses, un autre
 
-00:02:46.513 --> 00:02:49.945
-Une session E B G P traverse une frontière.
+00:03:34.618 --> 00:03:35.376
+système annonce.
 
-00:02:49.945 --> 00:02:53.756
+00:03:35.376 --> 00:03:38.851
+Les séances entre routeurs de deux systèmes différents
+s’appellent E B
+
+00:03:38.851 --> 00:03:41.062
+G P, pour B G P externe.
+
+00:03:41.062 --> 00:03:44.456
+Entre routeurs du même système, on parle de I B G
+
+00:03:44.456 --> 00:03:46.307
+P, pour B G P interne.
+
+00:03:46.307 --> 00:03:50.143
 Observe l’identifiant du système distant dans les
 commandes.
 
-00:02:53.756 --> 00:02:57.325
+00:03:50.143 --> 00:03:53.706
 Vérifie ensuite les préfixes reçus : une session
 active avec zéro
 
-00:02:57.325 --> 00:03:00.570
+00:03:53.706 --> 00:03:56.945
 préfixe ne prouve pas que le réseau distant est
 joignable.
 
-00:03:00.933 --> 00:03:03.891
+00:03:57.308 --> 00:04:00.604
+Sur un message Update de ton T D trois, une annonce
+
+00:04:00.604 --> 00:04:03.899
+peut dire que le bloc cent quatre-vingt-douze point
+cent soixante-huit point
+
+00:04:03.899 --> 00:04:05.996
+trente point zéro, barre vingt-quatre, est joignable.
+
+00:04:05.996 --> 00:04:09.231
+Le bloc annoncé s’appelle N L R I.
+
+00:04:09.231 --> 00:04:13.747
+Le chemin, A S Path, indique ici le système autonome
+trois
+
+00:04:13.747 --> 00:04:14.158
+cents.
+
+00:04:14.158 --> 00:04:16.866
+Next Hop veut dire prochain saut.
+
+00:04:16.866 --> 00:04:20.089
+C’est l’adresse du routeur auquel envoyer le paquet.
+
+00:04:20.089 --> 00:04:23.822
+Sur R quatre, elle vaut dix point zéro point quarante-
+cinq point
+
+00:04:23.822 --> 00:04:25.518
+deux, l’interface de R cinq.
+
+00:04:25.892 --> 00:04:28.850
 Le T P donne un réseau local à gauche, un réseau
 
-00:03:03.891 --> 00:03:06.043
+00:04:28.850 --> 00:04:31.001
 de transit, et un réseau local à droite.
 
-00:03:06.043 --> 00:03:09.229
+00:04:31.001 --> 00:04:34.187
 Choisis une IP unique pour chaque interface.
 
-00:03:09.229 --> 00:03:12.905
+00:04:34.187 --> 00:04:37.864
 Configure chaque P C avec la passerelle qui lui fait
 face.
 
-00:03:12.905 --> 00:03:16.231
+00:04:37.864 --> 00:04:41.189
 Teste le transit entre les deux routeurs, puis active
 O S
 
-00:03:16.231 --> 00:03:19.556
+00:04:41.189 --> 00:04:44.514
 P F sur les interfaces choisies dans l’aire cinquante,
 avec le
 
-00:03:19.556 --> 00:03:20.160
+00:04:44.514 --> 00:04:45.119
 coût demandé.
 
-00:03:20.160 --> 00:03:23.488
+00:04:45.119 --> 00:04:48.447
 Dès que le voisinage est établi, regarde si chacun
 voit le
 
-00:03:23.488 --> 00:03:25.001
+00:04:48.447 --> 00:04:49.959
 réseau du P C distant.
 
-00:03:25.001 --> 00:03:27.832
+00:04:49.959 --> 00:04:52.790
 Termine par un ping d’un P C à l’autre.
 
-00:03:28.183 --> 00:03:30.854
+00:04:53.142 --> 00:04:55.812
 Prends l’exemple de l’aire cinquante.
 
-00:03:30.854 --> 00:03:34.132
+00:04:55.812 --> 00:04:59.090
 Le LAN gauche se termine par cinquante point zéro et
 le
 
-00:03:34.132 --> 00:03:36.516
+00:04:59.090 --> 00:05:01.474
 LAN droit par cinquante et un point zéro.
 
-00:03:36.516 --> 00:03:39.661
+00:05:01.474 --> 00:05:04.619
 Depuis le routeur gauche, tu dois voir une route
 dynamique vers
 
-00:03:39.661 --> 00:03:42.521
+00:05:04.619 --> 00:05:07.479
 le LAN de droite qui pointe vers le routeur droit.
 
-00:03:42.521 --> 00:03:44.923
+00:05:07.479 --> 00:05:09.881
 Fais l’inverse pour le retour.
 
-00:03:44.923 --> 00:03:47.926
+00:05:09.881 --> 00:05:12.884
 Si le transit fonctionne mais qu’il n’y a aucune
 route, regarde
 
-00:03:47.926 --> 00:03:50.929
+00:05:12.884 --> 00:05:15.888
 si tu as inclus le réseau local dans le processus O
 
-00:03:50.929 --> 00:03:51.749
+00:05:15.888 --> 00:05:16.707
 S P F.
 
-00:03:52.100 --> 00:03:55.982
+00:05:17.058 --> 00:05:20.940
 Dans la seconde partie, le commutateur commun permet
 de réunir les
 
-00:03:55.982 --> 00:03:57.393
+00:05:20.940 --> 00:05:22.351
 routeurs de la dorsale.
 
-00:03:57.393 --> 00:04:00.744
+00:05:22.351 --> 00:05:25.702
 Conserve les interfaces de liaison locale dans leurs
 anciennes aires et
 
-00:04:00.744 --> 00:04:03.790
+00:05:25.702 --> 00:05:28.749
 place les interfaces tournées vers la dorsale dans
 l’aire zéro.
 
-00:04:03.790 --> 00:04:07.466
+00:05:28.749 --> 00:05:32.424
 Sur le nouveau segment partagé, compare le rôle
 désigné avant et
 
-00:04:07.466 --> 00:04:08.802
+00:05:32.424 --> 00:05:33.761
 après l’ajout de voisins.
 
-00:04:08.802 --> 00:04:11.486
+00:05:33.761 --> 00:05:36.445
 Puis cherche les routes vers une autre aire.
 
-00:04:11.486 --> 00:04:14.403
+00:05:36.445 --> 00:05:39.362
 Suis l’adresse de prochain saut et l’interface de
 sortie, et vérifie
 
-00:04:14.403 --> 00:04:17.321
+00:05:39.362 --> 00:05:42.279
 que la route revient bien vers le P C qui a
 
-00:04:17.321 --> 00:04:18.116
+00:05:42.279 --> 00:05:43.075
 émis la demande.
 
-00:04:18.475 --> 00:04:22.310
+00:05:43.433 --> 00:05:47.268
 Le rôle élu concerne une interface sur un segment de
 réseau.
 
-00:04:22.310 --> 00:04:26.011
+00:05:47.268 --> 00:05:50.969
 Un routeur peut jouer un rôle différent sur un autre
 segment.
 
-00:04:26.011 --> 00:04:29.170
+00:05:50.969 --> 00:05:54.129
 Après avoir construit la dorsale, lis les routes qui
 apparaissent avec
 
-00:04:29.170 --> 00:04:30.606
+00:05:54.129 --> 00:05:55.565
 le code O I A.
 
-00:04:30.606 --> 00:04:32.788
+00:05:55.565 --> 00:05:57.746
 I A veut dire interaire.
 
-00:04:32.788 --> 00:04:36.538
+00:05:57.746 --> 00:06:01.496
 Relie la destination à l’aire dans laquelle elle a été
 inscrite.
 
-00:04:36.538 --> 00:04:39.576
+00:06:01.496 --> 00:06:04.535
 Si les routes d’une seule aire manquent de l’autre
 côté, regarde
 
-00:04:39.576 --> 00:04:42.615
+00:06:04.535 --> 00:06:07.573
 d’abord la présence du routeur de bordure et son lien
 à
 
-00:04:42.615 --> 00:04:43.168
+00:06:07.573 --> 00:06:08.126
 l’aire zéro.
 
-00:04:43.517 --> 00:04:47.413
+00:06:08.475 --> 00:06:12.371
 Le sujet demande de passer un des secteurs en routage
 statique.
 
-00:04:47.413 --> 00:04:51.223
+00:06:12.371 --> 00:06:16.182
 Commence par vérifier que le routeur de bordure
 connaît réellement la
 
-00:04:51.223 --> 00:04:52.609
+00:06:16.182 --> 00:06:17.567
 destination de ce secteur.
 
-00:04:52.609 --> 00:04:56.204
+00:06:17.567 --> 00:06:21.162
 Fais ensuite annoncer dans O S P F la route de
 
-00:04:56.204 --> 00:04:56.530
+00:06:21.162 --> 00:06:21.489
 test.
 
-00:04:56.530 --> 00:05:00.074
+00:06:21.489 --> 00:06:25.032
 Sur un routeur d’une autre aire, repère son type
 externe et
 
-00:05:00.074 --> 00:05:01.040
+00:06:25.032 --> 00:06:25.999
 son prochain saut.
 
-00:05:01.040 --> 00:05:04.794
+00:06:25.999 --> 00:06:29.752
 Si le paquet arrive mais que le ping échoue, vérifie
 le
 
-00:05:04.794 --> 00:05:05.476
+00:06:29.752 --> 00:06:30.435
 trajet inverse.
 
-00:05:05.476 --> 00:05:08.894
+00:06:30.435 --> 00:06:33.852
 La route statique de retour est toujours nécessaire si
 le secteur
 
-00:05:08.894 --> 00:05:10.758
+00:06:33.852 --> 00:06:35.717
 n’apprend pas O S P F.
 
-00:05:11.100 --> 00:05:14.665
+00:06:36.058 --> 00:06:39.624
 Reprends les deux routeurs du T D trois dans Packet
 Tracer.
 
-00:05:14.665 --> 00:05:18.709
+00:06:39.624 --> 00:06:43.668
 Avant B G P, teste le lien directement connecté et les
 
-00:05:18.709 --> 00:05:19.445
+00:06:43.668 --> 00:06:44.403
 passerelles locales.
 
-00:05:19.445 --> 00:05:23.280
+00:06:44.403 --> 00:06:48.239
 Configure le voisin avec son numéro de système
 autonome.
 
-00:05:23.280 --> 00:05:26.516
+00:06:48.239 --> 00:06:51.474
 Annonce le réseau local avec son masque exact.
 
-00:05:26.516 --> 00:05:30.261
+00:06:51.474 --> 00:06:55.220
 Dans la table de routage, le réseau annoncé doit déjà
 être
 
-00:05:30.261 --> 00:05:31.283
+00:06:55.220 --> 00:06:56.241
 présent chez l’émetteur.
 
-00:05:31.283 --> 00:05:34.525
+00:06:56.241 --> 00:06:59.484
 Sur le second routeur, vérifie la présence de la route
 B
 
-00:05:34.525 --> 00:05:36.883
+00:06:59.484 --> 00:07:01.842
 G P, puis teste les deux P C.
 
-00:05:36.883 --> 00:05:41.222
+00:07:01.842 --> 00:07:06.180
 Note les différences entre message Open, Keep Alive et
 Update.
 
-00:05:41.558 --> 00:05:44.869
+00:07:06.517 --> 00:07:09.827
 Le masque trente donne pour ce transit les adresses
 utiles qui
 
-00:05:44.869 --> 00:05:46.374
+00:07:09.827 --> 00:07:11.332
 finissent par un et deux.
 
-00:05:46.374 --> 00:05:49.588
+00:07:11.332 --> 00:07:14.546
 Sur R zéro, le voisin est donc celui qui finit par
 
-00:05:49.588 --> 00:05:51.925
+00:07:14.546 --> 00:07:16.883
 deux et son système autonome est deux cents.
 
-00:05:51.925 --> 00:05:54.829
+00:07:16.883 --> 00:07:19.788
 Sur R un, les deux valeurs s’inversent.
 
-00:05:54.829 --> 00:05:58.690
+00:07:19.788 --> 00:07:23.648
 Annonce ensuite le réseau local avec son vrai masque
 vingt-quatre.
 
-00:05:58.690 --> 00:06:02.037
+00:07:23.648 --> 00:07:26.996
 Si le voisin reçoit des messages mais aucun préfixe,
 vérifie si
 
-00:06:02.037 --> 00:06:05.385
+00:07:26.996 --> 00:07:30.343
 ce réseau est présent exactement avec le masque
 indiqué dans la
 
-00:06:05.385 --> 00:06:05.994
+00:07:30.343 --> 00:07:30.952
 table locale.
 
-00:06:06.350 --> 00:06:10.025
+00:07:31.308 --> 00:07:34.984
 La deuxième maquette ajoute un troisième système
 autonome.
 
-00:06:10.025 --> 00:06:13.205
+00:07:34.984 --> 00:07:38.164
 Le compte rendu utilise O S P F entre les deux
 
-00:06:13.205 --> 00:06:14.940
+00:07:38.164 --> 00:07:39.898
 routeurs de l’A S deux cents.
 
-00:06:14.940 --> 00:06:17.950
+00:07:39.898 --> 00:07:42.909
 Une route apprise par B G P à un bout doit
 
-00:06:17.950 --> 00:06:20.961
+00:07:42.909 --> 00:07:45.919
 être retrouvée dans le réseau interne, puis annoncée
 au bord opposé
 
-00:06:20.961 --> 00:06:22.329
+00:07:45.919 --> 00:07:47.288
 selon les règles de l’exercice.
 
-00:06:22.329 --> 00:06:26.422
+00:07:47.288 --> 00:07:51.380
 Vérifie d’abord chaque voisin séparément, ensuite suis
 un préfixe précis de
 
-00:06:26.422 --> 00:06:27.538
+00:07:51.380 --> 00:07:52.496
 bout en bout.
 
-00:06:27.538 --> 00:06:31.104
+00:07:52.496 --> 00:07:56.062
 Évite une redistribution globale sur un vrai réseau.
 
-00:06:31.104 --> 00:06:34.994
+00:07:56.062 --> 00:07:59.952
 En laboratoire, nomme les préfixes que tu veux
 échanger et contrôle
 
-00:06:34.994 --> 00:06:36.055
+00:07:59.952 --> 00:08:01.013
 d’où ils proviennent.
 
-00:06:36.392 --> 00:06:39.860
+00:08:01.350 --> 00:08:04.827
 Le schéma montre que R deux et R quatre sont dans
 
-00:06:39.860 --> 00:06:41.121
+00:08:04.827 --> 00:08:06.092
 le même système autonome.
 
-00:06:41.121 --> 00:06:44.604
+00:08:06.092 --> 00:08:09.585
 Le trajet interne du T D passe par O S P
 
-00:06:44.604 --> 00:06:44.920
+00:08:09.585 --> 00:08:09.903
 F.
 
-00:06:44.920 --> 00:06:47.939
-Une route apprise sur le bord gauche peut donc
-apparaître sous
+00:08:09.903 --> 00:08:12.944
+Lorsqu’un routeur apprend une route via B G P puis la
 
-00:06:47.939 --> 00:06:50.957
-une forme externe dans O S P F en arrivant à
+00:08:12.944 --> 00:08:15.985
+fait entrer dans O S P F, il devient un A
 
-00:06:50.957 --> 00:06:51.231
-droite.
+00:08:15.985 --> 00:08:16.815
+S B R.
 
-00:06:51.231 --> 00:06:55.141
+00:08:16.815 --> 00:08:20.111
+C’est un routeur qui injecte des routes externes.
+
+00:08:20.111 --> 00:08:23.189
+Dans la maquette, la route apprise à gauche peut donc
+apparaître
+
+00:08:23.189 --> 00:08:26.267
+sous une forme externe dans O S P F en arrivant
+
+00:08:26.267 --> 00:08:26.827
+à droite.
+
+00:08:26.827 --> 00:08:30.747
 À droite, vérifie ensuite ce que R quatre annonce à
 son
 
-00:06:55.141 --> 00:06:55.851
+00:08:30.747 --> 00:08:31.459
 voisin extérieur.
 
-00:06:55.851 --> 00:06:59.409
+00:08:31.459 --> 00:08:35.024
 Analyse un préfixe à la fois : regarde son origine,
 son
 
-00:06:59.409 --> 00:07:01.673
+00:08:35.024 --> 00:08:37.293
 prochain saut et le chemin de retour.

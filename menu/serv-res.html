@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -111,6 +112,33 @@
 <p><strong>SMTP</strong> transporte le mail vers un serveur. <strong>POP</strong> et <strong>IMAP</strong> servent à consulter la boîte. POP permet de récupérer les messages. IMAP permet de garder dossiers et état synchronisés côté serveur. Le TP utilise deux clients avec POP et SMTP. Il faut que la configuration IP et la résolution DNS fonctionnent avant le test du mail.</p>
 <figure><img loading="lazy" src="../assets/revisions/serv-res/schemas/messagerie.png" alt="Dans le TP4, DHCP fournit les réglages, DNS résout le serveur, SMTP envoie les messages et POP les récupère."><figcaption>Vérifie chaque service dans cet ordre lorsque l’envoi ou la lecture échouent.</figcaption></figure></div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>CNAME</strong> · Canonical Name</dt><dd>Enregistrement DNS qui déclare un alias. <br><strong>Exemple.</strong> Le nom www.exemple.test peut être un alias de serveur.exemple.test.</dd></div>
+    <div><dt><strong>DHCP</strong> · Dynamic Host Configuration Protocol</dt><dd>Distribution automatique de la configuration IP. <br><strong>Exemple.</strong> Un PC obtient une adresse, un masque, une passerelle et souvent un serveur DNS.</dd></div>
+    <div><dt><strong>DNS</strong> · Domain Name System</dt><dd>Système qui associe des noms à des informations comme une adresse IP. <br><strong>Exemple.</strong> Un poste demande quelle adresse utiliser pour atteindre www.exemple.test.</dd></div>
+    <div><dt><strong>FTP</strong> · File Transfer Protocol</dt><dd>Protocole de transfert de fichiers. <br><strong>Exemple.</strong> Un client récupère un fichier sur un serveur FTP du TP.</dd></div>
+    <div><dt><strong>HTTP</strong> · HyperText Transfer Protocol</dt><dd>Protocole de requêtes et réponses du Web. <br><strong>Exemple.</strong> Le navigateur demande une page et le serveur renvoie son contenu et un statut.</dd></div>
+    <div><dt><strong>HTTPS</strong> · HyperText Transfer Protocol Secure</dt><dd>HTTP protégé par TLS. <br><strong>Exemple.</strong> Une page de connexion HTTPS protège les données échangées avec le serveur.</dd></div>
+    <div><dt><strong>ICMP</strong> · Internet Control Message Protocol</dt><dd>Protocole de messages de contrôle IP. <br><strong>Exemple.</strong> Le ping envoie une requête Echo et attend une réponse Echo.</dd></div>
+    <div><dt><strong>IMAP</strong> · Internet Message Access Protocol</dt><dd>Protocole d’accès synchronisé aux messages d’une boîte mail. <br><strong>Exemple.</strong> Un message lu sur ton téléphone apparaît aussi comme lu sur ton ordinateur.</dd></div>
+    <div><dt><strong>MX</strong> · Mail Exchange</dt><dd>Enregistrement DNS qui désigne un serveur de messagerie. <br><strong>Exemple.</strong> Un serveur l’utilise pour savoir à quelle machine remettre les e-mails d’un domaine.</dd></div>
+    <div><dt><strong>NS</strong> · Name Server</dt><dd>Enregistrement DNS qui désigne un serveur de noms. <br><strong>Exemple.</strong> Une délégation indique quels serveurs répondent pour la zone enfant.</dd></div>
+    <div><dt><strong>POP3</strong> · Post Office Protocol version 3</dt><dd>Protocole de relève d’une boîte mail. <br><strong>Exemple.</strong> Un client POP3 récupère les messages du serveur de messagerie.</dd></div>
+    <div><dt><strong>PTR</strong> · Pointer</dt><dd>Enregistrement DNS de résolution inverse. <br><strong>Exemple.</strong> Une requête inverse part d’une adresse IP pour retrouver le nom associé.</dd></div>
+    <div><dt><strong>SFTP</strong> · SSH File Transfer Protocol</dt><dd>Transfert de fichiers via SSH. <br><strong>Exemple.</strong> Un client envoie un fichier sur un serveur avec une session chiffrée.</dd></div>
+    <div><dt><strong>SMTP</strong> · Simple Mail Transfer Protocol</dt><dd>Protocole d’envoi et de relais du courrier. <br><strong>Exemple.</strong> Le serveur remet un message au serveur de messagerie du destinataire.</dd></div>
+    <div><dt><strong>SOA</strong> · Start of Authority</dt><dd>Enregistrement qui donne les paramètres principaux d’une zone DNS. <br><strong>Exemple.</strong> Son numéro de série indique aux secondaires qu’une nouvelle version existe.</dd></div>
+    <div><dt><strong>SSH</strong> · Secure Shell</dt><dd>Connexion distante chiffrée. <br><strong>Exemple.</strong> Depuis ton poste, tu ouvres un terminal distant sans exposer les commandes en clair.</dd></div>
+    <div><dt><strong>TCP</strong> · Transmission Control Protocol</dt><dd>Transport des données avec suivi des échanges et retransmission. <br><strong>Exemple.</strong> Les routeurs BGP établissent une session TCP avant d’échanger leurs annonces.</dd></div>
+    <div><dt><strong>TLS</strong> · Transport Layer Security</dt><dd>Protocole de protection d’une communication. <br><strong>Exemple.</strong> HTTPS utilise TLS pour protéger l’échange entre navigateur et serveur.</dd></div>
+    <div><dt><strong>TTL</strong> · Time To Live</dt><dd>Durée pendant laquelle une réponse DNS peut rester en cache. <br><strong>Exemple.</strong> Un TTL de 300 secondes autorise cinq minutes de cache.</dd></div>
+    <div><dt><strong>TTL</strong> · Time To Live</dt><dd>Nombre de sauts IP restant avant abandon. <br><strong>Exemple.</strong> Chaque routeur diminue le TTL du paquet avant de le transmettre.</dd></div>
+    <div><dt><strong>UDP</strong> · User Datagram Protocol</dt><dd>Transport par datagrammes sans établissement de connexion. <br><strong>Exemple.</strong> Un client peut envoyer une requête DNS classique dans un datagramme UDP.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <ul><li><a href="#srv-dhcp">TD1 · Refaire le contrôle du bail DHCP</a></li>

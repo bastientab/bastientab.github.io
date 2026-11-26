@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -98,6 +99,21 @@
 <p>Les VLAN séparent les diffusions de niveau 2. Sur un montage avec un seul lien physique entre switch et routeur, un trunk transporte plusieurs VLAN. Le routeur peut disposer d’une sous-interface et d’une adresse de passerelle par VLAN. Pour joindre un réseau distant, il peut ensuite annoncer les préfixes via RIP ou EIGRP dans la maquette.</p>
 <p>Vérifie dans cet ordre le VLAN du port de poste, le VLAN autorisé sur le trunk, le tag de la sous-interface et son adresse, puis les routes. Un poste peut joindre sa passerelle et échouer plus loin. Ce premier résultat localise déjà la panne au-delà de son VLAN.</p></div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>DUAL</strong> · Diffusing Update Algorithm</dt><dd>Algorithme de choix et de recalcul des routes EIGRP. <br><strong>Exemple.</strong> Une route de secours admissible peut prendre le relais quand le lien principal tombe.</dd></div>
+    <div><dt><strong>EIGRP</strong> · Enhanced Interior Gateway Routing Protocol</dt><dd>Protocole de routage interne qui évalue les chemins annoncés par ses voisins. <br><strong>Exemple.</strong> Il compare notamment le débit minimal et le délai total de deux trajets.</dd></div>
+    <div><dt><strong>ICMP</strong> · Internet Control Message Protocol</dt><dd>Protocole de messages de contrôle IP. <br><strong>Exemple.</strong> Le ping envoie une requête Echo et attend une réponse Echo.</dd></div>
+    <div><dt><strong>IP</strong> · Internet Protocol</dt><dd>Protocole d’adressage et d’acheminement des paquets. <br><strong>Exemple.</strong> Le routeur lit l’IP de destination pour choisir où envoyer le paquet.</dd></div>
+    <div><dt><strong>IPv4</strong> · Internet Protocol version 4</dt><dd>Version d’IP à adresses de 32 bits. <br><strong>Exemple.</strong> 192.168.20.1 est une adresse IPv4.</dd></div>
+    <div><dt><strong>LAN</strong> · Local Area Network</dt><dd>Réseau local. <br><strong>Exemple.</strong> Le réseau des PC de la salle est un LAN.</dd></div>
+    <div><dt><strong>RIP</strong> · Routing Information Protocol</dt><dd>Protocole de routage qui compte les sauts. <br><strong>Exemple.</strong> Une route à deux sauts est préférée à une route à trois sauts.</dd></div>
+    <div><dt><strong>TTL</strong> · Time To Live</dt><dd>Nombre de sauts IP restant avant abandon. <br><strong>Exemple.</strong> Chaque routeur diminue le TTL du paquet avant de le transmettre.</dd></div>
+    <div><dt><strong>VLAN</strong> · Virtual Local Area Network</dt><dd>Réseau local logique séparé sur une infrastructure partagée. <br><strong>Exemple.</strong> Un switch sépare les postes du personnel et ceux des invités dans deux VLAN.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <ul><li><a href="#i2-tp1">TP1 · Tester le transfert IP et observer les deux interfaces</a></li>

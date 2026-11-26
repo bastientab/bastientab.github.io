@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -101,6 +102,18 @@
 <p>Une <strong>image</strong> fournit les fichiers et réglages de démarrage. Le <strong>conteneur</strong> est une instance, même quand il est arrêté. Un <strong>volume</strong> stocke l’état séparément. Quand la tâche demande la persistance, recrée le conteneur et rattache le volume pour contrôler que les données reviennent.</p>
 <p>Publier un port associe un port de l’hôte à un port du conteneur. La commande <code>docker run -d -p 127.0.0.1:8080:80 nginx</code> rend le service accessible depuis la machine hôte sur 8080 dans un exemple local. Vérifie le mappage avec <code>docker ps</code>, puis envoie une requête HTTP au port publié.</p></div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>GID</strong> · Group ID</dt><dd>Identifiant numérique d’un groupe sous Unix. <br><strong>Exemple.</strong> Le système vérifie le groupe numérique associé à un fichier avant d’appliquer ses droits.</dd></div>
+    <div><dt><strong>HTTP</strong> · HyperText Transfer Protocol</dt><dd>Protocole de requêtes et réponses du Web. <br><strong>Exemple.</strong> Le navigateur demande une page et le serveur renvoie son contenu et un statut.</dd></div>
+    <div><dt><strong>NTFS</strong> · New Technology File System</dt><dd>Système de fichiers Windows. <br><strong>Exemple.</strong> Sur un dossier NTFS, on peut attribuer la lecture à un groupe précis.</dd></div>
+    <div><dt><strong>RAID</strong> · Redundant Array of Independent Disks</dt><dd>Assemblage de disques pour obtenir des propriétés choisies. <br><strong>Exemple.</strong> En RAID 1, deux disques conservent une copie des mêmes données.</dd></div>
+    <div><dt><strong>UID</strong> · User ID</dt><dd>Identifiant numérique d’un utilisateur sous Unix. <br><strong>Exemple.</strong> Linux associe les permissions du propriétaire à l’UID du fichier.</dd></div>
+    <div><dt><strong>VM</strong> · Virtual Machine</dt><dd>Ordinateur simulé par un hyperviseur. <br><strong>Exemple.</strong> On peut lancer un serveur Linux en VM sur le poste de TP.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <ul><li><a href="#adm-windows">TD1 · Tester des permissions Windows avec deux comptes</a></li>

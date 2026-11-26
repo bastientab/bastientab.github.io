@@ -72,6 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -85,7 +86,7 @@
   <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
 <div class="c-block"><h3>Lire l’adressage IPv6 et les découvertes de voisins</h3>
 <p>Avec <code>ip -6 addr</code> distingue les adresses <code>fe80::</code> des adresses configurées avec un autre préfixe. Une adresse link-local n’est pas routée vers un autre lien.</p>
-<p>NDP comporte notamment RS/RA pour les routeurs et NS/NA pour les voisins. Un hôte peut fabriquer une adresse avec SLAAC si l’annonce fournit un préfixe et le drapeau d’autoconfiguration attendu. Il vérifie aussi l’absence de doublon avec DAD.</p>
+<p>NDP (découverte des voisins et routeurs en IPv6) comporte notamment RS/RA pour les routeurs et NS/NA pour les voisins. Un hôte peut fabriquer une adresse avec SLAAC (autoconfiguration d’une adresse IPv6) si l’annonce fournit un préfixe et le drapeau d’autoconfiguration attendu. Il vérifie aussi l’absence de doublon avec DAD (vérification de l’unicité d’une adresse IPv6).</p>
 <figure><img loading="lazy" src="../assets/revisions/sae21/schemas/demarche.png" alt="Client VLAN 200, Diffuse DHCPDISCOVER, N’a pas encore d’adresse → Passerelle .200, Relaye vers le serveur, Indique le réseau du client → Serveur DHCP, Choisit le pool VLAN 200, Renvoie l’offre via le relais"><figcaption>Le pool doit correspondre au VLAN du client, même si le serveur est dans un autre VLAN.</figcaption></figure>
 </div>
 <div class="c-block"><h3>Suivre un établissement TCP</h3>
@@ -102,6 +103,28 @@
 <p>Le relais annonce au serveur le réseau d’origine du client, typiquement avec <code>giaddr</code>. Si le routeur sert lui-même DHCP sur ses interfaces de VLAN, configure ses pools locaux sans ajouter un relais vers lui-même.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ACK</strong> · Acknowledgment</dt><dd>Accusé de réception. <br><strong>Exemple.</strong> Après un SYN-ACK, le client envoie un ACK pour confirmer l’établissement TCP.</dd></div>
+    <div><dt><strong>ACL</strong> · Access Control List</dt><dd>Liste de règles d’accès. <br><strong>Exemple.</strong> Sur un routeur, autoriser le réseau admin vers le serveur et refuser le réseau invité.</dd></div>
+    <div><dt><strong>DAD</strong> · Duplicate Address Detection</dt><dd>Vérification de l’unicité d’une adresse IPv6. <br><strong>Exemple.</strong> Un poste teste si son adresse envisagée est déjà utilisée avant de s’en servir.</dd></div>
+    <div><dt><strong>DHCP</strong> · Dynamic Host Configuration Protocol</dt><dd>Distribution automatique de la configuration IP. <br><strong>Exemple.</strong> Un PC obtient une adresse, un masque, une passerelle et souvent un serveur DNS.</dd></div>
+    <div><dt><strong>IPv6</strong> · Internet Protocol version 6</dt><dd>Version d’IP à adresses de 128 bits. <br><strong>Exemple.</strong> 2001:db8::1 est une adresse IPv6 d’exemple.</dd></div>
+    <div><dt><strong>NA</strong> · Neighbor Advertisement</dt><dd>Annonce de voisinage IPv6. <br><strong>Exemple.</strong> Le voisin peut répondre à la sollicitation en donnant son adresse de liaison.</dd></div>
+    <div><dt><strong>NAT</strong> · Network Address Translation</dt><dd>Traduction d’adresses réseau. <br><strong>Exemple.</strong> À la sortie vers Internet, une adresse privée peut être remplacée par l’adresse publique du routeur.</dd></div>
+    <div><dt><strong>NDP</strong> · Neighbor Discovery Protocol</dt><dd>Découverte des voisins et routeurs en IPv6. <br><strong>Exemple.</strong> Un poste demande quelle interface possède une adresse IPv6 locale.</dd></div>
+    <div><dt><strong>NS</strong> · Neighbor Solicitation</dt><dd>Demande de voisinage IPv6. <br><strong>Exemple.</strong> Un poste cherche l’adresse de liaison d’un voisin ou vérifie l’unicité d’une IPv6.</dd></div>
+    <div><dt><strong>PAT</strong> · Port Address Translation</dt><dd>Partage d’une adresse publique par translation de ports. <br><strong>Exemple.</strong> Deux postes sortent avec la même IPv4 publique et des ports distincts.</dd></div>
+    <div><dt><strong>RA</strong> · Router Advertisement</dt><dd>Annonce IPv6 d’un routeur. <br><strong>Exemple.</strong> Le routeur fournit des paramètres comme un préfixe aux postes du lien.</dd></div>
+    <div><dt><strong>SLAAC</strong> · Stateless Address Autoconfiguration</dt><dd>Autoconfiguration d’une adresse IPv6. <br><strong>Exemple.</strong> Un poste construit son adresse à partir du préfixe annoncé par le routeur.</dd></div>
+    <div><dt><strong>SYN</strong> · Synchronize</dt><dd>Drapeau TCP qui initie la synchronisation d’une connexion. <br><strong>Exemple.</strong> Le client envoie SYN, puis le serveur répond SYN-ACK.</dd></div>
+    <div><dt><strong>TCP</strong> · Transmission Control Protocol</dt><dd>Transport des données avec suivi des échanges et retransmission. <br><strong>Exemple.</strong> Les routeurs BGP établissent une session TCP avant d’échanger leurs annonces.</dd></div>
+    <div><dt><strong>UDP</strong> · User Datagram Protocol</dt><dd>Transport par datagrammes sans établissement de connexion. <br><strong>Exemple.</strong> Un client peut envoyer une requête DNS classique dans un datagramme UDP.</dd></div>
+    <div><dt><strong>VLAN</strong> · Virtual Local Area Network</dt><dd>Réseau local logique séparé sur une infrastructure partagée. <br><strong>Exemple.</strong> Un switch sépare les postes du personnel et ceux des invités dans deux VLAN.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <p>Le TD3 original sur iptables est téléchargeable. Les questions des TP1 à TP5 sont reformulées depuis les sujets intégrés aux comptes rendus. Les adresses de démonstration sont distinctes des relevés du laboratoire.</p>

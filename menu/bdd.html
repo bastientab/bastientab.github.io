@@ -72,6 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -101,6 +102,16 @@
 <p><code>db.films.find({ duree: { $gte: 90 } }, { titre: 1, _id: 0 })</code> sélectionne des documents puis limite le résultat. <code>updateOne</code> avec <code>$set</code> modifie des champs. Un pipeline <code>aggregate</code> applique des étapes comme <code>$match</code> puis <code>$group</code>.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ACID</strong> · Atomicity, Consistency, Isolation, Durability</dt><dd>Quatre propriétés courantes d’une transaction de base de données. <br><strong>Exemple.</strong> Un virement est validé avec ses deux écritures ou annulé entièrement.</dd></div>
+    <div><dt><strong>BSON</strong> · Binary JSON</dt><dd>Format binaire de documents employé par MongoDB. <br><strong>Exemple.</strong> Un document MongoDB peut conserver une date comme un type dédié.</dd></div>
+    <div><dt><strong>SGBD</strong> · Système de gestion de base de données</dt><dd>Logiciel qui stocke les données et traite les requêtes. <br><strong>Exemple.</strong> MySQL gère les tables et traite les requêtes SQL.</dd></div>
+    <div><dt><strong>SQL</strong> · Structured Query Language</dt><dd>Langage de requête pour une base relationnelle. <br><strong>Exemple.</strong> SELECT permet de lire les titres des films d’une catégorie.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <p>Les deux parties du cours original sont téléchargeables. Les questions SQL reprennent les travaux BikeStores et Sakila disponibles sous forme de solutions. L’exemple MongoDB est un complément du cours.</p>

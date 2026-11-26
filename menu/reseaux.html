@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -119,6 +120,28 @@
   <p>Le client sans adresse diffuse un <strong>Discover</strong>. Le serveur propose une adresse par <strong>Offer</strong>. Le client sélectionne l’offre dans <strong>Request</strong>, et <strong>Ack</strong> confirme le bail et les paramètres. Dans la capture, vérifie les adresses de chaque réponse. Leur mode d’envoi peut dépendre du bit de diffusion et du contexte. Un renouvellement de bail peut aussi montrer un échange plus court.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ACK</strong> · Acknowledgment</dt><dd>Accusé de réception. <br><strong>Exemple.</strong> Après un SYN-ACK, le client envoie un ACK pour confirmer l’établissement TCP.</dd></div>
+    <div><dt><strong>ARP</strong> · Address Resolution Protocol</dt><dd>Recherche de l’adresse MAC correspondant à une IPv4 locale. <br><strong>Exemple.</strong> Pour joindre sa passerelle IPv4, le PC demande quelle adresse MAC lui correspond.</dd></div>
+    <div><dt><strong>DHCP</strong> · Dynamic Host Configuration Protocol</dt><dd>Distribution automatique de la configuration IP. <br><strong>Exemple.</strong> Un PC obtient une adresse, un masque, une passerelle et souvent un serveur DNS.</dd></div>
+    <div><dt><strong>DNS</strong> · Domain Name System</dt><dd>Système qui associe des noms à des informations comme une adresse IP. <br><strong>Exemple.</strong> Un poste demande quelle adresse utiliser pour atteindre www.exemple.test.</dd></div>
+    <div><dt><strong>FCS</strong> · Frame Check Sequence</dt><dd>Champ de vérification d’une trame. <br><strong>Exemple.</strong> Un switch peut rejeter une trame Ethernet dont la vérification échoue.</dd></div>
+    <div><dt><strong>FTP</strong> · File Transfer Protocol</dt><dd>Protocole de transfert de fichiers. <br><strong>Exemple.</strong> Un client récupère un fichier sur un serveur FTP du TP.</dd></div>
+    <div><dt><strong>ICMP</strong> · Internet Control Message Protocol</dt><dd>Protocole de messages de contrôle IP. <br><strong>Exemple.</strong> Le ping envoie une requête Echo et attend une réponse Echo.</dd></div>
+    <div><dt><strong>IP</strong> · Internet Protocol</dt><dd>Protocole d’adressage et d’acheminement des paquets. <br><strong>Exemple.</strong> Le routeur lit l’IP de destination pour choisir où envoyer le paquet.</dd></div>
+    <div><dt><strong>IPv4</strong> · Internet Protocol version 4</dt><dd>Version d’IP à adresses de 32 bits. <br><strong>Exemple.</strong> 192.168.20.1 est une adresse IPv4.</dd></div>
+    <div><dt><strong>MAC</strong> · Media Access Control</dt><dd>Identifiant de couche liaison d’une interface dans ce cours. <br><strong>Exemple.</strong> Le switch utilise la MAC de destination pour envoyer une trame vers le bon port.</dd></div>
+    <div><dt><strong>OSI</strong> · Open Systems Interconnection</dt><dd>Modèle qui répartit les fonctions réseau en couches. <br><strong>Exemple.</strong> Ethernet intervient en couche liaison alors qu’IP intervient en couche réseau.</dd></div>
+    <div><dt><strong>SYN</strong> · Synchronize</dt><dd>Drapeau TCP qui initie la synchronisation d’une connexion. <br><strong>Exemple.</strong> Le client envoie SYN, puis le serveur répond SYN-ACK.</dd></div>
+    <div><dt><strong>TCP</strong> · Transmission Control Protocol</dt><dd>Transport des données avec suivi des échanges et retransmission. <br><strong>Exemple.</strong> Les routeurs BGP établissent une session TCP avant d’échanger leurs annonces.</dd></div>
+    <div><dt><strong>TTL</strong> · Time To Live</dt><dd>Nombre de sauts IP restant avant abandon. <br><strong>Exemple.</strong> Chaque routeur diminue le TTL du paquet avant de le transmettre.</dd></div>
+    <div><dt><strong>UDP</strong> · User Datagram Protocol</dt><dd>Transport par datagrammes sans établissement de connexion. <br><strong>Exemple.</strong> Un client peut envoyer une requête DNS classique dans un datagramme UDP.</dd></div>
+    <div><dt><strong>VM</strong> · Virtual Machine</dt><dd>Ordinateur simulé par un hyperviseur. <br><strong>Exemple.</strong> On peut lancer un serveur Linux en VM sur le poste de TP.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
   <ul>

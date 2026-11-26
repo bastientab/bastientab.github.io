@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo</a></li>
@@ -128,7 +129,7 @@
       <li>Le <strong>secondaire</strong> obtient une copie et répond lui aussi avec autorité. Il peut récupérer toute la zone (<code>AXFR</code>) ou seulement les changements disponibles (<code>IXFR</code>).</li>
       <li>Le <strong>relais</strong> transmet les requêtes à un autre serveur. Dans la dernière partie du TP, tu transformes le secondaire en relais pour <code>secu.rt</code>.</li>
     </ul>
-    <p><strong>TSIG</strong> protège un échange entre deux machines qui partagent un secret. Chacune peut calculer ou vérifier un code d’authentification HMAC. Le destinataire vérifie l’émetteur et l’intégrité du message. Le contenu reste lisible sur le réseau.</p>
+    <p><strong>TSIG</strong> (authentification de messages DNS par secret partagé) protège un échange entre deux machines qui partagent un secret. Chacune peut calculer ou vérifier un code d’authentification HMAC. Le destinataire vérifie l’émetteur et l’intégrité du message. Le contenu reste lisible sur le réseau.</p>
     <details class="acc"><summary>Aller plus loin sur le transfert signé</summary><div class="acc-body">
       <p>Le nom de clé et l’algorithme doivent correspondre des deux côtés, ainsi que le secret lui-même. Les horloges doivent être suffisamment proches pour que le contrôle de la fenêtre de temps réussisse. Dans ton TP, le secret est généré localement et transféré hors du DNS. TKEY est un mécanisme distinct de gestion ou d’établissement de clés, selon le mode utilisé.</p>
     </div></details>
@@ -157,17 +158,44 @@
       <li>Dans le modèle du TP, la <strong>KSK</strong> authentifie le jeu <code>DNSKEY</code> où figure la <strong>ZSK</strong>. La ZSK sert ensuite à vérifier les autres jeux de données signés.</li>
       <li>Il répète cette logique de délégation jusqu’à la zone concernée. Pour une zone privée comme <code>secu.rt</code>, le TP installe une ancre locale.</li>
     </ol>
-    <p><code>dig +dnssec</code> demande les données DNSSEC via le bit <strong>DO</strong>. Un <code>RRSIG</code> visible indique une signature reçue. Le bit <strong>AD</strong> dans la réponse indique que le résolveur de confiance considère les données comme authentifiées.</p>
+    <p><code>dig +dnssec</code> demande les données DNSSEC via le bit <strong>DO</strong>. Un <code>RRSIG</code> (enregistrement qui porte la signature d’un ensemble DNS) visible indique une signature reçue. Le bit <strong>AD</strong> dans la réponse indique que le résolveur de confiance considère les données comme authentifiées.</p>
     <details class="acc"><summary>Aller plus loin sur les résultats de validation</summary><div class="acc-body">
-      <p><em>Secure</em> indique qu’une chaîne et des signatures ont permis de valider les données. <em>Insecure</em> peut correspondre à une délégation dont l’absence de DS a été authentifiée. <em>Bogus</em> indique un problème de validation alors que les données devraient être sûres. L’absence d’AD seule ne permet pas de trancher entre ces cas. Une réponse <code>SERVFAIL</code> demande de vérifier aussi la connectivité, l’horloge et les journaux.</p>
+      <p><em>Secure</em> indique qu’une chaîne et des signatures ont permis de valider les données. <em>Insecure</em> peut correspondre à une délégation dont l’absence de DS (enregistrement de la zone parente qui identifie une clé DNSSEC de la zone enfant) a été authentifiée. <em>Bogus</em> indique un problème de validation alors que les données devraient être sûres. L’absence d’AD seule ne permet pas de trancher entre ces cas. Une réponse <code>SERVFAIL</code> demande de vérifier aussi la connectivité, l’horloge et les journaux.</p>
     </div></details>
   </div>
   <div class="c-block">
     <h3>7. Vérifier une absence</h3>
     <p><strong>NXDOMAIN</strong> signifie que le nom n’existe pas. Une réponse <strong>NODATA</strong> signifie que le nom existe mais qu’il n’a pas le type demandé, par exemple un hôte qui a un <code>A</code> mais aucun <code>AAAA</code>.</p>
-    <p><strong>NSEC</strong> prouve l’absence en indiquant le nom suivant dans l’ordre de la zone et les types présents au nom courant. <strong>NSEC3</strong> utilise un ordre fondé sur des empreintes de noms. Le résolveur contrôle les preuves et leurs signatures. Des noms prévisibles restent devinables par comparaison de hachages.</p>
+    <p><strong>NSEC</strong> prouve l’absence en indiquant le nom suivant dans l’ordre de la zone et les types présents au nom courant. <strong>NSEC3</strong> (preuve DNSSEC d’absence fondée sur des noms hachés) utilise un ordre fondé sur des empreintes de noms. Le résolveur contrôle les preuves et leurs signatures. Des noms prévisibles restent devinables par comparaison de hachages.</p>
   </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>AD</strong> · Authentic Data</dt><dd>Indicateur de validation DNSSEC. <br><strong>Exemple.</strong> Un résolveur qui valide les données peut renvoyer le drapeau AD à son client.</dd></div>
+    <div><dt><strong>CNAME</strong> · Canonical Name</dt><dd>Enregistrement DNS qui déclare un alias. <br><strong>Exemple.</strong> Le nom www.exemple.test peut être un alias de serveur.exemple.test.</dd></div>
+    <div><dt><strong>DNS</strong> · Domain Name System</dt><dd>Système qui associe des noms à des informations comme une adresse IP. <br><strong>Exemple.</strong> Un poste demande quelle adresse utiliser pour atteindre www.exemple.test.</dd></div>
+    <div><dt><strong>DNSKEY</strong> · DNS Key</dt><dd>Enregistrement qui publie une clé publique DNSSEC. <br><strong>Exemple.</strong> Le résolveur récupère la DNSKEY de la zone pour vérifier une signature.</dd></div>
+    <div><dt><strong>DNSSEC</strong> · Domain Name System Security Extensions</dt><dd>Extensions qui permettent de vérifier l’origine et l’intégrité des réponses DNS. <br><strong>Exemple.</strong> Le résolveur vérifie la signature de l’enregistrement demandé.</dd></div>
+    <div><dt><strong>DO</strong> · DNSSEC OK</dt><dd>Indicateur par lequel le client demande des données DNSSEC. <br><strong>Exemple.</strong> dig +dnssec positionne le bit DO pour demander notamment les signatures.</dd></div>
+    <div><dt><strong>DS</strong> · Delegation Signer</dt><dd>Enregistrement de la zone parente qui identifie une clé DNSSEC de la zone enfant. <br><strong>Exemple.</strong> Le résolveur compare le DS reçu du parent à une DNSKEY de la zone enfant.</dd></div>
+    <div><dt><strong>HMAC</strong> · Hash-Based Message Authentication Code</dt><dd>Preuve d’intégrité construite avec un secret partagé. <br><strong>Exemple.</strong> Le serveur DNS secondaire vérifie un HMAC dans un échange TSIG.</dd></div>
+    <div><dt><strong>KSK</strong> · Key Signing Key</dt><dd>Clé de signature de l’ensemble DNSKEY. <br><strong>Exemple.</strong> Le DS publié chez le parent correspond couramment à la KSK de la zone.</dd></div>
+    <div><dt><strong>MX</strong> · Mail Exchange</dt><dd>Enregistrement DNS qui désigne un serveur de messagerie. <br><strong>Exemple.</strong> Un serveur l’utilise pour savoir à quelle machine remettre les e-mails d’un domaine.</dd></div>
+    <div><dt><strong>NS</strong> · Name Server</dt><dd>Enregistrement DNS qui désigne un serveur de noms. <br><strong>Exemple.</strong> Une délégation indique quels serveurs répondent pour la zone enfant.</dd></div>
+    <div><dt><strong>NSEC</strong> · Next Secure</dt><dd>Preuve signée par DNSSEC qu’un nom ou un type est absent. <br><strong>Exemple.</strong> Le résolveur valide une réponse négative en examinant l’intervalle couvert par l’enregistrement.</dd></div>
+    <div><dt><strong>NSEC3</strong> · Next Secure version 3</dt><dd>Preuve DNSSEC d’absence fondée sur des noms hachés. <br><strong>Exemple.</strong> Le résolveur valide une absence à partir d’un intervalle de valeurs hachées.</dd></div>
+    <div><dt><strong>PTR</strong> · Pointer</dt><dd>Enregistrement DNS de résolution inverse. <br><strong>Exemple.</strong> Une requête inverse part d’une adresse IP pour retrouver le nom associé.</dd></div>
+    <div><dt><strong>RRSIG</strong> · Resource Record Signature</dt><dd>Enregistrement qui porte la signature d’un ensemble DNS. <br><strong>Exemple.</strong> Le résolveur contrôle que la signature du groupe d’enregistrements est valide.</dd></div>
+    <div><dt><strong>SOA</strong> · Start of Authority</dt><dd>Enregistrement qui donne les paramètres principaux d’une zone DNS. <br><strong>Exemple.</strong> Son numéro de série indique aux secondaires qu’une nouvelle version existe.</dd></div>
+    <div><dt><strong>TCP</strong> · Transmission Control Protocol</dt><dd>Transport des données avec suivi des échanges et retransmission. <br><strong>Exemple.</strong> Les routeurs BGP établissent une session TCP avant d’échanger leurs annonces.</dd></div>
+    <div><dt><strong>TSIG</strong> · Transaction Signature</dt><dd>Authentification de messages DNS par secret partagé. <br><strong>Exemple.</strong> Un serveur secondaire vérifie la signature de la demande de transfert de zone.</dd></div>
+    <div><dt><strong>TTL</strong> · Time To Live</dt><dd>Durée pendant laquelle une réponse DNS peut rester en cache. <br><strong>Exemple.</strong> Un TTL de 300 secondes autorise cinq minutes de cache.</dd></div>
+    <div><dt><strong>UDP</strong> · User Datagram Protocol</dt><dd>Transport par datagrammes sans établissement de connexion. <br><strong>Exemple.</strong> Un client peut envoyer une requête DNS classique dans un datagramme UDP.</dd></div>
+    <div><dt><strong>ZSK</strong> · Zone Signing Key</dt><dd>Clé utilisée pour signer les données d’une zone DNS. <br><strong>Exemple.</strong> La ZSK signe par exemple le groupe d’enregistrements A du nom www.</dd></div>
+        </dl>
+      </section>
+
 
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

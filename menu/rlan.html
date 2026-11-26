@@ -72,6 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -81,10 +82,10 @@
       <section class="c-section" id="cours" aria-labelledby="cours-title">
   <h2 class="c-h2" id="cours-title">Comprendre le cours</h2>
 <div class="c-block"><h3>1. Relier une station à un réseau Wi-Fi</h3>
-<p>Une <strong>station</strong> est un appareil équipé d’une interface Wi-Fi. Un <strong>point d’accès</strong> relie couramment les stations à un réseau de distribution, souvent Ethernet. Le <strong>SSID</strong> est le nom du réseau publié. Le <strong>BSSID</strong> identifie une cellule radio en particulier. On peut trouver le même SSID sur plusieurs points d’accès, avec des BSSID différents.</p>
+<p>Une <strong>station</strong> est un appareil équipé d’une interface Wi-Fi, par exemple ton téléphone. Le <strong>point d’accès</strong>, ou borne, la relie au réseau de distribution, souvent Ethernet. Le <strong>SSID</strong> est le nom que tu choisis dans la liste Wi-Fi. Le <strong>BSSID</strong> identifie la cellule radio à laquelle tu es connecté. Deux bornes de la fac peuvent afficher le même nom Eduroam et avoir chacune son BSSID.</p>
 <p>Pour rejoindre un réseau, la station découvre des points d’accès par les balises ou en interrogeant les réseaux disponibles. Elle suit ensuite les échanges de gestion adaptés à la sécurité et s’associe. L’association radio et l’obtention d’une adresse IP sont deux vérifications différentes.</p></div>
 <div class="c-block"><h3>2. Comprendre pourquoi le canal compte</h3>
-<p>Le médium radio est partagé. Avec <strong>CSMA/CA</strong>, les stations observent le canal et attendent selon les règles d’accès avant d’émettre. Les acquittements aident à vérifier si des trames unicast sont arrivées. Des stations éloignées peuvent entendre le point d’accès sans s’entendre entre elles, ce qui peut causer des collisions au récepteur.</p>
+<p>Plusieurs appareils partagent le même canal radio. Avec <strong>CSMA/CA</strong>, chaque appareil écoute le canal et attend son tour avant d’émettre pour réduire le risque de collision. Pour certaines transmissions vers un appareil précis, celui-ci confirme la réception en renvoyant un <strong>ACK</strong>, un accusé de réception. Deux appareils éloignés peuvent entendre la même borne sans s’entendre entre eux, ce qui peut causer des collisions à la borne.</p>
 <p>Un canal définit une partie de spectre. Pour déployer un point d’accès, vérifie les canaux voisins, la largeur et la qualité reçue. Observe séparément un problème de portée, d’interférences et de charge. Une mesure proche du point d’accès sert de référence avant de te déplacer.</p></div>
 <div class="c-block"><h3>3. Lire les trames et leurs adresses</h3>
 <p>Les trames de <strong>gestion</strong> servent à organiser le réseau, comme les balises et l’association. Les trames de <strong>contrôle</strong> accompagnent l’accès au support, comme un ACK. Les trames de <strong>données</strong> peuvent transporter le trafic utile. Un en-tête Radiotap visible dans une capture décrit des métadonnées de réception selon le matériel et le pilote.</p>
@@ -94,6 +95,24 @@
 <p>Un <strong>bridge</strong> Linux transmet des trames de couche 2 entre interfaces. Le routage transmet des paquets entre réseaux IP. En test, vérifie d’abord si tu observes une trame sur le pont et une réponse du voisin. Si la destination doit être routée, vérifie le masque et le prochain saut.</p>
 <p>La sécurité radio protège l’authentification et les échanges de données. La protection des trames de gestion peut aussi empêcher la falsification de certaines trames, notamment les désauthentifications quand cette protection a été négociée. En TP de capture, distingue une perte de liaison, une désassociation et un problème de service IP.</p></div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ACK</strong> · Acknowledgment</dt><dd>Acquittement de réception d’une trame Wi-Fi. <br><strong>Exemple.</strong> Après une trame de données unicast, la borne peut confirmer sa réception avec une trame ACK.</dd></div>
+    <div><dt><strong>ARP</strong> · Address Resolution Protocol</dt><dd>Recherche de l’adresse MAC correspondant à une IPv4 locale. <br><strong>Exemple.</strong> Pour joindre sa passerelle IPv4, le PC demande quelle adresse MAC lui correspond.</dd></div>
+    <div><dt><strong>BSSID</strong> · Basic Service Set Identifier</dt><dd>Identifiant d’une cellule Wi-Fi. <br><strong>Exemple.</strong> Deux bornes du même Wi-Fi peuvent avoir le même SSID et des BSSID différents.</dd></div>
+    <div><dt><strong>CSMA/CA</strong> · Carrier Sense Multiple Access with Collision Avoidance</dt><dd>Partage d’un canal avec écoute et attente avant émission. <br><strong>Exemple.</strong> En Wi-Fi, une station écoute le canal et attend avant de transmettre.</dd></div>
+    <div><dt><strong>DS</strong> · Distribution System</dt><dd>Réseau de distribution auquel le point d’accès est relié. <br><strong>Exemple.</strong> To DS indique qu’une trame part d’une station vers le réseau de distribution.</dd></div>
+    <div><dt><strong>ICMP</strong> · Internet Control Message Protocol</dt><dd>Protocole de messages de contrôle IP. <br><strong>Exemple.</strong> Le ping envoie une requête Echo et attend une réponse Echo.</dd></div>
+    <div><dt><strong>IP</strong> · Internet Protocol</dt><dd>Protocole d’adressage et d’acheminement des paquets. <br><strong>Exemple.</strong> Le routeur lit l’IP de destination pour choisir où envoyer le paquet.</dd></div>
+    <div><dt><strong>IPv4</strong> · Internet Protocol version 4</dt><dd>Version d’IP à adresses de 32 bits. <br><strong>Exemple.</strong> 192.168.20.1 est une adresse IPv4.</dd></div>
+    <div><dt><strong>MAC</strong> · Media Access Control</dt><dd>Identifiant de couche liaison d’une interface dans ce cours. <br><strong>Exemple.</strong> Le switch utilise la MAC de destination pour envoyer une trame vers le bon port.</dd></div>
+    <div><dt><strong>PMF</strong> · Protected Management Frames</dt><dd>Protection de certaines trames de gestion Wi-Fi. <br><strong>Exemple.</strong> Après sa négociation, une station peut refuser certaines trames de désauthentification non protégées.</dd></div>
+    <div><dt><strong>RLAN</strong> · Radio Local Area Network</dt><dd>Réseau local par liaison radio. <br><strong>Exemple.</strong> Un téléphone rejoint le réseau local en se connectant à une borne.</dd></div>
+    <div><dt><strong>SSID</strong> · Service Set Identifier</dt><dd>Nom visible d’un réseau Wi-Fi. <br><strong>Exemple.</strong> Eduroam est un exemple de SSID affiché par un téléphone.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <p>Les questions sont retrouvées dans les comptes rendus TP8 et TP9. Les fichiers disponibles contiennent les réponses et détails des binômes. La page reprend les énoncés utiles et propose les contrôles à refaire en maquette.</p>
@@ -114,23 +133,23 @@
 </section>
       <section class="c-section" id="video" aria-labelledby="video-title">
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
-        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/rlan/video-affiche.jpg"
+        <video id="course-player" controls preload="none" playsinline poster="../assets/revisions/rlan/video-affiche.jpg?v=sigles-1"
                style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-          <source src="../assets/revisions/rlan/cours-video.mp4" type="video/mp4">
-          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/rlan/sous-titres.vtt">
+          <source src="../assets/revisions/rlan/cours-video.mp4?v=sigles-1" type="video/mp4">
+          <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/rlan/sous-titres.vtt?v=sigles-1">
           Ton navigateur ne peut pas lire cette vidéo.
         </video>
         <h3 class="c-h3">Chapitres</h3>
-<details class="acc"><summary>Cours</summary><div class="acc-body"><ul>
+        <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul>
 <li><button class="btn btn-ghost btn-sm" type="button" data-course-time="0.000">0:00 · Le réseau affiché et le point d’accès</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="26.833">0:26 · Partager le canal</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="51.125">0:51 · Lire les types et les adresses</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="104.833">1:44 · Relier radio et réseau IP</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="37.750">0:37 · Partager le canal</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="76.083">1:16 · Lire les types et les adresses</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="139.042">2:19 · Relier radio et réseau IP</button></li>
 </ul></div></details>
-<details class="acc"><summary>Questions TD &amp; TP</summary><div class="acc-body"><ul>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="131.583">2:11 · TP8 · Configurer le réseau de groupe</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="158.417">2:38 · TP8 · Vérifier les interfaces du pont</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="184.542">3:04 · TP9 · Classer puis lire la capture Wi-Fi</button></li>
+        <details class="acc"><summary>Questions TD &amp; TP · 2:45</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="165.792">2:45 · TP8 · Configurer le réseau de groupe</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="200.208">3:20 · TP8 · Vérifier les interfaces du pont</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-course-time="233.958">3:53 · TP9 · Classer puis lire la capture Wi-Fi</button></li>
 </ul></div></details>
       </section>
     </article>

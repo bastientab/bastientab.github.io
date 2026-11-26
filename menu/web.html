@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -106,6 +107,19 @@ $interventions = $req-&gt;fetchAll(PDO::FETCH_ASSOC);</code></pre>
 <p>Le résultat associatif s’affiche ensuite avec un <code>foreach</code> similaire à celui de la version sur tableau. Les détails doivent reprendre le contrôle d’autorisation. Si la requête peut recevoir un identifiant venant de l’URL, filtre aussi par le technicien connecté.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>DSN</strong> · Data Source Name</dt><dd>Chaîne de paramètres d’accès à une source de données. <br><strong>Exemple.</strong> Avec PDO, le DSN indique notamment le moteur, le serveur et la base.</dd></div>
+    <div><dt><strong>HTML</strong> · HyperText Markup Language</dt><dd>Langage de balisage d’une page Web. <br><strong>Exemple.</strong> Une balise de titre structure un chapitre de la page.</dd></div>
+    <div><dt><strong>HTTP</strong> · HyperText Transfer Protocol</dt><dd>Protocole de requêtes et réponses du Web. <br><strong>Exemple.</strong> Le navigateur demande une page et le serveur renvoie son contenu et un statut.</dd></div>
+    <div><dt><strong>PDO</strong> · PHP Data Objects</dt><dd>Interface PHP d’accès aux bases de données. <br><strong>Exemple.</strong> Le formulaire lie un identifiant dans une requête préparée avec PDO.</dd></div>
+    <div><dt><strong>PHP</strong> · PHP: Hypertext Preprocessor</dt><dd>Langage exécuté côté serveur. <br><strong>Exemple.</strong> Le serveur utilise PHP pour lire un formulaire puis produire la réponse.</dd></div>
+    <div><dt><strong>SQL</strong> · Structured Query Language</dt><dd>Langage de requête pour une base relationnelle. <br><strong>Exemple.</strong> SELECT permet de lire les titres des films d’une catégorie.</dd></div>
+    <div><dt><strong>URL</strong> · Uniform Resource Locator</dt><dd>Adresse qui indique où trouver une ressource. <br><strong>Exemple.</strong> Une URL HTTPS indique notamment le serveur et le chemin d’une page.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <ul><li><a href="#web-ttc">Exercice PHP · Convertir le prix HT en TTC</a></li>

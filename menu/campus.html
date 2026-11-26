@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -93,7 +94,7 @@
     <tr><td>Distribution</td><td>Regrouper les réseaux d’accès et appliquer les politiques.</td><td>Router entre VLAN, filtrer, donner une priorité à certains flux.</td></tr>
     <tr><td>Cœur</td><td>Transporter les flux entre les grandes zones et vers les sorties.</td><td>Maintenir un deuxième chemin pour résister à une panne.</td></tr></tbody></table></div>
     <p>Un <strong>VLAN</strong> délimite un réseau de couche 2. Un port d’accès attache le terminal à un VLAN, tandis qu’un trunk permet de transporter plusieurs VLAN en identifiant les trames. Pour passer entre deux sous-réseaux, le paquet doit passer par une passerelle de couche 3. On peut y appliquer une <strong>ACL</strong>, une liste de règles qui autorise ou refuse un trafic selon ses caractéristiques.</p>
-    <details class="acc"><summary>Redondance, agrégation et QoS</summary><div class="acc-body"><p>Une redondance ajoute un chemin. Spanning Tree permet d’éviter les boucles de couche 2. LACP regroupe plusieurs liens compatibles en une interface logique. La QoS classe et traite différemment les flux quand les files se remplissent. Ce n’est pas une augmentation de débit. Compare des mesures avec <code>iperf3</code> dans un test contrôlé.</p></div></details>
+    <details class="acc"><summary>Redondance, agrégation et QoS</summary><div class="acc-body"><p>Une redondance ajoute un chemin. Spanning Tree permet d’éviter les boucles de couche 2. LACP (protocole de négociation d’un groupe de liens) regroupe plusieurs liens compatibles en une interface logique. La QoS classe et traite différemment les flux quand les files se remplissent. Ce n’est pas une augmentation de débit. Compare des mesures avec <code>iperf3</code> dans un test contrôlé.</p></div></details>
   </div>
   <div class="c-block">
     <h3>2. Choisir la chaîne de filtrage</h3>
@@ -110,8 +111,8 @@
   <div class="c-block">
     <h3>4. Séparer l’accès Wi-Fi de l’authentification RADIUS</h3>
     <figure><img src="../assets/revisions/campus/schemas/wifi.png" alt="Échanges DHCP pour l’adressage et 802.1X vers FreeRADIUS pour l’authentification" loading="lazy"><figcaption>Sur un réseau protégé en 802.1X, l’accès est autorisé avant de pouvoir utiliser le trajet DHCP. Les deux lignes détaillent deux échanges distincts.</figcaption></figure>
-    <p>Le terminal rejoint un <strong>SSID</strong> annoncé par la borne. La configuration IP peut ensuite provenir de DHCP. Avec 802.1X, la borne interroge RADIUS pour la décision d’accès. Dans ce vocabulaire, le client RADIUS est la borne, appelée <strong>NAS</strong>. Le terminal appartient à l’utilisateur qui se présente à la borne.</p>
-    <p><code>Access-Request</code> transporte la demande, <code>Access-Challenge</code> poursuit l’échange quand nécessaire, <code>Access-Accept</code> confirme l’accès et <code>Access-Reject</code> refuse. <strong>AAA</strong> distingue vérifier l’identité, décider ce qu’elle peut faire et consigner les événements d’accès. Le secret borne–serveur est distinct du mot de passe de l’utilisateur.</p>
+    <p>Le terminal rejoint un <strong>SSID</strong> annoncé par la borne. La configuration IP peut ensuite provenir de DHCP. Avec 802.1X, la borne interroge RADIUS (protocole de contrôle d’accès réseau) pour la décision d’accès. Dans ce vocabulaire, le client RADIUS est la borne, appelée <strong>NAS</strong> (équipement qui demande l’authentification pour un utilisateur réseau). Le terminal appartient à l’utilisateur qui se présente à la borne.</p>
+    <p><code>Access-Request</code> transporte la demande, <code>Access-Challenge</code> poursuit l’échange quand nécessaire, <code>Access-Accept</code> confirme l’accès et <code>Access-Reject</code> refuse. <strong>AAA</strong> (authentification, autorisation et suivi des accès) distingue vérifier l’identité, décider ce qu’elle peut faire et consigner les événements d’accès. Le secret borne–serveur est distinct du mot de passe de l’utilisateur.</p>
   </div>
   <div class="c-block">
     <h3>5. Pourquoi le portail capture-t-il le premier accès Web ?</h3>
@@ -120,10 +121,42 @@
   </div>
   <div class="c-block"><h3>6. Suivre l’échange d’authentification du Wi-Fi</h3>
     <p>Le <strong>supplicant</strong> est le client qui présente son identité. L’<strong>authenticator</strong>, la borne dans le TP, contrôle le passage sur le réseau et relaie l’échange au serveur RADIUS. À une demande <code>Access-Request</code>, celui-ci peut demander une preuve supplémentaire avec <code>Access-Challenge</code>, autoriser avec <code>Access-Accept</code> ou refuser avec <code>Access-Reject</code>.</p>
-    <p><strong>EAP</strong> est un cadre pour des méthodes d’authentification. Avec EAP-TLS, le serveur et le client peuvent s’authentifier par certificat. Avec PEAP, on établit d’abord un tunnel TLS avec le serveur, dont le client doit vérifier le certificat, puis une méthode interne comme celle de la capture du cours échange la preuve utilisateur. Un test <code>radtest</code> peut valider une réponse RADIUS avant le test avec le vrai poste et la méthode EAP de la borne.</p>
-    <p>La DMZ du poly illustre une autre séparation. Trois interfaces distinguent Internet, serveurs exposés et réseau interne. Un serveur Web public peut recevoir sur son port publié tandis qu’un accès vers les postes internes suit un jeu de règles différent. Pour expliquer un rejet, relève l’interface d’entrée, la destination et l’état de suivi avant de modifier le filtrage.</p>
+    <p><strong>EAP</strong> (cadre d’échange pour différentes méthodes d’authentification) est un cadre pour des méthodes d’authentification. Avec EAP-TLS, le serveur et le client peuvent s’authentifier par certificat. Avec PEAP, on établit d’abord un tunnel TLS avec le serveur, dont le client doit vérifier le certificat, puis une méthode interne comme celle de la capture du cours échange la preuve utilisateur. Un test <code>radtest</code> peut valider une réponse RADIUS avant le test avec le vrai poste et la méthode EAP de la borne.</p>
+    <p>La DMZ (zone réseau séparée pour des services exposés) du poly illustre une autre séparation. Trois interfaces distinguent Internet, serveurs exposés et réseau interne. Un serveur Web public peut recevoir sur son port publié tandis qu’un accès vers les postes internes suit un jeu de règles différent. Pour expliquer un rejet, relève l’interface d’entrée, la destination et l’état de suivi avant de modifier le filtrage.</p>
   </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>AAA</strong> · Authentication, Authorization and Accounting</dt><dd>Authentification, autorisation et suivi des accès. <br><strong>Exemple.</strong> Le Wi-Fi vérifie ton identité, décide de tes droits et journalise ta connexion.</dd></div>
+    <div><dt><strong>ACL</strong> · Access Control List</dt><dd>Liste de règles d’accès. <br><strong>Exemple.</strong> Sur un routeur, autoriser le réseau admin vers le serveur et refuser le réseau invité.</dd></div>
+    <div><dt><strong>DHCP</strong> · Dynamic Host Configuration Protocol</dt><dd>Distribution automatique de la configuration IP. <br><strong>Exemple.</strong> Un PC obtient une adresse, un masque, une passerelle et souvent un serveur DNS.</dd></div>
+    <div><dt><strong>DMZ</strong> · Demilitarized Zone</dt><dd>Zone réseau séparée pour des services exposés. <br><strong>Exemple.</strong> Un serveur Web reçoit des connexions dans une zone distincte du LAN interne.</dd></div>
+    <div><dt><strong>DNAT</strong> · Destination Network Address Translation</dt><dd>Traduction de l’adresse de destination. <br><strong>Exemple.</strong> Un routeur redirige les connexions reçues vers un serveur interne.</dd></div>
+    <div><dt><strong>DNS</strong> · Domain Name System</dt><dd>Système qui associe des noms à des informations comme une adresse IP. <br><strong>Exemple.</strong> Un poste demande quelle adresse utiliser pour atteindre www.exemple.test.</dd></div>
+    <div><dt><strong>EAP</strong> · Extensible Authentication Protocol</dt><dd>Cadre d’échange pour différentes méthodes d’authentification. <br><strong>Exemple.</strong> Un poste Wi-Fi d’entreprise échange des messages EAP avant d’accéder au réseau.</dd></div>
+    <div><dt><strong>HTTP</strong> · HyperText Transfer Protocol</dt><dd>Protocole de requêtes et réponses du Web. <br><strong>Exemple.</strong> Le navigateur demande une page et le serveur renvoie son contenu et un statut.</dd></div>
+    <div><dt><strong>HTTPS</strong> · HyperText Transfer Protocol Secure</dt><dd>HTTP protégé par TLS. <br><strong>Exemple.</strong> Une page de connexion HTTPS protège les données échangées avec le serveur.</dd></div>
+    <div><dt><strong>ICMP</strong> · Internet Control Message Protocol</dt><dd>Protocole de messages de contrôle IP. <br><strong>Exemple.</strong> Le ping envoie une requête Echo et attend une réponse Echo.</dd></div>
+    <div><dt><strong>LACP</strong> · Link Aggregation Control Protocol</dt><dd>Protocole de négociation d’un groupe de liens. <br><strong>Exemple.</strong> Deux switches regroupent deux câbles compatibles sous une interface logique.</dd></div>
+    <div><dt><strong>LAN</strong> · Local Area Network</dt><dd>Réseau local. <br><strong>Exemple.</strong> Le réseau des PC de la salle est un LAN.</dd></div>
+    <div><dt><strong>MAC</strong> · Media Access Control</dt><dd>Identifiant de couche liaison d’une interface dans ce cours. <br><strong>Exemple.</strong> Le switch utilise la MAC de destination pour envoyer une trame vers le bon port.</dd></div>
+    <div><dt><strong>NAS</strong> · Network Access Server</dt><dd>Équipement qui demande l’authentification pour un utilisateur réseau. <br><strong>Exemple.</strong> La borne Wi-Fi joue le rôle de client RADIUS vers le serveur d’authentification.</dd></div>
+    <div><dt><strong>NAT</strong> · Network Address Translation</dt><dd>Traduction d’adresses réseau. <br><strong>Exemple.</strong> À la sortie vers Internet, une adresse privée peut être remplacée par l’adresse publique du routeur.</dd></div>
+    <div><dt><strong>PAT</strong> · Port Address Translation</dt><dd>Partage d’une adresse publique par translation de ports. <br><strong>Exemple.</strong> Deux postes sortent avec la même IPv4 publique et des ports distincts.</dd></div>
+    <div><dt><strong>PEAP</strong> · Protected Extensible Authentication Protocol</dt><dd>Méthode qui protège une authentification interne dans un tunnel TLS. <br><strong>Exemple.</strong> Ton poste vérifie le certificat du serveur avant d’utiliser la méthode interne.</dd></div>
+    <div><dt><strong>QoS</strong> · Quality of Service</dt><dd>Gestion de la priorité et du traitement des flux. <br><strong>Exemple.</strong> En cas de congestion, le routeur peut faire passer la voix avant un transfert volumineux.</dd></div>
+    <div><dt><strong>RADIUS</strong> · Remote Authentication Dial-In User Service</dt><dd>Protocole de contrôle d’accès réseau. <br><strong>Exemple.</strong> Une borne demande au serveur RADIUS si le compte peut rejoindre le Wi-Fi.</dd></div>
+    <div><dt><strong>SNAT</strong> · Source Network Address Translation</dt><dd>Traduction de l’adresse source. <br><strong>Exemple.</strong> La passerelle remplace l’adresse privée d’un poste par une adresse de sortie.</dd></div>
+    <div><dt><strong>SSID</strong> · Service Set Identifier</dt><dd>Nom visible d’un réseau Wi-Fi. <br><strong>Exemple.</strong> Eduroam est un exemple de SSID affiché par un téléphone.</dd></div>
+    <div><dt><strong>TCP</strong> · Transmission Control Protocol</dt><dd>Transport des données avec suivi des échanges et retransmission. <br><strong>Exemple.</strong> Les routeurs BGP établissent une session TCP avant d’échanger leurs annonces.</dd></div>
+    <div><dt><strong>TLS</strong> · Transport Layer Security</dt><dd>Protocole de protection d’une communication. <br><strong>Exemple.</strong> HTTPS utilise TLS pour protéger l’échange entre navigateur et serveur.</dd></div>
+    <div><dt><strong>UDP</strong> · User Datagram Protocol</dt><dd>Transport par datagrammes sans établissement de connexion. <br><strong>Exemple.</strong> Un client peut envoyer une requête DNS classique dans un datagramme UDP.</dd></div>
+    <div><dt><strong>VLAN</strong> · Virtual Local Area Network</dt><dd>Réseau local logique séparé sur une infrastructure partagée. <br><strong>Exemple.</strong> Un switch sépare les postes du personnel et ceux des invités dans deux VLAN.</dd></div>
+    <div><dt><strong>WAN</strong> · Wide Area Network</dt><dd>Réseau étendu qui relie des sites ou fournit leur sortie. <br><strong>Exemple.</strong> Sur une box, le port WAN mène au réseau de l’opérateur.</dd></div>
+        </dl>
+      </section>
+
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
   <p>Support croisé · Poly Réseaux de campus, TP iptables, Wi-Fi/RADIUS, portail captif et sujet de DS pratique.</p>

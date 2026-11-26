@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -118,6 +119,25 @@
     <p>À la réception, applique <code>angle(r(k)*conj(r(k-1)))</code>. La différence d’angles approximée, multipliée par F<sub>e</sub>/(2π), donne l’écart signé de fréquence. Évite que la différence dépassant ±π soit ambiguë et utilise le taux réel de capture. Pour écouter, adapte la cadence à celle du son ou rééchantillonne.</p>
   </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>AM</strong> · Amplitude Modulation</dt><dd>Modulation d’amplitude. <br><strong>Exemple.</strong> Une porteuse radio devient plus ou moins forte au rythme du signal à transmettre.</dd></div>
+    <div><dt><strong>ASK</strong> · Amplitude Shift Keying</dt><dd>Modulation numérique avec plusieurs amplitudes. <br><strong>Exemple.</strong> Une porteuse forte peut coder 1, tandis qu’une faible amplitude code 0.</dd></div>
+    <div><dt><strong>CRC</strong> · Cyclic Redundancy Check</dt><dd>Contrôle calculé pour détecter des erreurs de transmission. <br><strong>Exemple.</strong> Le récepteur recalcule le CRC puis compare avec la valeur reçue.</dd></div>
+    <div><dt><strong>FFT</strong> · Fast Fourier Transform</dt><dd>Calcul efficace de la représentation fréquentielle d’un signal. <br><strong>Exemple.</strong> La FFT d’un sinus à 1 kHz permet de repérer la composante à 1 kHz.</dd></div>
+    <div><dt><strong>FM</strong> · Frequency Modulation</dt><dd>Modulation de fréquence. <br><strong>Exemple.</strong> La fréquence instantanée de la porteuse varie avec le signal audio.</dd></div>
+    <div><dt><strong>FSK</strong> · Frequency Shift Keying</dt><dd>Modulation numérique qui change la fréquence. <br><strong>Exemple.</strong> Un émetteur choisit une fréquence pour 0 et une autre pour 1.</dd></div>
+    <div><dt><strong>MLT-3</strong> · Multi-Level Transmit, trois niveaux</dt><dd>Codage de ligne qui alterne entre trois niveaux. <br><strong>Exemple.</strong> Sur un 1, le signal passe au prochain niveau du cycle, tandis qu’un 0 le maintient.</dd></div>
+    <div><dt><strong>NRZ</strong> · Non Return to Zero</dt><dd>Codage qui conserve le niveau pendant le bit. <br><strong>Exemple.</strong> Dans une variante NRZ, une suite de 1 garde le même niveau.</dd></div>
+    <div><dt><strong>PSK</strong> · Phase Shift Keying</dt><dd>Modulation numérique qui choisit entre plusieurs phases. <br><strong>Exemple.</strong> En BPSK, les deux bits possibles sont représentés par deux phases opposées.</dd></div>
+    <div><dt><strong>QPSK</strong> · Quadrature Phase Shift Keying</dt><dd>Modulation qui utilise quatre phases. <br><strong>Exemple.</strong> Quatre phases possibles permettent de coder deux bits par symbole.</dd></div>
+    <div><dt><strong>RBW</strong> · Resolution Bandwidth</dt><dd>Largeur de bande de résolution en analyse spectrale. <br><strong>Exemple.</strong> Diminuer la RBW aide à distinguer deux raies rapprochées.</dd></div>
+    <div><dt><strong>SDR</strong> · Software-Defined Radio</dt><dd>Radio dont une partie du traitement se fait par logiciel. <br><strong>Exemple.</strong> Un récepteur SDR permet d’afficher le spectre d’un signal reçu.</dd></div>
+    <div><dt><strong>UTF-8</strong> · Unicode Transformation Format, 8-bit</dt><dd>Encodage Unicode à longueur variable. <br><strong>Exemple.</strong> En UTF-8, le fichier garde correctement les accents.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="coverage-title">
   <h2 class="c-h2" id="coverage-title">Du cours aux TD et TP</h2>
   <div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Notion</th><th scope="col">Application du sujet</th><th scope="col">À savoir refaire</th></tr></thead><tbody>

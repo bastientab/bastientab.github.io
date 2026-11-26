@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -95,10 +96,10 @@
   <div class="c-block"><h3>2. Placer plusieurs signaux sur une fibre</h3>
     <figure><img src="../assets/revisions/operateurs/schemas/couches.png" alt="Support optique et services transportés au-dessus" loading="lazy"><figcaption>Dans le TD, vendre une fibre noire donne l’usage du support. Vendre une longueur d’onde ou un service OTN implique une couche équipée.</figcaption></figure>
     <p>Le <strong>WDM</strong> combine des signaux émis à des longueurs d’onde différentes. Le multiplexeur les regroupe et le démultiplexeur les sépare. En <strong>DWDM</strong>, les canaux sont rapprochés pour transporter davantage de longueurs d’onde. Un amplificateur optique aide à compenser des pertes du trajet.</p>
-    <p>À Clermont, un <strong>ROADM</strong> peut laisser un canal traverser le nœud, l’extraire vers un équipement de la ville ou y ajouter un canal. Sa décision porte sur un canal optique, selon son port et sa longueur d’onde. Une longueur d’onde peut être réutilisée sur un autre tronçon indépendant si le plan optique le permet.</p>
+    <p>À Clermont, un <strong>ROADM</strong> (équipement qui ajoute ou retire des longueurs d’onde à distance) peut laisser un canal traverser le nœud, l’extraire vers un équipement de la ville ou y ajouter un canal. Sa décision porte sur un canal optique, selon son port et sa longueur d’onde. Une longueur d’onde peut être réutilisée sur un autre tronçon indépendant si le plan optique le permet.</p>
   </div>
   <div class="c-block"><h3>3. Partager la capacité à l’intérieur d’un canal</h3>
-    <p>Le multiplexage temporel distingue plusieurs flux au sein d’une trame. <strong>SDH</strong> est un système de transport numérique synchrone. <strong>OTN</strong> encapsule des signaux clients, par exemple Ethernet ou des flux de transport plus anciens, et organise leur acheminement avec des structures de transport optique.</p>
+    <p>Le multiplexage temporel distingue plusieurs flux au sein d’une trame. <strong>SDH</strong> est un système de transport numérique synchrone. <strong>OTN</strong> (réseau de transport optique qui encadre et supervise les flux) encapsule des signaux clients, par exemple Ethernet ou des flux de transport plus anciens, et organise leur acheminement avec des structures de transport optique.</p>
     <ol><li>Identifie le port du client et son signal.</li><li>Alloue à ce signal des créneaux de capacité suffisante dans la trame de transport. Dans le TD, un flux IP utilise 10 slots.</li><li>À l’autre extrémité, récupère ces créneaux et les associe au port client distant. Le ROADM commute la longueur d’onde entière, indépendamment de ces créneaux.</li></ol>
   </div>
   <div class="c-block"><h3>4. Faire un choix de route IP</h3>
@@ -108,13 +109,35 @@
   <div class="c-block"><h3>5. Commuter un paquet par étiquettes MPLS</h3>
     <figure><img src="../assets/revisions/operateurs/schemas/mpls.png" alt="Chemin MPLS avec insertion, échange et retrait de label" loading="lazy"><figcaption>Pour le ping R0 vers R4, compare chaque capture à la LFIB du bon routeur. L’opération peut changer d’un saut à l’autre, notamment avec le retrait du label à l’avant-dernier saut.</figcaption></figure>
     <ol><li>À l’entrée du domaine, le routeur classe les paquets dans une <strong>FEC</strong>, un groupe auquel il applique le même traitement. Il peut pousser un label (<em>push</em>).</li><li>Au milieu du domaine, la <strong>LFIB</strong> associe un label entrant à une opération et à un prochain saut. Le label peut être remplacé (<em>swap</em>). Il a un sens local sur le chemin.</li><li>À la sortie, le label est retiré (<em>pop</em>). Le dernier calcul peut être réalisé par l’avant-dernier routeur si l’équipement de sortie annonce le retrait implicite.</li></ol>
-    <p><strong>LDP</strong> annonce les associations entre destinations et labels. La <strong>LIB</strong> conserve les correspondances connues. La LFIB sélectionne les actions utilisées pour les paquets. En <strong>traffic engineering</strong>, on peut chercher à diriger un trafic sur un chemin explicite, notamment si le chemin de coût minimal est chargé.</p>
+    <p><strong>LDP</strong> (protocole de distribution des labels MPLS) annonce les associations entre destinations et labels. La <strong>LIB</strong> conserve les correspondances connues. La LFIB (table utilisée pour traiter les paquets étiquetés) sélectionne les actions utilisées pour les paquets. En <strong>traffic engineering</strong>, on peut chercher à diriger un trafic sur un chemin explicite, notamment si le chemin de coût minimal est chargé.</p>
   </div>
   <div class="c-block"><h3>6. Situer un point de présence et les familles de multiplexage</h3>
     <p>La <strong>boucle locale</strong> relie l’abonné au point de raccordement. La <strong>collecte</strong> agrège ce trafic vers le réseau de transport. Un <strong>POP</strong> est un lieu où l’opérateur dispose d’équipements et peut raccorder un client ou un partenaire. Un <strong>IXP</strong> sert à l’interconnexion de réseaux qui souhaitent échanger leurs flux. Sur les cartes du cours, suis les liaisons entre villes puis repère où se fait le raccordement.</p>
     <p>En fibre, le <strong>CWDM</strong> espace davantage ses canaux optiques que le DWDM. Dans un multiplexage temporel, la capacité d’un canal est au contraire distribuée entre créneaux. Le cours présente <strong>SDH</strong>, une hiérarchie de trames synchrones STM, puis <strong>OTN</strong> qui transporte des clients variés dans des structures adaptées et apporte des fonctions de supervision et de correction. Pour savoir quelle table lire au TD, demande-toi si le nœud commute une longueur d’onde, une capacité dans une trame, ou un paquet IP.</p>
   </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>CWDM</strong> · Coarse Wavelength Division Multiplexing</dt><dd>Multiplexage optique à canaux assez espacés. <br><strong>Exemple.</strong> Plusieurs longueurs d’onde espacées partagent une fibre.</dd></div>
+    <div><dt><strong>DWDM</strong> · Dense Wavelength Division Multiplexing</dt><dd>Multiplexage optique à canaux rapprochés. <br><strong>Exemple.</strong> Un opérateur transporte beaucoup de canaux dans la même bande optique.</dd></div>
+    <div><dt><strong>FEC</strong> · Forwarding Equivalence Class</dt><dd>Groupe de paquets auxquels MPLS applique le même traitement. <br><strong>Exemple.</strong> Les paquets vers un même ensemble de préfixes peuvent suivre le même chemin MPLS.</dd></div>
+    <div><dt><strong>IP</strong> · Internet Protocol</dt><dd>Protocole d’adressage et d’acheminement des paquets. <br><strong>Exemple.</strong> Le routeur lit l’IP de destination pour choisir où envoyer le paquet.</dd></div>
+    <div><dt><strong>IXP</strong> · Internet Exchange Point</dt><dd>Point d’échange de trafic entre réseaux. <br><strong>Exemple.</strong> Deux opérateurs utilisent le même point d’échange pour se remettre le trafic prévu par leur accord.</dd></div>
+    <div><dt><strong>LAN</strong> · Local Area Network</dt><dd>Réseau local. <br><strong>Exemple.</strong> Le réseau des PC de la salle est un LAN.</dd></div>
+    <div><dt><strong>LDP</strong> · Label Distribution Protocol</dt><dd>Protocole de distribution des labels MPLS. <br><strong>Exemple.</strong> Deux routeurs s’informent des labels à utiliser vers un préfixe.</dd></div>
+    <div><dt><strong>LFIB</strong> · Label Forwarding Information Base</dt><dd>Table utilisée pour traiter les paquets étiquetés. <br><strong>Exemple.</strong> En recevant le label 20, le routeur peut le remplacer par 30 et choisir l’interface de sortie.</dd></div>
+    <div><dt><strong>LIB</strong> · Label Information Base</dt><dd>Base d’informations sur les labels MPLS. <br><strong>Exemple.</strong> Le routeur y conserve les associations de labels qu’il a apprises.</dd></div>
+    <div><dt><strong>MPLS</strong> · Multiprotocol Label Switching</dt><dd>Acheminement à l’aide d’étiquettes. <br><strong>Exemple.</strong> Le routeur remplace le label entrant par le label de sortie selon sa table.</dd></div>
+    <div><dt><strong>OSPF</strong> · Open Shortest Path First</dt><dd>Protocole de routage qui calcule les chemins à partir des coûts de liens. <br><strong>Exemple.</strong> Dans le TD1, A change de prochain saut quand son lien direct vers D tombe.</dd></div>
+    <div><dt><strong>OTN</strong> · Optical Transport Network</dt><dd>Réseau de transport optique qui encadre et supervise les flux. <br><strong>Exemple.</strong> Un opérateur transporte plusieurs services clients dans sa dorsale optique.</dd></div>
+    <div><dt><strong>ROADM</strong> · Reconfigurable Optical Add-Drop Multiplexer</dt><dd>Équipement qui ajoute ou retire des longueurs d’onde à distance. <br><strong>Exemple.</strong> Un opérateur peut rediriger un canal optique vers une autre liaison.</dd></div>
+    <div><dt><strong>SDH</strong> · Synchronous Digital Hierarchy</dt><dd>Hiérarchie de multiplexage numérique synchrone. <br><strong>Exemple.</strong> Un réseau de transport agrège plusieurs flux dans une trame STM.</dd></div>
+    <div><dt><strong>TTL</strong> · Time To Live</dt><dd>Nombre de sauts IP restant avant abandon. <br><strong>Exemple.</strong> Chaque routeur diminue le TTL du paquet avant de le transmettre.</dd></div>
+    <div><dt><strong>WDM</strong> · Wavelength Division Multiplexing</dt><dd>Multiplexage de plusieurs longueurs d’onde sur une fibre. <br><strong>Exemple.</strong> Deux canaux optiques peuvent voyager en même temps sur le même brin.</dd></div>
+        </dl>
+      </section>
+
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
   <p>Support croisé · Poly Réseaux opérateurs, TD1 services optiques, TD2 transport/commutation et TP MPLS.</p>

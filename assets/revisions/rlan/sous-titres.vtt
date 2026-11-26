@@ -1,249 +1,303 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.285
-Quand tu choisis un réseau Wi-Fi, tu vois son nom.
+00:00:00.100 --> 00:00:03.814
+Quand tu choisis un réseau Wi-Fi, le nom affiché est
+le
 
-00:00:03.285 --> 00:00:06.643
-Un même nom peut apparaître pour plusieurs points
-d'accès.
+00:00:03.814 --> 00:00:06.177
+S S I D, Service Set Identifier.
 
-00:00:06.643 --> 00:00:10.266
-Le B S S I D permet d'identifier le point radio
+00:00:06.177 --> 00:00:10.124
+Deux bornes de la fac peuvent annoncer le même nom
+Eduroam.
 
-00:00:10.266 --> 00:00:11.913
-précis utilisé dans la capture.
+00:00:10.124 --> 00:00:14.039
+Le B S S I D, Basic Service Set Identifier, identifie
 
-00:00:11.913 --> 00:00:16.119
+00:00:14.039 --> 00:00:17.599
+la cellule Wi-Fi précise à laquelle le poste est
+associé.
+
+00:00:17.599 --> 00:00:21.445
+Dans la capture du T P, regarde cet identifiant pour
+savoir
+
+00:00:21.445 --> 00:00:22.844
+quelle borne est utilisée.
+
+00:00:22.844 --> 00:00:27.059
 Avant d'envoyer des données, le client découvre les
 réseaux, effectue les
 
-00:00:16.119 --> 00:00:17.648
+00:00:27.059 --> 00:00:28.592
 échanges requis puis s'associe.
 
-00:00:17.648 --> 00:00:21.423
+00:00:28.592 --> 00:00:32.354
 Il faut ensuite qu'il dispose de sa configuration IP.
 
-00:00:21.423 --> 00:00:24.761
+00:00:32.354 --> 00:00:35.692
 Vérifier seulement le nom du réseau ne dit donc pas
 encore
 
-00:00:24.761 --> 00:00:26.582
+00:00:35.692 --> 00:00:37.513
 si un service distant est joignable.
 
-00:00:26.933 --> 00:00:30.787
+00:00:37.850 --> 00:00:41.695
 Comme plusieurs personnes peuvent parler sur le même
 canal radio, les
 
-00:00:30.787 --> 00:00:32.888
+00:00:41.695 --> 00:00:43.793
 stations doivent éviter de transmettre ensemble.
 
-00:00:32.888 --> 00:00:36.822
-Elles observent le canal et attendent selon des règles
-de partage.
+00:00:43.793 --> 00:00:47.616
+Le mécanisme s’appelle C S M A, barre C A.
 
-00:00:36.822 --> 00:00:40.670
-L'acquittement radio indique si certaines trames sont
-bien arrivées.
+00:00:47.616 --> 00:00:51.003
+La première partie du nom veut dire que plusieurs
+stations se
 
-00:00:40.670 --> 00:00:44.215
+00:00:51.003 --> 00:00:52.543
+partagent le canal et l’écoutent.
+
+00:00:52.543 --> 00:00:56.624
+C A veut dire Collision Avoidance, ou évitement des
+collisions.
+
+00:00:56.624 --> 00:00:59.258
+Une station attend avant d’émettre.
+
+00:00:59.258 --> 00:01:02.941
+Le récepteur renvoie un A C K, un accusé de réception,
+
+00:01:02.941 --> 00:01:05.619
+pour confirmer qu’il a bien reçu certaines trames.
+
+00:01:05.619 --> 00:01:09.155
 Deux clients peuvent être assez éloignés pour ne pas
 s'entendre, tout
 
-00:00:44.215 --> 00:00:46.148
+00:01:09.155 --> 00:01:11.084
 en atteignant chacun le point d'accès.
 
-00:00:46.148 --> 00:00:49.626
+00:01:11.084 --> 00:01:14.562
 C'est un cas où l'observation locale du canal ne
 suffit pas
 
-00:00:49.626 --> 00:00:50.891
+00:01:14.562 --> 00:01:15.827
 à éviter les collisions.
 
-00:00:51.225 --> 00:00:54.606
+00:01:16.183 --> 00:01:19.565
 Dans la capture, repère d'abord la catégorie.
 
-00:00:54.606 --> 00:00:57.891
+00:01:19.565 --> 00:01:22.849
 Une balise annonce des informations sur le réseau.
 
-00:00:57.891 --> 00:01:02.168
+00:01:22.849 --> 00:01:27.126
 Une demande d'association et sa réponse organisent
 l'entrée de la station.
 
-00:01:02.168 --> 00:01:05.587
+00:01:27.126 --> 00:01:30.545
 Les trames de contrôle aident pendant les échanges
 radio.
 
-00:01:05.587 --> 00:01:08.271
+00:01:30.545 --> 00:01:33.229
 Les données transportent le trafic.
 
-00:01:08.271 --> 00:01:12.327
+00:01:33.229 --> 00:01:37.285
 Un éventuel en-tête Radiotap décrit les conditions de
 capture.
 
-00:01:12.327 --> 00:01:15.858
+00:01:37.285 --> 00:01:40.816
 Un taux ou une fréquence affichés à cet endroit
 permettent d'expliquer
 
-00:01:15.858 --> 00:01:19.067
+00:01:40.816 --> 00:01:44.025
 l'observation sans faire partie de la trame de données
 elle-même.
 
-00:01:19.392 --> 00:01:22.992
+00:01:44.350 --> 00:01:47.950
 Dans la trame de données montrée, la station transmet
 vers le
 
-00:01:22.992 --> 00:01:23.974
+00:01:47.950 --> 00:01:48.932
 réseau de distribution.
 
-00:01:23.974 --> 00:01:28.055
+00:01:48.932 --> 00:01:53.013
 La première adresse indique qui reçoit par radio, le
 point d'accès.
 
-00:01:28.055 --> 00:01:31.315
+00:01:53.013 --> 00:01:56.273
 La deuxième indique qui transmet, la station.
 
-00:01:31.315 --> 00:01:35.258
+00:01:56.273 --> 00:02:00.216
 La troisième peut désigner la destination du trafic
 après le point
 
-00:01:35.258 --> 00:01:35.616
+00:02:00.216 --> 00:02:00.575
 d'accès.
 
-00:01:35.616 --> 00:01:38.337
+00:02:00.575 --> 00:02:03.295
 Pour la réponse, les rôles changent.
 
-00:01:38.337 --> 00:01:41.754
-Regarde les bits vers et depuis le réseau de
-distribution avant
+00:02:03.295 --> 00:02:07.782
+D S signifie Distribution System, le réseau auquel le
+point d’accès
 
-00:01:41.754 --> 00:01:44.550
-de tirer une conclusion de la position d'une adresse.
+00:02:07.782 --> 00:02:09.006
+relie la radio.
 
-00:01:44.933 --> 00:01:48.292
+00:02:09.006 --> 00:02:12.113
+Si To D S vaut un et From D S vaut
+
+00:02:12.113 --> 00:02:14.937
+zéro, la station envoie vers ce réseau via la borne.
+
+00:02:14.937 --> 00:02:18.798
+Ces deux champs t’aident à comprendre ce que
+représente chaque adresse.
+
+00:02:19.142 --> 00:02:22.501
 Dans le TP, un pont relie deux interfaces au niveau de
 
-00:01:48.292 --> 00:01:48.903
+00:02:22.501 --> 00:02:23.111
 la liaison.
 
-00:01:48.903 --> 00:01:52.506
+00:02:23.111 --> 00:02:26.714
 Il suffit parfois à transmettre une trame dans le même
 réseau.
 
-00:01:52.506 --> 00:01:56.359
+00:02:26.714 --> 00:02:30.567
 Pour joindre un autre sous-réseau, tu as besoin d'une
 décision de
 
-00:01:56.359 --> 00:01:56.709
+00:02:30.567 --> 00:02:30.918
 routage.
 
-00:01:56.709 --> 00:01:59.136
+00:02:30.918 --> 00:02:33.344
 Lis le masque et la passerelle.
 
-00:01:59.136 --> 00:02:03.539
+00:02:33.344 --> 00:02:37.748
 Côté radio, la protection des trames de gestion peut
 aussi empêcher
 
-00:02:03.539 --> 00:02:06.342
+00:02:37.748 --> 00:02:40.550
 qu'une fausse désauthentification soit acceptée après
 négociation.
 
-00:02:06.342 --> 00:02:10.583
+00:02:40.550 --> 00:02:44.791
 Une perte d'adresse IP et une perte d'association sont
 deux diagnostics
 
-00:02:10.583 --> 00:02:11.354
+00:02:44.791 --> 00:02:45.562
 à distinguer.
 
-00:02:11.683 --> 00:02:15.040
+00:02:45.892 --> 00:02:49.249
 Remplace x par le nombre attribué dans ton TP.
 
-00:02:15.040 --> 00:02:18.410
+00:02:49.249 --> 00:02:52.619
 Branche et configure le point d'accès dans la
 maquette.
 
-00:02:18.410 --> 00:02:22.418
+00:02:52.619 --> 00:02:56.626
 Sur le client, vérifie que l'association vise bien ce
 réseau.
 
-00:02:22.418 --> 00:02:25.518
+00:02:56.626 --> 00:02:59.739
 Regarde ensuite l'adresse IP et le masque.
 
-00:02:25.518 --> 00:02:28.806
+00:02:59.739 --> 00:03:03.414
 Quand tu pingues le point d'accès, le poste peut
-d'abord chercher
+d’abord envoyer
 
-00:02:28.806 --> 00:02:30.898
-sa MAC en envoyant une demande ARP.
+00:03:03.414 --> 00:03:06.087
+une demande A R P, Address Resolution Protocol.
 
-00:02:30.898 --> 00:02:34.820
+00:03:06.087 --> 00:03:09.540
+Il demande quelle adresse M A C, c’est-à-dire quelle
+adresse de
+
+00:03:09.540 --> 00:03:12.680
+liaison locale, correspond à l’adresse I P du point
+d’accès.
+
+00:03:12.680 --> 00:03:16.626
 Dans la capture, sépare cette demande du ping
 proprement dit.
 
-00:02:34.820 --> 00:02:38.165
+00:03:16.626 --> 00:03:19.972
 Les deux échanges répondent à des questions
 différentes.
 
-00:02:38.517 --> 00:02:42.743
+00:03:20.308 --> 00:03:24.535
 Après configuration du pont, tape bridge link pour
 lire quelles interfaces
 
-00:02:42.743 --> 00:02:43.896
+00:03:24.535 --> 00:03:25.687
 lui sont rattachées.
 
-00:02:43.896 --> 00:02:47.463
+00:03:25.687 --> 00:03:29.275
 Dans la capture, prends une demande ARP et note vers
 qui
 
-00:02:47.463 --> 00:02:48.111
+00:03:29.275 --> 00:03:29.927
 elle part.
 
-00:02:48.111 --> 00:02:51.077
+00:03:29.927 --> 00:03:32.869
 Puis prends la trame qui transporte le ping.
 
-00:02:51.077 --> 00:02:54.339
+00:03:32.869 --> 00:03:36.861
+Le ping utilise I C M P, un protocole de messages
+
+00:03:36.861 --> 00:03:37.587
+de contrôle.
+
+00:03:37.587 --> 00:03:40.503
+Il envoie une requête et attend une réponse.
+
+00:03:40.503 --> 00:03:43.766
 Sur un pont, tu peux suivre un échange de liaison sans
 
-00:02:54.339 --> 00:02:55.525
+00:03:43.766 --> 00:03:44.952
 changer de réseau IP.
 
-00:02:55.525 --> 00:02:59.089
+00:03:44.952 --> 00:03:48.516
 Si le test traverse une passerelle, vérifie que tu
 observes bien
 
-00:02:59.089 --> 00:03:00.709
+00:03:48.516 --> 00:03:50.136
 les adresses du nouveau lien.
 
-00:03:00.709 --> 00:03:03.727
+00:03:50.136 --> 00:03:53.153
 Reprends le schéma si tu ne sais plus où se trouve
 
-00:03:03.727 --> 00:03:04.275
+00:03:53.153 --> 00:03:53.702
 le poste.
 
-00:03:04.642 --> 00:03:08.195
+00:03:54.058 --> 00:03:57.611
 Commence par une balise pour reconnaître une trame de
 gestion.
 
-00:03:08.195 --> 00:03:11.552
+00:03:57.611 --> 00:04:00.969
 Cherche ensuite une trame de contrôle et une de
 données.
 
-00:03:11.552 --> 00:03:14.838
+00:04:00.969 --> 00:04:04.255
 Sur les données, relève dans quel sens elle se déplace
 vers
 
-00:03:14.838 --> 00:03:16.332
+00:04:04.255 --> 00:04:05.749
 ou depuis le point d'accès.
 
-00:03:16.332 --> 00:03:19.665
+00:04:05.749 --> 00:04:09.082
 Annote ensuite les trois adresses avec leurs rôles.
 
-00:03:19.665 --> 00:03:23.337
+00:04:09.082 --> 00:04:12.754
 Si tu observes une désauthentification dans la capture
 du TP, relève
 
-00:03:23.337 --> 00:03:27.009
+00:04:12.754 --> 00:04:16.426
 son type et sa direction, puis compare aux événements
 de connexion
 
-00:03:27.009 --> 00:03:28.011
+00:04:16.426 --> 00:04:17.427
 affichés côté station.

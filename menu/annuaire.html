@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -95,7 +96,7 @@
     <tr><td>Groupe de sécurité</td><td>Regroupe des identités autorisées. Un utilisateur peut être dans plusieurs groupes et dans une seule OU à un instant donné.</td></tr>
     <tr><td>Site AD</td><td>Représente la topologie réseau. Les sous-réseaux servent à rapprocher les postes des contrôleurs et à organiser la réplication.</td></tr>
     </tbody></table></div>
-    <p>Dans un seul domaine, tu peux mettre les comptes d’équipe dans des groupes globaux, puis réunir ceux-ci dans un groupe local au domaine qui reçoit les droits sur une ressource. Ce chemin se résume souvent par <strong>AGDLP</strong> (comptes, groupes globaux, groupes locaux de domaine, permissions).</p>
+    <p>Dans un seul domaine, tu peux mettre les comptes d’équipe dans des groupes globaux, puis réunir ceux-ci dans un groupe local au domaine qui reçoit les droits sur une ressource. Ce chemin se résume souvent par <strong>AGDLP</strong> (méthode d’attribution de permissions dans un domaine) (comptes, groupes globaux, groupes locaux de domaine, permissions).</p>
   </div>
   <div class="c-block">
     <h3>2. Pourquoi DNS et DHCP ne font-ils pas la même chose ?</h3>
@@ -113,14 +114,14 @@
   </div>
   <div class="c-block">
     <h3>4. À quel objet une stratégie s’applique-t-elle ?</h3>
-    <p>Une <strong>GPO</strong> contient des réglages. Son lien décide où les appliquer, par exemple sur le domaine ou sur une OU. La configuration utilisateur suit l’objet utilisateur et la configuration ordinateur suit l’objet ordinateur, sauf mécanismes particuliers comme le traitement en boucle. Un groupe peut filtrer l’application d’une GPO sur un périmètre déjà lié.</p>
+    <p>Une <strong>GPO</strong> (ensemble de paramètres appliqués par stratégie de groupe) contient des réglages. Son lien décide où les appliquer, par exemple sur le domaine ou sur une OU. La configuration utilisateur suit l’objet utilisateur et la configuration ordinateur suit l’objet ordinateur, sauf mécanismes particuliers comme le traitement en boucle. Un groupe peut filtrer l’application d’une GPO sur un périmètre déjà lié.</p>
     <ul><li>Monter un lecteur et régler un fond d’écran sont des exemples de politiques utilisateur.</li><li>Copier un fichier au démarrage, installer un MSI attribué à l’ordinateur ou régler l’inactivité du poste concernent les ordinateurs.</li><li>La politique standard de mots de passe des comptes du domaine se règle au niveau du domaine. Vérifie sa valeur avec <code>Get-ADDefaultDomainPasswordPolicy</code>.</li></ul>
     <p>Pour diagnostiquer, vérifie l’OU de l’objet, que la bonne moitié de la GPO est active, le lien, les permissions de lecture et d’application, puis l’ordre des liens et l’héritage. <code>gpupdate /force</code> actualise et <code>gpresult /r</code> indique ce qui s’est appliqué.</p>
   </div>
   <div class="c-block">
     <h3>5. Comment maintenir un service disponible ?</h3>
     <ul><li>Un second contrôleur reçoit une réplication de l’annuaire. Vérifie <code>repadmin /replsummary</code> et essaye la résolution DNS et la connexion depuis le client.</li><li>Le basculement DHCP synchronise l’étendue et les baux selon le mode choisi. Le second serveur doit être autorisé. Il ne faut pas créer deux étendues indépendantes qui distribuent les mêmes adresses.</li><li>DFS peut fournir un espace de noms et une réplication pour des dossiers. La disponibilité d’un partage doit être testée à part, et une réplication ne remplace pas une sauvegarde.</li></ul>
-    <p>Le gestionnaire FSRM traite un autre besoin : limiter l’espace occupé ou bloquer certains types de fichiers. La déduplication réduit l’espace utilisé par les données répétées sur un volume. Mesure ces effets séparément avant d’en tirer une conclusion.</p>
+    <p>Le gestionnaire FSRM (outils de gestion des ressources d’un serveur de fichiers Windows) traite un autre besoin : limiter l’espace occupé ou bloquer certains types de fichiers. La déduplication réduit l’espace utilisé par les données répétées sur un volume. Mesure ces effets séparément avant d’en tirer une conclusion.</p>
   </div>
   <div class="c-block"><h3>6. Faire la différence entre un site AD et un domaine</h3>
     <p>Un domaine organise les identités et les services d’annuaire. Un <strong>site</strong> représente des sous-réseaux et la façon dont ils sont reliés. Dans le support Sites et services AD, un poste du réseau <code>192.168.70.0/24</code> peut appartenir au même domaine que celui de <code>192.168.69.0/24</code> tout en utilisant d’abord un contrôleur proche de son site.</p>
@@ -136,6 +137,29 @@
   </ol>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ACL</strong> · Access Control List</dt><dd>Liste de règles d’accès. <br><strong>Exemple.</strong> Sur un routeur, autoriser le réseau admin vers le serveur et refuser le réseau invité.</dd></div>
+    <div><dt><strong>AD</strong> · Active Directory</dt><dd>Annuaire de comptes et d’ordinateurs Microsoft. <br><strong>Exemple.</strong> Un utilisateur ouvre une session avec le même compte sur plusieurs postes du domaine.</dd></div>
+    <div><dt><strong>AGDLP</strong> · Accounts, Global groups, Domain Local groups, Permissions</dt><dd>Méthode d’attribution de permissions dans un domaine. <br><strong>Exemple.</strong> Mets les comptes RH dans un groupe global, puis attribue au groupe local les droits du dossier.</dd></div>
+    <div><dt><strong>DFS</strong> · Distributed File System</dt><dd>Système de fichiers distribué. <br><strong>Exemple.</strong> Un chemin de domaine peut orienter vers un dossier partagé sur un serveur.</dd></div>
+    <div><dt><strong>DHCP</strong> · Dynamic Host Configuration Protocol</dt><dd>Distribution automatique de la configuration IP. <br><strong>Exemple.</strong> Un PC obtient une adresse, un masque, une passerelle et souvent un serveur DNS.</dd></div>
+    <div><dt><strong>DNS</strong> · Domain Name System</dt><dd>Système qui associe des noms à des informations comme une adresse IP. <br><strong>Exemple.</strong> Un poste demande quelle adresse utiliser pour atteindre www.exemple.test.</dd></div>
+    <div><dt><strong>FSRM</strong> · File Server Resource Manager</dt><dd>Outils de gestion des ressources d’un serveur de fichiers Windows. <br><strong>Exemple.</strong> Un administrateur fixe un quota de stockage pour un dossier.</dd></div>
+    <div><dt><strong>GPO</strong> · Group Policy Object</dt><dd>Ensemble de paramètres appliqués par stratégie de groupe. <br><strong>Exemple.</strong> Une GPO configure le verrouillage de session des ordinateurs d’une OU.</dd></div>
+    <div><dt><strong>MSI</strong> · Microsoft Installer</dt><dd>Format de paquet d’installation Windows. <br><strong>Exemple.</strong> Une stratégie de groupe peut distribuer un logiciel livré sous forme de fichier MSI.</dd></div>
+    <div><dt><strong>NTFS</strong> · New Technology File System</dt><dd>Système de fichiers Windows. <br><strong>Exemple.</strong> Sur un dossier NTFS, on peut attribuer la lecture à un groupe précis.</dd></div>
+    <div><dt><strong>OU</strong> · Organizational Unit</dt><dd>Unité d’organisation dans Active Directory. <br><strong>Exemple.</strong> L’OU des postes RH permet de cibler une stratégie de groupe.</dd></div>
+    <div><dt><strong>RSAT</strong> · Remote Server Administration Tools</dt><dd>Outils d’administration à distance pour Windows Server. <br><strong>Exemple.</strong> Depuis ton poste, ils permettent de gérer des comptes du domaine.</dd></div>
+    <div><dt><strong>SID</strong> · Security Identifier</dt><dd>Identifiant Windows d’un compte ou d’un groupe. <br><strong>Exemple.</strong> Renommer un groupe ne change pas son SID.</dd></div>
+    <div><dt><strong>SMB</strong> · Server Message Block</dt><dd>Protocole de partage de fichiers et ressources. <br><strong>Exemple.</strong> Un poste Windows ouvre un dossier partagé par SMB.</dd></div>
+    <div><dt><strong>SRV</strong> · Service</dt><dd>Enregistrement DNS qui indique où trouver un service. <br><strong>Exemple.</strong> Un poste Windows utilise des entrées SRV pour localiser des services du domaine.</dd></div>
+    <div><dt><strong>UNC</strong> · Universal Naming Convention</dt><dd>Notation d’un chemin de partage réseau Windows. <br><strong>Exemple.</strong> Le chemin \\serveur\partage cible un dossier partagé.</dd></div>
+    <div><dt><strong>VM</strong> · Virtual Machine</dt><dd>Ordinateur simulé par un hyperviseur. <br><strong>Exemple.</strong> On peut lancer un serveur Linux en VM sur le poste de TP.</dd></div>
+        </dl>
+      </section>
+
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
   <p>Support croisé · Supports GPO et Sites AD, TD Cass’Auto et six TP d’annuaire Windows.</p>

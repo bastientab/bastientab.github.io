@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -109,6 +110,22 @@
   <p><code>sendp()</code> envoie au niveau de la liaison. <code>srp1()</code> attend une première réponse au niveau de la liaison, avec un délai qu’on peut borner. Dans une VM ou sur un réseau de TP autorisé, choisis explicitement l’interface et vérifie l’IP, la MAC et le port du switch avant d’interpréter un silence.</p>
 </div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>ARP</strong> · Address Resolution Protocol</dt><dd>Recherche de l’adresse MAC correspondant à une IPv4 locale. <br><strong>Exemple.</strong> Pour joindre sa passerelle IPv4, le PC demande quelle adresse MAC lui correspond.</dd></div>
+    <div><dt><strong>BPDU</strong> · Bridge Protocol Data Unit</dt><dd>Message qu’échangent les switches pour STP. <br><strong>Exemple.</strong> Un switch annonce le pont racine qu’il connaît et le coût pour le joindre.</dd></div>
+    <div><dt><strong>CSMA/CD</strong> · Carrier Sense Multiple Access with Collision Detection</dt><dd>Ancien mécanisme Ethernet qui détecte les collisions sur un lien partagé. <br><strong>Exemple.</strong> Sur un ancien segment half-duplex, une station arrête sa transmission après une collision.</dd></div>
+    <div><dt><strong>ICMP</strong> · Internet Control Message Protocol</dt><dd>Protocole de messages de contrôle IP. <br><strong>Exemple.</strong> Le ping envoie une requête Echo et attend une réponse Echo.</dd></div>
+    <div><dt><strong>IP</strong> · Internet Protocol</dt><dd>Protocole d’adressage et d’acheminement des paquets. <br><strong>Exemple.</strong> Le routeur lit l’IP de destination pour choisir où envoyer le paquet.</dd></div>
+    <div><dt><strong>IPv4</strong> · Internet Protocol version 4</dt><dd>Version d’IP à adresses de 32 bits. <br><strong>Exemple.</strong> 192.168.20.1 est une adresse IPv4.</dd></div>
+    <div><dt><strong>MAC</strong> · Media Access Control</dt><dd>Identifiant de couche liaison d’une interface dans ce cours. <br><strong>Exemple.</strong> Le switch utilise la MAC de destination pour envoyer une trame vers le bon port.</dd></div>
+    <div><dt><strong>RSTP</strong> · Rapid Spanning Tree Protocol</dt><dd>Version de STP conçue pour converger plus vite. <br><strong>Exemple.</strong> Après une panne, un lien de secours peut être remis en service rapidement.</dd></div>
+    <div><dt><strong>STP</strong> · Spanning Tree Protocol</dt><dd>Protocole qui évite les boucles entre switches. <br><strong>Exemple.</strong> Dans un triangle, STP écarte un lien redondant jusqu’à ce qu’il soit utile.</dd></div>
+    <div><dt><strong>VLAN</strong> · Virtual Local Area Network</dt><dd>Réseau local logique séparé sur une infrastructure partagée. <br><strong>Exemple.</strong> Un switch sépare les postes du personnel et ceux des invités dans deux VLAN.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
   <ul>

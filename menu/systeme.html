@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -101,6 +102,17 @@
 <figure><img src="../assets/revisions/systeme/schemas/processus.png" alt="Le père lance le fils avec l’argument 20, attend son PID et lit le code 20 après exit." loading="lazy"><figcaption>Le fils reçoit 20 via son argument. Il renvoie ensuite 20 au père comme code de fin, que le père retrouve après <code>wait</code>.</figcaption></figure>
 <p><code>kill</code> envoie un signal au processus ciblé. <code>SIGTERM</code> lui demande normalement de se terminer et lui permet de faire son nettoyage. <code>SIGKILL</code> termine le processus sans gestion par celui-ci. Dans le test donné sous Bash, un processus tué avec le signal 9 donne habituellement un statut de 137, soit 128+9.</p></div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>GID</strong> · Group ID</dt><dd>Identifiant numérique d’un groupe sous Unix. <br><strong>Exemple.</strong> Le système vérifie le groupe numérique associé à un fichier avant d’appliquer ses droits.</dd></div>
+    <div><dt><strong>PID</strong> · Process Identifier</dt><dd>Numéro qui identifie un processus. <br><strong>Exemple.</strong> Le shell utilise le PID d’un programme pour attendre sa fin.</dd></div>
+    <div><dt><strong>SSH</strong> · Secure Shell</dt><dd>Connexion distante chiffrée. <br><strong>Exemple.</strong> Depuis ton poste, tu ouvres un terminal distant sans exposer les commandes en clair.</dd></div>
+    <div><dt><strong>UID</strong> · User ID</dt><dd>Identifiant numérique d’un utilisateur sous Unix. <br><strong>Exemple.</strong> Linux associe les permissions du propriétaire à l’UID du fichier.</dd></div>
+    <div><dt><strong>VM</strong> · Virtual Machine</dt><dd>Ordinateur simulé par un hyperviseur. <br><strong>Exemple.</strong> On peut lancer un serveur Linux en VM sur le poste de TP.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <ul><li><a href="#sys-tp3">TP3 · Comparer les droits à la création puis après modification</a></li>

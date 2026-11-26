@@ -73,6 +73,7 @@
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
         <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -99,6 +100,16 @@
 <p>La largeur à −20 dB du sujet est mesurée par rapport au maximum du relevé autour de la porteuse. Sur la trace lissée, trouve le maximum puis cherche les deux franchissements correspondants autour de ce pic. La bande est la différence <code>fmax−fmin</code>. Garde le même repère en fréquence et précise comment tu choisis les bornes sur une trace discrète.</p>
 <p>Pour additionner des puissances, convertis en échelle linéaire. <code>P(W)=10^((PdBm−30)/10)</code>. Si le sujet traite chaque valeur comme la puissance par intervalle fréquentiel de largeur <code>df</code>, divise par <code>df</code> pour obtenir une densité en W/Hz. Dans le cas d’une mesure d’analyseur, vérifie aussi ce que l’instrument a exporté pour identifier la bonne largeur de référence. La puissance de bande vaut la somme <code>DSP×df</code> dans le modèle du TP.</p></div>
 </section>
+      <section class="c-section" id="sigles" aria-labelledby="sigles-title">
+        <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
+        <dl class="vocab">
+    <div><dt><strong>DSP</strong> · Densité spectrale de puissance</dt><dd>Puissance répartie par unité de fréquence. <br><strong>Exemple.</strong> Pour obtenir la puissance d’un canal, on intègre sa densité sur la bande.</dd></div>
+    <div><dt><strong>FFT</strong> · Fast Fourier Transform</dt><dd>Calcul efficace de la représentation fréquentielle d’un signal. <br><strong>Exemple.</strong> La FFT d’un sinus à 1 kHz permet de repérer la composante à 1 kHz.</dd></div>
+    <div><dt><strong>PWM</strong> · Pulse Width Modulation</dt><dd>Modulation de largeur d’impulsion. <br><strong>Exemple.</strong> Une impulsion à l’état haut pendant un quart de la période a un rapport cyclique de 25 %.</dd></div>
+    <div><dt><strong>RBW</strong> · Resolution Bandwidth</dt><dd>Largeur de bande de résolution en analyse spectrale. <br><strong>Exemple.</strong> Diminuer la RBW aide à distinguer deux raies rapprochées.</dd></div>
+        </dl>
+      </section>
+
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
 <ul><li><a href="#sae22-sinus">Partie 1 · Échantillonner à 40 kHz et vérifier les périodes</a></li>
