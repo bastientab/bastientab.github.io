@@ -1,511 +1,544 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.214
-Tu peux avoir sur la même machine un serveur Web, un
+00:00:00.100 --> 00:00:04.685
+La machine a reçu une adresse grâce au protocole
+de configuration
 
-00:00:03.214 --> 00:00:05.479
+00:00:04.685 --> 00:00:05.102
+dynamique.
+
+00:00:05.102 --> 00:00:08.145
+Elle peut quand même être incapable d’ouvrir un
+nom si son
+
+00:00:08.145 --> 00:00:09.805
+serveur de noms ne répond pas.
+
+00:00:09.805 --> 00:00:12.370
+On va isoler ces deux étapes.
+
+00:00:12.975 --> 00:00:16.089
+Tu peux avoir sur la même machine un serveur
+Web, un
+
+00:00:16.089 --> 00:00:18.354
 serveur de fichiers et un serveur de messagerie.
 
-00:00:05.479 --> 00:00:08.714
+00:00:18.354 --> 00:00:21.589
 L'adresse IP les met sur le même ordinateur.
 
-00:00:08.714 --> 00:00:12.065
+00:00:21.589 --> 00:00:24.940
 Le port aide ensuite le système à savoir à quel
 service
 
-00:00:12.065 --> 00:00:12.979
+00:00:24.940 --> 00:00:25.854
 donner les données.
 
-00:00:12.979 --> 00:00:16.409
+00:00:25.854 --> 00:00:29.284
 Quand ton client ouvre une connexion, lui aussi
 possède un port,
 
-00:00:16.409 --> 00:00:18.592
+00:00:29.284 --> 00:00:31.467
 souvent choisi pour la durée de l'échange.
 
-00:00:18.592 --> 00:00:22.029
-Dans une capture, note les deux adresses et les deux
-ports,
+00:00:31.467 --> 00:00:34.904
+Dans une capture, note les deux adresses et les
+deux ports,
 
-00:00:22.029 --> 00:00:25.467
-puis observe comment source et destination s'inversent
-quand le serveur répond.
+00:00:34.904 --> 00:00:38.342
+puis observe comment source et destination
+s'inversent quand le serveur répond.
 
-00:00:25.808 --> 00:00:28.503
+00:00:38.933 --> 00:00:41.628
 Pense à deux manières de livrer des données.
 
-00:00:28.503 --> 00:00:32.695
+00:00:41.628 --> 00:00:45.820
 Avec UDP, chaque envoi conserve sa forme de
 datagramme.
 
-00:00:32.695 --> 00:00:36.697
-Il n'y a pas de connexion TCP ni de retransmission
-automatique
+00:00:45.820 --> 00:00:49.822
+Il n'y a pas de connexion TCP ni de
+retransmission automatique
 
-00:00:36.697 --> 00:00:37.425
+00:00:49.822 --> 00:00:50.550
 par UDP.
 
-00:00:37.425 --> 00:00:41.128
-Avec TCP, les deux côtés se mettent d'abord d'accord
-avant de
+00:00:50.550 --> 00:00:54.253
+Avec TCP, les deux côtés se mettent d'abord
+d'accord avant de
 
-00:00:41.128 --> 00:00:42.474
+00:00:54.253 --> 00:00:55.599
 livrer un flux ordonné.
 
-00:00:42.474 --> 00:00:46.682
-Le serveur répond au premier SYN en l'acquittant et en
-envoyant
+00:00:55.599 --> 00:00:59.807
+Le serveur répond au premier SYN en l'acquittant
+et en envoyant
 
-00:00:46.682 --> 00:00:47.829
+00:00:59.807 --> 00:01:00.954
 son propre SYN.
 
-00:00:47.829 --> 00:00:50.942
+00:01:00.954 --> 00:01:04.067
 Le troisième message termine l'ouverture.
 
-00:00:50.942 --> 00:00:54.470
-On pourra voir exactement ces trois lignes dans le TP
-de
+00:01:04.067 --> 00:01:07.595
+On pourra voir exactement ces trois lignes dans
+le TP de
 
-00:00:54.470 --> 00:00:54.790
+00:01:07.595 --> 00:01:07.915
 messagerie.
 
-00:00:55.142 --> 00:00:59.061
-Pour finir proprement, un côté peut envoyer FIN quand
-il a
+00:01:08.517 --> 00:01:12.436
+Pour finir proprement, un côté peut envoyer FIN
+quand il a
 
-00:00:59.061 --> 00:00:59.773
+00:01:12.436 --> 00:01:13.148
 terminé d'écrire.
 
-00:00:59.773 --> 00:01:03.229
-Les deux côtés ne terminent pas nécessairement au même
-moment.
+00:01:13.148 --> 00:01:16.604
+Les deux côtés ne terminent pas nécessairement
+au même moment.
 
-00:01:03.229 --> 00:01:06.746
+00:01:16.604 --> 00:01:20.121
 RST, lui, réinitialise la connexion.
 
-00:01:06.746 --> 00:01:10.802
+00:01:20.121 --> 00:01:24.177
 Quand tu débogues une machine, observe la toute
 première tentative.
 
-00:01:10.802 --> 00:01:14.435
-Une réponse qui refuse le port et une requête qui
-n'obtient
+00:01:24.177 --> 00:01:27.810
+Une réponse qui refuse le port et une requête
+qui n'obtient
 
-00:01:14.435 --> 00:01:17.077
-jamais de réponse orientent vers des vérifications
-différentes.
+00:01:27.810 --> 00:01:30.452
+jamais de réponse orientent vers des
+vérifications différentes.
 
-00:01:17.077 --> 00:01:21.615
-Puis regarde le protocole applicatif seulement si la
-liaison concernée est
+00:01:30.452 --> 00:01:34.990
+Puis regarde le protocole applicatif seulement
+si la liaison concernée est
 
-00:01:21.615 --> 00:01:22.028
+00:01:34.990 --> 00:01:35.403
 fonctionnelle.
 
-00:01:22.392 --> 00:01:26.073
-Quand tu demandes une page Web, le navigateur prépare
-une méthode,
+00:01:35.767 --> 00:01:39.448
+Quand tu demandes une page Web, le navigateur
+prépare une méthode,
 
-00:01:26.073 --> 00:01:27.746
+00:01:39.448 --> 00:01:41.121
 un chemin et des en-têtes.
 
-00:01:27.746 --> 00:01:31.349
+00:01:41.121 --> 00:01:44.724
 Avec GET, il cherche à récupérer la ressource.
 
-00:01:31.349 --> 00:01:34.511
+00:01:44.724 --> 00:01:47.886
 Le serveur commence sa réponse par un statut.
 
-00:01:34.511 --> 00:01:37.982
-Si tu lis deux cents, la requête a été traitée avec
+00:01:47.886 --> 00:01:51.357
+Si tu lis deux cents, la requête a été traitée
+avec
 
-00:01:37.982 --> 00:01:38.298
+00:01:51.357 --> 00:01:51.673
 succès.
 
-00:01:38.298 --> 00:01:42.072
-Si tu lis quatre cent quatre, retourne vérifier le
-chemin et
+00:01:51.673 --> 00:01:55.447
+Si tu lis quatre cent quatre, retourne vérifier
+le chemin et
 
-00:01:42.072 --> 00:01:42.415
+00:01:55.447 --> 00:01:55.790
 l'hôte.
 
-00:01:42.415 --> 00:01:45.465
-Ouvre la réponse avec curl et son option i pour voir
+00:01:55.790 --> 00:01:58.840
+Ouvre la réponse avec curl et son option i pour
+voir
 
-00:01:45.465 --> 00:01:46.851
+00:01:58.840 --> 00:02:00.226
 les en-têtes avant le corps.
 
-00:01:46.851 --> 00:01:51.214
+00:02:00.226 --> 00:02:04.589
 Avec HTTPS, la connexion est protégée par TLS.
 
-00:01:51.558 --> 00:01:55.565
-Au départ, le poste ne sait pas encore quelle adresse
-utiliser.
+00:02:05.183 --> 00:02:09.190
+Au départ, le poste ne sait pas encore quelle
+adresse utiliser.
 
-00:01:55.565 --> 00:01:59.302
-Il diffuse une demande pour trouver un serveur DHCP.
+00:02:09.190 --> 00:02:12.927
+Il diffuse une demande pour trouver un serveur
+DHCP.
 
-00:01:59.302 --> 00:02:01.913
+00:02:12.927 --> 00:02:15.538
 Le serveur propose une adresse.
 
-00:02:01.913 --> 00:02:06.165
-Le client demande à l'utiliser, et le serveur confirme
-le bail.
+00:02:15.538 --> 00:02:19.790
+Le client demande à l'utiliser, et le serveur
+confirme le bail.
 
-00:02:06.165 --> 00:02:09.915
-En plus de l'adresse, observe les paramètres envoyés.
+00:02:19.790 --> 00:02:23.540
+En plus de l'adresse, observe les paramètres
+envoyés.
 
-00:02:09.915 --> 00:02:12.832
-Si le routeur ou le DNS est faux, la machine peut
+00:02:23.540 --> 00:02:26.457
+Si le routeur ou le DNS est faux, la machine
+peut
 
-00:02:12.832 --> 00:02:15.749
-avoir une adresse valide et quand même échouer sur la
-suite.
+00:02:26.457 --> 00:02:29.374
+avoir une adresse valide et quand même échouer
+sur la suite.
 
-00:02:15.749 --> 00:02:20.295
-Au renouvellement, le premier message visible n'est
-pas forcément un Discover.
+00:02:29.374 --> 00:02:33.920
+Au renouvellement, le premier message visible
+n'est pas forcément un Discover.
 
-00:02:20.642 --> 00:02:24.531
-Si le serveur est derrière un routeur, la diffusion
-locale n'y
+00:02:34.517 --> 00:02:38.406
+Si le serveur est derrière un routeur, la
+diffusion locale n'y
 
-00:02:24.531 --> 00:02:25.592
+00:02:38.406 --> 00:02:39.467
 arrive pas automatiquement.
 
-00:02:25.592 --> 00:02:29.016
-Un relais peut transmettre la demande au serveur et
-donner le
+00:02:39.467 --> 00:02:42.891
+Un relais peut transmettre la demande au serveur
+et donner le
 
-00:02:29.016 --> 00:02:30.261
+00:02:42.891 --> 00:02:44.136
 contexte du réseau client.
 
-00:02:30.261 --> 00:02:34.350
-La configuration du serveur doit alors contenir une
-plage pour ce
+00:02:44.136 --> 00:02:48.225
+La configuration du serveur doit alors contenir
+une plage pour ce
 
-00:02:34.350 --> 00:02:34.722
+00:02:48.225 --> 00:02:48.597
 réseau.
 
-00:02:34.722 --> 00:02:38.758
+00:02:48.597 --> 00:02:52.633
 Une fois l'Ack reçu, lis les options réellement
 attribuées, en particulier
 
-00:02:38.758 --> 00:02:41.327
+00:02:52.633 --> 00:02:55.202
 le masque, la passerelle et le DNS.
 
-00:02:41.327 --> 00:02:44.909
-Un client qui obtient un bail valide peut déjà t'aider
-à
+00:02:55.202 --> 00:02:58.784
+Un client qui obtient un bail valide peut déjà
+t'aider à
 
-00:02:44.909 --> 00:02:45.886
+00:02:58.784 --> 00:02:59.761
 éliminer plusieurs causes.
 
-00:02:46.225 --> 00:02:49.925
+00:03:00.100 --> 00:03:03.800
 Une session SSH t'amène sur une autre machine.
 
-00:02:49.925 --> 00:02:54.059
-Avant de saisir ou d'utiliser un identifiant, vérifie
-à qui tu
+00:03:03.800 --> 00:03:07.934
+Avant de saisir ou d'utiliser un identifiant,
+vérifie à qui tu
 
-00:02:54.059 --> 00:02:54.435
+00:03:07.934 --> 00:03:08.310
 parles.
 
-00:02:54.435 --> 00:02:57.278
+00:03:08.310 --> 00:03:11.153
 La clé d'hôte représente le serveur.
 
-00:02:57.278 --> 00:03:01.347
-La clé utilisateur représente le compte que tu veux
-utiliser.
+00:03:11.153 --> 00:03:15.222
+La clé utilisateur représente le compte que tu
+veux utiliser.
 
-00:03:01.347 --> 00:03:04.190
+00:03:15.222 --> 00:03:18.065
 Ce sont deux vérifications différentes.
 
-00:03:04.190 --> 00:03:07.858
-Dans la maquette, relève l'empreinte du serveur de
-manière indépendante et
+00:03:18.065 --> 00:03:21.733
+Dans la maquette, relève l'empreinte du serveur
+de manière indépendante et
 
-00:03:07.858 --> 00:03:10.525
-compare-la au message affiché lors de la connexion.
+00:03:21.733 --> 00:03:24.400
+compare-la au message affiché lors de la
+connexion.
 
-00:03:10.525 --> 00:03:14.349
-Pour l'utilisateur, sa clé privée reste sur son poste.
+00:03:24.400 --> 00:03:28.224
+Pour l'utilisateur, sa clé privée reste sur son
+poste.
 
-00:03:14.683 --> 00:03:18.361
-Un transfert FTP peut commencer par une connexion de
-contrôle qui
+00:03:28.808 --> 00:03:32.486
+Un transfert FTP peut commencer par une
+connexion de contrôle qui
 
-00:03:18.361 --> 00:03:19.364
+00:03:32.486 --> 00:03:33.489
 marche très bien.
 
-00:03:19.364 --> 00:03:22.843
-Puis, à la demande du fichier ou de la liste, une
+00:03:33.489 --> 00:03:36.968
+Puis, à la demande du fichier ou de la liste,
+une
 
-00:03:22.843 --> 00:03:24.425
+00:03:36.968 --> 00:03:38.550
 nouvelle connexion transporte les données.
 
-00:03:24.425 --> 00:03:27.783
+00:03:38.550 --> 00:03:41.908
 Un pare-feu peut traiter ces deux connexions
 différemment.
 
-00:03:27.783 --> 00:03:31.096
-Le mode passif fait initier la connexion de données
-par le
+00:03:41.908 --> 00:03:45.221
+Le mode passif fait initier la connexion de
+données par le
 
-00:03:31.096 --> 00:03:33.506
+00:03:45.221 --> 00:03:47.631
 client, sur le port indiqué par le serveur.
 
-00:03:33.506 --> 00:03:36.910
-Si tu vois le login réussir et le listing bloquer,
-regarde
+00:03:47.631 --> 00:03:51.035
+Si tu vois le login réussir et le listing
+bloquer, regarde
 
-00:03:36.910 --> 00:03:39.695
+00:03:51.035 --> 00:03:53.820
 si la connexion de données a bien été ouverte.
 
-00:03:40.058 --> 00:03:43.869
-Une question DNS précise le nom et le type recherché.
+00:03:54.183 --> 00:03:57.994
+Une question DNS précise le nom et le type
+recherché.
 
-00:03:43.869 --> 00:03:47.508
-Pour joindre une machine en IPv4, demande le type A.
+00:03:57.994 --> 00:04:01.633
+Pour joindre une machine en IPv4, demande le
+type A.
 
-00:03:47.508 --> 00:03:50.811
-Pour un alias, le CNAME indique un autre nom qui peut
+00:04:01.633 --> 00:04:04.936
+Pour un alias, le CNAME indique un autre nom qui
+peut
 
-00:03:50.811 --> 00:03:52.312
+00:04:04.936 --> 00:04:06.437
 ensuite avoir sa propre adresse.
 
-00:03:52.312 --> 00:03:55.769
-Pour acheminer du mail vers un domaine, la question
-porte sur
+00:04:06.437 --> 00:04:09.894
+Pour acheminer du mail vers un domaine, la
+question porte sur
 
-00:03:55.769 --> 00:03:56.712
+00:04:09.894 --> 00:04:10.837
 le type MX.
 
-00:03:56.712 --> 00:04:00.572
-Une résolution inverse cherche un nom à partir d'une
-adresse.
+00:04:10.837 --> 00:04:14.697
+Une résolution inverse cherche un nom à partir
+d'une adresse.
 
-00:04:00.572 --> 00:04:03.660
-Quand tu lis la sortie de nslookup, vérifie que la
-réponse
+00:04:14.697 --> 00:04:17.785
+Quand tu lis la sortie de nslookup, vérifie que
+la réponse
 
-00:04:03.660 --> 00:04:06.467
+00:04:17.785 --> 00:04:20.592
 concerne bien le nom et le type que tu voulais.
 
-00:04:06.808 --> 00:04:10.213
-Le résolveur peut répondre à partir d'une information
-en cache, ou
+00:04:21.183 --> 00:04:24.588
+Le résolveur peut répondre à partir d'une
+information en cache, ou
 
-00:04:10.213 --> 00:04:13.618
-aller chercher une réponse qui vient des serveurs
-responsables de la
+00:04:24.588 --> 00:04:27.993
+aller chercher une réponse qui vient des
+serveurs responsables de la
 
-00:04:13.618 --> 00:04:13.927
+00:04:27.993 --> 00:04:28.302
 zone.
 
-00:04:13.927 --> 00:04:17.849
-Le TTL indique combien de temps l'information peut
-être gardée.
+00:04:28.302 --> 00:04:32.224
+Le TTL indique combien de temps l'information
+peut être gardée.
 
-00:04:17.849 --> 00:04:22.046
-Après une modification de zone, confirme d'abord la
-nouvelle valeur directement
+00:04:32.224 --> 00:04:36.421
+Après une modification de zone, confirme d'abord
+la nouvelle valeur directement
 
-00:04:22.046 --> 00:04:23.572
+00:04:36.421 --> 00:04:37.947
 auprès du bon serveur.
 
-00:04:23.572 --> 00:04:27.665
-Puis vérifie ce que le poste reçoit avec son résolveur
-habituel.
+00:04:37.947 --> 00:04:42.040
+Puis vérifie ce que le poste reçoit avec son
+résolveur habituel.
 
-00:04:27.665 --> 00:04:31.195
+00:04:42.040 --> 00:04:45.570
 Ce sont deux mesures différentes du chemin DNS.
 
-00:04:31.558 --> 00:04:35.209
-Dans le TP, deux ordinateurs doivent s'échanger des
-mails.
+00:04:45.933 --> 00:04:49.584
+Dans le TP, deux ordinateurs doivent s'échanger
+des mails.
 
-00:04:35.209 --> 00:04:38.432
-Le premier service donne l'adresse et les paramètres.
+00:04:49.584 --> 00:04:52.807
+Le premier service donne l'adresse et les
+paramètres.
 
-00:04:38.432 --> 00:04:41.288
+00:04:52.807 --> 00:04:55.663
 Le deuxième traduit le nom du serveur.
 
-00:04:41.288 --> 00:04:45.601
+00:04:55.663 --> 00:04:59.976
 Ensuite, SMTP envoie le message et POP permet au
 deuxième poste
 
-00:04:45.601 --> 00:04:46.778
+00:04:59.976 --> 00:05:01.153
 de le récupérer.
 
-00:04:46.778 --> 00:04:50.727
-Dans une vraie boîte, IMAP permet aussi de consulter
-et synchroniser
+00:05:01.153 --> 00:05:05.102
+Dans une vraie boîte, IMAP permet aussi de
+consulter et synchroniser
 
-00:04:50.727 --> 00:04:52.881
+00:05:05.102 --> 00:05:07.256
 l'état des messages présents côté serveur.
 
-00:04:52.881 --> 00:04:55.871
+00:05:07.256 --> 00:05:10.246
 Ici, la maquette utilise POP.
 
-00:04:55.871 --> 00:04:58.991
-Suis l'ordre du schéma pour éviter de chercher un
-problème de
+00:05:10.246 --> 00:05:13.366
+Suis l'ordre du schéma pour éviter de chercher
+un problème de
 
-00:04:58.991 --> 00:05:01.827
-messagerie alors que le poste ne connaît pas le DNS.
-
-00:05:02.183 --> 00:05:04.842
-Repars du TD DHCP.
-
-00:05:04.842 --> 00:05:08.579
-Sur le serveur, repère l'interface qui fait face au
-client.
-
-00:05:08.579 --> 00:05:11.979
-Vérifie qu'elle est montée, que le service tourne et
-que la
-
-00:05:11.979 --> 00:05:14.143
-déclaration de réseau correspond à la maquette.
-
-00:05:14.143 --> 00:05:16.950
-Sur le client, demande une attribution.
-
-00:05:16.950 --> 00:05:20.626
-Relève l'adresse et le masque, puis le DNS reçu.
-
-00:05:20.626 --> 00:05:23.599
-Si l'adresse est hors de la plage prévue, il peut y
-
-00:05:23.599 --> 00:05:25.491
-avoir un autre serveur dans la maquette.
-
-00:05:25.491 --> 00:05:29.173
-Si le bail existe avec le mauvais DNS, ouvre l'offre
-ou
-
-00:05:29.173 --> 00:05:30.847
-l'Ack et vérifie les options.
-
-00:05:31.183 --> 00:05:34.258
-Le TP impose deux adresses différentes.
-
-00:05:34.258 --> 00:05:38.609
-L'adresse finissant par deux cent cinquante-trois est
-celle du DNS.
-
-00:05:38.609 --> 00:05:42.687
-Celle finissant par deux cent cinquante-quatre est
-celle du serveur de
-
-00:05:42.687 --> 00:05:43.057
-messagerie.
-
-00:05:43.057 --> 00:05:46.734
-Dans le DNS, crée l'enregistrement A du serveur.
-
-00:05:46.734 --> 00:05:49.638
-Crée ensuite les deux alias vers ce nom.
-
-00:05:49.638 --> 00:05:53.666
-Depuis un poste, commence par tester le nom canonique
-en interrogeant
-
-00:05:53.666 --> 00:05:55.864
-explicitement le DNS de la maquette.
-
-00:05:55.864 --> 00:05:58.744
-Ensuite, teste les deux alias.
-
-00:05:59.100 --> 00:06:03.143
-Refais le même test en laissant le poste choisir son
+00:05:13.366 --> 00:05:16.202
+messagerie alors que le poste ne connaît pas le
 DNS.
 
-00:06:03.143 --> 00:06:07.196
+00:05:16.767 --> 00:05:19.425
+Repars du TD DHCP.
+
+00:05:19.425 --> 00:05:23.163
+Sur le serveur, repère l'interface qui fait face
+au client.
+
+00:05:23.163 --> 00:05:26.563
+Vérifie qu'elle est montée, que le service
+tourne et que la
+
+00:05:26.563 --> 00:05:28.726
+déclaration de réseau correspond à la maquette.
+
+00:05:28.726 --> 00:05:31.533
+Sur le client, demande une attribution.
+
+00:05:31.533 --> 00:05:35.209
+Relève l'adresse et le masque, puis le DNS reçu.
+
+00:05:35.209 --> 00:05:38.182
+Si l'adresse est hors de la plage prévue, il
+peut y
+
+00:05:38.182 --> 00:05:40.075
+avoir un autre serveur dans la maquette.
+
+00:05:40.075 --> 00:05:43.756
+Si le bail existe avec le mauvais DNS, ouvre
+l'offre ou
+
+00:05:43.756 --> 00:05:45.430
+l'Ack et vérifie les options.
+
+00:05:46.017 --> 00:05:49.092
+Le TP impose deux adresses différentes.
+
+00:05:49.092 --> 00:05:53.442
+L'adresse finissant par deux cent cinquante-
+trois est celle du DNS.
+
+00:05:53.442 --> 00:05:57.520
+Celle finissant par deux cent cinquante-quatre
+est celle du serveur de
+
+00:05:57.520 --> 00:05:57.891
+messagerie.
+
+00:05:57.891 --> 00:06:01.567
+Dans le DNS, crée l'enregistrement A du serveur.
+
+00:06:01.567 --> 00:06:04.472
+Crée ensuite les deux alias vers ce nom.
+
+00:06:04.472 --> 00:06:08.500
+Depuis un poste, commence par tester le nom
+canonique en interrogeant
+
+00:06:08.500 --> 00:06:10.697
+explicitement le DNS de la maquette.
+
+00:06:10.697 --> 00:06:13.577
+Ensuite, teste les deux alias.
+
+00:06:14.183 --> 00:06:18.226
+Refais le même test en laissant le poste choisir
+son DNS.
+
+00:06:18.226 --> 00:06:22.280
 Si les deux essais donnent la même adresse, la
 résolution via
 
-00:06:07.196 --> 00:06:08.670
+00:06:22.280 --> 00:06:23.753
 la configuration normale fonctionne.
 
-00:06:08.670 --> 00:06:12.624
-Si seul le premier fonctionne, le serveur connait
-l'enregistrement, mais le
+00:06:23.753 --> 00:06:27.708
+Si seul le premier fonctionne, le serveur
+connait l'enregistrement, mais le
 
-00:06:12.624 --> 00:06:15.141
+00:06:27.708 --> 00:06:30.224
 poste ne l'utilise peut-être pas comme prévu.
 
-00:06:15.141 --> 00:06:18.351
+00:06:30.224 --> 00:06:33.435
 Retourne au bail et lis l'adresse du résolveur.
 
-00:06:18.351 --> 00:06:22.317
-C'est ici que la question sur les alias rejoint la
-partie
+00:06:33.435 --> 00:06:37.400
+C'est ici que la question sur les alias rejoint
+la partie
 
-00:06:22.317 --> 00:06:22.677
+00:06:37.400 --> 00:06:37.761
 DHCP.
 
-00:06:23.058 --> 00:06:26.823
-Cette commande sert à produire une connexion TCP sur
-le port
+00:06:38.142 --> 00:06:41.906
+Cette commande sert à produire une connexion TCP
+sur le port
 
-00:06:26.823 --> 00:06:28.192
+00:06:41.906 --> 00:06:43.275
 SMTP de la maquette.
 
-00:06:28.192 --> 00:06:31.097
+00:06:43.275 --> 00:06:46.180
 Garde seulement les événements TCP.
 
-00:06:31.097 --> 00:06:34.653
-Ouvre le premier segment et lis le port temporaire et
-le
+00:06:46.180 --> 00:06:49.737
+Ouvre le premier segment et lis le port
+temporaire et le
 
-00:06:34.653 --> 00:06:35.300
+00:06:49.737 --> 00:06:50.383
 port vingt-cinq.
 
-00:06:35.300 --> 00:06:38.795
-Dans le retour, les ports sont inversés et les deux
-drapeaux
+00:06:50.383 --> 00:06:53.878
+Dans le retour, les ports sont inversés et les
+deux drapeaux
 
-00:06:38.795 --> 00:06:39.430
+00:06:53.878 --> 00:06:54.513
 sont présents.
 
-00:06:39.430 --> 00:06:41.954
+00:06:54.513 --> 00:06:57.038
 Enfin, le client acquitte.
 
-00:06:41.954 --> 00:06:44.834
+00:06:57.038 --> 00:06:59.918
 À ce stade tu as validé l'ouverture.
 
-00:06:44.834 --> 00:06:47.567
+00:06:59.918 --> 00:07:02.650
 Il reste encore à faire un vrai envoi.
 
-00:06:47.892 --> 00:06:52.388
-Sur le serveur de Packet Tracer, active POP et SMTP.
+00:07:03.225 --> 00:07:07.722
+Sur le serveur de Packet Tracer, active POP et
+SMTP.
 
-00:06:52.388 --> 00:06:55.709
+00:07:07.722 --> 00:07:11.043
 Crée les deux comptes de test et mets le domaine
 demandé.
 
-00:06:55.709 --> 00:06:59.536
-Dans le client, saisis l'adresse d'envoi, les deux
-noms DNS et
+00:07:11.043 --> 00:07:14.869
+Dans le client, saisis l'adresse d'envoi, les
+deux noms DNS et
 
-00:06:59.536 --> 00:07:00.231
+00:07:14.869 --> 00:07:15.565
 le compte.
 
-00:07:00.231 --> 00:07:03.749
-Envoie un premier message du compte un vers le compte
-deux.
+00:07:15.565 --> 00:07:19.082
+Envoie un premier message du compte un vers le
+compte deux.
 
-00:07:03.749 --> 00:07:06.923
+00:07:19.082 --> 00:07:22.256
 Ouvre le deuxième poste et récupère le courrier.
 
-00:07:06.923 --> 00:07:10.389
-Si le premier test marche et celui-ci échoue, tu peux
-maintenant
+00:07:22.256 --> 00:07:25.722
+Si le premier test marche et celui-ci échoue, tu
+peux maintenant
 
-00:07:10.389 --> 00:07:13.855
-distinguer un échec de l'envoi, un mauvais nom de
-serveur entrant
+00:07:25.722 --> 00:07:29.189
+distinguer un échec de l'envoi, un mauvais nom
+de serveur entrant
 
-00:07:13.855 --> 00:07:15.746
+00:07:29.189 --> 00:07:31.079
 et un échec de l'authentification POP.

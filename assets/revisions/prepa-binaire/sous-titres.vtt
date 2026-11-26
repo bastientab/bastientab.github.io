@@ -1,587 +1,626 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.812
-Comment est-ce que huit uns peuvent représenter deux
-nombres différents ?
+00:00:00.100 --> 00:00:02.653
+Écris cinq sur huit bits.
 
-00:00:03.812 --> 00:00:06.496
+00:00:02.653 --> 00:00:05.024
+On inverse chaque bit.
+
+00:00:05.024 --> 00:00:07.511
+Puis on ajoute un au résultat.
+
+00:00:07.511 --> 00:00:11.022
+On obtient le complément à deux de cinq, c’est
+la représentation
+
+00:00:11.022 --> 00:00:12.937
+de moins cinq sur huit bits.
+
+00:00:13.558 --> 00:00:17.271
+Comment est-ce que huit uns peuvent représenter
+deux nombres différents ?
+
+00:00:17.271 --> 00:00:19.954
 C'est l'interprétation qui change.
 
-00:00:06.496 --> 00:00:09.597
-Comme une suite de notes sur une portée, la suite de
+00:00:19.954 --> 00:00:23.055
+Comme une suite de notes sur une portée, la
+suite de
 
-00:00:09.597 --> 00:00:10.724
+00:00:23.055 --> 00:00:24.182
 bits est le support.
 
-00:00:10.724 --> 00:00:13.506
+00:00:24.182 --> 00:00:26.964
 La convention te dit comment la lire.
 
-00:00:13.506 --> 00:00:17.489
-Ici, non signé, on additionne tous les poids positifs.
+00:00:26.964 --> 00:00:30.947
+Ici, non signé, on additionne tous les poids
+positifs.
 
-00:00:17.489 --> 00:00:21.061
-En complément à deux, le bit de gauche prend un poids
+00:00:30.947 --> 00:00:34.519
+En complément à deux, le bit de gauche prend un
+poids
 
-00:00:21.061 --> 00:00:21.386
+00:00:34.519 --> 00:00:34.844
 négatif.
 
-00:00:21.386 --> 00:00:24.673
+00:00:34.844 --> 00:00:38.131
 On va comprendre ces deux lectures avant de les
 appliquer au
 
-00:00:24.673 --> 00:00:25.271
+00:00:38.131 --> 00:00:38.729
 vrai TD.
 
-00:00:25.642 --> 00:00:29.236
+00:00:39.308 --> 00:00:42.902
 Chaque case a un poids, comme les centaines, les
 dizaines et
 
-00:00:29.236 --> 00:00:30.543
+00:00:42.902 --> 00:00:44.209
 les unités en décimal.
 
-00:00:30.543 --> 00:00:34.385
-En binaire, chaque déplacement d'une case vers la
-gauche double ce
+00:00:44.209 --> 00:00:48.051
+En binaire, chaque déplacement d'une case vers
+la gauche double ce
 
-00:00:34.385 --> 00:00:34.734
+00:00:48.051 --> 00:00:48.400
 poids.
 
-00:00:34.734 --> 00:00:38.208
-Dans mille cent en binaire, seuls les poids huit et
-quatre
+00:00:48.400 --> 00:00:51.874
+Dans mille cent en binaire, seuls les poids huit
+et quatre
 
-00:00:38.208 --> 00:00:38.839
+00:00:51.874 --> 00:00:52.506
 sont actifs.
 
-00:00:38.839 --> 00:00:42.356
-Quatre bits donnent exactement seize possibilités.
+00:00:52.506 --> 00:00:56.023
+Quatre bits donnent exactement seize
+possibilités.
 
-00:00:42.356 --> 00:00:45.515
-C'est pour ça qu'en hexadécimal, on peut prendre les
-bits quatre
+00:00:56.023 --> 00:00:59.181
+C'est pour ça qu'en hexadécimal, on peut prendre
+les bits quatre
 
-00:00:45.515 --> 00:00:48.386
+00:00:59.181 --> 00:01:02.052
 par quatre et traduire chaque paquet par un seul
 chiffre.
 
-00:00:48.725 --> 00:00:52.290
-Pour partir dans l'autre sens, divisons treize par
-deux.
+00:01:02.642 --> 00:01:06.207
+Pour partir dans l'autre sens, divisons treize
+par deux.
 
-00:00:52.290 --> 00:00:55.807
+00:01:06.207 --> 00:01:09.724
 Le reste, un, dit si on a une unité isolée.
 
-00:00:55.807 --> 00:00:59.214
+00:01:09.724 --> 00:01:13.131
 Le quotient, six, compte les paquets de deux.
 
-00:00:59.214 --> 00:01:02.621
+00:01:13.131 --> 00:01:16.538
 On recommence avec six, puis trois, puis un.
 
-00:01:02.621 --> 00:01:05.598
-On trouve les bits en allant du poids faible au poids
+00:01:16.538 --> 00:01:19.515
+On trouve les bits en allant du poids faible au
+poids
 
-00:01:05.598 --> 00:01:05.869
+00:01:19.515 --> 00:01:19.785
 fort.
 
-00:01:05.869 --> 00:01:09.508
+00:01:19.785 --> 00:01:23.425
 Au moment d'écrire le résultat, lis la liste des
 restes à
 
-00:01:09.508 --> 00:01:09.839
+00:01:23.425 --> 00:01:23.756
 l'envers.
 
-00:01:09.839 --> 00:01:12.376
+00:01:23.756 --> 00:01:26.293
 Vérifie par l'addition des poids.
 
-00:01:12.725 --> 00:01:15.420
+00:01:26.642 --> 00:01:29.337
 Attention au niveau auquel tu comptes.
 
-00:01:15.420 --> 00:01:18.190
+00:01:29.337 --> 00:01:32.106
 Un octet est un paquet de huit bits.
 
-00:01:18.190 --> 00:01:21.633
+00:01:32.106 --> 00:01:35.550
 Un kibioctet est un paquet de mille vingt-quatre
 octets.
 
-00:01:21.633 --> 00:01:25.349
-Pour passer de cinq kibioctets à des bits, multiplie
-d'abord par
+00:01:35.550 --> 00:01:39.266
+Pour passer de cinq kibioctets à des bits,
+multiplie d'abord par
 
-00:01:25.349 --> 00:01:27.038
+00:01:39.266 --> 00:01:40.954
 mille vingt-quatre, puis par huit.
 
-00:01:27.038 --> 00:01:29.869
+00:01:40.954 --> 00:01:43.785
 Écris l'unité après chaque opération.
 
-00:01:29.869 --> 00:01:33.092
+00:01:43.785 --> 00:01:47.008
 C'est elle qui te dit s'il faut encore faire une
 conversion.
 
-00:01:33.433 --> 00:01:36.263
+00:01:47.350 --> 00:01:50.180
 Fixe d'abord la largeur à huit bits.
 
-00:01:36.263 --> 00:01:40.062
-Le complément à un de cinq retourne chacun des huit
-bits.
+00:01:50.180 --> 00:01:53.979
+Le complément à un de cinq retourne chacun des
+huit bits.
 
-00:01:40.062 --> 00:01:42.746
+00:01:53.979 --> 00:01:56.663
 Le complément à deux ajoute encore un.
 
-00:01:42.746 --> 00:01:46.645
-Pour comprendre le dernier calcul, additionne le mot
-obtenu au mot
+00:01:56.663 --> 00:02:00.562
+Pour comprendre le dernier calcul, additionne le
+mot obtenu au mot
 
-00:01:46.645 --> 00:01:47.354
+00:02:00.562 --> 00:02:01.271
 de départ.
 
-00:01:47.354 --> 00:01:50.087
+00:02:01.271 --> 00:02:04.003
 Tu obtiens un un suivi de huit zéros.
 
-00:01:50.087 --> 00:01:53.506
+00:02:04.003 --> 00:02:07.423
 Sur huit bits, la retenue extérieure disparaît.
 
-00:01:53.506 --> 00:01:55.663
+00:02:07.423 --> 00:02:09.579
 Il ne reste que zéro.
 
-00:01:55.663 --> 00:01:58.481
+00:02:09.579 --> 00:02:12.398
 On a bien construit l'opposé de cinq.
 
-00:01:58.850 --> 00:02:02.056
-Autre façon de lire le mot : remplace le poids cent
+00:02:12.975 --> 00:02:16.181
+Autre façon de lire le mot : remplace le poids
+cent
 
-00:02:02.056 --> 00:02:04.388
-vingt-huit du premier bit par moins cent vingt-huit.
+00:02:16.181 --> 00:02:18.513
+vingt-huit du premier bit par moins cent vingt-
+huit.
 
-00:02:04.388 --> 00:02:08.690
-Puis additionne les poids actifs, exactement comme en
-binaire non signé.
+00:02:18.513 --> 00:02:22.815
+Puis additionne les poids actifs, exactement
+comme en binaire non signé.
 
-00:02:08.690 --> 00:02:11.104
+00:02:22.815 --> 00:02:25.229
 Tu retombes sur moins cinq.
 
-00:02:11.104 --> 00:02:14.854
-L'intervalle va de moins cent vingt-huit à plus cent
-vingt-sept.
+00:02:25.229 --> 00:02:28.979
+L'intervalle va de moins cent vingt-huit à plus
+cent vingt-sept.
 
-00:02:14.854 --> 00:02:18.224
-En excédent cent vingt-huit, la règle est différente :
-on ajoute
+00:02:28.979 --> 00:02:32.349
+En excédent cent vingt-huit, la règle est
+différente : on ajoute
 
-00:02:18.224 --> 00:02:20.981
+00:02:32.349 --> 00:02:35.106
 le biais avant de coder le résultat sans signe.
 
-00:02:21.308 --> 00:02:25.315
+00:02:35.433 --> 00:02:39.440
 Derrière la virgule, les poids continuent à être
 divisés par deux.
 
-00:02:25.315 --> 00:02:28.932
-Les trois premières cases valent un demi, un quart et
-un
+00:02:39.440 --> 00:02:43.057
+Les trois premières cases valent un demi, un
+quart et un
 
-00:02:28.932 --> 00:02:29.261
+00:02:43.057 --> 00:02:43.386
 huitième.
 
-00:02:29.261 --> 00:02:33.599
-Ici, cinq trente-deuxièmes, c'est un huitième plus un
-trente-deuxième.
+00:02:43.386 --> 00:02:47.724
+Ici, cinq trente-deuxièmes, c'est un huitième
+plus un trente-deuxième.
 
-00:02:33.599 --> 00:02:37.239
-On déplace ensuite la virgule pour n'avoir qu'un un à
-gauche.
+00:02:47.724 --> 00:02:51.364
+On déplace ensuite la virgule pour n'avoir qu'un
+un à gauche.
 
-00:02:37.239 --> 00:02:40.535
+00:02:51.364 --> 00:02:54.660
 Si tu déplaces la virgule de trois rangs vers la
 droite,
 
-00:02:40.535 --> 00:02:43.231
-le facteur deux puissance moins trois compense ce
-déplacement.
+00:02:54.660 --> 00:02:57.356
+le facteur deux puissance moins trois compense
+ce déplacement.
 
-00:02:43.600 --> 00:02:47.119
-La machine garde le signe, puis l'exposant avec un
-biais de
+00:02:57.975 --> 00:03:01.494
+La machine garde le signe, puis l'exposant avec
+un biais de
 
-00:02:47.119 --> 00:02:49.677
-cent vingt-sept, puis les bits derrière la virgule.
+00:03:01.494 --> 00:03:04.052
+cent vingt-sept, puis les bits derrière la
+virgule.
 
-00:02:49.677 --> 00:02:53.170
-Pour un nombre normal, le un à gauche est implicite.
+00:03:04.052 --> 00:03:07.545
+Pour un nombre normal, le un à gauche est
+implicite.
 
-00:02:53.170 --> 00:02:56.356
+00:03:07.545 --> 00:03:10.731
 Garder ce un en mémoire gaspillerait une case.
 
-00:02:56.356 --> 00:02:59.040
+00:03:10.731 --> 00:03:13.415
 Certains exposants sont réservés.
 
-00:02:59.040 --> 00:03:02.913
-Un exposant stocké à zéro sert aux zéros et aux sous-
-normaux.
+00:03:13.415 --> 00:03:17.288
+Un exposant stocké à zéro sert aux zéros et aux
+sous-normaux.
 
-00:03:02.913 --> 00:03:05.845
-Tout à un, il indique un infini ou une valeur qui
+00:03:17.288 --> 00:03:20.220
+Tout à un, il indique un infini ou une valeur
+qui
 
-00:03:05.845 --> 00:03:08.244
+00:03:20.220 --> 00:03:22.619
 signifie que le calcul n'a pas donné un nombre.
 
-00:03:08.600 --> 00:03:13.219
+00:03:22.975 --> 00:03:27.594
 Ici, le nombre quatre-vingt-dix-huit vient d'un
 dictionnaire : la table ASCII.
 
-00:03:13.219 --> 00:03:16.871
-Le récepteur qui connaît la même table reconstruit la
-lettre.
+00:03:27.594 --> 00:03:31.246
+Le récepteur qui connaît la même table
+reconstruit la lettre.
 
-00:03:16.871 --> 00:03:20.351
-Pour ajouter la parité paire, compte le nombre de uns.
+00:03:31.246 --> 00:03:34.726
+Pour ajouter la parité paire, compte le nombre
+de uns.
 
-00:03:20.351 --> 00:03:23.901
-En partant de trois, ajoute un bit valant un pour
-faire
+00:03:34.726 --> 00:03:38.276
+En partant de trois, ajoute un bit valant un
+pour faire
 
-00:03:23.901 --> 00:03:24.224
+00:03:38.276 --> 00:03:38.599
 quatre.
 
-00:03:24.224 --> 00:03:28.145
+00:03:38.599 --> 00:03:42.520
 Si un seul bit arrive inversé, le nombre de uns
 devient
 
-00:03:28.145 --> 00:03:28.501
+00:03:42.520 --> 00:03:42.876
 impair.
 
-00:03:28.501 --> 00:03:32.533
-On détecte l'erreur, sans pouvoir encore dire quelle
-case a changé.
+00:03:42.876 --> 00:03:46.908
+On détecte l'erreur, sans pouvoir encore dire
+quelle case a changé.
 
-00:03:32.892 --> 00:03:36.567
-Hamming utilise plusieurs contrôles pour repérer la
-case.
+00:03:47.517 --> 00:03:51.192
+Hamming utilise plusieurs contrôles pour repérer
+la case.
 
-00:03:36.567 --> 00:03:40.143
-La position cinq appartient aux groupes un et quatre,
-parce que
+00:03:51.192 --> 00:03:54.768
+La position cinq appartient aux groupes un et
+quatre, parce que
 
-00:03:40.143 --> 00:03:42.094
+00:03:54.768 --> 00:03:56.719
 cinq s'écrit cent un en binaire.
 
-00:03:42.094 --> 00:03:45.756
-Si les contrôles un et quatre échouent, leur somme
-pointe vers
+00:03:56.719 --> 00:04:00.381
+Si les contrôles un et quatre échouent, leur
+somme pointe vers
 
-00:03:45.756 --> 00:03:46.089
+00:04:00.381 --> 00:04:00.714
 cinq.
 
-00:03:46.089 --> 00:03:49.325
-Quand on suppose une seule erreur, on inverse cette
-case pour
+00:04:00.714 --> 00:04:03.950
+Quand on suppose une seule erreur, on inverse
+cette case pour
 
-00:03:49.325 --> 00:03:50.795
+00:04:03.950 --> 00:04:05.420
 remettre le mot en état.
 
-00:03:50.795 --> 00:03:54.345
-C'est comme deux indices qui se croisent et désignent
-le même
+00:04:05.420 --> 00:04:08.970
+C'est comme deux indices qui se croisent et
+désignent le même
 
-00:03:54.345 --> 00:03:54.668
+00:04:08.970 --> 00:04:09.293
 emplacement.
 
-00:03:55.017 --> 00:03:57.889
-Pense à une porte logique comme à une mini-règle qui
-voit
+00:04:09.642 --> 00:04:12.514
+Pense à une porte logique comme à une mini-règle
+qui voit
 
-00:03:57.889 --> 00:03:59.195
+00:04:12.514 --> 00:04:13.820
 des zéros et des uns.
 
-00:03:59.195 --> 00:04:02.025
+00:04:13.820 --> 00:04:16.650
 Une porte ET exige les deux conditions.
 
-00:04:02.025 --> 00:04:05.250
-Un OU laisse passer si au moins l'une des conditions
-est
+00:04:16.650 --> 00:04:19.875
+Un OU laisse passer si au moins l'une des
+conditions est
 
-00:04:05.250 --> 00:04:05.543
+00:04:19.875 --> 00:04:20.168
 vraie.
 
-00:04:05.543 --> 00:04:09.452
+00:04:20.168 --> 00:04:24.077
 Un OU exclusif laisse passer si les entrées sont
 différentes.
 
-00:04:09.452 --> 00:04:12.852
+00:04:24.077 --> 00:04:27.477
 Pour lire un circuit, commence par les entrées,
 calcule la sortie
 
-00:04:12.852 --> 00:04:16.252
-de la première porte, note-la sur le fil, et réutilise
-cette
+00:04:27.477 --> 00:04:30.877
+de la première porte, note-la sur le fil, et
+réutilise cette
 
-00:04:16.252 --> 00:04:17.798
+00:04:30.877 --> 00:04:32.423
 valeur à la porte suivante.
 
-00:04:18.183 --> 00:04:21.527
-La carte de Karnaugh réorganise les lignes d'une table
-de vérité
+00:04:33.017 --> 00:04:36.361
+La carte de Karnaugh réorganise les lignes d'une
+table de vérité
 
-00:04:21.527 --> 00:04:24.567
-pour rapprocher les cas qui ne diffèrent que d'une
-variable.
+00:04:36.361 --> 00:04:39.400
+pour rapprocher les cas qui ne diffèrent que
+d'une variable.
 
-00:04:24.567 --> 00:04:27.642
-Si deux cases voisines valent un que cette variable
-soit vraie
+00:04:39.400 --> 00:04:42.475
+Si deux cases voisines valent un que cette
+variable soit vraie
 
-00:04:27.642 --> 00:04:30.437
-ou fausse, le résultat n'en dépend plus sur le groupe.
+00:04:42.475 --> 00:04:45.271
+ou fausse, le résultat n'en dépend plus sur le
+groupe.
 
-00:04:30.437 --> 00:04:34.702
-Pour un multiplexeur, imagine un sélecteur à plusieurs
-positions.
+00:04:45.271 --> 00:04:49.535
+Pour un multiplexeur, imagine un sélecteur à
+plusieurs positions.
 
-00:04:34.702 --> 00:04:38.145
-Les bits de commande indiquent quel fil d'entrée est
-relié à
+00:04:49.535 --> 00:04:52.978
+Les bits de commande indiquent quel fil d'entrée
+est relié à
 
-00:04:38.145 --> 00:04:38.771
+00:04:52.978 --> 00:04:53.604
 la sortie.
 
-00:04:39.142 --> 00:04:42.964
-L'exercice sept demande quatre écritures sur un octet.
+00:04:53.975 --> 00:04:57.798
+L'exercice sept demande quatre écritures sur un
+octet.
 
-00:04:42.964 --> 00:04:46.595
-En valeur absolue signée, écris cinq sur sept bits et
-place
+00:04:57.798 --> 00:05:01.428
+En valeur absolue signée, écris cinq sur sept
+bits et place
 
-00:04:46.595 --> 00:04:47.915
+00:05:01.428 --> 00:05:02.749
 le signe à gauche.
 
-00:04:47.915 --> 00:04:51.577
-Pour le complément à un, inverse les huit bits de plus
+00:05:02.749 --> 00:05:06.411
+Pour le complément à un, inverse les huit bits
+de plus
 
-00:04:51.577 --> 00:04:51.910
+00:05:06.411 --> 00:05:06.744
 cinq.
 
-00:04:51.910 --> 00:04:54.521
+00:05:06.744 --> 00:05:09.354
 Ajoute un pour le complément à deux.
 
-00:04:54.521 --> 00:04:58.400
-Pour l'excédent, calcule cent vingt-huit moins cinq,
-soit cent vingt-trois, et
+00:05:09.354 --> 00:05:13.233
+Pour l'excédent, calcule cent vingt-huit moins
+cinq, soit cent vingt-trois, et
 
-00:04:58.400 --> 00:05:00.869
+00:05:13.233 --> 00:05:15.702
 code cet entier en binaire non signé.
 
-00:05:01.225 --> 00:05:05.722
+00:05:16.308 --> 00:05:20.805
 Si l'énoncé donne moins cent vingt-huit, vérifie
 d'abord la plage autorisée.
 
-00:05:05.722 --> 00:05:09.717
+00:05:20.805 --> 00:05:24.800
 Sept bits de grandeur ne suffisent pas en valeur
 absolue signée.
 
-00:05:09.717 --> 00:05:13.514
-Le complément à un va lui aussi seulement jusqu'à
-moins cent
+00:05:24.800 --> 00:05:28.597
+Le complément à un va lui aussi seulement
+jusqu'à moins cent
 
-00:05:13.514 --> 00:05:13.859
+00:05:28.597 --> 00:05:28.942
 vingt-sept.
 
-00:05:13.859 --> 00:05:17.447
-En complément à deux, le bit de poids négatif suffit à
+00:05:28.942 --> 00:05:32.530
+En complément à deux, le bit de poids négatif
+suffit à
 
-00:05:17.447 --> 00:05:18.099
+00:05:32.530 --> 00:05:33.182
 lui seul.
 
-00:05:18.099 --> 00:05:21.506
+00:05:33.182 --> 00:05:36.589
 En excédent, la somme avec le biais donne zéro.
 
-00:05:21.506 --> 00:05:25.218
-Tu peux vérifier le résultat en appliquant la règle
-inverse de
+00:05:36.589 --> 00:05:40.302
+Tu peux vérifier le résultat en appliquant la
+règle inverse de
 
-00:05:25.218 --> 00:05:25.893
+00:05:40.302 --> 00:05:40.976
 chaque convention.
 
-00:05:26.225 --> 00:05:28.246
+00:05:41.308 --> 00:05:43.329
 Prends moins un plus un.
 
-00:05:28.246 --> 00:05:31.506
+00:05:43.329 --> 00:05:46.589
 La retenue sort de l'octet, donc Carry vaut un.
 
-00:05:31.506 --> 00:05:34.813
-Une fois cette retenue mise de côté, le résultat se
-lit
+00:05:46.589 --> 00:05:49.896
+Une fois cette retenue mise de côté, le résultat
+se lit
 
-00:05:34.813 --> 00:05:36.616
+00:05:49.896 --> 00:05:51.700
 zéro et c'est le résultat attendu.
 
-00:05:36.616 --> 00:05:39.337
+00:05:51.700 --> 00:05:54.420
 Il n'y a pas de débordement signé.
 
-00:05:39.337 --> 00:05:42.832
-Essaie maintenant cent vingt-sept plus cent vingt-
-sept. Il n'y a pas
+00:05:54.420 --> 00:05:57.915
+Essaie maintenant cent vingt-sept plus cent
+vingt-sept. Il n'y a pas
 
-00:05:42.832 --> 00:05:43.785
+00:05:57.915 --> 00:05:58.869
 de neuvième bit.
 
-00:05:43.785 --> 00:05:46.837
+00:05:58.869 --> 00:06:01.920
 Pourtant, le mot obtenu se lit moins deux.
 
-00:05:46.837 --> 00:05:49.900
+00:06:01.920 --> 00:06:04.984
 Cette fois, la vraie somme sort de la plage.
 
-00:05:49.900 --> 00:05:51.714
+00:06:04.984 --> 00:06:06.798
 Overflow vaut un.
 
-00:05:52.058 --> 00:05:55.856
-Dans l'exercice un, la partie entière six donne cent
-dix.
+00:06:07.142 --> 00:06:10.940
+Dans l'exercice un, la partie entière six donne
+cent dix.
 
-00:05:55.856 --> 00:05:59.774
-Cent vingt-cinq millièmes correspondent à un huitième,
-donc on active la
+00:06:10.940 --> 00:06:14.857
+Cent vingt-cinq millièmes correspondent à un
+huitième, donc on active la
 
-00:05:59.774 --> 00:06:01.555
+00:06:14.857 --> 00:06:16.638
 troisième case derrière la virgule.
 
-00:06:01.555 --> 00:06:05.350
-Décale ensuite la virgule de deux places, et compense
-avec deux
+00:06:16.638 --> 00:06:20.433
+Décale ensuite la virgule de deux places, et
+compense avec deux
 
-00:06:05.350 --> 00:06:06.040
+00:06:20.433 --> 00:06:21.124
 au carré.
 
-00:06:06.040 --> 00:06:07.842
+00:06:21.124 --> 00:06:22.925
 Le signe vaut un.
 
-00:06:07.842 --> 00:06:12.180
-L'exposant stocké vaut deux plus cent vingt-sept, soit
-cent vingt-neuf.
+00:06:22.925 --> 00:06:27.263
+L'exposant stocké vaut deux plus cent vingt-
+sept, soit cent vingt-neuf.
 
-00:06:12.180 --> 00:06:16.849
-La fraction commence par un, zéro, zéro, zéro, un.
+00:06:27.263 --> 00:06:31.932
+La fraction commence par un, zéro, zéro, zéro,
+un.
 
-00:06:16.849 --> 00:06:19.030
+00:06:31.932 --> 00:06:34.114
 Complète avec des zéros.
 
-00:06:19.392 --> 00:06:23.275
-Ici, les deux mots représentent trois huitièmes et un
-huitième.
+00:06:34.725 --> 00:06:38.609
+Ici, les deux mots représentent trois huitièmes
+et un huitième.
 
-00:06:23.275 --> 00:06:26.094
+00:06:38.609 --> 00:06:41.427
 Fais le calcul sans quitter le binaire.
 
-00:06:26.094 --> 00:06:29.180
-Pour que les colonnes aient le même poids, réécris le
-deuxième
+00:06:41.427 --> 00:06:44.514
+Pour que les colonnes aient le même poids,
+réécris le deuxième
 
-00:06:29.180 --> 00:06:31.425
+00:06:44.514 --> 00:06:46.758
 nombre avec le même exposant que le premier.
 
-00:06:31.425 --> 00:06:35.282
+00:06:46.758 --> 00:06:50.616
 Quand tu remontes l'exposant d'un rang, tu dois
 diviser sa significande
 
-00:06:35.282 --> 00:06:35.984
+00:06:50.616 --> 00:06:51.317
 par deux.
 
-00:06:35.984 --> 00:06:39.893
-Puis, à l'addition, les deux bits fractionnaires se
-reportent sur la
+00:06:51.317 --> 00:06:55.226
+Puis, à l'addition, les deux bits fractionnaires
+se reportent sur la
 
-00:06:39.893 --> 00:06:40.604
+00:06:55.226 --> 00:06:55.937
 case entière.
 
-00:06:40.604 --> 00:06:42.994
+00:06:55.937 --> 00:06:58.327
 Renormalise le résultat.
 
-00:06:42.994 --> 00:06:46.572
+00:06:58.327 --> 00:07:01.905
 Un demi correspond bien à la somme des quatre
 huitièmes.
 
-00:06:46.933 --> 00:06:50.413
-Comme dans le poly, la position un est tout à droite.
+00:07:02.267 --> 00:07:05.746
+Comme dans le poly, la position un est tout à
+droite.
 
-00:06:50.413 --> 00:06:53.802
-Glisse un espace pour chaque contrôle : à un, à deux
+00:07:05.746 --> 00:07:09.135
+Glisse un espace pour chaque contrôle : à un, à
+deux
 
-00:06:53.802 --> 00:06:54.726
+00:07:09.135 --> 00:07:10.060
 et à quatre.
 
-00:06:54.726 --> 00:06:57.645
-Le contrôle un regarde les données trois, cinq et
-sept. Il
+00:07:10.060 --> 00:07:12.978
+Le contrôle un regarde les données trois, cinq
+et sept. Il
 
-00:06:57.645 --> 00:07:00.033
+00:07:12.978 --> 00:07:15.366
 voit un seul un, donc il doit valoir un.
 
-00:07:00.033 --> 00:07:02.950
+00:07:15.366 --> 00:07:18.283
 Le contrôle deux voit un seul un aussi.
 
-00:07:02.950 --> 00:07:06.234
-Le contrôle quatre voit deux uns et reste à zéro.
+00:07:18.283 --> 00:07:21.567
+Le contrôle quatre voit deux uns et reste à
+zéro.
 
-00:07:06.234 --> 00:07:09.907
-Recompte les uns dans chaque groupe en incluant son
-bit de
+00:07:21.567 --> 00:07:25.241
+Recompte les uns dans chaque groupe en incluant
+son bit de
 
-00:07:09.907 --> 00:07:10.241
+00:07:25.241 --> 00:07:25.575
 contrôle.
 
-00:07:10.600 --> 00:07:14.197
-Sur la première carte, commence par les colonnes zéro
-un et
+00:07:26.142 --> 00:07:29.739
+Sur la première carte, commence par les colonnes
+zéro un et
 
-00:07:14.197 --> 00:07:14.851
+00:07:29.739 --> 00:07:30.393
 un un.
 
-00:07:14.851 --> 00:07:18.099
-Les huit cases valent un, et seul d reste constant.
+00:07:30.393 --> 00:07:33.641
+Les huit cases valent un, et seul d reste
+constant.
 
-00:07:18.099 --> 00:07:21.592
+00:07:33.641 --> 00:07:37.133
 Il reste deux cases à couvrir dans la première
 colonne.
 
-00:07:21.592 --> 00:07:25.378
-Prends aussi deux cases déjà couvertes dans la colonne
-voisine.
+00:07:37.133 --> 00:07:40.920
+Prends aussi deux cases déjà couvertes dans la
+colonne voisine.
 
-00:07:25.378 --> 00:07:28.736
-Dans ce groupe de quatre, a et c valent toujours zéro.
+00:07:40.920 --> 00:07:44.278
+Dans ce groupe de quatre, a et c valent toujours
+zéro.
 
-00:07:28.736 --> 00:07:32.169
+00:07:44.278 --> 00:07:47.711
 La fonction s'allume si d vaut un, ou si a et
 
-00:07:32.169 --> 00:07:33.418
+00:07:47.711 --> 00:07:48.959
 c valent zéro ensemble.
 
-00:07:33.767 --> 00:07:37.075
-Fais une vérification sur une case qui vaut zéro.
+00:07:49.558 --> 00:07:52.866
+Fais une vérification sur une case qui vaut
+zéro.
 
-00:07:37.075 --> 00:07:40.094
-Sur la troisième ligne et la première colonne, d vaut
-zéro
+00:07:52.866 --> 00:07:55.886
+Sur la troisième ligne et la première colonne, d
+vaut zéro
 
-00:07:40.094 --> 00:07:41.192
+00:07:55.886 --> 00:07:56.984
 et a vaut un.
 
-00:07:41.192 --> 00:07:44.146
+00:07:56.984 --> 00:07:59.937
 Les deux conditions de notre formule échouent.
 
-00:07:44.146 --> 00:07:47.810
+00:07:59.937 --> 00:08:03.601
 Reviens maintenant à la deuxième ligne et à la
 première colonne.
 
-00:07:47.810 --> 00:07:50.793
-D vaut toujours zéro, et cette fois a et c valent
+00:08:03.601 --> 00:08:06.585
+D vaut toujours zéro, et cette fois a et c
+valent
 
-00:07:50.793 --> 00:07:51.878
+00:08:06.585 --> 00:08:07.670
 tous les deux zéro.
 
-00:07:51.878 --> 00:07:54.195
+00:08:07.670 --> 00:08:09.986
 Le second terme suffit.
 
-00:07:54.195 --> 00:07:58.011
-En vérifiant une case positive et une case négative,
-tu repères
+00:08:09.986 --> 00:08:13.803
+En vérifiant une case positive et une case
+négative, tu repères
 
-00:07:58.011 --> 00:07:59.746
+00:08:13.803 --> 00:08:15.538
 facilement un groupe mal formé.

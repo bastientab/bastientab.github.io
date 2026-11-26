@@ -1,803 +1,855 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.750
-Imagine que tu connaisses le nom d’un resto, mais pas
-son
+00:00:00.100 --> 00:00:03.301
+Le système de noms de domaine te donne une
+adresse à
 
-00:00:03.750 --> 00:00:04.082
+00:00:03.301 --> 00:00:04.174
+partir d’un nom.
+
+00:00:04.174 --> 00:00:08.318
+Pour vérifier que la réponse est authentique,
+les extensions de sécurité
+
+00:00:08.318 --> 00:00:10.578
+du système peuvent fournir une signature.
+
+00:00:10.578 --> 00:00:13.879
+On va suivre la validation et voir le rôle de la
+
+00:00:13.879 --> 00:00:14.779
+chaîne de confiance.
+
+00:00:15.392 --> 00:00:19.042
+Imagine que tu connaisses le nom d’un resto,
+mais pas son
+
+00:00:19.042 --> 00:00:19.374
 adresse.
 
-00:00:04.082 --> 00:00:07.856
-Le D N S fait un travail similaire pour les machines.
+00:00:19.374 --> 00:00:23.148
+Le DNS fait un travail similaire pour les
+machines.
 
-00:00:07.856 --> 00:00:09.609
+00:00:23.148 --> 00:00:24.900
 Tu lui donnes un nom.
 
-00:00:09.609 --> 00:00:12.836
-Pour un enregistrement de type A, il peut te rendre
-une
+00:00:24.900 --> 00:00:28.342
+Pour un enregistrement de type A, il peut te
+rendre une
 
-00:00:12.836 --> 00:00:14.302
-adresse I P version quatre.
+00:00:28.342 --> 00:00:29.594
+adresse IP version quatre.
 
-00:00:14.302 --> 00:00:18.462
+00:00:29.594 --> 00:00:33.754
 Ici, client point sé-cu point R T correspond à
 l’adresse qui
 
-00:00:18.462 --> 00:00:19.597
+00:00:33.754 --> 00:00:34.888
 finit par quarante-deux.
 
-00:00:19.975 --> 00:00:23.425
-Une zone, c’est la partie des noms que des serveurs
-ont
+00:00:35.475 --> 00:00:38.925
+Une zone, c’est la partie des noms que des
+serveurs ont
 
-00:00:23.425 --> 00:00:24.680
+00:00:38.925 --> 00:00:40.180
 la responsabilité de publier.
 
-00:00:24.680 --> 00:00:28.268
-Dans le T P, on va être responsables de sé-cu point
+00:00:40.180 --> 00:00:44.067
+Dans le TP, on va être responsables de sé-cu
+point R
 
-00:00:28.268 --> 00:00:28.920
-R T.
+00:00:44.067 --> 00:00:44.420
+T.
 
-00:00:28.920 --> 00:00:32.524
+00:00:44.420 --> 00:00:48.024
 Par exemple, on choisira nous-mêmes l’adresse du
 client et le nom
 
-00:00:32.524 --> 00:00:33.834
+00:00:48.024 --> 00:00:49.334
 du serveur de messagerie.
 
-00:00:34.183 --> 00:00:38.741
-Sur Internet, ton ordinateur s’adresse généralement à
-un résolveur.
+00:00:49.683 --> 00:00:54.241
+Sur Internet, ton ordinateur s’adresse
+généralement à un résolveur.
 
-00:00:38.741 --> 00:00:42.111
-Imagine un bibliothécaire qui cherche à ta place.
+00:00:54.241 --> 00:00:57.611
+Imagine un bibliothécaire qui cherche à ta
+place.
 
-00:00:42.111 --> 00:00:45.047
+00:00:57.611 --> 00:01:00.547
 S’il n’a pas la réponse en cache, il suit les
 indications
 
-00:00:45.047 --> 00:00:47.982
-de la racine puis, par exemple, de la zone point F
+00:01:00.547 --> 00:01:03.482
+de la racine puis, par exemple, de la zone point
+F
 
-00:00:47.982 --> 00:00:50.383
-R, jusqu’au serveur qui fait autorité pour le nom.
+00:01:03.482 --> 00:01:05.883
+R, jusqu’au serveur qui fait autorité pour le
+nom.
 
-00:00:50.725 --> 00:00:54.253
+00:01:06.475 --> 00:01:10.003
 En récursif, tu lui demandes le résultat final.
 
-00:00:54.253 --> 00:00:57.935
-En itératif, le serveur peut te donner une piste vers
-le
+00:01:10.003 --> 00:01:13.685
+En itératif, le serveur peut te donner une piste
+vers le
 
-00:00:57.935 --> 00:00:58.604
+00:01:13.685 --> 00:01:14.354
 serveur suivant.
 
-00:00:58.604 --> 00:01:01.851
-Le cache évite de refaire la recherche à chaque fois.
+00:01:14.354 --> 00:01:17.601
+Le cache évite de refaire la recherche à chaque
+fois.
 
-00:01:01.851 --> 00:01:05.264
-Le T T L, en secondes, indique combien de temps une
+00:01:17.601 --> 00:01:21.501
+Le TTL, en secondes, indique combien de temps
+une donnée peut
 
-00:01:05.264 --> 00:01:06.815
-donnée peut rester en cache.
+00:01:21.501 --> 00:01:22.565
+rester en cache.
 
-00:01:07.183 --> 00:01:09.731
+00:01:22.933 --> 00:01:25.481
 Lis cette ligne de gauche à droite.
 
-00:01:09.731 --> 00:01:12.967
-D’abord le nom, puis le T T L de trois cents
+00:01:25.481 --> 00:01:29.057
+D’abord le nom, puis le TTL de trois cents
+secondes, la
 
-00:01:12.967 --> 00:01:15.908
-secondes, la classe Internet, le type A et son
-adresse.
+00:01:29.057 --> 00:01:31.658
+classe Internet, le type A et son adresse.
 
-00:01:15.908 --> 00:01:19.915
-Triple A, lui, sert aux adresses I P version six.
+00:01:31.658 --> 00:01:35.665
+Triple A, lui, sert aux adresses IP version six.
 
-00:01:19.915 --> 00:01:23.114
-Dans le T P, on utilise surtout le type A.
+00:01:35.665 --> 00:01:38.864
+Dans le TP, on utilise surtout le type A.
 
-00:01:23.475 --> 00:01:26.072
+00:01:39.475 --> 00:01:42.072
 N S indique les serveurs de noms.
 
-00:01:26.072 --> 00:01:29.674
-Le S O A décrit la zone, avec son serveur principal,
+00:01:42.072 --> 00:01:46.125
+Le SOA décrit la zone, avec son serveur
+principal, un contact,
 
-00:01:29.674 --> 00:01:31.967
-un contact, et un numéro de série.
+00:01:46.125 --> 00:01:47.967
+et un numéro de série.
 
-00:01:31.967 --> 00:01:35.372
-Si le primaire modifie la zone, il augmente ce numéro
-pour
+00:01:47.967 --> 00:01:51.372
+Si le primaire modifie la zone, il augmente ce
+numéro pour
 
-00:01:35.372 --> 00:01:37.849
-que le secondaire puisse détecter la nouvelle version.
+00:01:51.372 --> 00:01:53.849
+que le secondaire puisse détecter la nouvelle
+version.
 
-00:01:38.183 --> 00:01:41.945
+00:01:54.183 --> 00:01:57.945
 M X indique à quel serveur remettre les mails du
 domaine.
 
-00:01:41.945 --> 00:01:44.812
+00:01:57.945 --> 00:02:00.812
 C name est un alias vers un autre nom.
 
-00:01:44.812 --> 00:01:48.421
-Et P T R fait le chemin inverse, de l’adresse vers
-
-00:01:48.421 --> 00:01:49.077
+00:02:00.812 --> 00:02:05.077
+Et PTR fait le chemin inverse, de l’adresse vers
 un nom.
 
-00:01:49.077 --> 00:01:52.177
-Pour une I P version quatre, le nom de la requête
+00:02:05.077 --> 00:02:08.332
+Pour une IP version quatre, le nom de la requête
+inverse
 
-00:01:52.177 --> 00:01:54.996
-inverse reprend les octets à l’envers, sous in addr
+00:02:08.332 --> 00:02:10.996
+reprend les octets à l’envers, sous in addr
 arpa.
 
-00:01:55.350 --> 00:01:58.615
-Imagine que tu demandes l’adresse du resto et que
-quelqu’un te
+00:02:11.350 --> 00:02:14.615
+Imagine que tu demandes l’adresse du resto et
+que quelqu’un te
 
-00:01:58.615 --> 00:02:00.692
+00:02:14.615 --> 00:02:16.692
 glisse la mauvaise avant le vrai renseignement.
 
-00:02:00.692 --> 00:02:04.360
-Si le résolveur accepte cette fausse réponse et la
-garde en
+00:02:16.692 --> 00:02:20.360
+Si le résolveur accepte cette fausse réponse et
+la garde en
 
-00:02:04.360 --> 00:02:07.028
-cache, d’autres clients reçoivent ensuite la mauvaise
-adresse.
+00:02:20.360 --> 00:02:23.028
+cache, d’autres clients reçoivent ensuite la
+mauvaise adresse.
 
-00:02:07.392 --> 00:02:10.997
-Pour tromper le résolveur à distance, une réponse
-forgée doit correspondre
+00:02:23.642 --> 00:02:27.754
+Un résolveur réutilise les informations qu’il a
+mises en cache.
 
-00:02:10.997 --> 00:02:12.636
-à la requête en cours.
+00:02:27.754 --> 00:02:32.184
+Si une information fausse est enregistrée, elle
+peut donc toucher plusieurs
 
-00:02:12.636 --> 00:02:17.048
-Un identifiant et un port source difficiles à deviner
-compliquent l’attaque.
+00:02:32.184 --> 00:02:32.587
+clients.
 
-00:02:17.048 --> 00:02:20.700
-Kaminsky multiplie les occasions en demandant des noms
-frais, absents du
+00:02:32.587 --> 00:02:35.950
+C’est le risque illustré par l’attaque de
+Kaminsky.
 
-00:02:20.700 --> 00:02:24.021
-cache, et en essayant de faire accepter une fausse
-délégation.
+00:02:35.950 --> 00:02:39.815
+La validation DNSSEC aide à vérifier si la
+réponse vient bien
 
-00:02:24.350 --> 00:02:27.979
-Si deux adresses A portent le même nom, elles forment
-un
+00:02:39.815 --> 00:02:42.625
+des données signées attendues avant de s’y fier.
 
-00:02:27.979 --> 00:02:28.638
+00:02:43.017 --> 00:02:46.645
+Si deux adresses A portent le même nom, elles
+forment un
+
+00:02:46.645 --> 00:02:47.305
 jeu d’enregistrements.
 
-00:02:28.638 --> 00:02:31.065
+00:02:47.305 --> 00:02:49.731
 C’est ce jeu que la zone signe.
 
-00:02:31.065 --> 00:02:34.338
-Comme pour un courrier, le contenu reste lisible et la
-signature
+00:02:49.731 --> 00:02:53.004
+Comme pour un courrier, le contenu reste lisible
+et la signature
 
-00:02:34.338 --> 00:02:37.611
-permet de vérifier que le contenu n’a pas changé et
-vient
+00:02:53.004 --> 00:02:56.277
+permet de vérifier que le contenu n’a pas changé
+et vient
 
-00:02:37.611 --> 00:02:38.503
+00:02:56.277 --> 00:02:57.170
 du signataire reconnu.
 
-00:02:38.850 --> 00:02:41.851
+00:02:57.767 --> 00:03:00.768
 R R sig contient la signature.
 
-00:02:41.851 --> 00:02:45.559
-D N S key contient la clé publique qui permet de
+00:03:00.768 --> 00:03:05.093
+DNS key contient la clé publique qui permet de
+vérifier cette
 
-00:02:45.559 --> 00:02:46.570
-vérifier cette signature.
+00:03:05.093 --> 00:03:05.486
+signature.
 
-00:02:46.570 --> 00:02:49.192
+00:03:05.486 --> 00:03:08.109
 Le serveur garde sa clé privée.
 
-00:02:49.192 --> 00:02:52.394
-Mais si n’importe qui peut fournir une clé publique,
-comment savoir
+00:03:08.109 --> 00:03:11.310
+Mais si n’importe qui peut fournir une clé
+publique, comment savoir
 
-00:02:52.394 --> 00:02:53.849
+00:03:11.310 --> 00:03:12.766
 que c’est la bonne ?
 
-00:02:54.183 --> 00:02:57.912
-Le résolveur commence avec une clé qu’il a déjà décidé
-de
+00:03:13.100 --> 00:03:16.829
+Le résolveur commence avec une clé qu’il a déjà
+décidé de
 
-00:02:57.912 --> 00:02:58.251
+00:03:16.829 --> 00:03:17.168
 croire.
 
-00:02:58.251 --> 00:03:00.959
+00:03:17.168 --> 00:03:19.876
 On appelle ça une ancre de confiance.
 
-00:03:00.959 --> 00:03:04.202
+00:03:19.876 --> 00:03:23.119
 La zone parente publie un D S, qui contient une
 empreinte
 
-00:03:04.202 --> 00:03:06.266
+00:03:23.119 --> 00:03:25.182
 de la clé publique de la fille.
 
-00:03:06.266 --> 00:03:09.561
+00:03:25.182 --> 00:03:28.478
 Le résolveur vérifie le D S signé, puis compare
 l’empreinte à
 
-00:03:09.561 --> 00:03:11.658
+00:03:28.478 --> 00:03:30.575
 celle de la clé de la fille.
 
-00:03:12.017 --> 00:03:14.865
-Dans le schéma à deux clés de ton T P, la
+00:03:31.142 --> 00:03:34.440
+Dans le schéma à deux clés de ton TP, la KSK
 
-00:03:14.865 --> 00:03:17.714
-K S K signe l’ensemble des clés publiques de la zone.
+00:03:34.440 --> 00:03:36.839
+signe l’ensemble des clés publiques de la zone.
 
-00:03:17.714 --> 00:03:20.937
-La Z S K signe les données de la zone.
+00:03:36.839 --> 00:03:40.062
+La ZSK signe les données de la zone.
 
-00:03:20.937 --> 00:03:24.720
-Quand la confiance est établie jusqu’à cette clé, le
-résolveur peut
+00:03:40.062 --> 00:03:43.845
+Quand la confiance est établie jusqu’à cette
+clé, le résolveur peut
 
-00:03:24.720 --> 00:03:26.440
+00:03:43.845 --> 00:03:45.565
 contrôler les signatures des réponses.
 
-00:03:26.767 --> 00:03:30.330
+00:03:45.892 --> 00:03:49.455
 Quand le serveur dit que le nom n’existe pas, un
 attaquant
 
-00:03:30.330 --> 00:03:31.950
+00:03:49.455 --> 00:03:51.075
 pourrait inventer cette absence aussi.
 
-00:03:31.950 --> 00:03:35.847
-D N S sec permet de vérifier une preuve signée.
+00:03:51.075 --> 00:03:54.972
+DNSSEC permet de vérifier une preuve signée.
 
-00:03:35.847 --> 00:03:38.883
-Il faut distinguer un nom qui manque d’un nom qui
-existe,
+00:03:54.972 --> 00:03:58.008
+Il faut distinguer un nom qui manque d’un nom
+qui existe,
 
-00:03:38.883 --> 00:03:41.092
+00:03:58.008 --> 00:04:00.217
 mais qui ne possède pas le type demandé.
 
-00:03:41.433 --> 00:03:44.755
-N sec indique quels noms encadrent le nom manquant
-dans l’ordre
+00:04:00.808 --> 00:04:04.130
+N sec indique quels noms encadrent le nom
+manquant dans l’ordre
 
-00:03:44.755 --> 00:03:45.660
+00:04:04.130 --> 00:04:05.035
 de la zone.
 
-00:03:45.660 --> 00:03:48.994
+00:04:05.035 --> 00:04:08.369
 Il indique aussi les types présents au nom qu’il
 décrit.
 
-00:03:48.994 --> 00:03:52.980
-N sec trois utilise des hachages, c’est-à-dire des
-empreintes calculées à
+00:04:08.369 --> 00:04:12.355
+N sec trois utilise des hachages, c’est-à-dire
+des empreintes calculées à
 
-00:03:52.980 --> 00:03:54.067
+00:04:12.355 --> 00:04:13.442
 partir des noms.
 
-00:03:54.067 --> 00:03:57.920
-Le résolveur vérifie que les preuves signées couvrent
-bien ce qu’il
+00:04:13.442 --> 00:04:17.295
+Le résolveur vérifie que les preuves signées
+couvrent bien ce qu’il
 
-00:03:57.920 --> 00:03:58.271
+00:04:17.295 --> 00:04:17.646
 demandait.
 
-00:03:58.642 --> 00:04:01.643
+00:04:18.017 --> 00:04:21.018
 Le primaire détient la zone de référence.
 
-00:04:01.643 --> 00:04:04.327
+00:04:21.018 --> 00:04:23.702
 Le secondaire en reçoit une copie.
 
-00:04:04.327 --> 00:04:07.989
-Il peut répondre avec autorité pendant que le primaire
-est indisponible,
+00:04:23.702 --> 00:04:27.364
+Il peut répondre avec autorité pendant que le
+primaire est indisponible,
 
-00:04:07.989 --> 00:04:10.320
+00:04:27.364 --> 00:04:29.695
 tant que sa copie est encore valable.
 
-00:04:10.320 --> 00:04:13.785
-A X F R désigne un transfert complet et I X
+00:04:29.695 --> 00:04:35.050
+AXFR désigne un transfert complet et IXFR un
+transfert des changements.
 
-00:04:13.785 --> 00:04:15.675
-F R un transfert des changements.
+00:04:35.642 --> 00:04:38.923
+T sig permet aux deux serveurs de s’authentifier
+à l’aide d’un
 
-00:04:16.017 --> 00:04:19.298
-T sig permet aux deux serveurs de s’authentifier à
-l’aide d’un
+00:04:38.923 --> 00:04:42.205
+secret partagé et de vérifier que leurs messages
+n’ont pas été
 
-00:04:19.298 --> 00:04:22.580
-secret partagé et de vérifier que leurs messages n’ont
-pas été
-
-00:04:22.580 --> 00:04:22.878
+00:04:42.205 --> 00:04:42.503
 modifiés.
 
-00:04:22.878 --> 00:04:26.837
-Un relais, lui, transmet les questions à un autre
-serveur.
+00:04:42.503 --> 00:04:46.462
+Un relais, lui, transmet les questions à un
+autre serveur.
 
-00:04:26.837 --> 00:04:30.244
-Il ne possède pas la copie autoritaire du secondaire.
+00:04:46.462 --> 00:04:49.869
+Il ne possède pas la copie autoritaire du
+secondaire.
 
-00:04:30.600 --> 00:04:32.486
+00:04:50.225 --> 00:04:52.111
 Première question.
 
-00:04:32.486 --> 00:04:36.175
-Avec arobase, je choisis le serveur que j’interroge.
+00:04:52.111 --> 00:04:55.800
+Avec arobase, je choisis le serveur que
+j’interroge.
 
-00:04:36.175 --> 00:04:39.521
-Je demande les adresses version quatre de Google.
+00:04:55.800 --> 00:04:59.146
+Je demande les adresses version quatre de
+Google.
 
-00:04:39.521 --> 00:04:43.112
-Dans la sortie, je lis la section réponse, puis le
-serveur
+00:04:59.146 --> 00:05:02.737
+Dans la sortie, je lis la section réponse, puis
+le serveur
 
-00:04:43.112 --> 00:04:44.092
+00:05:02.737 --> 00:05:03.717
 qui a répondu.
 
-00:04:44.092 --> 00:04:47.029
-Si je recommence et que le T T L baisse, c’est
+00:05:03.717 --> 00:05:07.000
+Si je recommence et que le TTL baisse, c’est un
+indice
 
-00:04:47.029 --> 00:04:49.165
-un indice que la réponse vient du cache.
+00:05:07.000 --> 00:05:08.790
+que la réponse vient du cache.
 
-00:04:49.517 --> 00:04:53.927
+00:05:09.392 --> 00:05:13.802
 Avec plus no recurse, je retire la demande de
 recherche récursive.
 
-00:04:53.927 --> 00:04:58.045
-Je peux obtenir une réponse déjà connue ou aucune
-réponse utile.
+00:05:13.802 --> 00:05:17.920
+Je peux obtenir une réponse déjà connue ou
+aucune réponse utile.
 
-00:04:58.045 --> 00:05:01.158
+00:05:17.920 --> 00:05:21.033
 Avec plus trace, Dig suit les délégations.
 
-00:05:01.158 --> 00:05:04.805
-En capture réseau, je filtre sur D N S et j’observe
+00:05:21.033 --> 00:05:25.136
+En capture réseau, je filtre sur DNS et
+j’observe les serveurs
 
-00:05:04.805 --> 00:05:07.126
-les serveurs interrogés et le type demandé.
+00:05:25.136 --> 00:05:27.001
+interrogés et le type demandé.
 
-00:05:07.475 --> 00:05:10.769
-Sur la machine Debian du T P, j’installe Bind neuf et
+00:05:27.350 --> 00:05:30.863
+Sur la machine Debian du TP, j’installe Bind
+neuf et le
 
-00:05:10.769 --> 00:05:12.266
-le paquet qui fournit Dig.
+00:05:30.863 --> 00:05:32.141
+paquet qui fournit Dig.
 
-00:05:12.266 --> 00:05:14.521
+00:05:32.141 --> 00:05:34.396
 Bind répond aux requêtes.
 
-00:05:14.521 --> 00:05:18.369
-Dig permet d’en envoyer pour vérifier le travail du
-serveur.
+00:05:34.396 --> 00:05:38.244
+Dig permet d’en envoyer pour vérifier le travail
+du serveur.
 
-00:05:18.725 --> 00:05:21.742
-Je vérifie ensuite que le service nommé named tourne
-et qu’il
+00:05:38.850 --> 00:05:42.269
+Je vérifie ensuite que le service nommé named
+tourne et qu’il
 
-00:05:21.742 --> 00:05:24.759
-écoute sur le port cinquante-trois, en U D P et en
+00:05:42.269 --> 00:05:45.688
+écoute sur le port cinquante-trois, en UDP et en
+TCP. Si
 
-00:05:24.759 --> 00:05:27.776
-T C P. Si le service refuse de démarrer, j’ouvre son
-
-00:05:27.776 --> 00:05:28.050
+00:05:45.688 --> 00:05:48.175
+le service refuse de démarrer, j’ouvre son
 journal.
 
-00:05:28.050 --> 00:05:31.412
-Sur une installation où l’unité est nommée bind neuf,
-je reprends
+00:05:48.175 --> 00:05:51.537
+Sur une installation où l’unité est nommée bind
+neuf, je reprends
 
-00:05:31.412 --> 00:05:32.940
+00:05:51.537 --> 00:05:53.065
 ce nom dans les commandes.
 
-00:05:33.308 --> 00:05:36.506
-Le fichier named point conf est le point d’entrée.
+00:05:53.433 --> 00:05:56.631
+Le fichier named point conf est le point
+d’entrée.
 
-00:05:36.506 --> 00:05:40.636
-Sur Debian, il inclut les fichiers de configuration
-séparés.
+00:05:56.631 --> 00:06:00.761
+Sur Debian, il inclut les fichiers de
+configuration séparés.
 
-00:05:40.636 --> 00:05:43.552
-Pour une zone du T P, je travaille donc dans named
+00:06:00.761 --> 00:06:03.839
+Pour une zone du TP, je travaille donc dans
+named point
 
-00:05:43.552 --> 00:05:45.673
-point conf point local, sur N S un.
+00:06:03.839 --> 00:06:05.798
+conf point local, sur N S un.
 
-00:05:46.058 --> 00:05:49.525
+00:06:06.392 --> 00:06:09.859
 Je mets le nom sé-cu point R T après zone.
 
-00:05:49.525 --> 00:05:53.643
-Type primary indique que ce serveur publie la zone de
-référence.
+00:06:09.859 --> 00:06:13.976
+Type primary indique que ce serveur publie la
+zone de référence.
 
-00:05:53.643 --> 00:05:56.400
+00:06:13.976 --> 00:06:16.734
 File indique où lire les enregistrements.
 
-00:05:56.400 --> 00:05:59.146
+00:06:16.734 --> 00:06:19.479
 Jusque-là on a déclaré la zone.
 
-00:05:59.146 --> 00:06:02.405
+00:06:19.479 --> 00:06:22.739
 Maintenant, il faut remplir le fichier annoncé.
 
-00:06:02.767 --> 00:06:06.698
-Dans D B point sé-cu, arobase désigne le nom de la
+00:06:23.100 --> 00:06:27.031
+Dans D B point sé-cu, arobase désigne le nom de
+la
 
-00:06:06.698 --> 00:06:07.055
+00:06:27.031 --> 00:06:27.388
 zone.
 
-00:06:07.055 --> 00:06:10.983
-Le S O A indique N S un, le contact hostmaster
+00:06:27.388 --> 00:06:31.972
+Le SOA indique N S un, le contact hostmaster et
+les
 
-00:06:10.983 --> 00:06:12.055
-et les paramètres.
+00:06:31.972 --> 00:06:32.388
+paramètres.
 
-00:06:12.055 --> 00:06:14.923
+00:06:32.388 --> 00:06:35.256
 Le premier nombre est le numéro de série.
 
-00:06:14.923 --> 00:06:18.529
+00:06:35.256 --> 00:06:38.862
 Puis j’annonce les deux serveurs, N S un et N S
 
-00:06:18.529 --> 00:06:18.856
+00:06:38.862 --> 00:06:39.190
 deux.
 
-00:06:19.225 --> 00:06:22.141
+00:06:39.808 --> 00:06:42.724
 J’ajoute les adresses des serveurs et du client.
 
-00:06:22.141 --> 00:06:24.604
+00:06:42.724 --> 00:06:45.187
 Utilise tes adresses de labo.
 
-00:06:24.604 --> 00:06:27.386
+00:06:45.187 --> 00:06:47.969
 Ici, elles sont données en exemple.
 
-00:06:27.386 --> 00:06:31.318
-Le M X indique le serveur mail, avec une priorité de
+00:06:47.969 --> 00:06:51.901
+Le M X indique le serveur mail, avec une
+priorité de
 
-00:06:31.318 --> 00:06:31.675
+00:06:51.901 --> 00:06:52.258
 dix.
 
-00:06:31.675 --> 00:06:34.101
+00:06:52.258 --> 00:06:54.685
 Pop est un alias vers mail.
 
-00:06:34.101 --> 00:06:37.043
+00:06:54.685 --> 00:06:57.626
 On fait pareil pour imap et smtp.
 
-00:06:37.043 --> 00:06:39.788
+00:06:57.626 --> 00:07:00.371
 Le point final garde les noms complets.
 
-00:06:40.142 --> 00:06:43.639
-Je vérifie la syntaxe de Bind avec named check conf,
-puis
+00:07:00.725 --> 00:07:04.223
+Je vérifie la syntaxe de Bind avec named check
+conf, puis
 
-00:06:43.639 --> 00:06:46.501
+00:07:04.223 --> 00:07:07.084
 le fichier de la zone avec named check zone.
 
-00:06:46.501 --> 00:06:49.454
+00:07:07.084 --> 00:07:10.038
 Quand les deux contrôles passent, je recharge.
 
-00:06:49.454 --> 00:06:52.389
-Si le numéro de série n’a pas changé alors que je
+00:07:10.038 --> 00:07:12.973
+Si le numéro de série n’a pas changé alors que
+je
 
-00:06:52.389 --> 00:06:55.325
-modifie la zone plus tard, le secondaire peut garder
-sa version.
+00:07:12.973 --> 00:07:15.908
+modifie la zone plus tard, le secondaire peut
+garder sa version.
 
-00:06:55.683 --> 00:06:59.003
+00:07:16.517 --> 00:07:19.837
 Avec Dig, j’interroge directement N S un.
 
-00:06:59.003 --> 00:07:02.770
+00:07:19.837 --> 00:07:23.603
 Je cherche une ligne A pour client, l’adresse
 attendue, et le
 
-00:07:02.770 --> 00:07:04.825
+00:07:23.603 --> 00:07:25.658
 drapeau A A, pour réponse autoritaire.
 
-00:07:04.825 --> 00:07:08.367
+00:07:25.658 --> 00:07:29.200
 Je répète le contrôle avec N S, M X et C
 
-00:07:08.367 --> 00:07:10.621
+00:07:29.200 --> 00:07:31.454
 name afin de vérifier chaque type demandé.
 
-00:07:10.975 --> 00:07:14.833
-Pour la zone inverse du réseau cent soixante-douze
-point vingt-cinq point
+00:07:31.808 --> 00:07:35.666
+Pour la zone inverse du réseau cent soixante-
+douze point vingt-cinq point
 
-00:07:14.833 --> 00:07:16.587
+00:07:35.666 --> 00:07:37.420
 zéro, j’inverse ces trois octets.
 
-00:07:16.587 --> 00:07:20.067
+00:07:37.420 --> 00:07:40.900
 Dans cette zone, le nom quarante-deux complète
 l’adresse.
 
-00:07:20.067 --> 00:07:23.606
-Le P T R pointe vers client point sé-cu point R
+00:07:40.900 --> 00:07:44.832
+Le PTR pointe vers client point sé-cu point R T.
+Dig
 
-00:07:23.606 --> 00:07:26.501
-T. Dig tiret x transforme l’adresse en requête
-inverse.
+00:07:44.832 --> 00:07:47.334
+tiret x transforme l’adresse en requête inverse.
 
-00:07:26.850 --> 00:07:30.309
-Sur le poste client, je renseigne l’adresse du serveur
-D N
+00:07:47.933 --> 00:07:51.757
+Sur le poste client, je renseigne l’adresse du
+serveur DNS dans
 
-00:07:30.309 --> 00:07:33.454
-S dans les paramètres réseau, puis le domaine de
+00:07:51.757 --> 00:07:54.538
+les paramètres réseau, puis le domaine de
 recherche.
 
-00:07:33.454 --> 00:07:37.072
-Grâce à ce suffixe, la machine peut compléter le nom
-court
+00:07:54.538 --> 00:07:58.155
+Grâce à ce suffixe, la machine peut compléter le
+nom court
 
-00:07:37.072 --> 00:07:37.400
+00:07:58.155 --> 00:07:58.484
 client.
 
-00:07:37.400 --> 00:07:40.673
+00:07:58.484 --> 00:08:01.756
 Je teste la résolution avec getent hosts.
 
-00:07:40.673 --> 00:07:43.869
-Un ping en échec peut aussi être lié au réseau ou
+00:08:01.756 --> 00:08:04.953
+Un ping en échec peut aussi être lié au réseau
+ou
 
-00:07:43.869 --> 00:07:44.741
+00:08:04.953 --> 00:08:05.825
 à un filtrage.
 
-00:07:45.100 --> 00:07:47.824
+00:08:06.183 --> 00:08:08.907
 Je génère la clé sur N S un et je mets
 
-00:07:47.824 --> 00:07:50.547
-la même déclaration de clé dans un fichier protégé sur
-les
+00:08:08.907 --> 00:08:11.631
+la même déclaration de clé dans un fichier
+protégé sur les
 
-00:07:50.547 --> 00:07:51.043
+00:08:11.631 --> 00:08:12.126
 deux machines.
 
-00:07:51.043 --> 00:07:55.502
+00:08:12.126 --> 00:08:16.586
 Sur le primaire, allow transfer autorise les
 transferts authentifiés avec cette
 
-00:07:55.502 --> 00:07:55.908
+00:08:16.586 --> 00:08:16.991
 clé.
 
-00:07:55.908 --> 00:07:59.205
-Le secret ne doit pas apparaître dans la capture ou le
+00:08:16.991 --> 00:08:20.289
+Le secret ne doit pas apparaître dans la capture
+ou le
 
-00:07:59.205 --> 00:07:59.805
+00:08:20.289 --> 00:08:20.888
 compte rendu.
 
-00:08:00.142 --> 00:08:03.594
-Sur N S deux, j’indique qu’il est secondaire et qu’il
-contacte
+00:08:21.475 --> 00:08:24.927
+Sur N S deux, j’indique qu’il est secondaire et
+qu’il contacte
 
-00:08:03.594 --> 00:08:05.790
+00:08:24.927 --> 00:08:27.124
 le primaire avec la clé T sig.
 
-00:08:05.790 --> 00:08:09.663
-Je demande ensuite le S O A directement aux deux
+00:08:27.124 --> 00:08:30.996
+Je demande ensuite le SOA directement aux deux
 machines.
 
-00:08:09.663 --> 00:08:13.252
-Je vérifie que le numéro de série est identique et que
+00:08:30.996 --> 00:08:34.585
+Je vérifie que le numéro de série est identique
+et que
 
-00:08:13.252 --> 00:08:14.883
+00:08:34.585 --> 00:08:36.217
 le secondaire répond avec autorité.
 
-00:08:14.883 --> 00:08:19.025
-Dans Wireshark, je repère le transfert et les champs T
-sig.
+00:08:36.217 --> 00:08:40.359
+Dans Wireshark, je repère le transfert et les
+champs T sig.
 
-00:08:19.392 --> 00:08:22.379
-Le T P demande de comparer deux requêtes S O A
+00:08:40.725 --> 00:08:44.140
+Le TP demande de comparer deux requêtes SOA vers
+la racine,
 
-00:08:22.379 --> 00:08:25.367
-vers la racine, puis d’afficher les clés de la zone
-point
+00:08:44.140 --> 00:08:47.244
+puis d’afficher les clés de la zone point F R.
 
-00:08:25.367 --> 00:08:25.910
-F R.
+00:08:47.244 --> 00:08:51.631
+Plus DNSSEC demande les informations de
+sécurité.
 
-00:08:25.910 --> 00:08:30.298
-Plus D N S sec demande les informations de sécurité.
-
-00:08:30.298 --> 00:08:32.994
+00:08:51.631 --> 00:08:54.327
 Plus multi améliore l’affichage.
 
-00:08:32.994 --> 00:08:36.443
-Je cherche les R R sig, leur type couvert et, dans
+00:08:54.327 --> 00:08:57.776
+Je cherche les R R sig, leur type couvert et,
+dans
 
-00:08:36.443 --> 00:08:38.325
+00:08:57.776 --> 00:08:59.658
 les flags, le bit A D.
 
-00:08:38.683 --> 00:08:42.298
-La seule présence d’une signature ne dit pas qu’elle
-est valable.
+00:09:00.267 --> 00:09:03.881
+La seule présence d’une signature ne dit pas
+qu’elle est valable.
 
-00:08:42.298 --> 00:08:46.024
-Avec un résolveur de confiance, A D indique que les
-données
+00:09:03.881 --> 00:09:07.607
+Avec un résolveur de confiance, A D indique que
+les données
 
-00:08:46.024 --> 00:08:47.040
+00:09:07.607 --> 00:09:08.624
 ont été authentifiées.
 
-00:08:47.040 --> 00:08:49.885
-Dans D N S Viz, je suis le D S du
+00:09:08.624 --> 00:09:11.803
+Dans DNS Viz, je suis le D S du parent vers
 
-00:08:49.885 --> 00:08:51.954
-parent vers la clé de la zone fille.
+00:09:11.803 --> 00:09:13.538
+la clé de la zone fille.
 
-00:08:51.954 --> 00:08:55.325
-Pour la date demandée dans le T P, je lis le
+00:09:13.538 --> 00:09:17.085
+Pour la date demandée dans le TP, je lis le
+champ
 
-00:08:55.325 --> 00:08:58.082
-champ d’expiration du R R sig, en temps universel.
+00:09:17.085 --> 00:09:19.665
+d’expiration du R R sig, en temps universel.
 
-00:08:58.433 --> 00:09:01.361
-Sur le primaire, je crée les deux paires de clés avec
+00:09:20.017 --> 00:09:23.049
+Sur le primaire, je crée les deux paires de clés
+avec
 
-00:09:01.361 --> 00:09:04.290
-les paramètres du T P. J’ajoute les enregistrements
-publics issus des
+00:09:23.049 --> 00:09:26.082
+les paramètres du TP. J’ajoute les
+enregistrements publics issus des fichiers
 
-00:09:04.290 --> 00:09:06.153
-fichiers point key au fichier de zone.
+00:09:26.082 --> 00:09:27.736
+point key au fichier de zone.
 
-00:09:06.153 --> 00:09:09.939
-Les fichiers point private restent sur le serveur et
-servent à
+00:09:27.736 --> 00:09:31.522
+Les fichiers point private restent sur le
+serveur et servent à
 
-00:09:09.939 --> 00:09:10.283
+00:09:31.522 --> 00:09:31.866
 signer.
 
-00:09:10.642 --> 00:09:13.630
-Je signe le fichier de zone depuis le dossier qui
-contient
+00:09:32.475 --> 00:09:35.464
+Je signe le fichier de zone depuis le dossier
+qui contient
 
-00:09:13.630 --> 00:09:16.619
-les clés, puis je fais pointer la déclaration vers le
-fichier
+00:09:35.464 --> 00:09:38.452
+les clés, puis je fais pointer la déclaration
+vers le fichier
 
-00:09:16.619 --> 00:09:16.891
+00:09:38.452 --> 00:09:38.724
 signé.
 
-00:09:16.891 --> 00:09:19.562
+00:09:38.724 --> 00:09:41.396
 C’est une étape qu’on oublie facilement.
 
-00:09:19.562 --> 00:09:23.273
-Si Bind continue de lire le fichier d’origine, une
-requête ne
+00:09:41.396 --> 00:09:45.107
+Si Bind continue de lire le fichier d’origine,
+une requête ne
 
-00:09:23.273 --> 00:09:25.298
+00:09:45.107 --> 00:09:47.131
 recevra aucune signature de la zone.
 
-00:09:25.642 --> 00:09:29.292
-Je vérifie d’abord les clés publiées, puis je demande
-un nom
+00:09:47.475 --> 00:09:51.125
+Je vérifie d’abord les clés publiées, puis je
+demande un nom
 
-00:09:29.292 --> 00:09:29.624
+00:09:51.125 --> 00:09:51.457
 absent.
 
-00:09:29.624 --> 00:09:33.079
-Je cherche la preuve signée dans la section autorité.
+00:09:51.457 --> 00:09:54.913
+Je cherche la preuve signée dans la section
+autorité.
 
-00:09:33.079 --> 00:09:36.223
-Pour le test N sec trois demandé, je resigne depuis la
+00:09:54.913 --> 00:09:58.056
+Pour le test N sec trois demandé, je resigne
+depuis la
 
-00:09:36.223 --> 00:09:39.367
-zone source avec l’option tiret trois, je recharge et
-je compare
+00:09:58.056 --> 00:10:01.200
+zone source avec l’option tiret trois, je
+recharge et je compare
 
-00:09:39.367 --> 00:09:40.224
+00:10:01.200 --> 00:10:02.057
 les preuves obtenues.
 
-00:09:40.600 --> 00:09:42.523
+00:10:02.433 --> 00:10:04.356
 Dernière question.
 
-00:09:42.523 --> 00:09:45.933
-Je remplace la déclaration de secondaire par une zone
-de transfert
+00:10:04.356 --> 00:10:07.766
+Je remplace la déclaration de secondaire par une
+zone de transfert
 
-00:09:45.933 --> 00:09:47.793
+00:10:07.766 --> 00:10:09.626
 de requêtes sur N S deux.
 
-00:09:47.793 --> 00:09:51.163
+00:10:09.626 --> 00:10:12.996
 Il envoie les demandes pour sé-cu point R T à N
 
-00:09:51.163 --> 00:09:51.775
+00:10:12.996 --> 00:10:13.609
 S un.
 
-00:09:51.775 --> 00:09:55.332
-Je vérifie d’abord que N S un répond et sert bien
+00:10:13.609 --> 00:10:17.166
+Je vérifie d’abord que N S un répond et sert
+bien
 
-00:09:55.332 --> 00:09:55.979
+00:10:17.166 --> 00:10:17.812
 les signatures.
 
-00:09:56.350 --> 00:09:59.908
-Si le relais répond serve fail, je compare la même
-question
+00:10:18.392 --> 00:10:21.950
+Si le relais répond serve fail, je compare la
+même question
 
-00:09:59.908 --> 00:10:01.202
+00:10:21.950 --> 00:10:23.244
 avec plus C D.
 
-00:10:01.202 --> 00:10:04.833
-Si la réponse arrive seulement avec cette option, je
-regarde du
+00:10:23.244 --> 00:10:26.874
+Si la réponse arrive seulement avec cette
+option, je regarde du
 
-00:10:04.833 --> 00:10:06.153
+00:10:26.874 --> 00:10:28.195
 côté de la validation.
 
-00:10:06.153 --> 00:10:09.266
+00:10:28.195 --> 00:10:31.307
 Plus C D est un outil de diagnostic.
 
-00:10:09.266 --> 00:10:12.408
-Il demande au résolveur de rendre les données sans les
-bloquer
+00:10:31.307 --> 00:10:34.450
+Il demande au résolveur de rendre les données
+sans les bloquer
 
-00:10:12.408 --> 00:10:13.837
+00:10:34.450 --> 00:10:35.878
 à cause de son contrôle.
 
-00:10:14.183 --> 00:10:18.398
-Notre zone privée n’a pas de délégation signée depuis
-la racine.
+00:10:36.225 --> 00:10:40.440
+Notre zone privée n’a pas de délégation signée
+depuis la racine.
 
-00:10:18.398 --> 00:10:21.462
-Sur le relais, je configure donc une ancre locale avec
-la
+00:10:40.440 --> 00:10:43.810
+Sur le relais, je configure donc une ancre
+locale avec la
 
-00:10:21.462 --> 00:10:24.525
-clé publique K S K que j’ai vérifiée sur le primaire.
+00:10:43.810 --> 00:10:46.567
+clé publique KSK que j’ai vérifiée sur le
+primaire.
 
-00:10:24.525 --> 00:10:28.423
-Après contrôle et rechargement, je refais la première
-requête.
+00:10:46.567 --> 00:10:50.464
+Après contrôle et rechargement, je refais la
+première requête.
 
-00:10:28.423 --> 00:10:32.148
+00:10:50.464 --> 00:10:54.190
 Je vérifie no error, la signature et le bit A D.
 
-00:10:32.148 --> 00:10:35.359
-C’est la validation du relais qu’on voulait démontrer.
+00:10:54.190 --> 00:10:57.400
+C’est la validation du relais qu’on voulait
+démontrer.
 
-00:10:35.725 --> 00:10:39.709
-Reprends maintenant la requête normale vers N S deux
-après avoir
+00:10:57.767 --> 00:11:01.751
+Reprends maintenant la requête normale vers N S
+deux après avoir
 
-00:10:39.709 --> 00:10:41.521
+00:11:01.751 --> 00:11:03.562
 contrôlé et rechargé sa configuration.
 
-00:10:41.521 --> 00:10:44.525
-J’ai ajouté plus A D flag pour annoncer que je sais
+00:11:03.562 --> 00:11:06.566
+J’ai ajouté plus A D flag pour annoncer que je
+sais
 
-00:10:44.525 --> 00:10:45.344
+00:11:06.566 --> 00:11:07.386
 lire A D.
 
-00:10:45.344 --> 00:10:49.511
-Dans cette dernière requête, je laisse le résolveur
-faire son contrôle.
+00:11:07.386 --> 00:11:11.552
+Dans cette dernière requête, je laisse le
+résolveur faire son contrôle.
 
-00:10:49.892 --> 00:10:52.991
-Quand tout fonctionne, je lis no error et je vois le
+00:11:12.142 --> 00:11:15.684
+Quand tout fonctionne, je lis no error et je
+vois le
 
-00:10:52.991 --> 00:10:54.400
-S O A sous Answer.
+00:11:15.684 --> 00:11:16.650
+SOA sous Answer.
 
-00:10:54.400 --> 00:10:57.709
+00:11:16.650 --> 00:11:19.959
 Je retrouve aussi sa signature et le bit A D.
 
-00:10:57.709 --> 00:11:01.002
-C’est ce dernier qui montre que le relais de confiance
-a
+00:11:19.959 --> 00:11:23.252
+C’est ce dernier qui montre que le relais de
+confiance a
 
-00:11:01.002 --> 00:11:01.900
+00:11:23.252 --> 00:11:24.150
 authentifié les données.
 
-00:11:01.900 --> 00:11:04.887
+00:11:24.150 --> 00:11:27.137
 Si A D manque, je vérifie la clé de l’ancre, les
 
-00:11:04.887 --> 00:11:07.060
+00:11:27.137 --> 00:11:29.310
 dates de signature et le journal du relais.

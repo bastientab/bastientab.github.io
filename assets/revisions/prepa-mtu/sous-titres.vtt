@@ -1,181 +1,207 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.126
-Pour un document long, donne un rôle à tes titres.
+00:00:00.100 --> 00:00:04.283
+Imaginons que plusieurs calculs du tableur
+utilisent un montant en B
 
-00:00:03.126 --> 00:00:06.239
+00:00:04.283 --> 00:00:04.663
+deux.
+
+00:00:04.663 --> 00:00:08.094
+Les dollars bloquent la colonne B et la ligne
+deux quand
+
+00:00:08.094 --> 00:00:09.341
+on recopie la formule.
+
+00:00:09.341 --> 00:00:12.966
+On va distinguer les références qui restent
+fixes de celles qui
+
+00:00:12.966 --> 00:00:13.955
+suivent la copie.
+
+00:00:14.558 --> 00:00:17.584
+Pour un document long, donne un rôle à tes
+titres.
+
+00:00:17.584 --> 00:00:20.697
 Un titre de niveau un indique une grande partie.
 
-00:00:06.239 --> 00:00:09.241
+00:00:20.697 --> 00:00:23.700
 Un titre de niveau deux ouvre une sous-partie.
 
-00:00:09.241 --> 00:00:12.995
-Si tu changes la longueur d'une page, actualise le
-sommaire et
+00:00:23.700 --> 00:00:27.453
+Si tu changes la longueur d'une page, actualise
+le sommaire et
 
-00:00:12.995 --> 00:00:13.677
+00:00:27.453 --> 00:00:28.136
 ses numéros.
 
-00:00:13.677 --> 00:00:17.942
-Pour les alignements, un taquet fixe une position
-réutilisable.
+00:00:28.136 --> 00:00:32.400
+Pour les alignements, un taquet fixe une
+position réutilisable.
 
-00:00:17.942 --> 00:00:21.528
-Tu peux ainsi modifier un mot sans devoir recompter le
-nombre
+00:00:32.400 --> 00:00:35.986
+Tu peux ainsi modifier un mot sans devoir
+recompter le nombre
 
-00:00:21.528 --> 00:00:22.832
+00:00:35.986 --> 00:00:37.290
 d'espaces pour chaque ligne.
 
-00:00:23.183 --> 00:00:27.050
-Dans le tableur, commence par repérer les données qui
-changent pour
+00:00:37.892 --> 00:00:41.759
+Dans le tableur, commence par repérer les
+données qui changent pour
 
-00:00:27.050 --> 00:00:27.753
+00:00:41.759 --> 00:00:42.462
 chaque colonne.
 
-00:00:27.753 --> 00:00:30.584
+00:00:42.462 --> 00:00:45.293
 Le nombre de trajets dépend de l'élève.
 
-00:00:30.584 --> 00:00:33.876
-Le prix d'un trajet est commun et doit rester au même
+00:00:45.293 --> 00:00:48.584
+Le prix d'un trajet est commun et doit rester au
+même
 
-00:00:33.876 --> 00:00:34.175
+00:00:48.584 --> 00:00:48.883
 endroit.
 
-00:00:34.175 --> 00:00:37.545
-Fais donc une référence relative vers le nombre de
-trajets et
+00:00:48.883 --> 00:00:52.253
+Fais donc une référence relative vers le nombre
+de trajets et
 
-00:00:37.545 --> 00:00:39.383
+00:00:52.253 --> 00:00:54.092
 une référence absolue vers le prix.
 
-00:00:39.383 --> 00:00:42.738
-Avant de recopier toute la feuille, essaie une copie
-sur une
+00:00:54.092 --> 00:00:57.447
+Avant de recopier toute la feuille, essaie une
+copie sur une
 
-00:00:42.738 --> 00:00:44.874
+00:00:57.447 --> 00:00:59.582
 seule cellule et relis la formule obtenue.
 
-00:00:45.225 --> 00:00:49.316
-Effectuer un total et décider qu'une valeur dépasse un
-seuil sont
+00:01:00.183 --> 00:01:04.275
+Effectuer un total et décider qu'une valeur
+dépasse un seuil sont
 
-00:00:49.316 --> 00:00:50.432
+00:01:04.275 --> 00:01:05.391
 deux opérations différentes.
 
-00:00:50.432 --> 00:00:53.423
+00:01:05.391 --> 00:01:08.381
 Pour le total, rassemble les bons nombres.
 
-00:00:53.423 --> 00:00:56.817
-Pour une décision, écris la condition en français.
+00:01:08.381 --> 00:01:11.775
+Pour une décision, écris la condition en
+français.
 
-00:00:56.817 --> 00:01:00.420
+00:01:11.775 --> 00:01:15.378
 Si le stock est strictement sous trente, il faut
 commander.
 
-00:01:00.420 --> 00:01:04.423
-Si le stock vaut exactement trente, le résultat reste
-OK avec
+00:01:15.378 --> 00:01:19.381
+Si le stock vaut exactement trente, le résultat
+reste OK avec
 
-00:01:04.423 --> 00:01:05.150
+00:01:19.381 --> 00:01:20.109
 cette règle.
 
-00:01:05.150 --> 00:01:07.577
+00:01:20.109 --> 00:01:22.535
 Teste toujours cette frontière.
 
-00:01:07.933 --> 00:01:12.320
-Dans la première colonne, multiplie cinq trajets par
-trois euros cinquante.
+00:01:23.142 --> 00:01:27.528
+Dans la première colonne, multiplie cinq trajets
+par trois euros cinquante.
 
-00:01:12.320 --> 00:01:15.052
+00:01:27.528 --> 00:01:30.261
 Tu obtiens dix-sept euros cinquante.
 
-00:01:15.052 --> 00:01:18.442
+00:01:30.261 --> 00:01:33.650
 Lors de la recopie vers la droite, la cellule du
 nombre
 
-00:01:18.442 --> 00:01:19.366
+00:01:33.650 --> 00:01:34.575
 de trajets change.
 
-00:01:19.366 --> 00:01:21.584
+00:01:34.575 --> 00:01:36.793
 Le prix reste fixe.
 
-00:01:21.584 --> 00:01:24.723
-Pour les mois, le montant hebdomadaire reste sur la
-même ligne
+00:01:36.793 --> 00:01:39.932
+Pour les mois, le montant hebdomadaire reste sur
+la même ligne
 
-00:01:24.723 --> 00:01:27.577
-et le nombre de semaines reste dans la même colonne.
+00:01:39.932 --> 00:01:42.785
+et le nombre de semaines reste dans la même
+colonne.
 
-00:01:27.577 --> 00:01:31.340
-Les deux références mixtes servent à pouvoir copier
-dans les deux
+00:01:42.785 --> 00:01:46.549
+Les deux références mixtes servent à pouvoir
+copier dans les deux
 
-00:01:31.340 --> 00:01:31.682
+00:01:46.549 --> 00:01:46.891
 directions.
 
-00:01:32.058 --> 00:01:36.040
-Le premier montant est dix-sept euros cinquante fois
-quatre semaines.
+00:01:47.475 --> 00:01:51.457
+Le premier montant est dix-sept euros cinquante
+fois quatre semaines.
 
-00:01:36.040 --> 00:01:39.784
-Pour octobre, il y en a trois, ce qui donne cinquante-
-deux
+00:01:51.457 --> 00:01:55.200
+Pour octobre, il y en a trois, ce qui donne
+cinquante-deux
 
-00:01:39.784 --> 00:01:40.464
+00:01:55.200 --> 00:01:55.881
 euros cinquante.
 
-00:01:40.464 --> 00:01:43.160
+00:01:55.881 --> 00:01:58.577
 Novembre revient à soixante-dix.
 
-00:01:43.160 --> 00:01:47.119
-La somme du trimestre vaut cent quatre-vingt-douze
-euros cinquante.
+00:01:58.577 --> 00:02:02.535
+La somme du trimestre vaut cent quatre-vingt-
+douze euros cinquante.
 
-00:01:47.119 --> 00:01:50.541
-Pour vérifier le travail, change le prix une seule
-fois dans
+00:02:02.535 --> 00:02:05.957
+Pour vérifier le travail, change le prix une
+seule fois dans
 
-00:01:50.541 --> 00:01:51.163
+00:02:05.957 --> 00:02:06.579
 une copie.
 
-00:01:51.163 --> 00:01:54.272
-Toutes les cellules calculées doivent se mettre à jour
-sans modifier
+00:02:06.579 --> 00:02:09.688
+Toutes les cellules calculées doivent se mettre
+à jour sans modifier
 
-00:01:54.272 --> 00:01:55.685
+00:02:09.688 --> 00:02:11.101
 les résultats à la main.
 
-00:01:56.058 --> 00:01:59.726
+00:02:11.475 --> 00:02:15.143
 Le nombre vendu est la différence entre le stock
 initial et
 
-00:01:59.726 --> 00:02:00.726
+00:02:15.143 --> 00:02:16.143
 le stock final.
 
-00:02:00.726 --> 00:02:04.212
-Multiplie ensuite par le prix HT, puis par un plus le
+00:02:16.143 --> 00:02:19.629
+Multiplie ensuite par le prix HT, puis par un
+plus le
 
-00:02:04.212 --> 00:02:05.163
+00:02:19.629 --> 00:02:20.579
 taux de TVA.
 
-00:02:05.163 --> 00:02:08.548
-Pour éviter la recopie d'une valeur en dur, pointe
-vers la
+00:02:20.579 --> 00:02:23.964
+Pour éviter la recopie d'une valeur en dur,
+pointe vers la
 
-00:02:08.548 --> 00:02:10.702
+00:02:23.964 --> 00:02:26.119
 cellule du taux avec une référence absolue.
 
-00:02:10.702 --> 00:02:13.741
+00:02:26.119 --> 00:02:29.158
 Applique ensuite le seuil au stock final.
 
-00:02:13.741 --> 00:02:16.474
+00:02:29.158 --> 00:02:31.891
 Le stock de Spirou est sous trente.
 
-00:02:16.474 --> 00:02:19.751
-Pour vérifier la condition, prends un stock égal à
-trente et
+00:02:31.891 --> 00:02:35.168
+Pour vérifier la condition, prends un stock égal
+à trente et
 
-00:02:19.751 --> 00:02:21.241
+00:02:35.168 --> 00:02:36.658
 contrôle que le choix change.

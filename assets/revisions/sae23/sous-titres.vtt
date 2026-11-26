@@ -1,533 +1,561 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.729
+00:00:00.100 --> 00:00:03.747
+Dans un modèle un à plusieurs, une ligne
+principale peut correspondre
+
+00:00:03.747 --> 00:00:06.068
+à plusieurs lignes de la seconde table.
+
+00:00:06.068 --> 00:00:09.452
+On garde les lignes séparées et on relie chacune
+à la
+
+00:00:09.452 --> 00:00:10.991
+ligne principale avec sa clé.
+
+00:00:11.600 --> 00:00:15.229
 Avant de créer une table, décris ce que chaque
 personne doit
 
-00:00:03.729 --> 00:00:04.388
+00:00:15.229 --> 00:00:15.888
 pouvoir faire.
 
-00:00:04.388 --> 00:00:09.266
+00:00:15.888 --> 00:00:20.766
 L’étudiant consulte les formations, répond aux
 questionnaires et soumet ses projets.
 
-00:00:09.266 --> 00:00:12.832
-Le formateur crée des contenus et examine les dépôts.
+00:00:20.766 --> 00:00:24.332
+Le formateur crée des contenus et examine les
+dépôts.
 
-00:00:12.832 --> 00:00:16.153
+00:00:24.332 --> 00:00:27.653
 L’administrateur s’occupe notamment des comptes.
 
-00:00:16.153 --> 00:00:19.621
-Transforme une phrase ambiguë en règle mesurable.
+00:00:27.653 --> 00:00:31.121
+Transforme une phrase ambiguë en règle
+mesurable.
 
-00:00:19.621 --> 00:00:23.737
+00:00:31.121 --> 00:00:35.237
 Par exemple, avant trente jours, une deuxième
 tentative pour la même
 
-00:00:23.737 --> 00:00:25.234
+00:00:35.237 --> 00:00:36.734
 compétence doit être refusée.
 
-00:00:25.234 --> 00:00:29.267
-Ce critère pourra être testé avec une date précise et
-deux
+00:00:36.734 --> 00:00:40.767
+Ce critère pourra être testé avec une date
+précise et deux
 
-00:00:29.267 --> 00:00:29.633
+00:00:40.767 --> 00:00:41.133
 compétences.
 
-00:00:29.975 --> 00:00:33.565
+00:00:41.725 --> 00:00:45.315
 Transformons une fonctionnalité en critères de
 réception.
 
-00:00:33.565 --> 00:00:36.943
-Un étudiant connecté dépose un fichier de projet qui
-respecte les
+00:00:45.315 --> 00:00:48.693
+Un étudiant connecté dépose un fichier de projet
+qui respecte les
 
-00:00:36.943 --> 00:00:38.785
+00:00:48.693 --> 00:00:50.535
 règles de taille et de type.
 
-00:00:38.785 --> 00:00:42.329
-Le serveur crée alors une ligne liée à cet étudiant
-avec
+00:00:50.535 --> 00:00:54.079
+Le serveur crée alors une ligne liée à cet
+étudiant avec
 
-00:00:42.329 --> 00:00:43.295
+00:00:54.079 --> 00:00:55.045
 l’état en attente.
 
-00:00:43.295 --> 00:00:46.310
+00:00:55.045 --> 00:00:58.060
 Le formateur autorisé doit y accéder.
 
-00:00:46.310 --> 00:00:49.927
-Pour vérifier la règle, tu as besoin d’un cas accepté,
-d’un
+00:00:58.060 --> 00:01:01.677
+Pour vérifier la règle, tu as besoin d’un cas
+accepté, d’un
 
-00:00:49.927 --> 00:00:52.229
+00:01:01.677 --> 00:01:03.979
 fichier refusé et d’une tentative sans session.
 
-00:00:52.229 --> 00:00:54.717
+00:01:03.979 --> 00:01:06.467
 Ces cas renseignent ton modèle.
 
-00:00:54.717 --> 00:00:57.974
-Il te faut un propriétaire, le statut, la date et un
+00:01:06.467 --> 00:01:09.724
+Il te faut un propriétaire, le statut, la date
+et un
 
-00:00:57.974 --> 00:01:01.232
-moyen de retrouver le fichier sans utiliser un nom
-choisi par
+00:01:09.724 --> 00:01:12.982
+moyen de retrouver le fichier sans utiliser un
+nom choisi par
 
-00:01:01.232 --> 00:01:01.825
+00:01:12.982 --> 00:01:13.575
 le navigateur.
 
-00:01:02.183 --> 00:01:05.467
+00:01:13.933 --> 00:01:17.217
 Un utilisateur peut déposer plusieurs projets.
 
-00:01:05.467 --> 00:01:09.450
-Chaque dépôt garde une référence à l’utilisateur qui
-l’a créé.
+00:01:17.217 --> 00:01:21.200
+Chaque dépôt garde une référence à l’utilisateur
+qui l’a créé.
 
-00:01:09.450 --> 00:01:13.211
-Pour les formations et les compétences, une formation
-peut viser plusieurs
+00:01:21.200 --> 00:01:24.961
+Pour les formations et les compétences, une
+formation peut viser plusieurs
 
-00:01:13.211 --> 00:01:16.288
-compétences et chacune peut être visée par plusieurs
-formations.
+00:01:24.961 --> 00:01:28.038
+compétences et chacune peut être visée par
+plusieurs formations.
 
-00:01:16.288 --> 00:01:20.099
-On crée donc une table d’association avec une ligne
-par paire.
+00:01:28.038 --> 00:01:31.849
+On crée donc une table d’association avec une
+ligne par paire.
 
-00:01:20.099 --> 00:01:24.413
+00:01:31.849 --> 00:01:36.163
 Utilise les clés étrangères pour empêcher les
 références inexistantes.
 
-00:01:24.413 --> 00:01:28.159
-Pour vérifier ton modèle, essaie d’enregistrer une
-formation liée à deux
+00:01:36.163 --> 00:01:39.909
+Pour vérifier ton modèle, essaie d’enregistrer
+une formation liée à deux
 
-00:01:28.159 --> 00:01:30.883
-compétences et une compétence liée à deux formations.
+00:01:39.909 --> 00:01:42.633
+compétences et une compétence liée à deux
+formations.
 
-00:01:31.225 --> 00:01:34.569
-Une table d’association sert à enregistrer un lien et
-peut porter
+00:01:43.225 --> 00:01:46.569
+Une table d’association sert à enregistrer un
+lien et peut porter
 
-00:01:34.569 --> 00:01:36.089
+00:01:46.569 --> 00:01:48.089
 des données propres au lien.
 
-00:01:36.089 --> 00:01:39.833
+00:01:48.089 --> 00:01:51.833
 La paire formation douze et compétence trois n’a
 besoin que d’apparaître
 
-00:01:39.833 --> 00:01:40.513
+00:01:51.833 --> 00:01:52.513
 une fois.
 
-00:01:40.513 --> 00:01:44.135
-Si la même formation vise une deuxième compétence,
-ajoute une autre
+00:01:52.513 --> 00:01:56.135
+Si la même formation vise une deuxième
+compétence, ajoute une autre
 
-00:01:44.135 --> 00:01:47.756
-ligne, et conserve les informations de la formation au
-même endroit.
+00:01:56.135 --> 00:01:59.756
+ligne, et conserve les informations de la
+formation au même endroit.
 
-00:01:47.756 --> 00:01:51.751
+00:01:59.756 --> 00:02:03.751
 Une clé primaire composée des deux identifiants
 empêche le doublon.
 
-00:01:51.751 --> 00:01:55.909
-Avec les deux clés étrangères, la base vérifie aussi
-que les
+00:02:03.751 --> 00:02:07.909
+Avec les deux clés étrangères, la base vérifie
+aussi que les
 
-00:01:55.909 --> 00:01:56.665
+00:02:07.909 --> 00:02:08.665
 identifiants existent.
 
-00:01:56.665 --> 00:01:59.974
-Insère d’abord les lignes prêtes à être référencées.
+00:02:08.665 --> 00:02:11.974
+Insère d’abord les lignes prêtes à être
+référencées.
 
-00:02:00.308 --> 00:02:04.549
-Une page d’application reçoit une requête, exécute une
-action et affiche
+00:02:12.308 --> 00:02:16.549
+Une page d’application reçoit une requête,
+exécute une action et affiche
 
-00:02:04.549 --> 00:02:05.320
+00:02:16.549 --> 00:02:17.320
 un résultat.
 
-00:02:05.320 --> 00:02:09.229
-Sépare ces rôles pour pouvoir tester le calcul sans
-reconstruire la
+00:02:17.320 --> 00:02:21.229
+Sépare ces rôles pour pouvoir tester le calcul
+sans reconstruire la
 
-00:02:09.229 --> 00:02:09.584
+00:02:21.229 --> 00:02:21.584
 page.
 
-00:02:09.584 --> 00:02:13.338
-Pour parler à MySQL, prépare la requête et fournis ses
-valeurs
+00:02:21.584 --> 00:02:25.338
+Pour parler à MySQL, prépare la requête et
+fournis ses valeurs
 
-00:02:13.338 --> 00:02:14.021
+00:02:25.338 --> 00:02:26.021
 à part.
 
-00:02:14.021 --> 00:02:17.648
-Cela évite d’interpréter une saisie comme du SQL.
+00:02:26.021 --> 00:02:29.648
+Cela évite d’interpréter une saisie comme du
+SQL.
 
-00:02:17.648 --> 00:02:21.750
-Si tu réaffiches cette saisie dans une page, échappe-
-la aussi pour
+00:02:29.648 --> 00:02:33.750
+Si tu réaffiches cette saisie dans une page,
+échappe-la aussi pour
 
-00:02:21.750 --> 00:02:22.869
+00:02:33.750 --> 00:02:34.869
 le contexte HTML.
 
-00:02:22.869 --> 00:02:27.440
+00:02:34.869 --> 00:02:39.440
 La requête préparée et l’échappement du résultat
 protègent deux endroits différents.
 
-00:02:27.808 --> 00:02:30.258
+00:02:40.058 --> 00:02:42.508
 Suivons la demande d’une fiche.
 
-00:02:30.258 --> 00:02:33.016
+00:02:42.508 --> 00:02:45.266
 Le navigateur fournit l’identifiant.
 
-00:02:33.016 --> 00:02:36.848
+00:02:45.266 --> 00:02:49.098
 La route vérifie son format, puis le traitement
 vérifie si cette
 
-00:02:36.848 --> 00:02:37.893
+00:02:49.098 --> 00:02:50.143
 fiche est visible.
 
-00:02:37.893 --> 00:02:40.969
+00:02:50.143 --> 00:02:53.219
 La requête SQL contient un paramètre.
 
-00:02:40.969 --> 00:02:44.462
-PDO lui associe la valeur envoyée comme un entier.
+00:02:53.219 --> 00:02:56.712
+PDO lui associe la valeur envoyée comme un
+entier.
 
-00:02:44.462 --> 00:02:48.288
-Une fois la ligne récupérée, échappe le titre avant de
-l’afficher
+00:02:56.712 --> 00:03:00.538
+Une fois la ligne récupérée, échappe le titre
+avant de l’afficher
 
-00:02:48.288 --> 00:02:48.984
+00:03:00.538 --> 00:03:01.234
 comme texte.
 
-00:02:48.984 --> 00:02:52.329
+00:03:01.234 --> 00:03:04.579
 Les deux protections répondent à des erreurs
 distinctes.
 
-00:02:52.329 --> 00:02:55.418
+00:03:04.579 --> 00:03:07.668
 Le code SQL interprète des opérations.
 
-00:02:55.418 --> 00:02:58.383
+00:03:07.668 --> 00:03:10.633
 Le navigateur interprète des balises.
 
-00:02:58.383 --> 00:03:01.533
-La valeur doit parvenir comme donnée dans les deux
-cas.
+00:03:10.633 --> 00:03:13.783
+La valeur doit parvenir comme donnée dans les
+deux cas.
 
-00:03:01.892 --> 00:03:05.502
-Quand quelqu’un saisit son mot de passe, cherche son
-compte et
+00:03:14.142 --> 00:03:17.752
+Quand quelqu’un saisit son mot de passe, cherche
+son compte et
 
-00:03:05.502 --> 00:03:06.486
+00:03:17.752 --> 00:03:18.736
 vérifie son état.
 
-00:03:06.486 --> 00:03:10.763
-Compare ensuite le secret au hachage enregistré avec
-la fonction prévue.
+00:03:18.736 --> 00:03:23.013
+Compare ensuite le secret au hachage enregistré
+avec la fonction prévue.
 
-00:03:10.763 --> 00:03:14.807
-Lors d’une connexion réussie, renouvelle l’identifiant
-de session.
+00:03:23.013 --> 00:03:27.057
+Lors d’une connexion réussie, renouvelle
+l’identifiant de session.
 
-00:03:14.807 --> 00:03:18.332
-Une personne identifiée peut être autorisée à une
-action et refusée
+00:03:27.057 --> 00:03:30.582
+Une personne identifiée peut être autorisée à
+une action et refusée
 
-00:03:18.332 --> 00:03:19.293
+00:03:30.582 --> 00:03:31.543
 sur une autre.
 
-00:03:19.293 --> 00:03:22.571
-Pour valider un dépôt, le rôle formateur ne suffit que
-si
+00:03:31.543 --> 00:03:34.821
+Pour valider un dépôt, le rôle formateur ne
+suffit que si
 
-00:03:22.571 --> 00:03:25.849
-le projet fait partie du périmètre que ce formateur
-peut traiter.
+00:03:34.821 --> 00:03:38.099
+le projet fait partie du périmètre que ce
+formateur peut traiter.
 
-00:03:25.849 --> 00:03:29.869
-Vérifie donc aussi le lien entre l’utilisateur et la
-ressource.
+00:03:38.099 --> 00:03:42.119
+Vérifie donc aussi le lien entre l’utilisateur
+et la ressource.
 
-00:03:30.225 --> 00:03:34.023
+00:03:42.725 --> 00:03:46.523
 Imagine que l’utilisateur quarante-deux voit son
 tableau de bord.
 
-00:03:34.023 --> 00:03:37.258
+00:03:46.523 --> 00:03:49.758
 Il connaît l’URL qui sert à valider un dépôt.
 
-00:03:37.258 --> 00:03:41.287
-Si cette URL se contente de lire un identifiant et de
+00:03:49.758 --> 00:03:53.787
+Si cette URL se contente de lire un identifiant
+et de
 
-00:03:41.287 --> 00:03:43.851
-modifier l’état, l’utilisateur peut la solliciter
-directement.
+00:03:53.787 --> 00:03:56.351
+modifier l’état, l’utilisateur peut la
+solliciter directement.
 
-00:03:43.851 --> 00:03:47.104
-Au début du traitement, relis la session puis exige le
-rôle
+00:03:56.351 --> 00:03:59.604
+Au début du traitement, relis la session puis
+exige le rôle
 
-00:03:47.104 --> 00:03:48.582
+00:03:59.604 --> 00:04:01.082
 et l’accès à ce dépôt.
 
-00:03:48.582 --> 00:03:52.195
-Si le contrôle échoue, réponds avec un refus et garde
-l’état
+00:04:01.082 --> 00:04:04.695
+Si le contrôle échoue, réponds avec un refus et
+garde l’état
 
-00:03:52.195 --> 00:03:53.508
+00:04:04.695 --> 00:04:06.008
 de la base inchangé.
 
-00:03:53.508 --> 00:03:57.355
-Pour tester, compare la ligne en base avant et après
-le
+00:04:06.008 --> 00:04:09.855
+Pour tester, compare la ligne en base avant et
+après le
 
-00:03:57.355 --> 00:03:58.055
+00:04:09.855 --> 00:04:10.555
 formulaire invalide.
 
-00:03:58.055 --> 00:04:01.523
+00:04:10.555 --> 00:04:14.023
 Vérifie aussi que l’action légitime fonctionne.
 
-00:04:01.850 --> 00:04:05.759
-Le navigateur envoie des identifiants de réponses, et
-le serveur recalcule
+00:04:14.350 --> 00:04:18.259
+Le navigateur envoie des identifiants de
+réponses, et le serveur recalcule
 
-00:04:05.759 --> 00:04:07.891
+00:04:18.259 --> 00:04:20.391
 le score depuis sa propre base.
 
-00:04:07.891 --> 00:04:11.588
-Il garde la date de tentative et applique le délai
-avant
+00:04:20.391 --> 00:04:24.088
+Il garde la date de tentative et applique le
+délai avant
 
-00:04:11.588 --> 00:04:12.597
+00:04:24.088 --> 00:04:25.097
 un nouvel enregistrement.
 
-00:04:12.597 --> 00:04:15.992
-Pour un dépôt de projet, vérifie l’erreur d’envoi, le
-type et
+00:04:25.097 --> 00:04:28.492
+Pour un dépôt de projet, vérifie l’erreur
+d’envoi, le type et
 
-00:04:15.992 --> 00:04:19.079
-la taille, puis enregistre le fichier sous un nom
-contrôlé.
+00:04:28.492 --> 00:04:31.579
+la taille, puis enregistre le fichier sous un
+nom contrôlé.
 
-00:04:19.079 --> 00:04:22.669
+00:04:31.579 --> 00:04:35.169
 Les tableaux de bord utilisent ensuite les états
 persistés pour afficher
 
-00:04:22.669 --> 00:04:24.300
+00:04:35.169 --> 00:04:36.800
 les tentatives et les dépôts.
 
-00:04:24.300 --> 00:04:28.389
-Regroupe les vues des formations pour montrer leur
-évolution selon une
+00:04:36.800 --> 00:04:40.889
+Regroupe les vues des formations pour montrer
+leur évolution selon une
 
-00:04:28.389 --> 00:04:28.761
+00:04:40.889 --> 00:04:41.261
 période.
 
-00:04:29.142 --> 00:04:33.444
-Pour démontrer une relation plusieurs à plusieurs,
-crée deux formations et
+00:04:41.850 --> 00:04:46.153
+Pour démontrer une relation plusieurs à
+plusieurs, crée deux formations et
 
-00:04:33.444 --> 00:04:34.226
+00:04:46.153 --> 00:04:46.935
 deux compétences.
 
-00:04:34.226 --> 00:04:37.830
-Relie la première formation aux deux compétences, puis
-relie la seconde
+00:04:46.935 --> 00:04:50.539
+Relie la première formation aux deux
+compétences, puis relie la seconde
 
-00:04:37.830 --> 00:04:39.141
+00:04:50.539 --> 00:04:51.849
 à l’une des deux.
 
-00:04:39.141 --> 00:04:41.763
+00:04:51.849 --> 00:04:54.472
 Tu obtiens trois lignes d’association.
 
-00:04:41.763 --> 00:04:44.496
+00:04:54.472 --> 00:04:57.204
 Une jointure te restitue chaque lien.
 
-00:04:44.496 --> 00:04:48.724
-Essaie d’ajouter un doublon et une référence à une
-compétence absente.
+00:04:57.204 --> 00:05:01.432
+Essaie d’ajouter un doublon et une référence à
+une compétence absente.
 
-00:04:48.724 --> 00:04:51.665
+00:05:01.432 --> 00:05:04.374
 Les deux doivent échouer grâce aux contraintes.
 
-00:04:51.665 --> 00:04:55.575
-Utilise ce jeu de test avant de connecter PHP, afin
-que
+00:05:04.374 --> 00:05:08.283
+Utilise ce jeu de test avant de connecter PHP,
+afin que
 
-00:04:55.575 --> 00:04:58.418
-tu puisses diagnostiquer la base indépendamment de
-l’interface.
+00:05:08.283 --> 00:05:11.126
+tu puisses diagnostiquer la base indépendamment
+de l’interface.
 
-00:04:58.767 --> 00:05:02.069
+00:05:11.725 --> 00:05:15.027
 Le projet demande de créer la connexion puis de
 limiter les
 
-00:05:02.069 --> 00:05:03.570
+00:05:15.027 --> 00:05:16.528
 pages en fonction du rôle.
 
-00:05:03.570 --> 00:05:07.075
-Crée un étudiant en attente et tente de te connecter.
+00:05:16.528 --> 00:05:20.033
+Crée un étudiant en attente et tente de te
+connecter.
 
-00:05:07.075 --> 00:05:12.148
-Après validation par un administrateur, reconnecte-toi
-et ouvre l’espace étudiant.
+00:05:20.033 --> 00:05:25.106
+Après validation par un administrateur,
+reconnecte-toi et ouvre l’espace étudiant.
 
-00:05:12.148 --> 00:05:16.473
-Essaie ensuite l’adresse du traitement de validation
-en restant connecté comme
+00:05:25.106 --> 00:05:29.431
+Essaie ensuite l’adresse du traitement de
+validation en restant connecté comme
 
-00:05:16.473 --> 00:05:16.866
+00:05:29.431 --> 00:05:29.825
 étudiant.
 
-00:05:16.866 --> 00:05:19.170
+00:05:29.825 --> 00:05:32.128
 Le serveur doit refuser.
 
-00:05:19.170 --> 00:05:22.528
-Fais un autre essai sur un dépôt qui ne t’appartient
-pas.
+00:05:32.128 --> 00:05:35.486
+Fais un autre essai sur un dépôt qui ne
+t’appartient pas.
 
-00:05:22.528 --> 00:05:26.302
-Ces tests vérifient les autorisations en profondeur,
-car masquer les boutons
+00:05:35.486 --> 00:05:39.261
+Ces tests vérifient les autorisations en
+profondeur, car masquer les boutons
 
-00:05:26.302 --> 00:05:29.048
+00:05:39.261 --> 00:05:42.006
 ne suffit pas à empêcher l’appel d’une URL.
 
-00:05:29.392 --> 00:05:33.401
-On cherche la dernière tentative du même étudiant pour
-la même
+00:05:42.600 --> 00:05:46.610
+On cherche la dernière tentative du même
+étudiant pour la même
 
-00:05:33.401 --> 00:05:33.766
+00:05:46.610 --> 00:05:46.974
 compétence.
 
-00:05:33.766 --> 00:05:36.450
+00:05:46.974 --> 00:05:49.658
 S’il n’en a pas, il peut commencer.
 
-00:05:36.450 --> 00:05:39.724
-S’il en a une, compare la date courante avec la date
+00:05:49.658 --> 00:05:52.933
+S’il en a une, compare la date courante avec la
+date
 
-00:05:39.724 --> 00:05:41.511
+00:05:52.933 --> 00:05:54.719
 de la tentative plus trente jours.
 
-00:05:41.511 --> 00:05:45.065
-Teste juste avant la limite et exactement à la limite.
+00:05:54.719 --> 00:05:58.273
+Teste juste avant la limite et exactement à la
+limite.
 
-00:05:45.065 --> 00:05:48.851
-Le même contrôle doit être exécuté quand le formulaire
-arrive.
+00:05:58.273 --> 00:06:02.060
+Le même contrôle doit être exécuté quand le
+formulaire arrive.
 
-00:05:48.851 --> 00:05:52.663
-Deux requêtes proches ne doivent pas enregistrer deux
-tentatives.
+00:06:02.060 --> 00:06:05.871
+Deux requêtes proches ne doivent pas enregistrer
+deux tentatives.
 
-00:05:52.663 --> 00:05:56.142
+00:06:05.871 --> 00:06:09.350
 Le score se calcule à partir des bonnes réponses
 conservées côté
 
-00:05:56.142 --> 00:05:59.305
-serveur, puis le tableau de bord relit la tentative
-stockée.
+00:06:09.350 --> 00:06:12.513
+serveur, puis le tableau de bord relit la
+tentative stockée.
 
-00:05:59.683 --> 00:06:03.464
+00:06:13.100 --> 00:06:16.880
 Si deux envois arrivent presque ensemble, chacun
 pourrait croire que l’étudiant
 
-00:06:03.464 --> 00:06:06.900
-est autorisé parce qu’aucun n’a encore inscrit la
-nouvelle tentative.
+00:06:16.880 --> 00:06:20.317
+est autorisé parce qu’aucun n’a encore inscrit
+la nouvelle tentative.
 
-00:06:06.900 --> 00:06:10.957
-Il faut protéger la vérification et l’enregistrement
-ensemble.
+00:06:20.317 --> 00:06:24.374
+Il faut protéger la vérification et
+l’enregistrement ensemble.
 
-00:06:10.957 --> 00:06:14.363
-Dans une transaction, prends un verrou sur une ligne
-stable qui
+00:06:24.374 --> 00:06:27.780
+Dans une transaction, prends un verrou sur une
+ligne stable qui
 
-00:06:14.363 --> 00:06:17.769
-représente le couple étudiant et compétence, relis la
-tentative connue, puis
+00:06:27.780 --> 00:06:31.186
+représente le couple étudiant et compétence,
+relis la tentative connue, puis
 
-00:06:17.769 --> 00:06:20.246
-écris seulement si les trente jours sont écoulés.
+00:06:31.186 --> 00:06:33.663
+écris seulement si les trente jours sont
+écoulés.
 
-00:06:20.246 --> 00:06:23.347
-Le deuxième traitement verra alors le nouvel état.
+00:06:33.663 --> 00:06:36.763
+Le deuxième traitement verra alors le nouvel
+état.
 
-00:06:23.347 --> 00:06:27.638
-Essaie un doublon volontaire en environnement de test
-pour contrôler ce
+00:06:36.763 --> 00:06:41.054
+Essaie un doublon volontaire en environnement de
+test pour contrôler ce
 
-00:06:27.638 --> 00:06:28.028
+00:06:41.054 --> 00:06:41.445
 comportement.
 
-00:06:28.392 --> 00:06:31.136
+00:06:41.808 --> 00:06:44.552
 Commence par un fichier acceptable.
 
-00:06:31.136 --> 00:06:34.634
+00:06:44.552 --> 00:06:48.051
 Vérifie que son dépôt arrive en attente côté
 formateur, puis change
 
-00:06:34.634 --> 00:06:37.496
+00:06:48.051 --> 00:06:50.913
 son état et observe le tableau de bord étudiant.
 
-00:06:37.496 --> 00:06:41.111
+00:06:50.913 --> 00:06:54.528
 Recommence avec un fichier trop lourd et un type
 interdit.
 
-00:06:41.111 --> 00:06:44.189
-Pour les formations, crée une formation liée à une
-compétence et
+00:06:54.528 --> 00:06:57.606
+Pour les formations, crée une formation liée à
+une compétence et
 
-00:06:44.189 --> 00:06:47.267
+00:06:57.606 --> 00:07:00.684
 vérifie que le filtre la trouve et qu’une autre
 compétence ne
 
-00:06:47.267 --> 00:06:49.506
-l’affiche pas. Ajoute une question puis une réponse.
+00:07:00.684 --> 00:07:02.923
+l’affiche pas. Ajoute une question puis une
+réponse.
 
-00:06:49.506 --> 00:06:53.353
-Consigne chaque essai avec le résultat attendu et ce
-que tu
+00:07:02.923 --> 00:07:06.770
+Consigne chaque essai avec le résultat attendu
+et ce que tu
 
-00:06:53.353 --> 00:06:54.052
+00:07:06.770 --> 00:07:07.469
 observes réellement.
 
-00:06:54.433 --> 00:06:56.994
+00:07:08.058 --> 00:07:10.619
 Organise la recette par action.
 
-00:06:56.994 --> 00:07:00.527
-Pour un PDF accepté, relève la création du dépôt en
-attente
+00:07:10.619 --> 00:07:14.152
+Pour un PDF accepté, relève la création du dépôt
+en attente
 
-00:07:00.527 --> 00:07:03.097
+00:07:14.152 --> 00:07:16.722
 et le fichier accessible à la bonne personne.
 
-00:07:03.097 --> 00:07:06.754
-Pour un type interdit, vérifie que le serveur refuse
-et qu’aucune
+00:07:16.722 --> 00:07:20.379
+Pour un type interdit, vérifie que le serveur
+refuse et qu’aucune
 
-00:07:06.754 --> 00:07:08.084
+00:07:20.379 --> 00:07:21.709
 ligne n’a été ajoutée.
 
-00:07:08.084 --> 00:07:11.580
-Pour le tableau de bord du formateur, compare les
-dépôts avant
+00:07:21.709 --> 00:07:25.205
+Pour le tableau de bord du formateur, compare
+les dépôts avant
 
-00:07:11.580 --> 00:07:12.851
+00:07:25.205 --> 00:07:26.476
 et après la validation.
 
-00:07:12.851 --> 00:07:16.163
-Fais une autre série de tests sur la formation, le
-filtrage
+00:07:26.476 --> 00:07:29.788
+Fais une autre série de tests sur la formation,
+le filtrage
 
-00:07:16.163 --> 00:07:17.668
+00:07:29.788 --> 00:07:31.293
 et le compteur de vues.
 
-00:07:17.668 --> 00:07:21.434
-Quand un résultat diffère, note le contexte et la
-donnée précise,
+00:07:31.293 --> 00:07:35.059
+Quand un résultat diffère, note le contexte et
+la donnée précise,
 
-00:07:21.434 --> 00:07:23.489
+00:07:35.059 --> 00:07:37.114
 puis relance la recette après correction.

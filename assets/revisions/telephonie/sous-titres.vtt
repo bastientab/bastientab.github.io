@@ -1,313 +1,335 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.763
-Quand le téléphone s’enregistre, il indique où il peut
-être joint.
+00:00:00.100 --> 00:00:03.995
+Quand tu appelles, il faut d’abord faire sonner
+le correspondant et
 
-00:00:03.763 --> 00:00:06.802
+00:00:03.995 --> 00:00:05.411
+convenir de la communication.
+
+00:00:05.411 --> 00:00:08.813
+Le protocole SIP sert à ces échanges.
+
+00:00:08.813 --> 00:00:13.620
+Une fois la communication établie, le flux RTP
+transporte l’audio.
+
+00:00:14.225 --> 00:00:17.888
+Quand le téléphone s’enregistre, il indique où
+il peut être joint.
+
+00:00:17.888 --> 00:00:20.927
 Pendant un appel, il envoie une invitation.
 
-00:00:06.802 --> 00:00:10.829
-Une partie du message, appelée SDP, décrit les formats
-audio et
+00:00:20.927 --> 00:00:24.954
+Une partie du message, appelée SDP, décrit les
+formats audio et
 
-00:00:10.829 --> 00:00:12.293
+00:00:24.954 --> 00:00:26.418
 les paramètres du média.
 
-00:00:12.293 --> 00:00:15.565
+00:00:26.418 --> 00:00:29.690
 RTP transporte ensuite la voix numérisée.
 
-00:00:15.565 --> 00:00:19.144
-Si ton téléphone sonne mais que tu n’entends rien, la
-signalisation
+00:00:29.690 --> 00:00:33.269
+Si ton téléphone sonne mais que tu n’entends
+rien, la signalisation
 
-00:00:19.144 --> 00:00:21.423
+00:00:33.269 --> 00:00:35.548
 a déjà réalisé une partie du travail.
 
-00:00:21.423 --> 00:00:25.086
-Le diagnostic doit alors regarder les adresses et
-ports proposés pour
+00:00:35.548 --> 00:00:39.211
+Le diagnostic doit alors regarder les adresses
+et ports proposés pour
 
-00:00:25.086 --> 00:00:27.084
+00:00:39.211 --> 00:00:41.209
 les médias, puis les paquets échangés.
 
-00:00:27.433 --> 00:00:31.060
-Un premier message peut recevoir une réponse quatre
-cent un.
+00:00:41.808 --> 00:00:45.435
+Un premier message peut recevoir une réponse
+quatre cent un.
 
-00:00:31.060 --> 00:00:34.820
-Le serveur fournit un défi et le client renvoie une
-requête
+00:00:45.435 --> 00:00:49.195
+Le serveur fournit un défi et le client renvoie
+une requête
 
-00:00:34.820 --> 00:00:37.555
+00:00:49.195 --> 00:00:51.930
 avec une preuve calculée selon le mécanisme
 d’authentification.
 
-00:00:37.555 --> 00:00:41.041
-Le code quatre cent un initial ne suffit donc pas à
+00:00:51.930 --> 00:00:55.416
+Le code quatre cent un initial ne suffit donc
+pas à
 
-00:00:41.041 --> 00:00:41.991
+00:00:55.416 --> 00:00:56.366
 expliquer un échec.
 
-00:00:41.991 --> 00:00:45.263
+00:00:56.366 --> 00:00:59.638
 Regarde la réponse à la tentative suivante.
 
-00:00:45.263 --> 00:00:48.698
-Pour identifier le format audio, compare le type de
-charge utile
+00:00:59.638 --> 00:01:03.073
+Pour identifier le format audio, compare le type
+de charge utile
 
-00:00:48.698 --> 00:00:51.820
-RTP avec ce que l’offre et la réponse SDP annoncent.
+00:01:03.073 --> 00:01:06.195
+RTP avec ce que l’offre et la réponse SDP
+annoncent.
 
-00:00:52.183 --> 00:00:55.949
+00:01:06.767 --> 00:01:10.532
 Dans la capture, le premier défi et l’accusé de
 réception qui
 
-00:00:55.949 --> 00:00:57.660
+00:01:10.532 --> 00:01:12.244
 suit terminent la première transaction.
 
-00:00:57.660 --> 00:01:02.300
+00:01:12.244 --> 00:01:16.883
 Ensuite un nouvel invite avec une preuve
 d’authentification démarre la tentative
 
-00:01:02.300 --> 00:01:02.722
+00:01:16.883 --> 00:01:17.305
 suivante.
 
-00:01:02.722 --> 00:01:06.756
-Ne confonds pas l’accusé de réception du rejet avec
-celui qui
+00:01:17.305 --> 00:01:21.339
+Ne confonds pas l’accusé de réception du rejet
+avec celui qui
 
-00:01:06.756 --> 00:01:07.856
+00:01:21.339 --> 00:01:22.440
 clôt l’établissement réussi.
 
-00:01:07.856 --> 00:01:12.305
+00:01:22.440 --> 00:01:26.888
 Le même échange peut aussi commencer avec
 l’enregistrement du téléphone, qui
 
-00:01:12.305 --> 00:01:13.923
+00:01:26.888 --> 00:01:28.506
 utilise la méthode register.
 
-00:01:13.923 --> 00:01:17.748
-Pour les différencier, regarde le nom de méthode, la
-séquence et
+00:01:28.506 --> 00:01:32.331
+Pour les différencier, regarde le nom de
+méthode, la séquence et
 
-00:01:17.748 --> 00:01:19.486
+00:01:32.331 --> 00:01:34.070
 le contexte de la transaction.
 
-00:01:19.486 --> 00:01:24.351
+00:01:34.070 --> 00:01:38.935
 L’enregistrement peut être réussi alors qu’une
 destination est encore introuvable.
 
-00:01:24.725 --> 00:01:29.111
+00:01:39.308 --> 00:01:43.695
 Le trunk permet à deux systèmes téléphoniques de
 s’échanger des appels.
 
-00:01:29.111 --> 00:01:32.871
-Le plan d’appel décide si le numéro composé vise une
-extension
+00:01:43.695 --> 00:01:47.454
+Le plan d’appel décide si le numéro composé vise
+une extension
 
-00:01:32.871 --> 00:01:35.263
+00:01:47.454 --> 00:01:49.847
 locale ou doit sortir par cette interconnexion.
 
-00:01:35.263 --> 00:01:39.128
+00:01:49.847 --> 00:01:53.711
 Une règle trop large peut attraper un numéro qui
 devait rester
 
-00:01:39.128 --> 00:01:39.479
+00:01:53.711 --> 00:01:54.062
 local.
 
-00:01:39.479 --> 00:01:42.481
+00:01:54.062 --> 00:01:57.065
 Commence avec des plages sans ambiguïté.
 
-00:01:42.481 --> 00:01:46.268
-Vérifie le sens sortant et le sens entrant séparément.
+00:01:57.065 --> 00:02:00.851
+Vérifie le sens sortant et le sens entrant
+séparément.
 
-00:01:46.268 --> 00:01:49.908
-Un trunk qui apparaît disponible n’est que la première
-étape.
+00:02:00.851 --> 00:02:04.491
+Un trunk qui apparaît disponible n’est que la
+première étape.
 
-00:01:49.908 --> 00:01:53.201
-Il faut encore que la règle du numéro envoie l’appel
-vers
+00:02:04.491 --> 00:02:07.784
+Il faut encore que la règle du numéro envoie
+l’appel vers
 
-00:01:53.201 --> 00:01:54.099
+00:02:07.784 --> 00:02:08.682
 le bon contexte.
 
-00:01:54.433 --> 00:01:58.599
+00:02:09.267 --> 00:02:13.432
 Le TP commence par deux téléphones, réels ou
 logiciels.
 
-00:01:58.599 --> 00:02:03.172
-Crée deux utilisateurs, associe à chacun une ligne SIP
-puis une
+00:02:13.432 --> 00:02:18.005
+Crée deux utilisateurs, associe à chacun une
+ligne SIP puis une
 
-00:02:03.172 --> 00:02:04.003
+00:02:18.005 --> 00:02:18.837
 extension distincte.
 
-00:02:04.003 --> 00:02:08.089
-Dans le terminal, renseigne l’adresse de XiVO et les
-paramètres de
+00:02:18.837 --> 00:02:22.922
+Dans le terminal, renseigne l’adresse de XiVO et
+les paramètres de
 
-00:02:08.089 --> 00:02:08.832
+00:02:22.922 --> 00:02:23.665
 la ligne.
 
-00:02:08.832 --> 00:02:12.493
-Si tu peux joindre le serveur mais que le poste ne
+00:02:23.665 --> 00:02:27.326
+Si tu peux joindre le serveur mais que le poste
+ne
 
-00:02:12.493 --> 00:02:15.155
-s’enregistre pas, relis le contact SIP côté Asterisk.
+00:02:27.326 --> 00:02:29.989
+s’enregistre pas, relis le contact SIP côté
+Asterisk.
 
-00:02:15.155 --> 00:02:18.500
+00:02:29.989 --> 00:02:33.333
 Une fois les deux postes enregistrés, compose le
 numéro du second
 
-00:02:18.500 --> 00:02:21.540
-depuis le premier et vérifie l’audio dans les deux
-sens.
+00:02:33.333 --> 00:02:36.374
+depuis le premier et vérifie l’audio dans les
+deux sens.
 
-00:02:21.892 --> 00:02:25.616
+00:02:36.975 --> 00:02:40.700
 Démarre la capture puis compose un numéro du
 laboratoire.
 
-00:02:25.616 --> 00:02:28.778
+00:02:40.700 --> 00:02:43.861
 Sélectionne l’invitation qui reçoit un défi.
 
-00:02:28.778 --> 00:02:33.024
-Le client accuse réception de la réponse finale puis
-renvoie une
+00:02:43.861 --> 00:02:48.108
+Le client accuse réception de la réponse finale
+puis renvoie une
 
-00:02:33.024 --> 00:02:34.182
+00:02:48.108 --> 00:02:49.266
 invitation avec l’authentification.
 
-00:02:34.182 --> 00:02:37.654
-S’il reçoit ensuite une réponse de progression et un
-succès, le
+00:02:49.266 --> 00:02:52.737
+S’il reçoit ensuite une réponse de progression
+et un succès, le
 
-00:02:37.654 --> 00:02:40.494
-premier quatre cent un était bien un défi normal.
+00:02:52.737 --> 00:02:55.577
+premier quatre cent un était bien un défi
+normal.
 
-00:02:40.494 --> 00:02:43.864
+00:02:55.577 --> 00:02:58.947
 Pour l’audio, ouvre l’offre et la réponse SDP.
 
-00:02:43.864 --> 00:02:47.557
+00:02:58.947 --> 00:03:02.641
 Repère le port et le type de charge utile, puis
 compare-le
 
-00:02:47.557 --> 00:02:48.900
+00:03:02.641 --> 00:03:03.984
 aux paquets RTP capturés.
 
-00:02:49.267 --> 00:02:52.906
-Pour vérifier un problème d’audio, ouvre le corps SDP
-du message
+00:03:04.600 --> 00:03:08.239
+Pour vérifier un problème d’audio, ouvre le
+corps SDP du message
 
-00:02:52.906 --> 00:02:54.229
+00:03:08.239 --> 00:03:09.562
 qui offre le média.
 
-00:02:54.229 --> 00:02:58.016
-Cherche l’adresse et le port où le terminal veut le
-recevoir.
+00:03:09.562 --> 00:03:13.349
+Cherche l’adresse et le port où le terminal veut
+le recevoir.
 
-00:02:58.016 --> 00:03:00.650
+00:03:13.349 --> 00:03:15.984
 Fais la même chose pour la réponse.
 
-00:03:00.650 --> 00:03:04.456
-Observe ensuite les paquets UDP autour de ces ports,
-dans les
+00:03:15.984 --> 00:03:19.789
+Observe ensuite les paquets UDP autour de ces
+ports, dans les
 
-00:03:04.456 --> 00:03:05.148
+00:03:19.789 --> 00:03:20.481
 deux sens.
 
-00:03:05.148 --> 00:03:08.664
-Si les messages SIP aboutissent et que seul un sens
-RTP
+00:03:20.481 --> 00:03:23.998
+Si les messages SIP aboutissent et que seul un
+sens RTP
 
-00:03:08.664 --> 00:03:12.180
-manque, vérifie le chemin, le pare-feu et l’adresse
-annoncée par le
+00:03:23.998 --> 00:03:27.514
+manque, vérifie le chemin, le pare-feu et
+l’adresse annoncée par le
 
-00:03:12.180 --> 00:03:12.820
+00:03:27.514 --> 00:03:28.153
 terminal distant.
 
-00:03:12.820 --> 00:03:15.938
-Le code du type de charge utile t’aide à relier le
+00:03:28.153 --> 00:03:31.271
+Le code du type de charge utile t’aide à relier
+le
 
-00:03:15.938 --> 00:03:17.072
+00:03:31.271 --> 00:03:32.405
 média à la négociation.
 
-00:03:17.433 --> 00:03:21.405
-Dans XiVO, ouvre la gestion des interconnexions et
-crée le trunk
+00:03:32.767 --> 00:03:36.739
+Dans XiVO, ouvre la gestion des interconnexions
+et crée le trunk
 
-00:03:21.405 --> 00:03:23.572
+00:03:36.739 --> 00:03:38.905
 SIP avec les données du laboratoire.
 
-00:03:23.572 --> 00:03:27.336
-Crée ensuite une règle sortante qui associe la plage
-attendue à
+00:03:38.905 --> 00:03:42.670
+Crée ensuite une règle sortante qui associe la
+plage attendue à
 
-00:03:27.336 --> 00:03:28.021
+00:03:42.670 --> 00:03:43.354
 ce trunk.
 
-00:03:28.021 --> 00:03:31.060
-Configure aussi le traitement de l’appel entrant.
+00:03:43.354 --> 00:03:46.393
+Configure aussi le traitement de l’appel
+entrant.
 
-00:03:31.060 --> 00:03:35.430
-Teste d’abord une extension locale, puis un numéro
-routé vers l’autre
+00:03:46.393 --> 00:03:50.763
+Teste d’abord une extension locale, puis un
+numéro routé vers l’autre
 
-00:03:35.430 --> 00:03:35.827
+00:03:50.763 --> 00:03:51.160
 système.
 
-00:03:35.827 --> 00:03:39.563
-Pour le groupe de sonnerie et la boîte vocale, laisse
-volontairement
+00:03:51.160 --> 00:03:54.896
+Pour le groupe de sonnerie et la boîte vocale,
+laisse volontairement
 
-00:03:39.563 --> 00:03:40.582
+00:03:54.896 --> 00:03:55.915
 l’appel sans réponse.
 
-00:03:40.582 --> 00:03:44.132
+00:03:55.915 --> 00:03:59.465
 Note qui sonne, pendant combien de temps, et sur
 quelle boîte
 
-00:03:44.132 --> 00:03:45.423
+00:03:59.465 --> 00:04:00.756
 le message se retrouve.
 
-00:03:45.808 --> 00:03:48.818
-Quand tu vérifies un trunk, compose des numéros qui ne
-se
+00:04:01.350 --> 00:04:04.360
+Quand tu vérifies un trunk, compose des numéros
+qui ne se
 
-00:03:48.818 --> 00:03:51.555
+00:04:04.360 --> 00:04:07.097
 ressemblent pas dans leur taille, si le plan le
 permet.
 
-00:03:51.555 --> 00:03:55.412
+00:04:07.097 --> 00:04:10.954
 Le numéro interne te confirme que le poste et le
 serveur
 
-00:03:55.412 --> 00:03:56.114
+00:04:10.954 --> 00:04:11.655
 local fonctionnent.
 
-00:03:56.114 --> 00:03:59.974
+00:04:11.655 --> 00:04:15.516
 Le numéro sortant teste ensuite la règle et
 l’interconnexion.
 
-00:03:59.974 --> 00:04:03.614
-Pour l’entrant, choisis un numéro que l’autre serveur
-peut joindre, puis
+00:04:15.516 --> 00:04:19.155
+Pour l’entrant, choisis un numéro que l’autre
+serveur peut joindre, puis
 
-00:04:03.614 --> 00:04:06.261
+00:04:19.155 --> 00:04:21.802
 contrôle vers quel contexte local il est envoyé.
 
-00:04:06.261 --> 00:04:09.934
-Si quelqu’un arrive sur la mauvaise ligne, lis le
-numéro transmis
+00:04:21.802 --> 00:04:25.476
+Si quelqu’un arrive sur la mauvaise ligne, lis
+le numéro transmis
 
-00:04:09.934 --> 00:04:11.604
+00:04:25.476 --> 00:04:27.146
 avant de changer la configuration.
 
-00:04:11.604 --> 00:04:15.070
-Il peut manquer un préfixe, ou le motif peut accepter
-des
+00:04:27.146 --> 00:04:30.612
+Il peut manquer un préfixe, ou le motif peut
+accepter des
 
-00:04:15.070 --> 00:04:16.016
+00:04:30.612 --> 00:04:31.557
 chiffres de trop.

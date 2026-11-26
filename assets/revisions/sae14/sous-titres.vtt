@@ -1,276 +1,295 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.009
-Un lecteur qui ouvre ton portfolio cherche qui tu es,
-ce
+00:00:00.100 --> 00:00:03.323
+Tu peux dire que ton groupe a livré quelque
+chose.
 
-00:00:03.009 --> 00:00:05.918
-que tu sais faire et sur quoi il peut s’appuyer pour
+00:00:03.323 --> 00:00:06.571
+Pour expliquer ton apport, choisis une trace où
+ton action est
 
-00:00:05.918 --> 00:00:06.447
+00:00:06.571 --> 00:00:09.819
+visible, puis décris ce que tu as fait et le
+résultat
+
+00:00:09.819 --> 00:00:10.114
+obtenu.
+
+00:00:10.725 --> 00:00:13.634
+Un lecteur qui ouvre ton portfolio cherche qui
+tu es, ce
+
+00:00:13.634 --> 00:00:16.543
+que tu sais faire et sur quoi il peut s’appuyer
+pour
+
+00:00:16.543 --> 00:00:17.072
 le vérifier.
 
-00:00:06.447 --> 00:00:09.327
+00:00:17.072 --> 00:00:19.952
 L’accueil donne le contexte en une phrase.
 
-00:00:09.327 --> 00:00:12.904
-Chaque projet mérite ensuite une page ou une carte
-avec son
+00:00:19.952 --> 00:00:23.529
+Chaque projet mérite ensuite une page ou une
+carte avec son
 
-00:00:12.904 --> 00:00:14.204
+00:00:23.529 --> 00:00:24.829
 objectif et ta contribution.
 
-00:00:14.204 --> 00:00:17.585
-Une liste de logiciels ne raconte pas comment tu as
-pris
+00:00:24.829 --> 00:00:28.210
+Une liste de logiciels ne raconte pas comment tu
+as pris
 
-00:00:17.585 --> 00:00:18.200
+00:00:28.210 --> 00:00:28.825
 une décision.
 
-00:00:18.200 --> 00:00:20.935
-Une preuve gagne en valeur si tu expliques ce qu’elle
-montre
+00:00:28.825 --> 00:00:31.560
+Une preuve gagne en valeur si tu expliques ce
+qu’elle montre
 
-00:00:20.935 --> 00:00:22.427
+00:00:31.560 --> 00:00:33.052
 et ce que tu as testé.
 
-00:00:22.808 --> 00:00:26.762
-Dans un projet collectif, commence par dire ce que
-l’équipe devait
+00:00:33.642 --> 00:00:37.595
+Dans un projet collectif, commence par dire ce
+que l’équipe devait
 
-00:00:26.762 --> 00:00:27.121
+00:00:37.595 --> 00:00:37.954
 livrer.
 
-00:00:27.121 --> 00:00:30.785
-Ensuite isole une action dont tu peux expliquer les
-étapes.
+00:00:37.954 --> 00:00:41.619
+Ensuite isole une action dont tu peux expliquer
+les étapes.
 
-00:00:30.785 --> 00:00:33.886
-Pour une maquette réseau, tu peux montrer les deux
-VLAN que
+00:00:41.619 --> 00:00:44.719
+Pour une maquette réseau, tu peux montrer les
+deux VLAN que
 
-00:00:33.886 --> 00:00:36.423
-tu as configurés et une capture d’un test autorisé.
+00:00:44.719 --> 00:00:47.256
+tu as configurés et une capture d’un test
+autorisé.
 
-00:00:36.423 --> 00:00:39.937
-Un deuxième test bloqué est une preuve utile si le
-besoin
+00:00:47.256 --> 00:00:50.770
+Un deuxième test bloqué est une preuve utile si
+le besoin
 
-00:00:39.937 --> 00:00:40.896
+00:00:50.770 --> 00:00:51.729
 était de cloisonner.
 
-00:00:40.896 --> 00:00:44.468
-Termine en précisant les limites, par exemple le fait
-que la
+00:00:51.729 --> 00:00:55.301
+Termine en précisant les limites, par exemple le
+fait que la
 
-00:00:44.468 --> 00:00:46.741
+00:00:55.301 --> 00:00:57.575
 démonstration a été réalisée sur une maquette.
 
-00:00:47.100 --> 00:00:50.101
+00:00:58.142 --> 00:01:01.143
 Voilà un exemple concret de formulation.
 
-00:00:50.101 --> 00:00:52.810
+00:01:01.143 --> 00:01:03.851
 Deux groupes utilisent le même switch.
 
-00:00:52.810 --> 00:00:56.387
-J’ai configuré un VLAN pour chacun et affecté les
-ports selon
+00:01:03.851 --> 00:01:07.429
+J’ai configuré un VLAN pour chacun et affecté
+les ports selon
 
-00:00:56.387 --> 00:00:57.038
+00:01:07.429 --> 00:01:08.079
 les postes.
 
-00:00:57.038 --> 00:00:59.934
-J’ai ensuite testé un échange entre deux ports du même
-VLAN
+00:01:08.079 --> 00:01:10.975
+J’ai ensuite testé un échange entre deux ports
+du même VLAN
 
-00:00:59.934 --> 00:01:02.829
+00:01:10.975 --> 00:01:13.871
 et vérifié que les postes des deux groupes ne se
 joignaient
 
-00:01:02.829 --> 00:01:04.146
+00:01:13.871 --> 00:01:15.187
 pas directement dans cette maquette.
 
-00:01:04.146 --> 00:01:08.472
-Ce court récit est compréhensible sans connaître le
-matériel exact.
+00:01:15.187 --> 00:01:19.513
+Ce court récit est compréhensible sans connaître
+le matériel exact.
 
-00:01:08.472 --> 00:01:11.893
-La capture accompagnée de l’adresse de test et du
-résultat attendu
+00:01:19.513 --> 00:01:22.935
+La capture accompagnée de l’adresse de test et
+du résultat attendu
 
-00:01:11.893 --> 00:01:15.003
+00:01:22.935 --> 00:01:26.045
 permet de retrouver le lien entre l’action et la
 compétence.
 
-00:01:15.350 --> 00:01:19.295
-À l’oral, prépare des explications assez courtes pour
-laisser le lecteur
+00:01:26.392 --> 00:01:30.336
+À l’oral, prépare des explications assez courtes
+pour laisser le lecteur
 
-00:01:19.295 --> 00:01:20.729
+00:01:30.336 --> 00:01:31.771
 revenir sur une étape.
 
-00:01:20.729 --> 00:01:23.721
-Sur la page, teste les liens dès la version locale,
-puis
+00:01:31.771 --> 00:01:34.762
+Sur la page, teste les liens dès la version
+locale, puis
 
-00:01:23.721 --> 00:01:26.712
+00:01:34.762 --> 00:01:37.754
 sur la version publiée car la casse des noms ou
 l’emplacement
 
-00:01:26.712 --> 00:01:27.800
+00:01:37.754 --> 00:01:38.842
 des dossiers peut changer.
 
-00:01:27.800 --> 00:01:31.869
-Redimensionne la fenêtre et vérifie que les preuves
-restent lisibles.
+00:01:38.842 --> 00:01:42.910
+Redimensionne la fenêtre et vérifie que les
+preuves restent lisibles.
 
-00:01:31.869 --> 00:01:34.356
+00:01:42.910 --> 00:01:45.398
 Teste enfin l’ordre du clavier.
 
-00:01:34.356 --> 00:01:37.765
-Un lien visible à la souris doit rester repérable
-quand tu
+00:01:45.398 --> 00:01:48.807
+Un lien visible à la souris doit rester
+repérable quand tu
 
-00:01:37.765 --> 00:01:38.695
+00:01:48.807 --> 00:01:49.736
 navigues au clavier.
 
-00:01:39.058 --> 00:01:42.121
+00:01:50.350 --> 00:01:53.413
 Choisis un projet effectivement réalisé.
 
-00:01:42.121 --> 00:01:45.703
-Résume le besoin en une phrase, puis explique ton rôle
-avec
+00:01:53.413 --> 00:01:56.995
+Résume le besoin en une phrase, puis explique
+ton rôle avec
 
-00:01:45.703 --> 00:01:46.680
+00:01:56.995 --> 00:01:57.972
 un verbe précis.
 
-00:01:46.680 --> 00:01:50.379
-Si tu as configuré une adresse, précise sur quel type
-d’interface
+00:01:57.972 --> 00:02:01.670
+Si tu as configuré une adresse, précise sur quel
+type d’interface
 
-00:01:50.379 --> 00:01:52.060
+00:02:01.670 --> 00:02:03.351
 et comment tu l’as vérifiée.
 
-00:01:52.060 --> 00:01:55.234
+00:02:03.351 --> 00:02:06.525
 Joins une preuve anonymisée avec une légende.
 
-00:01:55.234 --> 00:01:57.562
+00:02:06.525 --> 00:02:08.854
 Relis la carte à voix haute.
 
-00:01:57.562 --> 00:02:00.897
-Si quelqu’un pouvait te demander ce que toi tu as
-fait,
+00:02:08.854 --> 00:02:12.189
+Si quelqu’un pouvait te demander ce que toi tu
+as fait,
 
-00:02:00.897 --> 00:02:03.322
+00:02:12.189 --> 00:02:14.614
 précise la distinction entre l’équipe et ta
 contribution.
 
-00:02:03.683 --> 00:02:06.970
-Pour passer de la carte au discours, garde une seule
-preuve
+00:02:15.183 --> 00:02:18.470
+Pour passer de la carte au discours, garde une
+seule preuve
 
-00:02:06.970 --> 00:02:07.567
+00:02:18.470 --> 00:02:19.067
 à l’écran.
 
-00:02:07.567 --> 00:02:11.038
-Dis ce que tu essayais d’obtenir, quel réglage tu as
-réalisé
+00:02:19.067 --> 00:02:22.538
+Dis ce que tu essayais d’obtenir, quel réglage
+tu as réalisé
 
-00:02:11.038 --> 00:02:12.616
+00:02:22.538 --> 00:02:24.116
 et comment tu as validé.
 
-00:02:12.616 --> 00:02:15.830
-Si on te demande pourquoi tu as séparé les postes,
-explique
+00:02:24.116 --> 00:02:27.330
+Si on te demande pourquoi tu as séparé les
+postes, explique
 
-00:02:15.830 --> 00:02:18.168
+00:02:27.330 --> 00:02:29.668
 l’usage de chaque groupe et la frontière créée.
 
-00:02:18.168 --> 00:02:21.660
-Si le projet comporte des limites, indique lesquelles.
+00:02:29.668 --> 00:02:33.160
+Si le projet comporte des limites, indique
+lesquelles.
 
-00:02:21.660 --> 00:02:25.536
-Tu peux par exemple avoir testé le cloisonnement sur
-simulateur avant
+00:02:33.160 --> 00:02:37.036
+Tu peux par exemple avoir testé le cloisonnement
+sur simulateur avant
 
-00:02:25.536 --> 00:02:27.298
+00:02:37.036 --> 00:02:38.798
 de disposer des équipements réels.
 
-00:02:27.298 --> 00:02:31.050
-La personne qui écoute sait alors exactement sur quoi
-la preuve
+00:02:38.798 --> 00:02:42.550
+La personne qui écoute sait alors exactement sur
+quoi la preuve
 
-00:02:31.050 --> 00:02:31.391
+00:02:42.550 --> 00:02:42.891
 porte.
 
-00:02:31.767 --> 00:02:35.414
+00:02:43.267 --> 00:02:46.914
 Imagine qu’une personne ouvre ton portfolio sur
 téléphone et veuille trouver
 
-00:02:35.414 --> 00:02:37.403
+00:02:46.914 --> 00:02:48.903
 un projet sans te demander d’aide.
 
-00:02:37.403 --> 00:02:39.646
+00:02:48.903 --> 00:02:51.146
 Donne-lui une tâche simple.
 
-00:02:39.646 --> 00:02:43.195
-En partant de l’accueil, elle doit pouvoir ouvrir un
-projet et
+00:02:51.146 --> 00:02:54.695
+En partant de l’accueil, elle doit pouvoir
+ouvrir un projet et
 
-00:02:43.195 --> 00:02:44.486
+00:02:54.695 --> 00:02:55.986
 retrouver la page précédente.
 
-00:02:44.486 --> 00:02:47.048
+00:02:55.986 --> 00:02:58.548
 Observe si les liens sont clairs.
 
-00:02:47.048 --> 00:02:50.148
+00:02:58.548 --> 00:03:01.648
 Refais ce test avec la touche Tab et Entrée.
 
-00:02:50.148 --> 00:02:53.293
-Sur le site publié, contrôle aussi que le fichier de
-preuve
+00:03:01.648 --> 00:03:04.793
+Sur le site publié, contrôle aussi que le
+fichier de preuve
 
-00:02:53.293 --> 00:02:56.439
-s’ouvre et que ses informations sont bien celles que
-tu souhaites
+00:03:04.793 --> 00:03:07.939
+s’ouvre et que ses informations sont bien celles
+que tu souhaites
 
-00:02:56.439 --> 00:02:57.011
+00:03:07.939 --> 00:03:08.511
 rendre visibles.
 
-00:02:57.350 --> 00:03:00.535
+00:03:09.100 --> 00:03:12.285
 Fais relire l’accueil avec un objectif précis.
 
-00:03:00.535 --> 00:03:04.351
-Demande à quelqu’un de retrouver un projet de réseau
-et un
+00:03:12.285 --> 00:03:16.101
+Demande à quelqu’un de retrouver un projet de
+réseau et un
 
-00:03:04.351 --> 00:03:05.045
+00:03:16.101 --> 00:03:16.795
 résultat vérifiable.
 
-00:03:05.045 --> 00:03:08.640
-Observe où il clique d’abord et s’il arrive à revenir
-à
+00:03:16.795 --> 00:03:20.390
+Observe où il clique d’abord et s’il arrive à
+revenir à
 
-00:03:08.640 --> 00:03:08.967
+00:03:20.390 --> 00:03:20.717
 l’accueil.
 
-00:03:08.967 --> 00:03:12.651
-Sur une petite fenêtre, vérifie aussi qu’une légende
-ne se détache
+00:03:20.717 --> 00:03:24.401
+Sur une petite fenêtre, vérifie aussi qu’une
+légende ne se détache
 
-00:03:12.651 --> 00:03:13.991
+00:03:24.401 --> 00:03:25.741
 pas de sa capture.
 
-00:03:13.991 --> 00:03:17.381
-Après la publication, ouvre la page dans une session
-privée pour
+00:03:25.741 --> 00:03:29.131
+Après la publication, ouvre la page dans une
+session privée pour
 
-00:03:17.381 --> 00:03:20.155
-enlever les effets du cache ou d’une session locale.
+00:03:29.131 --> 00:03:31.905
+enlever les effets du cache ou d’une session
+locale.
 
-00:03:20.155 --> 00:03:23.624
-Si tu modifies le nom d’un fichier, contrôle que les
-liens
+00:03:31.905 --> 00:03:35.374
+Si tu modifies le nom d’un fichier, contrôle que
+les liens
 
-00:03:23.624 --> 00:03:24.886
+00:03:35.374 --> 00:03:36.636
 publics suivent le changement.

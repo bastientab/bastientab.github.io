@@ -1,539 +1,565 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.641
-La S A E commence par une application locale.
+00:00:00.100 --> 00:00:03.281
+Dans la supervision, une valeur n’a de sens que
+si on
 
-00:00:03.641 --> 00:00:07.020
-Cela te laisse vérifier tes classes sans chercher en
-même temps
+00:00:03.281 --> 00:00:06.462
+connaît son unité et le seuil à partir duquel on
+s’en
 
-00:00:07.020 --> 00:00:07.942
+00:00:06.462 --> 00:00:06.751
+inquiète.
+
+00:00:06.751 --> 00:00:10.875
+On va suivre cette valeur jusqu’à l’état affiché
+dans Net Monitor.
+
+00:00:11.475 --> 00:00:15.016
+La SAE commence par une application locale.
+
+00:00:15.016 --> 00:00:18.395
+Cela te laisse vérifier tes classes sans
+chercher en même temps
+
+00:00:18.395 --> 00:00:19.317
 des pannes réseau.
 
-00:00:07.942 --> 00:00:12.501
+00:00:19.317 --> 00:00:23.876
 Ensuite l’interface présente les objets, les
 utilisateurs et les incidents.
 
-00:00:12.501 --> 00:00:16.151
+00:00:23.876 --> 00:00:27.526
 Le cours réseau prépare une architecture où des
 clients parlent à
 
-00:00:16.151 --> 00:00:16.815
+00:00:27.526 --> 00:00:28.190
 un serveur.
 
-00:00:16.815 --> 00:00:20.601
-Le serveur prend les décisions qui affectent l’état
-partagé.
+00:00:28.190 --> 00:00:31.976
+Le serveur prend les décisions qui affectent
+l’état partagé.
 
-00:00:20.601 --> 00:00:25.148
-Dans une démonstration, indique l’étape à laquelle
-appartient chaque composant.
+00:00:31.976 --> 00:00:36.523
+Dans une démonstration, indique l’étape à
+laquelle appartient chaque composant.
 
-00:00:25.517 --> 00:00:28.724
-Dans la version locale, une action part de la vue et
+00:00:37.100 --> 00:00:40.308
+Dans la version locale, une action part de la
+vue et
 
-00:00:28.724 --> 00:00:29.891
+00:00:40.308 --> 00:00:41.474
 passe au service métier.
 
-00:00:29.891 --> 00:00:33.567
+00:00:41.474 --> 00:00:45.150
 Celui-ci travaille avec les objets puis avec la
 sauvegarde.
 
-00:00:33.567 --> 00:00:37.378
-Dans la version cible, l’écran envoie la demande à un
-serveur.
+00:00:45.150 --> 00:00:48.962
+Dans la version cible, l’écran envoie la demande
+à un serveur.
 
-00:00:37.378 --> 00:00:40.099
+00:00:48.962 --> 00:00:51.682
 Celui-ci peut garder les mêmes règles.
 
-00:00:40.099 --> 00:00:43.107
-Pour présenter ton projet, dis ce qui se passe quand
-la
+00:00:51.682 --> 00:00:54.691
+Pour présenter ton projet, dis ce qui se passe
+quand la
 
-00:00:43.107 --> 00:00:45.295
+00:00:54.691 --> 00:00:56.878
 fenêtre se ferme et où retrouver les données.
 
-00:00:45.295 --> 00:00:48.910
+00:00:56.878 --> 00:01:00.493
 Tu montres ainsi le rôle de la persistance et la
 différence
 
-00:00:48.910 --> 00:00:50.552
+00:01:00.493 --> 00:01:02.136
 entre partage réseau et stockage.
 
-00:00:50.933 --> 00:00:53.972
+00:01:02.517 --> 00:01:05.555
 Prends un point d’accès appelé A P zéro un.
 
-00:00:53.972 --> 00:00:56.043
+00:01:05.555 --> 00:01:07.626
 Son nom peut changer.
 
-00:00:56.043 --> 00:01:00.008
-Son identifiant doit rester stable pour retrouver ses
-mesures et ses
+00:01:07.626 --> 00:01:11.591
+Son identifiant doit rester stable pour
+retrouver ses mesures et ses
 
-00:01:00.008 --> 00:01:00.369
+00:01:11.591 --> 00:01:11.952
 incidents.
 
-00:01:00.369 --> 00:01:04.462
-Dessine un équipement relié à plusieurs mesures et
-plusieurs incidents.
+00:01:11.952 --> 00:01:16.045
+Dessine un équipement relié à plusieurs mesures
+et plusieurs incidents.
 
-00:01:04.462 --> 00:01:07.774
+00:01:16.045 --> 00:01:19.357
 Une mesure peut dire à une heure précise que la
 latence
 
-00:01:07.774 --> 00:01:08.677
+00:01:19.357 --> 00:01:20.261
 dépasse une limite.
 
-00:01:08.677 --> 00:01:11.729
+00:01:20.261 --> 00:01:23.312
 L’incident représente le problème à traiter.
 
-00:01:11.729 --> 00:01:14.903
+00:01:23.312 --> 00:01:26.486
 Il peut être ouvert, pris en charge puis clos.
 
-00:01:14.903 --> 00:01:19.290
+00:01:26.486 --> 00:01:30.874
 L’état de l’incident et celui de l’équipement
 décrivent des choses différentes.
 
-00:01:19.642 --> 00:01:22.999
-Un appareil peut produire plusieurs mesures au fil du
-temps.
+00:01:31.475 --> 00:01:34.832
+Un appareil peut produire plusieurs mesures au
+fil du temps.
 
-00:01:22.999 --> 00:01:26.503
+00:01:34.832 --> 00:01:38.337
 Une mesure n’a pas besoin d’ouvrir un incident à
 chaque fois.
 
-00:01:26.503 --> 00:01:29.811
-Tu peux, par exemple, définir une règle qui ouvre un
-incident
+00:01:38.337 --> 00:01:41.645
+Tu peux, par exemple, définir une règle qui
+ouvre un incident
 
-00:01:29.811 --> 00:01:33.119
-lors du passage à un nouvel état, puis rattache les
-mesures
+00:01:41.645 --> 00:01:44.953
+lors du passage à un nouvel état, puis rattache
+les mesures
 
-00:01:33.119 --> 00:01:34.322
+00:01:44.953 --> 00:01:46.155
 suivantes au même problème.
 
-00:01:34.322 --> 00:01:39.113
-Pour l’expliquer, dessine d’abord la mesure, ensuite
-la décision, puis l’objet
+00:01:46.155 --> 00:01:50.946
+Pour l’expliquer, dessine d’abord la mesure,
+ensuite la décision, puis l’objet
 
-00:01:39.113 --> 00:01:39.984
+00:01:50.946 --> 00:01:51.817
 incident distinct.
 
-00:01:39.984 --> 00:01:44.040
-Pense à garder la date du changement et l’identifiant
-de l’appareil.
+00:01:51.817 --> 00:01:55.874
+Pense à garder la date du changement et
+l’identifiant de l’appareil.
 
-00:01:44.392 --> 00:01:47.536
-Pourquoi faire un service au lieu d’écrire toute la
-logique dans
+00:01:56.225 --> 00:01:59.370
+Pourquoi faire un service au lieu d’écrire toute
+la logique dans
 
-00:01:47.536 --> 00:01:48.680
+00:01:59.370 --> 00:02:00.513
 le bouton ajouter ?
 
-00:01:48.680 --> 00:01:52.570
-Imagine deux endroits capables d’ajouter un appareil :
-l’écran et plus
+00:02:00.513 --> 00:02:04.403
+Imagine deux endroits capables d’ajouter un
+appareil : l’écran et plus
 
-00:01:52.570 --> 00:01:53.631
+00:02:04.403 --> 00:02:05.464
 tard le serveur.
 
-00:01:53.631 --> 00:01:57.357
+00:02:05.464 --> 00:02:09.191
 Si les règles restent dans le service, les deux
 chemins vérifient
 
-00:01:57.357 --> 00:01:58.374
+00:02:09.191 --> 00:02:10.207
 les mêmes contraintes.
 
-00:01:58.374 --> 00:02:02.013
-Teste un ajout correct, un doublon et la recherche
-d’un identifiant
+00:02:10.207 --> 00:02:13.847
+Teste un ajout correct, un doublon et la
+recherche d’un identifiant
 
-00:02:02.013 --> 00:02:03.006
+00:02:13.847 --> 00:02:14.839
 qui n’existe pas.
 
-00:02:03.006 --> 00:02:06.854
-Une erreur doit te laisser retrouver les données déjà
-enregistrées.
+00:02:14.839 --> 00:02:18.687
+Une erreur doit te laisser retrouver les données
+déjà enregistrées.
 
-00:02:07.183 --> 00:02:10.883
+00:02:19.267 --> 00:02:22.967
 Une liste Java disparaît lorsque l’application
 s’arrête.
 
-00:02:10.883 --> 00:02:14.737
-Le chapitre persistance propose d’écrire un fichier J
-S O N,
+00:02:22.967 --> 00:02:27.646
+Le chapitre persistance propose d’écrire un
+fichier JSON, puis de le
 
-00:02:14.737 --> 00:02:16.839
-puis de le relire au démarrage.
+00:02:27.646 --> 00:02:28.923
+relire au démarrage.
 
-00:02:16.839 --> 00:02:20.761
-Écris les identifiants pour reconstruire les relations
-entre objets.
+00:02:28.923 --> 00:02:32.844
+Écris les identifiants pour reconstruire les
+relations entre objets.
 
-00:02:20.761 --> 00:02:24.622
-Si le fichier n’existe pas au premier lancement, tu
-peux initialiser
+00:02:32.844 --> 00:02:36.705
+Si le fichier n’existe pas au premier lancement,
+tu peux initialiser
 
-00:02:24.622 --> 00:02:25.675
+00:02:36.705 --> 00:02:37.758
 un état vide.
 
-00:02:25.675 --> 00:02:30.217
-Si un fichier existe mais est illisible, préviens
-l’utilisateur et garde
+00:02:37.758 --> 00:02:42.300
+Si un fichier existe mais est illisible,
+préviens l’utilisateur et garde
 
-00:02:30.217 --> 00:02:31.043
+00:02:42.300 --> 00:02:43.126
 l’ancienne copie.
 
-00:02:31.043 --> 00:02:34.929
-Évite de réenregistrer un fichier vide à la place de
-données
+00:02:43.126 --> 00:02:47.013
+Évite de réenregistrer un fichier vide à la
+place de données
 
-00:02:34.929 --> 00:02:35.283
+00:02:47.013 --> 00:02:47.366
 corrompues.
 
-00:02:35.642 --> 00:02:39.229
+00:02:47.975 --> 00:02:51.562
 Java F X gère les événements et le dessin sur un
 
-00:02:39.229 --> 00:02:39.881
+00:02:51.562 --> 00:02:52.214
 fil dédié.
 
-00:02:39.881 --> 00:02:43.478
-Si le clic exécute une lecture de socket qui attend,
-toute
+00:02:52.214 --> 00:02:55.812
+Si le clic exécute une lecture de socket qui
+attend, toute
 
-00:02:43.478 --> 00:02:45.114
+00:02:55.812 --> 00:02:57.447
 la fenêtre peut rester bloquée.
 
-00:02:45.114 --> 00:02:47.908
+00:02:57.447 --> 00:03:00.241
 Lance cette opération en arrière-plan.
 
-00:02:47.908 --> 00:02:51.428
-Quand tu as le résultat, utilise Platform Run Later
-pour demander
+00:03:00.241 --> 00:03:03.761
+Quand tu as le résultat, utilise Platform Run
+Later pour demander
 
-00:02:51.428 --> 00:02:53.668
+00:03:03.761 --> 00:03:06.001
 au fil graphique de modifier la vue.
 
-00:02:53.668 --> 00:02:55.861
+00:03:06.001 --> 00:03:08.195
 Pense aussi au cas d’erreur.
 
-00:02:55.861 --> 00:02:59.522
-Réactive le bouton et montre un message utile sur le
-même
+00:03:08.195 --> 00:03:11.855
+Réactive le bouton et montre un message utile
+sur le même
 
-00:02:59.522 --> 00:03:00.187
+00:03:11.855 --> 00:03:12.521
 fil graphique.
 
-00:03:00.558 --> 00:03:04.332
-Un serveur ouvre un port et attend une connexion avec
-accept.
+00:03:13.100 --> 00:03:16.874
+Un serveur ouvre un port et attend une connexion
+avec accept.
 
-00:03:04.332 --> 00:03:08.400
-Lorsqu’un client arrive, le serveur obtient une socket
-dédiée.
+00:03:16.874 --> 00:03:20.942
+Lorsqu’un client arrive, le serveur obtient une
+socket dédiée.
 
-00:03:08.400 --> 00:03:11.244
+00:03:20.942 --> 00:03:23.785
 TCP transmet les octets dans l’ordre.
 
-00:03:11.244 --> 00:03:14.565
+00:03:23.785 --> 00:03:27.106
 Il te reste à définir où finit chaque message.
 
-00:03:14.565 --> 00:03:18.400
-Dans l’exemple du cours, chaque requête tient sur une
-ligne.
+00:03:27.106 --> 00:03:30.942
+Dans l’exemple du cours, chaque requête tient
+sur une ligne.
 
-00:03:18.400 --> 00:03:21.354
+00:03:30.942 --> 00:03:33.896
 Le serveur peut utiliser Read Line.
 
-00:03:21.354 --> 00:03:24.803
-Pour qu’il reçoive la ligne, le client doit réellement
-envoyer sa
+00:03:33.896 --> 00:03:37.345
+Pour qu’il reçoive la ligne, le client doit
+réellement envoyer sa
 
-00:03:24.803 --> 00:03:26.685
+00:03:37.345 --> 00:03:39.226
 fin et vider son tampon d’écriture.
 
-00:03:27.058 --> 00:03:30.708
-Pour suivre un échange, écris sur papier ce que chaque
-partie
+00:03:39.808 --> 00:03:43.458
+Pour suivre un échange, écris sur papier ce que
+chaque partie
 
-00:03:30.708 --> 00:03:31.040
+00:03:43.458 --> 00:03:43.790
 attend.
 
-00:03:31.040 --> 00:03:34.385
-Si le serveur attend une ligne et que le client attend
+00:03:43.790 --> 00:03:47.135
+Si le serveur attend une ligne et que le client
+attend
 
-00:03:34.385 --> 00:03:37.425
-la réponse sans avoir envoyé le séparateur, les deux
-attendent.
+00:03:47.135 --> 00:03:50.175
+la réponse sans avoir envoyé le séparateur, les
+deux attendent.
 
-00:03:37.425 --> 00:03:40.847
-Écris la commande complète, ajoute la fin de ligne et
-vide
+00:03:50.175 --> 00:03:53.597
+Écris la commande complète, ajoute la fin de
+ligne et vide
 
-00:03:40.847 --> 00:03:41.469
+00:03:53.597 --> 00:03:54.219
 le tampon.
 
-00:03:41.469 --> 00:03:44.423
+00:03:54.219 --> 00:03:57.173
 Sur un deuxième essai, ferme le client.
 
-00:03:44.423 --> 00:03:47.192
+00:03:57.173 --> 00:03:59.942
 La lecture du serveur signale la fin.
 
-00:03:47.192 --> 00:03:51.825
-Ferme seulement la socket dédiée et laisse la boucle
-principale disponible.
+00:03:59.942 --> 00:04:04.575
+Ferme seulement la socket dédiée et laisse la
+boucle principale disponible.
 
-00:03:52.183 --> 00:03:55.675
-Imagine que le premier client se connecte et ne tape
-rien.
+00:04:04.933 --> 00:04:08.425
+Imagine que le premier client se connecte et ne
+tape rien.
 
-00:03:55.675 --> 00:03:59.528
-Si la boucle accueil traite elle-même la lecture, le
-deuxième client
+00:04:08.425 --> 00:04:12.278
+Si la boucle accueil traite elle-même la
+lecture, le deuxième client
 
-00:03:59.528 --> 00:03:59.878
+00:04:12.278 --> 00:04:12.628
 attend.
 
-00:03:59.878 --> 00:04:03.428
-Délègue chaque socket à une tâche et reviens dans la
-boucle
+00:04:12.628 --> 00:04:16.178
+Délègue chaque socket à une tâche et reviens
+dans la boucle
 
-00:04:03.428 --> 00:04:03.751
+00:04:16.178 --> 00:04:16.501
 accept.
 
-00:04:03.751 --> 00:04:07.648
-Le cours montre Executor Service pour organiser les
-tâches.
+00:04:16.501 --> 00:04:20.398
+Le cours montre Executor Service pour organiser
+les tâches.
 
-00:04:07.648 --> 00:04:11.389
-Mets un point de contrôle autour des opérations qui
-combinent une
+00:04:20.398 --> 00:04:24.139
+Mets un point de contrôle autour des opérations
+qui combinent une
 
-00:04:11.389 --> 00:04:15.130
-vérification et une modification, par exemple vérifier
-qu’un identifiant est libre
+00:04:24.139 --> 00:04:27.880
+vérification et une modification, par exemple
+vérifier qu’un identifiant est libre
 
-00:04:15.130 --> 00:04:15.810
+00:04:27.880 --> 00:04:28.560
 puis l’ajouter.
 
-00:04:15.810 --> 00:04:19.474
-Deux clients peuvent sinon passer la vérification en
-même temps.
+00:04:28.560 --> 00:04:32.224
+Deux clients peuvent sinon passer la
+vérification en même temps.
 
-00:04:19.808 --> 00:04:23.380
-Pour répondre au chapitre cahier des charges, écris
-d’abord qui agit
+00:04:32.808 --> 00:04:36.380
+Pour répondre au chapitre cahier des charges,
+écris d’abord qui agit
 
-00:04:23.380 --> 00:04:24.354
+00:04:36.380 --> 00:04:37.354
 et sur quoi.
 
-00:04:24.354 --> 00:04:27.405
+00:04:37.354 --> 00:04:40.405
 Ensuite donne un exemple que tu peux tester.
 
-00:04:27.405 --> 00:04:31.389
-Un administrateur ajoute un nouvel équipement, un
-technicien peut le consulter,
+00:04:40.405 --> 00:04:44.389
+Un administrateur ajoute un nouvel équipement,
+un technicien peut le consulter,
 
-00:04:31.389 --> 00:04:34.648
+00:04:44.389 --> 00:04:47.648
 et le programme doit signaler un identifiant en
 double.
 
-00:04:34.648 --> 00:04:38.445
+00:04:47.648 --> 00:04:51.445
 Fais le même travail pour les incidents, la
 persistance et les
 
-00:04:38.445 --> 00:04:38.790
+00:04:51.445 --> 00:04:51.790
 erreurs.
 
-00:04:38.790 --> 00:04:42.502
-Une phrase vérifiable te permettra de montrer à l’oral
-que le
+00:04:51.790 --> 00:04:55.502
+Une phrase vérifiable te permettra de montrer à
+l’oral que le
 
-00:04:42.502 --> 00:04:43.851
+00:04:55.502 --> 00:04:56.851
 besoin est réellement couvert.
 
-00:04:44.183 --> 00:04:47.967
-L’exercice demande ce qui se passe si le fichier ou le
+00:04:57.433 --> 00:05:01.217
+L’exercice demande ce qui se passe si le fichier
+ou le
 
-00:04:47.967 --> 00:04:48.999
+00:05:01.217 --> 00:05:02.249
 stockage est inaccessible.
 
-00:04:48.999 --> 00:04:51.707
+00:05:02.249 --> 00:05:04.957
 Prépare une copie de démonstration.
 
-00:04:51.707 --> 00:04:55.494
+00:05:04.957 --> 00:05:08.744
 Vérifie que les relations sont conservées après
 redémarrage.
 
-00:04:55.494 --> 00:04:59.060
-Ensuite prends un fichier J S O N incomplet.
+00:05:08.744 --> 00:05:12.310
+Ensuite prends un fichier JSON incomplet.
 
-00:04:59.060 --> 00:05:03.042
-Observe le message d’erreur et vérifie que la copie
-originale n’est
+00:05:12.310 --> 00:05:16.292
+Observe le message d’erreur et vérifie que la
+copie originale n’est
 
-00:05:03.042 --> 00:05:03.766
+00:05:16.292 --> 00:05:17.016
 pas remplacée.
 
-00:05:03.766 --> 00:05:06.878
-Si tu passes un jour à une base de données, garde
+00:05:17.016 --> 00:05:20.128
+Si tu passes un jour à une base de données,
+garde
 
-00:05:06.878 --> 00:05:09.990
-l’interface du service et adapte seulement la partie
-qui sauvegarde et
+00:05:20.128 --> 00:05:23.240
+l’interface du service et adapte seulement la
+partie qui sauvegarde et
 
-00:05:09.990 --> 00:05:10.273
+00:05:23.240 --> 00:05:23.523
 relit.
 
-00:05:10.600 --> 00:05:14.496
-Pour contrôler la persistance, un compte d’objets ne
-suffit pas.
+00:05:24.100 --> 00:05:27.996
+Pour contrôler la persistance, un compte
+d’objets ne suffit pas.
 
-00:05:14.496 --> 00:05:18.490
-Si deux appareils sont sauvegardés, la lecture peut
-retrouver deux appareils
+00:05:27.996 --> 00:05:31.990
+Si deux appareils sont sauvegardés, la lecture
+peut retrouver deux appareils
 
-00:05:18.490 --> 00:05:20.305
+00:05:31.990 --> 00:05:33.805
 et associer l’incident au mauvais.
 
-00:05:20.305 --> 00:05:23.540
+00:05:33.805 --> 00:05:37.040
 Vérifie l’identifiant stable de la cible.
 
-00:05:23.540 --> 00:05:26.853
-Teste aussi la période entre un changement dans la vue
-et
+00:05:37.040 --> 00:05:40.353
+Teste aussi la période entre un changement dans
+la vue et
 
-00:05:26.853 --> 00:05:27.756
+00:05:40.353 --> 00:05:41.256
 l’écriture du fichier.
 
-00:05:27.756 --> 00:05:31.437
+00:05:41.256 --> 00:05:44.937
 Si l’écriture échoue, indique clairement si les
 données ont été sauvegardées,
 
-00:05:31.437 --> 00:05:35.117
-si elles restent seulement en mémoire, ou si l’action
-a été
+00:05:44.937 --> 00:05:48.617
+si elles restent seulement en mémoire, ou si
+l’action a été
 
-00:05:35.117 --> 00:05:35.452
+00:05:48.617 --> 00:05:48.952
 refusée.
 
-00:05:35.808 --> 00:05:40.231
-Le chapitre d’authentification fournit une matrice de
-droits à compléter.
+00:05:49.308 --> 00:05:53.731
+Le chapitre d’authentification fournit une
+matrice de droits à compléter.
 
-00:05:40.231 --> 00:05:44.882
-Pour tester, connecte-toi avec chaque profil, puis
-répète la même action
+00:05:53.731 --> 00:05:58.382
+Pour tester, connecte-toi avec chaque profil,
+puis répète la même action
 
-00:05:44.882 --> 00:05:45.305
+00:05:58.382 --> 00:05:58.805
 sensible.
 
-00:05:45.305 --> 00:05:49.128
-Vérifie que l’administrateur peut ajouter un appareil.
+00:05:58.805 --> 00:06:02.628
+Vérifie que l’administrateur peut ajouter un
+appareil.
 
-00:05:49.128 --> 00:05:53.153
-Avec le technicien, assure-toi que la règle bloque
-cette action dans
+00:06:02.628 --> 00:06:06.653
+Avec le technicien, assure-toi que la règle
+bloque cette action dans
 
-00:05:53.153 --> 00:05:54.251
+00:06:06.653 --> 00:06:07.751
 la logique applicative.
 
-00:05:54.251 --> 00:05:57.695
+00:06:07.751 --> 00:06:11.195
 Cacher le bouton aide l’utilisateur, mais si tu
 ajoutes une API,
 
-00:05:57.695 --> 00:06:01.138
+00:06:11.195 --> 00:06:14.638
 la demande peut arriver d’un autre écran ou d’un
 client réseau.
 
-00:06:01.138 --> 00:06:04.790
-La vérification doit aussi être faite côté serveur.
+00:06:14.638 --> 00:06:18.290
+La vérification doit aussi être faite côté
+serveur.
 
-00:06:05.142 --> 00:06:08.893
-Pour éviter les confusions, prépare deux colonnes dans
-ton cahier des
+00:06:18.892 --> 00:06:22.643
+Pour éviter les confusions, prépare deux
+colonnes dans ton cahier des
 
-00:06:08.893 --> 00:06:09.234
+00:06:22.643 --> 00:06:22.984
 charges.
 
-00:06:09.234 --> 00:06:13.854
-Dans la première, note l’identité de l’utilisateur
-vérifiée à la connexion.
+00:06:22.984 --> 00:06:27.604
+Dans la première, note l’identité de
+l’utilisateur vérifiée à la connexion.
 
-00:06:13.854 --> 00:06:18.119
+00:06:27.604 --> 00:06:31.869
 Dans la seconde, note l’autorisation associée à
 l’action demandée.
 
-00:06:18.119 --> 00:06:21.687
-Un technicien connu peut accéder au tableau de bord
-mais ne
+00:06:31.869 --> 00:06:35.437
+Un technicien connu peut accéder au tableau de
+bord mais ne
 
-00:06:21.687 --> 00:06:23.633
+00:06:35.437 --> 00:06:37.383
 pas être autorisé à supprimer l’appareil.
 
-00:06:23.633 --> 00:06:27.334
-Applique le même contrôle quand la demande arrive via
-le réseau.
+00:06:37.383 --> 00:06:41.084
+Applique le même contrôle quand la demande
+arrive via le réseau.
 
-00:06:27.334 --> 00:06:31.146
-Sinon, masquer un bouton ne protège que l’écran local.
+00:06:41.084 --> 00:06:44.896
+Sinon, masquer un bouton ne protège que l’écran
+local.
 
-00:06:31.517 --> 00:06:34.741
-Le tableau de bord ne doit pas montrer des valeurs
-écrites
+00:06:45.267 --> 00:06:48.491
+Le tableau de bord ne doit pas montrer des
+valeurs écrites
 
-00:06:34.741 --> 00:06:35.327
+00:06:48.491 --> 00:06:49.077
 à l’avance.
 
-00:06:35.327 --> 00:06:38.905
-Fais une collection de trois appareils, un dans chaque
-état.
+00:06:49.077 --> 00:06:52.655
+Fais une collection de trois appareils, un dans
+chaque état.
 
-00:06:38.905 --> 00:06:42.374
-Compte la taille totale, puis le nombre dans chaque
-filtre.
+00:06:52.655 --> 00:06:56.124
+Compte la taille totale, puis le nombre dans
+chaque filtre.
 
-00:06:42.374 --> 00:06:45.780
-Ajoute ensuite un incident ouvert et un autre clos.
+00:06:56.124 --> 00:06:59.530
+Ajoute ensuite un incident ouvert et un autre
+clos.
 
-00:06:45.780 --> 00:06:48.918
-Le compteur des incidents ouverts doit rester à un.
+00:06:59.530 --> 00:07:02.668
+Le compteur des incidents ouverts doit rester à
+un.
 
-00:06:48.918 --> 00:06:52.226
-Modifie l’état d’un appareil puis recharge la vue.
+00:07:02.668 --> 00:07:05.976
+Modifie l’état d’un appareil puis recharge la
+vue.
 
-00:06:52.226 --> 00:06:55.908
-Vérifie que les chiffres, les lignes et les graphiques
-racontent la
+00:07:05.976 --> 00:07:09.658
+Vérifie que les chiffres, les lignes et les
+graphiques racontent la
 
-00:06:55.908 --> 00:06:56.577
+00:07:09.658 --> 00:07:10.327
 même histoire.
 
-00:06:56.933 --> 00:06:59.972
+00:07:10.933 --> 00:07:13.972
 Lance le serveur et deux clients de test.
 
-00:06:59.972 --> 00:07:03.685
-Laisse le premier client attendre sans envoyer de
-commande.
+00:07:13.972 --> 00:07:17.685
+Laisse le premier client attendre sans envoyer
+de commande.
 
-00:07:03.685 --> 00:07:06.761
+00:07:17.685 --> 00:07:20.761
 Le second envoie une ligne de ton protocole.
 
-00:07:06.761 --> 00:07:10.308
-S’il reçoit une réponse, le serveur sait accueillir un
-second client
+00:07:20.761 --> 00:07:24.308
+S’il reçoit une réponse, le serveur sait
+accueillir un second client
 
-00:07:10.308 --> 00:07:11.920
+00:07:24.308 --> 00:07:25.920
 pendant que le premier attend.
 
-00:07:11.920 --> 00:07:15.878
-Ferme ensuite le premier, et vérifie que le second
-continue.
+00:07:25.920 --> 00:07:29.878
+Ferme ensuite le premier, et vérifie que le
+second continue.
 
-00:07:15.878 --> 00:07:19.146
-Si la lecture bloque, vérifie dans cet ordre le port,
-la
+00:07:29.878 --> 00:07:33.146
+Si la lecture bloque, vérifie dans cet ordre le
+port, la
 
-00:07:19.146 --> 00:07:22.116
-connexion, la fin de ligne et le vidage du tampon.
+00:07:33.146 --> 00:07:36.116
+connexion, la fin de ligne et le vidage du
+tampon.

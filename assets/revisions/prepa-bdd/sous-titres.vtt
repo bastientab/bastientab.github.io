@@ -1,345 +1,375 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:02.599
+00:00:00.100 --> 00:00:02.872
+Deux lignes peuvent avoir des noms proches.
+
+00:00:02.872 --> 00:00:06.851
+Dans la base, on utilise un identifiant stable
+pour rattacher chaque
+
+00:00:06.851 --> 00:00:08.297
+passage à sa ligne.
+
+00:00:08.297 --> 00:00:11.841
+On va voir comment les clés relient ces tables
+et évitent
+
+00:00:11.841 --> 00:00:12.486
+les ambiguïtés.
+
+00:00:13.100 --> 00:00:15.599
 Une base de données a d'abord un plan.
 
-00:00:02.599 --> 00:00:05.913
-Ce plan décrit les colonnes et la manière de relier
-les
+00:00:15.599 --> 00:00:18.913
+Ce plan décrit les colonnes et la manière de
+relier les
 
-00:00:05.913 --> 00:00:06.214
+00:00:18.913 --> 00:00:19.214
 tables.
 
-00:00:06.214 --> 00:00:09.572
+00:00:19.214 --> 00:00:22.572
 Le contenu peut évoluer sans que le plan change.
 
-00:00:09.572 --> 00:00:12.476
+00:00:22.572 --> 00:00:25.476
 La clé primaire identifie une ligne.
 
-00:00:12.476 --> 00:00:16.116
-Une clé étrangère permet de retrouver le lien vers une
-autre
+00:00:25.476 --> 00:00:29.116
+Une clé étrangère permet de retrouver le lien
+vers une autre
 
-00:00:16.116 --> 00:00:16.447
+00:00:29.116 --> 00:00:29.447
 table.
 
-00:00:16.447 --> 00:00:19.846
-Dans le TD des trains, le départ et l'arrêt utilisent
-le
+00:00:29.447 --> 00:00:32.846
+Dans le TD des trains, le départ et l'arrêt
+utilisent le
 
-00:00:19.846 --> 00:00:20.773
+00:00:32.846 --> 00:00:33.773
 numéro de ligne.
 
-00:00:20.773 --> 00:00:24.345
-C'est lui qui permet d'associer un horaire aux arrêts
-du bon
+00:00:33.773 --> 00:00:37.345
+C'est lui qui permet d'associer un horaire aux
+arrêts du bon
 
-00:00:24.345 --> 00:00:24.670
+00:00:37.345 --> 00:00:37.670
 parcours.
 
-00:00:25.017 --> 00:00:27.920
+00:00:38.267 --> 00:00:41.170
 Ne commence pas par le résultat final.
 
-00:00:27.920 --> 00:00:31.131
-Demande-toi quelles colonnes se trouvent dans quelles
-tables.
+00:00:41.170 --> 00:00:44.381
+Demande-toi quelles colonnes se trouvent dans
+quelles tables.
 
-00:00:31.131 --> 00:00:34.063
-Si tu dois calculer une heure de passage, il te faut
+00:00:44.381 --> 00:00:47.313
+Si tu dois calculer une heure de passage, il te
+faut
 
-00:00:34.063 --> 00:00:36.462
-l'horaire de départ et le temps relatif de l'arrêt.
+00:00:47.313 --> 00:00:49.712
+l'horaire de départ et le temps relatif de
+l'arrêt.
 
-00:00:36.462 --> 00:00:39.942
+00:00:49.712 --> 00:00:53.192
 Lis ces deux informations dans leurs tables
 respectives.
 
-00:00:39.942 --> 00:00:43.481
-La condition de jointure doit leur donner un numéro de
-ligne
+00:00:53.192 --> 00:00:56.731
+La condition de jointure doit leur donner un
+numéro de ligne
 
-00:00:43.481 --> 00:00:43.802
+00:00:56.731 --> 00:00:57.052
 commun.
 
-00:00:43.802 --> 00:00:47.540
+00:00:57.052 --> 00:01:00.790
 Alors seulement, choisis la ville et calcule le
 résultat.
 
-00:00:47.892 --> 00:00:51.641
-Une question avec aucune ligne demande de regarder
-tout le groupe.
+00:01:01.392 --> 00:01:05.141
+Une question avec aucune ligne demande de
+regarder tout le groupe.
 
-00:00:51.641 --> 00:00:54.859
-Si un train traverse Clermont et Lyon, tu peux bien
-trouver
+00:01:05.141 --> 00:01:08.359
+Si un train traverse Clermont et Lyon, tu peux
+bien trouver
 
-00:00:54.859 --> 00:00:56.322
+00:01:08.359 --> 00:01:09.822
 un arrêt différent de Lyon.
 
-00:00:56.322 --> 00:00:59.030
+00:01:09.822 --> 00:01:12.530
 Pourtant, la ligne traverse Lyon.
 
-00:00:59.030 --> 00:01:02.504
-Pour répondre à l'absence, construis une condition qui
-cherche l'arrêt à
+00:01:12.530 --> 00:01:16.004
+Pour répondre à l'absence, construis une
+condition qui cherche l'arrêt à
 
-00:01:02.504 --> 00:01:04.398
+00:01:16.004 --> 00:01:17.898
 Lyon pour la ligne de départ.
 
-00:01:04.398 --> 00:01:08.356
-Garde cette ligne seulement si la recherche intérieure
-ne trouve rien.
+00:01:17.898 --> 00:01:21.856
+Garde cette ligne seulement si la recherche
+intérieure ne trouve rien.
 
-00:01:08.356 --> 00:01:11.330
-Pour la question « toutes les pièces », on cherche de
+00:01:21.856 --> 00:01:24.830
+Pour la question « toutes les pièces », on
+cherche de
 
-00:01:11.330 --> 00:01:12.682
+00:01:24.830 --> 00:01:26.182
 même si une pièce manque.
 
-00:01:13.017 --> 00:01:16.124
-Pour compter les entreprises par ville, mets dans le
-même groupe
+00:01:26.767 --> 00:01:29.874
+Pour compter les entreprises par ville, mets
+dans le même groupe
 
-00:01:16.124 --> 00:01:18.101
+00:01:29.874 --> 00:01:31.851
 toutes les entreprises de la même ville.
 
-00:01:18.101 --> 00:01:21.128
+00:01:31.851 --> 00:01:34.878
 L'agrégat donne ensuite la taille de ce groupe.
 
-00:01:21.128 --> 00:01:23.974
+00:01:34.878 --> 00:01:37.724
 Si tu veux garder les villes qui en ont plus de
 
-00:01:23.974 --> 00:01:26.043
+00:01:37.724 --> 00:01:39.793
 deux, c'est un critère sur le résultat agrégé.
 
-00:01:26.043 --> 00:01:30.320
-Avec une jointure gauche, prévois aussi la ligne sans
-correspondance.
+00:01:39.793 --> 00:01:44.070
+Avec une jointure gauche, prévois aussi la ligne
+sans correspondance.
 
-00:01:30.320 --> 00:01:32.611
+00:01:44.070 --> 00:01:46.361
 Son côté droit est nul.
 
-00:01:32.611 --> 00:01:35.969
-Compter une colonne de droite permet de trouver zéro.
-
-00:01:36.350 --> 00:01:40.284
-Dans l'algèbre relationnelle, la sélection réduit le
-nombre de lignes et
-
-00:01:40.284 --> 00:01:42.072
-la projection réduit les colonnes.
-
-00:01:42.072 --> 00:01:45.454
-Le résultat ensembliste ne garde pas les doublons.
-
-00:01:45.454 --> 00:01:49.807
-En SQL, distinct permet d'obtenir ce comportement
-quand plusieurs lignes produisent
-
-00:01:49.807 --> 00:01:50.994
-la même valeur.
-
-00:01:50.994 --> 00:01:54.286
-Pour commencer le TP dans SQLite, ouvre le bon fichier
-de
-
-00:01:54.286 --> 00:01:57.578
-base, puis lis le script fourni et contrôle les tables
-créées
-
-00:01:57.578 --> 00:01:58.775
-avant d'écrire tes requêtes.
-
-00:01:59.142 --> 00:02:02.893
-Le vrai TD demande l'heure de passage, pas seulement
-l'heure de
-
-00:02:02.893 --> 00:02:03.234
-départ.
-
-00:02:03.234 --> 00:02:06.530
-Pour chaque départ, joins les arrêts du même trajet.
-
-00:02:06.530 --> 00:02:08.700
-Filtre Clermont-Ferrand.
-
-00:02:08.700 --> 00:02:11.739
-Puis ajoute le temps écoulé à l'heure initiale.
-
-00:02:11.739 --> 00:02:15.266
-Pour une ligne qui part de Clermont, le temps écoulé
-vaut
-
-00:02:15.266 --> 00:02:15.587
+00:01:46.361 --> 00:01:49.719
+Compter une colonne de droite permet de trouver
 zéro.
 
-00:02:15.587 --> 00:02:18.578
-Pour une autre qui arrive à Clermont plus tard, il
-faut
+00:01:50.308 --> 00:01:54.242
+Dans l'algèbre relationnelle, la sélection
+réduit le nombre de lignes et
 
-00:02:18.578 --> 00:02:19.937
-tenir compte de la durée.
+00:01:54.242 --> 00:01:56.030
+la projection réduit les colonnes.
 
-00:02:19.937 --> 00:02:22.719
-Nous pouvons le vérifier sur la ligne trois.
+00:01:56.030 --> 00:01:59.413
+Le résultat ensembliste ne garde pas les
+doublons.
 
-00:02:23.100 --> 00:02:26.129
-Lis la première case : le train neuf mille six cent
+00:01:59.413 --> 00:02:03.765
+En SQL, distinct permet d'obtenir ce
+comportement quand plusieurs lignes produisent
 
-00:02:26.129 --> 00:02:28.332
-trente-quatre quitte la ligne trois à quinze heures.
+00:02:03.765 --> 00:02:04.952
+la même valeur.
 
-00:02:28.332 --> 00:02:32.039
-Sur la fiche d'arrêt, Clermont se trouve quatre heures
-après ce
+00:02:04.952 --> 00:02:08.244
+Pour commencer le TP dans SQLite, ouvre le bon
+fichier de
 
-00:02:32.039 --> 00:02:32.376
+00:02:08.244 --> 00:02:11.537
+base, puis lis le script fourni et contrôle les
+tables créées
+
+00:02:11.537 --> 00:02:12.734
+avant d'écrire tes requêtes.
+
+00:02:13.350 --> 00:02:17.101
+Le vrai TD demande l'heure de passage, pas
+seulement l'heure de
+
+00:02:17.101 --> 00:02:17.442
 départ.
 
-00:02:32.376 --> 00:02:34.668
+00:02:17.442 --> 00:02:20.739
+Pour chaque départ, joins les arrêts du même
+trajet.
+
+00:02:20.739 --> 00:02:22.908
+Filtre Clermont-Ferrand.
+
+00:02:22.908 --> 00:02:25.947
+Puis ajoute le temps écoulé à l'heure initiale.
+
+00:02:25.947 --> 00:02:29.474
+Pour une ligne qui part de Clermont, le temps
+écoulé vaut
+
+00:02:29.474 --> 00:02:29.795
+zéro.
+
+00:02:29.795 --> 00:02:32.786
+Pour une autre qui arrive à Clermont plus tard,
+il faut
+
+00:02:32.786 --> 00:02:34.146
+tenir compte de la durée.
+
+00:02:34.146 --> 00:02:36.927
+Nous pouvons le vérifier sur la ligne trois.
+
+00:02:37.517 --> 00:02:40.546
+Lis la première case : le train neuf mille six
+cent
+
+00:02:40.546 --> 00:02:42.749
+trente-quatre quitte la ligne trois à quinze
+heures.
+
+00:02:42.749 --> 00:02:46.456
+Sur la fiche d'arrêt, Clermont se trouve quatre
+heures après ce
+
+00:02:46.456 --> 00:02:46.793
+départ.
+
+00:02:46.793 --> 00:02:49.084
 Additionne quinze et quatre.
 
-00:02:34.668 --> 00:02:36.825
+00:02:49.084 --> 00:02:51.241
 On obtient dix-neuf heures.
 
-00:02:36.825 --> 00:02:39.989
-Dans le résultat entier, le même train apparaît aussi
-à neuf
+00:02:51.241 --> 00:02:54.406
+Dans le résultat entier, le même train apparaît
+aussi à neuf
 
-00:02:39.989 --> 00:02:42.866
-heures, puisqu'il suit une autre ligne à cet autre
-horaire.
+00:02:54.406 --> 00:02:57.283
+heures, puisqu'il suit une autre ligne à cet
+autre horaire.
 
-00:02:42.866 --> 00:02:46.130
-Ne traite pas deux passages comme un doublon d'après
-le numéro
+00:02:57.283 --> 00:03:00.547
+Ne traite pas deux passages comme un doublon
+d'après le numéro
 
-00:02:46.130 --> 00:02:47.021
+00:03:00.547 --> 00:03:01.437
 de train seul.
 
-00:02:47.392 --> 00:02:50.136
+00:03:01.808 --> 00:03:04.552
 Testons le filtre différent de Lyon.
 
-00:02:50.136 --> 00:02:53.261
-Pour la ligne un, il examine l'arrêt de Clermont.
+00:03:04.552 --> 00:03:07.677
+Pour la ligne un, il examine l'arrêt de
+Clermont.
 
-00:02:53.261 --> 00:02:57.193
-Clermont est bien différent de Lyon, donc la requête
-incorrecte renvoie
+00:03:07.677 --> 00:03:11.609
+Clermont est bien différent de Lyon, donc la
+requête incorrecte renvoie
 
-00:02:57.193 --> 00:02:57.550
+00:03:11.609 --> 00:03:11.967
 un.
 
-00:02:57.550 --> 00:03:00.440
-Le vrai critère doit éliminer toutes les lignes qui
-ont au
+00:03:11.967 --> 00:03:14.857
+Le vrai critère doit éliminer toutes les lignes
+qui ont au
 
-00:03:00.440 --> 00:03:01.753
+00:03:14.857 --> 00:03:16.170
 moins un arrêt à Lyon.
 
-00:03:01.753 --> 00:03:04.927
+00:03:16.170 --> 00:03:19.344
 Corrèle la sous-requête sur le numéro de ligne.
 
-00:03:04.927 --> 00:03:08.244
+00:03:19.344 --> 00:03:22.660
 Sur le jeu du TD, tu dois obtenir zéro et trois
 
-00:03:08.244 --> 00:03:09.450
+00:03:22.660 --> 00:03:23.866
 comme numéros de ligne.
 
-00:03:09.808 --> 00:03:13.361
-Dans cet exercice, commence par tous les employés.
+00:03:24.433 --> 00:03:27.986
+Dans cet exercice, commence par tous les
+employés.
 
-00:03:13.361 --> 00:03:16.927
+00:03:27.986 --> 00:03:31.552
 Rattache les lignes de management sur le nom du
 manager.
 
-00:03:16.927 --> 00:03:20.082
-Si une personne ne dirige personne, la jointure laisse
-tout de
+00:03:31.552 --> 00:03:34.707
+Si une personne ne dirige personne, la jointure
+laisse tout de
 
-00:03:20.082 --> 00:03:22.663
+00:03:34.707 --> 00:03:37.288
 même une ligne, avec des champs nuls à droite.
 
-00:03:22.663 --> 00:03:25.396
+00:03:37.288 --> 00:03:40.021
 Compter les lignes donnerait un dans ce cas.
 
-00:03:25.396 --> 00:03:27.969
+00:03:40.021 --> 00:03:42.594
 Compte le nom du collaborateur.
 
-00:03:27.969 --> 00:03:31.878
+00:03:42.594 --> 00:03:46.503
 Puis contrôle une personne avec plusieurs
 collaborateurs et une autre avec
 
-00:03:31.878 --> 00:03:32.234
+00:03:46.503 --> 00:03:46.859
 aucun.
 
-00:03:32.234 --> 00:03:35.383
-Tu dois obtenir des totaux cohérents pour les deux.
+00:03:46.859 --> 00:03:50.008
+Tu dois obtenir des totaux cohérents pour les
+deux.
 
-00:03:35.725 --> 00:03:39.354
-Imagine une grille avec un fournisseur par ligne et
-une pièce
+00:03:50.600 --> 00:03:54.229
+Imagine une grille avec un fournisseur par ligne
+et une pièce
 
-00:03:39.354 --> 00:03:40.013
+00:03:54.229 --> 00:03:54.888
 par colonne.
 
-00:03:40.013 --> 00:03:43.040
+00:03:54.888 --> 00:03:57.915
 Au départ, toutes les cases sont attendues.
 
-00:03:43.040 --> 00:03:46.594
+00:03:57.915 --> 00:04:01.469
 Les lignes du catalogue barrent les cases
 effectivement vendues.
 
-00:03:46.594 --> 00:03:49.682
-Celles qui restent montrent des pièces manquantes.
+00:04:01.469 --> 00:04:04.557
+Celles qui restent montrent des pièces
+manquantes.
 
-00:03:49.682 --> 00:03:52.908
-Si un fournisseur apparaît dans ces cases, il ne vend
-pas
+00:04:04.557 --> 00:04:07.783
+Si un fournisseur apparaît dans ces cases, il ne
+vend pas
 
-00:03:52.908 --> 00:03:53.788
+00:04:07.783 --> 00:04:08.663
 toutes les pièces.
 
-00:03:53.788 --> 00:03:57.133
-Retire donc ces fournisseurs de la liste de départ.
+00:04:08.663 --> 00:04:12.008
+Retire donc ces fournisseurs de la liste de
+départ.
 
-00:03:57.133 --> 00:04:01.704
+00:04:12.008 --> 00:04:16.579
 Le raisonnement s'écrit aussi en SQL par deux
 recherches d'absence imbriquées.
 
-00:04:02.058 --> 00:04:05.525
+00:04:17.183 --> 00:04:20.650
 Le TP commence avec un fichier de base local.
 
-00:04:05.525 --> 00:04:07.903
+00:04:20.650 --> 00:04:23.028
 Ouvre celui du bon dossier.
 
-00:04:07.903 --> 00:04:11.553
-La commande point read charge les instructions du
-script fourni par
+00:04:23.028 --> 00:04:26.678
+La commande point read charge les instructions
+du script fourni par
 
-00:04:11.553 --> 00:04:12.217
+00:04:26.678 --> 00:04:27.342
 le cours.
 
-00:04:12.217 --> 00:04:16.137
-Regarde ensuite la liste des tables pour vérifier que
-l'import a
+00:04:27.342 --> 00:04:31.262
+Regarde ensuite la liste des tables pour
+vérifier que l'import a
 
-00:04:16.137 --> 00:04:16.494
+00:04:31.262 --> 00:04:31.619
 réussi.
 
-00:04:16.494 --> 00:04:20.074
+00:04:31.619 --> 00:04:35.199
 Avant de filtrer sur le genre drame, regarde les
 libellés qui
 
-00:04:20.074 --> 00:04:21.702
+00:04:35.199 --> 00:04:36.827
 existent vraiment dans la colonne.
 
-00:04:21.702 --> 00:04:24.847
-Si tu rouvres la base depuis un autre répertoire, tu
-peux
+00:04:36.827 --> 00:04:39.972
+Si tu rouvres la base depuis un autre
+répertoire, tu peux
 
-00:04:24.847 --> 00:04:26.849
+00:04:39.972 --> 00:04:41.974
 ouvrir un fichier vide du même nom.
 
-00:04:26.849 --> 00:04:29.594
+00:04:41.974 --> 00:04:44.719
 Vérifie le chemin si ça arrive.

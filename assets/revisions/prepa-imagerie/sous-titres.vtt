@@ -1,366 +1,397 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:02.182
+00:00:00.100 --> 00:00:04.081
+Dans une image de vingt-cinq pixels, compte
+combien ont chaque niveau
+
+00:00:04.081 --> 00:00:04.805
+de gris.
+
+00:00:04.805 --> 00:00:07.885
+La hauteur d’une barre donne cet effectif.
+
+00:00:07.885 --> 00:00:11.004
+La somme des effectifs vaut vingt-cinq.
+
+00:00:11.004 --> 00:00:15.016
+Tu peux connaître la répartition des gris même
+sans leur position
+
+00:00:15.016 --> 00:00:15.746
+dans l’image.
+
+00:00:16.350 --> 00:00:18.432
 Pense à une mosaïque.
 
-00:00:02.182 --> 00:00:05.822
-L'échantillonnage décide la taille et le nombre des
-carreaux.
+00:00:18.432 --> 00:00:22.072
+L'échantillonnage décide la taille et le nombre
+des carreaux.
 
-00:00:05.822 --> 00:00:10.258
+00:00:22.072 --> 00:00:26.508
 La quantification décide combien de teintes
 différentes tu peux utiliser.
 
-00:00:10.258 --> 00:00:13.849
-Si tu manques de carreaux, des détails deviennent trop
-petits.
+00:00:26.508 --> 00:00:30.099
+Si tu manques de carreaux, des détails
+deviennent trop petits.
 
-00:00:13.849 --> 00:00:17.074
-Si tu manques de teintes, le ciel se met à former
+00:00:30.099 --> 00:00:33.324
+Si tu manques de teintes, le ciel se met à
+former
 
-00:00:17.074 --> 00:00:17.660
+00:00:33.324 --> 00:00:33.910
 des bandes.
 
-00:00:17.660 --> 00:00:21.041
-Une image en gris sur huit bits te donne deux cent
+00:00:33.910 --> 00:00:37.291
+Une image en gris sur huit bits te donne deux
+cent
 
-00:00:21.041 --> 00:00:21.655
+00:00:37.291 --> 00:00:37.905
 cinquante-six niveaux.
 
-00:00:21.655 --> 00:00:24.846
-Dans un tableau, repère d'abord la ligne et la colonne
-avant
+00:00:37.905 --> 00:00:41.096
+Dans un tableau, repère d'abord la ligne et la
+colonne avant
 
-00:00:24.846 --> 00:00:26.006
+00:00:41.096 --> 00:00:42.256
 de lire une valeur.
 
-00:00:26.350 --> 00:00:30.341
-Pour obtenir un histogramme, distribue les pixels dans
-des bacs selon
+00:00:42.850 --> 00:00:46.841
+Pour obtenir un histogramme, distribue les
+pixels dans des bacs selon
 
-00:00:30.341 --> 00:00:31.067
+00:00:46.841 --> 00:00:47.567
 leur valeur.
 
-00:00:31.067 --> 00:00:34.741
-Mélanger les pixels dans l'image ne change pas le
-contenu des
+00:00:47.567 --> 00:00:51.241
+Mélanger les pixels dans l'image ne change pas
+le contenu des
 
-00:00:34.741 --> 00:00:35.075
+00:00:51.241 --> 00:00:51.575
 bacs.
 
-00:00:35.075 --> 00:00:38.690
-Tu sais quels niveaux existent, sans connaître leur
-position.
+00:00:51.575 --> 00:00:55.190
+Tu sais quels niveaux existent, sans connaître
+leur position.
 
-00:00:38.690 --> 00:00:42.611
-L'histogramme cumulé additionne les bacs en partant du
-plus sombre.
+00:00:55.190 --> 00:00:59.111
+L'histogramme cumulé additionne les bacs en
+partant du plus sombre.
 
-00:00:42.611 --> 00:00:45.877
-Si le cumul vaut dix au niveau six, dix pixels ont
+00:00:59.111 --> 00:01:02.377
+Si le cumul vaut dix au niveau six, dix pixels
+ont
 
-00:00:45.877 --> 00:00:47.954
+00:01:02.377 --> 00:01:04.454
 une valeur égale ou inférieure à six.
 
-00:00:48.308 --> 00:00:52.361
-Suppose que l'image utilise seulement les intensités
-quatre à dix, alors
+00:01:05.017 --> 00:01:09.069
+Suppose que l'image utilise seulement les
+intensités quatre à dix, alors
 
-00:00:52.361 --> 00:00:53.834
+00:01:09.069 --> 00:01:10.543
 que quinze est possible.
 
-00:00:53.834 --> 00:00:57.364
-L'étirement bouge quatre vers zéro et dix vers quinze.
+00:01:10.543 --> 00:01:14.072
+L'étirement bouge quatre vers zéro et dix vers
+quinze.
 
-00:00:57.364 --> 00:01:01.138
-Entre les deux, l'écart est multiplié par le même
-facteur.
+00:01:14.072 --> 00:01:17.847
+Entre les deux, l'écart est multiplié par le
+même facteur.
 
-00:01:01.138 --> 00:01:05.794
-L'égalisation utilise une logique différente : elle
-suit la proportion cumulée
+00:01:17.847 --> 00:01:22.502
+L'égalisation utilise une logique différente :
+elle suit la proportion cumulée
 
-00:01:05.794 --> 00:01:06.641
+00:01:22.502 --> 00:01:23.349
 des pixels.
 
-00:01:06.641 --> 00:01:10.467
-Une intensité fréquente peut provoquer un grand saut
-entre deux niveaux
+00:01:23.349 --> 00:01:27.175
+Une intensité fréquente peut provoquer un grand
+saut entre deux niveaux
 
-00:01:10.467 --> 00:01:11.163
+00:01:27.175 --> 00:01:27.871
 de sortie.
 
-00:01:11.163 --> 00:01:15.084
-Vérifie ta règle d'arrondi avant de comparer deux
-résultats.
+00:01:27.871 --> 00:01:31.793
+Vérifie ta règle d'arrondi avant de comparer
+deux résultats.
 
-00:01:15.433 --> 00:01:19.757
-Pour filtrer une image, concentre-toi sur une petite
-fenêtre autour du
+00:01:32.142 --> 00:01:36.466
+Pour filtrer une image, concentre-toi sur une
+petite fenêtre autour du
 
-00:01:19.757 --> 00:01:20.150
+00:01:36.466 --> 00:01:36.859
 pixel.
 
-00:01:20.150 --> 00:01:24.031
-Avec la distance de Manhattan, un pas horizontal plus
-un pas
+00:01:36.859 --> 00:01:40.739
+Avec la distance de Manhattan, un pas horizontal
+plus un pas
 
-00:01:24.031 --> 00:01:25.089
+00:01:40.739 --> 00:01:41.798
 vertical font deux.
 
-00:01:25.089 --> 00:01:28.815
-Avec la distance euclidienne, la diagonale est plus
-longue qu'un.
+00:01:41.798 --> 00:01:45.523
+Avec la distance euclidienne, la diagonale est
+plus longue qu'un.
 
-00:01:28.815 --> 00:01:32.136
+00:01:45.523 --> 00:01:48.844
 Au rayon un, les deux distances donnent donc une
 croix.
 
-00:01:32.136 --> 00:01:35.429
-Dans la distance de l'échiquier, on peut aller en
-diagonale en
+00:01:48.844 --> 00:01:52.137
+Dans la distance de l'échiquier, on peut aller
+en diagonale en
 
-00:01:35.429 --> 00:01:36.327
+00:01:52.137 --> 00:01:53.035
 un seul coup.
 
-00:01:36.327 --> 00:01:39.697
-Aux bords, annonce la règle que tu utilises pour les
-cases
+00:01:53.035 --> 00:01:56.405
+Aux bords, annonce la règle que tu utilises pour
+les cases
 
-00:01:39.697 --> 00:01:40.310
+00:01:56.405 --> 00:01:57.018
 qui manquent.
 
-00:01:40.683 --> 00:01:44.515
-Un moyenneur utilise toutes les valeurs de la fenêtre
-pour fabriquer
+00:01:57.600 --> 00:02:01.432
+Un moyenneur utilise toutes les valeurs de la
+fenêtre pour fabriquer
 
-00:01:44.515 --> 00:01:45.560
+00:02:01.432 --> 00:02:02.476
 le nouveau pixel.
 
-00:01:45.560 --> 00:01:49.322
-Un filtre médian trie les valeurs et garde celle du
-milieu.
+00:02:02.476 --> 00:02:06.239
+Un filtre médian trie les valeurs et garde celle
+du milieu.
 
-00:01:49.322 --> 00:01:52.312
+00:02:06.239 --> 00:02:09.229
 Essaie d'imaginer huit cinq et un zéro.
 
-00:01:52.312 --> 00:01:55.974
-La moyenne va baisser, tandis que le rang du milieu
-reste
+00:02:09.229 --> 00:02:12.891
+La moyenne va baisser, tandis que le rang du
+milieu reste
 
-00:01:55.974 --> 00:01:56.307
+00:02:12.891 --> 00:02:13.224
 cinq.
 
-00:01:56.307 --> 00:02:00.196
-Pour détecter un contour, on s'intéresse plutôt à la
-variation dans
+00:02:13.224 --> 00:02:17.113
+Pour détecter un contour, on s'intéresse plutôt
+à la variation dans
 
-00:02:00.196 --> 00:02:00.903
+00:02:17.113 --> 00:02:17.820
 deux directions.
 
-00:02:00.903 --> 00:02:04.462
+00:02:17.820 --> 00:02:21.378
 Un gradient fort indique une transition et sa
 direction pointe vers
 
-00:02:04.462 --> 00:02:05.756
+00:02:21.378 --> 00:02:22.673
 le plus grand changement.
 
-00:02:06.100 --> 00:02:08.207
+00:02:23.017 --> 00:02:25.124
 Pense à un petit tampon.
 
-00:02:08.207 --> 00:02:11.741
-Pour éroder, tu essaies de poser le tampon sur le
-premier
+00:02:25.124 --> 00:02:28.657
+Pour éroder, tu essaies de poser le tampon sur
+le premier
 
-00:02:11.741 --> 00:02:12.704
+00:02:28.657 --> 00:02:29.621
 plan sans dépasser.
 
-00:02:12.704 --> 00:02:16.344
+00:02:29.621 --> 00:02:33.261
 C'est une condition stricte, donc les bords se
 rétractent.
 
-00:02:16.344 --> 00:02:20.915
-La dilatation accepte une seule intersection avec le
-motif réfléchi.
+00:02:33.261 --> 00:02:37.832
+La dilatation accepte une seule intersection
+avec le motif réfléchi.
 
-00:02:20.915 --> 00:02:22.704
+00:02:37.832 --> 00:02:39.621
 L'objet s'étend.
 
-00:02:22.704 --> 00:02:27.108
+00:02:39.621 --> 00:02:44.025
 Dans l'ouverture, on commence par supprimer les
 petites parties que l'érosion
 
-00:02:27.108 --> 00:02:27.508
+00:02:44.025 --> 00:02:44.425
 efface.
 
-00:02:27.508 --> 00:02:31.629
+00:02:44.425 --> 00:02:48.546
 Dans la fermeture, on commence par agrandir les
 parties pour remplir
 
-00:02:31.629 --> 00:02:32.753
+00:02:48.546 --> 00:02:49.670
 certains espaces étroits.
 
-00:02:32.753 --> 00:02:35.903
+00:02:49.670 --> 00:02:52.820
 L'ordre change donc complètement le résultat.
 
-00:02:36.267 --> 00:02:39.403
+00:02:53.392 --> 00:02:56.528
 Voici le calcul qui part du tableau du cours.
 
-00:02:39.403 --> 00:02:42.672
-Parcours chaque ligne et ajoute un au compteur de la
-case
+00:02:56.528 --> 00:02:59.797
+Parcours chaque ligne et ajoute un au compteur
+de la case
 
-00:02:42.672 --> 00:02:42.969
+00:02:59.797 --> 00:03:00.094
 lue.
 
-00:02:42.969 --> 00:02:46.318
-À la fin, le niveau sept est le plus fréquent avec
+00:03:00.094 --> 00:03:03.443
+À la fin, le niveau sept est le plus fréquent
+avec
 
-00:02:46.318 --> 00:02:46.927
+00:03:03.443 --> 00:03:04.052
 six pixels.
 
-00:02:46.927 --> 00:02:49.918
+00:03:04.052 --> 00:03:07.043
 La somme des compteurs doit donner vingt-cinq.
 
-00:02:49.918 --> 00:02:52.969
+00:03:07.043 --> 00:03:10.094
 Le minimum est quatre et le maximum dix.
 
-00:02:52.969 --> 00:02:56.401
-Comme on travaille sur quatre bits, la cible va de
-zéro
+00:03:10.094 --> 00:03:13.526
+Comme on travaille sur quatre bits, la cible va
+de zéro
 
-00:02:56.401 --> 00:02:57.025
+00:03:13.526 --> 00:03:14.150
 à quinze.
 
-00:02:57.025 --> 00:03:00.688
+00:03:14.150 --> 00:03:17.813
 Il faut donc transformer l'étendue de six en une
 étendue de
 
-00:03:00.688 --> 00:03:01.021
+00:03:17.813 --> 00:03:18.146
 quinze.
 
-00:03:01.392 --> 00:03:04.736
+00:03:18.767 --> 00:03:22.111
 Le niveau sept est à trois unités du minimum.
 
-00:03:04.736 --> 00:03:08.106
+00:03:22.111 --> 00:03:25.481
 Multiplie trois par quinze puis divise par six.
 
-00:03:08.106 --> 00:03:10.325
+00:03:25.481 --> 00:03:27.700
 Tu obtiens sept et demi.
 
-00:03:10.325 --> 00:03:13.793
-Avec les demis arrondis vers le haut, ça donne huit.
+00:03:27.700 --> 00:03:31.168
+Avec les demis arrondis vers le haut, ça donne
+huit.
 
-00:03:13.793 --> 00:03:17.273
+00:03:31.168 --> 00:03:34.648
 Il y a donc six pixels au niveau huit après
 l'opération.
 
-00:03:17.273 --> 00:03:20.643
-Pour le niveau dix, tu obtiens quinze, qui est bien le
+00:03:34.648 --> 00:03:38.018
+Pour le niveau dix, tu obtiens quinze, qui est
+bien le
 
-00:03:20.643 --> 00:03:21.869
+00:03:38.018 --> 00:03:39.244
 plus grand niveau autorisé.
 
-00:03:21.869 --> 00:03:26.193
-Écris les nouveaux niveaux puis les mêmes effectifs
-dessous pour présenter
+00:03:39.244 --> 00:03:43.568
+Écris les nouveaux niveaux puis les mêmes
+effectifs dessous pour présenter
 
-00:03:26.193 --> 00:03:26.979
+00:03:43.568 --> 00:03:44.354
 l'histogramme transformé.
 
-00:03:27.308 --> 00:03:31.511
-Dans l'exercice du support, commence par la fenêtre
-autour du zéro.
+00:03:44.683 --> 00:03:48.886
+Dans l'exercice du support, commence par la
+fenêtre autour du zéro.
 
-00:03:31.511 --> 00:03:34.268
+00:03:48.886 --> 00:03:51.643
 Lis les valeurs dans la grille initiale.
 
-00:03:34.268 --> 00:03:36.805
+00:03:51.643 --> 00:03:54.180
 On trouve huit cinq et un zéro.
 
-00:03:36.805 --> 00:03:40.193
-Si on fait la moyenne, on garde l'effet du zéro en
+00:03:54.180 --> 00:03:57.568
+Si on fait la moyenne, on garde l'effet du zéro
+en
 
-00:03:40.193 --> 00:03:41.425
+00:03:57.568 --> 00:03:58.800
 additionnant les neuf valeurs.
 
-00:03:41.425 --> 00:03:44.590
-Si on prend la médiane, on inverse notre façon de
-raisonner
+00:03:58.800 --> 00:04:01.965
+Si on prend la médiane, on inverse notre façon
+de raisonner
 
-00:03:44.590 --> 00:03:47.755
-: on trie d'abord les résultats puis on cherche la
-cinquième
+00:04:01.965 --> 00:04:05.130
+: on trie d'abord les résultats puis on cherche
+la cinquième
 
-00:03:47.755 --> 00:03:48.043
+00:04:05.130 --> 00:04:05.418
 position.
 
-00:03:48.392 --> 00:03:51.638
+00:04:06.017 --> 00:04:09.263
 Sur l'image, regarde les huit cases vertes.
 
-00:03:51.638 --> 00:03:55.033
-Bascule le regard vers le calcul en haut à droite.
+00:04:09.263 --> 00:04:12.658
+Bascule le regard vers le calcul en haut à
+droite.
 
-00:03:55.033 --> 00:03:58.048
+00:04:12.658 --> 00:04:15.673
 Additionner ces huit cinq donne quarante.
 
-00:03:58.048 --> 00:04:01.810
+00:04:15.673 --> 00:04:19.435
 Diviser par neuf donne environ quatre virgule
 quarante-quatre.
 
-00:04:01.810 --> 00:04:05.517
-Plus bas, le zéro passe en première position dans la
-liste
+00:04:19.435 --> 00:04:23.142
+Plus bas, le zéro passe en première position
+dans la liste
 
-00:04:05.517 --> 00:04:05.854
+00:04:23.142 --> 00:04:23.479
 triée.
 
-00:04:05.854 --> 00:04:09.298
-À partir de la deuxième position, tout vaut cinq.
+00:04:23.479 --> 00:04:26.923
+À partir de la deuxième position, tout vaut
+cinq.
 
-00:04:09.298 --> 00:04:12.018
+00:04:26.923 --> 00:04:29.643
 Le cinquième terme vaut donc cinq.
 
-00:04:12.018 --> 00:04:15.301
+00:04:29.643 --> 00:04:32.926
 Refais la même démarche sur la case voisine sans
 remplacer le
 
-00:04:15.301 --> 00:04:17.092
+00:04:32.926 --> 00:04:34.717
 zéro dans la grille de départ.
 
-00:04:17.433 --> 00:04:20.717
-Testons la méthode du support sur une ligne courte.
+00:04:35.058 --> 00:04:38.342
+Testons la méthode du support sur une ligne
+courte.
 
-00:04:20.717 --> 00:04:24.019
-Pour l'érosion, seul le centre du bloc de trois uns
-permet
+00:04:38.342 --> 00:04:41.644
+Pour l'érosion, seul le centre du bloc de trois
+uns permet
 
-00:04:24.019 --> 00:04:25.521
+00:04:41.644 --> 00:04:43.146
 de poser le tampon entier.
 
-00:04:25.521 --> 00:04:27.800
+00:04:43.146 --> 00:04:45.425
 Le un isolé disparaît.
 
-00:04:27.800 --> 00:04:31.343
-En dilatant le résultat de cette érosion, on recrée
-trois cases
+00:04:45.425 --> 00:04:48.968
+En dilatant le résultat de cette érosion, on
+recrée trois cases
 
-00:04:31.343 --> 00:04:32.310
+00:04:48.968 --> 00:04:49.935
 autour du centre.
 
-00:04:32.310 --> 00:04:34.246
+00:04:49.935 --> 00:04:51.871
 C'est l'ouverture.
 
-00:04:34.246 --> 00:04:38.259
-Quand on dilate directement la ligne d'origine, on
-agrandit aussi le
+00:04:51.871 --> 00:04:55.884
+Quand on dilate directement la ligne d'origine,
+on agrandit aussi le
 
-00:04:38.259 --> 00:04:38.989
+00:04:55.884 --> 00:04:56.614
 un isolé.
 
-00:04:38.989 --> 00:04:42.846
-Les deux opérations successives ne reviennent donc pas
-forcément au point
+00:04:56.614 --> 00:05:00.471
+Les deux opérations successives ne reviennent
+donc pas forcément au point
 
-00:04:42.846 --> 00:04:43.548
+00:05:00.471 --> 00:05:01.173
 de départ.

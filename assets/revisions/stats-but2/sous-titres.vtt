@@ -1,574 +1,612 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:04.402
-Dans un tableau, l’effectif donne combien de mesures
-appartiennent à une
+00:00:00.100 --> 00:00:03.761
+Dans le tableau du TD, il y a deux cents
+observations.
 
-00:00:04.402 --> 00:00:04.793
+00:00:03.761 --> 00:00:07.943
+On multiplie chaque valeur par son effectif et
+on additionne les
+
+00:00:07.943 --> 00:00:08.323
+résultats.
+
+00:00:08.323 --> 00:00:11.248
+Ici on obtient six cent vingt-huit.
+
+00:00:11.248 --> 00:00:15.334
+En divisant par deux cents, on trouve trois
+virgule quatorze.
+
+00:00:15.933 --> 00:00:20.235
+Dans un tableau, l’effectif donne combien de
+mesures appartiennent à une
+
+00:00:20.235 --> 00:00:20.626
 catégorie.
 
-00:00:04.793 --> 00:00:08.785
+00:00:20.626 --> 00:00:24.618
 En divisant par le total, tu peux comparer deux
 échantillons de
 
-00:00:08.785 --> 00:00:09.511
+00:00:24.618 --> 00:00:25.344
 taille différente.
 
-00:00:09.511 --> 00:00:13.735
-La fréquence cumulée dit quelle proportion a été lue
-jusqu’à cette
+00:00:25.344 --> 00:00:29.568
+La fréquence cumulée dit quelle proportion a été
+lue jusqu’à cette
 
-00:00:13.735 --> 00:00:14.119
+00:00:29.568 --> 00:00:29.952
 catégorie.
 
-00:00:14.119 --> 00:00:17.447
+00:00:29.952 --> 00:00:33.280
 Avec les valeurs classées dans l’ordre, le cumul
 augmente ou reste
 
-00:00:17.447 --> 00:00:18.959
+00:00:33.280 --> 00:00:34.793
 stable et finit à un.
 
-00:00:18.959 --> 00:00:23.003
+00:00:34.793 --> 00:00:38.837
 Si ton résultat final vaut moins que un, vérifie
 qu’aucune observation
 
-00:00:23.003 --> 00:00:24.106
+00:00:38.837 --> 00:00:39.940
 n’a été oubliée.
 
-00:00:24.475 --> 00:00:27.575
+00:00:40.558 --> 00:00:43.658
 Imagine que quatre mesures aient la même valeur.
 
-00:00:27.575 --> 00:00:31.092
-Dans la moyenne, tu dois compter cette valeur quatre
-fois.
+00:00:43.658 --> 00:00:47.175
+Dans la moyenne, tu dois compter cette valeur
+quatre fois.
 
-00:00:31.092 --> 00:00:33.592
+00:00:47.175 --> 00:00:49.675
 C’est le rôle du poids d’effectif.
 
-00:00:33.592 --> 00:00:36.619
+00:00:49.675 --> 00:00:52.702
 La variance résume ensuite la dispersion.
 
-00:00:36.619 --> 00:00:39.584
-On utilise des carrés pour que les écarts de part et
+00:00:52.702 --> 00:00:55.668
+On utilise des carrés pour que les écarts de
+part et
 
-00:00:39.584 --> 00:00:40.663
+00:00:55.668 --> 00:00:56.746
 d’autre ne s’annulent pas.
 
-00:00:40.663 --> 00:00:43.965
-L’écart-type est la racine de la variance et se lit
-dans
+00:00:56.746 --> 00:01:00.049
+L’écart-type est la racine de la variance et se
+lit dans
 
-00:00:43.965 --> 00:00:44.866
+00:01:00.049 --> 00:01:00.950
 l’unité de départ.
 
-00:00:44.866 --> 00:00:48.371
-Pour décrire le tableau complet, on divise par N.
+00:01:00.950 --> 00:01:04.454
+Pour décrire le tableau complet, on divise par
+N.
 
-00:00:48.371 --> 00:00:52.247
-Pour estimer la variance d’une population avec un
-échantillon, le calcul
+00:01:04.454 --> 00:01:08.330
+Pour estimer la variance d’une population avec
+un échantillon, le calcul
 
-00:00:52.247 --> 00:00:54.008
+00:01:08.330 --> 00:01:10.092
 utilise souvent N moins un.
 
-00:00:54.350 --> 00:00:57.008
-Si une classe a deux fois plus de largeur mais le
+00:01:10.683 --> 00:01:13.341
+Si une classe a deux fois plus de largeur mais
+le
 
-00:00:57.008 --> 00:00:59.666
-même effectif qu’une autre, elle ne doit pas avoir
-deux fois
+00:01:13.341 --> 00:01:15.999
+même effectif qu’une autre, elle ne doit pas
+avoir deux fois
 
-00:00:59.666 --> 00:01:00.391
+00:01:15.999 --> 00:01:16.724
 plus de surface.
 
-00:01:00.391 --> 00:01:02.927
+00:01:16.724 --> 00:01:19.261
 Il faut donc corriger la hauteur.
 
-00:01:02.927 --> 00:01:06.567
-Dans la deuxième version du tableur, la largeur est
-exprimée en
+00:01:19.261 --> 00:01:22.900
+Dans la deuxième version du tableur, la largeur
+est exprimée en
 
-00:01:06.567 --> 00:01:07.560
+00:01:22.900 --> 00:01:23.893
 unités de cinq.
 
-00:01:07.560 --> 00:01:11.768
-Diviser l’effectif par cette largeur donne un effectif
-réduit comparable d’une
+00:01:23.893 --> 00:01:28.101
+Diviser l’effectif par cette largeur donne un
+effectif réduit comparable d’une
 
-00:01:11.768 --> 00:01:12.915
+00:01:28.101 --> 00:01:29.249
 colonne à l’autre.
 
-00:01:12.915 --> 00:01:17.084
+00:01:29.249 --> 00:01:33.418
 Pour approcher une moyenne à partir des classes,
 utilise leur milieu
 
-00:01:17.084 --> 00:01:18.222
+00:01:33.418 --> 00:01:34.555
 comme valeur représentative.
 
-00:01:18.558 --> 00:01:22.209
-Dans le TD, la largeur est comptée par blocs de cinq.
-
-00:01:22.209 --> 00:01:25.739
-Une classe de zéro à dix mesure donc deux unités.
-
-00:01:25.739 --> 00:01:29.415
-Avec trois points dedans, la hauteur vaut un virgule
+00:01:35.142 --> 00:01:38.793
+Dans le TD, la largeur est comptée par blocs de
 cinq.
 
-00:01:29.415 --> 00:01:33.312
-La seconde classe à l’écran mesure cinq et contient
-vingt-cinq points.
+00:01:38.793 --> 00:01:42.322
+Une classe de zéro à dix mesure donc deux
+unités.
 
-00:01:33.312 --> 00:01:35.616
+00:01:42.322 --> 00:01:45.999
+Avec trois points dedans, la hauteur vaut un
+virgule cinq.
+
+00:01:45.999 --> 00:01:49.896
+La seconde classe à l’écran mesure cinq et
+contient vingt-cinq points.
+
+00:01:49.896 --> 00:01:52.200
 Sa hauteur vaut vingt-cinq.
 
-00:01:35.616 --> 00:01:39.624
-Vérifie les surfaces en multipliant la hauteur par la
-largeur.
+00:01:52.200 --> 00:01:56.207
+Vérifie les surfaces en multipliant la hauteur
+par la largeur.
 
-00:01:39.624 --> 00:01:42.136
+00:01:56.207 --> 00:01:58.719
 Tu retrouves trois et vingt-cinq.
 
-00:01:42.136 --> 00:01:45.923
-Garde les distances réelles sur l’axe au moment de
-tracer.
+00:01:58.719 --> 00:02:02.506
+Garde les distances réelles sur l’axe au moment
+de tracer.
 
-00:01:46.267 --> 00:01:50.310
-Pour lire un quartile, cherche où la fréquence cumulée
-atteint la
+00:02:02.850 --> 00:02:06.893
+Pour lire un quartile, cherche où la fréquence
+cumulée atteint la
 
-00:01:50.310 --> 00:01:51.045
+00:02:06.893 --> 00:02:07.628
 proportion demandée.
 
-00:01:51.045 --> 00:01:54.617
-Quand tu ne connais que les effectifs par classe, tu
-peux
+00:02:07.628 --> 00:02:11.201
+Quand tu ne connais que les effectifs par
+classe, tu peux
 
-00:01:54.617 --> 00:01:56.891
-estimer la position à l’intérieur par interpolation.
+00:02:11.201 --> 00:02:13.474
+estimer la position à l’intérieur par
+interpolation.
 
-00:01:56.891 --> 00:02:01.070
-Cela revient à supposer une répartition régulière dans
-cette classe.
+00:02:13.474 --> 00:02:17.653
+Cela revient à supposer une répartition
+régulière dans cette classe.
 
-00:02:01.070 --> 00:02:04.465
-Pour un tableau de mesures brutes, les valeurs exactes
-et la
+00:02:17.653 --> 00:02:21.049
+Pour un tableau de mesures brutes, les valeurs
+exactes et la
 
-00:02:04.465 --> 00:02:07.552
-convention de quartile du logiciel peuvent donner un
-résultat différent.
+00:02:21.049 --> 00:02:24.136
+convention de quartile du logiciel peuvent
+donner un résultat différent.
 
-00:02:07.892 --> 00:02:11.586
-La fonction de répartition F donne la probabilité
-d’obtenir une valeur
+00:02:24.725 --> 00:02:28.420
+La fonction de répartition F donne la
+probabilité d’obtenir une valeur
 
-00:02:11.586 --> 00:02:13.601
+00:02:28.420 --> 00:02:30.435
 au plus égale à sa borne.
 
-00:02:13.601 --> 00:02:17.106
-Pour connaître la probabilité comprise entre deux
-bornes, soustrais ce qui
+00:02:30.435 --> 00:02:33.940
+Pour connaître la probabilité comprise entre
+deux bornes, soustrais ce qui
 
-00:02:17.106 --> 00:02:19.337
+00:02:33.940 --> 00:02:36.170
 est déjà en dessous de la première.
 
-00:02:19.337 --> 00:02:22.583
-Dans l’exercice des résistances, le tableur tire un
-nombre uniforme entre
+00:02:36.170 --> 00:02:39.416
+Dans l’exercice des résistances, le tableur tire
+un nombre uniforme entre
 
-00:02:22.583 --> 00:02:25.829
-zéro et un et le passe dans la fonction inverse de
+00:02:39.416 --> 00:02:42.662
+zéro et un et le passe dans la fonction inverse
+de
 
-00:02:25.829 --> 00:02:26.714
+00:02:42.662 --> 00:02:43.548
 la loi normale.
 
-00:02:26.714 --> 00:02:30.011
-Les résultats changent quand le tableur recalcule.
+00:02:43.548 --> 00:02:46.844
+Les résultats changent quand le tableur
+recalcule.
 
-00:02:30.011 --> 00:02:33.611
+00:02:46.844 --> 00:02:50.444
 La moyenne de l’échantillon est donc proche du
 paramètre, avec une
 
-00:02:33.611 --> 00:02:35.575
+00:02:50.444 --> 00:02:52.408
 variation normale d’un tirage à l’autre.
 
-00:02:35.933 --> 00:02:38.935
+00:02:53.017 --> 00:02:56.018
 À mille ohms, on est au centre du modèle.
 
-00:02:38.935 --> 00:02:42.222
-Neuf cent quatre-vingts et mille vingt sont chacun à
-vingt ohms
+00:02:56.018 --> 00:02:59.305
+Neuf cent quatre-vingts et mille vingt sont
+chacun à vingt ohms
 
-00:02:42.222 --> 00:02:42.820
+00:02:59.305 --> 00:02:59.903
 du centre.
 
-00:02:42.820 --> 00:02:46.488
-Dans une loi normale, environ soixante-huit pour cent
-des valeurs tombent
+00:02:59.903 --> 00:03:03.572
+Dans une loi normale, environ soixante-huit pour
+cent des valeurs tombent
 
-00:02:46.488 --> 00:02:47.489
+00:03:03.572 --> 00:03:04.572
 dans cette bande.
 
-00:02:47.489 --> 00:02:51.018
-Si tu tires cent valeurs dans le tableur, le nombre de
+00:03:04.572 --> 00:03:08.101
+Si tu tires cent valeurs dans le tableur, le
+nombre de
 
-00:02:51.018 --> 00:02:54.548
-résistances qui tombent dedans peut être soixante-
-quatre ou soixante-douze, par exemple.
+00:03:08.101 --> 00:03:11.631
+résistances qui tombent dedans peut être
+soixante-quatre ou soixante-douze, par exemple.
 
-00:02:54.548 --> 00:02:58.457
-Plus tu produis de mesures indépendantes, plus la
-fréquence simulée tend
+00:03:11.631 --> 00:03:15.540
+Plus tu produis de mesures indépendantes, plus
+la fréquence simulée tend
 
-00:02:58.457 --> 00:03:00.945
+00:03:15.540 --> 00:03:18.028
 à se rapprocher de la probabilité théorique.
 
-00:03:01.308 --> 00:03:05.388
-L’écart-type te dit comment varient les observations
-individuelles.
+00:03:18.392 --> 00:03:22.472
+L’écart-type te dit comment varient les
+observations individuelles.
 
-00:03:05.388 --> 00:03:09.972
-L’erreur-type concerne la moyenne calculée à partir de
-plusieurs observations.
+00:03:22.472 --> 00:03:27.055
+L’erreur-type concerne la moyenne calculée à
+partir de plusieurs observations.
 
-00:03:09.972 --> 00:03:14.126
-À conditions comparables, elle diminue avec la racine
-de la taille.
+00:03:27.055 --> 00:03:31.209
+À conditions comparables, elle diminue avec la
+racine de la taille.
 
-00:03:14.126 --> 00:03:17.412
+00:03:31.209 --> 00:03:34.495
 Un intervalle à quatre-vingt-quinze pour cent
 construit avec la loi de
 
-00:03:17.412 --> 00:03:20.698
-Student, sous les hypothèses du modèle, donne une
-procédure qui couvre
+00:03:34.495 --> 00:03:37.781
+Student, sous les hypothèses du modèle, donne
+une procédure qui couvre
 
-00:03:20.698 --> 00:03:23.685
-la vraie moyenne dans environ quatre-vingt-quinze pour
-cent des répétitions.
+00:03:37.781 --> 00:03:40.768
+la vraie moyenne dans environ quatre-vingt-
+quinze pour cent des répétitions.
 
-00:03:24.058 --> 00:03:27.437
-Pour faire le test d’ajustement, compare le réel et ce
-que
+00:03:41.350 --> 00:03:44.728
+Pour faire le test d’ajustement, compare le réel
+et ce que
 
-00:03:27.437 --> 00:03:28.665
+00:03:44.728 --> 00:03:45.957
 la loi aurait prévu.
 
-00:03:28.665 --> 00:03:32.743
-Les classes doivent couvrir la distribution entière,
-donc n’oublie pas les
+00:03:45.957 --> 00:03:50.035
+Les classes doivent couvrir la distribution
+entière, donc n’oublie pas les
 
-00:03:32.743 --> 00:03:33.114
+00:03:50.035 --> 00:03:50.405
 queues.
 
-00:03:33.114 --> 00:03:36.349
-Regroupe les classes trop petites avant de conclure.
+00:03:50.405 --> 00:03:53.641
+Regroupe les classes trop petites avant de
+conclure.
 
-00:03:36.349 --> 00:03:39.656
-Plus l’écart est grand par rapport au nombre attendu,
-plus il
+00:03:53.641 --> 00:03:56.948
+Plus l’écart est grand par rapport au nombre
+attendu, plus il
 
-00:03:39.656 --> 00:03:40.859
+00:03:56.948 --> 00:03:58.150
 pèse dans le test.
 
-00:03:40.859 --> 00:03:44.431
-Si tu as estimé la moyenne et l’écart-type sur les
-mêmes
+00:03:58.150 --> 00:04:01.723
+Si tu as estimé la moyenne et l’écart-type sur
+les mêmes
 
-00:03:44.431 --> 00:03:46.704
+00:04:01.723 --> 00:04:03.996
 données, retire deux degrés de liberté
 supplémentaires.
 
-00:03:47.058 --> 00:03:50.820
-Pour refaire l’exercice, additionne les six effectifs.
+00:04:04.600 --> 00:04:08.361
+Pour refaire l’exercice, additionne les six
+effectifs.
 
-00:03:50.820 --> 00:03:54.897
-Multiplie ensuite chacune des valeurs de zéro à cinq
-par son
+00:04:08.361 --> 00:04:12.439
+Multiplie ensuite chacune des valeurs de zéro à
+cinq par son
 
-00:03:54.897 --> 00:03:55.268
+00:04:12.439 --> 00:04:12.810
 effectif.
 
-00:03:55.268 --> 00:03:59.062
-Le total pondéré vaut six cent vingt-huit, puis la
-moyenne vaut
+00:04:12.810 --> 00:04:16.604
+Le total pondéré vaut six cent vingt-huit, puis
+la moyenne vaut
 
-00:03:59.062 --> 00:04:00.097
+00:04:16.604 --> 00:04:17.638
 trois virgule quatorze.
 
-00:04:00.097 --> 00:04:03.311
+00:04:17.638 --> 00:04:20.852
 Pour la variance, refais le même calcul avec les
 valeurs au
 
-00:04:03.311 --> 00:04:05.648
+00:04:20.852 --> 00:04:23.190
 carré et soustrais le carré de la moyenne.
 
-00:04:05.648 --> 00:04:09.683
-Cherche enfin l’effectif quatre-vingts : il correspond
-à la valeur quatre,
+00:04:23.190 --> 00:04:27.224
+Cherche enfin l’effectif quatre-vingts : il
+correspond à la valeur quatre,
 
-00:04:09.683 --> 00:04:10.783
+00:04:27.224 --> 00:04:28.325
 donc au mode.
 
-00:04:10.783 --> 00:04:13.467
+00:04:28.325 --> 00:04:31.008
 Contrôle que les fréquences totalisent un.
 
-00:04:13.808 --> 00:04:16.871
+00:04:31.600 --> 00:04:34.663
 Voici les six barres du premier exercice.
 
-00:04:16.871 --> 00:04:19.775
+00:04:34.663 --> 00:04:37.567
 La barre la plus haute est au-dessus de quatre.
 
-00:04:19.775 --> 00:04:23.121
-Compare avec la médiane avant de confondre les deux.
+00:04:37.567 --> 00:04:40.913
+Compare avec la médiane avant de confondre les
+deux.
 
-00:04:23.121 --> 00:04:25.849
-Au milieu des deux cents valeurs triées, les rangs
-cent et
+00:04:40.913 --> 00:04:43.641
+Au milieu des deux cents valeurs triées, les
+rangs cent et
 
-00:04:25.849 --> 00:04:28.329
-cent un appartiennent à la barre de la valeur trois.
+00:04:43.641 --> 00:04:46.121
+cent un appartiennent à la barre de la valeur
+trois.
 
-00:04:28.329 --> 00:04:31.565
+00:04:46.121 --> 00:04:49.356
 Tu peux le vérifier avec les cumuls : à deux, on
 
-00:04:31.565 --> 00:04:34.800
-n’a atteint que quarante-quatre observations, puis, à
-trois, on en a
+00:04:49.356 --> 00:04:52.592
+n’a atteint que quarante-quatre observations,
+puis, à trois, on en a
 
-00:04:34.800 --> 00:04:35.388
+00:04:52.592 --> 00:04:53.180
 cent quatre.
 
-00:04:35.767 --> 00:04:39.189
-Dans le tableau, le cumul atteint quarante-deux avant
-la classe vingt
+00:04:53.558 --> 00:04:56.980
+Dans le tableau, le cumul atteint quarante-deux
+avant la classe vingt
 
-00:04:39.189 --> 00:04:41.366
+00:04:56.980 --> 00:04:59.158
 à vingt-cinq, et soixante-deux à sa fin.
 
-00:04:41.366 --> 00:04:45.594
-Le soixantième rang est à dix-huit observations du
-début, sur vingt.
+00:04:59.158 --> 00:05:03.386
+Le soixantième rang est à dix-huit observations
+du début, sur vingt.
 
-00:04:45.594 --> 00:04:48.793
-Prends donc dix-huit vingtièmes de la largeur cinq.
+00:05:03.386 --> 00:05:06.584
+Prends donc dix-huit vingtièmes de la largeur
+cinq.
 
-00:04:48.793 --> 00:04:53.033
-En ajoutant le résultat à vingt, tu trouves vingt-
-quatre virgule cinq.
+00:05:06.584 --> 00:05:10.825
+En ajoutant le résultat à vingt, tu trouves
+vingt-quatre virgule cinq.
 
-00:04:53.033 --> 00:04:56.214
+00:05:10.825 --> 00:05:14.006
 Fais pareil au rang trente pour Q un et au rang
 
-00:04:56.214 --> 00:04:57.371
+00:05:14.006 --> 00:05:15.163
 quatre-vingt-dix pour Q trois.
 
-00:04:57.371 --> 00:05:01.829
-Cette interpolation est une approximation basée sur
-les classes, pas une
+00:05:15.163 --> 00:05:19.620
+Cette interpolation est une approximation basée
+sur les classes, pas une
 
-00:05:01.829 --> 00:05:03.450
+00:05:19.620 --> 00:05:21.241
 lecture des mesures individuelles.
 
-00:05:03.808 --> 00:05:06.871
+00:05:21.850 --> 00:05:24.913
 Rejoue le calcul pour le premier quartile.
 
-00:05:06.871 --> 00:05:10.131
-Il correspond à trente observations sur cent vingt.
+00:05:24.913 --> 00:05:28.173
+Il correspond à trente observations sur cent
+vingt.
 
-00:05:10.131 --> 00:05:13.427
-Le cumul vaut dix-sept après la classe précédente.
+00:05:28.173 --> 00:05:31.469
+Le cumul vaut dix-sept après la classe
+précédente.
 
-00:05:13.427 --> 00:05:15.768
+00:05:31.469 --> 00:05:33.810
 Il manque treize observations.
 
-00:05:15.768 --> 00:05:19.530
-La classe contient vingt-cinq valeurs et sa largeur
-est cinq.
+00:05:33.810 --> 00:05:37.572
+La classe contient vingt-cinq valeurs et sa
+largeur est cinq.
 
-00:05:19.530 --> 00:05:23.624
-Avance de treize vingt-cinquièmes de cinq, soit deux
-virgule six.
+00:05:37.572 --> 00:05:41.665
+Avance de treize vingt-cinquièmes de cinq, soit
+deux virgule six.
 
-00:05:23.624 --> 00:05:26.589
+00:05:41.665 --> 00:05:44.631
 Ajoute ce déplacement à la borne quinze.
 
-00:05:26.589 --> 00:05:30.465
-Pour le troisième quartile, trouve d’abord sa classe
-par le même
+00:05:44.631 --> 00:05:48.506
+Pour le troisième quartile, trouve d’abord sa
+classe par le même
 
-00:05:30.465 --> 00:05:30.817
+00:05:48.506 --> 00:05:48.859
 procédé.
 
-00:05:30.817 --> 00:05:34.198
-C’est souvent à ce moment que la mauvaise borne décale
-tout
+00:05:48.859 --> 00:05:52.239
+C’est souvent à ce moment que la mauvaise borne
+décale tout
 
-00:05:34.198 --> 00:05:34.812
+00:05:52.239 --> 00:05:52.854
 le calcul.
 
-00:05:35.183 --> 00:05:39.190
-L’exercice quatre donne la latence en fonction du
-nombre N.
+00:05:53.225 --> 00:05:57.231
+L’exercice quatre donne la latence en fonction
+du nombre N.
 
-00:05:39.190 --> 00:05:42.241
+00:05:57.231 --> 00:06:00.283
 Coupe d’abord la série en deux groupes de cinq.
 
-00:05:42.241 --> 00:05:45.170
+00:06:00.283 --> 00:06:03.212
 Les abscisses moyennes sont trois et huit.
 
-00:05:45.170 --> 00:05:48.570
-Pour la droite de Mayer, calcule la pente entre les
-deux
+00:06:03.212 --> 00:06:06.611
+Pour la droite de Mayer, calcule la pente entre
+les deux
 
-00:05:48.570 --> 00:05:51.969
-centres, puis remplace une abscisse dans l’équation
-pour trouver l’ordonnée à
+00:06:06.611 --> 00:06:10.011
+centres, puis remplace une abscisse dans
+l’équation pour trouver l’ordonnée à
 
-00:05:51.969 --> 00:05:52.278
+00:06:10.011 --> 00:06:10.320
 l’origine.
 
-00:05:52.278 --> 00:05:55.951
+00:06:10.320 --> 00:06:13.993
 La droite des moindres carrés utilise toutes les
 valeurs et donne
 
-00:05:55.951 --> 00:05:57.621
+00:06:13.993 --> 00:06:15.663
 ici une pente légèrement différente.
 
-00:05:57.621 --> 00:06:00.696
-Trace le nuage de points et vérifie à quel endroit la
+00:06:15.663 --> 00:06:18.738
+Trace le nuage de points et vérifie à quel
+endroit la
 
-00:06:00.696 --> 00:06:02.094
+00:06:18.738 --> 00:06:20.136
 droite fait un grand écart.
 
-00:06:02.475 --> 00:06:05.819
+00:06:20.725 --> 00:06:24.069
 Dans la feuille des temps de transit, compte les
 mesures puis
 
-00:06:05.819 --> 00:06:08.859
-calcule la moyenne directement sur la colonne, avant
-tout regroupement.
+00:06:24.069 --> 00:06:27.109
+calcule la moyenne directement sur la colonne,
+avant tout regroupement.
 
-00:06:08.859 --> 00:06:13.773
-L’écart-type d’échantillon vaut environ cinq virgule
-zéro huit cinq millisecondes.
+00:06:27.109 --> 00:06:32.023
+L’écart-type d’échantillon vaut environ cinq
+virgule zéro huit cinq millisecondes.
 
-00:06:13.773 --> 00:06:17.343
-Divise-le par racine de cent. Multiplie ensuite par le
-quantile de
+00:06:32.023 --> 00:06:35.593
+Divise-le par racine de cent. Multiplie ensuite
+par le quantile de
 
-00:06:17.343 --> 00:06:20.912
-Student, environ un virgule neuf huit quatre, pour une
-marge proche
+00:06:35.593 --> 00:06:39.162
+Student, environ un virgule neuf huit quatre,
+pour une marge proche
 
-00:06:20.912 --> 00:06:21.886
+00:06:39.162 --> 00:06:40.136
 de une milliseconde.
 
-00:06:21.886 --> 00:06:25.366
-Applique cette marge de part et d’autre de la moyenne.
+00:06:40.136 --> 00:06:43.616
+Applique cette marge de part et d’autre de la
+moyenne.
 
-00:06:25.366 --> 00:06:28.454
+00:06:43.616 --> 00:06:46.704
 Ce résultat porte sur la moyenne estimée.
 
-00:06:28.808 --> 00:06:31.467
+00:06:47.308 --> 00:06:49.967
 Le tableur propose sept classes.
 
-00:06:31.467 --> 00:06:36.381
-Les extrêmes ont des effectifs attendus trop faibles
-pour l’approximation habituelle.
+00:06:49.967 --> 00:06:54.881
+Les extrêmes ont des effectifs attendus trop
+faibles pour l’approximation habituelle.
 
-00:06:36.381 --> 00:06:39.580
-Rassemble chaque extrême avec sa voisine et prends en
-compte les
+00:06:54.881 --> 00:06:58.080
+Rassemble chaque extrême avec sa voisine et
+prends en compte les
 
-00:06:39.580 --> 00:06:40.744
+00:06:58.080 --> 00:06:59.244
 queues de la loi.
 
-00:06:40.744 --> 00:06:44.028
-Recalcule les contributions sur les cinq classes.
+00:06:59.244 --> 00:07:02.528
+Recalcule les contributions sur les cinq
+classes.
 
-00:06:44.028 --> 00:06:47.190
+00:07:02.528 --> 00:07:05.690
 On obtient environ zéro virgule trente-six.
 
-00:06:47.190 --> 00:06:50.846
-Le seuil à cinq pour cent avec deux degrés de liberté
+00:07:05.690 --> 00:07:09.346
+Le seuil à cinq pour cent avec deux degrés de
+liberté
 
-00:06:50.846 --> 00:06:52.508
+00:07:09.346 --> 00:07:11.008
 vaut environ cinq virgule quatre-vingt-dix-neuf.
 
-00:06:52.508 --> 00:06:55.364
+00:07:11.008 --> 00:07:13.864
 On ne rejette pas le modèle au seuil choisi.
 
-00:06:55.364 --> 00:06:59.283
-Ce test ne démontre pas que toute mesure future suivra
-exactement
+00:07:13.864 --> 00:07:17.783
+Ce test ne démontre pas que toute mesure future
+suivra exactement
 
-00:06:59.283 --> 00:07:00.351
+00:07:17.783 --> 00:07:18.851
 la loi normale.
 
-00:07:00.683 --> 00:07:04.236
-Fais une colonne pour les observés et une pour les
-attendus.
+00:07:19.433 --> 00:07:22.986
+Fais une colonne pour les observés et une pour
+les attendus.
 
-00:07:04.236 --> 00:07:08.734
-Pour la classe de quatre-vingt-trois à quatre-vingt-
-sept, on compte dix-neuf observations.
+00:07:22.986 --> 00:07:27.484
+Pour la classe de quatre-vingt-trois à quatre-
+vingt-sept, on compte dix-neuf observations.
 
-00:07:08.734 --> 00:07:12.616
-La normale ajustée place environ vingt virgule quatre-
-vingt-six pour cent des
+00:07:27.484 --> 00:07:31.366
+La normale ajustée place environ vingt virgule
+quatre-vingt-six pour cent des
 
-00:07:12.616 --> 00:07:14.028
+00:07:31.366 --> 00:07:32.778
 mesures dans cette zone.
 
-00:07:14.028 --> 00:07:18.476
-Sur cent mesures, la valeur attendue est donc vingt
-virgule quatre-vingt-six.
+00:07:32.778 --> 00:07:37.226
+Sur cent mesures, la valeur attendue est donc
+vingt virgule quatre-vingt-six.
 
-00:07:18.476 --> 00:07:21.626
+00:07:37.226 --> 00:07:40.376
 Mets l’écart au carré et divise par l’attendu.
 
-00:07:21.626 --> 00:07:26.062
-Avec cette seule case tu obtiens environ zéro virgule
-cent soixante-six.
+00:07:40.376 --> 00:07:44.812
+Avec cette seule case tu obtiens environ zéro
+virgule cent soixante-six.
 
-00:07:26.062 --> 00:07:30.119
-Additionne ensuite toutes les contributions après le
-regroupement des queues.
+00:07:44.812 --> 00:07:48.869
+Additionne ensuite toutes les contributions
+après le regroupement des queues.
 
-00:07:30.475 --> 00:07:34.055
+00:07:49.225 --> 00:07:52.805
 Dans la feuille sur les résistances, le calcul
 aléatoire peut changer
 
-00:07:34.055 --> 00:07:35.682
+00:07:52.805 --> 00:07:54.432
 quand tu saisis une cellule.
 
-00:07:35.682 --> 00:07:38.932
+00:07:54.432 --> 00:07:57.682
 Commence par remplir la colonne et dessine le
 graphique sur la
 
-00:07:38.932 --> 00:07:41.295
+00:07:57.682 --> 00:08:00.045
 même plage que celle utilisée pour la moyenne.
 
-00:07:41.295 --> 00:07:44.438
-Si tu veux reprendre exactement ce tirage plus tard,
-copie la
+00:08:00.045 --> 00:08:03.188
+Si tu veux reprendre exactement ce tirage plus
+tard, copie la
 
-00:07:44.438 --> 00:07:47.582
-plage et colle seulement les valeurs dans un espace de
-travail.
+00:08:03.188 --> 00:08:06.332
+plage et colle seulement les valeurs dans un
+espace de travail.
 
-00:07:47.582 --> 00:07:50.327
+00:08:06.332 --> 00:08:09.077
 L’écart-type théorique est vingt ohms.
 
-00:07:50.327 --> 00:07:53.182
+00:08:09.077 --> 00:08:11.932
 Tu peux donc aussi compter combien de valeurs se
 trouvent à
 
-00:07:53.182 --> 00:07:54.739
+00:08:11.932 --> 00:08:13.489
 moins de vingt ohms de mille.
 
-00:07:54.739 --> 00:07:59.261
-Compare cette fréquence aux soixante-huit pour cent
-approximatifs du modèle.
+00:08:13.489 --> 00:08:18.011
+Compare cette fréquence aux soixante-huit pour
+cent approximatifs du modèle.

@@ -1,332 +1,366 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.751
-Un algorithme commence avant sa première ligne de
-code.
+00:00:00.100 --> 00:00:03.456
+On parcourt la liste des nombres et on garde le
+produit
 
-00:00:03.751 --> 00:00:06.582
-Tu dois savoir ce qu'on te donne et ce qu'on attend
+00:00:03.456 --> 00:00:04.676
+dans une seule variable.
 
-00:00:06.582 --> 00:00:07.354
+00:00:04.676 --> 00:00:06.906
+Au départ, elle vaut un.
+
+00:00:06.906 --> 00:00:10.613
+On la multiplie par deux, puis par quatre, par
+un, et
+
+00:00:10.613 --> 00:00:11.287
+par trois.
+
+00:00:11.287 --> 00:00:13.903
+À la fin, elle vaut vingt-quatre.
+
+00:00:14.517 --> 00:00:18.168
+Un algorithme commence avant sa première ligne
+de code.
+
+00:00:18.168 --> 00:00:20.999
+Tu dois savoir ce qu'on te donne et ce qu'on
+attend
+
+00:00:20.999 --> 00:00:21.771
 à la sortie.
 
-00:00:07.354 --> 00:00:10.926
-Pour le produit d'un tableau, le sujet suppose un
-tableau non
+00:00:21.771 --> 00:00:25.343
+Pour le produit d'un tableau, le sujet suppose
+un tableau non
 
-00:00:10.926 --> 00:00:11.251
+00:00:25.343 --> 00:00:25.668
 vide.
 
-00:00:11.251 --> 00:00:14.576
-Il veut un nombre qui représente le produit, et il
-veut
+00:00:25.668 --> 00:00:28.993
+Il veut un nombre qui représente le produit, et
+il veut
 
-00:00:14.576 --> 00:00:15.785
+00:00:28.993 --> 00:00:30.202
 garder le tableau intact.
 
-00:00:15.785 --> 00:00:18.150
+00:00:30.202 --> 00:00:32.567
 Écris ces deux propriétés.
 
-00:00:18.150 --> 00:00:21.306
+00:00:32.567 --> 00:00:35.723
 Ça t'aide à choisir une variable séparée pour le
 résultat et
 
-00:00:21.306 --> 00:00:23.028
+00:00:35.723 --> 00:00:37.445
 à vérifier les cas de test.
 
-00:00:23.392 --> 00:00:26.565
+00:00:38.058 --> 00:00:41.231
 Un invariant raconte ce qui a déjà été fait.
 
-00:00:26.565 --> 00:00:29.543
+00:00:41.231 --> 00:00:44.209
 Il doit parler du même endroit à chaque tour.
 
-00:00:29.543 --> 00:00:32.850
-Quand tu le places en début de boucle, vérifie sa
-vérité
+00:00:44.209 --> 00:00:47.517
+Quand tu le places en début de boucle, vérifie
+sa vérité
 
-00:00:32.850 --> 00:00:34.052
+00:00:47.517 --> 00:00:48.719
 avant le premier tour.
 
-00:00:34.052 --> 00:00:37.172
-Puis pars d'un tour pour lequel il est vrai, exécute
-une
+00:00:48.719 --> 00:00:51.839
+Puis pars d'un tour pour lequel il est vrai,
+exécute une
 
-00:00:37.172 --> 00:00:40.008
-itération et explique pourquoi il reste vrai au tour
-suivant.
+00:00:51.839 --> 00:00:54.675
+itération et explique pourquoi il reste vrai au
+tour suivant.
 
-00:00:40.008 --> 00:00:43.098
-Enfin, place-toi au moment où il n'y a plus de tour
+00:00:54.675 --> 00:00:57.765
+Enfin, place-toi au moment où il n'y a plus de
+tour
 
-00:00:43.098 --> 00:00:43.660
+00:00:57.765 --> 00:00:58.327
 à faire.
 
-00:00:43.660 --> 00:00:47.214
+00:00:58.327 --> 00:01:01.881
 Le morceau traité doit alors correspondre à
 l'objectif.
 
-00:00:47.558 --> 00:00:50.834
-Avant d'écrire un grand O ou un thêta, dis ce que
+00:01:02.475 --> 00:01:05.751
+Avant d'écrire un grand O ou un thêta, dis ce
+que
 
-00:00:50.834 --> 00:00:51.430
+00:01:05.751 --> 00:01:06.347
 tu comptes.
 
-00:00:51.430 --> 00:00:56.200
+00:01:06.347 --> 00:01:11.117
 Comparaisons, lectures, affectations et tests ne
 donnent pas forcément le même
 
-00:00:56.200 --> 00:00:57.067
+00:01:11.117 --> 00:01:11.984
 total exact.
 
-00:00:57.067 --> 00:01:01.049
-Pour l'ordre de croissance, un coût constant par case
-donne une
+00:01:11.984 --> 00:01:15.966
+Pour l'ordre de croissance, un coût constant par
+case donne une
 
-00:01:01.049 --> 00:01:01.773
+00:01:15.966 --> 00:01:16.690
 grandeur linéaire.
 
-00:01:01.773 --> 00:01:04.868
-Quand deux boucles sont imbriquées, tu ne peux pas
-toujours multiplier
+00:01:16.690 --> 00:01:19.785
+Quand deux boucles sont imbriquées, tu ne peux
+pas toujours multiplier
 
-00:01:04.868 --> 00:01:07.963
-leurs tailles : la boucle interne peut devenir plus
-courte à
+00:01:19.785 --> 00:01:22.879
+leurs tailles : la boucle interne peut devenir
+plus courte à
 
-00:01:07.963 --> 00:01:08.525
+00:01:22.879 --> 00:01:23.442
 chaque tour.
 
-00:01:08.525 --> 00:01:12.483
+00:01:23.442 --> 00:01:27.400
 Vérifie aussi si le sujet demande le pire cas
 lorsqu'un retour
 
-00:01:12.483 --> 00:01:13.562
+00:01:27.400 --> 00:01:28.479
 anticipé est possible.
 
-00:01:13.933 --> 00:01:17.123
-Pense à une question dont tu ne connais pas encore la
+00:01:29.058 --> 00:01:32.248
+Pense à une question dont tu ne connais pas
+encore la
 
-00:01:17.123 --> 00:01:17.413
+00:01:32.248 --> 00:01:32.538
 réponse.
 
-00:01:17.413 --> 00:01:20.951
+00:01:32.538 --> 00:01:36.076
 La fonction peut poser la même question sur un
 problème plus
 
-00:01:20.951 --> 00:01:21.273
+00:01:36.076 --> 00:01:36.398
 petit.
 
-00:01:21.273 --> 00:01:25.182
-Si la réduction avance toujours vers un cas simple,
-l'appel peut
+00:01:36.398 --> 00:01:40.307
+Si la réduction avance toujours vers un cas
+simple, l'appel peut
 
-00:01:25.182 --> 00:01:25.538
+00:01:40.307 --> 00:01:40.663
 s'arrêter.
 
-00:01:25.538 --> 00:01:28.577
-Puis les réponses remontent les unes après les autres.
+00:01:40.663 --> 00:01:43.702
+Puis les réponses remontent les unes après les
+autres.
 
-00:01:28.577 --> 00:01:31.677
+00:01:43.702 --> 00:01:46.802
 Pour analyser le coût, dessine les appels.
 
-00:01:31.677 --> 00:01:34.605
-Une seule branche qui enlève deux à chaque étape ne
-grandit
+00:01:46.802 --> 00:01:49.730
+Une seule branche qui enlève deux à chaque étape
+ne grandit
 
-00:01:34.605 --> 00:01:37.266
-pas comme deux branches qui se divisent chacune par
-deux.
+00:01:49.730 --> 00:01:52.391
+pas comme deux branches qui se divisent chacune
+par deux.
 
-00:01:37.642 --> 00:01:41.525
-Sur une pile d'assiettes, tu reprends l'assiette posée
-en dernier.
+00:01:53.017 --> 00:01:56.900
+Sur une pile d'assiettes, tu reprends l'assiette
+posée en dernier.
 
-00:01:41.525 --> 00:01:44.973
-Dans une file d'attente, la personne qui est arrivée
-en premier
+00:01:56.900 --> 00:02:00.348
+Dans une file d'attente, la personne qui est
+arrivée en premier
 
-00:01:44.973 --> 00:01:45.913
+00:02:00.348 --> 00:02:01.288
 sort en premier.
 
-00:01:45.913 --> 00:01:49.991
-Pour les exercices, dessine ces deux sens avant de
-manipuler les
+00:02:01.288 --> 00:02:05.366
+Pour les exercices, dessine ces deux sens avant
+de manipuler les
 
-00:01:49.991 --> 00:01:50.361
+00:02:05.366 --> 00:02:05.736
 valeurs.
 
-00:01:50.361 --> 00:01:53.799
-Dans un arbre, un parcours préfixe traite la racine,
-puis recommence
+00:02:05.736 --> 00:02:09.174
+Dans un arbre, un parcours préfixe traite la
+racine, puis recommence
 
-00:01:53.799 --> 00:01:56.611
-dans le sous-arbre gauche et enfin dans le droit.
+00:02:09.174 --> 00:02:11.986
+dans le sous-arbre gauche et enfin dans le
+droit.
 
-00:01:56.611 --> 00:02:00.226
-Pour chaque enfant, utilise exactement la même règle.
+00:02:11.986 --> 00:02:15.601
+Pour chaque enfant, utilise exactement la même
+règle.
 
-00:02:00.226 --> 00:02:03.229
+00:02:15.601 --> 00:02:18.604
 Un enfant absent n'ajoute rien à la liste.
 
-00:02:03.600 --> 00:02:07.913
+00:02:19.225 --> 00:02:23.538
 Choisis un accumulateur égal à un, puisqu'un est
 neutre pour la
 
-00:02:07.913 --> 00:02:08.305
+00:02:23.538 --> 00:02:23.930
 multiplication.
 
-00:02:08.305 --> 00:02:11.862
-Avant le tour d'indice i, il contient le produit des i
+00:02:23.930 --> 00:02:27.487
+Avant le tour d'indice i, il contient le produit
+des i
 
-00:02:11.862 --> 00:02:12.508
+00:02:27.487 --> 00:02:28.133
 premières cases.
 
-00:02:12.508 --> 00:02:15.633
+00:02:28.133 --> 00:02:31.258
 Au premier tour, aucune n'a encore été lue.
 
-00:02:15.633 --> 00:02:18.011
+00:02:31.258 --> 00:02:33.636
 On lit deux et on multiplie.
 
-00:02:18.011 --> 00:02:20.658
+00:02:33.636 --> 00:02:36.283
 Puis on lit quatre et on obtient huit.
 
-00:02:20.658 --> 00:02:23.918
+00:02:36.283 --> 00:02:39.543
 Le un ne change rien au résultat intermédiaire.
 
-00:02:23.918 --> 00:02:26.601
+00:02:39.543 --> 00:02:42.226
 Avec trois, on arrive à vingt-quatre.
 
-00:02:26.601 --> 00:02:30.405
+00:02:42.226 --> 00:02:46.030
 Tu as fait une multiplication par case, donc un
 travail linéaire
 
-00:02:30.405 --> 00:02:31.442
+00:02:46.030 --> 00:02:47.067
 dans ce modèle.
 
-00:02:31.767 --> 00:02:35.038
-Pour quatre, l'appel demande d'abord le terme deux.
+00:02:47.642 --> 00:02:50.913
+Pour quatre, l'appel demande d'abord le terme
+deux.
 
-00:02:35.038 --> 00:02:37.942
+00:02:50.913 --> 00:02:53.817
 Pour deux, il demande le terme zéro.
 
-00:02:37.942 --> 00:02:40.994
+00:02:53.817 --> 00:02:56.869
 Zéro est donné directement par l'énoncé.
 
-00:02:40.994 --> 00:02:44.672
-En remontant, on ajoute cinq à chaque étape et on
-obtient
+00:02:56.869 --> 00:03:00.547
+En remontant, on ajoute cinq à chaque étape et
+on obtient
 
-00:02:44.672 --> 00:02:45.675
+00:03:00.547 --> 00:03:01.550
 huit, puis treize.
 
-00:02:45.675 --> 00:02:49.647
-La fonction doit aussi s'arrêter en un, sinon une
-entrée impaire
+00:03:01.550 --> 00:03:05.522
+La fonction doit aussi s'arrêter en un, sinon
+une entrée impaire
 
-00:02:49.647 --> 00:02:51.092
+00:03:05.522 --> 00:03:06.967
 dépasserait zéro sans l'atteindre.
 
-00:02:51.092 --> 00:02:54.358
-Pour le coût, un appel sur n moins deux ajoute un
+00:03:06.967 --> 00:03:10.233
+Pour le coût, un appel sur n moins deux ajoute
+un
 
-00:02:54.358 --> 00:02:54.952
+00:03:10.233 --> 00:03:10.827
 travail constant.
 
-00:02:54.952 --> 00:02:57.893
+00:03:10.827 --> 00:03:13.768
 On a ainsi environ n sur deux niveaux.
 
-00:02:58.267 --> 00:03:02.628
-Dans l'algorithme donné, chaque suffixe est recalculé
-depuis le début.
+00:03:14.350 --> 00:03:18.712
+Dans l'algorithme donné, chaque suffixe est
+recalculé depuis le début.
 
-00:03:02.628 --> 00:03:06.391
-Le premier en contient n cases, le deuxième une de
-moins.
+00:03:18.712 --> 00:03:22.474
+Le premier en contient n cases, le deuxième une
+de moins.
 
-00:03:06.391 --> 00:03:09.822
-Continue jusqu'au suffixe qui ne contient qu'une case.
+00:03:22.474 --> 00:03:25.905
+Continue jusqu'au suffixe qui ne contient qu'une
+case.
 
-00:03:09.822 --> 00:03:12.830
+00:03:25.905 --> 00:03:28.913
 La somme de ces tailles vaut n fois n plus un,
 
-00:03:12.830 --> 00:03:14.197
+00:03:28.913 --> 00:03:30.280
 le tout divisé par deux.
 
-00:03:14.197 --> 00:03:17.303
-Voilà pourquoi deux boucles dont les bornes sont liées
-donnent ici
+00:03:30.280 --> 00:03:33.386
+Voilà pourquoi deux boucles dont les bornes sont
+liées donnent ici
 
-00:03:17.303 --> 00:03:20.408
-un coût quadratique, même si leur borne interne n'est
-pas exactement
+00:03:33.386 --> 00:03:36.492
+un coût quadratique, même si leur borne interne
+n'est pas exactement
 
-00:03:20.408 --> 00:03:21.538
+00:03:36.492 --> 00:03:37.621
 n à chaque tour.
 
-00:03:21.892 --> 00:03:24.709
+00:03:38.225 --> 00:03:41.043
 Sur le dessin, pars de deux à droite.
 
-00:03:24.709 --> 00:03:28.361
-Le suffixe suivant ajoute trois, donc donne cinq.
+00:03:41.043 --> 00:03:44.695
+Le suffixe suivant ajoute trois, donc donne
+cinq.
 
-00:03:28.361 --> 00:03:32.226
-Puis ajoute sept pour obtenir douze et enfin dix pour
-obtenir
+00:03:44.695 --> 00:03:48.559
+Puis ajoute sept pour obtenir douze et enfin dix
+pour obtenir
 
-00:03:32.226 --> 00:03:32.577
+00:03:48.559 --> 00:03:48.910
 vingt-deux.
 
-00:03:32.577 --> 00:03:36.707
-Chaque nouvelle somme réutilise la précédente avec une
-seule addition.
+00:03:48.910 --> 00:03:53.040
+Chaque nouvelle somme réutilise la précédente
+avec une seule addition.
 
-00:03:36.707 --> 00:03:40.183
-Pour chaque colonne, compare ensuite la somme à quatre
-fois la
+00:03:53.040 --> 00:03:56.516
+Pour chaque colonne, compare ensuite la somme à
+quatre fois la
 
-00:03:40.183 --> 00:03:41.131
+00:03:56.516 --> 00:03:57.464
 case du tableau.
 
-00:03:41.131 --> 00:03:44.688
+00:03:57.464 --> 00:04:01.021
 Dans l'autre exemple du sujet, à l'indice un on
 compare onze
 
-00:03:44.688 --> 00:03:45.334
+00:04:01.021 --> 00:04:01.668
 à huit.
 
-00:03:45.334 --> 00:03:47.197
+00:04:01.668 --> 00:04:03.530
 Le test échoue.
 
-00:03:47.197 --> 00:03:49.905
+00:04:03.530 --> 00:04:06.239
 Un seul parcours suffit désormais.
 
-00:03:50.267 --> 00:03:52.655
+00:04:06.600 --> 00:04:08.989
 Rejoue les commandes dans l'ordre.
 
-00:03:52.655 --> 00:03:56.074
-Pour la pile, la valeur quatre est la dernière entrée,
-donc
+00:04:08.989 --> 00:04:12.407
+Pour la pile, la valeur quatre est la dernière
+entrée, donc
 
-00:03:56.074 --> 00:03:57.006
+00:04:12.407 --> 00:04:13.339
 elle sort d'abord.
 
-00:03:57.006 --> 00:03:59.359
+00:04:13.339 --> 00:04:15.692
 La lecture découvre onze.
 
-00:03:59.359 --> 00:04:02.423
+00:04:15.692 --> 00:04:18.756
 Le neuf arrive au sommet et ressort aussitôt.
 
-00:04:02.423 --> 00:04:05.572
-Pour la file, c'est quatorze qui part en premier.
+00:04:18.756 --> 00:04:21.905
+Pour la file, c'est quatorze qui part en
+premier.
 
-00:04:05.572 --> 00:04:08.084
+00:04:21.905 --> 00:04:24.418
 Le début lu est cinquante-deux.
 
-00:04:08.084 --> 00:04:10.829
+00:04:24.418 --> 00:04:27.163
 Ajouter neuf le met tout à droite.
 
-00:04:10.829 --> 00:04:13.979
+00:04:27.163 --> 00:04:30.312
 La dernière opération retire cinquante-deux.
 
-00:04:13.979 --> 00:04:17.435
-Il reste onze, quatre et neuf dans l'ordre d'attente.
+00:04:30.312 --> 00:04:33.768
+Il reste onze, quatre et neuf dans l'ordre
+d'attente.

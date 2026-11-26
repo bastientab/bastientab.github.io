@@ -1,517 +1,547 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.359
-Passe une machine et son voisin sur le même réseau.
+00:00:00.100 --> 00:00:04.023
+Une adresse IP version six de portée locale sert
+sur le
 
-00:00:03.359 --> 00:00:07.567
-Même sans configuration globale, leurs adresses lien
-local permettent des échanges
+00:00:04.023 --> 00:00:04.380
+lien.
 
-00:00:07.567 --> 00:00:08.714
+00:00:04.380 --> 00:00:08.502
+Pour joindre un voisin, la machine utilise le
+protocole de découverte
+
+00:00:08.502 --> 00:00:09.251
+des voisins.
+
+00:00:09.251 --> 00:00:12.407
+On va identifier ce que la machine demande et ce
+que
+
+00:00:12.407 --> 00:00:13.555
+la réponse lui apprend.
+
+00:00:14.142 --> 00:00:17.400
+Passe une machine et son voisin sur le même
+réseau.
+
+00:00:17.400 --> 00:00:21.608
+Même sans configuration globale, leurs adresses
+lien local permettent des échanges
+
+00:00:21.608 --> 00:00:22.756
 sur ce lien.
 
-00:00:08.714 --> 00:00:12.778
-Si tu indiques une adresse lien local à ping, ajoute
-l’interface
+00:00:22.756 --> 00:00:26.819
+Si tu indiques une adresse lien local à ping,
+ajoute l’interface
 
-00:00:12.778 --> 00:00:13.886
+00:00:26.819 --> 00:00:27.927
 pour lever l’ambiguïté.
 
-00:00:13.886 --> 00:00:18.248
+00:00:27.927 --> 00:00:32.289
 IPv6 utilise des messages ICMP version six pour
 découvrir les voisins
 
-00:00:18.248 --> 00:00:19.437
+00:00:32.289 --> 00:00:33.479
 et les routeurs.
 
-00:00:19.437 --> 00:00:21.423
+00:00:33.479 --> 00:00:35.464
 Capture l’échange.
 
-00:00:21.423 --> 00:00:24.777
-Une sollicitation de voisin cherche son adresse de
-couche deux, alors
+00:00:35.464 --> 00:00:38.819
+Une sollicitation de voisin cherche son adresse
+de couche deux, alors
 
-00:00:24.777 --> 00:00:28.132
+00:00:38.819 --> 00:00:42.173
 qu’une annonce de routeur donne notamment des
 informations de préfixe et
 
-00:00:28.132 --> 00:00:29.351
+00:00:42.173 --> 00:00:43.393
 de route par défaut.
 
-00:00:29.683 --> 00:00:33.347
-En début de TP, compare les deux postes sans routeur.
+00:00:43.975 --> 00:00:47.638
+En début de TP, compare les deux postes sans
+routeur.
 
-00:00:33.347 --> 00:00:37.516
-Chacun dispose souvent d’une adresse locale et peut
-apprendre son voisin
+00:00:47.638 --> 00:00:51.808
+Chacun dispose souvent d’une adresse locale et
+peut apprendre son voisin
 
-00:00:37.516 --> 00:00:38.653
+00:00:51.808 --> 00:00:52.945
 avec une sollicitation.
 
-00:00:38.653 --> 00:00:41.018
+00:00:52.945 --> 00:00:55.310
 Ajoute ensuite le routeur.
 
-00:00:41.018 --> 00:00:46.006
-Une sollicitation de routeur demande l’annonce, qui
-peut aussi arriver périodiquement.
+00:00:55.310 --> 00:01:00.298
+Une sollicitation de routeur demande l’annonce,
+qui peut aussi arriver périodiquement.
 
-00:00:46.006 --> 00:00:49.594
-Compare ce qui était déjà présent avant l’annonce et
-ce qui
+00:01:00.298 --> 00:01:03.885
+Compare ce qui était déjà présent avant
+l’annonce et ce qui
 
-00:00:49.594 --> 00:00:50.246
+00:01:03.885 --> 00:01:04.538
 apparaît ensuite.
 
-00:00:50.246 --> 00:00:54.695
+00:01:04.538 --> 00:01:08.986
 Un préfixe d’autoconfiguration peut produire une
 adresse supplémentaire.
 
-00:00:54.695 --> 00:00:58.056
-La durée de vie du routeur indique si cet émetteur
-peut
+00:01:08.986 --> 00:01:12.348
+La durée de vie du routeur indique si cet
+émetteur peut
 
-00:00:58.056 --> 00:00:59.584
+00:01:12.348 --> 00:01:13.876
 servir de passerelle par défaut.
 
-00:00:59.584 --> 00:01:03.338
-Cela permet d’expliquer pourquoi on voit parfois une
-adresse sans route
+00:01:13.876 --> 00:01:17.630
+Cela permet d’expliquer pourquoi on voit parfois
+une adresse sans route
 
-00:01:03.338 --> 00:01:04.021
+00:01:17.630 --> 00:01:18.312
 par défaut.
 
-00:01:04.392 --> 00:01:08.092
-Le client initialise son numéro de séquence avec X.
+00:01:18.683 --> 00:01:22.383
+Le client initialise son numéro de séquence avec
+X.
 
-00:01:08.092 --> 00:01:11.610
-Le serveur répond qu’il attend déjà X plus un parce
-que
+00:01:22.383 --> 00:01:25.902
+Le serveur répond qu’il attend déjà X plus un
+parce que
 
-00:01:11.610 --> 00:01:14.489
+00:01:25.902 --> 00:01:28.780
 le drapeau SYN consomme une position dans les
 séquences.
 
-00:01:14.489 --> 00:01:17.344
+00:01:28.780 --> 00:01:31.636
 Il propose aussi sa propre valeur Y.
 
-00:01:17.344 --> 00:01:20.825
-Le client répond avec un acquittement pour Y plus un.
+00:01:31.636 --> 00:01:35.116
+Le client répond avec un acquittement pour Y
+plus un.
 
-00:01:20.825 --> 00:01:24.284
-Le port client et le port serveur définissent les
-extrémités de
+00:01:35.116 --> 00:01:38.576
+Le port client et le port serveur définissent
+les extrémités de
 
-00:01:24.284 --> 00:01:26.486
+00:01:38.576 --> 00:01:40.778
 la connexion avec les deux adresses IP.
 
-00:01:26.486 --> 00:01:30.769
-Dans Wireshark, les séquences sont souvent affichées
-relativement au début de
+00:01:40.778 --> 00:01:45.061
+Dans Wireshark, les séquences sont souvent
+affichées relativement au début de
 
-00:01:30.769 --> 00:01:31.548
+00:01:45.061 --> 00:01:45.839
 la connexion.
 
-00:01:31.892 --> 00:01:35.665
+00:01:46.433 --> 00:01:50.207
 Remplaçons X par cent et Y par cinq cents.
 
-00:01:35.665 --> 00:01:39.403
-Le client demande une connexion avec un numéro de
-séquence cent.
+00:01:50.207 --> 00:01:53.945
+Le client demande une connexion avec un numéro
+de séquence cent.
 
-00:01:39.403 --> 00:01:42.755
-Le serveur renvoie son propre numéro cinq cents et
-demande la
+00:01:53.945 --> 00:01:57.297
+Le serveur renvoie son propre numéro cinq cents
+et demande la
 
-00:01:42.755 --> 00:01:43.974
+00:01:57.297 --> 00:01:58.516
 suite à cent un.
 
-00:01:43.974 --> 00:01:46.584
+00:01:58.516 --> 00:02:01.126
 Le client confirme cinq cent un.
 
-00:01:46.584 --> 00:01:51.002
+00:02:01.126 --> 00:02:05.543
 Si l’affichage utilise des numéros relatifs, le
 logiciel pose chaque début
 
-00:01:51.002 --> 00:01:51.805
+00:02:05.543 --> 00:02:06.347
 à zéro.
 
-00:01:51.805 --> 00:01:54.476
+00:02:06.347 --> 00:02:09.018
 Les différences restent les mêmes.
 
-00:01:54.476 --> 00:01:57.810
+00:02:09.018 --> 00:02:12.351
 Pour reconstituer un échange, compare les deux
 adresses et les ports
 
-00:01:57.810 --> 00:02:01.143
-et vérifie que toutes les trames appartiennent à la
-même conversation.
+00:02:12.351 --> 00:02:15.685
+et vérifie que toutes les trames appartiennent à
+la même conversation.
 
-00:02:01.475 --> 00:02:05.065
-Un routeur décide par quelle interface envoyer le
-paquet.
+00:02:16.017 --> 00:02:19.606
+Un routeur décide par quelle interface envoyer
+le paquet.
 
-00:02:05.065 --> 00:02:08.900
+00:02:19.606 --> 00:02:23.442
 Une règle de filtrage décide s’il est autorisé à
 passer.
 
-00:02:08.900 --> 00:02:12.756
-Le NAT modifie l’adresse source ou destination, et la
-translation de
+00:02:23.442 --> 00:02:27.298
+Le NAT modifie l’adresse source ou destination,
+et la translation de
 
-00:02:12.756 --> 00:02:15.910
+00:02:27.298 --> 00:02:30.452
 port permet notamment de partager une adresse de
 sortie.
 
-00:02:15.910 --> 00:02:19.703
+00:02:30.452 --> 00:02:34.244
 Sur Linux, le trafic vers la machine traverse la
 chaîne INPUT
 
-00:02:19.703 --> 00:02:21.082
+00:02:34.244 --> 00:02:35.624
 de la table filter.
 
-00:02:21.082 --> 00:02:24.072
+00:02:35.624 --> 00:02:38.614
 Un paquet en transit traverse FORWARD.
 
-00:02:24.072 --> 00:02:27.863
-Un masquerading en sortie opère après la décision de
-routage, en
+00:02:38.614 --> 00:02:42.405
+Un masquerading en sortie opère après la
+décision de routage, en
 
-00:02:27.863 --> 00:02:29.587
+00:02:42.405 --> 00:02:44.128
 POSTROUTING dans la table nat.
 
-00:02:29.933 --> 00:02:33.523
-Prenons un client qui veut interroger le routeur lui-
-même.
+00:02:44.725 --> 00:02:48.315
+Prenons un client qui veut interroger le routeur
+lui-même.
 
-00:02:33.523 --> 00:02:36.794
-Le paquet est destiné à une adresse du routeur, il
-entre
+00:02:48.315 --> 00:02:51.585
+Le paquet est destiné à une adresse du routeur,
+il entre
 
-00:02:36.794 --> 00:02:39.173
+00:02:51.585 --> 00:02:53.964
 donc dans INPUT pour la table de filtrage.
 
-00:02:39.173 --> 00:02:42.959
+00:02:53.964 --> 00:02:57.751
 Puis demande un service sur un serveur situé de
 l’autre côté.
 
-00:02:42.959 --> 00:02:46.170
+00:02:57.751 --> 00:03:00.962
 Le paquet traverse le routeur et prend FORWARD.
 
-00:02:46.170 --> 00:02:50.371
-Il peut avancer après avoir passé le filtrage dans un
-fonctionnement
+00:03:00.962 --> 00:03:05.163
+Il peut avancer après avoir passé le filtrage
+dans un fonctionnement
 
-00:02:50.371 --> 00:02:50.753
+00:03:05.163 --> 00:03:05.545
 ordinaire.
 
-00:02:50.753 --> 00:02:54.570
-En sortie, la règle de NAT source s’applique selon son
-interface
+00:03:05.545 --> 00:03:09.362
+En sortie, la règle de NAT source s’applique
+selon son interface
 
-00:02:54.570 --> 00:02:56.305
+00:03:09.362 --> 00:03:11.097
 et son réseau de départ.
 
-00:02:56.305 --> 00:03:00.888
-Si la translation paraît absente, vérifie d’abord
-quand le paquet s’arrête.
+00:03:11.097 --> 00:03:15.680
+Si la translation paraît absente, vérifie
+d’abord quand le paquet s’arrête.
 
-00:03:01.225 --> 00:03:04.275
+00:03:16.017 --> 00:03:19.067
 Un port access place un poste dans un VLAN.
 
-00:03:04.275 --> 00:03:08.387
-Le trunk transporte plusieurs VLAN vers l’équipement
-qui assure le routage,
+00:03:19.067 --> 00:03:23.179
+Le trunk transporte plusieurs VLAN vers
+l’équipement qui assure le routage,
 
-00:03:08.387 --> 00:03:09.508
+00:03:23.179 --> 00:03:24.300
 à l’aide d’étiquettes.
 
-00:03:09.508 --> 00:03:13.047
-Sur un routeur avec une seule interface physique, on
-peut créer
+00:03:24.300 --> 00:03:27.839
+Sur un routeur avec une seule interface
+physique, on peut créer
 
-00:03:13.047 --> 00:03:14.655
+00:03:27.839 --> 00:03:29.447
 une sous interface par VLAN.
 
-00:03:14.655 --> 00:03:18.552
-La passerelle de chaque client est l’adresse de sa
-sous interface.
+00:03:29.447 --> 00:03:33.344
+La passerelle de chaque client est l’adresse de
+sa sous interface.
 
-00:03:18.552 --> 00:03:22.285
+00:03:33.344 --> 00:03:37.077
 Si le serveur DHCP est ailleurs, la diffusion du
 client ne
 
-00:03:22.285 --> 00:03:23.981
+00:03:37.077 --> 00:03:38.773
 traverse pas seule le routeur.
 
-00:03:23.981 --> 00:03:27.247
-Active un relais sur l’interface qui reçoit cette
-diffusion et prépare
+00:03:38.773 --> 00:03:42.038
+Active un relais sur l’interface qui reçoit
+cette diffusion et prépare
 
-00:03:27.247 --> 00:03:29.325
+00:03:42.038 --> 00:03:44.116
 un pool pour le réseau du client.
 
-00:03:29.683 --> 00:03:33.072
-Pour mettre en place le passage, crée d’abord les deux
-VLAN
+00:03:44.725 --> 00:03:48.114
+Pour mettre en place le passage, crée d’abord
+les deux VLAN
 
-00:03:33.072 --> 00:03:33.996
+00:03:48.114 --> 00:03:49.038
 sur le commutateur.
 
-00:03:33.996 --> 00:03:37.713
-Affecte les ports du client, puis configure le port
-vers le
+00:03:49.038 --> 00:03:52.754
+Affecte les ports du client, puis configure le
+port vers le
 
-00:03:37.713 --> 00:03:38.726
+00:03:52.754 --> 00:03:53.768
 routeur, en trunk.
 
-00:03:38.726 --> 00:03:42.501
-Sur le routeur, associe chaque sous interface au bon
-tag et
+00:03:53.768 --> 00:03:57.543
+Sur le routeur, associe chaque sous interface au
+bon tag et
 
-00:03:42.501 --> 00:03:44.217
+00:03:57.543 --> 00:03:59.258
 donne-lui l’adresse de passerelle prévue.
 
-00:03:44.217 --> 00:03:49.261
-Avec une adresse manuelle provisoire, vérifie ces
-passerelles avant de diagnostiquer
+00:03:59.258 --> 00:04:04.302
+Avec une adresse manuelle provisoire, vérifie
+ces passerelles avant de diagnostiquer
 
-00:03:49.261 --> 00:03:49.719
+00:04:04.302 --> 00:04:04.761
 DHCP.
 
-00:03:49.719 --> 00:03:53.096
-Quand les VLAN sont joignables au niveau trois, ajoute
-le pool
+00:04:04.761 --> 00:04:08.138
+Quand les VLAN sont joignables au niveau trois,
+ajoute le pool
 
-00:03:53.096 --> 00:03:55.552
-ou le relais selon l’emplacement exact du serveur.
+00:04:08.138 --> 00:04:10.594
+ou le relais selon l’emplacement exact du
+serveur.
 
-00:03:55.552 --> 00:03:59.499
+00:04:10.594 --> 00:04:14.540
 Un passeur DHCP ne corrige pas un tag de VLAN
 incorrect.
 
-00:03:59.850 --> 00:04:03.035
+00:04:14.892 --> 00:04:18.077
 Le TP juxtapose Windows et Linux.
 
-00:04:03.035 --> 00:04:06.846
-Repère les deux adresses lien local, puis lance un
-ping en
+00:04:18.077 --> 00:04:21.887
+Repère les deux adresses lien local, puis lance
+un ping en
 
-00:04:06.846 --> 00:04:08.231
+00:04:21.887 --> 00:04:23.273
 indiquant l’interface de sortie.
 
-00:04:08.231 --> 00:04:11.983
-Sans cette zone, la même adresse pourrait exister sur
-un autre
+00:04:23.273 --> 00:04:27.025
+Sans cette zone, la même adresse pourrait
+exister sur un autre
 
-00:04:11.983 --> 00:04:12.325
+00:04:27.025 --> 00:04:27.366
 lien.
 
-00:04:12.325 --> 00:04:16.825
-Dans la capture, distingue la sollicitation du voisin,
-son annonce et
+00:04:27.366 --> 00:04:31.867
+Dans la capture, distingue la sollicitation du
+voisin, son annonce et
 
-00:04:16.825 --> 00:04:17.643
+00:04:31.867 --> 00:04:32.685
 l’échange écho.
 
-00:04:17.643 --> 00:04:20.400
+00:04:32.685 --> 00:04:35.442
 Ajoute ensuite le routeur du TP.
 
-00:04:20.400 --> 00:04:24.206
-Observe les annonces et vérifie si une adresse issue
-du préfixe
+00:04:35.442 --> 00:04:39.248
+Observe les annonces et vérifie si une adresse
+issue du préfixe
 
-00:04:24.206 --> 00:04:24.898
+00:04:39.248 --> 00:04:39.940
 est présente.
 
-00:04:24.898 --> 00:04:28.072
+00:04:39.940 --> 00:04:43.114
 Écris ton résultat à partir de la capture.
 
-00:04:28.433 --> 00:04:31.864
-Commence avec une vraie connexion au service du labo.
+00:04:43.683 --> 00:04:47.114
+Commence avec une vraie connexion au service du
+labo.
 
-00:04:31.864 --> 00:04:35.362
-Sur le port de contrôle FTP, sélectionne les trois
-premiers paquets
+00:04:47.114 --> 00:04:50.612
+Sur le port de contrôle FTP, sélectionne les
+trois premiers paquets
 
-00:04:35.362 --> 00:04:37.905
+00:04:50.612 --> 00:04:53.155
 d’une connexion et lis les drapeaux et numéros.
 
-00:04:37.905 --> 00:04:41.805
-Ensuite, fais une sonde SYN vers les ports préparés
-pour le
+00:04:53.155 --> 00:04:57.055
+Ensuite, fais une sonde SYN vers les ports
+préparés pour le
 
-00:04:41.805 --> 00:04:42.869
+00:04:57.055 --> 00:04:58.119
 TP avec Scapy.
 
-00:04:42.869 --> 00:04:46.128
-Compare la réponse du service et d’un port fermé.
+00:04:58.119 --> 00:05:01.378
+Compare la réponse du service et d’un port
+fermé.
 
-00:04:46.128 --> 00:04:49.482
-Un silence ne suffit pas à conclure sans vérifier le
-chemin
+00:05:01.378 --> 00:05:04.732
+Un silence ne suffit pas à conclure sans
+vérifier le chemin
 
-00:04:49.482 --> 00:04:51.006
+00:05:04.732 --> 00:05:06.256
 et les règles de filtrage.
 
-00:04:51.006 --> 00:04:54.878
-Utilise une capture pour montrer les paquets envoyés
-et reçus.
+00:05:06.256 --> 00:05:10.128
+Utilise une capture pour montrer les paquets
+envoyés et reçus.
 
-00:04:55.225 --> 00:04:58.965
-Commence avec un ping vers la passerelle et vérifie le
-routage
+00:05:10.725 --> 00:05:14.465
+Commence avec un ping vers la passerelle et
+vérifie le routage
 
-00:04:58.965 --> 00:04:59.305
+00:05:14.465 --> 00:05:14.805
 Linux.
 
-00:04:59.305 --> 00:05:03.018
+00:05:14.805 --> 00:05:18.518
 Regarde la table de filtrage pour les paquets
 transférés.
 
-00:05:03.018 --> 00:05:06.298
+00:05:18.518 --> 00:05:21.798
 Ensuite applique la translation en sortie de la
 maquette et capture
 
-00:05:06.298 --> 00:05:08.386
+00:05:21.798 --> 00:05:23.886
 le même trafic de part et d’autre.
 
-00:05:08.386 --> 00:05:11.523
+00:05:23.886 --> 00:05:27.023
 Côté client, la source est celle du poste.
 
-00:05:11.523 --> 00:05:15.065
-Côté sortie, elle correspond à l’adresse du routeur.
+00:05:27.023 --> 00:05:30.565
+Côté sortie, elle correspond à l’adresse du
+routeur.
 
-00:05:15.065 --> 00:05:18.850
-Le suivi de connexion permet de retrouver le poste
-pour la
+00:05:30.565 --> 00:05:34.350
+Le suivi de connexion permet de retrouver le
+poste pour la
 
-00:05:18.850 --> 00:05:19.195
+00:05:34.350 --> 00:05:34.695
 réponse.
 
-00:05:19.195 --> 00:05:22.798
+00:05:34.695 --> 00:05:38.298
 Deux connexions qui partagent la même adresse de
 sortie peuvent être
 
-00:05:22.798 --> 00:05:24.109
+00:05:38.298 --> 00:05:39.609
 distinguées par leurs ports.
 
-00:05:24.475 --> 00:05:28.122
-Dans une capture avant translation, le paquet sort
-avec l’adresse du
+00:05:40.225 --> 00:05:43.872
+Dans une capture avant translation, le paquet
+sort avec l’adresse du
 
-00:05:28.122 --> 00:05:29.780
+00:05:43.872 --> 00:05:45.530
 client et son port source.
 
-00:05:29.780 --> 00:05:33.497
+00:05:45.530 --> 00:05:49.247
 Après translation, le serveur voit l’adresse du
 routeur et un port
 
-00:05:33.497 --> 00:05:34.511
+00:05:49.247 --> 00:05:50.261
 associé au flux.
 
-00:05:34.511 --> 00:05:38.150
-Le port peut rester le même s’il est disponible, ou
-être
+00:05:50.261 --> 00:05:53.900
+Le port peut rester le même s’il est disponible,
+ou être
 
-00:05:38.150 --> 00:05:38.481
+00:05:53.900 --> 00:05:54.231
 changé.
 
-00:05:38.481 --> 00:05:42.660
-En comparant les captures, associe d’abord les paquets
-en regardant la
+00:05:54.231 --> 00:05:58.410
+En comparant les captures, associe d’abord les
+paquets en regardant la
 
-00:05:42.660 --> 00:05:44.180
+00:05:58.410 --> 00:05:59.930
 destination et leur chronologie.
 
-00:05:44.180 --> 00:05:46.729
+00:05:59.930 --> 00:06:02.479
 Observe ensuite la réponse.
 
-00:05:46.729 --> 00:05:50.436
-Elle arrive sur l’adresse externe du routeur et le
-suivi de
+00:06:02.479 --> 00:06:06.186
+Elle arrive sur l’adresse externe du routeur et
+le suivi de
 
-00:05:50.436 --> 00:05:52.121
+00:06:06.186 --> 00:06:07.871
 connexion retrouve la machine interne.
 
-00:05:52.121 --> 00:05:56.008
-Ce test pose une preuve plus précise qu’un ping réussi
-sans
+00:06:07.871 --> 00:06:11.758
+Ce test pose une preuve plus précise qu’un ping
+réussi sans
 
-00:05:56.008 --> 00:05:56.361
+00:06:11.758 --> 00:06:12.111
 capture.
 
-00:05:56.725 --> 00:06:00.253
+00:06:12.475 --> 00:06:16.003
 Le TP quatre sépare personnel et administration.
 
-00:06:00.253 --> 00:06:03.735
+00:06:16.003 --> 00:06:19.485
 Découpe le plan de départ, puis teste d’abord le
 routage sans
 
-00:06:03.735 --> 00:06:05.633
+00:06:19.485 --> 00:06:21.383
 ajouter plusieurs règles à la fois.
 
-00:06:05.633 --> 00:06:09.186
-Ajoute l’ACL demandée et démontre un accès qui passe
-et un
+00:06:21.383 --> 00:06:24.936
+Ajoute l’ACL demandée et démontre un accès qui
+passe et un
 
-00:06:09.186 --> 00:06:10.155
+00:06:24.936 --> 00:06:25.905
 accès qui échoue.
 
-00:06:10.155 --> 00:06:13.893
+00:06:25.905 --> 00:06:29.643
 Le TP cinq utilise les VLAN cent et deux cents.
 
-00:06:13.893 --> 00:06:17.986
+00:06:29.643 --> 00:06:33.736
 Configure les ports access, le trunk, puis les
 passerelles.
 
-00:06:17.986 --> 00:06:20.878
+00:06:33.736 --> 00:06:36.628
 Le serveur doit proposer le bon pool.
 
-00:06:20.878 --> 00:06:24.146
-Renouvelle les baux et vérifie aussi le masque et la
-passerelle,
+00:06:36.628 --> 00:06:39.896
+Renouvelle les baux et vérifie aussi le masque
+et la passerelle,
 
-00:06:24.146 --> 00:06:27.116
+00:06:39.896 --> 00:06:42.866
 car une bonne adresse seule ne garantit pas la
 connectivité.
 
-00:06:27.475 --> 00:06:29.827
+00:06:43.475 --> 00:06:45.827
 Vérifie client par client.
 
-00:06:29.827 --> 00:06:33.550
-Renouvelle le bail dans le VLAN cent, contrôle son
-adresse et
+00:06:45.827 --> 00:06:49.550
+Renouvelle le bail dans le VLAN cent, contrôle
+son adresse et
 
-00:06:33.550 --> 00:06:34.226
+00:06:49.550 --> 00:06:50.226
 sa passerelle.
 
-00:06:34.226 --> 00:06:37.131
+00:06:50.226 --> 00:06:53.131
 Ensuite répète dans le VLAN deux cents.
 
-00:06:37.131 --> 00:06:40.538
+00:06:53.131 --> 00:06:56.538
 En cas d’échec, capture la découverte en entrée.
 
-00:06:40.538 --> 00:06:43.818
-Si le serveur est distant, vérifie qu’il reçoit la
-demande relayée
+00:06:56.538 --> 00:06:59.818
+Si le serveur est distant, vérifie qu’il reçoit
+la demande relayée
 
-00:06:43.818 --> 00:06:46.800
-et retrouve le bon réseau grâce à l’adresse du relais.
+00:06:59.818 --> 00:07:02.800
+et retrouve le bon réseau grâce à l’adresse du
+relais.
 
-00:06:46.800 --> 00:06:51.035
-S’il sélectionne bien le pool, regarde le retour de
-l’offre puis
+00:07:02.800 --> 00:07:07.035
+S’il sélectionne bien le pool, regarde le retour
+de l’offre puis
 
-00:06:51.035 --> 00:06:51.420
+00:07:07.035 --> 00:07:07.420
 l’acceptation.
 
-00:06:51.420 --> 00:06:55.195
-Quatre messages distincts permettent de préciser ce
-qui manque.
+00:07:07.420 --> 00:07:11.195
+Quatre messages distincts permettent de préciser
+ce qui manque.
 
-00:06:55.195 --> 00:06:58.921
-Si seule la passerelle est mauvaise, relis la valeur
-d’option configurée
+00:07:11.195 --> 00:07:14.921
+Si seule la passerelle est mauvaise, relis la
+valeur d’option configurée
 
-00:06:58.921 --> 00:06:59.937
+00:07:14.921 --> 00:07:15.937
 dans le pool.

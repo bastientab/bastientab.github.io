@@ -1,543 +1,572 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.802
-Un système de gestion de base de données organise
-l’accès, le
+00:00:00.100 --> 00:00:04.103
+On veut compter les produits par catégorie, même
+si une catégorie
 
-00:00:03.802 --> 00:00:05.148
+00:00:04.103 --> 00:00:04.831
+est vide.
+
+00:00:04.831 --> 00:00:08.723
+La jointure externe garde la catégorie sans
+produit.
+
+00:00:08.723 --> 00:00:12.344
+Ensuite, on compte les identifiants de produit
+présents.
+
+00:00:12.344 --> 00:00:15.359
+La catégorie vide donne bien zéro.
+
+00:00:15.975 --> 00:00:19.677
+Un système de gestion de base de données
+organise l’accès, le
+
+00:00:19.677 --> 00:00:21.023
 stockage et les contraintes.
 
-00:00:05.148 --> 00:00:09.368
-Dans un catalogue, chaque produit a un identifiant
-propre et référence
+00:00:21.023 --> 00:00:25.243
+Dans un catalogue, chaque produit a un
+identifiant propre et référence
 
-00:00:09.368 --> 00:00:10.136
+00:00:25.243 --> 00:00:26.011
 sa catégorie.
 
-00:00:10.136 --> 00:00:14.094
-Si tu renommes une catégorie, tu modifies une seule
-ligne.
+00:00:26.011 --> 00:00:29.969
+Si tu renommes une catégorie, tu modifies une
+seule ligne.
 
-00:00:14.094 --> 00:00:17.007
-Quand deux objets peuvent être liés plusieurs fois de
-part et
+00:00:29.969 --> 00:00:32.882
+Quand deux objets peuvent être liés plusieurs
+fois de part et
 
-00:00:17.007 --> 00:00:19.920
-d’autre, comme les acteurs et les films, ajoute une
-table qui
+00:00:32.882 --> 00:00:35.795
+d’autre, comme les acteurs et les films, ajoute
+une table qui
 
-00:00:19.920 --> 00:00:21.508
+00:00:35.795 --> 00:00:37.383
 porte les identifiants des deux côtés.
 
-00:00:21.508 --> 00:00:24.533
-Une clé composée sur ces deux valeurs peut empêcher de
-créer
+00:00:37.383 --> 00:00:40.408
+Une clé composée sur ces deux valeurs peut
+empêcher de créer
 
-00:00:24.533 --> 00:00:25.908
+00:00:40.408 --> 00:00:41.783
 deux fois le même lien.
 
-00:00:26.267 --> 00:00:29.541
-Imagine dans un premier brouillon que chaque produit
-stocke le nom
+00:00:42.392 --> 00:00:45.666
+Imagine dans un premier brouillon que chaque
+produit stocke le nom
 
-00:00:29.541 --> 00:00:31.327
+00:00:45.666 --> 00:00:47.452
 de sa catégorie en toutes lettres.
 
-00:00:31.327 --> 00:00:34.633
-Pour renommer la catégorie, tu dois modifier tous les
-produits et
+00:00:47.452 --> 00:00:50.758
+Pour renommer la catégorie, tu dois modifier
+tous les produits et
 
-00:00:34.633 --> 00:00:37.638
-une ligne oubliée crée deux orthographes pour la même
-chose.
+00:00:50.758 --> 00:00:53.763
+une ligne oubliée crée deux orthographes pour la
+même chose.
 
-00:00:37.638 --> 00:00:41.927
+00:00:53.763 --> 00:00:58.052
 Ajoute plutôt une table de catégories avec un
 identifiant stable.
 
-00:00:41.927 --> 00:00:44.930
+00:00:58.052 --> 00:01:01.055
 Le produit ne conserve que cet identifiant.
 
-00:00:44.930 --> 00:00:47.614
+00:01:01.055 --> 00:01:03.739
 Une clé étrangère protège le lien.
 
-00:00:47.614 --> 00:00:51.635
-Lors de l’affichage, tu joins la table pour récupérer
-le nom
+00:01:03.739 --> 00:01:07.760
+Lors de l’affichage, tu joins la table pour
+récupérer le nom
 
-00:00:51.635 --> 00:00:52.001
+00:01:07.760 --> 00:01:08.126
 actuel.
 
-00:00:52.001 --> 00:00:56.045
+00:01:08.126 --> 00:01:12.170
 Cette logique sépare l’identité technique et le
 libellé visible.
 
-00:00:56.392 --> 00:00:59.896
-Commence par écrire la table qui contient les lignes
-que tu
+00:01:12.517 --> 00:01:16.021
+Commence par écrire la table qui contient les
+lignes que tu
 
-00:00:59.896 --> 00:01:00.533
+00:01:16.021 --> 00:01:16.658
 souhaites afficher.
 
-00:01:00.533 --> 00:01:04.246
-Ajoute une jointure quand une information est stockée
-ailleurs.
+00:01:16.658 --> 00:01:20.371
+Ajoute une jointure quand une information est
+stockée ailleurs.
 
-00:01:04.246 --> 00:01:07.677
-Une jointure interne conserve les correspondances.
+00:01:20.371 --> 00:01:23.802
+Une jointure interne conserve les
+correspondances.
 
-00:01:07.677 --> 00:01:11.173
-Une jointure gauche garde aussi les lignes du côté
-gauche, même
+00:01:23.802 --> 00:01:27.298
+Une jointure gauche garde aussi les lignes du
+côté gauche, même
 
-00:01:11.173 --> 00:01:12.445
+00:01:27.298 --> 00:01:28.570
 quand elles sont seules.
 
-00:01:12.445 --> 00:01:16.362
-Ensuite, si on te demande un nombre par catégorie,
-crée un
+00:01:28.570 --> 00:01:32.487
+Ensuite, si on te demande un nombre par
+catégorie, crée un
 
-00:01:16.362 --> 00:01:18.143
+00:01:32.487 --> 00:01:34.268
 groupe par identifiant de catégorie.
 
-00:01:18.143 --> 00:01:21.918
-Pour garder uniquement les groupes qui contiennent au
-moins deux lignes,
+00:01:34.268 --> 00:01:38.043
+Pour garder uniquement les groupes qui
+contiennent au moins deux lignes,
 
-00:01:21.918 --> 00:01:22.604
+00:01:38.043 --> 00:01:38.729
 utilise having.
 
-00:01:22.933 --> 00:01:25.910
+00:01:39.308 --> 00:01:42.285
 Suivons trois lignes après une jointure gauche.
 
-00:01:25.910 --> 00:01:29.011
+00:01:42.285 --> 00:01:45.386
 A apparaît deux fois, une pour chaque produit.
 
-00:01:29.011 --> 00:01:32.677
-B apparaît avec des valeurs nulles du côté produit,
-car la
+00:01:45.386 --> 00:01:49.052
+B apparaît avec des valeurs nulles du côté
+produit, car la
 
-00:01:32.677 --> 00:01:34.011
+00:01:49.052 --> 00:01:50.386
 jointure garde les catégories.
 
-00:01:34.011 --> 00:01:36.719
+00:01:50.386 --> 00:01:53.094
 Le regroupement reforme deux groupes.
 
-00:01:36.719 --> 00:01:39.757
-Compter la clé du produit donne deux pour A et zéro
+00:01:53.094 --> 00:01:56.132
+Compter la clé du produit donne deux pour A et
+zéro
 
-00:01:39.757 --> 00:01:40.310
+00:01:56.132 --> 00:01:56.685
 pour B.
 
-00:01:40.310 --> 00:01:43.249
-Les lignes du côté sans produit ne comptent pas car la
+00:01:56.685 --> 00:01:59.624
+Les lignes du côté sans produit ne comptent pas
+car la
 
-00:01:43.249 --> 00:01:44.317
+00:01:59.624 --> 00:02:00.692
 clé y vaut null.
 
-00:01:44.317 --> 00:01:47.801
-Si tu ajoutes une condition de produit dans where,
-elle peut
+00:02:00.692 --> 00:02:04.176
+Si tu ajoutes une condition de produit dans
+where, elle peut
 
-00:01:47.801 --> 00:01:48.435
+00:02:04.176 --> 00:02:04.810
 retirer B.
 
-00:01:48.435 --> 00:01:51.748
-Si tu veux garder B tout en filtrant les produits
-associés,
+00:02:04.810 --> 00:02:08.123
+Si tu veux garder B tout en filtrant les
+produits associés,
 
-00:01:51.748 --> 00:01:54.158
+00:02:08.123 --> 00:02:10.533
 place ce filtre dans la condition de jointure.
 
-00:01:54.517 --> 00:01:58.539
-La commande insert crée une ligne, update en modifie
-et delete
+00:02:10.892 --> 00:02:14.914
+La commande insert crée une ligne, update en
+modifie et delete
 
-00:01:58.539 --> 00:01:59.271
+00:02:14.914 --> 00:02:15.646
 en supprime.
 
-00:01:59.271 --> 00:02:03.474
-Pour une modification, prépare d’abord le select avec
-le même filtre.
+00:02:15.646 --> 00:02:19.849
+Pour une modification, prépare d’abord le select
+avec le même filtre.
 
-00:02:03.474 --> 00:02:06.329
+00:02:19.849 --> 00:02:22.704
 Tu verras combien de lignes sont concernées.
 
-00:02:06.329 --> 00:02:10.374
-Quand tu insères une location, l’exemplaire, le client
-et le membre
+00:02:22.704 --> 00:02:26.749
+Quand tu insères une location, l’exemplaire, le
+client et le membre
 
-00:02:10.374 --> 00:02:12.212
+00:02:26.749 --> 00:02:28.587
 du personnel doivent déjà exister.
 
-00:02:12.212 --> 00:02:16.109
-Une transaction permet d’annuler les changements si
-une étape échoue.
+00:02:28.587 --> 00:02:32.484
+Une transaction permet d’annuler les changements
+si une étape échoue.
 
-00:02:16.109 --> 00:02:20.054
-Depuis une application, passe les valeurs à la requête
-comme paramètres,
+00:02:32.484 --> 00:02:36.429
+Depuis une application, passe les valeurs à la
+requête comme paramètres,
 
-00:02:20.054 --> 00:02:21.489
+00:02:36.429 --> 00:02:37.864
 avec le type approprié.
 
-00:02:21.850 --> 00:02:25.293
-Suppose qu’on change le prix des produits d’une seule
-marque.
+00:02:38.475 --> 00:02:41.918
+Suppose qu’on change le prix des produits d’une
+seule marque.
 
-00:02:25.293 --> 00:02:28.694
-D’abord transforme le filtre en select et vérifie que
-les lignes
+00:02:41.918 --> 00:02:45.319
+D’abord transforme le filtre en select et
+vérifie que les lignes
 
-00:02:28.694 --> 00:02:30.550
+00:02:45.319 --> 00:02:47.175
 affichées ont bien la marque attendue.
 
-00:02:30.550 --> 00:02:33.763
-Ensuite lance la mise à jour dans une transaction,
-observe le
+00:02:47.175 --> 00:02:50.388
+Ensuite lance la mise à jour dans une
+transaction, observe le
 
-00:02:33.763 --> 00:02:35.807
+00:02:50.388 --> 00:02:52.432
 nombre de lignes et relis leur prix.
 
-00:02:35.807 --> 00:02:39.413
-Si tu vois vingt produits alors que tu en attendais
-deux,
+00:02:52.432 --> 00:02:56.038
+Si tu vois vingt produits alors que tu en
+attendais deux,
 
-00:02:39.413 --> 00:02:39.741
+00:02:56.038 --> 00:02:56.366
 annule.
 
-00:02:39.741 --> 00:02:43.185
+00:02:56.366 --> 00:02:59.810
 Si la vérification correspond, valide.
 
-00:02:43.185 --> 00:02:47.039
-Quand plusieurs commandes dépendent l’une de l’autre,
-cette méthode protège la
+00:02:59.810 --> 00:03:03.664
+Quand plusieurs commandes dépendent l’une de
+l’autre, cette méthode protège la
 
-00:02:47.039 --> 00:02:49.141
+00:03:03.664 --> 00:03:05.766
 cohérence du changement dans son ensemble.
 
-00:02:49.475 --> 00:02:52.513
+00:03:06.100 --> 00:03:09.138
 NoSQL regroupe plusieurs familles.
 
-00:02:52.513 --> 00:02:56.717
+00:03:09.138 --> 00:03:13.342
 Une base clé-valeur utilise un identifiant pour
 atteindre la valeur.
 
-00:02:56.717 --> 00:03:00.570
+00:03:13.342 --> 00:03:17.195
 Une base de documents, comme MongoDB, stocke des
 champs qui peuvent
 
-00:03:00.570 --> 00:03:02.673
+00:03:17.195 --> 00:03:19.298
 contenir des sous-documents et des tableaux.
 
-00:03:02.673 --> 00:03:06.616
-Imbrique ce que tu lis fréquemment ensemble si la
-taille reste
+00:03:19.298 --> 00:03:23.241
+Imbrique ce que tu lis fréquemment ensemble si
+la taille reste
 
-00:03:06.616 --> 00:03:06.974
+00:03:23.241 --> 00:03:23.599
 raisonnable.
 
-00:03:06.974 --> 00:03:10.931
+00:03:23.599 --> 00:03:27.556
 Quand un objet est partagé ou mis à jour
 indépendamment, une
 
-00:03:10.931 --> 00:03:12.011
+00:03:27.556 --> 00:03:28.636
 référence peut convenir.
 
-00:03:12.011 --> 00:03:15.947
-Dans une recherche, le filtre choisit les documents et
-la projection
+00:03:28.636 --> 00:03:32.572
+Dans une recherche, le filtre choisit les
+documents et la projection
 
-00:03:15.947 --> 00:03:17.378
+00:03:32.572 --> 00:03:34.003
 choisit les champs affichés.
 
-00:03:17.725 --> 00:03:21.487
-Prends un document qui porte un titre, une durée et
-deux
+00:03:34.600 --> 00:03:38.362
+Prends un document qui porte un titre, une durée
+et deux
 
-00:03:21.487 --> 00:03:21.829
+00:03:38.362 --> 00:03:38.704
 catégories.
 
-00:03:21.829 --> 00:03:24.930
-Tu peux lire les trois propriétés ensemble, ce qui est
-pratique
+00:03:38.704 --> 00:03:41.805
+Tu peux lire les trois propriétés ensemble, ce
+qui est pratique
 
-00:03:24.930 --> 00:03:27.467
-si elles sont toujours affichées sur la même fiche.
+00:03:41.805 --> 00:03:44.342
+si elles sont toujours affichées sur la même
+fiche.
 
-00:03:27.467 --> 00:03:32.320
-Si les catégories ont elles-mêmes une description
-utilisée partout, une référence
+00:03:44.342 --> 00:03:49.195
+Si les catégories ont elles-mêmes une
+description utilisée partout, une référence
 
-00:03:32.320 --> 00:03:33.202
+00:03:49.195 --> 00:03:50.077
 devient intéressante.
 
-00:03:33.202 --> 00:03:36.621
+00:03:50.077 --> 00:03:53.496
 Définis d’abord ce que l’application lit le plus
 souvent.
 
-00:03:36.621 --> 00:03:40.463
-Pour chercher les films longs, applique un filtre
-numérique sur la
+00:03:53.496 --> 00:03:57.338
+Pour chercher les films longs, applique un
+filtre numérique sur la
 
-00:03:40.463 --> 00:03:40.812
+00:03:57.338 --> 00:03:57.687
 durée.
 
-00:03:40.812 --> 00:03:43.753
+00:03:57.687 --> 00:04:00.628
 La projection réduit les champs retournés.
 
-00:03:43.753 --> 00:03:47.393
-C’est l’équivalent de deux choix différents dans une
-requête SQL, les
+00:04:00.628 --> 00:04:04.268
+C’est l’équivalent de deux choix différents dans
+une requête SQL, les
 
-00:03:47.393 --> 00:03:48.717
+00:04:04.268 --> 00:04:05.592
 lignes et les colonnes.
 
-00:03:49.100 --> 00:03:52.555
-Le TP demande de compter les produits par catégorie.
+00:04:05.975 --> 00:04:09.430
+Le TP demande de compter les produits par
+catégorie.
 
-00:03:52.555 --> 00:03:56.177
-Commence avec la table des catégories et cherche les
-produits dont
+00:04:09.430 --> 00:04:13.052
+Commence avec la table des catégories et cherche
+les produits dont
 
-00:03:56.177 --> 00:03:57.494
+00:04:13.052 --> 00:04:14.369
 la clé étrangère correspond.
 
-00:03:57.494 --> 00:04:00.594
+00:04:14.369 --> 00:04:17.469
 Regroupe ensuite par identifiant et par nom.
 
-00:04:00.594 --> 00:04:04.423
-Si l’énoncé inclut les catégories vides, choisis une
-jointure gauche et
+00:04:17.469 --> 00:04:21.298
+Si l’énoncé inclut les catégories vides, choisis
+une jointure gauche et
 
-00:04:04.423 --> 00:04:05.815
+00:04:21.298 --> 00:04:22.690
 compte la clé produit.
 
-00:04:05.815 --> 00:04:10.214
-Termine en construisant une catégorie sans produit en
-environnement de test.
+00:04:22.690 --> 00:04:27.089
+Termine en construisant une catégorie sans
+produit en environnement de test.
 
-00:04:10.214 --> 00:04:12.579
+00:04:27.089 --> 00:04:29.454
 Le nombre doit être zéro.
 
-00:04:12.579 --> 00:04:15.978
-En comptant toutes les lignes après la jointure, tu
-obtiendrais un
+00:04:29.454 --> 00:04:32.853
+En comptant toutes les lignes après la jointure,
+tu obtiendrais un
 
-00:04:15.978 --> 00:04:16.905
+00:04:32.853 --> 00:04:33.780
 à la place.
 
-00:04:17.267 --> 00:04:21.196
-Dans Sakila, les films et les catégories sont reliés
-par une
+00:04:34.392 --> 00:04:38.321
+Dans Sakila, les films et les catégories sont
+reliés par une
 
-00:04:21.196 --> 00:04:21.910
+00:04:38.321 --> 00:04:39.035
 table intermédiaire.
 
-00:04:21.910 --> 00:04:25.983
-La première jointure suit l’identifiant du film et la
-deuxième l’identifiant
+00:04:39.035 --> 00:04:43.108
+La première jointure suit l’identifiant du film
+et la deuxième l’identifiant
 
-00:04:25.983 --> 00:04:27.094
+00:04:43.108 --> 00:04:44.219
 de la catégorie.
 
-00:04:27.094 --> 00:04:30.722
-Les deux identifiants peuvent avoir la même valeur par
-hasard.
+00:04:44.219 --> 00:04:47.847
+Les deux identifiants peuvent avoir la même
+valeur par hasard.
 
-00:04:30.722 --> 00:04:33.332
+00:04:47.847 --> 00:04:50.457
 Vérifie leur nom et leur rôle.
 
-00:04:33.332 --> 00:04:37.768
-Une fois la jointure validée, affiche quelques titres
-avec leurs catégories.
+00:04:50.457 --> 00:04:54.893
+Une fois la jointure validée, affiche quelques
+titres avec leurs catégories.
 
-00:04:37.768 --> 00:04:41.567
+00:04:54.893 --> 00:04:58.692
 Ensuite seulement, regroupe et calcule la durée
 moyenne.
 
-00:04:41.567 --> 00:04:45.589
-La même méthode fonctionne pour les acteurs, avec la
-table film
+00:04:58.692 --> 00:05:02.714
+La même méthode fonctionne pour les acteurs,
+avec la table film
 
-00:04:45.589 --> 00:04:45.954
+00:05:02.714 --> 00:05:03.079
 actor.
 
-00:04:46.308 --> 00:04:48.918
+00:05:03.683 --> 00:05:06.293
 Construisons un exemple simple.
 
-00:04:48.918 --> 00:04:52.189
+00:05:06.293 --> 00:05:09.564
 La table intermédiaire donne deux liens pour la
 catégorie A et
 
-00:04:52.189 --> 00:04:53.378
+00:05:09.564 --> 00:05:10.753
 un seul pour B.
 
-00:04:53.378 --> 00:04:57.606
-Après jointure, A a deux durées, quatre-vingt-dix-huit
-et cent deux.
+00:05:10.753 --> 00:05:14.981
+Après jointure, A a deux durées, quatre-vingt-
+dix-huit et cent deux.
 
-00:04:57.606 --> 00:04:59.567
+00:05:14.981 --> 00:05:16.942
 La moyenne vaut cent.
 
-00:04:59.567 --> 00:05:03.391
-B n’a que soixante-dix et le résultat reste soixante-
-dix.
+00:05:16.942 --> 00:05:20.766
+B n’a que soixante-dix et le résultat reste
+soixante-dix.
 
-00:05:03.391 --> 00:05:07.233
-Si une jointure donne des dizaines de lignes pour ce
-petit
+00:05:20.766 --> 00:05:24.608
+Si une jointure donne des dizaines de lignes
+pour ce petit
 
-00:05:07.233 --> 00:05:08.979
+00:05:24.608 --> 00:05:26.354
 jeu, inspecte les identifiants utilisés.
 
-00:05:08.979 --> 00:05:12.610
-Un produit cartésien ou une condition fondée sur la
-mauvaise clé
+00:05:26.354 --> 00:05:29.985
+Un produit cartésien ou une condition fondée sur
+la mauvaise clé
 
-00:05:12.610 --> 00:05:13.930
+00:05:29.985 --> 00:05:31.305
 fait gonfler les groupes.
 
-00:05:13.930 --> 00:05:16.834
+00:05:31.305 --> 00:05:34.209
 Contrôle les lignes avant d’appliquer l’agrégat.
 
-00:05:17.183 --> 00:05:20.625
-Imagine une collection de films avec un titre et une
-durée
+00:05:34.558 --> 00:05:38.000
+Imagine une collection de films avec un titre et
+une durée
 
-00:05:20.625 --> 00:05:21.251
+00:05:38.000 --> 00:05:38.626
 en minutes.
 
-00:05:21.251 --> 00:05:24.644
+00:05:38.626 --> 00:05:42.019
 On veut les titres des films qui durent au moins
 quatre-vingt-dix
 
-00:05:24.644 --> 00:05:24.952
+00:05:42.019 --> 00:05:42.327
 minutes.
 
-00:05:24.952 --> 00:05:28.432
-Le premier objet envoyé à find choisit les documents.
+00:05:42.327 --> 00:05:45.807
+Le premier objet envoyé à find choisit les
+documents.
 
-00:05:28.432 --> 00:05:30.712
+00:05:45.807 --> 00:05:48.087
 Le deuxième choisit les champs.
 
-00:05:30.712 --> 00:05:34.560
-Retire explicitement l’identifiant si tu ne veux que
-le titre.
+00:05:48.087 --> 00:05:51.935
+Retire explicitement l’identifiant si tu ne veux
+que le titre.
 
-00:05:34.560 --> 00:05:39.548
-Essaie les durées quatre-vingt-neuf, quatre-vingt-dix
-et quatre-vingt-onze pour tester la frontière.
+00:05:51.935 --> 00:05:56.923
+Essaie les durées quatre-vingt-neuf, quatre-
+vingt-dix et quatre-vingt-onze pour tester la
+frontière.
 
-00:05:39.548 --> 00:05:43.175
-Vérifie aussi qu’un nombre a été enregistré comme
-nombre.
+00:05:56.923 --> 00:06:00.550
+Vérifie aussi qu’un nombre a été enregistré
+comme nombre.
 
-00:05:43.517 --> 00:05:46.672
-Le TP de création de la base commence avec des modèles
+00:06:01.142 --> 00:06:04.297
+Le TP de création de la base commence avec des
+modèles
 
-00:05:46.672 --> 00:05:48.393
+00:06:04.297 --> 00:06:06.018
 de bus et les bus réels.
 
-00:05:48.393 --> 00:05:51.506
+00:06:06.018 --> 00:06:09.131
 Un modèle peut être associé à plusieurs bus.
 
-00:05:51.506 --> 00:05:54.116
+00:06:09.131 --> 00:06:11.741
 Crée la table des modèles en premier.
 
-00:05:54.116 --> 00:05:58.368
-Ensuite, donne à chaque bus son immatriculation et la
-référence de
+00:06:11.741 --> 00:06:15.993
+Ensuite, donne à chaque bus son immatriculation
+et la référence de
 
-00:05:58.368 --> 00:05:59.141
+00:06:15.993 --> 00:06:16.766
 son modèle.
 
-00:05:59.141 --> 00:06:02.906
-Insère un modèle valide, ajoute deux bus et affiche le
-résultat
+00:06:16.766 --> 00:06:20.531
+Insère un modèle valide, ajoute deux bus et
+affiche le résultat
 
-00:06:02.906 --> 00:06:03.932
+00:06:20.531 --> 00:06:21.557
 de la jointure.
 
-00:06:03.932 --> 00:06:07.793
-Essaie ensuite un bus avec un identifiant de modèle
-inconnu.
+00:06:21.557 --> 00:06:25.418
+Essaie ensuite un bus avec un identifiant de
+modèle inconnu.
 
-00:06:07.793 --> 00:06:11.212
-La base doit refuser si les contraintes sont actives.
+00:06:25.418 --> 00:06:28.837
+La base doit refuser si les contraintes sont
+actives.
 
-00:06:11.212 --> 00:06:14.950
+00:06:28.837 --> 00:06:32.575
 Utilise ce test comme preuve que la relation
 fonctionne.
 
-00:06:15.308 --> 00:06:19.244
-Le TP Employees demande d’afficher des employés et de
-repérer ceux
+00:06:33.183 --> 00:06:37.119
+Le TP Employees demande d’afficher des employés
+et de repérer ceux
 
-00:06:19.244 --> 00:06:20.675
+00:06:37.119 --> 00:06:38.550
 qui satisfont un critère.
 
-00:06:20.675 --> 00:06:24.087
+00:06:38.550 --> 00:06:41.962
 Si tu veux les quinze plus récents, le tri doit
 précéder
 
-00:06:24.087 --> 00:06:24.707
+00:06:41.962 --> 00:06:42.582
 la limite.
 
-00:06:24.707 --> 00:06:28.863
-Ajoute le numéro d’employé comme deuxième clé pour
-trancher les dates
+00:06:42.582 --> 00:06:46.738
+Ajoute le numéro d’employé comme deuxième clé
+pour trancher les dates
 
-00:06:28.863 --> 00:06:29.241
+00:06:46.738 --> 00:06:47.116
 identiques.
 
-00:06:29.241 --> 00:06:33.065
+00:06:47.116 --> 00:06:50.940
 Dans une autre requête, le pourcentage après A
 signifie n’importe quelle
 
-00:06:33.065 --> 00:06:35.847
+00:06:50.940 --> 00:06:53.722
 suite de caractères, y compris une suite vide.
 
-00:06:35.847 --> 00:06:38.953
-Pour le comptage après deux mille, filtre sur les
-dates strictement
+00:06:53.722 --> 00:06:56.828
+Pour le comptage après deux mille, filtre sur
+les dates strictement
 
-00:06:38.953 --> 00:06:42.059
-après la fin de l’année et demande ensuite le nombre
-de
+00:06:56.828 --> 00:06:59.934
+après la fin de l’année et demande ensuite le
+nombre de
 
-00:06:42.059 --> 00:06:42.342
+00:06:59.934 --> 00:07:00.217
 lignes.
 
-00:06:42.683 --> 00:06:46.285
-Un test de frontière permet de vérifier l’opérateur.
+00:07:00.808 --> 00:07:04.410
+Un test de frontière permet de vérifier
+l’opérateur.
 
-00:06:46.285 --> 00:06:49.336
-Pour un champ date, le trente et un décembre deux
-mille
+00:07:04.410 --> 00:07:07.461
+Pour un champ date, le trente et un décembre
+deux mille
 
-00:06:49.336 --> 00:06:51.555
+00:07:07.461 --> 00:07:09.680
 est exactement la limite et doit être exclu.
 
-00:06:51.555 --> 00:06:54.962
-Le premier janvier deux mille un vient après et doit
-rester.
+00:07:09.680 --> 00:07:13.087
+Le premier janvier deux mille un vient après et
+doit rester.
 
-00:06:54.962 --> 00:06:58.675
-Teste ensuite deux salariés dont la date d’embauche
-est égale.
+00:07:13.087 --> 00:07:16.800
+Teste ensuite deux salariés dont la date
+d’embauche est égale.
 
-00:06:58.675 --> 00:07:02.172
-Si tu tries après avoir appliqué une limite dans une
-sous
+00:07:16.800 --> 00:07:20.297
+Si tu tries après avoir appliqué une limite dans
+une sous
 
-00:07:02.172 --> 00:07:04.398
-requête, tu peux sélectionner les mauvais salariés.
+00:07:20.297 --> 00:07:22.523
+requête, tu peux sélectionner les mauvais
+salariés.
 
-00:07:04.398 --> 00:07:07.800
-Pour obtenir une liste stable des quinze plus récents,
-trie les
+00:07:22.523 --> 00:07:25.925
+Pour obtenir une liste stable des quinze plus
+récents, trie les
 
-00:07:07.800 --> 00:07:10.893
-lignes avant la limite et départage avec le numéro
-employé.
+00:07:25.925 --> 00:07:29.018
+lignes avant la limite et départage avec le
+numéro employé.

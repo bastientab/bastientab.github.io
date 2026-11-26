@@ -1,708 +1,728 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.309
-Quand tu crées un compte directement sur un PC, ce
-compte
+00:00:00.100 --> 00:00:03.369
+Quand une personne ouvre sa session, où sont
+enregistrés son compte
 
-00:00:03.309 --> 00:00:04.768
+00:00:03.369 --> 00:00:05.449
+et les groupes auxquels elle appartient ?
+
+00:00:05.449 --> 00:00:09.264
+Un annuaire central permet de retrouver ces
+informations.
+
+00:00:09.264 --> 00:00:13.169
+Active Directory, dans ce cours, joue ce rôle.
+
+00:00:13.767 --> 00:00:16.976
+Quand tu crées un compte directement sur un PC,
+ce compte
+
+00:00:16.976 --> 00:00:18.435
 est connu de ce PC.
 
-00:00:04.768 --> 00:00:08.120
-Dans le scénario Cass Auto, on veut gérer les comptes
-des
+00:00:18.435 --> 00:00:21.787
+Dans le scénario Cass Auto, on veut gérer les
+comptes des
 
-00:00:08.120 --> 00:00:09.339
+00:00:21.787 --> 00:00:23.006
 salariés au même endroit.
 
-00:00:09.339 --> 00:00:13.614
-Active Directory Domain Services fournit un annuaire
-de comptes, de machines
+00:00:23.006 --> 00:00:27.281
+Active Directory Domain Services fournit un
+annuaire de comptes, de machines
 
-00:00:13.614 --> 00:00:14.780
+00:00:27.281 --> 00:00:28.447
 et de groupes.
 
-00:00:14.780 --> 00:00:19.560
+00:00:28.447 --> 00:00:33.226
 Un contrôleur de domaine héberge cet annuaire et
 participe à l’authentification.
 
-00:00:19.560 --> 00:00:22.551
-Un utilisateur peut s’identifier avec son compte de
-domaine sur un
+00:00:33.226 --> 00:00:36.218
+Un utilisateur peut s’identifier avec son compte
+de domaine sur un
 
-00:00:22.551 --> 00:00:25.543
-poste qui a rejoint le domaine et où il est autorisé
+00:00:36.218 --> 00:00:39.210
+poste qui a rejoint le domaine et où il est
+autorisé
 
-00:00:25.543 --> 00:00:26.631
+00:00:39.210 --> 00:00:40.298
 à ouvrir une session.
 
-00:00:26.975 --> 00:00:30.500
-Dans le petit réseau du TD, une forêt avec un seul
+00:00:40.892 --> 00:00:44.416
+Dans le petit réseau du TD, une forêt avec un
+seul
 
-00:00:30.500 --> 00:00:31.141
+00:00:44.416 --> 00:00:45.057
 domaine suffit.
 
-00:00:31.141 --> 00:00:34.376
+00:00:45.057 --> 00:00:48.293
 Une unité d’organisation, ou O U, ressemble à un
 dossier dans
 
-00:00:34.376 --> 00:00:37.611
+00:00:48.293 --> 00:00:51.528
 l’annuaire : tu y ranges les objets et tu peux y
 
-00:00:37.611 --> 00:00:38.494
+00:00:51.528 --> 00:00:52.410
 lier une stratégie.
 
-00:00:38.494 --> 00:00:41.962
+00:00:52.410 --> 00:00:55.878
 Un utilisateur est placé dans une O U à la fois.
 
-00:00:41.962 --> 00:00:45.545
-Un groupe se comporte comme une liste de personnes ou
-d’autres
+00:00:55.878 --> 00:00:59.462
+Un groupe se comporte comme une liste de
+personnes ou d’autres
 
-00:00:45.545 --> 00:00:45.871
+00:00:59.462 --> 00:00:59.788
 groupes.
 
-00:00:45.871 --> 00:00:49.290
-Le même utilisateur peut être dans plusieurs groupes.
+00:00:59.788 --> 00:01:03.207
+Le même utilisateur peut être dans plusieurs
+groupes.
 
-00:00:49.290 --> 00:00:53.344
+00:01:03.207 --> 00:01:07.261
 Les droits du partage se donnent aux groupes de
 sécurité, plutôt
 
-00:00:53.344 --> 00:00:54.450
+00:01:07.261 --> 00:01:08.366
 qu’à l’unité d’organisation.
 
-00:00:54.808 --> 00:00:58.116
+00:01:08.975 --> 00:01:12.283
 Imagine Alice, technicienne au démontage.
 
-00:00:58.116 --> 00:01:01.177
+00:01:12.283 --> 00:01:15.344
 Tu ranges sa fiche dans l’unité Démontage et tu
 l’ajoutes à
 
-00:01:01.177 --> 00:01:04.239
-deux groupes : son équipe et les personnes autorisées
-à modifier
+00:01:15.344 --> 00:01:18.405
+deux groupes : son équipe et les personnes
+autorisées à modifier
 
-00:01:04.239 --> 00:01:04.795
+00:01:18.405 --> 00:01:18.962
 les photos.
 
-00:01:04.795 --> 00:01:07.834
-Si la salariée change de bureau mais conserve le droit
-sur
+00:01:18.962 --> 00:01:22.001
+Si la salariée change de bureau mais conserve le
+droit sur
 
-00:01:07.834 --> 00:01:10.874
-les photos, le parcours du dossier passe toujours par
-le groupe.
+00:01:22.001 --> 00:01:25.040
+les photos, le parcours du dossier passe
+toujours par le groupe.
 
-00:01:10.874 --> 00:01:14.791
+00:01:25.040 --> 00:01:28.958
 Cette séparation permet aussi de relire une
 autorisation sans inspecter toutes
 
-00:01:14.791 --> 00:01:16.572
+00:01:28.958 --> 00:01:30.739
 les personnes une par une.
 
-00:01:16.933 --> 00:01:20.489
-Quand un PC rejoint le domaine, il doit savoir où
-trouver
+00:01:31.100 --> 00:01:34.656
+Quand un PC rejoint le domaine, il doit savoir
+où trouver
 
-00:01:20.489 --> 00:01:21.136
+00:01:34.656 --> 00:01:35.302
 un contrôleur.
 
-00:01:21.136 --> 00:01:24.619
-Il pose des questions D N S sur le domaine, notamment
+00:01:35.302 --> 00:01:39.196
+Il pose des questions DNS sur le domaine,
+notamment pour trouver
 
-00:01:24.619 --> 00:01:27.153
-pour trouver les enregistrements qui annoncent ses
-services.
+00:01:39.196 --> 00:01:41.320
+les enregistrements qui annoncent ses services.
 
-00:01:27.153 --> 00:01:30.750
-S’il utilise un résolveur public à la place du D N
+00:01:41.320 --> 00:01:45.340
+S’il utilise un résolveur public à la place du
+DNS du
 
-00:01:30.750 --> 00:01:33.366
-S du labo, ces enregistrements privés peuvent manquer.
+00:01:45.340 --> 00:01:47.533
+labo, ces enregistrements privés peuvent
+manquer.
 
-00:01:33.366 --> 00:01:37.741
-D H C P, lui, attribue une configuration réseau.
+00:01:47.533 --> 00:01:51.908
+DHCP, lui, attribue une configuration réseau.
 
-00:01:37.741 --> 00:01:40.795
-Distribuer la bonne I P ne suffit donc pas : vérifie
+00:01:51.908 --> 00:01:55.419
+Distribuer la bonne IP ne suffit donc pas :
+vérifie aussi
 
-00:01:40.795 --> 00:01:43.848
-aussi que l’option D N S pointe vers le serveur de
-
-00:01:43.848 --> 00:01:44.126
+00:01:55.419 --> 00:01:58.293
+que l’option DNS pointe vers le serveur de
 l’annuaire.
 
-00:01:44.475 --> 00:01:47.611
-Un partage donne un chemin réseau vers un dossier.
+00:01:58.892 --> 00:02:02.028
+Un partage donne un chemin réseau vers un
+dossier.
 
-00:01:47.611 --> 00:01:51.441
+00:02:02.028 --> 00:02:05.858
 Pour accéder par ce chemin, Windows regarde les
 autorisations du partage
 
-00:01:51.441 --> 00:01:53.530
+00:02:05.858 --> 00:02:07.947
 puis celles du système de fichiers.
 
-00:01:53.530 --> 00:01:57.120
-Ouvrir un dossier avec ton compte d’administration ne
-prouve donc pas
+00:02:07.947 --> 00:02:11.536
+Ouvrir un dossier avec ton compte
+d’administration ne prouve donc pas
 
-00:01:57.120 --> 00:01:58.751
+00:02:11.536 --> 00:02:13.168
 qu’un employé peut y accéder.
 
-00:01:58.751 --> 00:02:00.932
+00:02:13.168 --> 00:02:15.349
 Essaie avec son compte.
 
-00:02:00.932 --> 00:02:04.731
-Un droit placé sur Atelier peut être hérité par les
-sous-dossiers.
+00:02:15.349 --> 00:02:19.148
+Un droit placé sur Atelier peut être hérité par
+les sous-dossiers.
 
-00:02:04.731 --> 00:02:08.759
-Pour limiter Démontage à une équipe, regarde d’abord
-les permissions héritées
+00:02:19.148 --> 00:02:23.175
+Pour limiter Démontage à une équipe, regarde
+d’abord les permissions héritées
 
-00:02:08.759 --> 00:02:10.589
+00:02:23.175 --> 00:02:25.006
 avant d’ajouter une nouvelle ligne.
 
-00:02:10.975 --> 00:02:13.584
-Une G P O contient des règles.
+00:02:25.600 --> 00:02:28.209
+Une GPO contient des règles.
 
-00:02:13.584 --> 00:02:17.587
-Le lien indique le domaine ou l’unité d’organisation
-où Windows va
+00:02:28.209 --> 00:02:32.212
+Le lien indique le domaine ou l’unité
+d’organisation où Windows va
 
-00:02:17.587 --> 00:02:18.315
+00:02:32.212 --> 00:02:32.940
 les appliquer.
 
-00:02:18.315 --> 00:02:22.457
+00:02:32.940 --> 00:02:37.082
 Les réglages utilisateur suivent en général
 l’emplacement du compte.
 
-00:02:22.457 --> 00:02:25.484
+00:02:37.082 --> 00:02:40.109
 Les réglages ordinateur suivent le poste.
 
-00:02:25.484 --> 00:02:28.621
+00:02:40.109 --> 00:02:43.246
 Une règle héritée peut aussi venir d’un parent.
 
-00:02:28.621 --> 00:02:31.910
-Si le réglage ne s’applique pas, commence par vérifier
-l’emplacement de
+00:02:43.246 --> 00:02:46.535
+Si le réglage ne s’applique pas, commence par
+vérifier l’emplacement de
 
-00:02:31.910 --> 00:02:35.200
-l’objet et le lien, puis regarde le filtrage dans le
-rapport
+00:02:46.535 --> 00:02:49.825
+l’objet et le lien, puis regarde le filtrage
+dans le rapport
 
-00:02:35.200 --> 00:02:36.097
+00:02:49.825 --> 00:02:50.722
 G P Result.
 
-00:02:36.097 --> 00:02:40.309
+00:02:50.722 --> 00:02:54.934
 Demander une actualisation ne corrige pas une
 stratégie liée au mauvais
 
-00:02:40.309 --> 00:02:40.692
+00:02:54.934 --> 00:02:55.317
 endroit.
 
-00:02:41.017 --> 00:02:45.543
+00:02:55.892 --> 00:03:00.418
 La déduplication réduit l’espace occupé quand
 plusieurs fichiers contiennent les mêmes
 
-00:02:45.543 --> 00:02:45.954
+00:03:00.418 --> 00:03:00.829
 blocs.
 
-00:02:45.954 --> 00:02:49.837
-Le gestionnaire de ressources du serveur de fichiers
-applique, lui, un
+00:03:00.829 --> 00:03:04.712
+Le gestionnaire de ressources du serveur de
+fichiers applique, lui, un
 
-00:02:49.837 --> 00:02:51.249
+00:03:04.712 --> 00:03:06.124
 quota ou un filtrage.
 
-00:02:51.249 --> 00:02:54.944
-Un quota dur peut refuser un nouveau fichier s’il
-dépasse la
+00:03:06.124 --> 00:03:09.819
+Un quota dur peut refuser un nouveau fichier
+s’il dépasse la
 
-00:02:54.944 --> 00:02:55.280
+00:03:09.819 --> 00:03:10.155
 limite.
 
-00:02:55.280 --> 00:02:58.779
-La continuité demande une autre approche : un second
-contrôleur peut
+00:03:10.155 --> 00:03:13.654
+La continuité demande une autre approche : un
+second contrôleur peut
 
-00:02:58.779 --> 00:03:02.278
-servir l’annuaire, mais il ne rend pas ton partage
-disponible tout
+00:03:13.654 --> 00:03:17.153
+servir l’annuaire, mais il ne rend pas ton
+partage disponible tout
 
-00:03:02.278 --> 00:03:02.597
+00:03:17.153 --> 00:03:17.472
 seul.
 
-00:03:02.597 --> 00:03:06.003
-Le service de fichiers, le D N S et le D
+00:03:17.472 --> 00:03:21.880
+Le service de fichiers, le DNS et le DHCP
+nécessitent chacun
 
-00:03:06.003 --> 00:03:09.410
-H C P nécessitent chacun leur propre configuration et
-leur test.
+00:03:21.880 --> 00:03:24.285
+leur propre configuration et leur test.
 
-00:03:09.767 --> 00:03:13.552
-Le TD demande une proposition pour une entreprise sur
-un seul
+00:03:24.850 --> 00:03:28.635
+Le TD demande une proposition pour une
+entreprise sur un seul
 
-00:03:13.552 --> 00:03:13.896
+00:03:28.635 --> 00:03:28.979
 site.
 
-00:03:13.896 --> 00:03:17.636
-Commence par dessiner le domaine, puis les unités qui
-permettent de
+00:03:28.979 --> 00:03:32.720
+Commence par dessiner le domaine, puis les
+unités qui permettent de
 
-00:03:17.636 --> 00:03:19.337
+00:03:32.720 --> 00:03:34.420
 ranger les comptes par activité.
 
-00:03:19.337 --> 00:03:23.197
-Démontage et Magasin peuvent figurer sous Atelier pour
-la gestion.
+00:03:34.420 --> 00:03:38.280
+Démontage et Magasin peuvent figurer sous
+Atelier pour la gestion.
 
-00:03:23.197 --> 00:03:27.217
+00:03:38.280 --> 00:03:42.300
 Crée également des groupes de sécurité qui
 représentent les équipes.
 
-00:03:27.217 --> 00:03:31.104
-Imbrique les groupes d’équipe dans Atelier si l’accès
-commun doit être
+00:03:42.300 --> 00:03:46.187
+Imbrique les groupes d’équipe dans Atelier si
+l’accès commun doit être
 
-00:03:31.104 --> 00:03:31.457
+00:03:46.187 --> 00:03:46.540
 hérité.
 
-00:03:31.457 --> 00:03:35.594
+00:03:46.540 --> 00:03:50.678
 Vérifie le raisonnement avec un membre de chaque
 groupe et un
 
-00:03:35.594 --> 00:03:36.347
+00:03:50.678 --> 00:03:51.430
 utilisateur extérieur.
 
-00:03:36.347 --> 00:03:40.400
+00:03:51.430 --> 00:03:55.483
 Un second contrôleur peut être ajouté pour la
 disponibilité, tout en
 
-00:03:40.400 --> 00:03:41.874
+00:03:55.483 --> 00:03:56.957
 gardant un seul domaine.
 
-00:03:42.225 --> 00:03:45.226
+00:03:57.558 --> 00:04:00.560
 Dans le sujet, le serveur a deux cartes.
 
-00:03:45.226 --> 00:03:48.857
-Règle la carte du réseau de T P sans changer celle
+00:04:00.560 --> 00:04:04.469
+Règle la carte du réseau de TP sans changer
+celle réservée
 
-00:03:48.857 --> 00:03:49.847
-réservée à Internet.
+00:04:04.469 --> 00:04:05.180
+à Internet.
 
-00:03:49.847 --> 00:03:54.234
-Dans le gestionnaire, ajoute les services de domaine
-Active Directory.
+00:04:05.180 --> 00:04:09.567
+Dans le gestionnaire, ajoute les services de
+domaine Active Directory.
 
-00:03:54.234 --> 00:03:57.987
-Ensuite utilise la notification de promotion, choisis
-ajouter une nouvelle forêt
+00:04:09.567 --> 00:04:13.832
+Ensuite utilise la notification de promotion,
+choisis ajouter une nouvelle forêt
 
-00:03:57.987 --> 00:04:01.740
-avec le nom prévu au T D, installe D N S
+00:04:13.832 --> 00:04:18.097
+avec le nom prévu au TD, installe DNS et laisse
+redémarrer.
 
-00:04:01.740 --> 00:04:02.763
-et laisse redémarrer.
+00:04:18.097 --> 00:04:22.472
+Sur le poste Windows onze, pointe le DNS vers le
+serveur.
 
-00:04:02.763 --> 00:04:06.465
-Sur le poste Windows onze, pointe le D N S vers
-
-00:04:06.465 --> 00:04:07.138
-le serveur.
-
-00:04:07.138 --> 00:04:10.652
+00:04:22.472 --> 00:04:25.985
 Vérifie la résolution du nom du domaine avant de
 joindre le
 
-00:04:10.652 --> 00:04:11.930
+00:04:25.985 --> 00:04:27.263
 poste et de redémarrer.
 
-00:04:12.267 --> 00:04:16.026
-Ajoute le rôle D H C P. Après installation, termine la
+00:04:27.850 --> 00:04:32.315
+Ajoute le rôle DHCP. Après installation, termine
+la configuration et autorise
 
-00:04:16.026 --> 00:04:18.761
-configuration et autorise le serveur dans le domaine.
+00:04:32.315 --> 00:04:34.344
+le serveur dans le domaine.
 
-00:04:18.761 --> 00:04:22.718
-Dans outils, D H C P, ouvre I P version quatre,
+00:04:34.344 --> 00:04:39.381
+Dans outils, DHCP, ouvre IP version quatre, puis
+nouvelle étendue.
 
-00:04:22.718 --> 00:04:23.798
-puis nouvelle étendue.
+00:04:39.381 --> 00:04:43.211
+Sur le réseau du sujet, de point cent à point
+cent
 
-00:04:23.798 --> 00:04:27.628
-Sur le réseau du sujet, de point cent à point cent
-
-00:04:27.628 --> 00:04:29.717
+00:04:43.211 --> 00:04:45.300
 quatre-vingt-dix-neuf fait cent adresses, bornes
 comprises.
 
-00:04:29.717 --> 00:04:32.778
-Utilise les paramètres du sujet pour le routeur et le
-D
+00:04:45.300 --> 00:04:48.798
+Utilise les paramètres du sujet pour le routeur
+et le DNS,
 
-00:04:32.778 --> 00:04:35.839
-N S, et garde l’I P fixe du serveur hors de
+00:04:48.798 --> 00:04:51.979
+et garde l’IP fixe du serveur hors de la plage.
 
-00:04:35.839 --> 00:04:36.396
-la plage.
+00:04:51.979 --> 00:04:56.379
+Active l’étendue, passe le client en
+automatique, puis vérifie le bail
 
-00:04:36.396 --> 00:04:40.503
-Active l’étendue, passe le client en automatique, puis
-vérifie le bail
+00:04:56.379 --> 00:04:57.579
+avec IP config.
 
-00:04:40.503 --> 00:04:41.996
-avec I P config.
+00:04:57.579 --> 00:05:01.300
+Pour une réservation, pars du bail obtenu et
+utilise l’identifiant de
 
-00:04:41.996 --> 00:04:45.717
-Pour une réservation, pars du bail obtenu et utilise
-l’identifiant de
-
-00:04:45.717 --> 00:04:47.070
+00:05:01.300 --> 00:05:02.653
 carte de ce client.
 
-00:04:47.433 --> 00:04:50.918
-Dans la sortie de I P config, cherche la carte du
+00:05:03.225 --> 00:05:06.978
+Dans la sortie de IP config, cherche la carte du
+réseau
 
-00:04:50.918 --> 00:04:51.869
-réseau du labo.
+00:05:06.978 --> 00:05:07.660
+du labo.
 
-00:04:51.869 --> 00:04:55.374
-La ligne I P version quatre doit contenir une adresse
-de
+00:05:07.660 --> 00:05:11.371
+La ligne IP version quatre doit contenir une
+adresse de cent
 
-00:04:55.374 --> 00:04:57.604
-cent à cent quatre-vingt-dix-neuf dans notre exemple.
+00:05:11.371 --> 00:05:13.396
+à cent quatre-vingt-dix-neuf dans notre exemple.
 
-00:04:57.604 --> 00:05:01.254
-La ligne serveur D H C P identifie qui t’a donné
+00:05:13.396 --> 00:05:17.709
+La ligne serveur DHCP identifie qui t’a donné le
+bail.
 
-00:05:01.254 --> 00:05:01.918
-le bail.
+00:05:17.709 --> 00:05:21.320
+La ligne DNS te dit à qui seront posées les
+questions
 
-00:05:01.918 --> 00:05:05.077
-La ligne D N S te dit à qui seront posées
+00:05:21.320 --> 00:05:22.305
+sur le domaine.
 
-00:05:05.077 --> 00:05:06.513
-les questions sur le domaine.
+00:05:22.305 --> 00:05:25.238
+Si le client utilise une adresse automatique qui
+ne vient pas
 
-00:05:06.513 --> 00:05:09.446
-Si le client utilise une adresse automatique qui ne
-vient pas
-
-00:05:09.446 --> 00:05:12.379
+00:05:25.238 --> 00:05:28.171
 de l’étendue, vérifie d’abord que le serveur est
 autorisé, que l’étendue
 
-00:05:12.379 --> 00:05:15.312
-est active et que la carte est dans le bon réseau.
+00:05:28.171 --> 00:05:31.104
+est active et que la carte est dans le bon
+réseau.
 
-00:05:15.683 --> 00:05:19.457
+00:05:31.475 --> 00:05:35.249
 Dans la zone directe, repère l’enregistrement
 d’adresse du poste et vérifie
 
-00:05:19.457 --> 00:05:21.516
+00:05:35.249 --> 00:05:37.307
 son vrai nom depuis une console.
 
-00:05:21.516 --> 00:05:24.984
-Ajoute un alias en le faisant pointer vers le nom
-complet.
+00:05:37.307 --> 00:05:40.775
+Ajoute un alias en le faisant pointer vers le
+nom complet.
 
-00:05:24.984 --> 00:05:28.961
-Dans Utilisateurs et ordinateurs Active Directory,
-crée les comptes tests dans
+00:05:40.775 --> 00:05:44.752
+Dans Utilisateurs et ordinateurs Active
+Directory, crée les comptes tests dans
 
-00:05:28.961 --> 00:05:31.491
+00:05:44.752 --> 00:05:47.283
 leurs unités et attribue les groupes prévus.
 
-00:05:31.491 --> 00:05:35.450
-Pour monter un lecteur réseau, utilise le chemin du
-partage.
+00:05:47.283 --> 00:05:51.241
+Pour monter un lecteur réseau, utilise le chemin
+du partage.
 
-00:05:35.450 --> 00:05:38.850
-Si le dossier s’ouvre en direct mais que le lecteur
-n’apparaît
+00:05:51.241 --> 00:05:54.641
+Si le dossier s’ouvre en direct mais que le
+lecteur n’apparaît
 
-00:05:38.850 --> 00:05:41.013
+00:05:54.641 --> 00:05:56.805
 pas, inspecte le script ou la stratégie.
 
-00:05:41.013 --> 00:05:44.947
-Si le dossier lui-même refuse, regarde les droits du
-compte.
+00:05:56.805 --> 00:06:00.739
+Si le dossier lui-même refuse, regarde les
+droits du compte.
 
-00:05:45.308 --> 00:05:49.159
-Dans la console de gestion des stratégies, crée un
-lien pour
+00:06:01.350 --> 00:06:05.201
+Dans la console de gestion des stratégies, crée
+un lien pour
 
-00:05:49.159 --> 00:05:50.209
+00:06:05.201 --> 00:06:06.251
 les utilisateurs Atelier.
 
-00:05:50.209 --> 00:05:54.717
+00:06:06.251 --> 00:06:10.758
 Édite la configuration utilisateur, ouvre les
 préférences, puis les mappages de
 
-00:05:54.717 --> 00:05:56.766
+00:06:10.758 --> 00:06:12.807
 lecteurs dans les paramètres Windows.
 
-00:05:56.766 --> 00:06:00.495
-Mets le chemin réseau du partage Pourtous, attribue la
-lettre K
+00:06:12.807 --> 00:06:16.537
+Mets le chemin réseau du partage Pourtous,
+attribue la lettre K
 
-00:06:00.495 --> 00:06:01.851
+00:06:16.537 --> 00:06:17.893
 et le libellé Partage.
 
-00:06:01.851 --> 00:06:06.736
-Essaie avec un compte Atelier après actualisation,
-puis déconnexion et reconnexion
+00:06:17.893 --> 00:06:22.777
+Essaie avec un compte Atelier après
+actualisation, puis déconnexion et reconnexion
 
-00:06:06.736 --> 00:06:07.624
+00:06:22.777 --> 00:06:23.665
 si nécessaire.
 
-00:06:07.624 --> 00:06:10.823
+00:06:23.665 --> 00:06:26.865
 Teste aussi un compte Direction : la stratégie
 d’Atelier ne doit
 
-00:06:10.823 --> 00:06:13.150
+00:06:26.865 --> 00:06:29.192
 pas être la raison d’un lecteur chez lui.
 
-00:06:13.475 --> 00:06:17.567
-Pour le fond d’écran, vérifie que l’utilisateur peut
-lire le fichier.
+00:06:29.767 --> 00:06:33.859
+Pour le fond d’écran, vérifie que l’utilisateur
+peut lire le fichier.
 
-00:06:17.567 --> 00:06:21.176
-Si la copie de l’image se fait par réglage ordinateur,
-place
+00:06:33.859 --> 00:06:37.467
+Si la copie de l’image se fait par réglage
+ordinateur, place
 
-00:06:21.176 --> 00:06:24.784
-le poste dans l’unité qui reçoit ce réglage, puis
-configure l’utilisateur
+00:06:37.467 --> 00:06:41.076
+le poste dans l’unité qui reçoit ce réglage,
+puis configure l’utilisateur
 
-00:06:24.784 --> 00:06:26.097
+00:06:41.076 --> 00:06:42.388
 pour utiliser la copie.
 
-00:06:26.097 --> 00:06:29.760
+00:06:42.388 --> 00:06:46.052
 Pour un logiciel, mets le paquet sur un partage
 lisible par
 
-00:06:29.760 --> 00:06:31.758
+00:06:46.052 --> 00:06:48.050
 les ordinateurs et teste après redémarrage.
 
-00:06:31.758 --> 00:06:34.564
-Pour la politique du domaine, configure le seuil de
-trois tentatives
+00:06:48.050 --> 00:06:50.933
+Pour la politique du domaine, configure le seuil
+de trois tentatives
 
-00:06:34.564 --> 00:06:37.369
-et la durée de dix minutes demandés dans le T P.
+00:06:50.933 --> 00:06:53.817
+et la durée de dix minutes demandés dans le TP.
+Contrôle
 
-00:06:37.369 --> 00:06:40.174
-Contrôle avec G P Result et la commande de lecture de
+00:06:53.817 --> 00:06:56.700
+avec G P Result et la commande de lecture de la
 
-00:06:40.174 --> 00:06:41.195
-la politique du domaine.
+00:06:56.700 --> 00:06:57.486
+politique du domaine.
 
-00:06:41.558 --> 00:06:44.413
+00:06:58.058 --> 00:07:00.913
 Commence par l’accès commun à Atelier.
 
-00:06:44.413 --> 00:06:49.014
-Sur chaque sous-dossier, ouvre propriétés, sécurité,
-puis avancé et contrôle ce
+00:07:00.913 --> 00:07:05.514
+Sur chaque sous-dossier, ouvre propriétés,
+sécurité, puis avancé et contrôle ce
 
-00:06:49.014 --> 00:06:50.687
+00:07:05.514 --> 00:07:07.187
 qui vient du parent.
 
-00:06:50.687 --> 00:06:54.540
-Évite de laisser le groupe large Atelier donner accès
-au dossier
+00:07:07.187 --> 00:07:11.040
+Évite de laisser le groupe large Atelier donner
+accès au dossier
 
-00:06:54.540 --> 00:06:54.891
+00:07:11.040 --> 00:07:11.391
 privé.
 
-00:06:54.891 --> 00:06:58.959
-Garde les entrées nécessaires aux administrateurs et
-au système.
+00:07:11.391 --> 00:07:15.459
+Garde les entrées nécessaires aux
+administrateurs et au système.
 
-00:06:58.959 --> 00:07:02.452
+00:07:15.459 --> 00:07:18.952
 Donne le droit modifier au groupe de l’équipe
 concernée.
 
-00:07:02.452 --> 00:07:06.103
-Depuis le client, teste un membre de Démontage sur les
-deux
+00:07:18.952 --> 00:07:22.603
+Depuis le client, teste un membre de Démontage
+sur les deux
 
-00:07:06.103 --> 00:07:06.435
+00:07:22.603 --> 00:07:22.935
 chemins.
 
-00:07:06.435 --> 00:07:10.283
-Il doit pouvoir écrire dans Démontage et être bloqué
-dans Magasin.
+00:07:22.935 --> 00:07:26.783
+Il doit pouvoir écrire dans Démontage et être
+bloqué dans Magasin.
 
-00:07:10.283 --> 00:07:12.771
+00:07:26.783 --> 00:07:29.271
 Fais aussi le contrôle inverse.
 
-00:07:13.142 --> 00:07:16.457
-Pour que le test soit utile, ouvre une vraie session
-avec
+00:07:29.850 --> 00:07:33.165
+Pour que le test soit utile, ouvre une vraie
+session avec
 
-00:07:16.457 --> 00:07:17.663
+00:07:33.165 --> 00:07:34.371
 le compte de l’équipe.
 
-00:07:17.663 --> 00:07:21.266
+00:07:34.371 --> 00:07:37.974
 Essaie de créer un fichier dans son espace et de
 l’éditer.
 
-00:07:21.266 --> 00:07:24.354
+00:07:37.974 --> 00:07:41.062
 Essaie ensuite d’ouvrir le sous-dossier voisin.
 
-00:07:24.354 --> 00:07:27.943
-Si les deux passent, recherche une permission héritée
-ou un autre
+00:07:41.062 --> 00:07:44.651
+Si les deux passent, recherche une permission
+héritée ou un autre
 
-00:07:27.943 --> 00:07:29.575
+00:07:44.651 --> 00:07:46.283
 groupe auquel le compte appartient.
 
-00:07:29.575 --> 00:07:32.978
-Si les deux sont refusés, vérifie aussi la permission
-du partage
+00:07:46.283 --> 00:07:49.687
+Si les deux sont refusés, vérifie aussi la
+permission du partage
 
-00:07:32.978 --> 00:07:36.382
-parent : elle peut bloquer la connexion avant même le
-contrôle
+00:07:49.687 --> 00:07:53.090
+parent : elle peut bloquer la connexion avant
+même le contrôle
 
-00:07:36.382 --> 00:07:37.001
+00:07:53.090 --> 00:07:53.709
 du sous-dossier.
 
-00:07:37.350 --> 00:07:41.736
-Dans le sujet, place quelques fichiers identiques sur
-le volume partagé.
+00:07:54.058 --> 00:07:58.445
+Dans le sujet, place quelques fichiers
+identiques sur le volume partagé.
 
-00:07:41.736 --> 00:07:45.768
+00:07:58.445 --> 00:08:02.476
 Active la déduplication pour ce volume et lance
 l’optimisation.
 
-00:07:45.768 --> 00:07:50.199
-Lis ensuite le rapport, par exemple avec Get Dedup
-Status, pour
+00:08:02.476 --> 00:08:06.907
+Lis ensuite le rapport, par exemple avec Get
+Dedup Status, pour
 
-00:07:50.199 --> 00:07:51.810
+00:08:06.907 --> 00:08:08.518
 voir la quantité économisée.
 
-00:07:51.810 --> 00:07:55.820
-Pour le quota, ouvre le gestionnaire de ressources,
-crée un modèle
+00:08:08.518 --> 00:08:12.529
+Pour le quota, ouvre le gestionnaire de
+ressources, crée un modèle
 
-00:07:55.820 --> 00:07:59.101
+00:08:12.529 --> 00:08:15.810
 dur de cent mégaoctets, puis applique-le
 automatiquement aux sous-dossiers.
 
-00:07:59.101 --> 00:08:01.356
+00:08:15.810 --> 00:08:18.065
 Teste avec un gros fichier.
 
-00:08:01.356 --> 00:08:05.367
-Vérifie aussi la racine : un quota appliqué aux sous-
-dossiers ne
+00:08:18.065 --> 00:08:22.075
+Vérifie aussi la racine : un quota appliqué aux
+sous-dossiers ne
 
-00:08:05.367 --> 00:08:07.190
+00:08:22.075 --> 00:08:23.898
 limite pas forcément Atelier lui-même.
 
-00:08:07.558 --> 00:08:11.301
-Pour le deuxième serveur, pointe d’abord le D N S vers
+00:08:24.517 --> 00:08:28.940
+Pour le deuxième serveur, pointe d’abord le DNS
+vers le premier.
 
-00:08:11.301 --> 00:08:11.981
-le premier.
-
-00:08:11.981 --> 00:08:15.606
+00:08:28.940 --> 00:08:32.564
 Rejoins le domaine et promeus un contrôleur
 supplémentaire, puis vérifie qu’un
 
-00:08:15.606 --> 00:08:17.913
+00:08:32.564 --> 00:08:34.871
 objet de test apparaît sur les deux.
 
-00:08:17.913 --> 00:08:21.624
-Pour le D H C P, installe et autorise le rôle
+00:08:34.871 --> 00:08:39.511
+Pour le DHCP, installe et autorise le rôle
+partenaire sans recréer
 
-00:08:21.624 --> 00:08:22.974
-partenaire sans recréer l’étendue.
+00:08:39.511 --> 00:08:39.932
+l’étendue.
 
-00:08:22.974 --> 00:08:27.165
+00:08:39.932 --> 00:08:44.124
 Sur le premier, configure le basculement en mode
 secours demandé.
 
-00:08:27.165 --> 00:08:30.947
-Enfin délègue la réinitialisation des mots de passe au
-groupe des
+00:08:44.124 --> 00:08:47.906
+Enfin délègue la réinitialisation des mots de
+passe au groupe des
 
-00:08:30.947 --> 00:08:33.354
+00:08:47.906 --> 00:08:50.312
 responsables Atelier sur la seule unité Atelier.
 
-00:08:33.354 --> 00:08:36.589
-Vérifie depuis R S A T que ça marche dedans et
+00:08:50.312 --> 00:08:54.045
+Vérifie depuis RSA T que ça marche dedans et que
+ça
 
-00:08:36.589 --> 00:08:37.766
-que ça échoue ailleurs.
+00:08:54.045 --> 00:08:54.724
+échoue ailleurs.
 
-00:08:38.142 --> 00:08:41.462
-Les trois vérifications ne prouvent pas la même chose.
+00:08:55.308 --> 00:08:58.628
+Les trois vérifications ne prouvent pas la même
+chose.
 
-00:08:41.462 --> 00:08:45.249
-Avec l’annuaire, tu cherches si les deux copies se
-parlent.
+00:08:58.628 --> 00:09:02.415
+Avec l’annuaire, tu cherches si les deux copies
+se parlent.
 
-00:08:45.249 --> 00:08:48.590
-Avec les fichiers, tu veux savoir si le chemin de
-partage
+00:09:02.415 --> 00:09:05.757
+Avec les fichiers, tu veux savoir si le chemin
+de partage
 
-00:08:48.590 --> 00:08:51.021
-reste accessible et si le contenu s’est répliqué.
+00:09:05.757 --> 00:09:08.187
+reste accessible et si le contenu s’est
+répliqué.
 
-00:08:51.021 --> 00:08:54.668
-Avec le D H C P, tu veux obtenir une configuration
+00:09:08.187 --> 00:09:12.617
+Avec le DHCP, tu veux obtenir une configuration
+réseau quand le
 
-00:08:54.668 --> 00:08:56.658
-réseau quand le partenaire doit répondre.
+00:09:12.617 --> 00:09:13.825
+partenaire doit répondre.
 
-00:08:56.658 --> 00:08:59.961
+00:09:13.825 --> 00:09:17.127
 Teste une seule panne à la fois et relève à quel
 
-00:08:59.961 --> 00:09:01.462
+00:09:17.127 --> 00:09:18.628
 moment le service redevient disponible.
 
-00:09:01.808 --> 00:09:05.470
-Pour Maison Paille, le sujet donne deux sites avec des
-services
+00:09:18.975 --> 00:09:22.636
+Pour Maison Paille, le sujet donne deux sites
+avec des services
 
-00:09:05.470 --> 00:09:05.802
+00:09:22.636 --> 00:09:22.969
 distincts.
 
-00:09:05.802 --> 00:09:09.554
-Choisis deux sous-réseaux qui ne se chevauchent pas et
-qui peuvent
+00:09:22.969 --> 00:09:26.721
+Choisis deux sous-réseaux qui ne se chevauchent
+pas et qui peuvent
 
-00:09:09.554 --> 00:09:09.896
+00:09:26.721 --> 00:09:27.062
 communiquer.
 
-00:09:09.896 --> 00:09:13.948
-Dans Sites et services Active Directory, déclare les
-sites, puis associe
+00:09:27.062 --> 00:09:31.115
+Dans Sites et services Active Directory, déclare
+les sites, puis associe
 
-00:09:13.948 --> 00:09:15.790
+00:09:31.115 --> 00:09:32.957
 chaque sous-réseau à son site.
 
-00:09:15.790 --> 00:09:19.295
-Cela aide un poste à découvrir un contrôleur proche.
+00:09:32.957 --> 00:09:36.462
+Cela aide un poste à découvrir un contrôleur
+proche.
 
-00:09:19.295 --> 00:09:21.918
+00:09:36.462 --> 00:09:39.084
 Prévois une étendue par sous-réseau.
 
-00:09:21.918 --> 00:09:25.602
-Si les paquets D H C P doivent passer un routeur,
+00:09:39.084 --> 00:09:43.690
+Si les paquets DHCP doivent passer un routeur,
+configure un relais
 
-00:09:25.602 --> 00:09:26.942
-configure un relais adapté.
+00:09:43.690 --> 00:09:44.109
+adapté.
 
-00:09:26.942 --> 00:09:30.599
-Sur chaque site, vérifie l’adresse obtenue et teste
-les droits avec
+00:09:44.109 --> 00:09:47.765
+Sur chaque site, vérifie l’adresse obtenue et
+teste les droits avec
 
-00:09:30.599 --> 00:09:32.261
+00:09:47.765 --> 00:09:49.427
 un compte de chaque équipe.

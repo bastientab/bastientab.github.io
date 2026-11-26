@@ -1,338 +1,361 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.945
-Quand une adresse apparaît dans un incident connu,
-cela indique une
+00:00:00.100 --> 00:00:03.955
+Un coffre à mots de passe permet de conserver
+plusieurs identifiants
 
-00:00:03.945 --> 00:00:06.043
+00:00:03.955 --> 00:00:05.707
+dans un seul fichier protégé.
+
+00:00:05.707 --> 00:00:09.353
+Dans cette activité, on va distinguer le fichier
+du coffre, sa
+
+00:00:09.353 --> 00:00:11.674
+sauvegarde et ce qui permet de l’ouvrir.
+
+00:00:12.267 --> 00:00:16.112
+Quand une adresse apparaît dans un incident
+connu, cela indique une
+
+00:00:16.112 --> 00:00:18.209
 exposition liée à un service recensé.
 
-00:00:06.043 --> 00:00:09.711
+00:00:18.209 --> 00:00:21.878
 Réutiliser un mot de passe permet à quelqu’un
 d’essayer le même
 
-00:00:09.711 --> 00:00:10.712
+00:00:21.878 --> 00:00:22.878
 sur d’autres sites.
 
-00:00:10.712 --> 00:00:14.474
-Un coffre aide à utiliser un secret long et différent
-partout.
+00:00:22.878 --> 00:00:26.641
+Un coffre aide à utiliser un secret long et
+différent partout.
 
-00:00:14.474 --> 00:00:17.754
-Il regroupe ces valeurs dans une base chiffrée, que tu
-ouvres
+00:00:26.641 --> 00:00:29.921
+Il regroupe ces valeurs dans une base chiffrée,
+que tu ouvres
 
-00:00:17.754 --> 00:00:18.947
+00:00:29.921 --> 00:00:31.114
 avec le secret maître.
 
-00:00:18.947 --> 00:00:22.935
-Les mots de passe fictifs suffisent pour les tests
-d’estimation du
+00:00:31.114 --> 00:00:35.102
+Les mots de passe fictifs suffisent pour les
+tests d’estimation du
 
-00:00:22.935 --> 00:00:23.298
+00:00:35.102 --> 00:00:35.464
 TP.
 
-00:00:23.642 --> 00:00:27.550
-Supposons qu’une ancienne adresse apparaisse dans le
-rapport d’une fuite.
+00:00:36.058 --> 00:00:39.967
+Supposons qu’une ancienne adresse apparaisse
+dans le rapport d’une fuite.
 
-00:00:27.550 --> 00:00:30.712
+00:00:39.967 --> 00:00:43.128
 Commence par identifier le service et la date.
 
-00:00:30.712 --> 00:00:34.145
-Si le même mot de passe a servi ailleurs, change aussi
+00:00:43.128 --> 00:00:46.561
+Si le même mot de passe a servi ailleurs, change
+aussi
 
-00:00:34.145 --> 00:00:35.393
+00:00:46.561 --> 00:00:47.810
 les autres comptes concernés.
 
-00:00:35.393 --> 00:00:38.837
+00:00:47.810 --> 00:00:51.253
 Le nouveau secret doit être unique pour chaque
 service.
 
-00:00:38.837 --> 00:00:42.967
-Le deuxième facteur ajoute une protection quand un
-secret est compromis.
+00:00:51.253 --> 00:00:55.383
+Le deuxième facteur ajoute une protection quand
+un secret est compromis.
 
-00:00:42.967 --> 00:00:46.546
+00:00:55.383 --> 00:00:58.962
 Pour le TP, crée une entrée fictive et utilise
 uniquement des
 
-00:00:46.546 --> 00:00:49.474
-secrets inventés dans les formulaires qui estiment
-leur solidité.
+00:00:58.962 --> 00:01:01.891
+secrets inventés dans les formulaires qui
+estiment leur solidité.
 
-00:00:49.474 --> 00:00:53.187
-La preuve attendue est la démarche, pas la valeur du
-secret.
+00:01:01.891 --> 00:01:05.604
+La preuve attendue est la démarche, pas la
+valeur du secret.
 
-00:00:53.517 --> 00:00:57.021
-Un message de phishing cherche à te faire agir avant
-que
+00:01:05.933 --> 00:01:09.437
+Un message de phishing cherche à te faire agir
+avant que
 
-00:00:57.021 --> 00:00:57.658
+00:01:09.437 --> 00:01:10.075
 tu vérifies.
 
-00:00:57.658 --> 00:01:02.253
-Il peut imiter une livraison, l’université ou une
-demande informatique.
+00:01:10.075 --> 00:01:14.670
+Il peut imiter une livraison, l’université ou
+une demande informatique.
 
-00:01:02.253 --> 00:01:06.457
+00:01:14.670 --> 00:01:18.874
 Regarde l’adresse réelle de l’expéditeur et la
 destination du lien.
 
-00:01:06.457 --> 00:01:10.564
-Sur un domaine comme universite point exemple point
-net, le site
+00:01:18.874 --> 00:01:22.981
+Sur un domaine comme universite point exemple
+point net, le site
 
-00:01:10.564 --> 00:01:12.057
+00:01:22.981 --> 00:01:24.474
 dépend d’exemple point net.
 
-00:01:12.057 --> 00:01:15.350
-Le cadenas dit que la connexion au domaine affiché est
-sécurisée
+00:01:24.474 --> 00:01:27.766
+Le cadenas dit que la connexion au domaine
+affiché est sécurisée
 
-00:01:15.350 --> 00:01:18.642
-par TLS, mais quelqu’un qui contrôle un faux domaine
-peut lui
+00:01:27.766 --> 00:01:31.059
+par TLS, mais quelqu’un qui contrôle un faux
+domaine peut lui
 
-00:01:18.642 --> 00:01:19.839
+00:01:31.059 --> 00:01:32.256
 aussi avoir un certificat.
 
-00:01:20.183 --> 00:01:24.202
-Wireshark permet de lire les paquets visibles par
-l’interface.
+00:01:32.850 --> 00:01:36.869
+Wireshark permet de lire les paquets visibles
+par l’interface.
 
-00:01:24.202 --> 00:01:27.967
-Avec ARP, tu vois souvent une question qui demande qui
-possède
+00:01:36.869 --> 00:01:40.634
+Avec ARP, tu vois souvent une question qui
+demande qui possède
 
-00:01:27.967 --> 00:01:29.337
+00:01:40.634 --> 00:01:42.003
 une adresse IP locale.
 
-00:01:29.337 --> 00:01:32.903
+00:01:42.003 --> 00:01:45.570
 Avec ICMP, tu peux isoler un test ping.
 
-00:01:32.903 --> 00:01:36.224
-Nmap envoie des sondes puis interprète la réponse.
+00:01:45.570 --> 00:01:48.891
+Nmap envoie des sondes puis interprète la
+réponse.
 
-00:01:36.224 --> 00:01:40.060
+00:01:48.891 --> 00:01:52.726
 Ouvert signifie qu’un service répond au test
 correspondant.
 
-00:01:40.060 --> 00:01:43.135
-Fermé indique qu’on atteint la machine mais que le
-port n’a
+00:01:52.726 --> 00:01:55.802
+Fermé indique qu’on atteint la machine mais que
+le port n’a
 
-00:01:43.135 --> 00:01:44.533
+00:01:55.802 --> 00:01:57.200
 pas de service à l’écoute.
 
-00:01:44.533 --> 00:01:47.867
-Filtré signifie que le test ne permet pas de décider
-si
+00:01:57.200 --> 00:02:00.534
+Filtré signifie que le test ne permet pas de
+décider si
 
-00:01:47.867 --> 00:01:49.079
+00:02:00.534 --> 00:02:01.746
 le port est ouvert.
 
-00:01:49.433 --> 00:01:52.729
+00:02:02.350 --> 00:02:05.646
 Un ping répond à une question de connectivité.
 
-00:01:52.729 --> 00:01:56.222
-Il peut réussir alors qu’aucun serveur web n’écoute.
+00:02:05.646 --> 00:02:09.138
+Il peut réussir alors qu’aucun serveur web
+n’écoute.
 
-00:01:56.222 --> 00:01:59.785
-À l’inverse, une machine peut refuser l’écho et offrir
-un service
+00:02:09.138 --> 00:02:12.702
+À l’inverse, une machine peut refuser l’écho et
+offrir un service
 
-00:01:59.785 --> 00:02:01.405
+00:02:12.702 --> 00:02:14.322
 valide sur un port précis.
 
-00:02:01.405 --> 00:02:05.376
+00:02:14.322 --> 00:02:18.293
 Prépare deux postes de laboratoire et choisis un
 service connu.
 
-00:02:05.376 --> 00:02:08.427
+00:02:18.293 --> 00:02:21.344
 Sur le serveur, vérifie qu’il écoute.
 
-00:02:08.427 --> 00:02:12.508
-Depuis le poste de test, observe comment Nmap classe
-les ports.
+00:02:21.344 --> 00:02:25.425
+Depuis le poste de test, observe comment Nmap
+classe les ports.
 
-00:02:12.508 --> 00:02:16.271
-Répète après une règle de filtrage appliquée dans la
-maquette.
+00:02:25.425 --> 00:02:29.187
+Répète après une règle de filtrage appliquée
+dans la maquette.
 
-00:02:16.271 --> 00:02:20.450
-Dans ton explication, utilise les preuves de chaque
-côté avant de
+00:02:29.187 --> 00:02:33.366
+Dans ton explication, utilise les preuves de
+chaque côté avant de
 
-00:02:20.450 --> 00:02:20.829
+00:02:33.366 --> 00:02:33.746
 conclure.
 
-00:02:21.183 --> 00:02:24.790
-Un portable peut être perdu, consulté brièvement ou
-connecté à un
+00:02:34.100 --> 00:02:37.707
+Un portable peut être perdu, consulté brièvement
+ou connecté à un
 
-00:02:24.790 --> 00:02:28.070
+00:02:37.707 --> 00:02:40.986
 réseau sur lequel tu ne contrôles pas les autres
 appareils.
 
-00:02:28.070 --> 00:02:31.568
-Le chiffrement du disque protège les données au repos
-quand le
+00:02:40.986 --> 00:02:44.484
+Le chiffrement du disque protège les données au
+repos quand le
 
-00:02:31.568 --> 00:02:34.430
-poste est correctement verrouillé ou éteint selon sa
-configuration.
+00:02:44.484 --> 00:02:47.347
+poste est correctement verrouillé ou éteint
+selon sa configuration.
 
-00:02:34.430 --> 00:02:38.180
-Le verrouillage de session limite l’accès lors d’une
-absence.
+00:02:47.347 --> 00:02:51.097
+Le verrouillage de session limite l’accès lors
+d’une absence.
 
-00:02:38.180 --> 00:02:40.999
+00:02:51.097 --> 00:02:53.915
 Les mises à jour corrigent des failles connues.
 
-00:02:40.999 --> 00:02:45.200
-Enfin, savoir qui prévenir fait gagner du temps quand
-un appareil
+00:02:53.915 --> 00:02:58.117
+Enfin, savoir qui prévenir fait gagner du temps
+quand un appareil
 
-00:02:45.200 --> 00:02:45.582
+00:02:58.117 --> 00:02:58.499
 disparaît.
 
-00:02:45.933 --> 00:02:48.927
-Le TP demande une nouvelle base et deux entrées, dont
-une
+00:02:59.100 --> 00:03:02.093
+Le TP demande une nouvelle base et deux entrées,
+dont une
 
-00:02:48.927 --> 00:02:51.104
+00:03:02.093 --> 00:03:04.271
 pour laquelle tu génères le mot de passe.
 
-00:02:51.104 --> 00:02:54.780
-Crée une base de démonstration protégée par une phrase
-maître.
+00:03:04.271 --> 00:03:07.947
+Crée une base de démonstration protégée par une
+phrase maître.
 
-00:02:54.780 --> 00:02:58.518
-Entre un titre, une URL et un identifiant fictif.
+00:03:07.947 --> 00:03:11.685
+Entre un titre, une URL et un identifiant
+fictif.
 
-00:02:58.518 --> 00:03:02.587
-Pour la deuxième entrée, ouvre le générateur et règle
-la longueur.
+00:03:11.685 --> 00:03:15.753
+Pour la deuxième entrée, ouvre le générateur et
+règle la longueur.
 
-00:03:02.587 --> 00:03:07.134
-Si tu testes l’intégration Firefox, active-la dans
-KeePassXC puis connecte l’extension
+00:03:15.753 --> 00:03:20.301
+Si tu testes l’intégration Firefox, active-la
+dans KeePassXC puis connecte l’extension
 
-00:03:07.134 --> 00:03:08.788
+00:03:20.301 --> 00:03:21.954
 à la base ouverte.
 
-00:03:08.788 --> 00:03:12.409
-Vérifie que l’adresse du site correspond à l’entrée
-proposée sans montrer
+00:03:21.954 --> 00:03:25.576
+Vérifie que l’adresse du site correspond à
+l’entrée proposée sans montrer
 
-00:03:12.409 --> 00:03:13.726
+00:03:25.576 --> 00:03:26.893
 le mot de passe.
 
-00:03:14.058 --> 00:03:18.837
-Le sujet fait réaliser une connexion Telnet puis une
-connexion SSH.
+00:03:27.475 --> 00:03:32.253
+Le sujet fait réaliser une connexion Telnet puis
+une connexion SSH.
 
-00:03:18.837 --> 00:03:23.057
-Démarre la capture avant les deux essais et utilise
-uniquement des
+00:03:32.253 --> 00:03:36.474
+Démarre la capture avant les deux essais et
+utilise uniquement des
 
-00:03:23.057 --> 00:03:23.825
+00:03:36.474 --> 00:03:37.241
 identifiants fictifs.
 
-00:03:23.825 --> 00:03:27.506
-Sur le flux Telnet, une commande saisie se retrouve
-dans le
+00:03:37.241 --> 00:03:40.922
+Sur le flux Telnet, une commande saisie se
+retrouve dans le
 
-00:03:27.506 --> 00:03:28.175
+00:03:40.922 --> 00:03:41.592
 flux TCP.
 
-00:03:28.175 --> 00:03:31.692
-En SSH, on peut encore voir les adresses, le port et
+00:03:41.592 --> 00:03:45.109
+En SSH, on peut encore voir les adresses, le
+port et
 
-00:03:31.692 --> 00:03:35.209
-certains messages initiaux, puis le contenu de la
-session est chiffré.
+00:03:45.109 --> 00:03:48.626
+certains messages initiaux, puis le contenu de
+la session est chiffré.
 
-00:03:35.209 --> 00:03:39.585
-Garde deux captures comparables et indique précisément
-quelle information tu as
+00:03:48.626 --> 00:03:53.002
+Garde deux captures comparables et indique
+précisément quelle information tu as
 
-00:03:39.585 --> 00:03:40.381
+00:03:53.002 --> 00:03:53.798
 pu retrouver.
 
-00:03:40.725 --> 00:03:44.633
-Pour rendre la comparaison probante, saisis la même
-commande sur les
+00:03:54.392 --> 00:03:58.300
+Pour rendre la comparaison probante, saisis la
+même commande sur les
 
-00:03:44.633 --> 00:03:45.344
+00:03:58.300 --> 00:03:59.011
 deux terminaux.
 
-00:03:45.344 --> 00:03:49.191
+00:03:59.011 --> 00:04:02.857
 Commence à capturer avant la connexion, car les
 premiers messages expliquent
 
-00:03:49.191 --> 00:03:50.589
+00:04:02.857 --> 00:04:04.256
 quel protocole tu vois.
 
-00:03:50.589 --> 00:03:54.555
+00:04:04.256 --> 00:04:08.221
 Filtre ensuite le trafic sur le port utilisé et
 reconstitue le
 
-00:03:54.555 --> 00:03:54.915
+00:04:08.221 --> 00:04:08.582
 flux.
 
-00:03:54.915 --> 00:03:58.429
-Wireshark peut encore dire qui communique et à quel
-moment, quel
+00:04:08.582 --> 00:04:12.096
+Wireshark peut encore dire qui communique et à
+quel moment, quel
 
-00:03:58.429 --> 00:03:59.707
+00:04:12.096 --> 00:04:13.374
 que soit le chiffrement.
 
-00:03:59.707 --> 00:04:03.848
-Cherche cependant dans la capture Telnet la commande
-exacte, puis fais
+00:04:13.374 --> 00:04:17.515
+Cherche cependant dans la capture Telnet la
+commande exacte, puis fais
 
-00:04:03.848 --> 00:04:06.484
+00:04:17.515 --> 00:04:20.150
 la même recherche après établissement de SSH.
 
-00:04:06.484 --> 00:04:09.315
+00:04:20.150 --> 00:04:22.981
 Compare le résultat dans le compte rendu.
 
-00:04:09.683 --> 00:04:13.310
+00:04:23.350 --> 00:04:26.976
 Pour les questions de phishing, entraîne-toi à
 argumenter.
 
-00:04:13.310 --> 00:04:16.662
-Si le texte annonce une page de l’université mais que
-le
+00:04:26.976 --> 00:04:30.329
+Si le texte annonce une page de l’université
+mais que le
 
-00:04:16.662 --> 00:04:20.014
-lien dépend d’un autre domaine, relève précisément
-cette incohérence et explique
+00:04:30.329 --> 00:04:33.681
+lien dépend d’un autre domaine, relève
+précisément cette incohérence et explique
 
-00:04:20.014 --> 00:04:22.452
-comment confirmer la demande sans suivre le lien.
+00:04:33.681 --> 00:04:36.119
+comment confirmer la demande sans suivre le
+lien.
 
-00:04:22.452 --> 00:04:26.005
-Pour les scans du labo, compare un service actif et un
+00:04:36.119 --> 00:04:39.672
+Pour les scans du labo, compare un service actif
+et un
 
-00:04:26.005 --> 00:04:26.974
+00:04:39.672 --> 00:04:40.641
 port sans service.
 
-00:04:26.974 --> 00:04:30.405
-Un port filtré ne signifie pas qu’un serveur écoute.
+00:04:40.641 --> 00:04:44.072
+Un port filtré ne signifie pas qu’un serveur
+écoute.
 
-00:04:30.405 --> 00:04:33.910
-Explique le résultat depuis le point où tu as lancé la
+00:04:44.072 --> 00:04:47.577
+Explique le résultat depuis le point où tu as
+lancé la
 
-00:04:33.910 --> 00:04:34.229
+00:04:47.577 --> 00:04:47.896
 sonde.
 
-00:04:34.229 --> 00:04:38.273
-Un agent placé sur un autre segment peut observer un
-résultat
+00:04:47.896 --> 00:04:51.940
+Un agent placé sur un autre segment peut
+observer un résultat
 
-00:04:38.273 --> 00:04:38.641
+00:04:51.940 --> 00:04:52.307
 différent.

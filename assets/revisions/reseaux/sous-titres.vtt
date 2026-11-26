@@ -1,475 +1,508 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.322
-Quand tu cliques sur ping, tu ne vois qu'une commande.
+00:00:00.100 --> 00:00:03.586
+Un commutateur lit l’adresse source d’une trame
+pour apprendre où se
 
-00:00:03.322 --> 00:00:06.444
-En dessous, le poste doit préparer un paquet IP et le
+00:00:03.586 --> 00:00:05.488
+trouve la machine qui l’a envoyée.
 
-00:00:06.444 --> 00:00:08.714
+00:00:05.488 --> 00:00:09.336
+Plus tard, si cette adresse est la destination,
+il sait sur
+
+00:00:09.336 --> 00:00:10.385
+quel port transmettre.
+
+00:00:10.975 --> 00:00:14.197
+Quand tu cliques sur ping, tu ne vois qu'une
+commande.
+
+00:00:14.197 --> 00:00:17.319
+En dessous, le poste doit préparer un paquet IP
+et le
+
+00:00:17.319 --> 00:00:19.589
 placer dans une trame avant de le transmettre.
 
-00:00:08.714 --> 00:00:11.802
+00:00:19.589 --> 00:00:22.677
 La trame sert sur la liaison où tu te trouves.
 
-00:00:11.802 --> 00:00:15.160
+00:00:22.677 --> 00:00:26.035
 Le paquet indique la machine que tu cherches à
 joindre.
 
-00:00:15.160 --> 00:00:17.746
+00:00:26.035 --> 00:00:28.621
 Pense à un courrier remis à un relais.
 
-00:00:17.746 --> 00:00:21.476
-Le relais est le prochain destinataire du transport,
-et l'adresse sur
+00:00:28.621 --> 00:00:32.351
+Le relais est le prochain destinataire du
+transport, et l'adresse sur
 
-00:00:21.476 --> 00:00:23.849
+00:00:32.351 --> 00:00:34.724
 le courrier est celle du destinataire final.
 
-00:00:24.225 --> 00:00:27.655
-Tu peux entendre parler de couche un, deux ou trois.
+00:00:35.308 --> 00:00:38.739
+Tu peux entendre parler de couche un, deux ou
+trois.
 
-00:00:27.655 --> 00:00:31.160
+00:00:38.739 --> 00:00:42.244
 Sur ce TP, retiens une question pour chacune.
 
-00:00:31.160 --> 00:00:34.227
-Couche un : est-ce que des signaux passent sur le
-câble
+00:00:42.244 --> 00:00:45.310
+Couche un : est-ce que des signaux passent sur
+le câble
 
-00:00:34.227 --> 00:00:34.506
+00:00:45.310 --> 00:00:45.589
 ?
 
-00:00:34.506 --> 00:00:37.974
-Couche deux : vers quelle carte réseau part la trame ?
+00:00:45.589 --> 00:00:49.057
+Couche deux : vers quelle carte réseau part la
+trame ?
 
-00:00:37.974 --> 00:00:41.164
+00:00:49.057 --> 00:00:52.248
 Couche trois : qu'est-ce que la table de routage
 prévoit pour
 
-00:00:41.164 --> 00:00:42.325
+00:00:52.248 --> 00:00:53.408
 l'IP de destination ?
 
-00:00:42.325 --> 00:00:46.410
-Dans le simulateur, ouvre ces niveaux séparément pour
-ne pas mélanger
+00:00:53.408 --> 00:00:57.493
+Dans le simulateur, ouvre ces niveaux séparément
+pour ne pas mélanger
 
-00:00:46.410 --> 00:00:47.153
+00:00:57.493 --> 00:00:58.236
 les adresses.
 
-00:00:47.517 --> 00:00:50.065
+00:00:58.600 --> 00:01:01.148
 Imaginons trois ordinateurs.
 
-00:00:50.065 --> 00:00:53.550
-Sur le hub, quand le premier envoie un signal, les
-deux
+00:01:01.148 --> 00:01:04.634
+Sur le hub, quand le premier envoie un signal,
+les deux
 
-00:00:53.550 --> 00:00:54.501
+00:01:04.634 --> 00:01:05.584
 autres le reçoivent.
 
-00:00:54.501 --> 00:00:58.876
-Avec un switch, l'appareil apprend derrière quel port
-se trouve l'émetteur.
+00:01:05.584 --> 00:01:09.959
+Avec un switch, l'appareil apprend derrière quel
+port se trouve l'émetteur.
 
-00:00:58.876 --> 00:01:02.728
-Ainsi, quand la destination est déjà connue, il peut
-choisir le
+00:01:09.959 --> 00:01:13.811
+Ainsi, quand la destination est déjà connue, il
+peut choisir le
 
-00:01:02.728 --> 00:01:03.778
+00:01:13.811 --> 00:01:14.861
 seul port utile.
 
-00:01:03.778 --> 00:01:06.958
+00:01:14.861 --> 00:01:18.041
 Quand elle est inconnue, ou quand la trame est
 explicitement envoyée
 
-00:01:06.958 --> 00:01:10.138
-à tout le monde, elle peut encore partir sur plusieurs
-ports.
+00:01:18.041 --> 00:01:21.222
+à tout le monde, elle peut encore partir sur
+plusieurs ports.
 
-00:01:10.138 --> 00:01:13.490
-C'est pour ça qu'une première séquence et une seconde
-peuvent se
+00:01:21.222 --> 00:01:24.574
+C'est pour ça qu'une première séquence et une
+seconde peuvent se
 
-00:01:13.490 --> 00:01:14.709
+00:01:24.574 --> 00:01:25.793
 ressembler moins que prévu.
 
-00:01:15.058 --> 00:01:19.751
+00:01:26.392 --> 00:01:31.084
 Une trame commence par identifier source et
 destination au niveau Ethernet.
 
-00:01:19.751 --> 00:01:23.023
+00:01:31.084 --> 00:01:34.356
 Le champ EtherType dit comment lire ce qui suit.
 
-00:01:23.023 --> 00:01:26.418
-La demande qui cherche une MAC porte le type ARP.
+00:01:34.356 --> 00:01:37.751
+La demande qui cherche une MAC porte le type
+ARP.
 
-00:01:26.418 --> 00:01:30.794
-Le paquet du ping transporte ICMP dans IPv4 et porte
-le
+00:01:37.751 --> 00:01:42.127
+Le paquet du ping transporte ICMP dans IPv4 et
+porte le
 
-00:01:30.794 --> 00:01:31.589
+00:01:42.127 --> 00:01:42.923
 type IPv4.
 
-00:01:31.589 --> 00:01:35.351
+00:01:42.923 --> 00:01:46.685
 En fin de trame, le contrôle sert à détecter une
 corruption.
 
-00:01:35.351 --> 00:01:38.946
-Sur certains matériels, il est traité avant que la
-trame n'arrive
+00:01:46.685 --> 00:01:50.280
+Sur certains matériels, il est traité avant que
+la trame n'arrive
 
-00:01:38.946 --> 00:01:40.253
+00:01:50.280 --> 00:01:51.587
 au logiciel de capture.
 
-00:01:40.600 --> 00:01:44.839
-Le préfixe barre vingt-quatre correspond ici aux trois
-premiers octets.
+00:01:51.933 --> 00:01:56.173
+Le préfixe barre vingt-quatre correspond ici aux
+trois premiers octets.
 
-00:01:44.839 --> 00:01:48.027
-Avec dix comme troisième octet des deux côtés, les
-deux postes
+00:01:56.173 --> 00:01:59.361
+Avec dix comme troisième octet des deux côtés,
+les deux postes
 
-00:01:48.027 --> 00:01:50.636
-de cette maquette sont dans le même réseau local.
+00:01:59.361 --> 00:02:01.969
+de cette maquette sont dans le même réseau
+local.
 
-00:01:50.636 --> 00:01:54.312
+00:02:01.969 --> 00:02:05.646
 L'émetteur demande directement la MAC de la
 destination.
 
-00:01:54.312 --> 00:01:58.381
-Si le troisième octet devient vingt, la destination
-est distante.
+00:02:05.646 --> 00:02:09.714
+Si le troisième octet devient vingt, la
+destination est distante.
 
-00:01:58.381 --> 00:02:01.641
-On garde l'adresse IP finale dans le paquet, puis on
-cherche
+00:02:09.714 --> 00:02:12.975
+On garde l'adresse IP finale dans le paquet,
+puis on cherche
 
-00:02:01.641 --> 00:02:03.124
+00:02:12.975 --> 00:02:14.457
 la MAC de la passerelle.
 
-00:02:03.124 --> 00:02:05.893
+00:02:14.457 --> 00:02:17.226
 C'est elle qui lui donnera le prochain chemin.
 
-00:02:06.225 --> 00:02:09.312
+00:02:17.808 --> 00:02:20.896
 Observe bien le premier paquet dans la liste.
 
-00:02:09.312 --> 00:02:13.136
+00:02:20.896 --> 00:02:24.719
 Pour joindre un nouveau voisin, le poste doit
 connaître sa MAC.
 
-00:02:13.136 --> 00:02:16.346
+00:02:24.719 --> 00:02:27.929
 Il envoie sa question à tous les voisins de la
 liaison,
 
-00:02:16.346 --> 00:02:17.805
+00:02:27.929 --> 00:02:29.388
 grâce à l'adresse de diffusion.
 
-00:02:17.805 --> 00:02:20.170
+00:02:29.388 --> 00:02:31.753
 Le voisin concerné répond.
 
-00:02:20.170 --> 00:02:23.565
-Le poste garde la réponse quelque temps en mémoire.
+00:02:31.753 --> 00:02:35.148
+Le poste garde la réponse quelque temps en
+mémoire.
 
-00:02:23.565 --> 00:02:27.115
+00:02:35.148 --> 00:02:38.698
 Si tu refais le ping tout de suite, il peut donc
 
-00:02:27.115 --> 00:02:28.405
+00:02:38.698 --> 00:02:39.989
 commencer directement par l'ICMP.
 
-00:02:28.767 --> 00:02:32.911
-Au démarrage, un client paramétré en DHCP a besoin
-d'une adresse
+00:02:40.350 --> 00:02:44.495
+Au démarrage, un client paramétré en DHCP a
+besoin d'une adresse
 
-00:02:32.911 --> 00:02:34.795
+00:02:44.495 --> 00:02:46.378
 avant de pouvoir communiquer normalement.
 
-00:02:34.795 --> 00:02:38.207
-Sa première demande part de zéro point zéro point zéro
-point
+00:02:46.378 --> 00:02:49.791
+Sa première demande part de zéro point zéro
+point zéro point
 
-00:02:38.207 --> 00:02:39.758
+00:02:49.791 --> 00:02:51.342
 zéro vers l'adresse de diffusion.
 
-00:02:39.758 --> 00:02:43.775
-Le transport UDP utilise le port soixante-huit pour le
-client et
+00:02:51.342 --> 00:02:55.359
+Le transport UDP utilise le port soixante-huit
+pour le client et
 
-00:02:43.775 --> 00:02:45.236
+00:02:55.359 --> 00:02:56.820
 soixante-sept pour le serveur.
 
-00:02:45.236 --> 00:02:48.447
-Le bail indique l'adresse que le client peut utiliser,
-pendant combien
+00:02:56.820 --> 00:03:00.030
+Le bail indique l'adresse que le client peut
+utiliser, pendant combien
 
-00:02:48.447 --> 00:02:51.658
-de temps, et les autres réglages que le serveur lui
-fournit.
+00:03:00.030 --> 00:03:03.241
+de temps, et les autres réglages que le serveur
+lui fournit.
 
-00:02:52.017 --> 00:02:53.842
+00:03:03.850 --> 00:03:05.675
 Suis les flèches.
 
-00:02:53.842 --> 00:02:56.930
+00:03:05.675 --> 00:03:08.763
 Discover signifie je cherche un serveur.
 
-00:02:56.930 --> 00:03:00.116
+00:03:08.763 --> 00:03:11.950
 Offer signifie je te propose cette adresse.
 
-00:03:00.116 --> 00:03:03.266
+00:03:11.950 --> 00:03:15.099
 Request indique que le client choisit l'offre.
 
-00:03:03.266 --> 00:03:07.003
+00:03:15.099 --> 00:03:18.837
 Le serveur termine avec Ack, qui valide le bail.
 
-00:03:07.003 --> 00:03:11.058
-Observe le champ qui identifie la transaction pour
-retrouver les quatre
+00:03:18.837 --> 00:03:22.891
+Observe le champ qui identifie la transaction
+pour retrouver les quatre
 
-00:03:11.058 --> 00:03:11.795
+00:03:22.891 --> 00:03:23.628
 messages liés.
 
-00:03:11.795 --> 00:03:15.242
-Un client qui renouvelle un bail peut déjà connaître
-son adresse
+00:03:23.628 --> 00:03:27.076
+Un client qui renouvelle un bail peut déjà
+connaître son adresse
 
-00:03:15.242 --> 00:03:16.182
+00:03:27.076 --> 00:03:28.016
 et le serveur.
 
-00:03:16.182 --> 00:03:19.209
+00:03:28.016 --> 00:03:31.043
 L'échange que tu vois peut donc être plus court.
 
-00:03:19.558 --> 00:03:22.712
-Pour refaire la vraie question du TD, relie les trois
-premiers
+00:03:31.392 --> 00:03:34.546
+Pour refaire la vraie question du TD, relie les
+trois premiers
 
-00:03:22.712 --> 00:03:25.293
-postes au hub et les trois derniers au commutateur.
+00:03:34.546 --> 00:03:37.126
+postes au hub et les trois derniers au
+commutateur.
 
-00:03:25.293 --> 00:03:28.393
-Prends des adresses du même réseau et laisse libres
-celles finissant
+00:03:37.126 --> 00:03:40.226
+Prends des adresses du même réseau et laisse
+libres celles finissant
 
-00:03:28.393 --> 00:03:30.366
+00:03:40.226 --> 00:03:42.200
 par onze à quinze pour la suite.
 
-00:03:30.366 --> 00:03:32.499
+00:03:42.200 --> 00:03:44.332
 Fais le premier ping.
 
-00:03:32.499 --> 00:03:35.807
+00:03:44.332 --> 00:03:47.641
 Suis le signal vers le troisième poste du hub.
 
-00:03:35.807 --> 00:03:38.724
+00:03:47.641 --> 00:03:50.557
 Fais ensuite le ping sur le commutateur.
 
-00:03:38.724 --> 00:03:42.047
-La diffusion et le trafic destiné à une MAC connue ne
+00:03:50.557 --> 00:03:53.880
+La diffusion et le trafic destiné à une MAC
+connue ne
 
-00:03:42.047 --> 00:03:43.859
+00:03:53.880 --> 00:03:55.692
 suivent pas forcément le même trajet.
 
-00:03:44.225 --> 00:03:47.864
-Sur le premier échange, clique sur un événement ARP et
-relève
+00:03:56.308 --> 00:03:59.947
+Sur le premier échange, clique sur un événement
+ARP et relève
 
-00:03:47.864 --> 00:03:49.187
+00:03:59.947 --> 00:04:01.271
 la MAC de diffusion.
 
-00:03:49.187 --> 00:03:53.072
+00:04:01.271 --> 00:04:05.155
 Clique ensuite sur l'ICMP et relève la MAC de
 destination.
 
-00:03:53.072 --> 00:03:56.349
+00:04:05.155 --> 00:04:08.432
 Explique la différence par ce que le poste et le
 switch
 
-00:03:56.349 --> 00:03:56.945
+00:04:08.432 --> 00:04:09.028
 ont appris.
 
-00:03:56.945 --> 00:04:00.775
+00:04:09.028 --> 00:04:12.858
 Au deuxième essai, une nouvelle demande ARP peut
 disparaître parce que
 
-00:04:00.775 --> 00:04:02.864
+00:04:12.858 --> 00:04:14.947
 l'information est encore dans le cache.
 
-00:04:02.864 --> 00:04:06.807
+00:04:14.947 --> 00:04:18.890
 Le résultat attendu doit toujours être comparé à
 l'état de ta
 
-00:04:06.807 --> 00:04:07.165
+00:04:18.890 --> 00:04:19.249
 maquette.
 
-00:04:07.517 --> 00:04:11.854
-Fixe d'abord une adresse au serveur dans l'onglet de
-configuration IP.
+00:04:19.600 --> 00:04:23.937
+Fixe d'abord une adresse au serveur dans
+l'onglet de configuration IP.
 
-00:04:11.854 --> 00:04:15.677
+00:04:23.937 --> 00:04:27.761
 Ensuite, dans les services, active DHCP.
 
-00:04:15.677 --> 00:04:19.416
-Mets le début de plage à onze, le masque vingt-quatre
-et
+00:04:27.761 --> 00:04:31.499
+Mets le début de plage à onze, le masque vingt-
+quatre et
 
-00:04:19.416 --> 00:04:20.775
+00:04:31.499 --> 00:04:32.859
 cinq utilisateurs au maximum.
 
-00:04:20.775 --> 00:04:24.293
-Le premier bail possible est onze et le dernier est
-quinze.
+00:04:32.859 --> 00:04:36.376
+Le premier bail possible est onze et le dernier
+est quinze.
 
-00:04:24.293 --> 00:04:27.528
-Si tu testes un sixième poste en même temps, le nombre
+00:04:36.376 --> 00:04:39.611
+Si tu testes un sixième poste en même temps, le
+nombre
 
-00:04:27.528 --> 00:04:29.881
-d'adresses disponibles est déjà une piste à vérifier.
+00:04:39.611 --> 00:04:41.964
+d'adresses disponibles est déjà une piste à
+vérifier.
 
-00:04:30.225 --> 00:04:34.709
-Sur un poste sans bail, sélectionne DHCP et passe en
-simulation.
+00:04:42.558 --> 00:04:47.043
+Sur un poste sans bail, sélectionne DHCP et
+passe en simulation.
 
-00:04:34.709 --> 00:04:38.495
-Ouvre le détail du Discover et lis séparément l'IP et
-les
+00:04:47.043 --> 00:04:50.828
+Ouvre le détail du Discover et lis séparément
+l'IP et les
 
-00:04:38.495 --> 00:04:38.839
+00:04:50.828 --> 00:04:51.173
 ports.
 
-00:04:38.839 --> 00:04:42.467
-Passe ensuite à l'Offer, au Request puis à l'Ack.
+00:04:51.173 --> 00:04:54.800
+Passe ensuite à l'Offer, au Request puis à
+l'Ack.
 
-00:04:42.467 --> 00:04:46.388
-Vérifie que l'adresse confirmée apparaît vraiment sur
-le poste.
+00:04:54.800 --> 00:04:58.722
+Vérifie que l'adresse confirmée apparaît
+vraiment sur le poste.
 
-00:04:46.388 --> 00:04:50.095
-Si l'Offer ne revient pas, contrôle d'abord le câble,
-l'adresse du
+00:04:58.722 --> 00:05:02.429
+Si l'Offer ne revient pas, contrôle d'abord le
+câble, l'adresse du
 
-00:04:50.095 --> 00:04:52.454
+00:05:02.429 --> 00:05:04.788
 serveur, l'état du service et la plage.
 
-00:04:52.808 --> 00:04:56.226
-Le client est dans le réseau dix point zéro point X.
+00:05:05.142 --> 00:05:08.560
+Le client est dans le réseau dix point zéro
+point X.
 
-00:04:56.226 --> 00:05:00.551
-La deuxième interface du routeur mène au réseau cent
-soixante-douze point
+00:05:08.560 --> 00:05:12.885
+La deuxième interface du routeur mène au réseau
+cent soixante-douze point
 
-00:05:00.551 --> 00:05:00.945
+00:05:12.885 --> 00:05:13.278
 vingt-cinq.
 
-00:05:00.945 --> 00:05:03.518
+00:05:13.278 --> 00:05:15.851
 Teste d'abord le voisin immédiat.
 
-00:05:03.518 --> 00:05:07.116
-S'il répond, tu sais au moins que le lien client vers
+00:05:15.851 --> 00:05:19.450
+S'il répond, tu sais au moins que le lien client
+vers
 
-00:05:07.116 --> 00:05:07.771
+00:05:19.450 --> 00:05:20.104
 routeur fonctionne.
 
-00:05:07.771 --> 00:05:11.190
-Essaie ensuite la destination éloignée et observe si
-la requête entre
+00:05:20.104 --> 00:05:23.524
+Essaie ensuite la destination éloignée et
+observe si la requête entre
 
-00:05:11.190 --> 00:05:13.677
+00:05:23.524 --> 00:05:26.011
 dans le routeur et si elle en ressort.
 
-00:05:13.677 --> 00:05:17.084
-Avec le transfert désactivé, elle ne traverse pas.
+00:05:26.011 --> 00:05:29.418
+Avec le transfert désactivé, elle ne traverse
+pas.
 
-00:05:17.433 --> 00:05:20.753
+00:05:30.017 --> 00:05:33.337
 Active le transfert IP dans la machine du TP.
 
-00:05:20.753 --> 00:05:23.952
-Relance strictement la même commande sur le client.
+00:05:33.337 --> 00:05:36.535
+Relance strictement la même commande sur le
+client.
 
-00:05:23.952 --> 00:05:27.371
+00:05:36.535 --> 00:05:39.954
 Observe ce qui change sur la deuxième interface.
 
-00:05:27.371 --> 00:05:31.538
-Si une requête ressort, le routeur a bien commencé à
-transférer.
+00:05:39.954 --> 00:05:44.121
+Si une requête ressort, le routeur a bien
+commencé à transférer.
 
-00:05:31.538 --> 00:05:35.616
-Si aucune réponse ne revient, regarde la route inverse
-et le
+00:05:44.121 --> 00:05:48.199
+Si aucune réponse ne revient, regarde la route
+inverse et le
 
-00:05:35.616 --> 00:05:35.986
+00:05:48.199 --> 00:05:48.570
 filtrage.
 
-00:05:35.986 --> 00:05:39.019
-Quand le paquet passe par le routeur, l'adresse MAC
-change pour
+00:05:48.570 --> 00:05:51.603
+Quand le paquet passe par le routeur, l'adresse
+MAC change pour
 
-00:05:39.019 --> 00:05:42.052
-la liaison suivante et le compteur de sauts du paquet
-baisse.
+00:05:51.603 --> 00:05:54.636
+la liaison suivante et le compteur de sauts du
+paquet baisse.
 
-00:05:42.392 --> 00:05:45.712
-Dans le TP, on démarre par une capture pendant qu'un
-client
+00:05:54.975 --> 00:05:58.295
+Dans le TP, on démarre par une capture pendant
+qu'un client
 
-00:05:45.712 --> 00:05:48.126
+00:05:58.295 --> 00:06:00.709
 échange un petit fichier texte avec le serveur.
 
-00:05:48.126 --> 00:05:51.375
-Pour commencer, isole les paquets du port vingt et un
-si
+00:06:00.709 --> 00:06:03.959
+Pour commencer, isole les paquets du port vingt
+et un si
 
-00:05:51.375 --> 00:05:53.739
+00:06:03.959 --> 00:06:06.322
 le serveur emploie le port de contrôle standard.
 
-00:05:53.739 --> 00:05:56.275
+00:06:06.322 --> 00:06:08.859
 Repère les trois premiers segments.
 
-00:05:56.275 --> 00:05:58.726
+00:06:08.859 --> 00:06:11.310
 Le client demande une connexion.
 
-00:05:58.726 --> 00:06:02.265
-Le serveur confirme cette demande et en fait une de
-son
+00:06:11.310 --> 00:06:14.848
+Le serveur confirme cette demande et en fait une
+de son
 
-00:06:02.265 --> 00:06:02.587
+00:06:14.848 --> 00:06:15.170
 côté.
 
-00:06:02.587 --> 00:06:05.994
-Le dernier acquittement du client termine l'ouverture.
+00:06:15.170 --> 00:06:18.577
+Le dernier acquittement du client termine
+l'ouverture.
 
-00:06:05.994 --> 00:06:09.136
-Note les ports aux deux bouts et vois sur quelle ligne
+00:06:18.577 --> 00:06:21.719
+Note les ports aux deux bouts et vois sur quelle
+ligne
 
-00:06:09.136 --> 00:06:09.707
+00:06:21.719 --> 00:06:22.290
 ils s'inversent.
 
-00:06:10.058 --> 00:06:13.967
-La connexion que tu regardes transporte les commandes
-FTP.
+00:06:22.892 --> 00:06:26.800
+La connexion que tu regardes transporte les
+commandes FTP.
 
-00:06:13.967 --> 00:06:17.917
+00:06:26.800 --> 00:06:30.751
 Le contenu du fichier peut passer dans une autre
 connexion, avec
 
-00:06:17.917 --> 00:06:18.636
+00:06:30.751 --> 00:06:31.469
 d'autres ports.
 
-00:06:18.636 --> 00:06:22.622
-Pour l'observer, suis le flux correspondant à ces
-ports, et compare
+00:06:31.469 --> 00:06:35.455
+Pour l'observer, suis le flux correspondant à
+ces ports, et compare
 
-00:06:22.622 --> 00:06:23.709
+00:06:35.455 --> 00:06:36.543
 l'ordre des événements.
 
-00:06:23.709 --> 00:06:27.020
-À la fin, un segment portant FIN indique qu'un côté
-n'a
+00:06:36.543 --> 00:06:39.854
+À la fin, un segment portant FIN indique qu'un
+côté n'a
 
-00:06:27.020 --> 00:06:28.525
+00:06:39.854 --> 00:06:41.359
 plus de données à envoyer.
 
-00:06:28.525 --> 00:06:31.554
-C'est le même type de démarche qu'avec ARP et ICMP :
+00:06:41.359 --> 00:06:44.387
+C'est le même type de démarche qu'avec ARP et
+ICMP :
 
-00:06:31.554 --> 00:06:34.582
-isoler l'échange qui répond à la question au lieu de
-commenter
+00:06:44.387 --> 00:06:47.415
+isoler l'échange qui répond à la question au
+lieu de commenter
 
-00:06:34.582 --> 00:06:36.234
+00:06:47.415 --> 00:06:49.067
 tout ce que la capture contient.

@@ -419,32 +419,39 @@ dig @172.25.0.11 secu.rt. SOA +dnssec +multi +adflag</code></pre>
 <section class="c-section" id="video" aria-labelledby="video-title">
   <h2 class="c-h2" id="video-title">Vidéo explicative</h2>
   <video id="dnssec-player" controls preload="none" playsinline
-         poster="../assets/revisions/dnssec/video-affiche.jpg?v=montage-2"
+         poster="../assets/revisions/dnssec/video-affiche.jpg?v=montage-3"
          style="display:block;width:100%;aspect-ratio:16/9;background:white;border-radius:14px">
-    <source src="../assets/revisions/dnssec/cours-video.mp4?v=schemas-1" type="video/mp4">
-    <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/dnssec/sous-titres.vtt">
+    <source src="../assets/revisions/dnssec/cours-video.mp4?v=montage-3" type="video/mp4">
+    <track kind="captions" srclang="fr" label="Français" src="../assets/revisions/dnssec/sous-titres.vtt?v=montage-3">
     Ton navigateur ne peut pas lire cette vidéo.
   </video>
   <h3>Chapitres</h3>
-  <details class="acc"><summary>Cours · 0:00</summary><div class="acc-body"><ul><li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="0.000">0:00 · À quoi sert le DNS ?</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="34.083">0:34 · Qui répond à une requête ?</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="67.083">1:07 · Lire les enregistrements</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="115.250">1:55 · Pourquoi sécuriser le DNS ?</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="144.250">2:24 · Ce que DNSSEC vérifie</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="174.083">2:54 · La chaîne de confiance</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="206.667">3:26 · Prouver qu’un nom n’existe pas</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="238.542">3:58 · Primaire, secondaire et relais</button></li></ul></div></details>
-  <details class="acc"><summary>Questions TD &amp; TP · 4:30</summary><div class="acc-body"><ul><li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="270.500">4:30 · I · Comparer les requêtes dig</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="307.375">5:07 · II · Installer et contrôler BIND9</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="333.208">5:33 · III A · Déclarer secu.rt</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="362.667">6:02 · III A · Remplir db.secu</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="400.042">6:40 · III A · Vérifier avant de recharger</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="430.875">7:10 · III B et IV · Inverse et poste client</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="465.000">7:45 · V · Transférer la zone avec TSIG</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="499.292">8:19 · VI · Lire la signature et sa validation</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="538.333">8:58 · VII · Signer et servir la zone</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="580.500">9:40 · VIII · Diagnostiquer SERVFAIL</button></li>
-<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="635.625">10:35 · VIII · Vérifier la correction</button></li></ul></div></details>
+        <details class="acc"><summary>Exemple d’ouverture · 0:00</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="0.000">0:00 · Comment vérifier une réponse DNS ?</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Cours · 0:15</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="15.292">0:15 · À quoi sert le DNS ?</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="49.583">0:49 · Qui répond à une requête ?</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="82.833">1:22 · Lire les enregistrements</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="131.250">2:11 · Pourquoi sécuriser le DNS ?</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="162.917">2:42 · Ce que DNSSEC vérifie</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="193.000">3:13 · La chaîne de confiance</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="225.792">3:45 · Prouver qu’un nom n’existe pas</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="257.917">4:17 · Primaire, secondaire et relais</button></li>
+</ul></div></details>
+        <details class="acc"><summary>Questions TD &amp; TP · 4:50</summary><div class="acc-body"><ul>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="290.125">4:50 · I · Comparer les requêtes dig</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="327.250">5:27 · II · Installer et contrôler BIND9</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="353.333">5:53 · III A · Déclarer secu.rt</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="383.000">6:22 · III A · Remplir db.secu</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="420.625">7:00 · III A · Vérifier avant de recharger</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="451.708">7:31 · III B et IV · Inverse et poste client</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="486.083">8:06 · V · Transférer la zone avec TSIG</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="520.625">8:40 · VI · Lire la signature et sa validation</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="559.917">9:19 · VII · Signer et servir la zone</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="602.333">10:02 · VIII · Diagnostiquer SERVFAIL</button></li>
+<li><button class="btn btn-ghost btn-sm" type="button" data-dnssec-time="657.667">10:57 · VIII · Vérifier la correction</button></li>
+</ul></div></details>
 </section>
 
     </article>

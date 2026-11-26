@@ -1,649 +1,684 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:03.494
-Un réseau de campus relie plusieurs zones d’un site.
+00:00:00.100 --> 00:00:03.952
+Pour joindre une machine sur un autre réseau,
+ton ordinateur commence
 
-00:00:03.494 --> 00:00:06.501
-L’accès est la partie au plus près du poste ou de
+00:00:03.952 --> 00:00:06.403
+par transmettre le paquet à sa passerelle.
 
-00:00:06.501 --> 00:00:07.048
+00:00:06.403 --> 00:00:09.910
+On va suivre ce paquet entre les équipements et
+repérer le
+
+00:00:09.910 --> 00:00:12.460
+premier endroit où vérifier si la connexion
+bloque.
+
+00:00:13.058 --> 00:00:16.452
+Un réseau de campus relie plusieurs zones d’un
+site.
+
+00:00:16.452 --> 00:00:19.459
+L’accès est la partie au plus près du poste ou
+de
+
+00:00:19.459 --> 00:00:20.006
 la borne.
 
-00:00:07.048 --> 00:00:10.840
-La distribution rassemble ces accès et peut porter le
-routage et
+00:00:20.006 --> 00:00:23.798
+La distribution rassemble ces accès et peut
+porter le routage et
 
-00:00:10.840 --> 00:00:12.219
+00:00:23.798 --> 00:00:25.177
 les règles de sécurité.
 
-00:00:12.219 --> 00:00:16.202
-Le cœur transporte le trafic entre les grandes zones
-du campus.
+00:00:25.177 --> 00:00:29.160
+Le cœur transporte le trafic entre les grandes
+zones du campus.
 
-00:00:16.202 --> 00:00:19.976
-Dans le petit labo, on peut réunir plusieurs rôles sur
-le
+00:00:29.160 --> 00:00:32.935
+Dans le petit labo, on peut réunir plusieurs
+rôles sur le
 
-00:00:19.976 --> 00:00:21.006
+00:00:32.935 --> 00:00:33.964
 même ordinateur Linux.
 
-00:00:21.006 --> 00:00:24.520
-Dessine quand même leurs fonctions pour savoir quelle
-décision est prise
+00:00:33.964 --> 00:00:37.479
+Dessine quand même leurs fonctions pour savoir
+quelle décision est prise
 
-00:00:24.520 --> 00:00:25.479
+00:00:37.479 --> 00:00:38.437
 à chaque endroit.
 
-00:00:25.850 --> 00:00:29.525
+00:00:39.017 --> 00:00:42.692
 Deux liaisons physiques peuvent améliorer la
 disponibilité.
 
-00:00:29.525 --> 00:00:32.828
-Mais dans un réseau commuté, les trames diffusées
-pourraient tourner en
+00:00:42.692 --> 00:00:45.995
+Mais dans un réseau commuté, les trames
+diffusées pourraient tourner en
 
-00:00:32.828 --> 00:00:34.930
+00:00:45.995 --> 00:00:48.097
 boucle si rien ne contrôle les chemins.
 
-00:00:34.930 --> 00:00:38.557
-Spanning Tree maintient une topologie logique sans
-boucle.
+00:00:48.097 --> 00:00:51.724
+Spanning Tree maintient une topologie logique
+sans boucle.
 
-00:00:38.557 --> 00:00:43.275
+00:00:51.724 --> 00:00:56.442
 L’agrégation de liens combine plusieurs liens
 compatibles en une interface logique.
 
-00:00:43.275 --> 00:00:46.524
-La qualité de service répond à une autre question :
-quel
+00:00:56.442 --> 00:00:59.690
+La qualité de service répond à une autre
+question : quel
 
-00:00:46.524 --> 00:00:49.476
-trafic faire passer en premier quand la liaison est
-chargée.
+00:00:59.690 --> 00:01:02.643
+trafic faire passer en premier quand la liaison
+est chargée.
 
-00:00:49.476 --> 00:00:53.827
-Pour comparer, utilise les mêmes paramètres de test
-avant et après.
+00:01:02.643 --> 00:01:06.994
+Pour comparer, utilise les mêmes paramètres de
+test avant et après.
 
-00:00:54.183 --> 00:00:57.791
-Un V L A N crée un réseau local logique sur
+00:01:07.350 --> 00:01:11.614
+Un VLAN crée un réseau local logique sur les
+commutateurs.
 
-00:00:57.791 --> 00:00:58.447
-les commutateurs.
+00:01:11.614 --> 00:01:15.533
+Deux postes peuvent être branchés au même
+matériel mais appartenir à
 
-00:00:58.447 --> 00:01:02.366
-Deux postes peuvent être branchés au même matériel
-mais appartenir à
-
-00:01:02.366 --> 00:01:03.435
+00:01:15.533 --> 00:01:16.601
 des groupes séparés.
 
-00:01:03.435 --> 00:01:07.626
-Sur un port d’accès, normalement le poste parle sans
-étiquette.
+00:01:16.601 --> 00:01:20.793
+Sur un port d’accès, normalement le poste parle
+sans étiquette.
 
-00:01:07.626 --> 00:01:10.897
-Une liaison trunk identifie le V L A N de la
+00:01:20.793 --> 00:01:24.677
+Une liaison trunk identifie le VLAN de la trame
+pour permettre
 
-00:01:10.897 --> 00:01:13.275
-trame pour permettre le transport de plusieurs
-groupes.
+00:01:24.677 --> 00:01:26.442
+le transport de plusieurs groupes.
 
-00:01:13.275 --> 00:01:17.342
-Si deux réseaux doivent communiquer, une interface de
-routage doit les
+00:01:26.442 --> 00:01:30.509
+Si deux réseaux doivent communiquer, une
+interface de routage doit les
 
-00:01:17.342 --> 00:01:17.712
+00:01:30.509 --> 00:01:30.878
 relier.
 
-00:01:17.712 --> 00:01:20.842
-C’est à ce passage que tu peux autoriser certains flux
-avec
+00:01:30.878 --> 00:01:34.009
+C’est à ce passage que tu peux autoriser
+certains flux avec
 
-00:01:20.842 --> 00:01:22.834
+00:01:34.009 --> 00:01:36.001
 des listes de contrôle ou un pare-feu.
 
-00:01:23.183 --> 00:01:26.340
-Dans cet exemple, si tu veux permettre un accès Web
-aux
+00:01:36.600 --> 00:01:39.756
+Dans cet exemple, si tu veux permettre un accès
+Web aux
 
-00:01:26.340 --> 00:01:29.496
-serveurs sans ouvrir tous leurs ports, fais passer le
-paquet par
+00:01:39.756 --> 00:01:42.912
+serveurs sans ouvrir tous leurs ports, fais
+passer le paquet par
 
-00:01:29.496 --> 00:01:30.070
+00:01:42.912 --> 00:01:43.486
 la passerelle.
 
-00:01:30.070 --> 00:01:33.071
-Elle reçoit un paquet du réseau des postes et décide
-de
+00:01:43.486 --> 00:01:46.487
+Elle reçoit un paquet du réseau des postes et
+décide de
 
-00:01:33.071 --> 00:01:35.253
+00:01:46.487 --> 00:01:48.670
 l’envoyer ou non vers le réseau des serveurs.
 
-00:01:35.253 --> 00:01:39.996
-Regarde séparément l’adresse IP de destination, le
-protocole et le port.
+00:01:48.670 --> 00:01:53.413
+Regarde séparément l’adresse IP de destination,
+le protocole et le port.
 
-00:01:39.996 --> 00:01:43.218
-Une règle qui accepte tous les paquets vers le serveur
-serait
+00:01:53.413 --> 00:01:56.635
+Une règle qui accepte tous les paquets vers le
+serveur serait
 
-00:01:43.218 --> 00:01:45.854
-plus large qu’une règle qui accepte seulement le Web.
+00:01:56.635 --> 00:01:59.271
+plus large qu’une règle qui accepte seulement le
+Web.
 
-00:01:46.225 --> 00:01:50.133
+00:01:59.642 --> 00:02:03.550
 Pour choisir une chaîne, demande-toi d’abord qui
 envoie et qui reçoit.
 
-00:01:50.133 --> 00:01:53.552
-Un ping vers l’adresse de la passerelle passe par
-input.
+00:02:03.550 --> 00:02:06.969
+Un ping vers l’adresse de la passerelle passe
+par input.
 
-00:01:53.552 --> 00:01:56.984
+00:02:06.969 --> 00:02:10.400
 Un ping à travers la passerelle va plutôt dans
 forward.
 
-00:01:56.984 --> 00:02:00.415
-Une réponse créée par le pare-feu utilise output.
+00:02:10.400 --> 00:02:13.832
+Une réponse créée par le pare-feu utilise
+output.
 
-00:02:00.415 --> 00:02:03.197
+00:02:13.832 --> 00:02:16.614
 Dans chaque chaîne, l’ordre compte.
 
-00:02:03.197 --> 00:02:05.624
+00:02:16.614 --> 00:02:19.040
 On lit les règles de haut en bas.
 
-00:02:05.624 --> 00:02:08.765
-Si le paquet est accepté ou refusé par une règle qui
+00:02:19.040 --> 00:02:22.182
+Si le paquet est accepté ou refusé par une règle
+qui
 
-00:02:08.765 --> 00:02:11.907
-termine le parcours, une règle plus bas ne change pas
-ce
+00:02:22.182 --> 00:02:25.323
+termine le parcours, une règle plus bas ne
+change pas ce
 
-00:02:11.907 --> 00:02:12.192
+00:02:25.323 --> 00:02:25.609
 résultat.
 
-00:02:12.558 --> 00:02:15.827
-Pour trouver la règle qui agit, lis les compteurs
-avant puis
+00:02:26.183 --> 00:02:29.452
+Pour trouver la règle qui agit, lis les
+compteurs avant puis
 
-00:02:15.827 --> 00:02:17.312
+00:02:29.452 --> 00:02:30.937
 après un seul essai connu.
 
-00:02:17.312 --> 00:02:20.111
-Si la ligne que tu attendais ne change pas, le trafic
+00:02:30.937 --> 00:02:33.736
+Si la ligne que tu attendais ne change pas, le
+trafic
 
-00:02:20.111 --> 00:02:22.909
-est peut-être passé dans une autre chaîne ou dans une
-règle
+00:02:33.736 --> 00:02:36.534
+est peut-être passé dans une autre chaîne ou
+dans une règle
 
-00:02:22.909 --> 00:02:23.673
+00:02:36.534 --> 00:02:37.298
 placée plus haut.
 
-00:02:23.673 --> 00:02:27.468
-Une règle log note le passage du paquet puis laisse le
+00:02:37.298 --> 00:02:41.093
+Une règle log note le passage du paquet puis
+laisse le
 
-00:02:27.468 --> 00:02:28.158
+00:02:41.093 --> 00:02:41.783
 filtrage continuer.
 
-00:02:28.158 --> 00:02:31.907
-Place un préfixe reconnaissable et limite la quantité
-de traces pour
+00:02:41.783 --> 00:02:45.532
+Place un préfixe reconnaissable et limite la
+quantité de traces pour
 
-00:02:31.907 --> 00:02:33.611
+00:02:45.532 --> 00:02:47.236
 que le journal reste lisible.
 
-00:02:33.975 --> 00:02:37.344
-Imagine un client qui demande une page à un serveur.
+00:02:47.600 --> 00:02:50.969
+Imagine un client qui demande une page à un
+serveur.
 
-00:02:37.344 --> 00:02:40.224
+00:02:50.969 --> 00:02:53.849
 Le premier paquet inaugure la connexion.
 
-00:02:40.224 --> 00:02:44.084
-La réponse appartient à une connexion que le pare-feu
-mémorise.
+00:02:53.849 --> 00:02:57.709
+La réponse appartient à une connexion que le
+pare-feu mémorise.
 
-00:02:44.084 --> 00:02:47.902
-En autorisant established et related au retour, le
-trafic de réponse
+00:02:57.709 --> 00:03:01.527
+En autorisant established et related au retour,
+le trafic de réponse
 
-00:02:47.902 --> 00:02:51.719
+00:03:01.527 --> 00:03:05.344
 ne nécessite pas d’ouvrir toutes les nouvelles
 connexions venant de l’extérieur.
 
-00:02:51.719 --> 00:02:55.286
-Pour le test, vérifie que le Web marche dans le sens
+00:03:05.344 --> 00:03:08.911
+Pour le test, vérifie que le Web marche dans le
+sens
 
-00:02:55.286 --> 00:02:58.853
-voulu, puis lance une connexion différente depuis
-l’extérieur sans avoir créé
+00:03:08.911 --> 00:03:12.478
+voulu, puis lance une connexion différente
+depuis l’extérieur sans avoir créé
 
-00:02:58.853 --> 00:03:00.150
+00:03:12.478 --> 00:03:13.775
 de session depuis l’intérieur.
 
-00:03:00.517 --> 00:03:04.327
-Le N A T traduit une adresse, parfois aussi un port.
+00:03:14.350 --> 00:03:18.160
+Le NAT traduit une adresse, parfois aussi un
+port.
 
-00:03:04.327 --> 00:03:07.665
-Pour sortir sur un réseau qui ne sait pas revenir vers
+00:03:18.160 --> 00:03:21.498
+Pour sortir sur un réseau qui ne sait pas
+revenir vers
 
-00:03:07.665 --> 00:03:11.002
-les adresses privées du labo, masquerade présente la
-source comme l’adresse
+00:03:21.498 --> 00:03:24.836
+les adresses privées du labo, masquerade
+présente la source comme l’adresse
 
-00:03:11.002 --> 00:03:11.913
+00:03:24.836 --> 00:03:25.746
 de l’interface externe.
 
-00:03:11.913 --> 00:03:15.732
-Quand plusieurs flux partagent cette adresse, les
-ports aident à les
+00:03:25.746 --> 00:03:29.566
+Quand plusieurs flux partagent cette adresse,
+les ports aident à les
 
-00:03:15.732 --> 00:03:16.079
+00:03:29.566 --> 00:03:29.913
 distinguer.
 
-00:03:16.079 --> 00:03:19.584
-Pour publier un service de test, D N A T change
+00:03:29.913 --> 00:03:33.885
+Pour publier un service de test, D NAT change la
+destination
 
-00:03:19.584 --> 00:03:21.496
-la destination vers le serveur interne.
+00:03:33.885 --> 00:03:35.329
+vers le serveur interne.
 
-00:03:21.496 --> 00:03:24.977
-Dans les deux cas, une règle de translation laisse
-encore le
+00:03:35.329 --> 00:03:38.811
+Dans les deux cas, une règle de translation
+laisse encore le
 
-00:03:24.977 --> 00:03:26.876
+00:03:38.811 --> 00:03:40.709
 filtrage décider si le paquet passe.
 
-00:03:27.225 --> 00:03:30.937
+00:03:41.308 --> 00:03:45.021
 Pour comprendre une redirection, suis le port de
 destination.
 
-00:03:30.937 --> 00:03:34.543
-Le client se connecte au port huit mille quatre-vingts
-de la
+00:03:45.021 --> 00:03:48.627
+Le client se connecte au port huit mille quatre-
+vingts de la
 
-00:03:34.543 --> 00:03:34.871
+00:03:48.627 --> 00:03:48.954
 passerelle.
 
-00:03:34.871 --> 00:03:38.634
-Le pare-feu envoie le paquet sur le port quatre-vingts
-du serveur
+00:03:48.954 --> 00:03:52.718
+Le pare-feu envoie le paquet sur le port quatre-
+vingts du serveur
 
-00:03:38.634 --> 00:03:38.976
+00:03:52.718 --> 00:03:53.060
 interne.
 
-00:03:38.976 --> 00:03:42.077
+00:03:53.060 --> 00:03:56.160
 Le client n’a pas besoin de savoir que ce port a
 
-00:03:42.077 --> 00:03:42.359
+00:03:56.160 --> 00:03:56.442
 changé.
 
-00:03:42.359 --> 00:03:45.559
+00:03:56.442 --> 00:03:59.642
 Il faut que le serveur lui réponde via la même
 passerelle,
 
-00:03:45.559 --> 00:03:48.759
-pour que la translation soit correctement inversée sur
-le trajet de
+00:03:59.642 --> 00:04:02.842
+pour que la translation soit correctement
+inversée sur le trajet de
 
-00:03:48.759 --> 00:03:49.050
+00:04:02.842 --> 00:04:03.133
 retour.
 
-00:03:49.392 --> 00:03:53.006
-Radius centralise la décision d’authentification.
+00:04:03.475 --> 00:04:07.089
+Radius centralise la décision
+d’authentification.
 
-00:03:53.006 --> 00:03:56.061
-Dans le vocabulaire Radius, le client est la borne ou
-le
+00:04:07.089 --> 00:04:10.145
+Dans le vocabulaire Radius, le client est la
+borne ou le
 
-00:03:56.061 --> 00:03:58.839
+00:04:10.145 --> 00:04:12.923
 portail, car c’est lui qui envoie la requête au
 serveur.
 
-00:03:58.839 --> 00:04:02.687
-L’utilisateur saisit ses identifiants sur le terminal.
+00:04:12.923 --> 00:04:16.771
+L’utilisateur saisit ses identifiants sur le
+terminal.
 
-00:04:02.687 --> 00:04:06.375
+00:04:16.771 --> 00:04:20.458
 Le serveur répond par un accord ou un refus, et
 l’équipement
 
-00:04:06.375 --> 00:04:07.381
+00:04:20.458 --> 00:04:21.464
 applique la décision.
 
-00:04:07.381 --> 00:04:11.670
-Un portail captif retient l’accès au réseau jusqu’à
-l’étape de connexion.
+00:04:21.464 --> 00:04:25.753
+Un portail captif retient l’accès au réseau
+jusqu’à l’étape de connexion.
 
-00:04:11.670 --> 00:04:14.968
-Pour le test du sujet, fais la redirection sur une
-page
+00:04:25.753 --> 00:04:29.876
+Pour le test du sujet, fais la redirection sur
+une page
 
-00:04:14.968 --> 00:04:16.168
-H T T P.
+00:04:29.876 --> 00:04:30.251
+HTTP.
 
-00:04:16.517 --> 00:04:20.132
-On regroupe souvent les trois fonctions sous le sigle
-A A
+00:04:30.850 --> 00:04:34.947
+On regroupe souvent les trois fonctions sous le
+sigle AAA. Vérifier
 
-00:04:20.132 --> 00:04:22.104
-A. Vérifier le compte, c’est l’authentification.
+00:04:34.947 --> 00:04:36.437
+le compte, c’est l’authentification.
 
-00:04:22.104 --> 00:04:26.065
+00:04:36.437 --> 00:04:40.398
 Décider à quel service ou à quel réseau il peut
 accéder,
 
-00:04:26.065 --> 00:04:26.785
+00:04:40.398 --> 00:04:41.119
 c’est l’autorisation.
 
-00:04:26.785 --> 00:04:30.868
-Enfin, le suivi d’activité permet de savoir quand la
-connexion a
+00:04:41.119 --> 00:04:45.201
+Enfin, le suivi d’activité permet de savoir
+quand la connexion a
 
-00:04:30.868 --> 00:04:31.981
+00:04:45.201 --> 00:04:46.315
 commencé ou fini.
 
-00:04:31.981 --> 00:04:36.318
-Tu peux avoir une authentification réussie et un accès
-réseau mal
+00:04:46.315 --> 00:04:50.651
+Tu peux avoir une authentification réussie et un
+accès réseau mal
 
-00:04:36.318 --> 00:04:36.712
+00:04:50.651 --> 00:04:51.045
 configuré.
 
-00:04:36.712 --> 00:04:39.992
-C’est pourquoi tu dois tester un bail et un trajet IP
+00:04:51.045 --> 00:04:54.325
+C’est pourquoi tu dois tester un bail et un
+trajet IP
 
-00:04:39.992 --> 00:04:41.185
+00:04:54.325 --> 00:04:55.518
 après l’accord du serveur.
 
-00:04:41.517 --> 00:04:44.543
+00:04:55.850 --> 00:04:58.876
 Commence avec deux interfaces sur Linux.
 
-00:04:44.543 --> 00:04:47.900
+00:04:58.876 --> 00:05:02.234
 L’interface interne se trouve dans le réseau du
 client.
 
-00:04:47.900 --> 00:04:50.731
+00:05:02.234 --> 00:05:05.065
 L’autre appartient au réseau de la salle.
 
-00:04:50.731 --> 00:04:54.236
-Mets l’adresse interne de la passerelle comme route
-par défaut du
+00:05:05.065 --> 00:05:08.570
+Mets l’adresse interne de la passerelle comme
+route par défaut du
 
-00:04:54.236 --> 00:04:54.555
+00:05:08.570 --> 00:05:08.888
 client.
 
-00:04:54.555 --> 00:04:57.876
+00:05:08.888 --> 00:05:12.209
 Active le transfert IPv4 sur Linux.
 
-00:04:57.876 --> 00:05:02.177
+00:05:12.209 --> 00:05:16.511
 Vérifie d’abord que le poste atteint l’interface
 locale de la passerelle.
 
-00:05:02.177 --> 00:05:05.291
-Si ça ne marche pas, regarde les deux adresses, leurs
-masques
+00:05:16.511 --> 00:05:19.952
+Si ça ne marche pas, regarde les deux adresses,
+leurs masques
 
-00:05:05.291 --> 00:05:08.121
-et le branchement avant de modifier le N A T.
+00:05:19.952 --> 00:05:22.454
+et le branchement avant de modifier le NAT.
 
-00:05:08.475 --> 00:05:12.162
-Le TP demande de comparer les deux sur une tentative
-Telnet
+00:05:23.058 --> 00:05:26.745
+Le TP demande de comparer les deux sur une
+tentative Telnet
 
-00:05:12.162 --> 00:05:13.168
+00:05:26.745 --> 00:05:27.751
 dans la maquette.
 
-00:05:13.168 --> 00:05:16.319
-Place la règle dans input si le test vise le pare-feu,
+00:05:27.751 --> 00:05:30.903
+Place la règle dans input si le test vise le
+pare-feu,
 
-00:05:16.319 --> 00:05:19.185
-ou dans forward si tu vises un serveur derrière lui.
+00:05:30.903 --> 00:05:33.768
+ou dans forward si tu vises un serveur derrière
+lui.
 
-00:05:19.185 --> 00:05:22.726
+00:05:33.768 --> 00:05:37.310
 Avec reject, cherche le paquet de refus reçu.
 
-00:05:22.726 --> 00:05:26.874
+00:05:37.310 --> 00:05:41.458
 Avec drop, cherche les tentatives répétées et
 l’absence de réponse de
 
-00:05:26.874 --> 00:05:27.628
+00:05:41.458 --> 00:05:42.212
 la règle.
 
-00:05:27.628 --> 00:05:30.872
-Vérifie les compteurs, car une règle plus haut peut
-traiter le
+00:05:42.212 --> 00:05:45.455
+Vérifie les compteurs, car une règle plus haut
+peut traiter le
 
-00:05:30.872 --> 00:05:32.641
+00:05:45.455 --> 00:05:47.224
 paquet avant celle que tu essayes.
 
-00:05:32.975 --> 00:05:36.911
-Pour l’accès Internet, observe l’adresse source d’une
-requête sur le réseau
+00:05:47.808 --> 00:05:51.744
+Pour l’accès Internet, observe l’adresse source
+d’une requête sur le réseau
 
-00:05:36.911 --> 00:05:38.342
+00:05:51.744 --> 00:05:53.175
 interne puis en sortie.
 
-00:05:38.342 --> 00:05:41.246
+00:05:53.175 --> 00:05:56.079
 Elle doit être modifiée par le masquage.
 
-00:05:41.246 --> 00:05:44.424
-Pour rendre un serveur Web du labo accessible depuis
-la salle,
+00:05:56.079 --> 00:05:59.258
+Pour rendre un serveur Web du labo accessible
+depuis la salle,
 
-00:05:44.424 --> 00:05:47.603
-définis le port auquel le client se connecte puis
-l’adresse interne
+00:05:59.258 --> 00:06:02.436
+définis le port auquel le client se connecte
+puis l’adresse interne
 
-00:05:47.603 --> 00:05:48.758
+00:06:02.436 --> 00:06:03.592
 où tu veux l’envoyer.
 
-00:05:48.758 --> 00:05:52.141
-Vérifie que les réponses reviennent par la passerelle.
+00:06:03.592 --> 00:06:06.974
+Vérifie que les réponses reviennent par la
+passerelle.
 
-00:05:52.141 --> 00:05:55.553
-Une route de retour absente peut faire échouer une
-règle D
+00:06:06.974 --> 00:06:10.874
+Une route de retour absente peut faire échouer
+une règle D
 
-00:05:55.553 --> 00:05:57.104
-N A T pourtant correcte.
+00:06:10.874 --> 00:06:11.937
+NAT pourtant correcte.
 
-00:05:57.475 --> 00:06:00.783
-Dans le sujet, le point d’accès a l’adresse point un.
+00:06:12.558 --> 00:06:15.866
+Dans le sujet, le point d’accès a l’adresse
+point un.
 
-00:06:00.783 --> 00:06:04.111
-Le serveur D H C P de la machine Linux distribue
+00:06:15.866 --> 00:06:19.962
+Le serveur DHCP de la machine Linux distribue
+point deux à
 
-00:06:04.111 --> 00:06:05.624
-point deux à point dix.
+00:06:19.962 --> 00:06:20.707
+point dix.
 
-00:06:05.624 --> 00:06:09.371
-Choisis une adresse de passerelle hors de cette plage,
-par exemple
+00:06:20.707 --> 00:06:24.454
+Choisis une adresse de passerelle hors de cette
+plage, par exemple
 
-00:06:09.371 --> 00:06:10.734
+00:06:24.454 --> 00:06:25.817
 point deux cent cinquante-quatre.
 
-00:06:10.734 --> 00:06:14.508
-Sur ton client Wi-Fi, vérifie la plage reçue et la
-route
+00:06:25.817 --> 00:06:29.592
+Sur ton client Wi-Fi, vérifie la plage reçue et
+la route
 
-00:06:14.508 --> 00:06:15.195
+00:06:29.592 --> 00:06:30.278
 par défaut.
 
-00:06:15.195 --> 00:06:18.366
-Si tu atteins le pare-feu mais pas la salle, vérifie
-le
+00:06:30.278 --> 00:06:33.450
+Si tu atteins le pare-feu mais pas la salle,
+vérifie le
 
-00:06:18.366 --> 00:06:20.097
+00:06:33.450 --> 00:06:35.180
 transfert et la route de retour.
 
-00:06:20.097 --> 00:06:24.244
+00:06:35.180 --> 00:06:39.328
 Une fois l’accès extérieur possible, compare les
 captures avant et après
 
-00:06:24.244 --> 00:06:24.999
+00:06:39.328 --> 00:06:40.082
 la translation.
 
-00:06:25.350 --> 00:06:28.045
+00:06:40.683 --> 00:06:43.378
 Voici comment isoler une panne.
 
-00:06:28.045 --> 00:06:31.370
-Si le client ne joint pas la passerelle, reste sur le
+00:06:43.378 --> 00:06:46.704
+Si le client ne joint pas la passerelle, reste
+sur le
 
-00:06:31.370 --> 00:06:33.486
+00:06:46.704 --> 00:06:48.820
 réseau local et vérifie les paramètres reçus.
 
-00:06:33.486 --> 00:06:37.497
-Si le paquet entre sur Linux sans ressortir, regarde
-la route,
+00:06:48.820 --> 00:06:52.830
+Si le paquet entre sur Linux sans ressortir,
+regarde la route,
 
-00:06:37.497 --> 00:06:39.320
+00:06:52.830 --> 00:06:54.653
 le transfert et le filtrage.
 
-00:06:39.320 --> 00:06:43.022
+00:06:54.653 --> 00:06:58.356
 Si le paquet ressort et que la réponse n’arrive
 jamais, inspecte
 
-00:06:43.022 --> 00:06:44.369
+00:06:58.356 --> 00:06:59.702
 le trajet de retour.
 
-00:06:44.369 --> 00:06:47.500
-Si joindre une adresse fonctionne mais ouvrir un site
-par nom
+00:06:59.702 --> 00:07:03.579
+Si joindre une adresse fonctionne mais ouvrir un
+site par nom
 
-00:06:47.500 --> 00:06:50.632
-échoue, regarde en priorité le serveur D N S donné par
+00:07:03.579 --> 00:07:07.104
+échoue, regarde en priorité le serveur DNS donné
+par DHCP.
 
-00:06:50.632 --> 00:06:51.771
-D H C P.
+00:07:07.433 --> 00:07:11.244
+Déclare la borne dans la configuration des
+clients Radius.
 
-00:06:52.100 --> 00:06:55.910
-Déclare la borne dans la configuration des clients
-Radius.
+00:07:11.244 --> 00:07:14.828
+Avec radtest local, c’est la configuration du
+client local qui est
 
-00:06:55.910 --> 00:06:59.495
-Avec radtest local, c’est la configuration du client
-local qui est
+00:07:14.828 --> 00:07:18.413
+utilisée, et son secret peut différer de celui
+de la borne.
 
-00:06:59.495 --> 00:07:03.079
-utilisée, et son secret peut différer de celui de la
-borne.
+00:07:18.413 --> 00:07:21.311
+Après le nom d’utilisateur, le mot de passe et
+le serveur,
 
-00:07:03.079 --> 00:07:05.890
-Après le nom d’utilisateur, le mot de passe et le
-serveur,
+00:07:21.311 --> 00:07:24.209
+le quatrième argument est le numéro de port du N
+AS.
 
-00:07:05.890 --> 00:07:08.700
-le quatrième argument est le numéro de port du N A
+00:07:24.209 --> 00:07:26.844
+Ce champ ne choisit pas le port réseau du
+serveur.
 
-00:07:08.700 --> 00:07:11.511
-S. Ce champ ne choisit pas le port réseau du serveur.
-
-00:07:11.511 --> 00:07:14.195
+00:07:26.844 --> 00:07:29.528
 Teste un mauvais puis un bon mot de passe.
 
-00:07:14.195 --> 00:07:18.962
-Dans le mode de diagnostic, cherche access reject,
-puis access accept.
+00:07:29.528 --> 00:07:34.295
+Dans le mode de diagnostic, cherche access
+reject, puis access accept.
 
-00:07:18.962 --> 00:07:23.104
-Ensuite configure la borne et répète l’essai depuis le
-client Wi-Fi.
+00:07:34.295 --> 00:07:38.437
+Ensuite configure la borne et répète l’essai
+depuis le client Wi-Fi.
 
-00:07:23.475 --> 00:07:26.905
-Le sujet utilise une chaîne internet dans mangle.
+00:07:39.017 --> 00:07:42.447
+Le sujet utilise une chaîne internet dans
+mangle.
 
-00:07:26.905 --> 00:07:30.343
-Le paquet H T T P venant du réseau interne passe
-
-00:07:30.343 --> 00:07:31.280
+00:07:42.447 --> 00:07:46.822
+Le paquet HTTP venant du réseau interne passe
 par cette chaîne.
 
-00:07:31.280 --> 00:07:34.606
-S’il doit être envoyé vers le portail, on lui donne
-une
+00:07:46.822 --> 00:07:50.147
+S’il doit être envoyé vers le portail, on lui
+donne une
 
-00:07:34.606 --> 00:07:34.908
+00:07:50.147 --> 00:07:50.450
 marque.
 
-00:07:34.908 --> 00:07:38.952
+00:07:50.450 --> 00:07:54.494
 La table nat utilise la marque pour changer la
 destination vers
 
-00:07:38.952 --> 00:07:39.687
+00:07:54.494 --> 00:07:55.229
 l’adresse locale.
 
-00:07:39.687 --> 00:07:43.414
-Après accord de Radius, place l’exception du client en
-tête de
+00:07:55.229 --> 00:07:58.956
+Après accord de Radius, place l’exception du
+client en tête de
 
-00:07:43.414 --> 00:07:45.447
+00:07:58.956 --> 00:08:00.989
 chaîne, avant la règle de marquage.
 
-00:07:45.447 --> 00:07:49.644
-Teste une nouvelle connexion H T T P sans
-autorisation, puis
+00:08:00.989 --> 00:08:06.235
+Teste une nouvelle connexion HTTP sans
+autorisation, puis après connexion au
 
-00:07:49.644 --> 00:07:51.170
-après connexion au portail.
+00:08:06.235 --> 00:08:06.712
+portail.
 
-00:07:51.517 --> 00:07:55.045
-Pour produire une preuve claire, garde trois captures.
+00:08:07.308 --> 00:08:10.837
+Pour produire une preuve claire, garde trois
+captures.
 
-00:07:55.045 --> 00:07:58.408
-Dans la première, un client sans autorisation ouvre
-une page H
+00:08:10.837 --> 00:08:14.830
+Dans la première, un client sans autorisation
+ouvre une page HTTP
 
-00:07:58.408 --> 00:08:00.854
-T T P et arrive sur le portail.
+00:08:14.830 --> 00:08:16.646
+et arrive sur le portail.
 
-00:08:00.854 --> 00:08:05.147
+00:08:16.646 --> 00:08:20.939
 Dans la deuxième, Radius l’a accepté et la règle
 d’exception l’empêche
 
-00:08:05.147 --> 00:08:05.927
+00:08:20.939 --> 00:08:21.719
 d’être marqué.
 
-00:08:05.927 --> 00:08:09.972
+00:08:21.719 --> 00:08:25.763
 Dans la troisième, tu retires l’exception et la
 redirection revient.
 
-00:08:09.972 --> 00:08:13.725
-Ouvre une nouvelle connexion pour chaque essai : une
-connexion déjà
+00:08:25.763 --> 00:08:29.516
+Ouvre une nouvelle connexion pour chaque essai :
+une connexion déjà
 
-00:08:13.725 --> 00:08:16.454
-suivie garde normalement la traduction choisie au
-début.
+00:08:29.516 --> 00:08:32.246
+suivie garde normalement la traduction choisie
+au début.
 
-00:08:16.808 --> 00:08:20.668
-Quand tu réunis les manipulations, valide une chose à
-la fois.
+00:08:32.600 --> 00:08:36.459
+Quand tu réunis les manipulations, valide une
+chose à la fois.
 
-00:08:20.668 --> 00:08:24.528
-Montre d’abord le S S I D et l’adresse du téléphone.
+00:08:36.459 --> 00:08:40.320
+Montre d’abord le SSID et l’adresse du
+téléphone.
 
-00:08:24.528 --> 00:08:27.673
-Prouve ensuite la communication demandée depuis la
-salle avec le chemin
+00:08:40.320 --> 00:08:43.465
+Prouve ensuite la communication demandée depuis
+la salle avec le chemin
 
-00:08:27.673 --> 00:08:30.819
-de retour du labo, puis coupe le Wi-Fi pour vérifier
-que
+00:08:43.465 --> 00:08:46.610
+de retour du labo, puis coupe le Wi-Fi pour
+vérifier que
 
-00:08:30.819 --> 00:08:32.249
+00:08:46.610 --> 00:08:48.040
 tu ciblais le bon équipement.
 
-00:08:32.249 --> 00:08:36.192
-Dans le journal, rapproche l’adresse du bail, l’heure
-et le compte
+00:08:48.040 --> 00:08:51.983
+Dans le journal, rapproche l’adresse du bail,
+l’heure et le compte
 
-00:08:36.192 --> 00:08:36.550
+00:08:51.983 --> 00:08:52.342
 testé.
 
-00:08:36.550 --> 00:08:40.154
-Enregistre les métadonnées utiles du trafic et le
-résultat du test
+00:08:52.342 --> 00:08:55.946
+Enregistre les métadonnées utiles du trafic et
+le résultat du test
 
-00:08:40.154 --> 00:08:42.775
+00:08:55.946 --> 00:08:58.567
 Radius, sans faire apparaître les mots de passe.

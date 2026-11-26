@@ -1,361 +1,381 @@
 WEBVTT
 
-00:00:00.100 --> 00:00:04.008
-Avant même de multiplier, regarde ce que Python a
-reçu.
+00:00:00.100 --> 00:00:04.174
+En Python, une saisie au clavier arrive sous
+forme de texte.
 
-00:00:04.008 --> 00:00:06.410
+00:00:04.174 --> 00:00:08.344
+Pour calculer son double, on transforme d’abord
+le texte sept en
+
+00:00:08.344 --> 00:00:08.723
+nombre.
+
+00:00:08.723 --> 00:00:12.460
+Ensuite, sept multiplié par deux donne quatorze.
+
+00:00:13.058 --> 00:00:16.967
+Avant même de multiplier, regarde ce que Python
+a reçu.
+
+00:00:16.967 --> 00:00:19.369
 Le clavier envoie du texte.
 
-00:00:06.410 --> 00:00:09.474
+00:00:19.369 --> 00:00:22.432
 Le chiffre sept ressemble à un nombre pour nous.
 
-00:00:09.474 --> 00:00:12.918
+00:00:22.432 --> 00:00:25.876
 Pour Python, après input, c'est une chaîne.
 
-00:00:12.918 --> 00:00:16.703
-Si tu veux faire un calcul, int convertit ce texte en
+00:00:25.876 --> 00:00:29.662
+Si tu veux faire un calcul, int convertit ce
+texte en
 
-00:00:16.703 --> 00:00:17.048
+00:00:29.662 --> 00:00:30.006
 entier.
 
-00:00:17.048 --> 00:00:21.226
-Tu peux t'imaginer deux étiquettes : texte d'un côté,
-nombre de
+00:00:30.006 --> 00:00:34.185
+Tu peux t'imaginer deux étiquettes : texte d'un
+côté, nombre de
 
-00:00:21.226 --> 00:00:21.606
+00:00:34.185 --> 00:00:34.565
 l'autre.
 
-00:00:21.606 --> 00:00:25.448
-La conversion change l'étiquette et les opérations que
-Python sait faire
+00:00:34.565 --> 00:00:38.407
+La conversion change l'étiquette et les
+opérations que Python sait faire
 
-00:00:25.448 --> 00:00:26.496
+00:00:38.407 --> 00:00:39.454
 avec la valeur.
 
-00:00:26.850 --> 00:00:30.707
-Dans la dernière instruction, l'ancien contenu de val
-est d'abord lu
+00:00:40.058 --> 00:00:43.915
+Dans la dernière instruction, l'ancien contenu
+de val est d'abord lu
 
-00:00:30.707 --> 00:00:31.408
+00:00:43.915 --> 00:00:44.616
 à droite.
 
-00:00:31.408 --> 00:00:35.244
-On calcule deux fois sept, puis val prend la valeur
-quatorze.
+00:00:44.616 --> 00:00:48.452
+On calcule deux fois sept, puis val prend la
+valeur quatorze.
 
-00:00:35.244 --> 00:00:38.833
-Si tu proposes à Python de multiplier une chaîne par
-deux,
+00:00:48.452 --> 00:00:52.041
+Si tu proposes à Python de multiplier une chaîne
+par deux,
 
-00:00:38.833 --> 00:00:40.464
+00:00:52.041 --> 00:00:53.673
 il répète simplement le texte.
 
-00:00:40.464 --> 00:00:44.802
-Un calcul peut donc donner un résultat inattendu sans
-provoquer d'erreur.
+00:00:53.673 --> 00:00:58.011
+Un calcul peut donc donner un résultat inattendu
+sans provoquer d'erreur.
 
-00:00:44.802 --> 00:00:47.741
-C'est pour ça qu'il faut vérifier le type quand tu ne
+00:00:58.011 --> 00:01:00.950
+C'est pour ça qu'il faut vérifier le type quand
+tu ne
 
-00:00:47.741 --> 00:00:48.810
+00:01:00.950 --> 00:01:02.018
 comprends pas une sortie.
 
-00:00:49.142 --> 00:00:52.070
+00:01:02.350 --> 00:01:05.278
 Dix-sept objets et des sachets de cinq.
 
-00:00:52.070 --> 00:00:55.476
+00:01:05.278 --> 00:01:08.685
 Tu fais trois sachets complets et il reste deux
 objets.
 
-00:00:55.476 --> 00:00:58.813
-Le double slash donne le nombre de sachets complets et
-le
+00:01:08.685 --> 00:01:12.021
+Le double slash donne le nombre de sachets
+complets et le
 
-00:00:58.813 --> 00:01:00.329
+00:01:12.021 --> 00:01:13.538
 pourcentage donne ce qui reste.
 
-00:01:00.329 --> 00:01:04.374
-Le simple slash fait la division avec un résultat
-décimal.
+00:01:13.538 --> 00:01:17.582
+Le simple slash fait la division avec un
+résultat décimal.
 
-00:01:04.374 --> 00:01:07.991
+00:01:17.582 --> 00:01:21.199
 Pour vérifier un reste, reconstruis le nombre de
 départ : trois
 
-00:01:07.991 --> 00:01:10.293
+00:01:21.199 --> 00:01:23.501
 fois cinq plus deux, ça donne dix-sept.
 
-00:01:10.642 --> 00:01:13.831
+00:01:24.100 --> 00:01:27.290
 Si tu dois tester que a va de zéro inclus à
 
-00:01:13.831 --> 00:01:15.861
+00:01:27.290 --> 00:01:29.320
 vingt exclu, pose les deux questions séparément.
 
-00:01:15.861 --> 00:01:18.153
+00:01:29.320 --> 00:01:31.611
 Est-ce que a vaut au moins zéro ?
 
-00:01:18.153 --> 00:01:20.518
+00:01:31.611 --> 00:01:33.976
 Est-ce que a est plus petit que vingt ?
 
-00:01:20.518 --> 00:01:22.712
+00:01:33.976 --> 00:01:36.170
 Les deux doivent être vraies.
 
-00:01:22.712 --> 00:01:25.739
+00:01:36.170 --> 00:01:39.197
 Teste exactement zéro et exactement vingt.
 
-00:01:25.739 --> 00:01:29.596
-C'est près de ces frontières qu'une inégalité stricte
-ou large change
+00:01:39.197 --> 00:01:43.055
+C'est près de ces frontières qu'une inégalité
+stricte ou large change
 
-00:01:29.596 --> 00:01:30.298
+00:01:43.055 --> 00:01:43.756
 le résultat.
 
-00:01:30.642 --> 00:01:33.128
+00:01:44.100 --> 00:01:46.587
 Imagine des portes alignées.
 
-00:01:33.128 --> 00:01:36.823
+00:01:46.587 --> 00:01:50.282
 Dans un bloc if, elif, else, Python entre par la
 première
 
-00:01:36.823 --> 00:01:40.518
-porte dont la condition passe, puis continue après le
-bloc entier.
+00:01:50.282 --> 00:01:53.976
+porte dont la condition passe, puis continue
+après le bloc entier.
 
-00:01:40.518 --> 00:01:44.097
-L'indentation indique les instructions derrière la
-porte.
+00:01:53.976 --> 00:01:57.555
+L'indentation indique les instructions derrière
+la porte.
 
-00:01:44.097 --> 00:01:48.631
-Deux blocs if séparés fonctionnent autrement : Python
-regarde chaque porte.
+00:01:57.555 --> 00:02:02.089
+Deux blocs if séparés fonctionnent autrement :
+Python regarde chaque porte.
 
-00:01:48.631 --> 00:01:52.102
+00:02:02.089 --> 00:02:05.560
 La première peut changer une valeur avant que la
 deuxième la
 
-00:01:52.102 --> 00:01:52.418
+00:02:05.560 --> 00:02:05.876
 lise.
 
-00:01:52.767 --> 00:01:55.192
+00:02:06.475 --> 00:02:08.900
 Les indices commencent à zéro.
 
-00:01:55.192 --> 00:01:58.467
-Quand tu demandes la portion de un à quatre, Python
-prend
+00:02:08.900 --> 00:02:12.175
+Quand tu demandes la portion de un à quatre,
+Python prend
 
-00:01:58.467 --> 00:02:00.253
+00:02:12.175 --> 00:02:13.962
 les positions un, deux et trois.
 
-00:02:00.253 --> 00:02:02.778
+00:02:13.962 --> 00:02:16.486
 La borne de fin est exclue.
 
-00:02:02.778 --> 00:02:06.433
+00:02:16.486 --> 00:02:20.141
 Pour comparer ce que l'utilisateur tape, tu peux
 enlever les espaces
 
-00:02:06.433 --> 00:02:08.758
+00:02:20.141 --> 00:02:22.467
 superflus et mettre le texte en minuscules.
 
-00:02:08.758 --> 00:02:12.927
-Garde le résultat de la transformation si tu veux
-réutiliser cette
+00:02:22.467 --> 00:02:26.635
+Garde le résultat de la transformation si tu
+veux réutiliser cette
 
-00:02:12.927 --> 00:02:13.685
+00:02:26.635 --> 00:02:27.393
 nouvelle chaîne.
 
-00:02:14.058 --> 00:02:16.753
+00:02:27.767 --> 00:02:30.462
 C'est le premier exercice du TD.
 
-00:02:16.753 --> 00:02:19.388
+00:02:30.462 --> 00:02:33.097
 Écris vraiment les trois instructions.
 
-00:02:19.388 --> 00:02:22.453
-Note l'état de val au crayon pour une entrée de sept,
+00:02:33.097 --> 00:02:36.161
+Note l'état de val au crayon pour une entrée de
+sept,
 
-00:02:22.453 --> 00:02:23.567
+00:02:36.161 --> 00:02:37.275
 puis de moins trois.
 
-00:02:23.567 --> 00:02:25.687
+00:02:37.275 --> 00:02:39.396
 Sept donne quatorze.
 
-00:02:25.687 --> 00:02:27.954
+00:02:39.396 --> 00:02:41.663
 Moins trois donne moins six.
 
-00:02:27.954 --> 00:02:31.999
+00:02:41.663 --> 00:02:45.707
 Pour le calcul sur deux réels qui vient ensuite,
 utilise float.
 
-00:02:31.999 --> 00:02:35.405
-Sur trois virgule vingt-cinq et sept, tu dois voir dix
-virgule
+00:02:45.707 --> 00:02:49.114
+Sur trois virgule vingt-cinq et sept, tu dois
+voir dix virgule
 
-00:02:35.405 --> 00:02:38.812
+00:02:49.114 --> 00:02:52.521
 vingt-cinq pour la somme et vingt-deux virgule
 soixante-quinze pour le produit.
 
-00:02:39.183 --> 00:02:42.489
-Si tu lis la question dans l'ordre exact des mots, tu
+00:02:53.142 --> 00:02:56.448
+Si tu lis la question dans l'ordre exact des
+mots, tu
 
-00:02:42.489 --> 00:02:44.293
+00:02:56.448 --> 00:02:58.251
 risques d'écrire la division en premier.
 
-00:02:44.293 --> 00:02:47.744
-Avec b égal à zéro, Python déclenche alors une erreur
-avant
+00:02:58.251 --> 00:03:01.702
+Avec b égal à zéro, Python déclenche alors une
+erreur avant
 
-00:02:47.744 --> 00:02:48.999
+00:03:01.702 --> 00:03:02.957
 de lire le reste.
 
-00:02:48.999 --> 00:02:51.302
+00:03:02.957 --> 00:03:05.261
 Mets le cas zéro en premier.
 
-00:02:51.302 --> 00:02:54.374
+00:03:05.261 --> 00:03:08.332
 Si ce test est vrai, le ou n'a plus besoin de
 
-00:02:54.374 --> 00:02:55.212
+00:03:08.332 --> 00:03:09.170
 calculer la suite.
 
-00:02:55.212 --> 00:02:57.943
+00:03:09.170 --> 00:03:11.902
 Avec a égal à vingt et b égal à quatre, le
 
-00:02:57.943 --> 00:02:59.930
+00:03:11.902 --> 00:03:13.888
 quotient vaut cinq et le test est faux.
 
-00:02:59.930 --> 00:03:02.958
+00:03:13.888 --> 00:03:16.916
 Avec b égal à trois, il vaut six et le test
 
-00:03:02.958 --> 00:03:03.508
+00:03:16.916 --> 00:03:17.467
 est vrai.
 
-00:03:03.850 --> 00:03:07.700
-Pour justifier que deux programmes diffèrent, donne
-une entrée sur laquelle
+00:03:18.058 --> 00:03:21.908
+Pour justifier que deux programmes diffèrent,
+donne une entrée sur laquelle
 
-00:03:07.700 --> 00:03:09.450
+00:03:21.908 --> 00:03:23.658
 ils affichent deux résultats différents.
 
-00:03:09.450 --> 00:03:11.055
+00:03:23.658 --> 00:03:25.263
 Prends trois.
 
-00:03:11.055 --> 00:03:14.486
-Dans les deux programmes, la première branche donne
-dix.
+00:03:25.263 --> 00:03:28.695
+Dans les deux programmes, la première branche
+donne dix.
 
-00:03:14.486 --> 00:03:17.901
-Dans celui avec else, le programme a déjà choisi sa
-branche
+00:03:28.695 --> 00:03:32.110
+Dans celui avec else, le programme a déjà choisi
+sa branche
 
-00:03:17.901 --> 00:03:19.143
+00:03:32.110 --> 00:03:33.351
 et il affiche dix.
 
-00:03:19.143 --> 00:03:22.611
+00:03:33.351 --> 00:03:36.820
 Dans celui à deux if, le nouveau test lit dix.
 
-00:03:22.611 --> 00:03:25.859
+00:03:36.820 --> 00:03:40.067
 Dix est pair, donc la division se fait aussi.
 
-00:03:25.859 --> 00:03:27.918
+00:03:40.067 --> 00:03:42.126
 Il affiche cinq.
 
-00:03:27.918 --> 00:03:32.142
-Écris les états trois, dix, puis cinq pour expliquer
-le chemin
+00:03:42.126 --> 00:03:46.350
+Écris les états trois, dix, puis cinq pour
+expliquer le chemin
 
-00:03:32.142 --> 00:03:32.525
+00:03:46.350 --> 00:03:46.734
 suivi.
 
-00:03:32.892 --> 00:03:36.957
-Commence par les quatre cents : être divisible par
-quatre cents
+00:03:47.308 --> 00:03:51.374
+Commence par les quatre cents : être divisible
+par quatre cents
 
-00:03:36.957 --> 00:03:37.327
+00:03:51.374 --> 00:03:51.744
 suffit.
 
-00:03:37.327 --> 00:03:40.943
-Pour le reste, vérifie à la fois la divisibilité par
-quatre
+00:03:51.744 --> 00:03:55.360
+Pour le reste, vérifie à la fois la divisibilité
+par quatre
 
-00:03:40.943 --> 00:03:42.915
+00:03:55.360 --> 00:03:57.332
 et l'absence de divisibilité par cent.
 
-00:03:42.915 --> 00:03:46.003
+00:03:57.332 --> 00:04:00.420
 Le reste vaut zéro lorsqu'on a un multiple.
 
-00:03:46.003 --> 00:03:49.516
-L'année mille neuf cents est divisible par cent, mais
-pas par
+00:04:00.420 --> 00:04:03.932
+L'année mille neuf cents est divisible par cent,
+mais pas par
 
-00:03:49.516 --> 00:03:51.751
+00:04:03.932 --> 00:04:06.168
 quatre cents, donc elle n'est pas bissextile.
 
-00:03:51.751 --> 00:03:54.177
+00:04:06.168 --> 00:04:08.594
 Deux mille vérifie l'exception.
 
-00:03:54.177 --> 00:03:57.387
-Deux mille vingt-trois et deux mille vingt-quatre
-montrent ce qui se
+00:04:08.594 --> 00:04:11.804
+Deux mille vingt-trois et deux mille vingt-
+quatre montrent ce qui se
 
-00:03:57.387 --> 00:03:58.847
+00:04:11.804 --> 00:04:13.263
 passe pour des années ordinaires.
 
-00:03:59.225 --> 00:04:02.545
+00:04:13.850 --> 00:04:17.170
 Chaque ligne récupère le reste de la précédente.
 
-00:04:02.545 --> 00:04:05.462
-Dans quatre-vingt-treize mille neuf cent une secondes,
-il y a un
+00:04:17.170 --> 00:04:20.087
+Dans quatre-vingt-treize mille neuf cent une
+secondes, il y a un
 
-00:04:05.462 --> 00:04:08.378
-jour entier et sept mille cinq cent une secondes à
-traiter.
+00:04:20.087 --> 00:04:23.003
+jour entier et sept mille cinq cent une secondes
+à traiter.
 
-00:04:08.378 --> 00:04:11.920
-Enlève deux heures, il reste trois cent une secondes.
+00:04:23.003 --> 00:04:26.545
+Enlève deux heures, il reste trois cent une
+secondes.
 
-00:04:11.920 --> 00:04:15.131
+00:04:26.545 --> 00:04:29.756
 Enlève cinq minutes, il reste une seconde.
 
-00:04:15.131 --> 00:04:18.308
-Tu peux écrire les divisions et les restes dans la
-même
+00:04:29.756 --> 00:04:32.933
+Tu peux écrire les divisions et les restes dans
+la même
 
-00:04:18.308 --> 00:04:19.175
+00:04:32.933 --> 00:04:33.800
 ligne avec divmod.
 
-00:04:19.175 --> 00:04:23.094
-Vérifie que la somme de toutes les durées, converties
-en secondes,
+00:04:33.800 --> 00:04:37.719
+Vérifie que la somme de toutes les durées,
+converties en secondes,
 
-00:04:23.094 --> 00:04:24.163
+00:04:37.719 --> 00:04:38.788
 redonne la saisie.
 
-00:04:24.517 --> 00:04:28.597
-Pour la variante du TD, l'affichage dépend de chaque
-quantité.
+00:04:39.392 --> 00:04:43.472
+Pour la variante du TD, l'affichage dépend de
+chaque quantité.
 
-00:04:28.597 --> 00:04:32.273
-Avec zéro, ne génère aucun texte pour cette unité.
+00:04:43.472 --> 00:04:47.148
+Avec zéro, ne génère aucun texte pour cette
+unité.
 
-00:04:32.273 --> 00:04:35.300
+00:04:47.148 --> 00:04:50.175
 Avec un, prends l'étiquette au singulier.
 
-00:04:35.300 --> 00:04:38.266
+00:04:50.175 --> 00:04:53.141
 À partir de deux, prends le pluriel.
 
-00:04:38.266 --> 00:04:41.280
+00:04:53.141 --> 00:04:56.155
 Essaie quatre-vingt-treize mille neuf cents.
 
-00:04:41.280 --> 00:04:44.735
-La dernière quantité vaut zéro, et tu dois obtenir un
-jour,
+00:04:56.155 --> 00:04:59.610
+La dernière quantité vaut zéro, et tu dois
+obtenir un jour,
 
-00:04:44.735 --> 00:04:46.305
+00:04:59.610 --> 00:05:01.180
 deux heures et cinq minutes.
 
-00:04:46.305 --> 00:04:50.169
+00:05:01.180 --> 00:05:05.044
 Essaie aussi une seconde pour vérifier que tu
 n'affiches que le
 
-00:04:50.169 --> 00:04:50.521
+00:05:05.044 --> 00:05:05.396
 singulier.
