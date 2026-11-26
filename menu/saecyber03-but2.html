@@ -172,10 +172,12 @@
 </section>
 <section class="c-section" id="couverture" aria-labelledby="coverage-title">
   <h2 class="c-h2" id="coverage-title">Du cours aux TD et TP</h2>
-  <p>Les trois polys structurent le cours. Les questions du TP1 viennent de son sujet. Celles du TD3 et du TP3 sont reformulées à partir des comptes rendus. Les relevés et les résultats attendus sont distingués dans les démarches.</p>
+  <p>Les trois polys structurent le cours. Les exercices des TD1 et TD2 sont reformulés à partir des feuilles annotées. Les questions du TP1 viennent de son sujet. Celles du TD3 et du TP3 sont reformulées à partir des comptes rendus. Les relevés et les résultats attendus sont distingués dans les démarches.</p>
   <div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Notion</th><th scope="col">Où la travailler</th><th scope="col">À savoir refaire</th></tr></thead><tbody>
     <tr><th scope="row">Internet, opérateurs et systèmes autonomes</th><td><a href="#internet">Poly 1</a> et <a href="#td3-ebgp">TD3</a></td><td>Expliquer transit, peering, ASN et rôle des routeurs frontières.</td></tr>
-    <tr><th scope="row">Interfaces, passerelles et voisinage</th><td><a href="#tp1-voisins">TP1, 1–2</a></td><td>Adressage, voisin, LSDB, route distante et tests aller-retour.</td></tr>
+    <tr><th scope="row">Routage hiérarchique et calcul SPF</th><td><a href="#td1-routage">TD1, QCM</a> · <a href="#td1-spf">TD1, graphe</a></td><td>Expliquer le rôle d’un IGP, calculer le premier saut et recalculer après une panne.</td></tr>
+    <tr><th scope="row">Aires et captures OSPF</th><td><a href="#td1-aires">TD1, topologie</a> · <a href="#td2-trames">TD2, captures</a></td><td>Identifier ABR et ASBR, justifier un lien virtuel et distinguer Hello, LSU et LSA.</td></tr>
+    <tr><th scope="row">Interfaces, passerelles et voisinage</th><td><a href="#tp1-voisins">TP1, 1–2</a> · <a href="#td2-packet-tracer">TD2, Packet Tracer</a></td><td>Adressage, voisinage, LSDB, routes intra-aire et inter-aires, tests de panne et du retour.</td></tr>
     <tr><th scope="row">Authentification, aires et élection</th><td>TP1, 3–5</td><td>Capturer les échanges et expliquer les rôles DR/BDR et le marquage interaire.</td></tr>
     <tr><th scope="row">Redistribution de statiques</th><td>TP1, 6</td><td>Vérifier l’origine et l’installation de la route externe avant le ping.</td></tr>
     <tr><th scope="row">Frontières eBGP et AS de transit</th><td>TD3, deux topologies</td><td>Configurer les voisins, suivre le préfixe, relier la capture aux routes des quatre routeurs.</td></tr>
@@ -186,6 +188,59 @@
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
+  <details class="acc" id="td1-routage"><summary>TD1 · Justifier les réponses du QCM de routage</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé reformulé.</strong> Expliquer le rôle de l’IETF, ce qu’est une RFC et comment Internet organise son routage.</p>
+    <ul>
+      <li>L’IETF élabore les standards techniques des protocoles Internet. Une RFC est librement consultable. Certaines RFC définissent un standard, d’autres sont informatives, expérimentales ou décrivent des bonnes pratiques.</li>
+      <li>Internet interconnecte des réseaux de constructeurs différents grâce à une pile de protocoles commune. La voix sur IP est un service transporté par ce réseau.</li>
+      <li>Le routage est hiérarchique. Un IGP comme OSPF calcule des routes dans un AS à partir d’informations reçues des voisins. BGP relie les AS selon des politiques. Le nombre de sauts IP ne constitue pas une métrique commune à tout Internet.</li>
+      <li>Un routeur OSPF construit une carte de son aire à partir des annonces d’état de liens, puis y applique SPF. Il peut tenir compte des coûts d’interface et refaire le calcul après un changement.</li>
+    </ul>
+  </div></details>
+  <details class="acc" id="td1-spf"><summary>TD1 · Calculer les routes de A et simuler la rupture de A–D</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé reformulé.</strong> Établir la base des liens et calculer la table de routage depuis A, avant et après la coupure de A–D.</p>
+    <figure id="schema-td1-spf"><img src="../assets/revisions/saecyber03-but2/schemas/td1-spf.png" alt="Graphe du TD1. A–B coûte 4, A–C coûte 1, A–D coûte 2, C–D coûte 2, B–D coûte 4 et D–E coûte 2." loading="lazy"><figcaption>Graphe redessiné à partir du TD1. Les coûts du dessin sont identiques dans les deux sens.</figcaption></figure>
+    <ol>
+      <li>Construis la carte en rangeant chaque lien dans les annonces de ses deux extrémités. Depuis A, tes premiers coûts sont C à 1, D à 2 et B à 4. Visite C en premier. Passer par C pour aller à D coûterait <code>1 + 2 = 3</code>. Le lien direct reste préférable.</li>
+      <li>Depuis D, ajoute E au coût <code>2 + 2 = 4</code>. Le détour vers B par D coûterait <code>2 + 4 = 6</code>, donc conserve le chemin direct de coût 4 jusqu’à B.</li>
+      <li>Après la coupure de A–D, la carte est mise à jour. A atteint D via C au coût <code>1 + 2 = 3</code>, et E via C puis D au coût <code>1 + 2 + 2 = 5</code>. B et C gardent leurs chemins. Si l’interface signale la coupure, OSPF peut réagir immédiatement. Si elle reste active alors que les Hello disparaissent, le délai Dead détecte la perte du voisin.</li>
+    </ol>
+    <div class="c-table-wrap"><table class="c-table"><thead><tr><th scope="col">Destination</th><th scope="col">Avant, coût et premier saut</th><th scope="col">Après, coût et premier saut</th></tr></thead><tbody>
+      <tr><th scope="row">A</th><td>0, local</td><td>0, local</td></tr>
+      <tr><th scope="row">B</th><td>4 via B</td><td>4 via B</td></tr>
+      <tr><th scope="row">C</th><td>1 via C</td><td>1 via C</td></tr>
+      <tr><th scope="row">D</th><td>2 via D</td><td>3 via C</td></tr>
+      <tr><th scope="row">E</th><td>4 via D</td><td>5 via C</td></tr>
+    </tbody></table></div>
+    <p>Le tableau donne les coûts jusqu’aux routeurs, car le dessin ne chiffre pas les interfaces des LAN. Pour établir une table de préfixes, ajoute les réseaux directement connectés à A et, pour chaque LAN distant, le coût d’interface annoncé par son routeur.</p>
+  </div></details>
+  <details class="acc" id="td1-aires"><summary>TD1 · Choisir les aires et suivre la propagation des LSA</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé reformulé.</strong> Numéroter les aires de la topologie colorée, identifier les routeurs et déterminer les annonces en présence d’une Stub et d’une NSSA.</p>
+    <ol>
+      <li>Une numérotation possible est 0 pour la dorsale, 1 pour l’aire bleue, 2 pour la verte et 3 pour la jaune. Les routeurs qui relient deux aires sont des ABR. Les routeurs qui injectent les routes BGP ou EIGRP sont des ASBR. Les autres, dont toutes les interfaces OSPF restent dans une aire, sont internes à cette aire.</li>
+      <li>Le switch de l’aire bleue relie plusieurs routeurs sur un segment broadcast. OSPF y élit un DR et un BDR par priorité puis Router ID. L’aire jaune atteint la dorsale en passant par l’aire bleue. Un lien virtuel entre les deux ABR qui partagent l’aire bleue la raccorde logiquement à l’aire 0. L’aire bleue sert de transit au lien virtuel et doit rester une aire normale.</li>
+      <li>Le sujet écrit « orange » et la feuille annote « jaune ». En traitant cette aire comme Stub, elle garde les annonces internes et inter-aires de type 3, dont le défaut. Les types 4 et 5 en sont écartés. Dans l’aire verte, l’injection des préfixes EIGRP exige une NSSA si l’on souhaite conserver une aire confinée. Le routeur injecte ces préfixes en type 7, puis un ABR peut les traduire en type 5 vers les aires normales.</li>
+      <li>Les types 1 et 2 décrivent la topologie de leur aire. Un type 2 apparaît seulement sur un segment partagé avec un DR et les adjacences requises. Les ABR génèrent des types 3 entre les aires. Les types 4 indiquent, dans les aires normales où c’est nécessaire, comment joindre un ASBR situé dans une autre aire. Les types 5 circulent dans les aires normales, tandis que les types 7 restent dans la NSSA jusqu’à leur éventuelle traduction.</li>
+    </ol>
+  </div></details>
+  <details class="acc" id="td2-packet-tracer"><summary>TD2 · Monter le triangle OSPF, couper un lien puis ajouter les aires 0 et 40</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé reformulé.</strong> Configurer les trois routeurs de l’AS100, observer la convergence lors de la coupure R1–R2, puis étendre la maquette et expliquer les tables.</p>
+    <ol>
+      <li>Dans Packet Tracer, crée le triangle R0–R1–R2 et les deux LAN d’extrémité. Attribue un sous-réseau différent à chacun des trois transits et des deux LAN. Par exemple, utilise les cinq réseaux <code>192.168.1.0/24</code> à <code>192.168.5.0/24</code> suggérés par les annotations pour les cinq segments. Attribue une adresse distincte à chaque interface et configure chaque PC avec sa passerelle locale.</li>
+      <li>Sur R0, active OSPF dans l’aire 50 et fixe <code>ip ospf cost 100</code> sur les interfaces de transit concernées. Adapte le coût au même scénario sur les autres routeurs quand tu les actives. Avec R0 seul, attends des Hello et aucune route apprise d’un voisin. Après R1 puis R2, compare <code>show ip route</code>, <code>show ip ospf database</code> et les pings. Sur une route du LAN distant, le coût affiché peut aussi inclure le coût de l’interface LAN annoncée.</li>
+      <li>Avant la coupure, relève le prochain saut du LAN distant depuis R1. Dans la maquette, enlève le lien R1–R2 et observe les nouveaux LSA, puis le prochain saut via R0 après convergence. Rétablis ensuite le lien pour poursuivre la topologie du sujet.</li>
+      <li>Garde le triangle en aire 50. Place le lien R0–R3 en aire 0, puis R3–R4 et le LAN serveur en aire 40. R0 et R3 sont ABR. Sur R4, cherche une route <code>O IA</code> vers un LAN de l’aire 50. Sur R3, compare les réseaux connectés et les routes apprises. L’étiquette dépend de la position du routeur et de l’origine de la route.</li>
+      <li>Sur R0, lis <code>show ip ospf neighbor</code>. <em>Neighbor ID</em> est le Router ID du voisin, <em>Address</em> son adresse sur le segment, <em>Interface</em> le port local et <em>State</em> l’état du voisinage. <em>Dead Time</em> est le temps restant avant de déclarer le voisin perdu en l’absence de nouveau Hello.</li>
+    </ol>
+  </div></details>
+  <details class="acc" id="td2-trames"><summary>TD2 · Analyser un Hello et un LSU dans Wireshark</summary><div class="acc-body">
+    <p class="c-question"><strong>Énoncé reformulé.</strong> Expliquer les champs encadrés des deux captures fournies et en déduire à quel stade des échanges elles ont pu être prises.</p>
+    <ul>
+      <li><strong>Hello, trame 22.</strong> L’interface <code>192.168.95.1</code>, Router ID <code>1.1.1.1</code>, envoie un paquet OSPFv2 de type 1 à <code>224.0.0.5</code> dans l’aire 0. Le masque vaut <code>/30</code>, les délais Hello et Dead valent 10 et 40 secondes, et la priorité annoncée vaut 1. Le DR <code>192.168.95.2</code> et le BDR <code>192.168.95.1</code> sont des adresses d’interface. Le voisin actif <code>2.2.2.2</code> est un Router ID. La trame indique que l’émetteur connaît ce voisin et annonce déjà des rôles DR et BDR. Pour confirmer Full, consulte la table des voisins.</li>
+      <li><strong>LS Update, trame 10.</strong> <code>192.168.95.2</code> envoie à <code>192.168.95.1</code> un paquet OSPF de type 4 contenant un seul <em>Router-LSA</em> de type 1, émis par <code>2.2.2.2</code>. <code>0x80000001</code> est son numéro de séquence initial et l’âge indiqué est de 5 secondes. Le LSA décrit <code>192.168.95.0/30</code> et <code>192.168.80.0/24</code>, de coût 1 chacun. « Type: Stub » qualifie ici un lien décrit dans le LSA. L’en-tête montre que l’aire est la dorsale.</li>
+      <li>Le LSU correspond à un échange d’informations de topologie. Il peut servir lors de la synchronisation ou lors d’une mise à jour. Un LSR juste avant soutiendrait l’hypothèse d’une réponse à une demande. Pour conclure sur le moment précis, examine la séquence autour de cette trame. <a href="https://datatracker.ietf.org/doc/html/rfc2328#section-12.1.6">RFC 2328</a></li>
+    </ul>
+  </div></details>
   <details class="acc" id="tp1-voisins" open><summary>TP1, 1–2 · Adresser la maquette et monter un voisinage OSPF</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Configurer les deux routeurs selon le plan du groupe, régler le coût des liens à 100, observer les paquets, les tables et la base de données, puis vérifier l’échange entre les deux PC.</p>
     <ol><li>Exemple de l’aire 50 : utilise <code>192.168.50.0/24</code>, <code>10.0.50.0/24</code> et <code>192.168.51.0/24</code>. Place <code>10.0.50.1</code> et <code>10.0.50.2</code> sur le transit, des adresses différentes sur les deux LAN et les passerelles correspondantes sur les PC. Vérifie <code>show ip interface brief</code> et le ping du transit.</li><li>Active OSPF sur les interfaces de transit et de LAN dans l’aire de ton groupe, avec <code>ip ospf 1 area 50</code> pour cet exemple. Règle <code>ip ospf cost 100</code> selon le sujet. Garde les interfaces LAN passives si elles annoncent le réseau sans voisin routeur.</li><li>Contrôle <code>show ip ospf neighbor</code>, <code>show ip ospf database</code> et <code>show ip route ospf</code>. Depuis le routeur de gauche, la route vers le LAN droit doit pointer vers le routeur de droite. Vérifie le retour et fais le ping de PC à PC.</li></ol>
