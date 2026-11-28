@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -97,6 +97,12 @@
 <div class="c-block"><h3>4. Comprendre noyau et image d’une application linéaire</h3>
 <p>Une application linéaire préserve les combinaisons, donc <code>f(αu+βv)=αf(u)+βf(v)</code>. Pour exhiber une application non linéaire, un seul échec avec des vecteurs et des coefficients suffit.</p>
 <p>Le <strong>noyau</strong> rassemble les entrées envoyées sur zéro. L’<strong>image</strong> rassemble les valeurs atteintes. Les colonnes d’une matrice d’application sont les images des vecteurs de la base de départ, écrites dans la base d’arrivée. Le rang est la dimension de l’image. Une application est injective si son noyau est réduit à zéro, et surjective si son image couvre tout l’espace d’arrivée.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment savoir quels produits garder dans un développement limité ?</h3>
+  <p>Dans eˣ ln(1+x), cherche séparément les termes qui peuvent fabriquer du x². Il y a 1 × (−x²/2) et x × x. Le terme x²/2 de l’exponentielle rencontre au minimum un x dans le logarithme et donne déjà du degré 3.</p>
+  <p>La somme des deux contributions du degré 2 vaut x²/2. Vérifie avec x = 0,1 : l’approximation x + x²/2 donne 0,105, cohérente avec le produit d’environ 0,10533.</p>
+  <p><a href="#pm2-asym">Feuille 1, ex. 5 · Développer eˣ ln(1+x) à l’ordre 2</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

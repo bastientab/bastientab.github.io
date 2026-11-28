@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -96,6 +96,12 @@
 <div class="c-block"><h3>4. Fabriquer un résultat avec des commandes de texte</h3>
 <p>L’entrée standard reçoit les données, la sortie standard reçoit le résultat et la sortie d’erreur reçoit les diagnostics. <code>&gt;</code> remplace un fichier de sortie, <code>&gt;&gt;</code> lui ajoute du contenu et <code>|</code> transmet la sortie normale à la commande suivante.</p>
 <p><code>head</code> et <code>tail</code> sélectionnent le début ou la fin. <code>grep</code> filtre, <code>cut</code> choisit des colonnes et <code>sort</code> ordonne. <code>uniq</code> travaille sur les lignes adjacentes. Pour compter toutes les répétitions d’un même texte, trie avant <code>uniq -c</code>. <code>find</code> explore des chemins selon des critères de nom, type ou permissions.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi trier avant de compter les répétitions ?</h3>
+  <p>Imagine un journal de trois lignes : INFO, ERREUR, INFO. La commande uniq -c compare chaque ligne à la précédente. Les deux lignes INFO sont séparées, donc la commande affiche trois groupes de taille 1.</p>
+  <p>Avec sort journal.txt | uniq -c, le tri rapproche les valeurs identiques et INFO forme un groupe de taille 2. Ce résultat répond à une question de fréquence. Conserve l’original si tu dois aussi retrouver la chronologie.</p>
+  <p><a href="#ps-tools">Application du mémo · Compter les répétitions d’un journal</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

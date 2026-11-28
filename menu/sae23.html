@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -104,6 +104,12 @@
 <div class="c-block"><h3>Gérer les tentatives, les fichiers et les tableaux de bord</h3>
 <p>Pour les volets formations et questions, lie chaque création à son auteur. Filtre les formations par compétence via l’association et limite les réponses au formateur destinataire. Pour compter les vues, décide si tu comptes les ouvertures ou les visiteurs distincts et affiche la période.</p>
 <p>Pour un dépôt, détecte le type côté serveur, impose une taille maximale, génère un nom et stocke hors du dossier servi si possible. Autorise le téléchargement par un traitement qui vérifie l’accès.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment représenter un étudiant qui valide plusieurs compétences ?</h3>
+  <p>Exemple de modélisation : un étudiant peut valider plusieurs compétences et une compétence peut être validée par plusieurs étudiants. Enregistre chaque étudiant et chaque compétence une fois. Une troisième table associe leurs identifiants et peut porter la date de validation.</p>
+  <p>Si le cahier des charges autorise une seule validation par couple, impose l’unicité du couple. S’il exige un historique des tentatives, plusieurs lignes pour le même couple sont légitimes et doivent être distinguées. C’est la règle métier qui fixe la contrainte.</p>
+  <p><a href="#question-1">Volets 1 à 3 · Modéliser les liens et éprouver la base</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

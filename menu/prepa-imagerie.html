@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -101,6 +101,12 @@
 <div class="c-block"><h3>5. Modifier des formes avec la morphologie</h3>
 <p>Une image binaire sépare le premier plan du fond. Un <strong>élément structurant</strong> est la petite forme qu’on déplace sur cette image. Pour l’érosion, une position est retenue si tout le motif translaté tient dans le premier plan. Pour la dilatation, la position est retenue si le motif réfléchi touche le premier plan. Avec un motif symétrique, la réflexion donne la même forme.</p>
 <p>Une <strong>ouverture</strong> applique une érosion suivie d’une dilatation. Elle peut éliminer des détails plus fins que le motif. Une <strong>fermeture</strong> applique les opérations dans l’autre ordre et peut combler des petits trous. Avec des niveaux de gris et un élément structurant plat, l’érosion prend un minimum local et la dilatation prend un maximum local dans leur voisinage respectif.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi un seul pixel blanc suffit-il à changer la moyenne ?</h3>
+  <p>Prends une fenêtre de neuf pixels contenant huit zéros et un 255. Le filtre moyenneur remplace le pixel central par 255/9, soit environ 28. Si la fenêtre glisse, ce point blanc influence aussi les positions voisines.</p>
+  <p>Le filtre médian trie les neuf valeurs et prend la cinquième, ici zéro. Il élimine ce point isolé. Refais le tri avec cinq pixels blancs : la médiane passe à 255. C’est la position dans la liste triée qui commande le résultat.</p>
+  <p><a href="#pixel-ex">Support Filtrage · Appliquer le moyenneur et le médian 3×3</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

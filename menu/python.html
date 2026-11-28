@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -96,6 +96,12 @@
 <div class="c-block"><h3>Fonctions, fichiers et modules</h3>
 <p>Écris par exemple <code>def double(n): return 2 * n</code>, puis vérifie <code>double(4) == 8</code>. Pour un fichier, <code>with open(&quot;index.html&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;) as fichier:</code> ouvre en écriture et remplace le contenu précédent. Utilise un chemin relatif pour que l’exercice soit reproductible.</p>
 <p>Un module peut être chargé avec <code>import math</code>. Appelle ensuite la fonction qualifiée, par exemple <code>math.sqrt(9)</code>. Choisis un nom de fichier qui ne masque pas un module standard.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Dans quel ordre traiter les exceptions du calendrier ?</h3>
+  <p>1900 et 2000 sont tous deux divisibles par 4 et par 100. Ce deuxième test retire normalement les années de siècle. Mais 2000 est aussi divisible par 400, ce qui la réintègre. Un retour immédiat dès le test de divisibilité par 4 donnerait la mauvaise réponse pour 1900.</p>
+  <p>Traduis la règle en deux chemins qui acceptent une année : divisible par 400, ou divisible par 4 sans être divisible par 100. Essaie 2100 et 2400 avant de lancer le programme : seul le second doit être accepté.</p>
+  <p><a href="#question-1">Conditions · Déterminer si une année est bissextile</a></p>
 </div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">

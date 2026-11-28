@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -168,6 +168,12 @@
     <p><strong>NXDOMAIN</strong> signifie que le nom n’existe pas. Une réponse <strong>NODATA</strong> signifie que le nom existe mais qu’il n’a pas le type demandé, par exemple un hôte qui a un <code>A</code> mais aucun <code>AAAA</code>.</p>
     <p><strong>NSEC</strong> prouve l’absence en indiquant le nom suivant dans l’ordre de la zone et les types présents au nom courant. <strong>NSEC3</strong> (preuve DNSSEC d’absence fondée sur des noms hachés) utilise un ordre fondé sur des empreintes de noms. Le résolveur contrôle les preuves et leurs signatures. Des noms prévisibles restent devinables par comparaison de hachages.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Une signature visible suffit-elle pour faire confiance à la réponse ?</h3>
+  <p>Dans le TP, demander les signatures peut faire apparaître un enregistrement RRSIG (Resource Record Signature). Il porte la signature d’un ensemble de données. Pour la vérifier, le résolveur utilise une clé DNSKEY de la zone. Reste une question : pourquoi faire confiance à cette clé ?</p>
+  <p>Dans une délégation signée, le parent publie un enregistrement DS (Delegation Signer) qui contient l’empreinte d’une clé de l’enfant. Le résolveur vérifie ce lien en remontant jusqu’à une clé de confiance connue. Avec une zone de maquette indépendante, le point de confiance peut être configuré localement. Voir une RRSIG et établir cette chaîne sont deux étapes distinctes.</p>
+  <p><a href="#application-guidee">VI · Comparer avec et sans DNSSEC et suivre les clés</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -347,7 +353,7 @@ dig @172.25.0.11 client.secu.rt. A +norecurse</code></pre>
     <p>Ajoute <code>ns2</code> aux DNS du poste client puis arrête temporairement <code>ns1</code> dans le labo. Une requête directe vers <code>ns2</code> vérifie le serveur secondaire. Une requête via le système et une capture vérifient le comportement réel de bascule. Remets <code>ns1</code> en service après le test.</p>
   </div></details>
 
-  <details class="acc"><summary>VI · Comparer avec et sans DNSSEC et suivre les clés</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>VI · Comparer avec et sans DNSSEC et suivre les clés</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Comparer les réponses <code>SOA .</code>, analyser le graphe DNSViz et relever l’expiration d’une signature sur <code>pm.</code>.</p>
     <pre class="c-code"><code>dig SOA .
 dig +dnssec SOA .

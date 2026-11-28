@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -93,6 +93,12 @@
 <div class="c-block"><h3>Nettoyer, valider et contrôler une transformation</h3>
 <p>Nettoie les espaces avec <code>strip()</code> avant une comparaison d’identifiants. Verrouille le format d’une date connue avec <code>datetime.strptime(s, &quot;%d/%m/%Y %H:%M&quot;)</code> pour éviter les ambiguïtés de jour et de mois.</p>
 <p>Pour un identifiant de salle de la forme une majuscule puis un ou deux chiffres, teste <code>re.fullmatch(r&quot;[A-Z][0-9]{1,2}&quot;, code)</code>. Cette règle d’exemple doit évoluer si le fichier accepte des noms composés.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Deux créneaux qui se touchent se chevauchent-ils ?</h3>
+  <p>Pour un agenda où l’heure de fin libère la salle, représente un cours par [début, fin[. Le cours de 8 h à 10 h occupe 9 h 59 mais libère 10 h. Une réservation de 10 h à midi peut donc le suivre.</p>
+  <p>Après avoir converti les heures dans la même unité, deux créneaux se chevauchent si débutA &lt; finB et débutB &lt; finA. Teste trois cas : 9 h–11 h chevauche le premier cours, 10 h–12 h le suit, 7 h–8 h le précède. L’égalité aux bornes explique le choix du signe strict.</p>
+  <p><a href="#question-1">Projet CSV · Filtrer les événements d’une salle et valider les heures</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

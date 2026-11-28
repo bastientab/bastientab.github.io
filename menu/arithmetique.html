@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#td-tp">Questions TD &amp; TP</a></li>
@@ -257,7 +257,13 @@
 <div class="c-callout"><p>Pour (2,3,6,12), la somme 15 impose 12, puis il reste 3. Dans l’ordre initial, les bits sont (0,1,0,1).</p></div>
 <p><strong>Merkle–Hellman.</strong> Multiplie les poids privés par A modulo N, avec N supérieur à leur somme et PGCD(A,N)=1. On publie les poids transformés. Pour revenir d’un chiffré, multiplie par A⁻¹ modulo N. Le résultat est exactement la somme privée, donc on applique le glouton. On étudie ici le procédé historique.</p>
 </div>
-      </section>
+      <div class="c-block" id="exemple-guide">
+  <h3>Quand une division modulo n est-elle possible ?</h3>
+  <p>Pour résoudre 3x ≡ 1 modulo 7, cherche un entier qui, multiplié par 3, laisse le reste 1. Comme 3 × 5 = 15 = 2 × 7 + 1, l’inverse de 3 est 5. On peut alors résoudre 3x ≡ 2 en multipliant par 5 : x ≡ 10 ≡ 3 modulo 7.</p>
+  <p>Essaie la même idée avec 6 modulo 9. Tous les nombres 6x−9k sont multiples de 3, donc aucun ne vaut 1. Le critère général est que le plus grand commun diviseur du coefficient et du module soit égal à 1. Remplace x par 3 dans le premier exemple pour contrôler le reste.</p>
+  <p><a href="#application-guidee">Modulo — tables, critères et inverse modulo 63</a></p>
+</div>
+</section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
         <dl class="vocab">
@@ -345,7 +351,7 @@
 <li>Pour 100 pièces, écris 8h+5f=100. Réduis modulo 5 : 3h≡0, donc h multiple de 5. Entre 1 et 12, h vaut 5 ou 10, ce qui donne (5,12) et (10,4). Si zéro homme est permis, ajoute (0,20).</li>
 <li>Pour le repas, retire les remises de 9 € et 13 € du total à plein tarif, 28×26=728 €. On cherche 9e+13c=115. Modulo 9, 4c≡7, donc c≡4 (mod 9). La borne 0≤c≤8 impose c=4. Puis e=7, et il reste 17 personnes au plein tarif.</li></ol>
 <div class="c-callout"><p>Pour 11n+3 et 13n−1, la combinaison 13a−11b vaut 50. Le PGCD vaut 50 exactement si 50 divise les deux. La première condition donne 11n≡−3 (mod 50), soit n≡27 (mod 50). La seconde est alors vérifiée. Pour 50x−11y=3, on peut écrire x=6+11t et y=27+50t.</p></div></div></details>
-<details class="acc"><summary>Modulo — tables, critères et inverse modulo 63</summary><div class="acc-body">
+<details class="acc" id="application-guidee"><summary>Modulo — tables, critères et inverse modulo 63</summary><div class="acc-body">
 <p class="c-question"><strong>Énoncé.</strong> Dans les tables modulo 5 et 9, repérer les non-inversibles. Retrouver les critères de divisibilité et déterminer lesquels de 4, 12, 14 et 25 sont inversibles modulo 63.</p>
 <ol>
 <li>Pour chaque case des tables, calcule (i+j) mod n ou (ij) mod n. Réduis 37 modulo 9 : c’est 1. Ajouter 37 revient à décaler la ligne d’un cran. Multiplier par 37 laisse chaque reste inchangé. Modulo 5, seul 0 n’est pas inversible. Modulo 9, ce sont 0,3,6.</li>

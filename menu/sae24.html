@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -98,6 +98,12 @@
 <div class="c-block"><h3>4. Détecter un comportement et le prouver</h3>
 <p>Pour détecter des mots de passe erronés à répétition, pars d’une trace de journal datée et d’un identifiant de compte. Décide quels événements sont des échecs et compte ceux du même compte dans une fenêtre glissante. Pour le test, veille à avoir un cas sous le seuil, un cas où le seuil est atteint et des échecs espacés.</p>
 <p>Une page Web de démonstration devrait afficher l’état et les résultats obtenus, avec des commandes prédéfinies côté serveur. Fais valider les données et échappe le texte rendu. Les comptes, noms internes et traces présentés dans le rapport peuvent être remplacés par des valeurs de maquette.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment montrer que la séparation de deux services fonctionne ?</h3>
+  <p>Prépare deux essais qui changent un seul paramètre. Depuis un poste de test, contacte d’abord un service explicitement autorisé puis une destination que la politique doit isoler. Note pour chacun la source, la destination, le protocole et la réponse attendue.</p>
+  <p>Un échec isolé pourrait venir d’un serveur éteint. Vérifie aussi que le service répond depuis un poste autorisé. Tu peux alors expliquer ensemble le témoin positif et le refus attendu.</p>
+  <p><a href="#s24-reseau">Sujet · Prouver la communication autorisée entre les services</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>

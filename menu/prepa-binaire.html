@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -125,6 +125,13 @@
   <p>Groupe les 1 en rectangles de taille 1, 2, 4, 8… et garde les variables constantes dans chaque groupe. Un chevauchement est permis. Grouper les 0 donne la formule de la fonction complémentaire, puis les lois de De Morgan permettent de retrouver la fonction. Pour économiser des portes, factorise les termes communs et compare les expressions sur la table de vérité.</p>
   <p>Un <strong>multiplexeur 4 vers 1</strong> choisit l’une de quatre entrées grâce à deux bits de commande. Pour réaliser une fonction de trois variables, utilise deux variables comme sélection, puis observe ce que devient la sortie pour la troisième variable. Sur chaque entrée du multiplexeur, câble une constante, la troisième variable ou sa négation.</p>
 </div>
+<div class="c-block" id="exemple-guide">
+  <h3>La même addition peut-elle déborder dans une seule interprétation ?</h3>
+  <p>Sur quatre bits, 0111 + 0001 donne 1000. En lecture non signée, 7 + 1 = 8 tient sur quatre bits, sans retenue de sortie. En complément à deux, les valeurs représentables vont de −8 à 7. Le résultat lu comme signé serait −8 alors que les deux opérandes sont positifs.</p>
+  <p>Inverse le test avec 1111 + 0001. Il reste 0000 et une retenue sort du mot. En signé, le calcul représentait −1 + 1 = 0, un résultat parfaitement représentable. Le choix de l’interprétation détermine quel indicateur regarder.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="La même addition peut-elle déborder dans une seule interprétation ?"><thead><tr><th scope="col">Addition sur 4 bits</th><th scope="col">Retenue en sortie</th><th scope="col">Débordement signé</th></tr></thead><tbody><tr><td>0111 + 0001 → 1000</td><td>Non</td><td>Oui (7 + 1)</td></tr><tr><td>1111 + 0001 → 0000</td><td>Oui</td><td>Non (−1 + 1)</td></tr></tbody></table></div>
+  <p><a href="#application-guidee">Exercices 10 à 13 · Distinguer Carry et Overflow</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -163,7 +170,7 @@
     </tbody></table>
     <p>Pour −35, pars de <code>00100011</code>. En VAS, positionne le signe. En C1, inverse l’octet entier. En C2, ajoute 1 après inversion. En excédent, code 93, le résultat de 128−35. Pour vérifier le codage C2, additionne les poids du mot avec un poids négatif à gauche.</p>
   </div></details>
-  <details class="acc"><summary>Exercices 10 à 13 · Distinguer Carry et Overflow</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>Exercices 10 à 13 · Distinguer Carry et Overflow</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Sur un octet en complément à 2, effectuer −1 + 1 et 127 + 127 en précisant Carry et Overflow. Effectuer ensuite 9−15 et −24/4.</p>
     <ol><li><code>11111111 + 00000001 = 1 00000000</code>. Carry vaut 1 puisque la retenue franchit l’octet. Le résultat signé vaut 0, donc Overflow vaut 0.</li><li><code>01111111 + 01111111 = 11111110</code>. Carry vaut 0. Le résultat se lit −2 en C2 alors que l’addition vaut 254. Overflow vaut donc 1. Un positif et un négatif donnent toujours un résultat compris entre les deux opérandes, donc dans la plage autorisée.</li><li><code>00001001 + 11110001 = 11111010</code>, soit −6. Pour −24/4, décale deux fois le mot <code>11101000</code> vers la droite avec extension du signe. Tu obtiens <code>11111010</code>, encore −6.</li></ol>
   </div></details></div>

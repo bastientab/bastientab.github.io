@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -100,6 +100,12 @@
 <div class="c-block"><h3>5. Construire des signaux à partir de motifs</h3>
 <p>Une <strong>porte</strong> est active sur un intervalle et inactive en dehors. Pour centrer une porte de largeur <code>L</code> au temps <code>t₀</code>, transforme l’argument en <code>(t−t₀)/L</code> si la porte de référence a une largeur 1 et un centre à zéro. Pour un créneau périodique, répète le motif à intervalles réguliers. Le rapport cyclique est la fraction de la période passée à l’état haut.</p>
 <p>Le cours utilise aussi l’impulsion de <strong>Dirac</strong>, un modèle idéal concentré à un instant, et le peigne obtenu en répétant des impulsions tous les <code>T</code>. Il distingue le sinus cardinal. Avec la convention <code>sinc(x)=sin(x)/x</code>, la valeur en 0 est prolongée à 1 par continuité. Compare la formule de la convention utilisée avant de lire les zéros.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>À quoi correspondent les 100 de cos(100t) ?</h3>
+  <p>Dans cos(100t), l’argument avance de 100 radians par seconde. Une oscillation complète occupe 2π radians. Il faut donc T = 2π/100 s, soit environ 62,8 ms, pour que le motif revienne au même point dans le même sens.</p>
+  <p>La fréquence vaut 1/T ≈ 15,9 Hz. Un contrôle simple consiste à multiplier 100 par T : on doit retrouver 2π. Pour un signal à 100 Hz, l’expression serait cos(2π × 100t).</p>
+  <p><a href="#signal-periode">Poly · Lire une période à partir de cos(100t)</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

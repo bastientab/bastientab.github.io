@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -118,6 +118,12 @@
     <p>Avec <code>ValueFromPipeline</code>, l’objet complet peut être lié à un paramètre compatible. Avec <code>ValueFromPipelineByPropertyName</code>, PowerShell cherche une propriété portant le nom du paramètre ou d’un de ses alias. Par exemple, avec un paramètre <code>$Name</code>, il peut prendre la propriété <code>Name</code> de chaque objet transmis.</p>
     <p><code>begin</code> initialise une fois. <code>process</code> traite les objets qui arrivent. <code>end</code> renvoie le résultat final, comme le nombre total. Pour lire plus sur la liaison des entrées et les erreurs, consulte la <a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_pipelines">documentation du pipeline</a> et celle de <a href="https://learn.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_try_catch_finally">try/catch</a>.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi factorielle de zéro vaut-elle 1 dans la boucle ?</h3>
+  <p>La factorielle de n est le produit des entiers de 1 à n. En partant d’un résultat égal à 1, le calcul pour 4 passe successivement par 1, 2, 6 et 24. Pour 0, aucun facteur n’est ajouté et le résultat initial reste 1.</p>
+  <p>Teste 0 puis 1 avant 4. Vérifie séparément le traitement des négatifs : si la boucle est simplement ignorée pour −2, elle renverra aussi 1 alors que l’entrée sort du domaine de la factorielle des entiers naturels.</p>
+  <p><a href="#application-guidee">Scripts, p. 18 · Calculer la factorielle de n</a></p>
+</div>
 </section>
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
@@ -154,7 +160,7 @@ Rename-Item -LiteralPath 'Exercice1.txt' -NewName 'essai1.txt'
 Get-Content -LiteralPath 'essai1.txt', 'Exercice2.txt'</code></pre>
     <p>Avant la copie, la liste contient <code>Exercice1.txt</code>. À la fin, chaque lecture affiche la même phrase et la liste contient <code>essai1.txt</code> et <code>Exercice2.txt</code>.</p>
   </div></details>
-  <details class="acc"><summary>Scripts, p. 18 · Calculer la factorielle de n</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>Scripts, p. 18 · Calculer la factorielle de n</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Écris un script qui calcule la factorielle d’un entier n.</p>
     <p>La factorielle de n multiplie les entiers de 1 à n. Le résultat initial vaut 1, car c’est l’élément neutre de la multiplication. La factorielle de 0 vaut 1.</p>
     <pre><code>param([Parameter(Mandatory)][ValidateRange(0,20)][int]$N)

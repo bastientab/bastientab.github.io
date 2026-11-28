@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -101,6 +101,12 @@
 <p>Une <strong>machine virtuelle</strong> démarre un système invité avec son noyau. Un <strong>conteneur</strong> isole un processus et son environnement tout en partageant le noyau qui l’héberge. Docker Desktop peut utiliser une VM pour héberger des conteneurs Linux sur un autre système.</p>
 <p>Une <strong>image</strong> fournit les fichiers et réglages de démarrage. Le <strong>conteneur</strong> est une instance, même quand il est arrêté. Un <strong>volume</strong> stocke l’état séparément. Quand la tâche demande la persistance, recrée le conteneur et rattache le volume pour contrôler que les données reviennent.</p>
 <p>Publier un port associe un port de l’hôte à un port du conteneur. La commande <code>docker run -d -p 127.0.0.1:8080:80 nginx</code> rend le service accessible depuis la machine hôte sur 8080 dans un exemple local. Vérifie le mappage avec <code>docker ps</code>, puis envoie une requête HTTP au port publié.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Quel fichier faut-il relire pour revenir à mercredi soir ?</h3>
+  <p>Exemple : sauvegarde complète dimanche, puis une sauvegarde incrémentale chaque soir. Lundi A change, mardi B change, mercredi A change encore. L’incrémentale de mercredi contient la dernière version de A, mais B dépend toujours de celle de mardi.</p>
+  <p>Restaure la complète puis les incrémentales jusqu’à mercredi dans l’ordre. Avec des sauvegardes différentielles regroupant tous les changements depuis dimanche, la complète et la différentielle de mercredi suffisent. Pour vérifier la restauration, ouvre A et B et compare leur contenu attendu.</p>
+  <p><a href="#adm-backup">Application du cours · Restaurer les fichiers au mercredi</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>

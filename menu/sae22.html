@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -99,6 +99,13 @@
 <div class="c-block"><h3>4. Délimiter et mesurer le canal radio</h3>
 <p>La largeur à −20 dB du sujet est mesurée par rapport au maximum du relevé autour de la porteuse. Sur la trace lissée, trouve le maximum puis cherche les deux franchissements correspondants autour de ce pic. La bande est la différence <code>fmax−fmin</code>. Garde le même repère en fréquence et précise comment tu choisis les bornes sur une trace discrète.</p>
 <p>Pour additionner des puissances, convertis en échelle linéaire. <code>P(W)=10^((PdBm−30)/10)</code>. Si le sujet traite chaque valeur comme la puissance par intervalle fréquentiel de largeur <code>df</code>, divise par <code>df</code> pour obtenir une densité en W/Hz. Dans le cas d’une mesure d’analyseur, vérifie aussi ce que l’instrument a exporté pour identifier la bonne largeur de référence. La puissance de bande vaut la somme <code>DSP×df</code> dans le modèle du TP.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Combien de temps sépare le premier et le dernier point du vecteur ?</h3>
+  <p>À 40 kHz, on prélève 40 000 valeurs par seconde, donc deux valeurs voisines sont séparées de 25 µs. Si le vecteur commence à zéro, ses quatre premiers instants sont 0, 25, 50 et 75 µs.</p>
+  <p>Pour N points à partir de zéro, le dernier instant est (N−1) × Te, où Te est la période d’échantillonnage. Une fenêtre de N échantillons représente N × Te lorsqu’on la prolonge jusqu’au début de la fenêtre suivante. Dessiner les quatre instants lève l’écart apparent d’un échantillon.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="Combien de temps sépare le premier et le dernier point du vecteur ?"><thead><tr><th scope="col">Indice (depuis 0)</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th></tr></thead><tbody><tr><td>Instant (µs)</td><td>0</td><td>25</td><td>50</td><td>75</td></tr></tbody></table></div>
+  <p><a href="#sae22-sinus">Partie 1 · Vérifier le temps d’échantillonnage</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>

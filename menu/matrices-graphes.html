@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -98,6 +98,12 @@
 <p>Une chaîne de Markov décrit une évolution par étapes. Les probabilités du prochain état dépendent de l’état courant dans le modèle. Avec une distribution écrite en ligne <code>Pₙ</code>, mets dans la ligne <code>i</code> de la matrice les probabilités de départ de l’état <code>i</code>. On applique <code>Pₙ₊₁=PₙT</code>.</p>
 <figure><img loading="lazy" src="../assets/revisions/matrices-graphes/schemas/transitions.png" alt="Chaque mois, 28 pour cent des données passent de A à B et 12 pour cent de B à A."><figcaption>Dans le TD des NAS, les pourcentages sont appliqués au stock du site de départ.</figcaption></figure>
 <p>Une distribution <strong>stationnaire</strong> respecte <code>PT=P</code> et ses composantes somment à 1. Cela signifie que la répartition ne change plus si on démarre avec cette distribution. Pour démontrer que la répartition du sujet converge, on peut en plus trouver une récurrence et suivre l’écart à cet état.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment retrouver une erreur de signe après un pivot ?</h3>
+  <p>Dans le système du TD, les deux lignes réduites donnent −y+z = 1 et −2y+z = −1. Soustraire la première à la seconde élimine z : −y = −2, donc y = 2. Remonter donne z = 3 puis x = −1.</p>
+  <p>Vérifie le triplet dans les trois lignes d’origine : −1+2+3 = 4, −2+2+9 = 9 et −1−2+6 = 3. Un test uniquement sur les lignes transformées pourrait laisser passer une erreur commise lors de la transformation elle-même.</p>
+  <p><a href="#mg-gauss">TD2, ex. 3 · Résoudre le premier système par Gauss</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

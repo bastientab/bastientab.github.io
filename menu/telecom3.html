@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -118,6 +118,12 @@
   <p>Pour une charge ponctuelle q à distance r dans l’air, le champ électrique a pour module <strong>k|q|/r²</strong> avec k≈9×10⁹ N·m²/C². Convertis les longueurs en mètres et les charges en coulombs. Dessine l’axe qui passe par la source et le point demandé. La flèche s’éloigne d’une charge positive et se dirige vers une charge négative. Si une charge d’essai q′ est indiquée, sa force est q′E. Une charge d’essai négative subit donc une force opposée au champ.</p>
   <p>Pour des sources multiples, dessine une flèche pour chaque source, puis projette sur les axes et additionne les composantes avec leurs signes. Dans un exemple d’application, +2 nC à 0,30 m donne 200 V/m. Si une autre contribution vaut 150 V/m dans le sens opposé sur le même axe, le résultat vaut 50 V/m dans le sens de la première flèche.</p>
   <p>Près d’un fil rectiligne supposé long, <strong>H = I/(2πr)</strong> en A/m et <strong>B = μH</strong> en teslas. Le pouce suit le courant et les doigts indiquent le sens du champ. Dans l’exercice à deux fils, dessine les deux cercles qui passent par le point étudié. Les champs sont tangents à ces cercles. Décide d’après les flèches s’il faut additionner ou soustraire sur l’axe commun.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment savoir si une liaison a encore de la marge ?</h3>
+  <p>Exemple complémentaire : la source injecte 0 dBm, la fibre atténue le signal de 12 dB et les raccordements de 2 dB. Au récepteur, le niveau prévu vaut 0−12−2 = −14 dBm. Si le récepteur exige au moins −18 dBm, il reste 4 dB de marge.</p>
+  <p>Si la conception exige une réserve de 3 dB, il reste 1 dB disponible au-delà de cette réserve. Distingue le niveau absolu en dBm et la différence de niveaux en dB. Une marge positive indique de combien les pertes pourraient encore augmenter.</p>
+  <p><a href="#application-guidee">TD3 · Fermer le bilan optique de 220 km</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
@@ -169,7 +175,7 @@
     <li>Pour WDM, suis chaque longueur d’onde vers son port, avec la perte indiquée pour cette voie. Additionne uniquement les puissances linéaires si le sujet demande une puissance totale.</li>
     <li>Sur l’amplificateur, applique le gain en dB et vérifie la plage de puissance autorisée à l’entrée et à la sortie.</li></ol>
   </div></details>
-  <details class="acc"><summary>TD3 · Fermer le bilan optique de 220 km</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>TD3 · Fermer le bilan optique de 220 km</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Vérifier si la sensibilité et la marge sont respectées, puis placer les amplificateurs de 5 dB.</p>
     <ol><li>5 mW → 6,99 dBm. Perte sur 220 km → 0,4×220=88 dB. Sans amplificateur, la réception vaut −81,01 dBm. Il faut au moins −33 dBm pour avoir 3 dB de marge au-dessus de −36 dBm.</li>
     <li>Le déficit vaut 48,01 dB. Arrondis (48,01/5) à l’entier supérieur : 10. Avec dix gains de 5 dB, l’arrivée vaut −31,01 dBm dans ce modèle.</li>

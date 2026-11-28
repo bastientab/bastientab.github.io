@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -98,6 +98,12 @@
 <div class="c-block"><h3>4. Ajouter des VLAN au routage</h3>
 <p>Les VLAN séparent les diffusions de niveau 2. Sur un montage avec un seul lien physique entre switch et routeur, un trunk transporte plusieurs VLAN. Le routeur peut disposer d’une sous-interface et d’une adresse de passerelle par VLAN. Pour joindre un réseau distant, il peut ensuite annoncer les préfixes via RIP ou EIGRP dans la maquette.</p>
 <p>Vérifie dans cet ordre le VLAN du port de poste, le VLAN autorisé sur le trunk, le tag de la sous-interface et son adresse, puis les routes. Un poste peut joindre sa passerelle et échouer plus loin. Ce premier résultat localise déjà la panne au-delà de son VLAN.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Qu’est-ce qui change entre les deux interfaces d’un routeur ?</h3>
+  <p>Imagine un client qui envoie un paquet à un serveur d’un autre réseau. Sur le premier câble, la trame Ethernet porte l’adresse matérielle de la passerelle. Le routeur enlève cette enveloppe et fabrique une nouvelle trame pour le lien suivant.</p>
+  <p>Compare les adresses aux deux niveaux. Sans traduction d’adresses, les adresses IP du client et du serveur se retrouvent des deux côtés. Les adresses Ethernet changent et la durée de vie du paquet IP diminue de 1. Ces indices distinguent un paquet routé d’une simple copie de trame.</p>
+  <p><a href="#i2-tp1">TP1 · Comparer deux captures avant et après activation du transfert</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>

@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -118,6 +118,13 @@
     <p>En FM, l’écart instantané de fréquence suit le son. Intègre ce son pour obtenir la phase θ(t), puis crée C(t)=exp(jθ(t)). Pour limiter la crête de l’écart à Δf, prends θ(t)=2πΔf∫m(t)dt / max(|m|), à condition que max(|m|) soit non nul. Dans MATLAB, l’intégrale numérique se construit avec <code>cumtrapz(t,m)</code> en secondes.</p>
     <p>À la réception, applique <code>angle(r(k)*conj(r(k-1)))</code>. La différence d’angles approximée, multipliée par F<sub>e</sub>/(2π), donne l’écart signé de fréquence. Évite que la différence dépassant ±π soit ambiguë et utilise le taux réel de capture. Pour écouter, adapte la cadence à celle du son ou rééchantillonne.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment prévoir le nombre de points du signal avant de lancer MATLAB ?</h3>
+  <p>Exemple complémentaire de codage NRZ (Non-Return-to-Zero) : à 1 000 bits/s, un bit dure 1 ms. Avec 8 000 échantillons/s, chaque bit occupe huit valeurs du vecteur. Une suite de quatre bits doit donc produire 32 valeurs et occuper 4 ms.</p>
+  <p>Pour les bits 1, 1, 0, 1 avec deux niveaux fixes, les deux premiers bits forment un plateau de 16 échantillons. Ils occupent bien deux intervalles malgré l’absence de transition entre eux. Place des repères tous les huit échantillons pour relire le message.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="Comment prévoir le nombre de points du signal avant de lancer MATLAB ?"><thead><tr><th scope="col">Intervalle (ms)</th><th scope="col">0 à 1</th><th scope="col">1 à 2</th><th scope="col">2 à 3</th><th scope="col">3 à 4</th></tr></thead><tbody><tr><td>Bit</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>Niveau illustratif</td><td>+1</td><td>+1</td><td>−1</td><td>+1</td></tr></tbody></table></div>
+  <p><a href="#application-guidee">Reprise MATLAB · Modifier le script NRZ</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -149,7 +156,7 @@
 </section>
       <section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
-  <details class="acc" open><summary>Reprise MATLAB · Modifier le script NRZ</summary><div class="acc-body">
+  <details class="acc" open id="application-guidee"><summary>Reprise MATLAB · Modifier le script NRZ</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Analyser en temps et en fréquence le script NRZ fourni, puis produire un signal Manchester, 2B1Q et MLT-3.</p>
     <ol><li>Repère où sont choisis les bits, le débit et la fréquence d’échantillonnage. Calcule le nombre de points par bit et vérifie qu’il divise la longueur de la sortie.</li><li>Sur <code>101</code>, les niveaux NRZ bipolaires valent +, −, +. Pour Manchester dans la convention du poly, construis les demi-niveaux <code>[+ −] [− +] [+ −]</code>. Choisis un nombre pair d’échantillons par bit.</li><li>Avec <code>10 | 01</code>, le tableau 2B1Q du cours donne +3A, −A. En MLT-3, pars de 0 et utilise le cycle <code>+E, 0, −E, 0</code> aux 1 successifs. Les 0 gardent le dernier niveau.</li><li>Trace le signal avec les mêmes unités temporelles, puis la FFT avec la fréquence réellement choisie pour les échantillons. Compare ce qui change à débit d’information constant.</li></ol>
   </div></details>

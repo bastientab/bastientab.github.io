@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -118,6 +118,12 @@
   <p>Le serveur <strong>DHCP</strong> loue une adresse à un client et lui communique des réglages, comme le masque, la passerelle et le DNS. Le <strong>pool</strong> désigne les adresses distribuables. Réserve l’IP du serveur et celle du routeur hors du pool.</p>
   <figure><img loading="lazy" src="../assets/revisions/reseaux/schemas/dhcp.png" alt="Le client envoie Discover puis Request et le serveur répond par Offer puis Ack."><figcaption>Pour une première attribution, le client émet depuis le port UDP 68 et le serveur reçoit sur le port 67. Au retour, les ports sont inversés.</figcaption></figure>
   <p>Le client sans adresse diffuse un <strong>Discover</strong>. Le serveur propose une adresse par <strong>Offer</strong>. Le client sélectionne l’offre dans <strong>Request</strong>, et <strong>Ack</strong> confirme le bail et les paramètres. Dans la capture, vérifie les adresses de chaque réponse. Leur mode d’envoi peut dépendre du bit de diffusion et du contexte. Un renouvellement de bail peut aussi montrer un échange plus court.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment un commutateur apprend-il où se trouve un poste ?</h3>
+  <p>Le premier message de PC3 entre sur un port. Le commutateur associe à ce port l’adresse Ethernet source de PC3. Si la destination individuelle est encore inconnue, il diffuse la trame aux autres ports du même réseau local virtuel. La réponse de PC5 lui apprend ensuite le port de PC5.</p>
+  <p>Pour comparer deux pings, distingue la demande de résolution d’adresse, diffusée à tous, de la trame individuelle transportant le ping. Après apprentissage, observe sur quels ports sort cette dernière. Le type de destination explique pourquoi certaines diffusions continuent.</p>
+  <p><a href="#td-ethernet">R102 TD1 · Comparer le même échange sur un hub et un commutateur</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

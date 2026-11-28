@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -93,6 +93,12 @@
 <div class="c-block"><h3>Sélecteurs, boîte CSS et lecture sur mobile</h3>
 <p>Une règle <code>.carte { padding: 1rem; }</code> s’applique aux éléments avec <code>class=&quot;carte&quot;</code>. En cas de conflit entre deux règles de même origine et même priorité, compare leur spécificité puis leur ordre. L’inspecteur du navigateur montre quelles déclarations sont barrées.</p>
 <p><code>box-sizing: border-box</code> fait entrer la bordure et le padding dans la largeur déclarée. Pour aligner des éléments, Flexbox est utile sur un axe et Grid sur deux. Prévois un retour à la ligne avec <code>flex-wrap: wrap</code> et vérifie la taille des images.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi un lien fonctionne-t-il depuis l’accueil mais casse-t-il sur une sous-page ?</h3>
+  <p>Imagine index.html à la racine, projets/reseau.html et images/schema.png. Depuis l’accueil, images/schema.png désigne le bon fichier. Depuis la page réseau, le navigateur cherche ce même texte à partir du dossier projets et tente projets/images/schema.png.</p>
+  <p>Écris ../images/schema.png dans la sous-page pour remonter d’un dossier. Vérifie l’adresse réellement demandée dans l’onglet Réseau du navigateur. C’est aussi une manière de comprendre pourquoi une feuille de style peut manquer sur une seule page.</p>
+  <p><a href="#question-1">Relier deux pages et réutiliser la même feuille CSS</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

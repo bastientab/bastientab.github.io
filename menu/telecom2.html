@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -104,6 +104,13 @@
 <div class="c-block"><h3>6. Mesurer un canal radio et une chaîne TNT</h3>
 <p>Un sinus concentre sa puissance à une fréquence. Un canal radio ou TNT occupe une plage et distribue sa puissance sur la bande. La densité spectrale en W/Hz mesure la puissance par hertz. Son intégrale sur les limites du canal donne des watts. Pour une densité constante, multiplie la hauteur par la largeur. Convertis en dBm à la fin.</p>
 <p>Sur la distribution TNT, relève d’abord le canal reçu à l’antenne. Compare ensuite le même canal avant et après l’étage sélectif à réglages comparables. Regarde aussi les canaux voisins. Une augmentation de niveau n’indique pas à elle seule que la réception est meilleure.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Du niveau d’antenne du TD à la tension efficace</h3>
+  <p>Le TD1 donne 70 dBµV sur 75 Ω. Le symbole dBµV indique une tension comparée à 1 microvolt. Inverse le logarithme : U = 10^(70/20) µV ≈ 3 162 µV, soit 3,162 mV. Le facteur 20 vient de la relation entre puissance et carré de la tension.</p>
+  <p>Une fois U en volts efficaces, P = U²/75 ≈ 1,33 × 10⁻⁷ W. Un contrôle d’ordre de grandeur : dix fois plus de tension sur la même résistance produirait cent fois plus de puissance.</p>
+  <p><a href="#t2-radio">TD3 et TP3 · Passer de la tension au niveau en dBm</a></p>
+<p><a href="#td1-bruit">TD1, exercice 1 · Quelle avance le signal a-t-il sur le bruit ?</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -142,6 +149,7 @@
 <details class="acc" id="t2-bode"><summary>TP7 et TP8 · Lire des seuils sur la courbe et des raies sur le spectre</summary><div class="acc-body">
 <p class="c-question"><strong>Démarches des TP.</strong> Mesurer les deux bornes à −3 dB d’un filtre et reconnaître les raies attendues autour d’une porteuse modulée.</p>
 <ol><li>Mesure le gain de référence au voisinage de <code>f₀</code>. Soustrais 3 dB à ce niveau, puis relève les deux fréquences correspondantes et calcule <code>fhaut−fbas</code>.</li><li>Sur le spectre modulé, repère la porteuse et les deux raies présentes de part et d’autre. Vérifie que leur écart à la porteuse correspond à la fréquence du signal modulant.</li><li>Compare les niveaux dans les mêmes unités. Si la trace paraît tronquée ou confond plusieurs raies, regarde d’abord l’étendue de fréquence, la RBW et le niveau de référence.</li></ol></div></details>
+<details class="acc" id="td1-bruit"><summary>TD1, exercice 1 · Quelle avance le signal a-t-il sur le bruit ?</summary><div class="acc-body"><p class="c-question">Énoncé reformulé. Sur 75 Ω, la raie vaut 70 dBµV et le bruit 6 dBµV. Exprimer les tensions, les puissances et le rapport signal sur bruit.</p><ol><li>Pour le signal, 10^(70/20) µV donne 3,162 mV. Pour le bruit, 10^(6/20) µV donne 1,995 µV. En passant en volts puis en utilisant P = U²/75, on obtient environ 1,33 × 10⁻⁷ W et 5,31 × 10⁻¹⁴ W.</li><li>Par rapport à 1 mW, ces puissances valent environ −38,75 dBm et −102,75 dBm. Leur écart de 64 dB se retrouve directement par 70−6 puisque les tensions se rapportent à la même impédance.</li><li>En unités linéaires, le rapport des tensions vaut environ 1 585 et celui des puissances 2,51 millions. Le signal dépasse largement le bruit dans les conditions du TD. Pour conclure sur la réception d’un système réel, compare aussi au seuil requis dans la bande de mesure.</li></ol></div></details>
 </section>
       <section class="c-section" id="video" aria-labelledby="video-title">
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>

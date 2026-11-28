@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -94,6 +94,12 @@
 <div class="c-block"><h3>4. Comprendre le pontage et la protection</h3>
 <p>Un <strong>bridge</strong> Linux transmet des trames de couche 2 entre interfaces. Le routage transmet des paquets entre réseaux IP. En test, vérifie d’abord si tu observes une trame sur le pont et une réponse du voisin. Si la destination doit être routée, vérifie le masque et le prochain saut.</p>
 <p>La sécurité radio protège l’authentification et les échanges de données. La protection des trames de gestion peut aussi empêcher la falsification de certaines trames, notamment les désauthentifications quand cette protection a été négociée. En TP de capture, distingue une perte de liaison, une désassociation et un problème de service IP.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Que prouve le nom du réseau affiché sur le poste ?</h3>
+  <p>Le SSID (Service Set Identifier) est le nom du réseau Wi-Fi. Un poste peut être associé au bon réseau et avoir une adresse IP inadaptée. Imagine un point d’accès de la maquette en 192.168.7.1/24 et un client configuré par erreur en 192.168.8.20/24.</p>
+  <p>Le client considère la cible comme distante. Vérifie successivement le réseau associé, l’adresse et le préfixe du poste, puis son accès à une cible locale connue. Ce découpage évite de chercher une panne radio alors que l’association fonctionne.</p>
+  <p><a href="#rlan-ap">TP8 · Identifier le réseau associé et vérifier le ping</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>

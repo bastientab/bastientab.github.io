@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -100,6 +100,13 @@
 <div class="c-block"><h3>5. Relire une requête avec l’algèbre relationnelle</h3>
 <p>La <strong>sélection</strong> σ garde les lignes qui respectent une condition. La <strong>projection</strong> π garde les attributs demandés et déduplique dans le modèle ensembliste. Le <strong>renommage</strong> ρ aide quand deux attributs porteraient le même nom. L’union et la différence demandent des relations compatibles. Le produit cartésien forme toutes les paires. Une jointure n’en garde que celles qui respectent un lien.</p>
 <p>Pour le TP, SQLite garde la base dans un fichier. <code>.tables</code> liste les tables dans le client SQLite. <code>.read</code> lit les instructions SQL d’un fichier. Ces commandes commençant par un point appartiennent au client SQLite. Une instruction <code>SELECT</code> appartient au langage SQL.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Compter aussi la ligne qui n’a aucun arrêt associé</h3>
+  <p>Imagine deux lignes de train, L1 avec deux arrêts et L2 sans arrêt enregistré. En partant des lignes, une jointure externe gauche conserve L2. Sur cette ligne du résultat, les colonnes de l’arrêt valent NULL, ce qui signifie « valeur absente ».</p>
+  <p>Après regroupement par ligne, COUNT(*) compte une ligne pour L2. COUNT(arret.id) compte seulement les identifiants renseignés et donne zéro. Pour choisir ce que tu comptes, écris à la main la ligne provisoire de L2.</p>
+  <p><a href="#pdb-count">TD4, questions 6 et 18 · Agréger et garder les valeurs zéro</a></p>
+<p><a href="#td1-relations">TD1, exercice 2 · Distinguer schéma, relation et nuplet</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -145,6 +152,7 @@ WHERE NOT EXISTS (
 <details class="acc" id="pdb-sqlite"><summary>TP1 · Initialiser SQLite et sélectionner les drames</summary><div class="acc-body">
 <p class="c-question"><strong>Énoncé.</strong> Charger le script fourni dans la base locale <code>films.db</code>, afficher les tables, puis donner les titres des drames.</p>
 <ol><li>Dans le dossier du TP, lance <code>sqlite3 films.db</code>. Dans l’invite SQLite, exécute <code>.read films.sql</code> avec le script fourni dans le sujet, puis <code>.tables</code>. Vérifie l’absence d’erreur à l’import.</li><li>La requête est <code>SELECT titre FROM Film WHERE genre='drame';</code> si le jeu de données écrit le genre ainsi. Observe d’abord les libellés réels avec <code>SELECT DISTINCT genre FROM Film;</code>.</li><li>Ferme et rouvre la même base. Les tables doivent encore être là. Si la base est vide, vérifie le chemin du fichier utilisé avant de recréer les tables.</li></ol></div></details>
+<details class="acc" id="td1-relations"><summary>TD1, exercice 2 · Distinguer schéma, relation et nuplet</summary><div class="acc-body"><p class="c-question">Énoncé reformulé. Définir ces trois termes du modèle relationnel en utilisant la bibliothèque d’articles du sujet.</p><ol><li>Le schéma ARTICLE(IdArticle, Titre, Annee) décrit les attributs attendus. La relation correspond aux n-uplets qui respectent ce schéma à un instant donné. Un nuplet est une seule ligne, par exemple (12, « Réseaux optiques », 2025), donnée ici pour illustrer.</li><li>Pourquoi isoler ECRIT(IdPers, Ordre, IdArticle) ? Une personne peut participer à plusieurs articles et avoir un rang différent pour chacun. Le rang dépend du couple auteur–article. Il se place donc dans ECRIT.</li><li>Pour retrouver le premier auteur d’un article, repère son identifiant dans ECRIT, garde le rang 1 puis utilise IdPers dans AUTEUR. Chaque passage entre relations répond à une question précise.</li></ol></div></details>
 </section>
       <section class="c-section" id="video" aria-labelledby="video-title">
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>

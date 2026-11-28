@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -124,6 +124,12 @@
     <p><strong>EAP</strong> (cadre d’échange pour différentes méthodes d’authentification) est un cadre pour des méthodes d’authentification. Avec EAP-TLS, le serveur et le client peuvent s’authentifier par certificat. Avec PEAP, on établit d’abord un tunnel TLS avec le serveur, dont le client doit vérifier le certificat, puis une méthode interne comme celle de la capture du cours échange la preuve utilisateur. Un test <code>radtest</code> peut valider une réponse RADIUS avant le test avec le vrai poste et la méthode EAP de la borne.</p>
     <p>La DMZ (zone réseau séparée pour des services exposés) du poly illustre une autre séparation. Trois interfaces distinguent Internet, serveurs exposés et réseau interne. Un serveur Web public peut recevoir sur son port publié tandis qu’un accès vers les postes internes suit un jeu de règles différent. Pour expliquer un rejet, relève l’interface d’entrée, la destination et l’état de suivi avant de modifier le filtrage.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi un ping vers la passerelle réussit-il alors que le Web reste inaccessible ?</h3>
+  <p>Le ping adressé à la passerelle atteint une de ses propres adresses. La passerelle traite la requête localement. Une connexion vers un serveur situé au-delà doit franchir la passerelle et obtenir une réponse sur le chemin inverse.</p>
+  <p>Dessine les deux destinations. Sur le routeur Linux, le filtrage de la requête locale relève de la chaîne INPUT et celui du paquet en transit de FORWARD. Un test vers la passerelle puis vers le serveur par adresse, puis par nom, isole successivement les étapes.</p>
+  <p><a href="#application-guidee">TP1 · Installer la passerelle et choisir la bonne chaîne</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -175,7 +181,7 @@
 <section class="c-section" id="corriges" aria-labelledby="corriges-title">
   <h2 class="c-h2" id="corriges-title">Questions TD &amp; TP</h2>
   <p>Dans les exemples, <code>LAN</code> et <code>WAN</code> représentent les vrais noms d’interfaces de la maquette. Confirme leur rôle avec <code>ip -br addr</code> avant d’ajouter des règles.</p>
-  <details class="acc" open><summary>TP1 · Installer la passerelle et choisir la bonne chaîne</summary><div class="acc-body">
+  <details class="acc" open id="application-guidee"><summary>TP1 · Installer la passerelle et choisir la bonne chaîne</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Faire transiter le trafic du réseau interne par Linux, appliquer des politiques restrictives et autoriser un ping vers la passerelle.</p>
     <ol><li>Relie un port de la passerelle au poste interne et l’autre au réseau extérieur du labo. Configure le poste avec une IP du LAN et comme route par défaut l’IP LAN de Linux. Sur Linux, contrôle les deux réseaux avec <code>ip route</code> et active <code>sudo sysctl -w net.ipv4.ip_forward=1</code>.</li>
     <li>Dans la maquette du TP, prépare les règles de trafic déjà suivi et de boucle locale, puis applique les politiques demandées depuis la console du labo. Pour le ping qui vise la passerelle, autorise en <code>INPUT</code> les requêtes ICMP du LAN. Si la politique <code>OUTPUT</code> bloque, autorise les réponses correspondantes.</li>

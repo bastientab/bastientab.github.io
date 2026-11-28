@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -106,6 +106,12 @@
   <h3>4. Manipuler des chaînes de caractères</h3>
   <p>Une chaîne est une suite ordonnée de caractères. <code>s[0]</code> lit le premier caractère si la chaîne est non vide. <code>s[-1]</code> lit le dernier. <code>s[1:4]</code> prend les indices 1, 2 et 3. <code>len(s)</code> compte les caractères de la chaîne et <code>+</code> colle deux textes.</p>
   <p>Les méthodes <code>.lower()</code> et <code>.upper()</code> renvoient de nouvelles chaînes. Pour interpréter <code>" Français "</code>, <code>langue.strip().lower()</code> enlève les blancs aux extrémités et uniformise la casse. Pour tester une seule voyelle majuscule, demande à la fois <code>len(y) == 1</code> et <code>y in "AEIOUY"</code>. La condition sur la longueur évite d’accepter la chaîne vide ou une sous-chaîne de plusieurs lettres.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Quand une moyenne a-t-elle un sens ?</h3>
+  <p>Imagine trois saisies de notes : 12, 0 et une saisie absente. Si l’absence est exclue, compte deux notes. La somme vaut 12 et la moyenne vaut 6. Écarter la note zéro donnerait 12 et changerait la question.</p>
+  <p>Maintiens deux variables : la somme et le nombre de notes effectivement admises. Si ce nombre vaut zéro à la fin, affiche « aucune note » avant toute division. Un jeu vide et un jeu composé d’un unique zéro doivent donner deux résultats différents.</p>
+  <p><a href="#td2-logique">TD2, ex. 1 et 2 · Compter les cas et éviter la division par zéro</a></p>
 </div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">

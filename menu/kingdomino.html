@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -97,6 +97,12 @@
 <p>Une <strong>zone</strong> est un groupe de cases de même couleur où on peut se déplacer par les côtés. Une diagonale seule ne relie pas deux cases. Démarre depuis une case, marque-la visitée, ajoute ses couronnes puis regarde les voisins de même couleur. Chaque appel récursif doit repartir avec la liste de visites à jour.</p>
 <figure><img loading="lazy" src="../assets/revisions/kingdomino/schemas/zones.png" alt="Une zone de quatre cases de forêt rapporte douze points. Une forêt isolée par la diagonale rapporte un point."><figcaption>Exemple d’application. La case de même couleur en bas à droite est une zone distincte.</figcaption></figure>
 <p>Le score d’une zone est <strong>nombre de cases × nombre de couronnes</strong>. Pour le total, parcours le plateau. Si une case appartient déjà à une zone comptée, passe à la suivante. Garde les marques de visite dans une structure auxiliaire pour préserver le royaume.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment éviter de compter deux fois une même couronne ?</h3>
+  <p>Exemple complémentaire : trois cases de forêt se touchent par un côté. Elles portent respectivement 1, 0 et 2 couronnes. Pars d’une case, marque-la comme visitée et ajoute au parcours ses voisines de forêt encore à examiner. Marquer chaque case dès sa découverte évite de l’ajouter deux fois.</p>
+  <p>À la fin, la région couvre trois cases et contient trois couronnes, soit 3 × 3 = 9 points. Une forêt qui ne touche cette région que par un coin forme une autre région, même si elle porte aussi une couronne.</p>
+  <p><a href="#kd-zone">Sujet §4.6.2 et §4.6.3 · Retrouver les 27 points de la forêt</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -101,6 +101,13 @@
 <div class="c-block"><h3>5. Parcourir puis modifier une liste chaînée</h3>
 <p>Un <strong>maillon</strong> contient une valeur et un pointeur vers le suivant. Le pointeur de tête permet de retrouver le premier. Dans une liste simple, le dernier maillon pointe vers <code>NULL</code>. Pour insérer en tête, affecte l’ancienne tête au champ <code>suivant</code> du nouveau maillon, puis déplace la tête.</p>
 <p>Pour libérer une liste, mémorise le suivant avant de libérer le maillon courant. En liste circulaire, la fin se repère par le retour au point de départ. En liste doublement chaînée, mets aussi à jour le lien précédent du voisin. Une modification doit préserver tous les liens qui seront utilisés par le prochain parcours.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi faut-il conserver l’ancienne tête de liste ?</h3>
+  <p>Dessine tête → B → C. Pour insérer A, fais d’abord pointer le champ suivant de A vers B, puis remplace la tête par A. En repartant de la tête, le parcours donne maintenant A, B, C.</p>
+  <p>Si tu affectes d’abord tête = A puis A-&gt;suivant = tête, A pointe vers lui-même. Le parcours tourne sur place. Sur une liste initialement vide, le même ordre correct laisse le champ suivant de A à NULL, la marque de fin.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="Pourquoi faut-il conserver l’ancienne tête de liste ?"><thead><tr><th scope="col">Étape</th><th scope="col">Tête de liste</th><th scope="col">Lien suivant de A</th></tr></thead><tbody><tr><td>Avant insertion</td><td>B → C</td><td>À initialiser</td></tr><tr><td>A-&gt;suivant = tête</td><td>B → C</td><td>B</td></tr><tr><td>tête = A</td><td>A → B → C</td><td>B</td></tr></tbody></table></div>
+  <p><a href="#c-liste">TD06 · Ajouter en tête et vérifier le parcours</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

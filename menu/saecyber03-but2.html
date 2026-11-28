@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -169,6 +169,13 @@
   <p>Une route apprise d’un pair iBGP n’est normalement pas réannoncée à un autre pair iBGP. Sans mécanisme particulier, il faut donc un maillage complet, soit <code>n(n − 1)/2</code> sessions pour <code>n</code> routeurs. Avec 5 routeurs, cela fait 10 sessions. Un <strong>réflecteur de routes</strong> évite aux clients de maintenir ce maillage. ORIGINATOR_ID et CLUSTER_LIST servent à empêcher les boucles de réflexion. Une <strong>confédération</strong> découpe un AS en sous-AS présentés comme un seul à l’extérieur. <a href="https://datatracker.ietf.org/doc/rfc4456/">RFC 4456</a> · <a href="https://datatracker.ietf.org/doc/rfc5065/">RFC 5065</a></p>
   <figure><img src="../assets/revisions/saecyber03-but2/schemas/transit.png" alt="AS100 et AS300 reliés par les routeurs R2 et R4 de l’AS200, avec eBGP aux frontières et OSPF au centre" loading="lazy"><figcaption>TD3. Les routes traversent l’AS200. La redistribution utilisée dans cette maquette peut perdre les attributs BGP d’origine. Un déploiement iBGP les conserve à l’intérieur de l’AS.</figcaption></figure>
   <p>Dans le TD et le TP, lis <code>show ip bgp summary</code> pour l’état de session, <code>show ip bgp</code> pour les chemins et <code>show ip route</code> pour ce qui est réellement installé. Quand une route passe d’un protocole à un autre, trace-la sur chaque routeur et vérifie le retour. Une annonce BGP peut être présente sans être utilisée si elle a un prochain saut inaccessible ou si une meilleure route existe déjà.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Une route venant d’une autre aire est-elle externe à OSPF ?</h3>
+  <p>Suis deux préfixes du TD. Le premier naît dans l’aire bleue et arrive dans le backbone, l’aire centrale 0. Les deux aires participent au même routage OSPF (Open Shortest Path First). Leur routeur frontière, l’ABR (Area Border Router), transmet une information inter-aires, repérée O IA dans la table d’un routeur distant sous Cisco IOS.</p>
+  <p>Dans l’aire verte, un routeur réintroduit dans OSPF des routes apprises par EIGRP (Enhanced Interior Gateway Routing Protocol). Cette redistribution lui donne le rôle d’ASBR (Autonomous System Boundary Router). Pour classer la route, demande-toi d’abord qui l’a introduite dans OSPF. Le nombre d’aires traversées ne suffit pas.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="Une route venant d’une autre aire est-elle externe à OSPF ?"><thead><tr><th scope="col">Trajet dans le TD</th><th scope="col">Rôle à la frontière</th><th scope="col">Information propagée</th></tr></thead><tbody><tr><td>Aire bleue → aire 0</td><td>ABR</td><td>Route OSPF inter-aires</td></tr><tr><td>EIGRP → aire verte de type NSSA</td><td>ASBR</td><td>Route externe introduite dans l’aire par une annonce de type 7</td></tr></tbody></table></div>
+  <p><a href="#td1-aires">TD1 · Choisir les aires et suivre la propagation des LSA</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -188,6 +188,13 @@ for (int valeur : mesures) {
   <p>Prends <code>Figure f = new Cercle(...)</code>. L’appel <code>f.afficher()</code> est autorisé si <code>afficher</code> est déclaré par Figure. Si Cercle le redéfinit, c’est le corps de Cercle qui s’exécute. Si une méthode <code>getRayon()</code> existe seulement dans Cercle, la variable déclarée Figure ne permet pas de l’appeler directement. Le choix du type de référence détermine ce qui est accessible même quand l’objet est bien un Cercle.</p>
   <p>Dans le TD sur les identifiants, fais deux colonnes sur ton brouillon. Dans la première, note le compteur partagé de classe. Dans la deuxième, note l’identifiant propre à chaque objet. À chaque construction, incrémente une seule fois le compteur, puis copie sa valeur dans le nouvel objet. Vérifie qu’afficher d’abord l’objet 2 puis l’objet 1 ne fait pas changer leurs numéros.</p>
 </div>
+<div class="c-block" id="exemple-guide">
+  <h3>À quel moment un message doit-il disparaître ?</h3>
+  <p>Le TP de messagerie demande de supprimer le message une fois consulté. Imagine une boîte qui contient A puis B. Afficher la liste des messages doit conserver les deux. Ouvrir B doit restituer son contenu, puis retirer uniquement B de la boîte.</p>
+  <p>Prépare un test en trois observations : avant la lecture, la boîte contient A et B. La lecture renvoie le texte de B. Après la lecture, A est encore présent et une seconde demande de B suit le comportement prévu pour un message absent. Ce test distingue consulter la liste et consommer un message.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="À quel moment un message doit-il disparaître ?"><thead><tr><th scope="col">Action</th><th scope="col">Boîte après l’action</th><th scope="col">Résultat attendu</th></tr></thead><tbody><tr><td>Lister les messages</td><td>A, B</td><td>Deux entrées visibles</td></tr><tr><td>Lire B</td><td>A</td><td>Texte de B</td></tr><tr><td>Lister à nouveau</td><td>A</td><td>Une seule entrée visible</td></tr></tbody></table></div>
+  <p><a href="#application-guidee">Envoyer, chercher, paginer et supprimer après lecture</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -270,7 +277,7 @@ for (int valeur : mesures) {
       <li>Teste deux inscriptions valides, puis une inscription avec le même couple nom-prénom et une avec un champ vide. Vérifie que les échecs ne modifient pas la liste des inscrits.</li>
     </ol>
   </div></details>
-  <details class="acc"><summary>Envoyer, chercher, paginer et supprimer après lecture</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>Envoyer, chercher, paginer et supprimer après lecture</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Gérer la sélection du destinataire au-delà de 20 inscrits, afficher les messages par pages de 20 et supprimer celui qui est lu.</p>
     <ol>
       <li>Vérifie que l’expéditeur et le destinataire existent et sont distincts. Au-delà de 20 utilisateurs, filtre les candidats par nom ou par couple nom-prénom, puis affiche leurs vrais identifiants. Lors de la sélection, vérifie que l’id choisi correspond à un destinataire autorisé.</li>

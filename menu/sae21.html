@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -101,6 +101,12 @@
 <div class="c-block"><h3>Séparer les VLAN et relayer DHCP</h3>
 <p>Sur une ACL, la première règle correspondante décide et un refus implicite s’applique à la fin. Dans Packet Tracer, vérifie l’interface et le sens de la liste ainsi que la wildcard. Pour un <code>/24</code>, elle vaut <code>0.0.0.255</code>.</p>
 <p>Le relais annonce au serveur le réseau d’origine du client, typiquement avec <code>giaddr</code>. Si le routeur sert lui-même DHCP sur ses interfaces de VLAN, configure ses pools locaux sans ajouter un relais vers lui-même.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Dans quelle chaîne passe un paquet qui traverse la passerelle ?</h3>
+  <p>Pour suivre un paquet, commence par sa destination après la décision de routage. Un paquet destiné au routeur lui-même arrive dans INPUT pour le filtrage. Un paquet reçu sur une interface puis envoyé vers un hôte sur une autre interface traverse FORWARD. Les réponses créées par le routeur passent par OUTPUT.</p>
+  <p>Compare un ping vers l’interface de la passerelle et un ping vers un poste situé derrière elle. Réussir le premier valide un échange local avec le routeur. Le second vérifie aussi le transfert, le filtrage du trafic en transit et le chemin de retour.</p>
+  <p><a href="#question-3">TD3 et TP3 · Faire passer un paquet par le NAT Linux</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

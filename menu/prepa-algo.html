@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -96,6 +96,13 @@
 <div class="c-block"><h3>4. Choisir pile, file ou arbre</h3>
 <p>Une <strong>pile</strong> retire le dernier ajouté. Une <strong>file</strong> retire le premier en attente. Pour déboguer, dessine toujours le côté où tu ajoutes et celui où tu retires. La consultation du sommet ou du début ne retire pas d’élément.</p>
 <p>Un <strong>arbre</strong> a une racine, des nœuds et des feuilles qui n’ont pas d’enfant. Un sous-arbre contient un nœud et ses descendants. En parcours préfixe d’un arbre binaire, traite le nœud, puis le sous-arbre gauche, puis le droit. Ignore un enfant absent. En largeur, une file garde les nœuds découverts dont les enfants n’ont pas encore été visités.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi initialiser un produit à 1 ?</h3>
+  <p>Prends le tableau [3, 0, 5]. Avant le premier tour, aucun facteur n’a été lu. La valeur 1 permet d’ajouter le premier facteur par multiplication. Après un tour, le produit vaut 3. Après deux tours, il vaut 0 et le dernier facteur le laisse à 0.</p>
+  <p>L’invariant est une phrase vraie à chaque passage au même endroit du programme. Ici, juste avant l’indice i, le résultat contient le produit des i valeurs déjà lues. Essaie aussi [3, 5] : une initialisation à zéro donnerait à tort zéro dès le premier tour.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="Pourquoi initialiser un produit à 1 ?"><thead><tr><th scope="col">Facteurs déjà lus</th><th scope="col">Aucun</th><th scope="col">3</th><th scope="col">3, 0</th><th scope="col">3, 0, 5</th></tr></thead><tbody><tr><td>Produit</td><td>1</td><td>3</td><td>0</td><td>0</td></tr></tbody></table></div>
+  <p><a href="#algo-prod">Révisions 2024, ex. 1 · Calculer le produit avec un invariant</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>

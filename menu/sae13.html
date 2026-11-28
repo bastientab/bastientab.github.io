@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -96,6 +96,12 @@
 <p>Pour une sinusoïde centrée, la valeur efficace est <code>|A|/√2</code>. Elle correspond à la tension continue qui dissiperait la même puissance dans une résistance. Avec un offset, elle devient <code>√(C² + A²/2)</code> puisque la moyenne du terme croisé est nulle sur une période entière.</p>
 <p>Pour <code>g(t)=e(t−τ)</code>, développe l’argument en <code>ωt−ωτ</code>. On identifie <code>φ=−ωτ</code>, à un tour près. Le déphasage seul ne distingue pas des retards séparés d’un multiple de la période.</p>
 <figure><img loading="lazy" src="../assets/revisions/sae13/schemas/sinus.png" alt="Deux cosinus à 10 Hz séparés de 12,5 ms."><figcaption>Deux cosinus à 10 Hz séparés de 12,5 ms.</figcaption></figure>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Temps aller simple ou aller-retour : faut-il diviser par deux ?</h3>
+  <p>Pour une impulsion qui parcourt le câble entre deux sondes, la longueur est vitesse × retard. À 2 × 10⁸ m/s, un retard aller de 2,75 µs correspond à 550 m. Marque les positions des deux observations sur le dessin avant le calcul.</p>
+  <p>Si la seconde impulsion était un écho observé au point de départ, le même retard couvrirait deux fois la longueur. Le résultat deviendrait 275 m. Ce changement vient du trajet mesuré et laisse la vitesse de propagation identique.</p>
+  <p><a href="#question-1">NE1 · Déduire la longueur d’un coaxial à partir du retard</a></p>
 </div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">

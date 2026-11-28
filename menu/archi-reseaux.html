@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -108,6 +108,12 @@
   <h3>4. Vérifier l’encapsulation dans une capture</h3>
   <p>Quand tu construis une trame avec Scapy, tu peux choisir indépendamment les champs Ethernet, IPv4 et ICMP. La destination MAC est celle du prochain saut sur ce lien. La destination IPv4 est celle du destinataire final. <code>show()</code> te permet de relire les champs que tu as construits. Une capture contient aussi les champs calculés au moment de l’envoi.</p>
   <p><code>sendp()</code> envoie au niveau de la liaison. <code>srp1()</code> attend une première réponse au niveau de la liaison, avec un délai qu’on peut borner. Dans une VM ou sur un réseau de TP autorisé, choisis explicitement l’interface et vérifie l’IP, la MAC et le port du switch avant d’interpréter un silence.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi bloquer un port quand les trois câbles fonctionnent ?</h3>
+  <p>Dans le triangle du cours, une trame diffusée par A peut atteindre C directement et via B. Le protocole Spanning Tree construit un arbre, un ensemble de liens qui relie tous les commutateurs sans boucle. Le lien qui ferme le triangle reste disponible comme secours.</p>
+  <p>Pour le tracer, marque d’abord la racine puis le meilleur chemin vers elle depuis chaque autre commutateur. Sur le dernier segment, le départage désigne le port qui transmet. Recommence le dessin après une coupure : le port de secours peut désormais faire partie de l’arbre.</p>
+  <p><a href="#stp-exemple">Application du poly · Choisir le lien qui reste en secours</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

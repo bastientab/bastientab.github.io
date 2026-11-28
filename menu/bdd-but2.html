@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -144,6 +144,12 @@ GROUP BY s.id, s.nom;</code></pre>
     <details class="acc"><summary>Dérouler un curseur et repérer la fin</summary><div class="acc-body"><p>Déclare variables, curseur, puis gestionnaire <code>NOT FOUND</code>. Fais <code>OPEN</code>, lis avec <code>FETCH</code>, teste le drapeau de fin puis traite les variables. Termine par <code>CLOSE</code>. Le curseur sert ici à pratiquer le parcours ligne à ligne. Un résultat groupé ou une modification en bloc peut être plus simple à écrire en une requête.</p></div></details>
     <p>Dans un déclencheur, <code>NEW</code> correspond à la ligne proposée et <code>OLD</code> à l’ancienne quand elle existe. Utilise <code>SIGNAL SQLSTATE '45000'</code> pour remonter une erreur métier. Pour une règle simple d’unicité, <code>UNIQUE</code> protège aussi lors d’écritures simultanées.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment vérifier qu’un droit est juste assez large ?</h3>
+  <p>Exemple : le compte du portail doit pouvoir consulter des commandes et le compte de gestion doit pouvoir les modifier. Écris une ligne par rôle et une colonne par opération. Pour la case « portail, consultation », un SELECT doit réussir. Pour « portail, modification », une modification doit être refusée.</p>
+  <p>Fais les essais avec le compte concerné sur un jeu de test. Un succès sous le compte administrateur ne renseigne pas sur les droits du portail. Note séparément le droit visé, la commande et le résultat attendu.</p>
+  <p><a href="#application-guidee">TD1 bis · Construire la matrice des droits du portail</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -214,7 +220,7 @@ SHOW GRANTS FOR 'john'@'localhost';</code></pre>
     <li>Utilise <code>ALTER USER … IDENTIFIED BY …</code> pour le mot de passe. Pour Joseph le sujet demande <code>GRANT SELECT, UPDATE, INSERT, DELETE ON mabase.* … WITH GRANT OPTION</code>. Pour Aline, <code>GRANT ALL PRIVILEGES ON mabase.*</code> reste limité à cette base. Fixe les quotas de la consigne avec <code>ALTER USER … WITH MAX_UPDATES_PER_HOUR …</code>, et remets cette valeur à 0 pour lever le quota de mises à jour de John.</li>
     <li>Répète le <code>GRANT</code> sur chacun des périmètres nécessaires pour <code>mabase</code> et <code>entrepot</code>. Depuis John, vérifie que <code>UPDATE</code> sur une colonne autorisée passe et qu’un <code>DELETE</code> est refusé.</li></ol>
   </div></details>
-  <details class="acc"><summary>TD1 bis · Construire la matrice des droits du portail</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>TD1 bis · Construire la matrice des droits du portail</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Identifier les profils, leurs actions autorisées et écrire le SQL pour un profil.</p>
     <ol><li>Client : créer des commandes et lire les siennes. Secrétaire : lire et ajouter les clients, les supprimer quand la demande est validée. Commerciaux : gérer les produits. Responsable : modifier ou supprimer les commandes.</li>
     <li>Pour la secrétaire, teste <code>GRANT SELECT, INSERT, DELETE ON entrepot.client TO 'secretaire'@'localhost'</code> après création du compte. Vérifie qu’aucun privilège plus large, accordé directement ou via un rôle, ne donne accès aux commandes.</li>

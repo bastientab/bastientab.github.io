@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -227,6 +227,14 @@
     <p>En <strong>FHSS</strong>, émetteur et récepteur changent de fréquence selon la même suite. En <strong>DSSS</strong>, ils restent sur la bande étalée et utilisent une séquence de chips : un bit 1 devient par exemple un code et un bit 0 son opposé. Le produit scalaire à la réception récupère le signe du bit. Avec deux codes orthogonaux alignés, ce principe peut séparer deux utilisateurs en CDMA.</p>
     <p>Le multiplexage spatial <strong>SDM</strong> distingue des chemins spatiaux. En <strong>MIMO</strong>, plusieurs antennes permettent de recevoir plusieurs observations. Si les chemins sont assez indépendants, on peut séparer des flux émis en parallèle, ou exploiter la redondance pour rendre une transmission plus robuste. La matrice du canal contient les gains et phases de chaque paire d’antennes.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment le récepteur retrouve-t-il les lettres sans séparateur ?</h3>
+  <p>Exemple de code de Huffman : A → 0, B → 10, C → 11. Lis 010110 de gauche à droite. Le premier 0 donne A. Le 1 suivant est incomplet : lis le bit suivant pour obtenir 10, donc B. Les bits restants donnent 11 puis 0, donc C puis A.</p>
+  <p>On retrouve ABCA car aucun mot du code ne commence par un autre mot complet. Cette propriété dite « de préfixe » indique où s’arrêter à chaque lettre. Le code sert à raccourcir les symboles fréquents : sur une longue suite, le gain dépend de leurs fréquences et du coût éventuel de transmission de l’arbre.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="Comment le récepteur retrouve-t-il les lettres sans séparateur ?"><thead><tr><th scope="col">Bits lus</th><th scope="col">Lettre retrouvée</th><th scope="col">Bits à lire</th></tr></thead><tbody><tr><td>0</td><td>A</td><td>10110</td></tr><tr><td>10</td><td>B</td><td>110</td></tr><tr><td>11</td><td>C</td><td>0</td></tr><tr><td>0</td><td>A</td><td>Fin</td></tr></tbody></table></div>
+  <p><a href="#application-guidee">TD p. 24 · Compresser la séquence par Huffman</a></p>
+<p><a href="#huffman-adaptatif">TD p. 24 · À quel moment actualiser le code de Huffman ?</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -320,7 +328,7 @@
     <p class="c-question"><strong>Énoncé.</strong> En QPSK à 1 kbit/s, représente les chronogrammes I(t) et Q(t) et le chemin sur la constellation pour <code>111000110110</code>. Justifie les amplitudes de 0,707 V.</p>
     <ol><li>Découpe <code>11 | 10 | 00 | 11 | 01 | 10</code>. Lis le plan du cours : 11 est en haut à droite, 10 en bas à droite, 00 en bas à gauche, 01 en haut à gauche.</li><li>Trace I avec les signes <code>+ + − + − +</code>, puis Q avec <code>+ − − + + −</code>. Chaque plateau dure 2 ms puisque deux bits prennent deux fois 1 ms. Avec un vecteur d’amplitude 1 V à 45°, chaque projection en valeur absolue vaut 1/√2≈0,707 V.</li><li>Relie les points dans l’ordre des dibits pour montrer la succession des symboles. Les transitions entre points sur un vrai tracé dépendent du filtrage.</li></ol>
   </div></details>
-  <details class="acc"><summary>TD p. 24 · Compresser la séquence par Huffman</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>TD p. 24 · Compresser la séquence par Huffman</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> On transmet <code>BACFGABDDACEACG</code> avec l’alphabet A à G. Calculer la taille en mots fixes, les probabilités, l’entropie et la taille obtenue après construction d’un arbre de Huffman.</p>
     <ol><li>La suite contient 15 symboles. Un alphabet de 7 valeurs demande 3 bits fixes par symbole, donc 45 bits. Compte A quatre fois, C trois fois, B/D/G deux fois chacun et E/F une fois chacun. Divise chaque compte par 15 pour obtenir sa probabilité.</li><li>Calcule −Σp log₂p ≈ 2,657 bits/symbole, soit ≈39,85 bits comme référence moyenne sur 15 symboles sous ce modèle.</li><li>Fusionne E et F en un poids 2. Continue en choisissant à chaque fois les deux poids minimaux. En cas d’égalité, plusieurs arbres conviennent. Un jeu valide est A=<code>11</code>, C=<code>00</code>, B=<code>010</code>, D=<code>011</code>, G=<code>100</code>, E=<code>1010</code>, F=<code>1011</code>. Les longueurs pondérées donnent <strong>40 bits</strong>, soit un facteur 45/40=1,125, hors en-tête.</li></ol>
   </div></details>
@@ -360,6 +368,7 @@
     <p class="c-question"><strong>Énoncé.</strong> Affiche la constellation du modulateur IQ, relève les coordonnées stables et relie les points aux dibits connus du banc.</p>
     <ol><li>Sur le banc de Télécom 3, affiche I et Q, puis déclenche sur l’horloge du symbole. Lis les niveaux au milieu du plateau pour une série de dibits connus.</li><li>Place I à l’horizontale et Q à la verticale. Associe chaque dibit à son couple mesuré et vérifie qu’on retrouve quatre points. Prends la convention de câblage du sujet pour établir les signes.</li><li>Affiche la constellation ou le mode XY, puis compare les points stables et les transitions. Si l’assignation est tournée d’un quart de tour, vérifie l’ordre des voies et la phase de la référence avant de modifier l’étiquetage.</li></ol>
   </div></details>
+<details class="acc" id="huffman-adaptatif"><summary>TD p. 24 · À quel moment actualiser le code de Huffman ?</summary><div class="acc-body"><p class="c-question">Énoncé reformulé. À partir des quatre premières lettres de la suite AEBABCEE du TD, expliquer comment émetteur et récepteur restent synchronisés quand le code évolue.</p><ol><li>Lis la colonne correspondant à l’état avant la lettre. Pour A, le tableau indique 11. Émets ces bits, augmente le compteur de A puis applique la règle de mise à jour. Le récepteur décode avec son ancien état avant d’effectuer exactement la même mise à jour.</li><li>Pour les quatre premiers symboles, le sujet donne 11 / 1001 / 010 / 11. Les barres représentent les limites de lettres dans la correction. Pour la suite, construis une colonne par symbole dans l’ordre B, C, E, E et conserve la convention de bits de la feuille.</li><li>Contrôle : les deux côtés doivent avoir les mêmes compteurs après chaque lettre. Si tu actualises avant de lire la prochaine lettre d’un seul côté, même un flux reçu intact peut se décoder de travers.</li></ol></div></details>
 </section>
       <section class="c-section" id="video" aria-labelledby="video-title">
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>

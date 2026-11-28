@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -111,6 +111,12 @@
 <div class="c-block"><h3>6. Suivre un mail de l’envoi à la lecture</h3>
 <p><strong>SMTP</strong> transporte le mail vers un serveur. <strong>POP</strong> et <strong>IMAP</strong> servent à consulter la boîte. POP permet de récupérer les messages. IMAP permet de garder dossiers et état synchronisés côté serveur. Le TP utilise deux clients avec POP et SMTP. Il faut que la configuration IP et la résolution DNS fonctionnent avant le test du mail.</p>
 <figure><img loading="lazy" src="../assets/revisions/serv-res/schemas/messagerie.png" alt="Dans le TP4, DHCP fournit les réglages, DNS résout le serveur, SMTP envoie les messages et POP les récupère."><figcaption>Vérifie chaque service dans cet ordre lorsque l’envoi ou la lecture échouent.</figcaption></figure></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment isoler une erreur parmi les paramètres d’un bail ?</h3>
+  <p>Prenons un client capable de joindre sa passerelle et un serveur distant par son adresse IP. Il échoue seulement quand il utilise le nom du serveur. L’adresse et le routage permettent déjà un échange. Le prochain contrôle porte sur le serveur de noms annoncé au client.</p>
+  <p>Lis l’adresse reçue dans le bail puis interroge ce serveur pour le nom en question. Une absence de réponse, une réponse indiquant que le nom est inconnu et une bonne adresse renvoyée orientent vers trois vérifications différentes.</p>
+  <p><a href="#srv-dhcp">TD1 · Valider que le client reçoit l’adresse, le masque et le DNS</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>

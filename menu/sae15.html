@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -97,6 +97,12 @@
 <p>Lis le séparateur du CSV et normalise les noms de salles. Combine date et heure en un type date-heure. Écarte ou signale les lignes invalides, dont celles qui finissent avant de commencer.</p>
 <p>Prévois une date de fin pour la recherche. Si tu parcours sans borne un calendrier incomplet, tu risques d’annoncer des disponibilités au-delà de la période qu’il couvre.</p>
 <figure><img loading="lazy" src="../assets/revisions/sae15/schemas/creneaux.png" alt="Le cours recouvre le début du créneau de 10 h à 12 h."><figcaption>Le cours recouvre le début du créneau de 10 h à 12 h.</figcaption></figure>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment trouver deux heures libres entre deux événements ?</h3>
+  <p>Exemple complémentaire : une salle est occupée de 8 h à 10 h, de 9 h à 11 h, puis de 13 h à 14 h. Trie les réservations par début. Les deux premières se recouvrent et forment une seule période occupée de 8 h à 11 h.</p>
+  <p>Garde en mémoire la fin la plus tardive déjà rencontrée. La prochaine réservation commence à 13 h : 13 − 11 = 2 heures libres. Si tu gardais seulement la fin du premier cours, tu annoncerais un créneau commençant à 10 h alors que la salle est encore occupée.</p>
+  <p><a href="#question-3">Projet · Trouver dix créneaux de deux heures sans conflit</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

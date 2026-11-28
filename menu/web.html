@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -105,6 +105,12 @@
 $req-&gt;execute(['id' =&gt; $identifiant]);
 $interventions = $req-&gt;fetchAll(PDO::FETCH_ASSOC);</code></pre>
 <p>Le résultat associatif s’affiche ensuite avec un <code>foreach</code> similaire à celui de la version sur tableau. Les détails doivent reprendre le contrôle d’autorisation. Si la requête peut recevoir un identifiant venant de l’URL, filtre aussi par le technicien connecté.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Qui décide à quel technicien appartient une intervention ?</h3>
+  <p>Dans le TP des interventions, cliquer sur une ligne transmet un identifiant au serveur. Cet identifiant désigne la fiche demandée. Le technicien connecté est connu séparément grâce à sa session. Pour charger le détail, la requête doit tenir compte des deux valeurs.</p>
+  <p>Teste avec deux comptes de démonstration et une intervention affectée à chacun. Chaque technicien doit accéder à sa propre fiche. Une requête paramétrée protège la construction de la requête. Le critère sur le technicien assure le contrôle d’accès.</p>
+  <p><a href="#web-details">TP des interventions · Montrer les tâches du technicien et ouvrir un détail</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

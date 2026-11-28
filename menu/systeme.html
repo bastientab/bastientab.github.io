@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -101,6 +101,12 @@
 <p>Un <strong>processus</strong> est une instance en exécution, avec un numéro <strong>PID</strong>. Avec <code>&amp;</code>, le shell rend la main sans attendre la fin de la commande. <code>$!</code> désigne le PID du dernier lancement en arrière-plan. <code>wait</code> attend sa fin. <code>$?</code> donne le statut de la commande précédente, ici celui renvoyé par <code>wait</code>. Lis-le immédiatement.</p>
 <figure><img src="../assets/revisions/systeme/schemas/processus.png" alt="Le père lance le fils avec l’argument 20, attend son PID et lit le code 20 après exit." loading="lazy"><figcaption>Le fils reçoit 20 via son argument. Il renvoie ensuite 20 au père comme code de fin, que le père retrouve après <code>wait</code>.</figcaption></figure>
 <p><code>kill</code> envoie un signal au processus ciblé. <code>SIGTERM</code> lui demande normalement de se terminer et lui permet de faire son nettoyage. <code>SIGKILL</code> termine le processus sans gestion par celui-ci. Dans le test donné sous Bash, un processus tué avec le signal 9 donne habituellement un statut de 137, soit 128+9.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi le droit x a-t-il deux sens selon l’objet ?</h3>
+  <p>Sur un fichier de programme, x autorise son exécution directe. Sur un dossier, x autorise la traversée : le système peut y chercher un nom connu. Chaque dossier du chemin doit être traversable pour atteindre le fichier final.</p>
+  <p>Dans un dossier de test, distingue « lister les noms » et « ouvrir un fichier dont le nom est connu ». La lecture du dossier sert à énumérer les noms, la traversée sert à les utiliser. Note séparément les droits du dossier et ceux du fichier pour expliquer les résultats.</p>
+  <p><a href="#sys-tp3">TP3 · Exécuter Test_droits puis retirer l’autorisation</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>

@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -93,6 +93,12 @@
 <div class="c-block"><h3>Distinguer brassage, commutation et routage</h3>
 <p>Compte deux prises par poste quand le cahier des charges demande une prise PC et une prise téléphone. Compte aussi les bornes, vidéoprojecteurs et équipements de réunion. Vérifie le nombre de ports PoE et le budget de puissance.</p>
 <p>Sépare par usage si le besoin le justifie. Par exemple, un réseau visiteurs atteint Internet via le routeur, tandis que l’accès aux équipements internes dépend de règles explicites.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi retrouve-t-on la même adresse matérielle pour plusieurs destinations distantes ?</h3>
+  <p>Sur Ethernet, une trame rejoint le prochain équipement du trajet. Si deux serveurs distants passent par la même passerelle, les paquets ont deux adresses IP de destination différentes mais les trames émises sur ton réseau portent toutes deux l’adresse matérielle de la passerelle.</p>
+  <p>Dessine le poste, la passerelle et les deux serveurs. Entoure le premier câble et prédis ce qu’une capture à cet endroit peut révéler. Pour identifier l’adresse matérielle finale, il faudrait observer le lien où le serveur est directement raccordé.</p>
+  <p><a href="#question-1">TP1 · Pourquoi Nmap ne donne-t-il pas toutes les adresses MAC ?</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

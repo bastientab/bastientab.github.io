@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -100,6 +100,12 @@
 <div class="c-block"><h3>Comprendre les documents MongoDB</h3>
 <p>MongoDB organise les documents BSON en collections. Le champ <code>_id</code> identifie le document. Les champs peuvent varier, et une validation de schéma peut imposer des règles. Compare cette approche aux tables et relations séparées.</p>
 <p><code>db.films.find({ duree: { $gte: 90 } }, { titre: 1, _id: 0 })</code> sélectionne des documents puis limite le résultat. <code>updateOne</code> avec <code>$set</code> modifie des champs. Un pipeline <code>aggregate</code> applique des étapes comme <code>$match</code> puis <code>$group</code>.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment garder une catégorie vide quand on compte les produits ?</h3>
+  <p>Imagine les catégories Route et Ville. Route contient deux produits, Ville aucun. Après une jointure externe gauche qui part des catégories, Ville possède encore une ligne, avec un identifiant de produit NULL, la valeur qui signale ici une correspondance absente.</p>
+  <p>COUNT(*) compte cette ligne et renvoie 1 pour Ville. COUNT(p.product_id) ignore la valeur absente et renvoie 0. Vérifie les deux catégories dans le résultat : le total des comptes doit retrouver les deux produits du jeu d’exemple.</p>
+  <p><a href="#question-1">TP BikeStores · Compter les produits par catégorie</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -129,6 +129,12 @@
   <p>Dans le TD, commence par identifier les garanties attendues. Une proposition explicable sépare la voix à débit fixe du trafic Internet en rafales. Pour la TV, sépare les flux reçus des échanges montants du décodeur. Choisis un T-CONT de type 2 ou 3 si ces échanges doivent disposer d’une garantie. Si les échanges restent en best effort, ils peuvent partager le profil Internet. Indique le débit garanti et le plafond seulement après avoir défini le besoin. Le sujet laisse ces valeurs à justifier.</p>
   <h4>Partie 3 du TP ONT · Donner une sortie IP au BRAS</h4>
   <p>Commence par vérifier la session PPPoE et l’adresse IP attribuée à l’ONT. Sur la machine BRAS du labo, repère le côté où arrivent les clients PPP et l’interface de sortie qui a une route vers le réseau de l’IUT. Active le transfert IP, autorise dans le pare-feu l’aller et les réponses, puis applique la traduction de source sur l’interface de sortie pour la plage privée attribuée. Vérifie d’abord un ping vers le BRAS, puis vers une adresse extérieure à la plage privée. Compare les adresses source observées des deux côtés. Une session ouverte avec un premier ping réussi mais sans sortie oriente le diagnostic vers le routage ou le NAT.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Que change le mode pont sur la box du TD ?</h3>
+  <p>Imagine un service fourni sur un réseau virtuel dédié par l’opérateur. En mode routé, la box termine la connexion de ce service et achemine le trafic entre le réseau local et l’opérateur. En mode pont, elle transporte les trames vers l’équipement raccordé qui prend en charge la connexion prévue.</p>
+  <p>Sur le schéma, marque d’abord l’équipement qui doit obtenir l’adresse du service. Relève ensuite le port local et l’identifiant du réseau virtuel qui l’y relient. Cette lecture donne un sens aux champs de la box avant de choisir leurs valeurs.</p>
+  <p><a href="#application-guidee">TD Huawei · Choisir les paramètres WAN par service</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
@@ -189,7 +195,7 @@
     <li>En PPPoE, trace les quatre étapes : découverte de la session, réglage de la liaison PPP, authentification, négociation réseau. Dans une capture, distingue PADS, qui fixe la session, du message IPCP qui négocie l’adresse IPv4.</li>
     <li>En IPoE, trace <code>DISCOVER → OFFER → REQUEST → ACK</code>. Le premier message est une diffusion locale, donc dessine le relais si le serveur n’est pas sur ce réseau. Indique l’identifiant de ligne ou du port si l’opérateur s’appuie dessus pour donner un service distinct.</li></ol>
   </div></details>
-  <details class="acc"><summary>TD Huawei · Choisir les paramètres WAN par service</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>TD Huawei · Choisir les paramètres WAN par service</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Préparer des interfaces séparées pour Internet, IPTV sur LAN4 et ToIP.</p>
     <ol><li>Pour chaque interface, relève type de service, mode route ou bridge, VLAN, priorité et liaison aux ports. En IPoE, l’adresse peut être dynamique (DHCP) ou fixe. Avec une IP fixe, prépare adresse, masque, passerelle et DNS si nécessaire. En PPPoE, la session utilise les paramètres d’authentification fournis.</li>
     <li>Internet peut être routé pour les postes du réseau local. Pour une IPTV qui attend un accès direct, la variante bridge associe son VLAN au port LAN4 côté décodeur. Pour la téléphonie prise en charge par la box, associe le service voix aux paramètres opérateur et à la fonction de téléphonie. Les identifiants de VLAN et priorités sont ceux du scénario, à vérifier dans l’énoncé ou la maquette.</li>

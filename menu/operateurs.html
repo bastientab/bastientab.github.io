@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -115,6 +115,12 @@
     <p>La <strong>boucle locale</strong> relie l’abonné au point de raccordement. La <strong>collecte</strong> agrège ce trafic vers le réseau de transport. Un <strong>POP</strong> est un lieu où l’opérateur dispose d’équipements et peut raccorder un client ou un partenaire. Un <strong>IXP</strong> sert à l’interconnexion de réseaux qui souhaitent échanger leurs flux. Sur les cartes du cours, suis les liaisons entre villes puis repère où se fait le raccordement.</p>
     <p>En fibre, le <strong>CWDM</strong> espace davantage ses canaux optiques que le DWDM. Dans un multiplexage temporel, la capacité d’un canal est au contraire distribuée entre créneaux. Le cours présente <strong>SDH</strong>, une hiérarchie de trames synchrones STM, puis <strong>OTN</strong> qui transporte des clients variés dans des structures adaptées et apporte des fonctions de supervision et de correction. Pour savoir quelle table lire au TD, demande-toi si le nœud commute une longueur d’onde, une capacité dans une trame, ou un paquet IP.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi un même paquet change-t-il d’étiquette dans le réseau ?</h3>
+  <p>Dans MPLS (Multiprotocol Label Switching), l’étiquette se lit dans le contexte du routeur qui la reçoit. Exemple illustratif : une entrée associe l’étiquette reçue 17 à la sortie vers le voisin suivant avec l’étiquette 32. Le routeur remplace 17 par 32 puis transmet le paquet.</p>
+  <p>Pour suivre la capture du TP, note à chaque saut l’interface d’entrée, l’étiquette reçue, l’action et l’interface de sortie. Compare avec la table de commutation des étiquettes du même routeur. Deux nombres différents à deux endroits peuvent décrire le même trajet.</p>
+  <p><a href="#application-guidee">TP · Capturer les trames MPLS et relier chaque label à la LFIB</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -185,7 +191,7 @@ show ip route ospf</code></pre>
     <li>Dans le mode privilégié, retrouve les voisins et les préfixes. Additionne les coûts réels des liens du chemin, puis compare au chemin par R5. Déduis ton explication des coûts de la maquette plutôt que d’utiliser le nombre de sauts seul.</li>
     <li>Capture entre R1 et R2 avant leur mise en route comme dans le sujet. Repère les Hello, les résumés de la base et les annonces d’état de liens. Vérifie ensuite que les routes attendues sont présentes et que R0 peut joindre les deux interfaces indiquées de R4.</li></ol>
   </div></details>
-  <details class="acc"><summary>TP · Capturer les trames MPLS et relier chaque label à la LFIB</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>TP · Capturer les trames MPLS et relier chaque label à la LFIB</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Expliquer le trajet du ping R0 → R4, relever l’EtherType, le label et les TTL sur chaque lien.</p>
     <ol><li>Active <code>ip cef</code> si le système du TP l’exige, puis <code>mpls ip</code> sur les interfaces du domaine. R0 est hors du domaine, et seules les interfaces des routeurs en liaison MPLS doivent disposer de cette configuration.</li>
     <li>Avec <code>show mpls forwarding-table</code>, associe le préfixe de sortie à l’interface et au label. Sur R0–R1 on attend une trame transportant IP directement. Dans le domaine, une en-tête MPLS doit être visible là où un label est effectivement transporté. Compare les labels aux actions de la LFIB, hop par hop.</li>

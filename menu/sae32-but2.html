@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -117,6 +117,12 @@
     <p>Si le premier client bloque en lecture et si la boucle d’accueil le traite elle-même, le deuxième ne peut pas être pris en charge. Le cours propose une <strong>tâche par connexion</strong>, par exemple déléguée à un <code>ExecutorService</code>. La boucle d’accueil revient aussitôt attendre une autre socket. Quand deux tâches modifient le même état, protège les opérations combinées comme « vérifier puis ajouter ».</p>
     <p>JavaFX a son propre fil d’exécution pour l’interface. Fais les lectures réseau en arrière-plan et applique ensuite le résultat sur le fil JavaFX avec <code>Platform.runLater</code>. Contrôle aussi les erreurs et fin de connexion, pour que la fermeture d’un client ne ferme pas le serveur. <a href="https://openjfx.io/javadoc/24/javafx.graphics/javafx/application/Platform.html#runLater(java.lang.Runnable)">Documentation de Platform.runLater</a></p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Comment prouver que le parc a effectivement été sauvegardé ?</h3>
+  <p>Exemple de recette : crée deux équipements distincts, sauvegarde le parc puis ferme complètement l’application. Rouvre-la, charge le fichier et retrouve les deux identifiants avec leurs propriétés. Le redémarrage élimine la possibilité de relire simplement les objets restés en mémoire.</p>
+  <p>Modifie ensuite un seul équipement et recommence. L’autre doit garder sa valeur. Ce second essai détecte une sauvegarde qui écraserait tout le parc avec le dernier objet traité.</p>
+  <p><a href="#application-guidee">Sujet ch. 6 · Sauvegarder et relire le parc</a></p>
+</div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
         <h2 class="c-h2" id="sigles-title">Sigles et acronymes</h2>
@@ -149,7 +155,7 @@
     <p class="c-question"><strong>Énoncé.</strong> Modéliser utilisateur, équipement, incident, événement et mesure puis ajouter, retirer, modifier, rechercher et lister des équipements.</p>
     <ol><li>Dans l’UML, dessine un équipement avec un identifiant stable et ses liens 1–n avec les mesures et les incidents. Fais préciser par le modèle qui peut prendre un incident et si une affectation peut rester vide.</li><li>Donne les actions d’ajout et de recherche au service. Passe-lui les données de la vue, impose l’unicité de l’identifiant et vérifie que renommer l’appareil laisse son historique rattaché au même objet.</li><li>Teste l’objet absent et le doublon. Lors d’une suppression, choisis et documente la règle sur les mesures et incidents liés. Vérifie qu’aucune référence impossible n’est sauvée.</li></ol>
   </div></details>
-  <details class="acc"><summary>Sujet ch. 6 · Sauvegarder et relire le parc</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>Sujet ch. 6 · Sauvegarder et relire le parc</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Proposer un format structuré, conserver les données entre deux exécutions et gérer l’absence ou l’inaccessibilité du stockage.</p>
     <ol><li>Dans le JSON, conserve les champs propres à l’équipement une fois. Dans un incident, référence son identifiant. À la lecture, reconstruis ces liens et vérifie les identifiants requis.</li><li>Sur un dossier de test, ajoute deux appareils et un incident, ferme puis relance. Compare les valeurs et le lien vers le bon appareil. Le nombre d’objets ne doit pas doubler après ouverture.</li><li>Place ensuite un JSON invalide sur une copie. Vérifie le message et l’absence d’écrasement. Si l’écriture échoue après modification, annonce que les données restent en mémoire ou refuse la modification, selon le comportement que tu as choisi et documenté.</li></ol>
   </div></details>

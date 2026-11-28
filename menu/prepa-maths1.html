@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -100,6 +100,13 @@
 <div class="c-block"><h3>5. Factoriser un polynôme et vérifier le résultat</h3>
 <p>Le degré est la plus grande puissance qui conserve un coefficient non nul après réduction. Une racine <code>a</code> correspond au facteur <code>X−a</code>. Le degré baisse quand on divise par ce facteur. Les coefficients du binôme de Newton organisent le développement d’une puissance d’une somme.</p>
 <p>Pour vérifier une factorisation, redéveloppe ou compare suffisamment de coefficients. Un test avec une valeur particulière peut détecter une erreur mais ne prouve pas seul qu’une identité vaut pour tout <code>X</code>.</p></div>
+<div class="c-block" id="exemple-guide">
+  <h3>Que vérifie-t-on exactement au point de raccord ?</h3>
+  <p>Exemple complémentaire : pour x différent de 1, pose f(x) = (x²−1)/(x−1). Factoriser le numérateur donne (x−1)(x+1). On peut simplifier tant que x diffère de 1, ce qui suffit pour calculer la limite 2.</p>
+  <p>La fraction d’origine reste indéfinie en 1. Choisir f(1) = 2 raccorde la valeur à la limite. Si l’énoncé impose f(1) = 3, la limite reste 2 et la fonction présente une discontinuité en ce point.</p>
+  <p><a href="#pm1-cont">Feuille 4, ex. 1 · Rendre la fonction continue en 1</a></p>
+<p><a href="#td1-produits">Feuille 1, exercice 2 · Peut-on remplacer AB + BA par 2AB ?</a></p>
+</div>
 </section>
 <section class="c-section" id="couverture" aria-labelledby="couverture-title">
 <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
@@ -125,6 +132,7 @@
 <details class="acc" id="pm1-poly"><summary>Feuille 6, ex. 2 · Expliquer pourquoi 100009 est composé</summary><div class="acc-body">
 <p class="c-question"><strong>Énoncé.</strong> Développer <code>(X³+X²−1)(X²−X+1)</code> et utiliser le résultat pour prouver que 100009 n’est pas premier.</p>
 <ol><li>Multiplie chaque terme du premier facteur par le second. Après addition, les termes de degré 4, 3 et 2 s’annulent. Il reste <code>X⁵+X−1</code>.</li><li>Pour <code>X=10</code>, la forme développée vaut 100009. La forme factorisée donne <code>1099×91</code>. Les deux facteurs sont entiers et strictement supérieurs à 1, ce qui suffit.</li></ol></div></details>
+<details class="acc" id="td1-produits"><summary>Feuille 1, exercice 2 · Peut-on remplacer AB + BA par 2AB ?</summary><div class="acc-body"><p class="c-question">Énoncé reformulé. Avec les matrices A et B de la feuille, comparer (A+B)² aux deux développements proposés.</p><ol><li>La distributivité donne (A+B)(A+B) = A²+AB+BA+B². Pour remplacer les deux termes du milieu par 2AB, il faudrait que AB = BA. Il suffit de comparer un seul coefficient différent pour trancher.</li><li>Avec la première ligne de A égale à (1/2, −1) et la première colonne de B égale à (3, −2), le coefficient (1,1) de AB vaut 3/2+2 = 7/2. Dans BA, le même coefficient vaut 3 × (1/2) + (−1) × 0 = 3/2.</li><li>Les deux produits diffèrent. Garde les quatre termes dans le développement. L’ordre des lettres indique quelle ligne doit rencontrer quelle colonne.</li></ol></div></details>
 </section>
       <section class="c-section" id="video" aria-labelledby="video-title">
         <h2 class="c-h2" id="video-title">Vidéo explicative</h2>

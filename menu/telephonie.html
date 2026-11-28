@@ -71,7 +71,7 @@
     <aside class="c-toc"><nav aria-label="Sommaire du cours">
       <p class="c-toc-title">Sommaire</p>
       <ol>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -94,6 +94,12 @@
 <div class="c-block"><h3>Acheminer des numéros par un trunk et un plan d’appel</h3>
 <p>Pour un scénario avec numéros internes à quatre chiffres et numéros sortants à dix chiffres, place les règles dans le contexte utilisé par les lignes. Associe la règle sortante au trunk et configure la destination entrante dans le contexte attendu.</p>
 <p>Un groupe de sonnerie distribue un appel à plusieurs postes selon une stratégie. Une messagerie prend le relais sur non-réponse si la redirection est configurée. Un test doit distinguer l’appel direct, la sonnerie du groupe et le dépôt du message.</p>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi un premier 401 peut-il accompagner une inscription réussie ?</h3>
+  <p>Dans l’échange d’inscription SIP (Session Initiation Protocol), le téléphone envoie REGISTER. Le serveur peut répondre 401 avec un défi d’authentification. Le téléphone calcule une réponse à ce défi puis envoie un nouveau REGISTER.</p>
+  <p>Lis la suite de la capture avant de conclure. Un 200 OK après la deuxième demande confirme l’acceptation de l’inscription. Si la demande authentifiée reste refusée, vérifie l’identité utilisée et le domaine d’authentification annoncé. L’audio se vérifie ensuite lors d’un appel.</p>
+  <p><a href="#question-2">TP XiVO · Expliquer le 401 et retrouver le codec de l’appel</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">

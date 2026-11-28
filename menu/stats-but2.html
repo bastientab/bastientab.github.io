@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
         <li><a href="#video">Vidéo explicative</a></li>
@@ -114,6 +114,13 @@
     <p>Le test d’ajustement du <strong>khi-deux</strong> compare un effectif observé O à un attendu E dans chaque classe. Calcule E = n × probabilité de la classe sous le modèle, puis additionne (O−E)²/E. Couvre toutes les valeurs possibles du modèle, y compris les queues, et regroupe les classes voisines où E est trop petit.</p>
     <p>Avec k classes finales et p paramètres estimés sur les mêmes données, prends k−1−p degrés de liberté dans le cadre du TD. Si la statistique dépasse le seuil, rejette le modèle au risque annoncé. Une valeur sous le seuil signifie que les observations sont compatibles avec le modèle au seuil choisi.</p>
   </div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi la barre la plus haute peut-elle contenir moins de mesures ?</h3>
+  <p>Exemple : huit mesures entre 0 et 2 ms, douze entre 2 et 8 ms. Les classes n’ont pas la même largeur. Pour que l’aire représente l’effectif, la première hauteur doit valoir 8/2 = 4 mesures par ms et la seconde 12/6 = 2.</p>
+  <p>La première barre monte plus haut tandis que la seconde contient davantage de mesures. Vérifie en multipliant chaque hauteur par sa largeur : 4 × 2 + 2 × 6 = 20, l’effectif total.</p>
+<div class="c-table-wrap"><table class="c-table" aria-label="Pourquoi la barre la plus haute peut-elle contenir moins de mesures ?"><thead><tr><th scope="col">Classe</th><th scope="col">Effectif</th><th scope="col">Largeur</th><th scope="col">Hauteur</th></tr></thead><tbody><tr><td>[0, 2[ ms</td><td>8</td><td>2 ms</td><td>4 mesures/ms</td></tr><tr><td>[2, 8[ ms</td><td>12</td><td>6 ms</td><td>2 mesures/ms</td></tr></tbody></table></div>
+  <p><a href="#application-guidee">TD1, exercice II · Tracer l’histogramme et estimer les quartiles</a></p>
+</div>
 </section>
       <section class="c-section" id="couverture" aria-labelledby="couverture-title">
   <h2 class="c-h2" id="couverture-title">Du cours aux TD et TP</h2>
@@ -137,7 +144,7 @@
     <li>La valeur 4 apparaît 80 fois, ce qui en fait le mode. Les deux observations du milieu, de rangs 100 et 101, valent chacune 3.</li>
     <li>Multiplie les valeurs par leurs effectifs, additionne et divise par 200. Tu obtiens <strong>628/200 = 3,14</strong>. Applique le même calcul aux carrés : 2292/200 = 11,46. Soustrais 3,14² pour obtenir une variance de 1,6004, puis prends la racine, soit <strong>1,265</strong> environ.</li></ol>
   </div></details>
-  <details class="acc"><summary>TD1, exercice II · Tracer l’histogramme et estimer les quartiles</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>TD1, exercice II · Tracer l’histogramme et estimer les quartiles</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Pour la série regroupée en classes de largeurs inégales, complète les effectifs réduits, réalise l’histogramme et estime les quartiles et la médiane à partir des fréquences cumulées.</p>
     <ol><li>Les effectifs sont 3, 14, 25, 20, 18, 26, 10, 4, soit N=120. Pour <code>[0 ; 10[</code>, la largeur vaut deux unités de 5, donc la hauteur corrigée est 3/2=1,5. Pour <code>[15 ; 20[</code> la largeur vaut une unité, donc la hauteur vaut 25. Répète puis garde les vraies largeurs sur l’axe horizontal.</li>
     <li>Le 60ᵉ rang est dans <code>[20 ; 25[</code>. Le cumul précédent vaut 42 et l’effectif de la classe vaut 20. Avance de (60−42)/20 de la largeur de 5 depuis la borne 20. La médiane estimée vaut <strong>24,5</strong>.</li>

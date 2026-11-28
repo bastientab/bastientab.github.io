@@ -72,7 +72,7 @@
       <p class="c-toc-title">Sommaire</p>
       <ol>
         <li><a href="#documents">Télécharger le cours</a></li>
-        <li><a href="#cours">Cours expliqué</a></li>
+        <li><a href="#cours">Cours expliqué</a></li> <li><a href="#exemple-guide">Exemple guidé</a></li>
         <li><a href="#sigles">Sigles et acronymes</a></li>
         <li><a href="#couverture">Du cours aux TD et TP</a></li>
         <li><a href="#corriges">Questions TD &amp; TP</a></li>
@@ -135,6 +135,12 @@
     <li>Après mise à jour des stratégies, lance <code>gpresult /r</code> dans la session. Prends le rapport utilisateur pour un lecteur mappé. Au besoin, <code>gpresult /h rapport.html</code> permet de relire les stratégies appliquées et celles filtrées. Rouvre la session si le paramètre se traite à la connexion.</li>
     <li>Si la GPO apparaît mais que le lecteur manque, vérifie le nom du partage, les droits de partage et les droits sur le dossier. Si la GPO n’apparaît pas, reprends le lien, la cible et le filtrage avant de modifier les droits du dossier.</li>
   </ol>
+</div>
+<div class="c-block" id="exemple-guide">
+  <h3>Pourquoi un lecteur réseau peut-il apparaître tout en refusant l’accès ?</h3>
+  <p>Dans le TP, la stratégie de groupe peut associer K: à un dossier partagé. Ce réglage donne un chemin au poste. Pour ouvrir un fichier, le serveur évalue ensuite les autorisations du partage et celles du système de fichiers pour l’utilisateur connecté.</p>
+  <p>Si K: manque, vérifie la stratégie effectivement appliquée et son ciblage. Si K: apparaît mais que l’ouverture échoue, essaie le chemin réseau avec le même compte et examine ses droits. Tu sépares ainsi la distribution du raccourci et l’autorisation de lire.</p>
+  <p><a href="#application-guidee">TP3 · Mapper K, déployer un fond et vérifier l’installation</a></p>
 </div>
 </section>
       <section class="c-section" id="sigles" aria-labelledby="sigles-title">
@@ -210,7 +216,7 @@ net use J: \\SERVEUR\Direction
 net use</code></pre>
     <p>Pour la variante du sujet qui supprime d’abord les lecteurs, utilise <code>net use * /delete /y</code> dans le scénario de test demandé. Pour un usage courant, supprimer uniquement les lettres gérées évite de toucher aux autres lecteurs.</p>
   </div></details>
-  <details class="acc"><summary>TP3 · Mapper K, déployer un fond et vérifier l’installation</summary><div class="acc-body">
+  <details class="acc" id="application-guidee"><summary>TP3 · Mapper K, déployer un fond et vérifier l’installation</summary><div class="acc-body">
     <p class="c-question"><strong>Énoncé.</strong> Appliquer le lecteur K à Atelier, tester deux modes de fond d’écran et vérifier le déploiement côté ordinateur.</p>
     <ol><li>Dans <strong>Gestion de stratégie de groupe</strong>, crée et lie une GPO à l’OU Atelier. Modifie <strong>Configuration utilisateur → Préférences → Paramètres Windows → Mappages de lecteurs</strong>. Choisis le chemin <code>\\SERVEUR\Pourtous</code>, K et le libellé « Partage ». Contrôle avec <code>gpupdate /force</code>, puis <code>net use</code> dans la session Atelier.</li>
     <li>Pour un papier peint réseau, adresse une GPO utilisateur à Direction et pointe vers une image lisible. Pour le second mode, fais copier le fichier par <strong>Configuration ordinateur → Préférences → Paramètres Windows → Fichiers</strong> sur la bonne OU de postes. Fais référencer le chemin local par le réglage utilisateur du second groupe.</li>
