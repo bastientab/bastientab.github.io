@@ -1,0 +1,38 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.269 line:97%,end align:center
+Sur le tableau, la lettre A revient cinq fois.
+
+00:00:03.269 --> 00:00:07.032 line:97%,end align:center
+B revient deux fois, et C, une seule fois.
+
+00:00:07.032 --> 00:00:09.570 line:97%,end align:center
+Alors, on commence par quelle lettre ?
+
+00:00:09.570 --> 00:00:13.140 line:97%,end align:center
+Regarde les deux plus petits nombres, 1 et 2.
+
+00:00:13.140 --> 00:00:15.161 line:97%,end align:center
+On relie C et B.
+
+00:00:15.161 --> 00:00:18.430 line:97%,end align:center
+À l’écran, je note 3 au-dessus de leur branche.
+
+00:00:18.430 --> 00:00:20.151 line:97%,end align:center
+Il reste deux éléments.
+
+00:00:20.151 --> 00:00:23.677 line:97%,end align:center
+La branche qui pèse 3 et le A qui pèse 5.
+
+00:00:23.677 --> 00:00:24.817 line:97%,end align:center
+On les relie.
+
+00:00:24.817 --> 00:00:27.656 line:97%,end align:center
+Maintenant, suis le chemin qui mène à A.
+
+00:00:27.656 --> 00:00:29.484 line:97%,end align:center
+Tu n’as qu’une branche à suivre.
+
+00:00:29.484 --> 00:00:33.634 line:97%,end align:center
+Voilà pourquoi, dans cet exemple,
+un seul bit suffit pour coder A.

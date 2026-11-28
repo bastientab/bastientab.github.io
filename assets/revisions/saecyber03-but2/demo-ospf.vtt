@@ -1,0 +1,61 @@
+WEBVTT
+
+00:00:00.054 --> 00:00:02.753 line:97%,end align:center
+Depuis le routeur A, je veux rejoindre E.
+
+00:00:03.247 --> 00:00:06.215 line:97%,end align:center
+Je peux passer par D,
+ou faire un détour par C.
+
+00:00:06.656 --> 00:00:07.516 line:97%,end align:center
+Comment je choisis ?
+
+00:00:08.022 --> 00:00:12.785 line:97%,end align:center
+Avec OSPF, chaque routeur construit
+une carte des liaisons de son aire.
+
+00:00:13.226 --> 00:00:15.151 line:97%,end align:center
+Une aire, c’est une partie du réseau.
+
+00:00:15.613 --> 00:00:18.043 line:97%,end align:center
+Sur cette carte, chaque liaison a un coût.
+
+00:00:18.505 --> 00:00:20.108 line:97%,end align:center
+On additionne les coûts du trajet.
+
+00:00:20.527 --> 00:00:23.430 line:97%,end align:center
+Par D, ça fait 2 + 2 = 4.
+
+00:00:23.796 --> 00:00:27.957 line:97%,end align:center
+En passant par C, ça fait 1 + 2 + 2 = 5.
+
+00:00:28.280 --> 00:00:30.065 line:97%,end align:center
+Le trajet de coût 4 gagne.
+
+00:00:30.538 --> 00:00:32.688 line:97%,end align:center
+Ce calcul s’appelle SPF.
+
+00:00:33.011 --> 00:00:35.817 line:97%,end align:center
+On cherche le chemin
+de coût total le plus faible.
+
+00:00:36.280 --> 00:00:39.194 line:97%,end align:center
+Maintenant, la liaison entre A et D tombe.
+
+00:00:39.538 --> 00:00:42.710 line:97%,end align:center
+La carte est mise à jour,
+et le routeur refait son calcul.
+
+00:00:43.075 --> 00:00:47.151 line:97%,end align:center
+Le meilleur chemin disponible
+passe par C, puis D, puis E.
+
+00:00:47.527 --> 00:00:48.989 line:97%,end align:center
+Le coût monte à 5.
+
+00:00:49.344 --> 00:00:51.720 line:97%,end align:center
+Et si on te demande le prochain saut depuis A,
+
+00:00:52.065 --> 00:00:55.366 line:97%,end align:center
+regarde la première étape
+du nouveau trajet : c’est C.
